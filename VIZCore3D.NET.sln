@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.960
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Demo", "VIZCore3D.NET.Demo\VIZCore3D.NET.Demo.csproj", "{21D4441D-7891-4D51-B29B-3724A7073A98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelComparison", "ModelComparison\ModelComparison.csproj", "{A230733B-6ABE-455E-85F2-88420AE6EB4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ModelComparison", "VIZCore3D.NET.ModelComparison\VIZCore3D.NET.ModelComparison.csproj", "{A230733B-6ABE-455E-85F2-88420AE6EB4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

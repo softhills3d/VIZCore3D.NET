@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A230733B-6ABE-455E-85F2-88420AE6EB4E}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>ModelComparison</RootNamespace>
-    <AssemblyName>ModelComparison</AssemblyName>
+    <RootNamespace>VIZCore3D.NET.ModelComparison</RootNamespace>
+    <AssemblyName>VIZCore3D.NET.ModelComparison</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

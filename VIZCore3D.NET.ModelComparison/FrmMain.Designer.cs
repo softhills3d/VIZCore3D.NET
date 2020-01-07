@@ -1,4 +1,4 @@
-﻿namespace ModelComparison
+﻿namespace VIZCore3D.NET.ModelComparison
 {
     partial class FrmMain
     {

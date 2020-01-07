@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ModelComparison.Properties {
+namespace VIZCore3D.NET.ModelComparison.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

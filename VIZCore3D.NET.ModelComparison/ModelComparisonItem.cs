@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ModelComparison
+namespace VIZCore3D.NET.ModelComparison
 {  
     public class ModelComparisonItem
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ModelComparison
+namespace VIZCore3D.NET.ModelComparison
 {
     static class Program
     {

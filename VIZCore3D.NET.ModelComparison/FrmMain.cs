@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace ModelComparison
+namespace VIZCore3D.NET.ModelComparison
 {
     public partial class FrmMain : Form
     {
