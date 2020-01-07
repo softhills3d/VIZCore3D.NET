@@ -83,9 +83,9 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             // TEST
             // ================================================================
-            //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\Users\\Gjkim\\Documents\\LICENSE_GJKIM_TOTAL_DEVICE_NEW_V2.lic");
+            VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\Users\\Gjkim\\Documents\\LICENSE_GJKIM_TOTAL_DEVICE_NEW_V2.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
-            VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
+            //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
             if (result != Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);

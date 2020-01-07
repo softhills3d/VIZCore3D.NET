@@ -1,5 +1,6 @@
 v15
-bin
-obj
-Debug
-Release
+.vs/
+bin/
+obj/
+Thumbs.db
+*.user
