@@ -1,11 +1,8 @@
 # VIZCore3D.NET
 
 #### Company : Softhills Co., Ltd.
-
 #### Homepage : http://www.softhills.net
-
 #### Documentation Center : http://www.softhills.net/SHDC
-
 #### Technical Support : tech@softhills.net
 ***
 ## 개요
@@ -42,3 +39,12 @@
 
 ##### 로딩된 모델 정보 조회
 ![모델정보](./Gallery/VIZCore3D.NET.About.png)
+***
+
+
+## Resources
+
++ **Website:** [www.softhills.net](http://www.softhills.net)
++ **Product Home:** [VIZCore3D.NET](http://www.softhills.net/vizzard.html)
++ **Download:** [Download VIZCore3D.NET](http://www.softhills.net/downloads/VIZCore3D.NET)
++ **Documentation:** [VIZCore3D.NET Documentation](http://www.softhills.net/SHDC)
