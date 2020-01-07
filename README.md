@@ -46,5 +46,5 @@
 
 + **Website:** [www.softhills.net](http://www.softhills.net)
 + **Product Home:** [VIZCore3D.NET](http://www.softhills.net/vizzard.html)
-+ **Download:** [Download VIZCore3D.NET](http://www.softhills.net/downloads/VIZCore3D.NET)
++ **Download:** [Download VIZCore3D.NET (Preparing...)](http://www.softhills.net/downloads/VIZCore3D.NET)
 + **Documentation:** [VIZCore3D.NET Documentation](http://www.softhills.net/SHDC)
