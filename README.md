@@ -34,6 +34,9 @@
 ##### 보행 탐색 모드에서 아바타 활용
 ![보행모드 아바타](./Gallery/VIZCore3D.NET.Avatar.png)
 
+##### 모델 비교
+![모델 비교](./Gallery/VIZCore3D.NET.ModelComparison.png)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
