@@ -19,8 +19,19 @@ namespace VIZCore3D.NET.Demo
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        /// <summary>
+        /// 노드 목록 조회용 다이얼로그
+        /// </summary>
         private Dialogs.NodeDialog nodeDialog;
+
+        /// <summary>
+        /// 노드 보이기/숨기기 및 로드/언로드 테스트 다이얼로그
+        /// </summary>
         private Dialogs.Object3dTestDialog object3dTestDialog;
+
+        /// <summary>
+        /// 화면 메시지 출력 상태
+        /// </summary>
         public bool EnableMessage { get; set; }
 
 
@@ -60,13 +71,13 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             // Example
             // ================================================================
-            //vizcore3d.License.LicenseFile("C:\\Temp\\VIZCore3D.NET.lic");
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901);
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.AUTO);
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZZARD_MANAGER);
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZZARD_STANDARD);
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZCORE3D_MANAGER);
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZCORE3D_STANDARD);
+            //vizcore3d.License.LicenseFile("C:\\Temp\\VIZCore3D.NET.lic");                         // 라이선스 파일
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901);                                   // 라이선스 서버 - 제품 오토 선택
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.AUTO);               // 라이선스 서버 - 제품 오토 선택
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZZARD_MANAGER);    // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZZARD_STANDARD);   // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZCORE3D_MANAGER);  // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZCORE3D_STANDARD); // 라이선스 서버 - 지정된 제품으로 인증
 
 
             // ================================================================
@@ -375,7 +386,7 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasurement.Visible = false;
-            vizcore3d.ToolbarSection.Visible = true;
+            vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
             vizcore3d.ToolbarSimulation.Visible = false;
@@ -397,7 +408,10 @@ namespace VIZCore3D.NET.Demo
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            // 모델 선택/해제 이벤트
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+
+            // 단면(상자) 갱신 이벤트
             vizcore3d.Section.OnSectionUpdate += Section_OnSectionUpdate;
         }
 
@@ -406,6 +420,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuFileOpen_Click(object sender, EventArgs e)
         {
+            // 모델 열기
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = vizcore3d.Model.OpenFilter;
             if (dlg.ShowDialog() != DialogResult.OK) return;
@@ -417,6 +432,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuFileOpenUri_Click(object sender, EventArgs e)
         {
+            // 지정된 URI의 모델 열기(스트림)
             Dialogs.OpenUriDialog dlg = new Dialogs.OpenUriDialog();
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
@@ -428,6 +444,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuFileAdd_Click(object sender, EventArgs e)
         {
+            // 모델 추가
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = vizcore3d.Model.AddFilter;
             dlg.Multiselect = true;
@@ -440,6 +457,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuFileAddUri_Click(object sender, EventArgs e)
         {
+            // 지정된 URI의 모델 추가(스트림)
             Dialogs.AddUriDialog dlg = new Dialogs.AddUriDialog();
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
@@ -450,6 +468,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuFileClose_Click(object sender, EventArgs e)
         {
+            // 모델 닫기
             vizcore3d.Model.Close();
         }
 
@@ -463,11 +482,13 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuToolbarMain_Click(object sender, EventArgs e)
         {
+            // 툴바 보이기/숨기기
             vizcore3d.ToolbarMain.Visible = !vizcore3d.ToolbarMain.Visible;
         }
 
         private void menuStatusbar_Click(object sender, EventArgs e)
         {
+            // 상태바 보이기/숨기기
             vizcore3d.Statusbar.Visible = !vizcore3d.Statusbar.Visible;
         }
         
@@ -481,6 +502,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuToolsDebugInformation_Click(object sender, EventArgs e)
         {
+            // 디버그 정보 보이기/숨기기
             vizcore3d.Debug.Visible = !vizcore3d.Debug.Visible;
         }
 
@@ -489,54 +511,63 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuApiObject3dRoot_Click(object sender, EventArgs e)
         {
+            // Root 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ROOT);
             ShowNodeDialog(items);    
         }
 
         private void menuApiObject3dFile_Click(object sender, EventArgs e)
         {
+            // 파일 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.FILE);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dAll_Click(object sender, EventArgs e)
         {
+            // 전체 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dPart_Click(object sender, EventArgs e)
         {
+            // 파트 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.PART);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dSelectedTop_Click(object sender, EventArgs e)
         {
+            // 선택된 상위 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dSelectedAll_Click(object sender, EventArgs e)
         {
+            // 선택된 전체 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_ALL);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dLockedHidden_Click(object sender, EventArgs e)
         {
+            // 잠금 숨김 상태의 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.LOCKED_HIDDEN);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dSelectedObject_Click(object sender, EventArgs e)
         {
+            // 전체 선택 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_ALL);
             ShowNodeDialog(items);
         }
 
         private void menuApiObject3dSelectedChild_Click(object sender, EventArgs e)
         {
+            // 선택된 노드의 자식 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> selectedItems = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
             if (selectedItems.Count == 0) return;
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.GetChildObject3d(selectedItems[0].Index, Data.Object3DChildOption.CHILD_ONLY);
@@ -553,6 +584,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuApiObject3dStructure_Click(object sender, EventArgs e)
         {
+            // 선택된 노드의 구조 정보 조회
             List<VIZCore3D.NET.Data.Node> selectedItems = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
             if (selectedItems.Count == 0) return;
 
@@ -567,11 +599,13 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuApiViewPreSelect_Click(object sender, EventArgs e)
         {
+            // PreSelect 기능 활성화/비활성화
             vizcore3d.View.EnablePreSelect = !vizcore3d.View.EnablePreSelect;
         }
 
         private void menuApiViewXrayColor_Click(object sender, EventArgs e)
         {
+            // Xray 모드에서 선택 개체의 색상 표시 방법 전환
             if (vizcore3d.View.XRay.ColorType == Data.XRayColorTypes.OBJECT_COLOR)
                 vizcore3d.View.XRay.ColorType = Data.XRayColorTypes.SELECTION_COLOR;
             else
@@ -580,11 +614,13 @@ namespace VIZCore3D.NET.Demo
 
         private void menuApiViewImageToClipboard_Click(object sender, EventArgs e)
         {
+            // 현재 화면을 클립보드에 저장
             vizcore3d.View.CaptureImageToClipboard();
         }
 
         private void menuApiViewCaptureImage_Click(object sender, EventArgs e)
         {
+            // 현재 화면 이미지 조회
             System.Drawing.Image img = vizcore3d.View.CaptureImage();
             Dialogs.ViewImageDialog dlg = new Dialogs.ViewImageDialog(img);
             dlg.ShowDialog();
@@ -592,6 +628,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuApiViewMessage_Click(object sender, EventArgs e)
         {
+            // 개체 선택 시, 개체 정보를 화면에 표시 활성화/비활성화
             EnableMessage = !EnableMessage;
         }
 
@@ -600,6 +637,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuApiGeometryProperty_Click(object sender, EventArgs e)
         {
+            // 선택된 노드의 Geometry 속성 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0) return;
 
@@ -619,6 +657,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuApiUDAKeys_Click(object sender, EventArgs e)
         {
+            // 사용자 정의 속성 중 Key 목록 조회
             List<string> keys = vizcore3d.Object3D.UDA.Keys;
 
             if (keys.Count == 0)
@@ -629,6 +668,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuApiUDAValues_Click(object sender, EventArgs e)
         {
+            // 선택된 개체의 사용자 정의 속성 정보 조회
             List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0) return;
 
@@ -640,6 +680,7 @@ namespace VIZCore3D.NET.Demo
 
         private void menuApiUDATree_Click(object sender, EventArgs e)
         {
+            // 전체 사용자 정의 속성 트리 형식으로 조회
             List<string> keys = vizcore3d.Object3D.UDA.Keys;
 
             Dialogs.UDATreeDialog dlg = new Dialogs.UDATreeDialog(keys);
@@ -650,12 +691,14 @@ namespace VIZCore3D.NET.Demo
 
         private List<string> UDATreeDialog_OnUDAKeyNodeClickedEvent(object sender, Dialogs.UDAKeyNodeClickedEventArgs e)
         {
+            // 사용자 정의 속성 Key 선택 시, Value 목록 반환
             List<string> vals = vizcore3d.Object3D.UDA.GetValues(e.Key);
             return vals;
         }
 
         private List<Data.Node> UDATreeDialog_OnUDAValueNodeClickedEvent(object sender, Dialogs.UDAValueNodeClickedEventArgs e)
         {
+            // 사용자 정의 속성의 Key/Value에 해당하는 노드 목록 반환
             List<Data.Node> nodes = vizcore3d.Object3D.UDA.GetNodes(e.Key, e.Value);
             return nodes;
         }
@@ -665,7 +708,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void menuApiFind_Click(object sender, EventArgs e)
         {
-            // Case 1
+            // Case 1 - API로 노드 검색
             //Dialogs.InputNameDialog dlg = new Dialogs.InputNameDialog();
             //if (dlg.ShowDialog() != DialogResult.OK) return;
 
@@ -681,7 +724,7 @@ namespace VIZCore3D.NET.Demo
             //ShowNodeDialog(items);
 
 
-            // Case 2
+            // Case 2 - 검색 GUI
             Dialogs.SearchNodeDialog dlg = new Dialogs.SearchNodeDialog();
             dlg.OnQuickSearchEvent += SearchNode_OnQuickSearchEvent;                // 검색 이벤트
             dlg.OnQuickSearchViewEvent += SearchNode_OnQuickSearchViewEvent;        // 검색 결과 조회 이벤트
@@ -691,12 +734,14 @@ namespace VIZCore3D.NET.Demo
 
         private List<Data.Node> SearchNode_OnQuickSearchEvent(object sender, Dialogs.QuickSearchEventArgs e)
         {
+            // 검색 GUI에서 요청한 Keyword로 검색 수행 결과 반환
             List<Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(e.Keyword, e.JoinCondition, e.AssemblyOnly, e.VisibleOnly, e.SelectedOnly, e.FullMatch);
             return vizcore3d.Object3D.UpdateNodePath(items);
         }
 
         private void SearchNode_OnQuickSearchViewEvent(object sender, Dialogs.QuickSearchViewEventArgs e)
         {
+            // 검색 결과 목록에서 항목 선택 시, 화면에 하이라이트
             if (e.Xray == true)
             {
                 if (vizcore3d.View.XRay.Enable == false)
@@ -730,9 +775,8 @@ namespace VIZCore3D.NET.Demo
 
         private void SearchNode_OnQuickSearchClosedEvent(object sender, EventArgs e)
         {
+            // 검색 창 닫기 시, Xray 모드 해제
             vizcore3d.View.XRay.Enable = false;
         }
-
-        
     }
 }
