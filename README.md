@@ -16,11 +16,26 @@
 ***
 
 ## Gallery
+##### 데모 프로젝트 메인 화면
 ![메인 화면](./Gallery/VIZCore3D.NET.Main.png)
+
+##### 대용량 모델 로딩 화면
 ![대용량 모델](./Gallery/VIZCore3D.NET.LargeModel.png)
+
+##### 렌더링 효과
 ![렌더링 효과](./Gallery/VIZCore3D.NET.Rendering.png)
+
+##### 모델 검색 및 Xray 모드
 ![검색](./Gallery/VIZCore3D.NET.Search.png)
+
+##### Geometry 속성 조회
 ![Geometry Property](./Gallery/VIZCore3D.NET.GeometryProperty.png)
+
+##### 보행 탐색 모드에서 아바타 활용
 ![보행모드 아바타](./Gallery/VIZCore3D.NET.Avatar.png)
+
+##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
+
+##### 로딩된 모델 정보 조회
 ![모델정보](./Gallery/VIZCore3D.NET.About.png)
