@@ -8,7 +8,7 @@
 ## 제품 비교
 
 | Features  | Standard | Manager | Comments |
-| ------------- | ------------- | ------------- | ------------- |
+| ------------- | :---: | :---: | ------------- |
 | Direct read of 3D (REV, RVM, RVT) | O | O | |
 | Viewing | O | O | |
 | Navigation | O | O | |
