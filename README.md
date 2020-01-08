@@ -5,6 +5,15 @@
 
 상세 API에 대한 설명 및 예제는 SHDC (http://www.softhills.net/SHDC) 를 참고 하시기 바랍니다.
 ***
+
+## 디렉토리 설명
+| 구분  | 설명 |
+| ------------- | ------------- |
+| Gallery | VIZCore3D.NET 기능별 스크린샷 |
+| VIZCore3D.NET.Demo | 주요 기능 API 활용 예제 |
+| VIZCore3D.NET.ModelComparison | 2개의 모델 파일을 활용하여 모델 비교 기능 예제 |
+***
+
 ## 제품 비교
 
 | Features  | Standard | Manager | Comments |
@@ -64,6 +73,10 @@
 ![모델정보](./Gallery/VIZCore3D.NET.About.png)
 ***
 
+## 문의
+### 기술지원 : tech@softhills.net
+### 구매문의 : sales@softhills.net
+***
 
 ## Resources
 
