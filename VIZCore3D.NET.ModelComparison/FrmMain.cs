@@ -63,6 +63,7 @@ namespace VIZCore3D.NET.ModelComparison
                 return;
             }
 
+            // 툴바 설정
             vizcore1.ToolbarNote.Visible = false;
             vizcore1.ToolbarMeasurement.Visible = false;
             vizcore1.ToolbarSection.Visible = false;
@@ -70,6 +71,7 @@ namespace VIZCore3D.NET.ModelComparison
             vizcore1.ToolbarAnimation.Visible = false;
             vizcore1.ToolbarSimulation.Visible = false;
 
+            // 옵션 설정
             vizcore1.View.EnablePreSelect = false;
         }
 
@@ -95,7 +97,7 @@ namespace VIZCore3D.NET.ModelComparison
                 return;
             }
 
-
+            // 툴바 설정
             vizcore2.ToolbarNote.Visible = false;
             vizcore2.ToolbarMeasurement.Visible = false;
             vizcore2.ToolbarSection.Visible = false;
@@ -103,6 +105,7 @@ namespace VIZCore3D.NET.ModelComparison
             vizcore2.ToolbarAnimation.Visible = false;
             vizcore2.ToolbarSimulation.Visible = false;
 
+            // 옵션 설정
             vizcore2.View.EnablePreSelect = false;
         }
 
