@@ -55,7 +55,8 @@ namespace VIZCore3D.NET.ModelComparison
             // ================================================================
             // TEST
             // ================================================================
-            VIZCore3D.NET.Data.LicenseResults result = vizcore1.License.LicenseFile("C:\\Users\\Gjkim\\Documents\\LICENSE_GJKIM_TOTAL_DEVICE_NEW_V2.lic");
+            VIZCore3D.NET.Data.LicenseResults result = vizcore1.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
+            //VIZCore3D.NET.Data.LicenseResults result = vizcore1.License.LicenseServer("127.0.0.1", 8901);
             if (result != VIZCore3D.NET.Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -86,7 +87,8 @@ namespace VIZCore3D.NET.ModelComparison
             // ================================================================
             // TEST
             // ================================================================
-            VIZCore3D.NET.Data.LicenseResults result = vizcore2.License.LicenseFile("C:\\Users\\Gjkim\\Documents\\LICENSE_GJKIM_TOTAL_DEVICE_NEW_V2.lic");
+            VIZCore3D.NET.Data.LicenseResults result = vizcore2.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
+            //VIZCore3D.NET.Data.LicenseResults result = vizcore2.License.LicenseServer("127.0.0.1", 8901);
             if (result != VIZCore3D.NET.Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
