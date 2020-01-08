@@ -28,7 +28,7 @@
 | Export STL | X | O | |
 | Export OBJ | X | O | |
 | Export reviews | O | O | |
-| Advanced navigation | X | O | |
+| Advanced navigation (walk, fly) | X | O | |
 | Interference Check | X | O | |
 | Animation | X | O | |
 | Simulation | X | O | |
