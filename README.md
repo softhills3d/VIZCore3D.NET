@@ -64,6 +64,10 @@
 ![모델정보](./Gallery/VIZCore3D.NET.About.png)
 ***
 
+## 문의
+### 기술지원 : tech@softhills.net
+### 구매문의 : sales@softhills.net
+***
 
 ## Resources
 
