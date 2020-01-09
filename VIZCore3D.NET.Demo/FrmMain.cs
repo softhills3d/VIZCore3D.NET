@@ -160,22 +160,47 @@ namespace VIZCore3D.NET.Demo
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">Event Args</param>
-        private void Section_OnSectionUpdate(object sender, Event.EventManager.SectionUpdateEventArgs e)
+        private void Section_OnSectionEvent(object sender, Event.EventManager.SectionEventArgs e)
         {
-            //단면을 찾을 수 없습니다.
-            if (e.Section.ID < 0) return;
+            switch (e.EventType)
+            {
 
-            if(e.Section.SectionType == Data.SectionTypes.SECTION)
-            {
-                //단면
+                case Data.SectionEventTypes.ADD:
+                    //생성 이벤트
+                    break;
+                case Data.SectionEventTypes.DELETE:
+                    //삭제 이벤트
+                    break;
+                case Data.SectionEventTypes.DELETE_ALL:
+                    //전체 삭제 이벤트
+                    break;
+                case Data.SectionEventTypes.SELECT:
+                    //선택 이벤트
+                    break;
+                case Data.SectionEventTypes.TRANSFORM:
+                    //이동 및 회전 이벤트
+                    break;
+                default:
+                    break;
             }
-            else if(e.Section.SectionType == Data.SectionTypes.SECTION_BOX)
+
+            // 단면 정보 없음
+            if (e.Section == null)
+                return;
+
+            switch (e.Section.SectionType)
             {
-                //단면 박스
-            }
-            else if (e.Section.SectionType == Data.SectionTypes.SECTION_INBOX)
-            {
-                //단면 인박스
+                case Data.SectionTypes.SECTION:
+                    // 단면
+                    break;
+                case Data.SectionTypes.SECTION_BOX:
+                    // 상자
+                    break;
+                case Data.SectionTypes.SECTION_INBOX:
+                    // 인박스
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -411,7 +436,7 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
 
             // 단면(상자) 갱신 이벤트
-            vizcore3d.Section.OnSectionUpdate += Section_OnSectionUpdate;
+            vizcore3d.Section.OnSectionEvent += Section_OnSectionEvent;
         }
 
         // ================================================
