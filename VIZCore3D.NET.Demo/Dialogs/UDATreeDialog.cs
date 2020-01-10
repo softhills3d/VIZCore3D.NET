@@ -54,11 +54,11 @@ namespace VIZCore3D.NET.Demo.Dialogs
             if (String.IsNullOrEmpty(tag) == true) return;
 
             // 선택된 노드가 Key 노드인 경우
-            if(tag.Contains("@") == false)
+            if (tag.Contains("@") == false)
             {
                 if (e.Node.Nodes.Count != 0) return;
 
-                if(OnUDAKeyNodeClickedEvent != null)
+                if (OnUDAKeyNodeClickedEvent != null)
                 {
                     // Key 노드에 해당하는 Value 노드 목록 요청 및 반환
                     List<string> vals = OnUDAKeyNodeClickedEvent(this, new UDAKeyNodeClickedEventArgs(tag));
@@ -81,7 +81,7 @@ namespace VIZCore3D.NET.Demo.Dialogs
 
                 if (item == null || item.Length != 2) return;
 
-                if(OnUDAValueNodeClickedEvent != null)
+                if (OnUDAValueNodeClickedEvent != null)
                 {
                     // Value 노드에 해당하는 개체 목록 요청 및 반환
                     List<VIZCore3D.NET.Data.Node> nodes = OnUDAValueNodeClickedEvent(this, new UDAValueNodeClickedEventArgs(item[0], item[1]));

@@ -85,6 +85,7 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
+            //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
             if (result != Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -156,7 +157,7 @@ namespace VIZCore3D.NET.Demo
         }
 
         /// <summary>
-        /// 단면 Update 이벤트
+        /// 단면 이벤트
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">Event Args</param>
@@ -164,7 +165,7 @@ namespace VIZCore3D.NET.Demo
         {
             switch (e.EventType)
             {
-
+                
                 case Data.SectionEventTypes.ADD:
                     //생성 이벤트
                     break;
@@ -212,7 +213,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         private void ShowNodeDialog(List<VIZCore3D.NET.Data.Node> items)
         {
-            if(nodeDialog == null)
+            if (nodeDialog == null)
             {
                 nodeDialog = new Dialogs.NodeDialog(items);
             }
@@ -245,6 +246,9 @@ namespace VIZCore3D.NET.Demo
             // 모델 열기 시, Edge 정보 로드 활성화
             vizcore3d.Model.LoadEdge = true;
 
+            // 모델 열기 시, Edge 정보 변환 활성화
+            vizcore3d.Model.ConvertEdge = true;
+
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.Option.EnableHardwareAcceleration = true;
 
@@ -261,7 +265,7 @@ namespace VIZCore3D.NET.Demo
             // 보이는 모델만 저장
 
             // VIZXML to VIZ 옵션
-            vizcore3d.Model.Export.VIZXMLtoVIZOption = Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
+            vizcore3d.Model.VIZXMLtoVIZOption = Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
 
             // 선택 가능 개체 : 전체, 불투명한 개체
             vizcore3d.View.SelectionObject3DType = Data.SelectionObject3DTypes.ALL;
@@ -274,6 +278,9 @@ namespace VIZCore3D.NET.Demo
 
             // 모델 조회 시, Pre-Select 설정
             vizcore3d.View.EnablePreSelect = false;
+
+            // 모델 조회 시, Pre-Select 색상 설정
+            vizcore3d.View.PreSelectionColor = Color.Lime;
             #endregion
 
 
@@ -327,13 +334,14 @@ namespace VIZCore3D.NET.Demo
             // 자동줌
             vizcore3d.View.Walkthrough.EnableAvatarAutoZoom = false;
             // 충돌상자보기
-            vizcore3d.View.Walkthrough.ShowAvatarCollisionCylinder = false; 
+            vizcore3d.View.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
 
 
             // ================================================================
             // 설정 - 조작
             // ================================================================
+            #region 설정 - 조작
             // 시야각
             vizcore3d.View.FOV = 60.0f;
             // 광원 세기
@@ -347,8 +355,9 @@ namespace VIZCore3D.NET.Demo
             // 배경색1
             //vizcore3d.View.BackgroundColor1 = Color.Gray;
             // 배경색2
-            //vizcore3d.View.BackgroundColor2 = Color.Gray;
-            
+            //vizcore3d.View.BackgroundColor2 = Color.Gray; 
+            #endregion
+
             // ================================================================
             // 설정 - 노트
             // ================================================================
@@ -408,12 +417,14 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             // 설정 - 툴바
             // ================================================================
+            #region 설정 - 툴바
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false;
+            vizcore3d.ToolbarSimulation.Visible = false; 
+            #endregion
 
             // ================================================================
             // 설정 - 상태바
@@ -490,6 +501,46 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.Model.OnModelProgressChangedEvent -= Model_OnModelProgressChangedEvent;
         }
 
+        private void menuFileExport_Click(object sender, EventArgs e)
+        {
+            // 내보내기
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = vizcore3d.Model.ExportFilter;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            bool result = false;
+
+            if(dlg.FilterIndex == 1)
+            {
+                result = vizcore3d.Model.ExportVIZ(dlg.FileName);
+            }
+            else if(dlg.FilterIndex == 2)
+            {
+                result = vizcore3d.Model.ExportVIZXML(dlg.FileName);
+            }
+            else if(dlg.FilterIndex == 3)
+            {
+                result = vizcore3d.Model.ExportObj(dlg.FileName);
+            }
+            else if(dlg.FilterIndex == 4)
+            {
+                result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.ASCII);
+            }
+            else if(dlg.FilterIndex == 5)
+            {
+                result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.BINARY);
+            }
+
+            if (result == false)
+            {
+                MessageBox.Show("EXPORT - FAIL", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", dlg.FileName));
+            }
+        }
+
         private void menuFileClose_Click(object sender, EventArgs e)
         {
             // 모델 닫기
@@ -515,10 +566,10 @@ namespace VIZCore3D.NET.Demo
             // 상태바 보이기/숨기기
             vizcore3d.Statusbar.Visible = !vizcore3d.Statusbar.Visible;
         }
-        
 
 
-        
+
+
 
 
         // ================================================
@@ -537,7 +588,7 @@ namespace VIZCore3D.NET.Demo
         {
             // Root 노드 정보 조회
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ROOT);
-            ShowNodeDialog(items);    
+            ShowNodeDialog(items);
         }
 
         private void menuApiObject3dFile_Click(object sender, EventArgs e)
@@ -654,6 +705,28 @@ namespace VIZCore3D.NET.Demo
         {
             // 개체 선택 시, 개체 정보를 화면에 표시 활성화/비활성화
             EnableMessage = !EnableMessage;
+        }
+
+        private void menuApiViewExportImageBackgroundMode_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            vizcore3d.View.BeginBackgroundRenderingMode(800, 600);
+
+            for (int i = 0; i < 8; i++)
+            {
+                ExportImageBackgroundMode((Data.CameraDirection)i);
+            }
+
+            vizcore3d.View.EndBackgroundRenderingMode();
+        }
+
+        private void ExportImageBackgroundMode(Data.CameraDirection camera)
+        {
+            vizcore3d.View.MoveCamera(camera);
+
+            System.Drawing.Image img = vizcore3d.View.GetBackgroundRenderingImage();
+            img.Save(string.Format("C:\\Temp\\{0}.jpg", camera.ToString()));
         }
 
         // ================================================
@@ -801,6 +874,78 @@ namespace VIZCore3D.NET.Demo
         {
             // 검색 창 닫기 시, Xray 모드 해제
             vizcore3d.View.XRay.Enable = false;
+        }
+
+
+        // ================================================
+        // Event - Menu : API -> Frame
+        // ================================================
+        private void menuApiFrameCreateByAPI_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            // 갱신 시작
+            vizcore3d.View.Frame.BeginUpdate();
+
+            // X 축명 변경
+            vizcore3d.View.Frame.UpdateGridAxisName(Data.Axis.X, "FR");
+
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 0, 0);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 1, 77800);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 2, 92495);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 3, 119800);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 4, 134500);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 5, 142500);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 6, 157200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 7, 161800);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 8, 164500);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 9, 170500);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.X, 10, 176500);
+
+            // Y축명 변경
+            vizcore3d.View.Frame.UpdateGridAxisName(Data.Axis.Y, "LP"); 
+
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -10, -64000);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -9, -60000);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -8, -54200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -7, -52000);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -6, -48200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -5, -42200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -4, -36200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -3, -30200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -2, -24200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, -1, -18200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 0, 0);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 1, 18200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 2, 24200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 3, 30200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 4, 36200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 5, 42200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 6, 48200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 7, 52000);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 8, 54200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 9, 60000);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Y, 10, 64000);
+
+            //Z 축명 변경
+            vizcore3d.View.Frame.UpdateGridAxisName(Data.Axis.Z, "LP");  
+
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 0, 0);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 1, 103500);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 2, 109200);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 3, 112875);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 4, 114750);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 5, 119850);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 6, 123115);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 7, 125500);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 8, 131740);
+            vizcore3d.View.Frame.AddGridLine(Data.Axis.Z, 9, 137500);
+
+            // 갱신 종료
+            vizcore3d.View.Frame.EndUpdate();
+
+            // 화면 표시
+            vizcore3d.View.Frame.Visible = true;
         }
     }
 }

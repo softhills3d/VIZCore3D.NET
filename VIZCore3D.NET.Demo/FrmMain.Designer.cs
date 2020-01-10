@@ -64,16 +64,21 @@
             this.menuApiViewXrayColor = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiViewImageToClipboard = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiViewCaptureImage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuApiViewMessage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuApiViewExportImageBackgroundMode = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiGeometryProperty = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiUDA = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiUDAKeys = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiUDAValues = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiUDATree = new System.Windows.Forms.ToolStripMenuItem();
             this.menuApiFind = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuApiFrame = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuApiFrameCreateByAPI = new System.Windows.Forms.ToolStripMenuItem();
             this.statusbar = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.panelView = new System.Windows.Forms.Panel();
-            this.menuApiViewMessage = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuFileExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuBar.SuspendLayout();
             this.statusbar.SuspendLayout();
             this.SuspendLayout();
@@ -101,6 +106,8 @@
             this.menuFileAdd,
             this.menuFileAddUri,
             this.toolStripSeparator4,
+            this.menuFileExport,
+            this.toolStripSeparator5,
             this.menuFileClose,
             this.toolStripSeparator2,
             this.menuExit});
@@ -111,57 +118,57 @@
             // menuFileOpen
             // 
             this.menuFileOpen.Name = "menuFileOpen";
-            this.menuFileOpen.Size = new System.Drawing.Size(131, 22);
+            this.menuFileOpen.Size = new System.Drawing.Size(180, 22);
             this.menuFileOpen.Text = "Open...";
             this.menuFileOpen.Click += new System.EventHandler(this.menuFileOpen_Click);
             // 
             // menuFileOpenUri
             // 
             this.menuFileOpenUri.Name = "menuFileOpenUri";
-            this.menuFileOpenUri.Size = new System.Drawing.Size(131, 22);
+            this.menuFileOpenUri.Size = new System.Drawing.Size(180, 22);
             this.menuFileOpenUri.Text = "Open Uri...";
             this.menuFileOpenUri.Click += new System.EventHandler(this.menuFileOpenUri_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
             // 
             // menuFileAdd
             // 
             this.menuFileAdd.Name = "menuFileAdd";
-            this.menuFileAdd.Size = new System.Drawing.Size(131, 22);
+            this.menuFileAdd.Size = new System.Drawing.Size(180, 22);
             this.menuFileAdd.Text = "Add...";
             this.menuFileAdd.Click += new System.EventHandler(this.menuFileAdd_Click);
             // 
             // menuFileAddUri
             // 
             this.menuFileAddUri.Name = "menuFileAddUri";
-            this.menuFileAddUri.Size = new System.Drawing.Size(131, 22);
+            this.menuFileAddUri.Size = new System.Drawing.Size(180, 22);
             this.menuFileAddUri.Text = "Add Uri...";
             this.menuFileAddUri.Click += new System.EventHandler(this.menuFileAddUri_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // menuFileClose
             // 
             this.menuFileClose.Name = "menuFileClose";
-            this.menuFileClose.Size = new System.Drawing.Size(131, 22);
+            this.menuFileClose.Size = new System.Drawing.Size(180, 22);
             this.menuFileClose.Text = "Close";
             this.menuFileClose.Click += new System.EventHandler(this.menuFileClose_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(128, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // menuExit
             // 
             this.menuExit.Name = "menuExit";
-            this.menuExit.Size = new System.Drawing.Size(131, 22);
+            this.menuExit.Size = new System.Drawing.Size(180, 22);
             this.menuExit.Text = "Exit";
             this.menuExit.Click += new System.EventHandler(this.menuExit_Click);
             // 
@@ -216,7 +223,8 @@
             this.menuApiView,
             this.menuApiGeometryProperty,
             this.menuApiUDA,
-            this.menuApiFind});
+            this.menuApiFind,
+            this.menuApiFrame});
             this.menuApi.Name = "menuApi";
             this.menuApi.Size = new System.Drawing.Size(37, 20);
             this.menuApi.Text = "API";
@@ -236,7 +244,7 @@
             this.menuApiObject3dTestDialog,
             this.menuApiObject3dStructure});
             this.menuApiObject3D.Name = "menuApiObject3D";
-            this.menuApiObject3D.Size = new System.Drawing.Size(180, 22);
+            this.menuApiObject3D.Size = new System.Drawing.Size(175, 22);
             this.menuApiObject3D.Text = "Object3D";
             // 
             // menuApiObject3dRoot
@@ -323,43 +331,58 @@
             this.menuApiViewXrayColor,
             this.menuApiViewImageToClipboard,
             this.menuApiViewCaptureImage,
-            this.menuApiViewMessage});
+            this.menuApiViewMessage,
+            this.menuApiViewExportImageBackgroundMode});
             this.menuApiView.Name = "menuApiView";
-            this.menuApiView.Size = new System.Drawing.Size(180, 22);
+            this.menuApiView.Size = new System.Drawing.Size(175, 22);
             this.menuApiView.Text = "View";
             // 
             // menuApiViewPreSelect
             // 
             this.menuApiViewPreSelect.Name = "menuApiViewPreSelect";
-            this.menuApiViewPreSelect.Size = new System.Drawing.Size(229, 22);
+            this.menuApiViewPreSelect.Size = new System.Drawing.Size(256, 22);
             this.menuApiViewPreSelect.Text = "Pre-Select";
             this.menuApiViewPreSelect.Click += new System.EventHandler(this.menuApiViewPreSelect_Click);
             // 
             // menuApiViewXrayColor
             // 
             this.menuApiViewXrayColor.Name = "menuApiViewXrayColor";
-            this.menuApiViewXrayColor.Size = new System.Drawing.Size(229, 22);
+            this.menuApiViewXrayColor.Size = new System.Drawing.Size(256, 22);
             this.menuApiViewXrayColor.Text = "X-Ray Color";
             this.menuApiViewXrayColor.Click += new System.EventHandler(this.menuApiViewXrayColor_Click);
             // 
             // menuApiViewImageToClipboard
             // 
             this.menuApiViewImageToClipboard.Name = "menuApiViewImageToClipboard";
-            this.menuApiViewImageToClipboard.Size = new System.Drawing.Size(229, 22);
+            this.menuApiViewImageToClipboard.Size = new System.Drawing.Size(256, 22);
             this.menuApiViewImageToClipboard.Text = "Capture Screen To Clipboard";
             this.menuApiViewImageToClipboard.Click += new System.EventHandler(this.menuApiViewImageToClipboard_Click);
             // 
             // menuApiViewCaptureImage
             // 
             this.menuApiViewCaptureImage.Name = "menuApiViewCaptureImage";
-            this.menuApiViewCaptureImage.Size = new System.Drawing.Size(229, 22);
+            this.menuApiViewCaptureImage.Size = new System.Drawing.Size(256, 22);
             this.menuApiViewCaptureImage.Text = "Capture Screen...";
             this.menuApiViewCaptureImage.Click += new System.EventHandler(this.menuApiViewCaptureImage_Click);
+            // 
+            // menuApiViewMessage
+            // 
+            this.menuApiViewMessage.Name = "menuApiViewMessage";
+            this.menuApiViewMessage.Size = new System.Drawing.Size(256, 22);
+            this.menuApiViewMessage.Text = "Enable Message";
+            this.menuApiViewMessage.Click += new System.EventHandler(this.menuApiViewMessage_Click);
+            // 
+            // menuApiViewExportImageBackgroundMode
+            // 
+            this.menuApiViewExportImageBackgroundMode.Name = "menuApiViewExportImageBackgroundMode";
+            this.menuApiViewExportImageBackgroundMode.Size = new System.Drawing.Size(256, 22);
+            this.menuApiViewExportImageBackgroundMode.Text = "Export Image (Background Mode)";
+            this.menuApiViewExportImageBackgroundMode.Click += new System.EventHandler(this.menuApiViewExportImageBackgroundMode_Click);
             // 
             // menuApiGeometryProperty
             // 
             this.menuApiGeometryProperty.Name = "menuApiGeometryProperty";
-            this.menuApiGeometryProperty.Size = new System.Drawing.Size(180, 22);
+            this.menuApiGeometryProperty.Size = new System.Drawing.Size(175, 22);
             this.menuApiGeometryProperty.Text = "Geometry Property";
             this.menuApiGeometryProperty.Click += new System.EventHandler(this.menuApiGeometryProperty_Click);
             // 
@@ -370,7 +393,7 @@
             this.menuApiUDAValues,
             this.menuApiUDATree});
             this.menuApiUDA.Name = "menuApiUDA";
-            this.menuApiUDA.Size = new System.Drawing.Size(180, 22);
+            this.menuApiUDA.Size = new System.Drawing.Size(175, 22);
             this.menuApiUDA.Text = "UDA";
             // 
             // menuApiUDAKeys
@@ -397,9 +420,24 @@
             // menuApiFind
             // 
             this.menuApiFind.Name = "menuApiFind";
-            this.menuApiFind.Size = new System.Drawing.Size(180, 22);
+            this.menuApiFind.Size = new System.Drawing.Size(175, 22);
             this.menuApiFind.Text = "Find";
             this.menuApiFind.Click += new System.EventHandler(this.menuApiFind_Click);
+            // 
+            // menuApiFrame
+            // 
+            this.menuApiFrame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuApiFrameCreateByAPI});
+            this.menuApiFrame.Name = "menuApiFrame";
+            this.menuApiFrame.Size = new System.Drawing.Size(175, 22);
+            this.menuApiFrame.Text = "Frame";
+            // 
+            // menuApiFrameCreateByAPI
+            // 
+            this.menuApiFrameCreateByAPI.Name = "menuApiFrameCreateByAPI";
+            this.menuApiFrameCreateByAPI.Size = new System.Drawing.Size(147, 22);
+            this.menuApiFrameCreateByAPI.Text = "Create By API";
+            this.menuApiFrameCreateByAPI.Click += new System.EventHandler(this.menuApiFrameCreateByAPI_Click);
             // 
             // statusbar
             // 
@@ -426,12 +464,17 @@
             this.panelView.Size = new System.Drawing.Size(1046, 622);
             this.panelView.TabIndex = 2;
             // 
-            // menuApiViewMessage
+            // menuFileExport
             // 
-            this.menuApiViewMessage.Name = "menuApiViewMessage";
-            this.menuApiViewMessage.Size = new System.Drawing.Size(229, 22);
-            this.menuApiViewMessage.Text = "Enable Message";
-            this.menuApiViewMessage.Click += new System.EventHandler(this.menuApiViewMessage_Click);
+            this.menuFileExport.Name = "menuFileExport";
+            this.menuFileExport.Size = new System.Drawing.Size(180, 22);
+            this.menuFileExport.Text = "Export...";
+            this.menuFileExport.Click += new System.EventHandler(this.menuFileExport_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // FrmMain
             // 
@@ -502,6 +545,11 @@
         private System.Windows.Forms.ToolStripMenuItem menuApiViewImageToClipboard;
         private System.Windows.Forms.ToolStripMenuItem menuApiViewCaptureImage;
         private System.Windows.Forms.ToolStripMenuItem menuApiViewMessage;
+        private System.Windows.Forms.ToolStripMenuItem menuApiFrame;
+        private System.Windows.Forms.ToolStripMenuItem menuApiFrameCreateByAPI;
+        private System.Windows.Forms.ToolStripMenuItem menuApiViewExportImageBackgroundMode;
+        private System.Windows.Forms.ToolStripMenuItem menuFileExport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 
