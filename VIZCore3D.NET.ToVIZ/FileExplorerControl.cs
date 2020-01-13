@@ -11,9 +11,82 @@ namespace VIZCore3D.NET.ToVIZ
 {
     public partial class FileExplorerControl : UserControl
     {
+        public event ToVIZEventHandler OnToVIZEvent;
+
         public FileExplorerControl()
         {
             InitializeComponent();
         }
+
+        private void btnSelectPath_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            txtSource.Text = dlg.SelectedPath;
+
+            if (String.IsNullOrEmpty(txtSource.Text) == true) return;
+
+            string sourcePath = txtSource.Text;
+
+            List<string> files = new List<string>();
+
+            if(ckREV.Checked == true)
+                files.AddRange(GetFiles(sourcePath, "*.rev"));
+            if (ckRVM.Checked == true)
+                files.AddRange(GetFiles(sourcePath, "*.rvm"));
+            if (ckRVT.Checked == true)
+                files.AddRange(GetFiles(sourcePath, "*.rvt"));
+
+            lvFiles.BeginUpdate();
+            lvFiles.Items.Clear();
+            foreach (string item in files)
+            {
+                ListViewItem lvi = new ListViewItem(new string[] { System.IO.Path.GetFileName(item), "N/A" });
+                lvFiles.Items.Add(lvi);
+            }
+            lvFiles.EndUpdate();
+        }
+
+        private List<string> GetFiles(string path, string filter)
+        {
+            string[] files = System.IO.Directory.GetFiles(path, filter, System.IO.SearchOption.TopDirectoryOnly);
+
+            if (files == null || files.Length == 0) return new List<string>();
+
+            return files.ToList();
+        }
+
+        private void btnToVIZ_Click(object sender, EventArgs e)
+        {
+            if (OnToVIZEvent == null) return;
+
+            string source = txtSource.Text;
+            string output = txtOutput.Text;
+
+            foreach (ListViewItem item in lvFiles.Items)
+            {
+                ToVIZEventArgs args = new ToVIZEventArgs();
+                args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
+                args.Output = output;
+
+                bool result = OnToVIZEvent(this, args);
+
+                lvFiles.Invoke(new EventHandler(delegate
+                {
+                    item.SubItems[1].Text = result == true ? "OK" : "NG";
+                    item.EnsureVisible();
+                    lvFiles.Refresh();
+                }));
+            }
+        }
+    }
+
+    public delegate bool ToVIZEventHandler(object sender, ToVIZEventArgs e);
+
+    public class ToVIZEventArgs : EventArgs
+    {
+        public string Source { get; set; }
+        public string Output { get; set; }
     }
 }

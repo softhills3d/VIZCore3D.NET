@@ -12,7 +12,7 @@ namespace VIZCore3D.NET.Demo.Dialogs
     /// <summary>
     /// 검색 다이얼로그
     /// </summary>
-    internal partial class SearchNodeDialog : Form
+    public partial class SearchNodeDialog : Form
     {
         /// <summary>
         /// 검색 이벤트

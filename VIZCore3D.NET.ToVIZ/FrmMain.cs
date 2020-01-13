@@ -19,7 +19,7 @@ namespace VIZCore3D.NET.ToVIZ
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        private FileExplorerControl fileBrowser;
+        private FileExplorerControl fileExplorer;
 
 
         // ================================================
@@ -40,9 +40,34 @@ namespace VIZCore3D.NET.ToVIZ
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
 
-            fileBrowser = new FileExplorerControl();
-            fileBrowser.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(fileBrowser);
+
+            fileExplorer = new FileExplorerControl();
+            fileExplorer.Dock = DockStyle.Fill;
+            splitContainer1.Panel1.Controls.Add(fileExplorer);
+
+            // Event
+            fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
+        }
+
+        private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
+        {
+            vizcore3d.Model.Open(e.Source);
+
+            List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
+
+            if (items.Count == 0) return false;
+
+            string path = System.IO.Path.GetDirectoryName(e.Source);
+            string name = System.IO.Path.GetFileNameWithoutExtension(e.Source).ToUpper();
+
+            string output = System.IO.Path.Combine(path, e.Output);
+
+            if (System.IO.Directory.Exists(output) == false)
+                System.IO.Directory.CreateDirectory(output);
+
+            string file = string.Format("{0}\\{1}.viz", output, name);
+
+            return vizcore3d.Model.ExportVIZ(file);
         }
 
         // ================================================
