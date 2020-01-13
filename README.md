@@ -12,6 +12,7 @@
 | Gallery | VIZCore3D.NET 기능별 스크린샷 |
 | VIZCore3D.NET.Demo | 주요 기능 API 활용 예제 |
 | VIZCore3D.NET.ModelComparison | 2개의 모델 파일을 활용하여 모델 비교 기능 예제 |
+| VIZCore3D.NET.ToVIZ | 모델을 조회 후, VIZ 파일 형식으로 저장하는 기능 예제  |
 ***
 
 ## 제품 비교
