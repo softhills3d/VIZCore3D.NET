@@ -280,7 +280,7 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.View.EnablePreSelect = false;
 
             // 모델 조회 시, Pre-Select 색상 설정
-            vizcore3d.View.PreSelectionColor = Color.Lime;
+            vizcore3d.View.PreSelectColor = Color.Lime;
             #endregion
 
 
@@ -423,7 +423,7 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false; 
+            vizcore3d.ToolbarSimulation.Visible = false;
             #endregion
 
             // ================================================================

@@ -168,7 +168,7 @@ namespace VIZCore3D.NET.ToVIZ
             vizcore3d.View.EnablePreSelect = false;
 
             // 모델 조회 시, Pre-Select 색상 설정
-            vizcore3d.View.PreSelectionColor = Color.Lime;
+            vizcore3d.View.PreSelectColor = Color.Lime;
             #endregion
 
 
@@ -317,7 +317,7 @@ namespace VIZCore3D.NET.ToVIZ
             // ================================================================
             // 설정 - 상태바
             // ================================================================
-            vizcore3d.Statusbar.Visible = false;
+            vizcore3d.Statusbar.Visible = true;
 
 
             // ================================================================
