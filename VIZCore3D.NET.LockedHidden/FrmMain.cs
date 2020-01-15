@@ -48,11 +48,11 @@ namespace VIZCore3D.NET.LockedHidden
             // ================================================================
             //vizcore3d.License.LicenseFile("C:\\Temp\\VIZCore3D.NET.lic");                         // 라이선스 파일
             //vizcore3d.License.LicenseServer("127.0.0.1", 8901);                                   // 라이선스 서버 - 제품 오토 선택
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.AUTO);               // 라이선스 서버 - 제품 오토 선택
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZZARD_MANAGER);    // 라이선스 서버 - 지정된 제품으로 인증
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZZARD_STANDARD);   // 라이선스 서버 - 지정된 제품으로 인증
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZCORE3D_MANAGER);  // 라이선스 서버 - 지정된 제품으로 인증
-            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.PRODUCTS.VIZCORE3D_STANDARD); // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.AUTO);               // 라이선스 서버 - 제품 오토 선택
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZZARD_MANAGER);    // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZZARD_STANDARD);   // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZCORE3D_MANAGER);  // 라이선스 서버 - 지정된 제품으로 인증
+            //vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZCORE3D_STANDARD); // 라이선스 서버 - 지정된 제품으로 인증
 
 
             // ================================================================
