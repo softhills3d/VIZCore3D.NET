@@ -16,6 +16,9 @@
 | VIZCore3D.NET.ToVIZ | VIZ 파일 형식으로 내보내기 | 모델 원본을 VIZ 파일 형식으로 저장 |
 ***
 
+{% include ModelComparison.html id="https://youtu.be/gxabhy8otTo" %}
+***
+
 ## 제품 비교
 
 | Features  | Standard | Manager | Comments |
