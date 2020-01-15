@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ModelComparis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ToVIZ", "VIZCore3D.NET.ToVIZ\VIZCore3D.NET.ToVIZ.csproj", "{7722C395-A09E-44D9-B7DF-628284A350CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.LockedHidden", "VIZCore3D.NET.LockedHidden\VIZCore3D.NET.LockedHidden.csproj", "{2764CFC6-852D-41E3-8BC1-09B63C4399E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{7722C395-A09E-44D9-B7DF-628284A350CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7722C395-A09E-44D9-B7DF-628284A350CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7722C395-A09E-44D9-B7DF-628284A350CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
