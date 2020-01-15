@@ -9,7 +9,7 @@
 ## 디렉토리 설명
 | 구분  | 설명 | 비고 |
 | ------------- | ------------- | ------------- |
-| Gallery | VIZCore3D.NET 기능별 스크린샷 | |
+| Gallery | 스크린샷 | |
 | VIZCore3D.NET.Demo | 주요 기능 API 활용 예제 | |
 | VIZCore3D.NET.LockedHidden | 개체숨김 기능 예제 | 조회중인 모델에서 항상 숨김상태를 유지해야 하는 모델을 검색하고, 숨김상태를 유지 |
 | VIZCore3D.NET.ModelComparison | 모델 비교 기능 예제 | 2개의 모델파일을 비교(구조, 위치, 형상)하여 차이점을 조회 |
