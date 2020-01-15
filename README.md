@@ -16,6 +16,7 @@
 | VIZCore3D.NET.ModelComparison | 모델 비교 기능 예제 | 2개의 모델파일을 비교(구조, 위치, 형상)하여 차이점을 조회 |
 | VIZCore3D.NET.ShapeDrawing | 3D 화면상에 Shape 그리기 | Line, Cube, Cylinder, Vertex 유형을 화면에 추가 및 관리  |
 | VIZCore3D.NET.ToVIZ | VIZ 파일 형식으로 내보내기 | 모델 원본을 VIZ 파일 형식으로 저장 |
+| VIZCore3D.NET.UDA | 모델의 UDA(User-Define Attribute) 조회 예제 | 모델 파일에 포함되어 있는 속성 정보를 표시 |
 ***
 
 ## 제품 비교
