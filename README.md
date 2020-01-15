@@ -71,6 +71,8 @@
 ##### 모델 비교 (Youtube)
 [![모델 비교](http://img.youtube.com/vi/gxabhy8otTo/0.jpg)](https://youtu.be/gxabhy8otTo?t=0s)
 
+{% include youtubeplayer.html id=gxabhy8otTo %}
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
