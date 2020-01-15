@@ -6,8 +6,6 @@
 상세 API에 대한 설명 및 예제는 SHDC (http://www.softhills.net/SHDC) 를 참고 하시기 바랍니다.
 ***
 
-{% include youtube.html id="gxabhy8otTo" %}
-
 ## 디렉토리 설명
 | 구분  | 설명 | 비고 |
 | ------------- | ------------- | ------------- |
