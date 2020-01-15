@@ -70,9 +70,6 @@ namespace VIZCore3D.NET.LockedHidden
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
-
-            // Resize
-            //splitContainer1.SplitterDistance = this.Size.Height - 1000;
         }
 
         // ================================================
