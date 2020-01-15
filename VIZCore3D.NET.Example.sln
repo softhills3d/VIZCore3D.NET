@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ToVIZ", "VIZC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.LockedHidden", "VIZCore3D.NET.LockedHidden\VIZCore3D.NET.LockedHidden.csproj", "{2764CFC6-852D-41E3-8BC1-09B63C4399E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ShapeDrawing", "VIZCore3D.NET.ShapeDrawing\VIZCore3D.NET.ShapeDrawing.csproj", "{02A04B0B-9771-4126-8842-09FC00F909FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2764CFC6-852D-41E3-8BC1-09B63C4399E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02A04B0B-9771-4126-8842-09FC00F909FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02A04B0B-9771-4126-8842-09FC00F909FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02A04B0B-9771-4126-8842-09FC00F909FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02A04B0B-9771-4126-8842-09FC00F909FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
