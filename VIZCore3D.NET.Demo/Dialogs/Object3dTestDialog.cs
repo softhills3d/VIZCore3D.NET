@@ -43,14 +43,14 @@ namespace VIZCore3D.NET.Demo.Dialogs
         {
             if (String.IsNullOrEmpty(txtNodeIndex.Text) == true) return;
 
-            vizcore3d.Object3D.Show(new List<int>() { Convert.ToInt32(txtNodeIndex.Text) }, Data.Visibility.Visible);
+            vizcore3d.Object3D.Show(new List<int>() { Convert.ToInt32(txtNodeIndex.Text) }, true);
         }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtNodeIndex.Text) == true) return;
 
-            vizcore3d.Object3D.Show(new List<int>() { Convert.ToInt32(txtNodeIndex.Text) }, Data.Visibility.Hidden);
+            vizcore3d.Object3D.Show(new List<int>() { Convert.ToInt32(txtNodeIndex.Text) }, false);
         }
     }
 }
