@@ -315,7 +315,7 @@ namespace VIZCore3D.NET.ShapeDrawing
                 shapeType = "Line";
 
                 shapeId = vizcore3d.ShapeDrawing.AddLine(
-                    GetVertex(false)
+                    GetVertexList() // GetVertex(false)
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtThickness.Text)
@@ -327,7 +327,7 @@ namespace VIZCore3D.NET.ShapeDrawing
                 shapeType = "Cube";
 
                 shapeId = vizcore3d.ShapeDrawing.AddCube(
-                    GetVertex(false)
+                    GetVertexList() // GetVertex(false)
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
@@ -339,7 +339,7 @@ namespace VIZCore3D.NET.ShapeDrawing
                 shapeType = "Cylinder";
 
                 shapeId = vizcore3d.ShapeDrawing.AddCylinder(
-                    GetVertex(false)
+                    GetVertexList() // GetVertex(false)
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
@@ -351,7 +351,7 @@ namespace VIZCore3D.NET.ShapeDrawing
                 shapeType = "Vertex";
 
                 shapeId = vizcore3d.ShapeDrawing.AddVertex(
-                    GetVertex(true)
+                    GetVertex() // GetVertex(true)
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
@@ -369,107 +369,72 @@ namespace VIZCore3D.NET.ShapeDrawing
             lvList.Items.Add(lvi);
         }
 
-        private List<Data.Vertex3DItemCollection> GetVertex(bool isVertex)
+        private List<Data.Vertex3D> GetVertex()
+        {
+            List<Data.Vertex3D> vertex = new List<Data.Vertex3D>();
+
+            Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromSelectedObject3D(false).GetBoundBox();
+
+            vertex.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+            vertex.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+
+            return vertex;
+        }
+
+        private List<Data.Vertex3DItemCollection> GetVertexList()
         {
             List<Data.Vertex3DItemCollection> vertex = new List<Data.Vertex3DItemCollection>();
 
             Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromSelectedObject3D(false).GetBoundBox();
 
-            if (isVertex == false)
             {
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
+                Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
 
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
 
-                    vertex.Add(item);
-                }
-
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
-
-                    vertex.Add(item);
-                }
-
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
-
-                    vertex.Add(item);
-                }
-
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
-
-                    vertex.Add(item);
-                }
+                vertex.Add(item);
             }
-            else
+
             {
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
-                    vertex.Add(item);
-                }
+                Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
-                    vertex.Add(item);
-                }
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
-                    vertex.Add(item);
-                }
+                vertex.Add(item);
+            }
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
-                    vertex.Add(item);
-                }
+            {
+                Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
-                    vertex.Add(item);
-                }
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
-                    vertex.Add(item);
-                }
+                vertex.Add(item);
+            }
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
-                    vertex.Add(item);
-                }
+            {
+                Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
 
-                {
-                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                    item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
-                    vertex.Add(item);
-                }
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+
+                vertex.Add(item);
             }
 
             return vertex;
