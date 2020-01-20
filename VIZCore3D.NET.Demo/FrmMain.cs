@@ -503,8 +503,11 @@ namespace VIZCore3D.NET.Demo
 
         private void menuFileExport_Click(object sender, EventArgs e)
         {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
             // 내보내기
             SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Title = "모델 내보내기";
             dlg.Filter = vizcore3d.Model.ExportFilter;
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
