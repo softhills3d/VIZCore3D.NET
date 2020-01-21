@@ -503,6 +503,20 @@ namespace VIZCore3D.NET.Demo
 
         private void menuFileExport_Click(object sender, EventArgs e)
         {
+            // 간략 형식 내보내기
+            ExportSimple();
+
+            // 세부 설정 내보내기
+            //ExportDetail();
+        }
+
+        private void ExportSimple()
+        {
+            vizcore3d.Model.ExportFileDialog(true);
+        }
+
+        private void ExportDetail()
+        {
             if (vizcore3d.Model.IsOpen() == false) return;
 
             // 내보내기
@@ -513,23 +527,23 @@ namespace VIZCore3D.NET.Demo
 
             bool result = false;
 
-            if(dlg.FilterIndex == 1)
+            if (dlg.FilterIndex == 1)
             {
                 result = vizcore3d.Model.ExportVIZ(dlg.FileName);
             }
-            else if(dlg.FilterIndex == 2)
+            else if (dlg.FilterIndex == 2)
             {
                 result = vizcore3d.Model.ExportVIZXML(dlg.FileName);
             }
-            else if(dlg.FilterIndex == 3)
+            else if (dlg.FilterIndex == 3)
             {
                 result = vizcore3d.Model.ExportObj(dlg.FileName);
             }
-            else if(dlg.FilterIndex == 4)
+            else if (dlg.FilterIndex == 4)
             {
                 result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.ASCII);
             }
-            else if(dlg.FilterIndex == 5)
+            else if (dlg.FilterIndex == 5)
             {
                 result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.BINARY);
             }
