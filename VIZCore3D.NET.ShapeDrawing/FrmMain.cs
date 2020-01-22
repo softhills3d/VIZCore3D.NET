@@ -563,7 +563,6 @@ namespace VIZCore3D.NET.ShapeDrawing
                     Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
 
                     item.Add(point.Start);
-                    //item.Add(point.Center);
                     item.Add(point.End);
 
                     vertex.Add(item);
