@@ -306,8 +306,18 @@ namespace VIZCore3D.NET.ShapeDrawing
             if (e.Node.Count == 0) return;
             if (ckEnable.Checked == false) return;
 
+            if (rbBoundBox.Checked == true)
+                DrawByBoundBox(e.Node);
+            else if (rbEdgeVertex.Checked == true)
+                DrawByEdgeVertex(e.Node);
+            else
+                DrawByOsnap(e.Node);
+        }
+
+        private void DrawByBoundBox(List<Data.Node> node)
+        {
             int shapeId = -1;
-            int groupId = GetGroupId(e.Node);
+            int groupId = GetGroupId(node);
             string shapeType = String.Empty;
 
             if (rbLine.Checked == true)
@@ -315,43 +325,121 @@ namespace VIZCore3D.NET.ShapeDrawing
                 shapeType = "Line";
 
                 shapeId = vizcore3d.ShapeDrawing.AddLine(
-                    GetVertexList() // GetVertex(false)
+                    GetVertexList() 
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtThickness.Text)
                     , true
                     );
             }
-            else if(rbCube.Checked == true)
+            else if (rbCube.Checked == true)
             {
                 shapeType = "Cube";
 
                 shapeId = vizcore3d.ShapeDrawing.AddCube(
-                    GetVertexList() // GetVertex(false)
+                    GetVertexList() 
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
             }
-            else if(rbCylinder.Checked == true)
+            else if (rbCylinder.Checked == true)
             {
                 shapeType = "Cylinder";
 
                 shapeId = vizcore3d.ShapeDrawing.AddCylinder(
-                    GetVertexList() // GetVertex(false)
+                    GetVertexList() 
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
             }
-            else if(rbVertex.Checked == true)
+            else if (rbVertex.Checked == true)
             {
                 shapeType = "Vertex";
 
                 shapeId = vizcore3d.ShapeDrawing.AddVertex(
-                    GetVertex() // GetVertex(true)
+                    GetVertex() 
+                    , groupId
+                    , btnColor.BackColor
+                    , Convert.ToSingle(txtRadius.Text)
+                    , Convert.ToSingle(txtSize.Text)
+                    , true
+                    );
+            }
+
+            AddList(shapeId, groupId, shapeType);
+        }
+
+        private void DrawByEdgeVertex(List<Data.Node> node)
+        {
+            int shapeId = -1;
+            int groupId = GetGroupId(node);
+            string shapeType = String.Empty;
+
+            shapeType = "Vertex";
+
+            shapeId = vizcore3d.ShapeDrawing.AddVertex(
+                vizcore3d.Object3D.GetEdgeVertex(node[0].Index)
+                , groupId
+                , btnColor.BackColor
+                , Convert.ToSingle(txtRadius.Text)
+                , Convert.ToSingle(txtSize.Text)
+                , true
+                );
+        }
+
+        private void DrawByOsnap(List<Data.Node> node)
+        {
+            int shapeId = -1;
+            int groupId = GetGroupId(node);
+            string shapeType = String.Empty;
+            int index = node[0].Index;
+
+            if (rbLine.Checked == true)
+            {
+                shapeType = "Line";
+
+                shapeId = vizcore3d.ShapeDrawing.AddLine(
+                    GetVertexList(index)
+                    , groupId
+                    , btnColor.BackColor
+                    , Convert.ToSingle(txtThickness.Text)
+                    , true
+                    );
+            }
+            else if (rbCube.Checked == true)
+            {
+                shapeType = "Cube";
+
+                shapeId = vizcore3d.ShapeDrawing.AddCube(
+                    GetVertexList(index) 
+                    , groupId
+                    , btnColor.BackColor
+                    , Convert.ToSingle(txtRadius.Text)
+                    , true
+                    );
+            }
+            else if (rbCylinder.Checked == true)
+            {
+                shapeType = "Cylinder";
+
+                shapeId = vizcore3d.ShapeDrawing.AddCylinder(
+                    GetVertexList(index) 
+                    , groupId
+                    , btnColor.BackColor
+                    , Convert.ToSingle(txtRadius.Text)
+                    , true
+                    );
+            }
+            else if (rbVertex.Checked == true)
+            {
+                shapeType = "Vertex";
+
+                shapeId = vizcore3d.ShapeDrawing.AddVertex(
+                    GetVertex(index) 
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
@@ -385,6 +473,19 @@ namespace VIZCore3D.NET.ShapeDrawing
             vertex.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
 
             return vertex;
+        }
+
+        private List<Data.Vertex3D> GetVertex(int index)
+        {
+            List<Data.OsnapVertex3D> osnap = vizcore3d.Object3D.GetOsnapPoint(index);
+
+            List<Data.Vertex3D> items = new List<Data.Vertex3D>();
+            foreach (Data.OsnapVertex3D item in osnap)
+            {
+                items.Add(item.Start);
+            }
+
+            return items;
         }
 
         private List<Data.Vertex3DItemCollection> GetVertexList()
@@ -435,6 +536,38 @@ namespace VIZCore3D.NET.ShapeDrawing
                 item.Add(new Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
 
                 vertex.Add(item);
+            }
+
+            return vertex;
+        }
+
+        private List<Data.Vertex3DItemCollection> GetVertexList(int index)
+        {
+            List<Data.OsnapVertex3D> osnap = vizcore3d.Object3D.GetOsnapPoint(index);
+
+            List<Data.Vertex3DItemCollection> vertex = new List<Data.Vertex3DItemCollection>();
+
+            foreach (Data.OsnapVertex3D point in osnap)
+            {
+                if(point.Kind == Data.OsnapKind.LINE)
+                {
+                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
+
+                    item.Add(point.Start);
+                    item.Add(point.End);
+
+                    vertex.Add(item);
+                }
+                else if(point.Kind == Data.OsnapKind.CIRCLE)
+                {
+                    Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
+
+                    item.Add(point.Start);
+                    //item.Add(point.Center);
+                    item.Add(point.End);
+
+                    vertex.Add(item);
+                }
             }
 
             return vertex;
