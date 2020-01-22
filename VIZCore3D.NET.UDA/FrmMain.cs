@@ -97,7 +97,7 @@ namespace VIZCore3D.NET.UDA
             vizcore3d.Model.ConvertEdge = true;
 
             // 모델 조회 시, 하드웨어 가속
-            vizcore3d.Option.EnableHardwareAcceleration = true;
+            vizcore3d.View.EnableHardwareAcceleration = true;
 
             // 모델 열기 시, 스트럭처 병합 설정
             vizcore3d.Model.OpenMergeStructureMode = Data.MergeStructureModes.NONE;
