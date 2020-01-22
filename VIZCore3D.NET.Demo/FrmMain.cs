@@ -537,13 +537,21 @@ namespace VIZCore3D.NET.Demo
             }
             else if (dlg.FilterIndex == 3)
             {
-                result = vizcore3d.Model.ExportObj(dlg.FileName);
+                result = vizcore3d.Model.ExportVIZM(dlg.FileName);
             }
             else if (dlg.FilterIndex == 4)
             {
-                result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.ASCII);
+                result = vizcore3d.Model.ExportVIZW(dlg.FileName);
             }
             else if (dlg.FilterIndex == 5)
+            {
+                result = vizcore3d.Model.ExportObj(dlg.FileName);
+            }
+            else if (dlg.FilterIndex == 6)
+            {
+                result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.ASCII);
+            }
+            else if (dlg.FilterIndex == 7)
             {
                 result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.BINARY);
             }
