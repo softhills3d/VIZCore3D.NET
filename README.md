@@ -51,6 +51,9 @@
 
 ***
 ## Gallery
+##### COMPONENT DIAGRAM
+![다이어그램](./Gallery/VIZCore3D.NET.API.Diagram.600.png)
+
 ##### 데모 프로젝트 메인 화면
 ![메인 화면](./Gallery/VIZCore3D.NET.Main.png)
 
