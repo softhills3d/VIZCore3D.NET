@@ -114,7 +114,7 @@ namespace VIZCore3D.NET.Demo
             if(e.Node.Count > 0)
             {
                 // 선택된 개체가 있음
-                //MessageBox.Show(e.NodeIndex.Count.ToString());
+                //MessageBox.Show(e.Node.Count.ToString());
 
                 if (EnableMessage == true)
                 {
