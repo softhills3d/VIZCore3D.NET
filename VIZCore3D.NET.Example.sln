@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ImportAttribu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Thumbnail", "VIZCore3D.NET.Thumbnail\VIZCore3D.NET.Thumbnail.csproj", "{96D844B0-7A5D-4560-B6F7-D7A9EFAB4013}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Structure", "VIZCore3D.NET.Structure\VIZCore3D.NET.Structure.csproj", "{42DD3EF2-24AA-4A43-BCCF-9A8C3B4EBBDB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{96D844B0-7A5D-4560-B6F7-D7A9EFAB4013}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96D844B0-7A5D-4560-B6F7-D7A9EFAB4013}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96D844B0-7A5D-4560-B6F7-D7A9EFAB4013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42DD3EF2-24AA-4A43-BCCF-9A8C3B4EBBDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42DD3EF2-24AA-4A43-BCCF-9A8C3B4EBBDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42DD3EF2-24AA-4A43-BCCF-9A8C3B4EBBDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42DD3EF2-24AA-4A43-BCCF-9A8C3B4EBBDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
