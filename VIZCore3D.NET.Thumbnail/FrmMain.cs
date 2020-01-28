@@ -322,6 +322,9 @@ namespace VIZCore3D.NET.Thumbnail
             for (int i = 0; i < file.Length; i++)
             {
                 string name = System.IO.Path.GetFileName(file[i]);
+                string ext = System.IO.Path.GetExtension(file[i]).ToUpper();
+                if (ext == ".VIZXML") continue;
+
                 System.Drawing.Image img = VIZCore3D.NET.Manager.ModelManager.GetModelThumbnail(file[i]);
                 if(img != null)
                     imgList.Images.Add(name, img);
