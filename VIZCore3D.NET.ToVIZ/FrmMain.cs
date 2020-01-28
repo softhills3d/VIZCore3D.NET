@@ -51,15 +51,6 @@ namespace VIZCore3D.NET.ToVIZ
 
         private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
         {
-            // 모델 파일 열기
-            vizcore3d.Model.Open(e.Source);
-
-            // 모델 개체 조회
-            List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
-
-            // 개체 확인
-            if (items.Count == 0) return false;
-
             // 저장 위치 설정
             string path = System.IO.Path.GetDirectoryName(e.Source);
             string name = System.IO.Path.GetFileNameWithoutExtension(e.Source).ToUpper();
@@ -73,8 +64,28 @@ namespace VIZCore3D.NET.ToVIZ
             // 저장 파일명 설정
             string file = string.Format("{0}\\{1}.viz", output, name);
 
-            // VIZ 파일 형식으로 내보내기
-            return vizcore3d.Model.ExportVIZ(file);
+            if (e.Mode == ToVIZMode.EXPORT)
+            {
+                // 모델 파일 열기
+                vizcore3d.Model.Open(e.Source);
+
+                // 모델 개체 조회
+                List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
+
+                // 개체 확인
+                if (items.Count == 0) return false;
+
+                // VIZ 파일 형식으로 내보내기
+                return vizcore3d.Model.ExportVIZ(file);
+            }
+            else if(e.Mode == ToVIZMode.CONVERT)
+            {
+                return vizcore3d.Model.ConvertToVIZ(e.Source, file, false);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         // ================================================

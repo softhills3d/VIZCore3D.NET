@@ -9,6 +9,12 @@ using System.Windows.Forms;
 
 namespace VIZCore3D.NET.ToVIZ
 {
+    public enum ToVIZMode
+    {
+        EXPORT = 0,
+        CONVERT = 1
+    }
+
     public partial class FileExplorerControl : UserControl
     {
         public event ToVIZEventHandler OnToVIZEvent;
@@ -69,6 +75,32 @@ namespace VIZCore3D.NET.ToVIZ
                 ToVIZEventArgs args = new ToVIZEventArgs();
                 args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
                 args.Output = output;
+                args.Mode = ToVIZMode.EXPORT;
+
+                bool result = OnToVIZEvent(this, args);
+
+                lvFiles.Invoke(new EventHandler(delegate
+                {
+                    item.SubItems[1].Text = result == true ? "OK" : "NG";
+                    item.EnsureVisible();
+                    lvFiles.Refresh();
+                }));
+            }
+        }
+
+        private void btnToVIZConversion_Click(object sender, EventArgs e)
+        {
+            if (OnToVIZEvent == null) return;
+
+            string source = txtSource.Text;
+            string output = txtOutput.Text;
+
+            foreach (ListViewItem item in lvFiles.Items)
+            {
+                ToVIZEventArgs args = new ToVIZEventArgs();
+                args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
+                args.Output = output;
+                args.Mode = ToVIZMode.CONVERT;
 
                 bool result = OnToVIZEvent(this, args);
 
@@ -86,6 +118,7 @@ namespace VIZCore3D.NET.ToVIZ
 
     public class ToVIZEventArgs : EventArgs
     {
+        public ToVIZMode Mode { get; set; }
         public string Source { get; set; }
         public string Output { get; set; }
     }
