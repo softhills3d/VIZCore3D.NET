@@ -481,5 +481,16 @@ namespace VIZCore3D.NET.ImportAttribute
                 System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", dlg.FileName));
             }
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Model.Close();
+
+            AttributeHelper.ClearAttribute();
+
+            lvAttribute.BeginUpdate();
+            lvAttribute.Items.Clear();
+            lvAttribute.EndUpdate();
+        }
     }
 }

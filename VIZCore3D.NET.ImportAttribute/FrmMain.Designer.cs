@@ -30,14 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.toolBar = new System.Windows.Forms.ToolStrip();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.lvAttribute = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnImportDump = new System.Windows.Forms.ToolStripButton();
             this.btnCustomXML = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lvAttribute = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnNew = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,12 +52,46 @@
             this.btnImportDump,
             this.btnCustomXML,
             this.toolStripSeparator1,
-            this.btnExport});
+            this.btnExport,
+            this.toolStripSeparator2,
+            this.btnNew});
             this.toolBar.Location = new System.Drawing.Point(0, 0);
             this.toolBar.Name = "toolBar";
             this.toolBar.Size = new System.Drawing.Size(1356, 25);
             this.toolBar.TabIndex = 0;
             this.toolBar.Text = "toolStrip1";
+            // 
+            // btnImportDump
+            // 
+            this.btnImportDump.Image = ((System.Drawing.Image)(resources.GetObject("btnImportDump.Image")));
+            this.btnImportDump.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImportDump.Name = "btnImportDump";
+            this.btnImportDump.Size = new System.Drawing.Size(123, 22);
+            this.btnImportDump.Text = "Import Dump File";
+            this.btnImportDump.Click += new System.EventHandler(this.btnImportDump_Click);
+            // 
+            // btnCustomXML
+            // 
+            this.btnCustomXML.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomXML.Image")));
+            this.btnCustomXML.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCustomXML.Name = "btnCustomXML";
+            this.btnCustomXML.Size = new System.Drawing.Size(137, 22);
+            this.btnCustomXML.Text = "Import Custom XML";
+            this.btnCustomXML.Click += new System.EventHandler(this.btnCustomXML_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(61, 22);
+            this.btnExport.Text = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // splitContainer1
             // 
@@ -97,37 +133,20 @@
             this.columnHeader2.Text = "Value";
             this.columnHeader2.Width = 150;
             // 
-            // btnImportDump
+            // btnNew
             // 
-            this.btnImportDump.Image = ((System.Drawing.Image)(resources.GetObject("btnImportDump.Image")));
-            this.btnImportDump.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnImportDump.Name = "btnImportDump";
-            this.btnImportDump.Size = new System.Drawing.Size(123, 22);
-            this.btnImportDump.Text = "Import Dump File";
-            this.btnImportDump.Click += new System.EventHandler(this.btnImportDump_Click);
+            this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
+            this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(94, 22);
+            this.btnNew.Text = "Close Model";
+            this.btnNew.ToolTipText = "Close Model";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
-            // btnCustomXML
+            // toolStripSeparator2
             // 
-            this.btnCustomXML.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomXML.Image")));
-            this.btnCustomXML.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnCustomXML.Name = "btnCustomXML";
-            this.btnCustomXML.Size = new System.Drawing.Size(137, 22);
-            this.btnCustomXML.Text = "Import Custom XML";
-            this.btnCustomXML.Click += new System.EventHandler(this.btnCustomXML_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
-            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(61, 22);
-            this.btnExport.Text = "Export";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // FrmMain
             // 
@@ -161,6 +180,8 @@
         private System.Windows.Forms.ToolStripButton btnCustomXML;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton btnExport;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripButton btnNew;
     }
 }
 
