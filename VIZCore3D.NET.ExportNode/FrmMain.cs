@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Group
+namespace VIZCore3D.NET.ExportNode
 {
     public partial class FrmMain : Form
     {
@@ -29,7 +29,7 @@ namespace VIZCore3D.NET.Group
             // Construction
             vizcore3d = new VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer2.Panel1.Controls.Add(vizcore3d);
+            splitContainer1.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
@@ -291,122 +291,64 @@ namespace VIZCore3D.NET.Group
         {
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void btnPath_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(txtName.Text) == true) return;
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
 
-            VIZCore3D.NET.Data.GroupItem group = null;
+            if (String.IsNullOrEmpty(txtPath.Text) == false)
+                dlg.SelectedPath = txtPath.Text;
 
-            if(rbSelection.Checked == true)
-            {
-                group = vizcore3d.Object3D.Group.Add(txtName.Text);
-            }
-            else if(rbSearch.Checked == true)
-            {
-                if (String.IsNullOrEmpty(txtKeyword.Text) == true) return;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
 
-                group = vizcore3d.Object3D.Group.Add(txtName.Text, new List<string> { txtKeyword.Text }, false, true, false, false, false);
-            }
-            else if(rbProperty.Checked == true)
-            {
-                if (String.IsNullOrEmpty(txtPropertyKey.Text) == true) return;
-                if (String.IsNullOrEmpty(txtPropertyValue.Text) == true) return;
-
-                group = vizcore3d.Object3D.Group.Add(txtName.Text, txtPropertyKey.Text, txtPropertyValue.Text);
-            }
-
-            if (group == null) return;
-
-            ListViewItem lvi = new ListViewItem(new string[] { group.Name, group.Kind.ToString(), group.Count.ToString() });
-            lvi.Tag = group;
-
-            lvGroup.Items.Add(lvi);
-            lvGroup.EnsureVisible(lvGroup.Items.Count - 1);
+            txtPath.Text = dlg.SelectedPath;
         }
 
-        private void btnUpdateSelected_Click(object sender, EventArgs e)
+        private void btnExport_Click(object sender, EventArgs e)
         {
-            if (lvGroup.SelectedItems.Count == 0) return;
-            if (lvGroup.SelectedItems[0].Tag == null) return;
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            if (rbSelectedNode.Checked == true && vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP).Count == 0) return;
+
+            List<VIZCore3D.NET.Data.Node> node = null;
+
 
             this.Cursor = Cursors.WaitCursor;
-            VIZCore3D.NET.Data.GroupItem group = (VIZCore3D.NET.Data.GroupItem)lvGroup.SelectedItems[0].Tag;
-            vizcore3d.Object3D.Group.Update(group.Name);
-
-            lvGroup.SelectedItems[0].SubItems[2].Text = group.Count.ToString();
-            this.Cursor = Cursors.Default;
-        }
-
-        private void btnUpdate_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-            vizcore3d.Object3D.Group.Update();
-
-            RefreshList();
-            this.Cursor = Cursors.Default;
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (lvGroup.SelectedItems.Count == 0) return;
-            if (lvGroup.SelectedItems[0].Tag == null) return;
-
-            VIZCore3D.NET.Data.GroupItem group = (VIZCore3D.NET.Data.GroupItem)lvGroup.SelectedItems[0].Tag;
-
-            vizcore3d.Object3D.Group.Delete(group.Name);
-            lvGroup.Items.Remove(lvGroup.SelectedItems[0]);
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            vizcore3d.Object3D.Group.Clear();
-            lvGroup.Items.Clear();
-        }
-
-        private void RefreshList()
-        {
-            lvGroup.BeginUpdate();
-            lvGroup.Items.Clear();
-            foreach (Data.GroupItem item in vizcore3d.Object3D.Group.GroupItems)
+            if (rbAll.Checked == true)
             {
-                ListViewItem lvi = new ListViewItem(new string[] { item.Name, item.Kind.ToString(), item.Count.ToString() });
-                lvi.Tag = item;
-                lvGroup.Items.Add(lvi);
-            }
-            lvGroup.EndUpdate();
-        }
-
-        private void lvGroup_DoubleClick(object sender, EventArgs e)
-        {
-            if (lvGroup.SelectedItems.Count == 0) return;
-            if (lvGroup.SelectedItems[0].Tag == null) return;
-
-            this.Cursor = Cursors.WaitCursor;
-            VIZCore3D.NET.Data.GroupItem group = (VIZCore3D.NET.Data.GroupItem)lvGroup.SelectedItems[0].Tag;
-
-            dataGridNode.DataSource = group.GroupNode.ToArray();
-
-            if (group.GroupNode.Keys.ToList().Count == 0)
-            {
-                vizcore3d.BeginUpdate();
-                vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
-                vizcore3d.View.XRay.Enable = true;
-                vizcore3d.View.XRay.Clear();
-                vizcore3d.View.ResetView();
-                vizcore3d.EndUpdate();
+                node = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
             }
             else
             {
-                vizcore3d.BeginUpdate();
-                vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
-                vizcore3d.View.XRay.Enable = true;
-                vizcore3d.View.XRay.Clear();
-                vizcore3d.View.XRay.Select(group.GroupNode.Keys.ToList(), true, true);
-
-                vizcore3d.View.FlyToObject3d(group.GroupNode.Keys.ToList(), 1.0f);
-                vizcore3d.EndUpdate();
+                node = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_ALL);
             }
             this.Cursor = Cursors.Default;
+
+            if (node == null || node.Count == 0) return;
+
+
+            this.Cursor = Cursors.WaitCursor;
+            if (rbNone.Checked == true)
+                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+            else if (rbAssembly.Checked == true)
+                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.LEAF_ASM_TO_PART;
+            else if (rbPart.Checked == true)
+                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.ALL_TO_PART;
+
+            string path = string.Format("{0}\\EXPORT_{1}", txtPath.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
+            if (System.IO.Directory.Exists(path) == false)
+                System.IO.Directory.CreateDirectory(path);
+
+            foreach (VIZCore3D.NET.Data.Node item in node)
+            {
+                string file = string.Format("{0}\\{1}.viz", path, item.GetValidFileName());
+                vizcore3d.Model.ExportNode(item.Index, file);
+            }
+
+            vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+
+            this.Cursor = Cursors.Default;
+
+            System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", path));
         }
     }
 }

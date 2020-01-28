@@ -77,7 +77,9 @@ namespace VIZCore3D.NET.ToVIZ
                 args.Output = output;
                 args.Mode = ToVIZMode.EXPORT;
 
+                this.Cursor = Cursors.WaitCursor;
                 bool result = OnToVIZEvent(this, args);
+                this.Cursor = Cursors.Default;
 
                 lvFiles.Invoke(new EventHandler(delegate
                 {

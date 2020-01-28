@@ -302,7 +302,9 @@ namespace VIZCore3D.NET.Structure
             dlg.Filter = "VIZ (*.viz)|*.viz";
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
+            this.Cursor = Cursors.WaitCursor;
             ShowStructure(dlg.FileName);
+            this.Cursor = Cursors.Default;
         }
 
         private void ShowStructure(string path)

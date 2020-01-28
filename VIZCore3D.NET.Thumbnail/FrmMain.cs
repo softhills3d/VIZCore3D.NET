@@ -302,7 +302,9 @@ namespace VIZCore3D.NET.Thumbnail
 
             txtPath.Text = dlg.SelectedPath;
 
+            this.Cursor = Cursors.WaitCursor;
             ShowFiles(dlg.SelectedPath);
+            this.Cursor = Cursors.Default;
         }
 
         private void ShowFiles(string path)
