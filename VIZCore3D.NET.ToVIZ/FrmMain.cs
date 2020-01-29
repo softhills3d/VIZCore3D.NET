@@ -49,13 +49,27 @@ namespace VIZCore3D.NET.ToVIZ
             fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
         }
 
+        delegate bool DToVIZ(string input, string output, ToVIZMode mode);
         private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
         {
-            // 저장 위치 설정
-            string path = System.IO.Path.GetDirectoryName(e.Source);
-            string name = System.IO.Path.GetFileNameWithoutExtension(e.Source).ToUpper();
+            if(this.InvokeRequired == true)
+            {
+                DToVIZ call = new DToVIZ(ToVIZ);
+                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode });
+            }
+            else
+            {
+                return ToVIZ(e.Source, e.Output, e.Mode);
+            }
+        }
 
-            string output = System.IO.Path.Combine(path, e.Output);
+        private bool ToVIZ(string source, string target, ToVIZMode mode)
+        {
+            // 저장 위치 설정
+            string path = System.IO.Path.GetDirectoryName(source);
+            string name = System.IO.Path.GetFileNameWithoutExtension(source).ToUpper();
+
+            string output = System.IO.Path.Combine(path, target);
 
             // 저장소 디렉토리 유무 체크
             if (System.IO.Directory.Exists(output) == false)
@@ -64,10 +78,10 @@ namespace VIZCore3D.NET.ToVIZ
             // 저장 파일명 설정
             string file = string.Format("{0}\\{1}.viz", output, name);
 
-            if (e.Mode == ToVIZMode.EXPORT)
+            if (mode == ToVIZMode.EXPORT)
             {
                 // 모델 파일 열기
-                vizcore3d.Model.Open(e.Source);
+                vizcore3d.Model.Open(source);
 
                 // 모델 개체 조회
                 List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
@@ -75,12 +89,18 @@ namespace VIZCore3D.NET.ToVIZ
                 // 개체 확인
                 if (items.Count == 0) return false;
 
+                // 저장 옵션
+                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+
                 // VIZ 파일 형식으로 내보내기
                 return vizcore3d.Model.ExportVIZ(file);
             }
-            else if(e.Mode == ToVIZMode.CONVERT)
+            else if (mode == ToVIZMode.CONVERT)
             {
-                return vizcore3d.Model.ConvertToVIZ(e.Source, file, false);
+                // 저장 옵션
+                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+
+                return vizcore3d.Model.ConvertToVIZ(source, file, false);
             }
             else
             {
