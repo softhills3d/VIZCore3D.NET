@@ -91,10 +91,10 @@ namespace VIZCore3D.NET.UDA
             vizcore3d.Model.UncheckToUnload = true;
 
             // 모델 열기 시, Edge 정보 로드 활성화
-            vizcore3d.Model.LoadEdge = true;
+            vizcore3d.Model.LoadEdgeData = true;
 
-            // 모델 열기 시, Edge 정보 변환 활성화
-            vizcore3d.Model.ConvertEdge = true;
+            // 모델 열기 시, Edge 정보 생성 활성화
+            vizcore3d.Model.GenerateEdgeData = true;
 
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
