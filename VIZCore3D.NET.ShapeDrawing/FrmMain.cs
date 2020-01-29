@@ -381,14 +381,19 @@ namespace VIZCore3D.NET.ShapeDrawing
 
             shapeType = "Vertex";
 
-            shapeId = vizcore3d.ShapeDrawing.AddVertex(
-                vizcore3d.Object3D.GetEdgeVertex(node[0].Index)
+            List<VIZCore3D.NET.Data.Object3DEdgeVertex> edge = vizcore3d.Object3D.GetEdgeVertex(node[0].Index, true);
+
+            foreach (VIZCore3D.NET.Data.Object3DEdgeVertex item in edge)
+            {
+                shapeId = vizcore3d.ShapeDrawing.AddVertex(
+                item.Edge
                 , groupId
                 , btnColor.BackColor
                 , Convert.ToSingle(txtRadius.Text)
                 , Convert.ToSingle(txtSize.Text)
                 , true
                 );
+            }
         }
 
         private void DrawByOsnap(List<Data.Node> node)
