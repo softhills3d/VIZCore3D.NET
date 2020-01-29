@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Softhills Co., Ltd.")]
 [assembly: AssemblyProduct("VIZCore3D.NET.Structure")]
-[assembly: AssemblyCopyright("© Softhills Co., Ltd. 2020")]
+[assembly: AssemblyCopyright("© 2020 Softhills Co., Ltd. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
