@@ -333,7 +333,7 @@ namespace VIZCore3D.NET.Thumbnail
 
                 VIZCore3D.NET.Data.BoundBox3D box = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(file[i]);
 
-                ListViewItem lvi = new ListViewItem(new string[] { "", name, box.ToStringMinPoint(), box.ToStringMaxPoint() });
+                ListViewItem lvi = new ListViewItem(new string[] { "", name, box.ToStringMinVertex(), box.ToStringMaxVertex() });
                 if (img != null)
                     lvi.ImageKey = name;
 
