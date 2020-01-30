@@ -152,7 +152,7 @@ namespace VIZCore3D.NET.ModelComparison
                     model.BBox1 = vizcore1.Object3D.GeometryProperty.FromIndex(item.Value.Index, false).GetBoundBox();
                     model.BBox2 = vizcore2.Object3D.GeometryProperty.FromIndex(model.Node2.Index, false).GetBoundBox();
 
-                    if (item.Value.NodeType == VIZCore3D.NET.Data.NodeTypes.PART)
+                    if (item.Value.Kind == VIZCore3D.NET.Data.NodeKind.PART)
                     {
                         model.MeshCount1 = vizcore1.Object3D.GetMeshCount(item.Value.Index);
                         model.MeshCount2 = vizcore2.Object3D.GetMeshCount(model.Node2.Index);
@@ -172,7 +172,7 @@ namespace VIZCore3D.NET.ModelComparison
                     model.BBox1 = vizcore1.Object3D.GeometryProperty.FromIndex(item.Value.Index, false).GetBoundBox();
                     //model.BBox2 = vizcore2.Object3D.GeometryProperty.FromIndex(model.Node2.Index, false).GetBoundBox();
 
-                    if (item.Value.NodeType == VIZCore3D.NET.Data.NodeTypes.PART)
+                    if (item.Value.Kind == VIZCore3D.NET.Data.NodeKind.PART)
                     {
                         model.MeshCount1 = vizcore1.Object3D.GetMeshCount(item.Value.Index);
                         //model.MeshCount2 = vizcore2.Object3D.GetMeshCount(model.Node2.Index);
@@ -197,7 +197,7 @@ namespace VIZCore3D.NET.ModelComparison
                     //model.BBox1 = vizcore1.Object3D.GeometryProperty.FromIndex(item.Value.Index, false).GetBoundBox();
                     model.BBox2 = vizcore2.Object3D.GeometryProperty.FromIndex(model.Node2.Index, false).GetBoundBox();
 
-                    if (item.Value.NodeType == VIZCore3D.NET.Data.NodeTypes.PART)
+                    if (item.Value.Kind == VIZCore3D.NET.Data.NodeKind.PART)
                     {
                         //model.MeshCount1 = vizcore1.Object3D.GetMeshCount(item.Value.Index);
                         model.MeshCount2 = vizcore2.Object3D.GetMeshCount(model.Node2.Index);

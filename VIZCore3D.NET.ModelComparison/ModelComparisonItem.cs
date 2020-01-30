@@ -40,7 +40,7 @@ namespace VIZCore3D.NET.ModelComparison
             if (BBox1.Equals(BBox2, false) == true)
                 RESULT_LOCATION = true;
 
-            if(Node1.NodeType == VIZCore3D.NET.Data.NodeTypes.PART)
+            if(Node1.Kind == VIZCore3D.NET.Data.NodeKind.PART)
             {
                 if (MeshCount1 == MeshCount2)
                     RESULT_SHAPE = true;
@@ -55,7 +55,7 @@ namespace VIZCore3D.NET.ModelComparison
                 , RESULT_EXIST_B == true ? Node2.NodeName : String.Empty
                 , RESULT_EXIST_BOTH == true ? String.Empty : (RESULT_EXIST_A == true ? "모델 삭제" : "모델 추가")
                 , RESULT_EXIST_BOTH == false ? String.Empty : (RESULT_LOCATION == true ? String.Empty : "위치 변경")
-                , RESULT_EXIST_BOTH == false ? String.Empty : (Node1.NodeType == VIZCore3D.NET.Data.NodeTypes.PART ? (RESULT_SHAPE == true ? String.Empty : "형상 변경") : String.Empty)
+                , RESULT_EXIST_BOTH == false ? String.Empty : (Node1.Kind == VIZCore3D.NET.Data.NodeKind.PART ? (RESULT_SHAPE == true ? String.Empty : "형상 변경") : String.Empty)
                 , MeshCount1.ToString()
                 , MeshCount2.ToString()
                 , BBox1 != null ? BBox1.ToString() : String.Empty
@@ -72,7 +72,7 @@ namespace VIZCore3D.NET.ModelComparison
             if (RESULT_EXIST_BOTH == false) return false;
             if (RESULT_LOCATION == false) return false;
 
-            if (Node1.NodeType != VIZCore3D.NET.Data.NodeTypes.PART) return true;
+            if (Node1.Kind != VIZCore3D.NET.Data.NodeKind.PART) return true;
 
             if (RESULT_SHAPE == false) return false;
 

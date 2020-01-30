@@ -58,7 +58,7 @@ namespace VIZCore3D.NET.Demo.Dialogs
             lvResult.Items.Clear();
             foreach (Data.Node item in nodes)
             {
-                ListViewItem lvi = new ListViewItem(new string[] { item.NodeName, item.GetParentName(), item.NodeType == Data.NodeTypes.NODE ? "ASS'Y" : "PART" });
+                ListViewItem lvi = new ListViewItem(new string[] { item.NodeName, item.GetParentName(), item.Kind == Data.NodeKind.ASSEMBLY ? "ASS'Y" : "PART" });
                 lvi.Tag = item;
                 lvResult.Items.Add(lvi);
             }
