@@ -44,6 +44,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnToVIZ = new System.Windows.Forms.Button();
             this.btnToVIZConversion = new System.Windows.Forms.Button();
+            this.ckVIZ = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.ckVIZ);
             this.groupBox2.Controls.Add(this.ckRVT);
             this.groupBox2.Controls.Add(this.ckRVM);
             this.groupBox2.Controls.Add(this.ckREV);
@@ -224,6 +226,16 @@
             this.btnToVIZConversion.UseVisualStyleBackColor = true;
             this.btnToVIZConversion.Click += new System.EventHandler(this.btnToVIZConversion_Click);
             // 
+            // ckVIZ
+            // 
+            this.ckVIZ.AutoSize = true;
+            this.ckVIZ.Location = new System.Drawing.Point(311, 32);
+            this.ckVIZ.Name = "ckVIZ";
+            this.ckVIZ.Size = new System.Drawing.Size(43, 16);
+            this.ckVIZ.TabIndex = 3;
+            this.ckVIZ.Text = "VIZ";
+            this.ckVIZ.UseVisualStyleBackColor = true;
+            // 
             // FileExplorerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -233,7 +245,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FileExplorerControl";
             this.Size = new System.Drawing.Size(658, 703);
             this.groupBox1.ResumeLayout(false);
@@ -263,5 +275,6 @@
         private System.Windows.Forms.Button btnToVIZ;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button btnToVIZConversion;
+        private System.Windows.Forms.CheckBox ckVIZ;
     }
 }

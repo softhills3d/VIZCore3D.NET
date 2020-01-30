@@ -19,11 +19,6 @@ namespace VIZCore3D.NET.SpaceSearch
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        public List<string> Source { get; set; }
-
-        public VIZCore3D.NET.Data.BoundBox3D ModelBoundBox { get; set; }
-
-        public Dictionary<string, List<string>> ResultMap { get; set; }
 
         public FrmMain()
         {
@@ -39,11 +34,6 @@ namespace VIZCore3D.NET.SpaceSearch
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-
-            Source = new List<string>();
-            ModelBoundBox = new Data.BoundBox3D();
-            ResultMap = new Dictionary<string, List<string>>();
         }
 
         // ================================================
@@ -302,58 +292,40 @@ namespace VIZCore3D.NET.SpaceSearch
         {
         }
 
-        private bool OpenFiles()
+        private void btnSelectFiles_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Multiselect = true;
             dlg.Filter = "VIZ (*.viz)|*.viz";
-            if (dlg.ShowDialog() != DialogResult.OK) return false;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
 
-            Source.AddRange(dlg.FileNames.ToList());
-            return true;
-        }
+            vizcore3d.Model.SpaceSearch.Models.Clear();
 
-        private void btnSelectFiles_Click(object sender, EventArgs e)
-        {
-            Source.Clear();
+            vizcore3d.Model.SpaceSearch.AddModel(dlg.FileNames);
 
-            if (OpenFiles() == false) return;
-
+            this.Cursor = Cursors.WaitCursor;
             CalcBoundBox();
-        }
-
-        private void btnAddFiles_Click(object sender, EventArgs e)
-        {
-            if (OpenFiles() == false) return;
-
-            CalcBoundBox();
+            this.Cursor = Cursors.Default;
         }
 
         private void CalcBoundBox()
         {
-            ModelBoundBox = new Data.BoundBox3D();
+            lbCount.Text = string.Format("Count : {0} EA", vizcore3d.Model.SpaceSearch.ModelCount);
 
-            lbCount.Text = string.Format("Count : {0} EA", Source.Count);
+            VIZCore3D.NET.Data.BoundBox3D ModelBoundBox = vizcore3d.Model.SpaceSearch.GetModelBoundBox();
 
-            foreach (string item in Source)
-            {
-                VIZCore3D.NET.Data.BoundBox3D mBox = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(item);
+            lbMinX.Text = Convert.ToInt64(ModelBoundBox.MinX).ToString("n0");
+            lbMinY.Text = Convert.ToInt64(ModelBoundBox.MinY).ToString("n0");
+            lbMinZ.Text = Convert.ToInt64(ModelBoundBox.MinZ).ToString("n0");
 
-                ModelBoundBox.Add(mBox);
-            }
-
-            lbMinX.Text = Convert.ToInt32(ModelBoundBox.MinX).ToString("n0");
-            lbMinY.Text = Convert.ToInt32(ModelBoundBox.MinY).ToString("n0");
-            lbMinZ.Text = Convert.ToInt32(ModelBoundBox.MinZ).ToString("n0");
-
-            lbMaxX.Text = Convert.ToInt32(ModelBoundBox.MaxX).ToString("n0");
-            lbMaxY.Text = Convert.ToInt32(ModelBoundBox.MaxY).ToString("n0");
-            lbMaxZ.Text = Convert.ToInt32(ModelBoundBox.MaxZ).ToString("n0");
+            lbMaxX.Text = Convert.ToInt64(ModelBoundBox.MaxX).ToString("n0");
+            lbMaxY.Text = Convert.ToInt64(ModelBoundBox.MaxY).ToString("n0");
+            lbMaxZ.Text = Convert.ToInt64(ModelBoundBox.MaxZ).ToString("n0");
 
             VIZCore3D.NET.Data.Vertex3D center = ModelBoundBox.GetCenter();
-            txtCenterX.Text = Convert.ToInt32(center.X).ToString();
-            txtCenterY.Text = Convert.ToInt32(center.Y).ToString();
-            txtCenterZ.Text = Convert.ToInt32(center.Z).ToString();
+            txtCenterX.Text = Convert.ToInt64(center.X).ToString();
+            txtCenterY.Text = Convert.ToInt64(center.Y).ToString();
+            txtCenterZ.Text = Convert.ToInt64(center.Z).ToString();
 
             this.tbX.Scroll -= new System.EventHandler(this.tbX_Scroll);
             this.tbY.Scroll -= new System.EventHandler(this.tbY_Scroll);
@@ -370,26 +342,25 @@ namespace VIZCore3D.NET.SpaceSearch
 
         private void tbX_Scroll(object sender, EventArgs e)
         {
-            float pos = ModelBoundBox.MinX + (ModelBoundBox.GetLengthX() / 100.0f * tbX.Value);
+            float pos = vizcore3d.Model.SpaceSearch.ModelBoundBox.MinX + (vizcore3d.Model.SpaceSearch.ModelBoundBox.GetLengthX() / 100.0f * tbX.Value);
             txtCenterX.Text = Convert.ToInt32(pos).ToString();
         }
 
         private void tbY_Scroll(object sender, EventArgs e)
         {
-            float pos = ModelBoundBox.MinY + (ModelBoundBox.GetLengthY() / 100.0f * tbY.Value);
+            float pos = vizcore3d.Model.SpaceSearch.ModelBoundBox.MinY + (vizcore3d.Model.SpaceSearch.ModelBoundBox.GetLengthY() / 100.0f * tbY.Value);
             txtCenterY.Text = Convert.ToInt32(pos).ToString();
         }
 
         private void tbZ_Scroll(object sender, EventArgs e)
         {
-            float pos = ModelBoundBox.MinZ + (ModelBoundBox.GetLengthZ() / 100.0f * tbZ.Value);
+            float pos = vizcore3d.Model.SpaceSearch.ModelBoundBox.MinZ + (vizcore3d.Model.SpaceSearch.ModelBoundBox.GetLengthZ() / 100.0f * tbZ.Value);
             txtCenterZ.Text = Convert.ToInt32(pos).ToString();
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            VIZCore3D.NET.Data.BoundBox3D space = new Data.BoundBox3D();
-            space.Add(
+            bool result = vizcore3d.Model.SpaceSearch.Search(
                 new VIZCore3D.NET.Data.Vertex3D
                 (
                     txtCenterX.Text
@@ -399,60 +370,24 @@ namespace VIZCore3D.NET.SpaceSearch
                 , Convert.ToSingle(txtLengthX.Text)
                 , Convert.ToSingle(txtLengthY.Text)
                 , Convert.ToSingle(txtLengthZ.Text)
+                , rbFile.Checked == true ? Manager.SearchTarget.MODEL : Manager.SearchTarget.NODE
                 );
-
-            ResultMap = new Dictionary<string, List<string>>();
-
-            foreach (string item in Source)
-            {
-                VIZCore3D.NET.Data.BoundBox3D mBox = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(item);
-
-                if (space.IsRangeCollide(mBox) == false && mBox.IsRangeCollide(space) == false) continue;
-
-                if (ResultMap.ContainsKey(item) == false)
-                    ResultMap.Add(item, new List<string>());
-            }
-
-            lbResultFile.Text = string.Format("File : {0} EA", ResultMap.Count);
-            lbResultNode.Text = "Node : 0 EA";
-            ShowResultList();
-
-            if (rbNode.Checked == false) return;
-
-            foreach (string item in ResultMap.Keys)
-            {
-                VIZCore3D.NET.Data.ShStructure stru = new Data.ShStructure(item);
-                foreach (VIZCore3D.NET.Data.ShModelTreeNode node in stru.GetStructureNodeList())
-                {
-                    if (node.BoundBox == null) continue;
-                    if (node.NodeType != Data.ShModelTreeNodeType.PART) continue;
-                    if (space.IsRangeCollide(node.BoundBox) == false) continue;
-
-                    List<string> nodepath = ResultMap[item];
-                    nodepath.Add(node.NodePath);
-                }
-            }
-
-            int nodeCount = 0;
-            foreach (KeyValuePair<string, List<string>> item in ResultMap)
-            {
-                nodeCount += item.Value.Count;
-            }
-
-            lbResultNode.Text = string.Format("Node : {0} EA", nodeCount);
 
             ShowResultList();
         }
 
         private void ShowResultList()
         {
+            lbResultFile.Text = string.Format("File : {0} EA", vizcore3d.Model.SpaceSearch.ResultFileCount);
+            lbResultNode.Text = string.Format("Node : {0} EA", vizcore3d.Model.SpaceSearch.ResultNodeCount);
+
             lvResult.BeginUpdate();
             lvResult.Groups.Clear();
             lvResult.Items.Clear();
 
             if(rbFile.Checked == true)
             {
-                foreach (KeyValuePair<string, List<string>> item in ResultMap)
+                foreach (KeyValuePair<string, List<string>> item in vizcore3d.Model.SpaceSearch.SearchResult)
                 {
                     ListViewItem lvi = new ListViewItem(new string[] { System.IO.Path.GetFileName(item.Key) });
                     lvi.Tag = item.Key;
@@ -461,7 +396,7 @@ namespace VIZCore3D.NET.SpaceSearch
             }
             else
             {
-                foreach (KeyValuePair<string, List<string>> item in ResultMap)
+                foreach (KeyValuePair<string, List<string>> item in vizcore3d.Model.SpaceSearch.SearchResult)
                 {
                     ListViewGroup group = new ListViewGroup(System.IO.Path.GetFileName(item.Key), HorizontalAlignment.Left);
                     lvResult.Groups.Add(group);
@@ -481,42 +416,27 @@ namespace VIZCore3D.NET.SpaceSearch
 
         private void btnViewModel_Click(object sender, EventArgs e)
         {
-            if (ResultMap.Count == 0) return;
+            if (vizcore3d.Model.SpaceSearch.ResultFileCount == 0) return;
+
             vizcore3d.Model.Close();
 
             // 파일 단위 검색 결과의 경우
             if (rbFile.Checked == true)
             {
                 // 결과 모델 열기
-                vizcore3d.Model.Add(ResultMap.Keys.ToArray());
+                vizcore3d.Model.SpaceSearch.OpenResultModelFile();
             }
             // 노드 단위 검색 결과의 경우
             else
             {
                 // 파일 단위로 조회 후, 검색 결과 하이라이트
-                if(ckFile.Checked == true)
+                if(rbFileUnit.Checked == true)
                 {
                     // 결과 모델 열기
-                    vizcore3d.Model.Add(ResultMap.Keys.ToArray());
+                    vizcore3d.Model.SpaceSearch.OpenResultModelFile();
 
-                    // 전체 로딩된 모델의 경로
-                    Dictionary<string, VIZCore3D.NET.Data.Node> nodePath = vizcore3d.Object3D.GetNodePathMap();
-                    List<VIZCore3D.NET.Data.Node> resultNode = new List<Data.Node>();
-                    foreach (KeyValuePair<string, List<string>> item in ResultMap)
-                    {
-                        // 검색 결과에 추가해야 하는 접두어
-                        string prefix = System.IO.Path.GetFileNameWithoutExtension(item.Key).ToUpper();
-
-                        foreach (string path in item.Value)
-                        {
-                            // 검색 결과에 새로운 노드패스 설정 및 해당 정보로 검색
-                            string str = string.Format("{0}\\{1}", prefix, path);
-
-                            // 검색 결과 취합
-                            if (nodePath.ContainsKey(str) == true)
-                                resultNode.Add(nodePath[str]);
-                        }
-                    }
+                    // 로드된 검색 결과 노드 목록 조회
+                    List<VIZCore3D.NET.Data.Node> resultNode = vizcore3d.Model.SpaceSearch.GetResultNodeLoaded();
 
                     // 검색 결과 하이라이트
                     vizcore3d.View.XRay.Enable = true;
@@ -527,9 +447,46 @@ namespace VIZCore3D.NET.SpaceSearch
                 // 검색 결과 노드만 조회
                 else
                 {
+                    vizcore3d.View.XRay.Enable = false;
 
+                    // 검색 결과 노드만 조회
+                    vizcore3d.Model.SpaceSearch.OpenResultModelNode();
+
+                    // VIZXML은 모델이 언로드 상태로 조회 되므로, 최상위 노드를 조회 상태로 변경
+                    vizcore3d.Object3D.ShowVIZXMLRoot();
                 }
             }
         }
+
+        //private string CreateVIZXML()
+        //{
+        //    VIZCore3D.NET.Manager.VIZXMLManager vizxml = new Manager.VIZXMLManager("SPACE_SEARCH");
+
+        //    foreach (KeyValuePair<string, List<string>> item in vizcore3d.Model.SpaceSearch.SearchResult)
+        //    {
+        //        VIZCore3D.NET.Manager.VIZXMLNode model = new Manager.VIZXMLNode(System.IO.Path.GetFileNameWithoutExtension(item.Key).ToUpper());
+
+        //        foreach (string nodePath in item.Value)
+        //        {
+        //            string[] path = nodePath.Split(new char[] { '\\' });
+
+        //            VIZCore3D.NET.Manager.VIZXMLNode node = new Manager.VIZXMLNode(
+        //                path[path.Length - 1]
+        //                , item.Key
+        //                , nodePath
+        //                , Manager.VIZXML_MODEL_KIND.Part
+        //                );
+
+        //            model.AddNode(node);
+        //        }
+
+        //        vizxml.AddNode(model);
+        //    }
+
+        //    bool result = vizxml.ExportVIZXML();
+
+        //    if (result == true) return vizxml.GetFilePath();
+        //    else return String.Empty;
+        //}
     }
 }
