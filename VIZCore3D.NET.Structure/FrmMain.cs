@@ -22,7 +22,7 @@ namespace VIZCore3D.NET.Structure
         /// <summary>
         /// 모델 구조(Structure) 처리기
         /// </summary>
-        public VIZCore3D.NET.Data.ShStructure StructureManager { get; set; }
+        public VIZCore3D.NET.ShdCore.StructureManager Structure { get; set; }
 
         public FrmMain()
         {
@@ -312,7 +312,7 @@ namespace VIZCore3D.NET.Structure
             txtVIZ.Text = path;
 
             // 모델 로드
-            StructureManager = new Data.ShStructure(path, false);
+            Structure = new ShdCore.StructureManager(path, false);
 
             MakeModelTree();
         }
@@ -323,7 +323,7 @@ namespace VIZCore3D.NET.Structure
             tvStructure.Nodes.Clear();
 
             // 처리된 모델 구조 불러오기
-            List<VIZCore3D.NET.Data.ShModelTreeNode> roots = StructureManager.Roots;
+            List<VIZCore3D.NET.ShdCore.ModelTreeNode> roots = Structure.Roots;
 
             // 최상위는 파일 노드이므로, 파일이름으로 생성
             TreeNode rootNode = tvStructure.Nodes.Add(System.IO.Path.GetFileNameWithoutExtension(txtVIZ.Text));
@@ -334,22 +334,22 @@ namespace VIZCore3D.NET.Structure
             for (int i = 0; i < roots.Count; i++)
             {
                 // 파일 노드 하위의 최상위 노드
-                VIZCore3D.NET.Data.ShModelTreeNode node = roots[i];
+                VIZCore3D.NET.ShdCore.ModelTreeNode node = roots[i];
 
                 TreeNode tnNode = rootNode.Nodes.Add(node.NodeName);
                 tnNode.Tag = node;
 
-                if (node.NodeType == VIZCore3D.NET.Data.ShModelTreeNodeType.ASSEMBLY)
+                if (node.NodeType == VIZCore3D.NET.ShdCore.ModelTreeNodeKind.ASSEMBLY)
                 {
                     tnNode.ImageIndex = 1;
                     tnNode.SelectedImageIndex = 1;
                 }
-                else if (node.NodeType == VIZCore3D.NET.Data.ShModelTreeNodeType.PART)
+                else if (node.NodeType == VIZCore3D.NET.ShdCore.ModelTreeNodeKind.PART)
                 {
                     tnNode.ImageIndex = 2;
                     tnNode.SelectedImageIndex = 2;
                 }
-                else if (node.NodeType == VIZCore3D.NET.Data.ShModelTreeNodeType.BODY)
+                else if (node.NodeType == VIZCore3D.NET.ShdCore.ModelTreeNodeKind.BODY)
                 {
                     tnNode.ImageIndex = 3;
                     tnNode.SelectedImageIndex = 3;
@@ -373,31 +373,31 @@ namespace VIZCore3D.NET.Structure
         /// </summary>
         /// <param name="tnNode"></param>
         /// <param name="mtNode"></param>
-        private void BindNode(TreeNode tnNode, VIZCore3D.NET.Data.ShModelTreeNode mtNode)
+        private void BindNode(TreeNode tnNode, VIZCore3D.NET.ShdCore.ModelTreeNode mtNode)
         {
             // 부모 노드의 하위 자식 목록
-            List<VIZCore3D.NET.Data.ShModelTreeNode> children = mtNode.Nodes;
+            List<VIZCore3D.NET.ShdCore.ModelTreeNode> children = mtNode.Nodes;
 
             for (int i = 0; i < children.Count; i++)
             {
                 // 노드 정보
-                VIZCore3D.NET.Data.ShModelTreeNode node = children[i];
+                VIZCore3D.NET.ShdCore.ModelTreeNode node = children[i];
 
                 // 트리 노드 생성
                 TreeNode childNode = tnNode.Nodes.Add(node.NodeName);
                 childNode.Tag = node;
 
-                if (node.NodeType == VIZCore3D.NET.Data.ShModelTreeNodeType.ASSEMBLY)
+                if (node.NodeType == VIZCore3D.NET.ShdCore.ModelTreeNodeKind.ASSEMBLY)
                 {
                     childNode.ImageIndex = 1;
                     childNode.SelectedImageIndex = 1;
                 }
-                else if (node.NodeType == VIZCore3D.NET.Data.ShModelTreeNodeType.PART)
+                else if (node.NodeType == VIZCore3D.NET.ShdCore.ModelTreeNodeKind.PART)
                 {
                     childNode.ImageIndex = 2;
                     childNode.SelectedImageIndex = 2;
                 }
-                else if (node.NodeType == VIZCore3D.NET.Data.ShModelTreeNodeType.BODY)
+                else if (node.NodeType == VIZCore3D.NET.ShdCore.ModelTreeNodeKind.BODY)
                 {
                     childNode.ImageIndex = 3;
                     childNode.SelectedImageIndex = 3;
@@ -415,22 +415,22 @@ namespace VIZCore3D.NET.Structure
         {
             if (e.Node.Tag == null) return;
 
-            VIZCore3D.NET.Data.ShModelTreeNode node = (VIZCore3D.NET.Data.ShModelTreeNode)e.Node.Tag;
+            VIZCore3D.NET.ShdCore.ModelTreeNode node = (VIZCore3D.NET.ShdCore.ModelTreeNode)e.Node.Tag;
 
             // 선택된 노드의 속성정보 불러오기
             // Example 1
-            List<VIZCore3D.NET.Data.ShNodeAttribute> AttrItems1 = StructureManager.GetProperty(Convert.ToInt32(node.EntityId));
+            List<VIZCore3D.NET.ShdCore.NodeAttribute> AttrItems1 = Structure.GetProperty(Convert.ToInt32(node.EntityId));
             // Example 2
-            List<VIZCore3D.NET.Data.ShNodeAttribute> AttrItems2 = node.NodePropertyList;
+            List<VIZCore3D.NET.ShdCore.NodeAttribute> AttrItems2 = node.NodePropertyList;
 
             ShowProperty(AttrItems2);
         }
 
-        private void ShowProperty(List<VIZCore3D.NET.Data.ShNodeAttribute> items)
+        private void ShowProperty(List<VIZCore3D.NET.ShdCore.NodeAttribute> items)
         {
             lvProperty.BeginUpdate();
             lvProperty.Items.Clear();
-            foreach (VIZCore3D.NET.Data.ShNodeAttribute item in items)
+            foreach (VIZCore3D.NET.ShdCore.NodeAttribute item in items)
             {
                 ListViewItem lvi = new ListViewItem(new string[] { item.Key, item.Value });
                 lvProperty.Items.Add(lvi);
