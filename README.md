@@ -11,12 +11,14 @@
 | ------------- | ------------- | ------------- |
 | Gallery | 스크린샷 | 주요 기능 화면 |
 | VIZCore3D.NET.Demo | 주요 기능 API 활용 예제 | 개체목록, 검색, 기타  |
+| VIZCore3D.NET.ExportNode | 모델 내보내기 | 특정 노드 혹은 전체 노드 단위로 내보내기  |
 | VIZCore3D.NET.GeometryProperty | Geometry 속성 조회 예제 | 최소점, 최대점, 중심점, 개체크기, 부피, 중량 등 정보 조회  |
 | VIZCore3D.NET.Group | 개체 그룹 관리 | 선택, 검색, 속성 등을 이용하여 개체 그룹을 생성하고, 조작 및   |
 | VIZCore3D.NET.ImportAttribute | Attribute 파일 분석 및 Import | 속성 파일을 분석하여, 모델에 API를 통해 속성을 추가  |
 | VIZCore3D.NET.LockedHidden | 개체숨김 기능 예제 | 조회중인 모델에서 항상 숨김상태를 유지해야 하는 모델을 검색하고, 숨김상태를 유지 |
 | VIZCore3D.NET.ModelComparison | 모델 비교 기능 예제 | 2개의 모델파일을 비교(구조, 위치, 형상)하여 차이점을 조회 |
 | VIZCore3D.NET.ShapeDrawing | 3D 화면상에 Shape 그리기 | Line, Cube, Cylinder, Vertex 유형을 화면에 추가 및 관리  |
+| VIZCore3D.NET.SpaceSearch | 모델 기반 공간 검색 | 모델 파일을 활용하여 특정 영역의 모델을 파일단위 혹은 노드 단위로 검색 및 조회  |
 | VIZCore3D.NET.Structure | VIZ 파일 Structure 조회 | 파일의 Structure 및 노드별 Property 조회  |
 | VIZCore3D.NET.Thumbnail | VIZ 파일 Thumbnail 조회 | 파일의 Thumbnail 및 BoundBox 정보 조회  |
 | VIZCore3D.NET.ToVIZ | VIZ 파일 형식으로 내보내기 | 모델 원본을 VIZ 파일 형식으로 저장 |
@@ -80,6 +82,9 @@
 
 ##### 모델 비교 (Youtube)
 [![모델 비교](http://img.youtube.com/vi/gxabhy8otTo/0.jpg)](https://youtu.be/gxabhy8otTo?t=0s)
+
+##### 공간 검색 (Youtube)
+[![공간 검색](http://img.youtube.com/vi/0b5o5Va1S18/0.jpg)](https://youtu.be/0b5o5Va1S18?t=0s)
 
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
