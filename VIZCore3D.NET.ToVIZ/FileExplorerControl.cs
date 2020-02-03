@@ -26,10 +26,11 @@ namespace VIZCore3D.NET.ToVIZ
 
         private void btnSelectPath_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            if (dlg.ShowDialog() != DialogResult.OK) return;
+            Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog dlg = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            dlg.IsFolderPicker = true;
+            if (dlg.ShowDialog() != Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok) return;
 
-            txtSource.Text = dlg.SelectedPath;
+            txtSource.Text = dlg.FileName;
 
             if (String.IsNullOrEmpty(txtSource.Text) == true) return;
 

@@ -1,0 +1,2 @@
+Install-Package WindowsAPICodePack-Core -Version 1.1.2
+Install-Package WindowsAPICodePack-Shell -Version 1.1.1
