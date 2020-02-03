@@ -162,23 +162,22 @@ namespace VIZCore3D.NET.Demo
         /// <param name="sender">sender</param>
         /// <param name="e">Event Args</param>
         private void Section_OnSectionEvent(object sender, Event.EventManager.SectionEventArgs e)
-        {
+        {   
             switch (e.EventType)
-            {
-                
-                case Data.SectionEventTypes.ADD:
+            {                
+                case Manager.SectionManager.EventTypes.ADD:
                     //생성 이벤트
                     break;
-                case Data.SectionEventTypes.DELETE:
+                case Manager.SectionManager.EventTypes.DELETE:
                     //삭제 이벤트
                     break;
-                case Data.SectionEventTypes.DELETE_ALL:
+                case Manager.SectionManager.EventTypes.DELETE_ALL:
                     //전체 삭제 이벤트
                     break;
-                case Data.SectionEventTypes.SELECT:
+                case Manager.SectionManager.EventTypes.SELECT:
                     //선택 이벤트
                     break;
-                case Data.SectionEventTypes.TRANSFORM:
+                case Manager.SectionManager.EventTypes.TRANSFORM:
                     //이동 및 회전 이벤트
                     break;
                 default:
@@ -191,13 +190,13 @@ namespace VIZCore3D.NET.Demo
 
             switch (e.Section.SectionType)
             {
-                case Data.SectionTypes.SECTION:
+                case Manager.SectionManager.SectionTypes.SECTION:
                     // 단면
                     break;
-                case Data.SectionTypes.SECTION_BOX:
+                case Manager.SectionManager.SectionTypes.SECTION_BOX:
                     // 상자
                     break;
-                case Data.SectionTypes.SECTION_INBOX:
+                case Manager.SectionManager.SectionTypes.SECTION_INBOX:
                     // 인박스
                     break;
                 default:
