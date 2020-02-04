@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7722C395-A09E-44D9-B7DF-628284A350CC}</ProjectGuid>
+    <ProjectGuid>{104FBC88-359F-42EE-8580-ECDD9390CEC2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VIZCore3D.NET.ToVIZ</RootNamespace>
-    <AssemblyName>VIZCore3D.NET.ToVIZ</AssemblyName>
+    <RootNamespace>VIZCore3D.NET.Projection2D</RootNamespace>
+    <AssemblyName>VIZCore3D.NET.Projection2D</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -35,8 +35,12 @@
     <ApplicationIcon>VIZZARD.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,17 +49,14 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="VIZCore3D.NET">
       <HintPath>..\..\..\SH_SVN\SH_Product\VIZCore3D.NET_V2\VIZCore3D.NET\bin\Release\VIZCore3D.NET.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileExplorerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileExplorerControl.Designer.cs">
-      <DependentUpon>FileExplorerControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,9 +65,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FileExplorerControl.resx">
-      <DependentUpon>FileExplorerControl.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="ResultControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ResultControl.designer.cs">
+      <DependentUpon>ResultControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,7 +83,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
+    <EmbeddedResource Include="ResultControl.resx">
+      <DependentUpon>ResultControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +98,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VIZZARD.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VIZCore3D.NET.Projection2D.DrawControl\VIZCore3D.NET.Projection2D.DrawControl.csproj">
+      <Project>{d99f27b8-63fc-44bd-b156-c7135c12a3ec}</Project>
+      <Name>VIZCore3D.NET.Projection2D.DrawControl</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

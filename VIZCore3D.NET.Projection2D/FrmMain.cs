@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Thumbnail
+namespace VIZCore3D.NET.Projection2D
 {
     public partial class FrmMain : Form
     {
@@ -18,6 +18,9 @@ namespace VIZCore3D.NET.Thumbnail
         /// VIZCore3D.NET
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+
+        private ResultControl result;
+
 
         public FrmMain()
         {
@@ -33,6 +36,10 @@ namespace VIZCore3D.NET.Thumbnail
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
+
+            result = new ResultControl();
+            result.Dock = DockStyle.Fill;
+            splitContainer2.Panel2.Controls.Add(result);
         }
 
         // ================================================
@@ -275,7 +282,7 @@ namespace VIZCore3D.NET.Thumbnail
             // ================================================================
             // 설정 - 상태바
             // ================================================================
-            vizcore3d.Statusbar.Visible = true;
+            vizcore3d.Statusbar.Visible = false;
 
 
             // ================================================================
@@ -289,68 +296,18 @@ namespace VIZCore3D.NET.Thumbnail
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            
         }
 
-        private void btnPath_Click(object sender, EventArgs e)
+        private void btnProjection2D_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (vizcore3d.Model.IsOpen() == false) return;
 
-            if (String.IsNullOrEmpty(txtPath.Text) == false)
-                dlg.SelectedPath = txtPath.Text;
+            VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(80, false, 1);
 
-            if (dlg.ShowDialog() != DialogResult.OK) return;
+            if (projection == null) return;
 
-            txtPath.Text = dlg.SelectedPath;
-
-            this.Cursor = Cursors.WaitCursor;
-            ShowFiles(dlg.SelectedPath);
-            this.Cursor = Cursors.Default;
-        }
-
-        private void ShowFiles(string path)
-        {
-            string[] file = System.IO.Directory.GetFiles(path, "*.viz", System.IO.SearchOption.TopDirectoryOnly);
-
-            ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(90, 90);
-
-            lvFiles.BeginUpdate();
-            lvFiles.Items.Clear();
-
-            lvFiles.LargeImageList = imgList;
-            lvFiles.SmallImageList = imgList;
-            lvFiles.StateImageList = imgList;
-
-            for (int i = 0; i < file.Length; i++)
-            {
-                string name = System.IO.Path.GetFileName(file[i]);
-                string ext = System.IO.Path.GetExtension(file[i]).ToUpper();
-                if (ext == ".VIZXML") continue;
-
-                System.Drawing.Image img = VIZCore3D.NET.Manager.ModelManager.GetModelThumbnail(file[i]);
-                if(img != null)
-                    imgList.Images.Add(name, img);
-
-                VIZCore3D.NET.Data.BoundBox3D box = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(file[i]);
-
-                ListViewItem lvi = new ListViewItem(new string[] { "", name, box.ToStringMin(), box.ToStringMax() });
-                if (img != null)
-                    lvi.ImageKey = name;
-
-                lvi.Tag = file[i];
-
-                lvFiles.Items.Add(lvi);
-            }
-
-            lvFiles.EndUpdate();
-        }
-
-        private void lvFiles_DoubleClick(object sender, EventArgs e)
-        {
-            if (lvFiles.SelectedItems.Count == 0) return;
-            string file = (string)lvFiles.SelectedItems[0].Tag;
-
-            vizcore3d.Model.Open(file);
+            result.SetData(projection);
         }
     }
 }

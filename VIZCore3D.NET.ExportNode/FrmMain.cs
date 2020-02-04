@@ -293,12 +293,17 @@ namespace VIZCore3D.NET.ExportNode
 
         private void btnPath_Click(object sender, EventArgs e)
         {
-            Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog dlg = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
-            dlg.IsFolderPicker = true;
-            dlg.RestoreDirectory = true;
-            if (dlg.ShowDialog() != Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok) return;
+            //Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog dlg = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
+            //dlg.IsFolderPicker = true;
+            //dlg.RestoreDirectory = true;
+            //if (dlg.ShowDialog() != Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok) return;
+            //txtPath.Text = dlg.FileName;
 
-            txtPath.Text = dlg.FileName;
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (String.IsNullOrEmpty(txtPath.Text) == false)
+                dlg.SelectedPath = txtPath.Text;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+            txtPath.Text = dlg.SelectedPath;
         }
 
         private void btnExport_Click(object sender, EventArgs e)
