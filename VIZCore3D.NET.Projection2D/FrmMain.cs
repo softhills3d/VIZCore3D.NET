@@ -214,7 +214,39 @@ namespace VIZCore3D.NET.Projection2D
             // ================================================================
             // 설정 - 노트
             // ================================================================
+            #region 설정 - 노트
+            // 배경색
+            vizcore3d.Review.Note.BackgroundColor = Color.White;
+            // 배경 투명
+            vizcore3d.Review.Note.BackgroudTransparent = false;
+            // 글자색
+            vizcore3d.Review.Note.FontColor = Color.Black;
+            // 글자 크기
+            vizcore3d.Review.Note.FontSize = Manager.NoteManager.FontSizeKind.SIZE12;
+            // 글자 굵게
+            vizcore3d.Review.Note.FontBold = false;
+            // 지시선(라인) 색상
+            vizcore3d.Review.Note.LineColor = Color.Black;
+            // 지시선(라인) 두께
+            vizcore3d.Review.Note.LineWidth = 3;
+            // 지시선 중앙 연결
+            vizcore3d.Review.Note.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+            // 화살표 색상
+            vizcore3d.Review.Note.ArrowColor = Color.Red;
+            // 화살표 두께
+            vizcore3d.Review.Note.ArrowWidth = 10;
 
+            // 심볼 배경색
+            vizcore3d.Review.Note.SymbolBackgroundColor = Color.Yellow;
+            // 심볼 글자색
+            vizcore3d.Review.Note.SymbolFontColor = Color.Red;
+            // 심볼 크기
+            vizcore3d.Review.Note.SymbolSize = 10;
+            // 심볼 글자 크기
+            vizcore3d.Review.Note.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE10;
+            // 심볼 글자 굵게
+            vizcore3d.Review.Note.SymbolFontBold = true;
+            #endregion
 
             // ================================================================
             // 설정 - 측정

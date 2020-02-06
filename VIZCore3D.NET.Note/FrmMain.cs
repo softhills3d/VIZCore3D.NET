@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Thumbnail
+namespace VIZCore3D.NET.Note
 {
     public partial class FrmMain : Form
     {
@@ -238,8 +238,10 @@ namespace VIZCore3D.NET.Thumbnail
             // 심볼 글자 크기
             vizcore3d.Review.Note.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE10;
             // 심볼 글자 굵게
-            vizcore3d.Review.Note.SymbolFontBold = true;
+            vizcore3d.Review.Note.SymbolFontBold = true; 
             #endregion
+
+
 
 
             // ================================================================
@@ -308,7 +310,7 @@ namespace VIZCore3D.NET.Thumbnail
             // ================================================================
             // 설정 - 상태바
             // ================================================================
-            vizcore3d.Statusbar.Visible = true;
+            vizcore3d.Statusbar.Visible = false;
 
 
             // ================================================================
@@ -322,68 +324,12 @@ namespace VIZCore3D.NET.Thumbnail
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
         }
 
-        private void btnPath_Click(object sender, EventArgs e)
+        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
         {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-
-            if (String.IsNullOrEmpty(txtPath.Text) == false)
-                dlg.SelectedPath = txtPath.Text;
-
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
-            txtPath.Text = dlg.SelectedPath;
-
-            this.Cursor = Cursors.WaitCursor;
-            ShowFiles(dlg.SelectedPath);
-            this.Cursor = Cursors.Default;
-        }
-
-        private void ShowFiles(string path)
-        {
-            string[] file = System.IO.Directory.GetFiles(path, "*.viz", System.IO.SearchOption.TopDirectoryOnly);
-
-            ImageList imgList = new ImageList();
-            imgList.ImageSize = new Size(90, 90);
-
-            lvFiles.BeginUpdate();
-            lvFiles.Items.Clear();
-
-            lvFiles.LargeImageList = imgList;
-            lvFiles.SmallImageList = imgList;
-            lvFiles.StateImageList = imgList;
-
-            for (int i = 0; i < file.Length; i++)
-            {
-                string name = System.IO.Path.GetFileName(file[i]);
-                string ext = System.IO.Path.GetExtension(file[i]).ToUpper();
-                if (ext == ".VIZXML") continue;
-
-                System.Drawing.Image img = VIZCore3D.NET.Manager.ModelManager.GetModelThumbnail(file[i]);
-                if(img != null)
-                    imgList.Images.Add(name, img);
-
-                VIZCore3D.NET.Data.BoundBox3D box = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(file[i]);
-
-                ListViewItem lvi = new ListViewItem(new string[] { "", name, box.ToStringMin(), box.ToStringMax() });
-                if (img != null)
-                    lvi.ImageKey = name;
-
-                lvi.Tag = file[i];
-
-                lvFiles.Items.Add(lvi);
-            }
-
-            lvFiles.EndUpdate();
-        }
-
-        private void lvFiles_DoubleClick(object sender, EventArgs e)
-        {
-            if (lvFiles.SelectedItems.Count == 0) return;
-            string file = (string)lvFiles.SelectedItems[0].Tag;
-
-            vizcore3d.Model.Open(file);
+            
         }
     }
 }
