@@ -87,6 +87,9 @@
 ##### 공간 검색 (Youtube)
 [![공간 검색](http://img.youtube.com/vi/0b5o5Va1S18/0.jpg)](https://youtu.be/0b5o5Va1S18?t=0s)
 
+##### 선택상자 / 구획상자
+![선택상자](./Gallery/VIZCore3D.NET.SelectionBox.png)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
