@@ -354,16 +354,17 @@ namespace VIZCore3D.NET.SelectionBox
 
         private void SelectionBox_OnSelectionBoxSelectedEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
         {
+            DisplayMessage(e.ID);
         }
 
         private void SelectionBox_OnSelectionBoxAddSelectionEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
         {
-            
+            DisplayMessage(e.ID);
         }
 
         private void SelectionBox_OnSelectionBoxDeselectedEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
         {
-            
+            vizcore3d.View.Message.Clear();
         }
 
         private void CbFontSize_SelectedIndexChanged(object sender, EventArgs e)
@@ -388,9 +389,9 @@ namespace VIZCore3D.NET.SelectionBox
 
             VIZCore3D.NET.Data.BoundBox3D box = vizcore3d.Model.BoundBox;
 
-            float xWidth = Math.Abs(box.GetLengthX() / xCount);
-            float yWidth = Math.Abs(box.GetLengthY() / yCount);
-            float zWidth = Math.Abs(box.GetLengthZ() / zCount);
+            float xWidth = box.GetLengthX() / xCount;
+            float yWidth = box.GetLengthY() / yCount;
+            float zWidth = box.GetLengthZ() / zCount;
 
             vizcore3d.BeginUpdate();
 
@@ -536,6 +537,13 @@ namespace VIZCore3D.NET.SelectionBox
 
             vizcore3d.SelectionBox.Select(new List<int>() { id }, true);
 
+            DisplayMessage(id);
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void DisplayMessage(int id)
+        {
             VIZCore3D.NET.Data.SelectionBox info = vizcore3d.SelectionBox.Get(id);
             VIZCore3D.NET.Data.Vertex3D cog = vizcore3d.SelectionBox.GetCOG(id, Data.BoundBoxSearchOption.FullyContained);
 
@@ -544,9 +552,6 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.View.Message.Show(Data.MessageId.ID_03, string.Format("Lable : {0}", info.Label), 5, 35, Data.FontSize.Size_14, Color.Yellow);
             vizcore3d.View.Message.Show(Data.MessageId.ID_04, string.Format("COG : {0}", cog.ToString()), 5, 50, Data.FontSize.Size_14, Color.Green);
             vizcore3d.View.Message.Show(Data.MessageId.ID_05, string.Format("Size : {0} / {1}", info.MinPoint.ToString(), info.MaxPoint.ToString()), 5, 65, Data.FontSize.Size_14, Color.Blue);
-
-
-            vizcore3d.EndUpdate();
         }
 
         private void lvList_DoubleClick(object sender, EventArgs e)
