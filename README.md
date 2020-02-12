@@ -17,6 +17,7 @@
 | VIZCore3D.NET.ImportAttribute | Attribute 파일 분석 및 Import | 속성 파일을 분석하여, 모델에 API를 통해 속성을 추가  |
 | VIZCore3D.NET.LockedHidden | 개체숨김 기능 예제 | 조회중인 모델에서 항상 숨김상태를 유지해야 하는 모델을 검색하고, 숨김상태를 유지 |
 | VIZCore3D.NET.ModelComparison | 모델 비교 기능 예제 | 2개의 모델파일을 비교(구조, 위치, 형상)하여 차이점을 조회 |
+| VIZCore3D.NET.SelectionBox | 선택상자 관리 | 영역(구획)을 구분하고, Label, Size, 영역 내 모델 검색  |
 | VIZCore3D.NET.ShapeDrawing | 3D 화면상에 Shape 그리기 | Line, Cube, Cylinder, Vertex 유형을 화면에 추가 및 관리  |
 | VIZCore3D.NET.SpaceSearch | 모델 기반 공간 검색 | 모델 파일을 활용하여 특정 영역의 모델을 파일단위 혹은 노드 단위로 검색 및 조회  |
 | VIZCore3D.NET.Structure | VIZ 파일 Structure 조회 | 파일의 Structure 및 노드별 Property 조회  |
