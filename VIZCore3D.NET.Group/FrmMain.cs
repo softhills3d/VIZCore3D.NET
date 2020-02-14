@@ -158,29 +158,29 @@ namespace VIZCore3D.NET.Group
             // ================================================================
             #region 설정 - 탐색
             // Z축 고정
-            vizcore3d.View.Walkthrough.LockZAxis = true;
+            vizcore3d.Walkthrough.LockZAxis = true;
             // 선속도 : m/s
-            vizcore3d.View.Walkthrough.Speed = 2.0f;
+            vizcore3d.Walkthrough.Speed = 2.0f;
             // 각속도
-            vizcore3d.View.Walkthrough.AngularSpeed = 30.0f;
+            vizcore3d.Walkthrough.AngularSpeed = 30.0f;
             // 높이
-            vizcore3d.View.Walkthrough.AvatarHeight = 1800.0f;
+            vizcore3d.Walkthrough.AvatarHeight = 1800.0f;
             // 반지름
-            vizcore3d.View.Walkthrough.AvatarCollisionRadius = 400.0f;
+            vizcore3d.Walkthrough.AvatarCollisionRadius = 400.0f;
             // 숙임높이
-            vizcore3d.View.Walkthrough.AvatarBowWalkHeight = 1300.0f;
+            vizcore3d.Walkthrough.AvatarBowWalkHeight = 1300.0f;
             // 충돌
-            vizcore3d.View.Walkthrough.UseAvatarCollision = false;
+            vizcore3d.Walkthrough.UseAvatarCollision = false;
             // 중력
-            vizcore3d.View.Walkthrough.UseAvatarGravity = false;
+            vizcore3d.Walkthrough.UseAvatarGravity = false;
             // 숙임
-            vizcore3d.View.Walkthrough.UseAvatarBowWalk = false;
+            vizcore3d.Walkthrough.UseAvatarBowWalk = false;
             // 모델
-            vizcore3d.View.Walkthrough.AvatarModel = (int)Data.AvatarModels.MAN1;
+            vizcore3d.Walkthrough.AvatarModel = (int)Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.View.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
             // 충돌상자보기
-            vizcore3d.View.Walkthrough.ShowAvatarCollisionCylinder = false;
+            vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
 
 
@@ -267,28 +267,28 @@ namespace VIZCore3D.NET.Group
             // ================================================================
             #region 설정 - 프레임
             // 프레임 평면 설정
-            vizcore3d.View.Frame.XYPlane = true;
-            vizcore3d.View.Frame.YZPlane = true;
-            vizcore3d.View.Frame.ZXPlane = true;
-            vizcore3d.View.Frame.PlanLine = true;
-            vizcore3d.View.Frame.SectionLine = true;
-            vizcore3d.View.Frame.ElevationLine = true;
+            vizcore3d.Frame.XYPlane = true;
+            vizcore3d.Frame.YZPlane = true;
+            vizcore3d.Frame.ZXPlane = true;
+            vizcore3d.Frame.PlanLine = true;
+            vizcore3d.Frame.SectionLine = true;
+            vizcore3d.Frame.ElevationLine = true;
 
             // 좌표값 표기
-            vizcore3d.View.Frame.ShowNumber = true;
+            vizcore3d.Frame.ShowNumber = true;
 
             // 모델 앞에 표기
-            vizcore3d.View.Frame.BringToFront = false;
+            vizcore3d.Frame.BringToFront = false;
 
             // Frame(좌표계, SHIP GRID) 색상
-            vizcore3d.View.Frame.ForeColor = Color.Black;
+            vizcore3d.Frame.ForeColor = Color.Black;
 
             // 홀수번째 표시
-            vizcore3d.View.Frame.ShowOddNumber = true;
+            vizcore3d.Frame.ShowOddNumber = true;
             // 짝수번째 표시
-            vizcore3d.View.Frame.ShowEvenNumber = true;
+            vizcore3d.Frame.ShowEvenNumber = true;
             // 단면상자에 자동 맞춤
-            vizcore3d.View.Frame.AutoFitSectionBox = true;
+            vizcore3d.Frame.AutoFitSectionBox = true;
             #endregion
 
 
