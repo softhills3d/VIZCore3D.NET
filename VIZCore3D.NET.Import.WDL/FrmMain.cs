@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.ImportAttribute
+namespace VIZCore3D.NET.Import.WDL
 {
     public partial class FrmMain : Form
     {
@@ -20,7 +20,7 @@ namespace VIZCore3D.NET.ImportAttribute
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
 
-        public ShxAttributeHelper AttributeHelper { get; set; }
+        private VIZCore3D.NET.Importer.ShxWdl wdl;
 
         public FrmMain()
         {
@@ -32,13 +32,10 @@ namespace VIZCore3D.NET.ImportAttribute
             // Construction
             vizcore3d = new VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(vizcore3d);
+            splitContainer2.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-            AttributeHelper = new ShxAttributeHelper();
-            AttributeHelper.OutputLogEvent += AttributeHelper_OutputLogEvent;
         }
 
         // ================================================
@@ -303,7 +300,7 @@ namespace VIZCore3D.NET.ImportAttribute
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
-            vizcore3d.ToolbarNote.Visible = false;
+            vizcore3d.ToolbarNote.Visible = true;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
@@ -335,254 +332,116 @@ namespace VIZCore3D.NET.ImportAttribute
         {
             if (e.Node.Count == 0)
             {
-                lvAttribute.BeginUpdate();
-                lvAttribute.Items.Clear();
-                lvAttribute.EndUpdate();
+                
             }
             else
             {
-                Dictionary<string, string> attribute = vizcore3d.Object3D.UDA.FromIndex(e.Node[0].Index);
-
-                lvAttribute.BeginUpdate();
-                lvAttribute.Items.Clear();
-                foreach (KeyValuePair<string, string> item in attribute)
-                {
-                    ListViewItem lvi = new ListViewItem(new string[] { item.Key, item.Value });
-                    lvAttribute.Items.Add(lvi);
-                }
-                lvAttribute.EndUpdate();
+                
             }
         }
 
-        private void btnImportDump_Click(object sender, EventArgs e)
+        private void btnOpenModel_Click(object sender, EventArgs e)
         {
-            if(vizcore3d.Model.IsOpen() == false)
-            {
-                MessageBox.Show("모델 파일을 먼저 [열기] 하여 주시기 바랍니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "Dump 파일 선택";
-            dlg.Filter = "Attribute (*.att)|*.att|Text (*.txt)|*.txt";
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
-            this.Cursor = Cursors.WaitCursor;
-
-            AttributeHelper.ImportAttribute(new string[] { dlg.FileName });
-
-            if(AttributeHelper.AttributeList.Count == 0 || AttributeHelper.AttributeList[0].Count == 0)
-            {
-                MessageBox.Show("속성정보를 불러오지 못했습니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int nodeCount = 0;
-                int attCount = 0;
-
-                Dictionary<string, Data.Node> nodes = vizcore3d.Object3D.GetNodePathMap();
-                foreach (ShxAttributeNode item in AttributeHelper.AttributeList[0])
-                {
-                    if (nodes.ContainsKey(item.NodePath) == false) continue;
-
-                    Data.Node node = nodes[item.NodePath];
-                    nodeCount++;
-
-                    foreach (KeyValuePair<string, string> prop in item.Property)
-                    {
-                        if (String.IsNullOrEmpty(prop.Value) == true) continue;
-
-                        vizcore3d.Object3D.UDA.Add(node.Index, prop.Key, prop.Value, false);
-                        attCount++;
-                    }
-                }
-
-                MessageBox.Show(string.Format("RESULT - NODE : {0} / ATT. : {1}", nodeCount, attCount), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            this.Cursor = Cursors.Default;
+            vizcore3d.Model.OpenFileDialog();
         }
 
-        private void AttributeHelper_OutputLogEvent(object sender, OutputLogEventArgs e)
+        private void btnOpenWdl_Click(object sender, EventArgs e)
         {
+            wdl = VIZCore3D.NET.Importer.ShxWdl.OpenWdlFileDialog();
+
+            if (wdl == null) return;
+
+            MakeTreeNode();
         }
 
-        private void btnCustomXML_Click(object sender, EventArgs e)
+        private void MakeTreeNode()
         {
-            if (vizcore3d.Model.IsOpen() == false)
+            List<VIZCore3D.NET.Importer.ShxWdlTreeData> roots = wdl.GetRootTree();
+
+            wdlTree.BeginUpdate();
+            wdlTree.Nodes.Clear();
+
+            foreach (VIZCore3D.NET.Importer.ShxWdlTreeData item in roots)
             {
-                MessageBox.Show("모델 파일을 먼저 [열기] 하여 주시기 바랍니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                TreeNode node = wdlTree.Nodes.Add(item.FullName);
+                node.Tag = item;
+
+                if (item.Child.Count == 0) continue;
+                MakeChildNode(node, item);
             }
 
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = "XML 파일 선택";
-            dlg.Filter = "XML (*.xml)|*.xml";
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
-            this.Cursor = Cursors.WaitCursor;
-
-            ShxAttributeXmlHelper xmlHelper = new ShxAttributeXmlHelper();
-            xmlHelper.Import(dlg.FileName);
-
-            if (xmlHelper.AttributeList.Count == 0)
-            {
-                MessageBox.Show("속성정보를 불러오지 못했습니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                int nodeCount = 0;
-                int attCount = 0;
-
-                Dictionary<string, Data.Node> nodes = vizcore3d.Object3D.GetNodeNameMap();
-
-                foreach (ShxAttributeXmlNode item in xmlHelper.AttributeList)
-                {
-                    if (nodes.ContainsKey(item.Name) == false) continue;
-
-                    Data.Node node = nodes[item.Name];
-                    nodeCount++;
-
-                    foreach (KeyValuePair<string, string> prop in item.Properties)
-                    {
-                        if (String.IsNullOrEmpty(prop.Value) == true) continue;
-
-                        vizcore3d.Object3D.UDA.Add(node.Index, prop.Key, prop.Value, false);
-                        attCount++;
-                    }
-                }
-
-                MessageBox.Show(string.Format("RESULT - NODE : {0} / ATT. : {1}", nodeCount, attCount), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            this.Cursor = Cursors.Default;
+            wdlTree.EndUpdate();
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        private void MakeChildNode(TreeNode parentNode, VIZCore3D.NET.Importer.ShxWdlTreeData treeData)
         {
-            // 간략 형식 내보내기
-            ExportSimple();
-
-            // 세부 설정 내보내기
-            //ExportDetail();
-        }
-
-        private void ExportSimple()
-        {
-            vizcore3d.Model.ExportFileDialog(true);
-        }
-
-        private void ExportDetail()
-        {
-            if (vizcore3d.Model.IsOpen() == false) return;
-
-            // 내보내기
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Title = "모델 내보내기";
-            dlg.Filter = vizcore3d.Model.ExportFilter;
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
-            bool result = false;
-
-            if (dlg.FilterIndex == 1)
+            foreach (VIZCore3D.NET.Importer.ShxWdlTreeData item in treeData.Child)
             {
-                result = vizcore3d.Model.ExportVIZ(dlg.FileName);
-            }
-            else if (dlg.FilterIndex == 2)
-            {
-                result = vizcore3d.Model.ExportVIZXML(dlg.FileName);
-            }
-            else if (dlg.FilterIndex == 3)
-            {
-                result = vizcore3d.Model.ExportObj(dlg.FileName);
-            }
-            else if (dlg.FilterIndex == 4)
-            {
-                result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.ASCII);
-            }
-            else if (dlg.FilterIndex == 5)
-            {
-                result = vizcore3d.Model.ExportSTL(dlg.FileName, VIZCore3D.NET.Data.ExportStlFileType.BINARY);
-            }
+                TreeNode node = new TreeNode(item.FullName);
+                node.Tag = item;
+                parentNode.Nodes.Add(node);
 
-            if (result == false)
-            {
-                MessageBox.Show("EXPORT - FAIL", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", dlg.FileName));
+                if (item.Child.Count == 0) continue;
+                MakeChildNode(node, item);
             }
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void wdlTree_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            vizcore3d.Model.Close();
+            if (e.Node == null) return;
+            if (e.Node.Tag == null) return;
 
-            AttributeHelper.ClearAttribute();
+            VIZCore3D.NET.Importer.ShxWdlTreeData tree = (VIZCore3D.NET.Importer.ShxWdlTreeData)e.Node.Tag;
 
-            lvAttribute.BeginUpdate();
-            lvAttribute.Items.Clear();
-            lvAttribute.EndUpdate();
+            VIZCore3D.NET.Importer.ShxWdlMatchingTree parts = wdl.GetParts(tree);
+            if (parts == null) return;
+
+
+            lvParts.BeginUpdate();
+            lvParts.Items.Clear();
+
+            Dictionary<string, int> Count = new Dictionary<string, int>();
+            foreach (string item in parts.Parts)
+            {
+                if (Count.ContainsKey(item) == false)
+                    Count.Add(item, 1);
+                else
+                    Count[item] = Count[item] + 1;
+            }
+
+            foreach (KeyValuePair<string, int> item in Count)
+            {
+                VIZCore3D.NET.Importer.ShxWdlJLData jlData = wdl.GetJLData(item.Key);
+
+                if (jlData == null) continue;
+
+                ListViewItem lvi = new ListViewItem(
+                    new string[] 
+                        { 
+                            jlData.Part                         /* 소유 부재 */
+                            , jlData.ContactPart                /* 접촉 부재 */
+                            , Convert.ToInt32(Convert.ToSingle(jlData.ContactPartWeight)).ToString() /* 각장/두께 */
+                            , item.Value.ToString()             /* 수량 - 계산 */
+                            , jlData.Sign                       /* 개선 */
+                            , jlData.Code                       /* LEVEL CODE */
+                            , jlData.Stage                      /* STAGE */
+                            , jlData.PR                         /* PR */
+                            , jlData.Direction                  /* 방향 */
+                            , jlData.WeldingPosture.ToString() /* 용접자세 */
+                            , Convert.ToInt32(jlData.WeldLineLength).ToString() /* 길이(mm) */
+                            , jlData.ActCode                    /* ACT */
+                            , jlData.WeldingTypeDetail          /* 비고 */
+                        }
+                    );
+                lvParts.Items.Add(lvi);
+            }
+
+            lvParts.EndUpdate();
         }
 
-        private void btnImportMultiAttribute_Click(object sender, EventArgs e)
+        private void btnMakeModel_Click(object sender, EventArgs e)
         {
-            string input = String.Empty;
-            string output = String.Empty;
-            string attribute_path = String.Empty;
-
-            {
-                OpenFileDialog dlg = new OpenFileDialog();
-                dlg.Title = "모델 선택";
-                dlg.Filter = vizcore3d.Model.OpenFilter;
-                if (dlg.ShowDialog() != DialogResult.OK) return;
-
-                input = dlg.FileName;
-            }
-
-            {
-                FolderBrowserDialog dlg = new FolderBrowserDialog();
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    attribute_path = dlg.SelectedPath;
-                }
-            }
-            {
-                // 동일 폴더 이거나, 선택하지 않을 경우
-                //attribute_path = System.IO.Path.GetDirectoryName(input);
-            }
-
-            output = string.Format("{0}\\OUTPUT\\{1}.viz", System.IO.Path.GetDirectoryName(input), System.IO.Path.GetFileNameWithoutExtension(input));
-
-            // 필터 - 포함 필터 : 키를 추가 할 경우, 해당하는 키만 모델에 적용
-            // NULL 혹은 데이터가 없는 경우, 모든 키를 적용
-            List<string> includeKey = new List<string>();
-
-            // 필터 - 제외 필터 : 키를 추가 할 경우, 해당하는 키는 모델에 적용되지 않음
-            // NULL 혹은 데이터가 없는 경우, 모든 키가 모델에 적용됨
-            List<string> excludeKey = new List<string>();
-
-            excludeKey.Add("ITEM_TYPE_1");
-            excludeKey.Add("ITEM_TYPE_2");
-            excludeKey.Add("ITEM_TYPE_3");
-
-            excludeKey.Add("DESC");
-
-            // 필터 적용하지 않는 경우
-            bool result = vizcore3d.Model.ConvertToVIZWithAttribute(input, output, null, null, attribute_path, false);
-
-            // 필터를 적용하는 경우
-            //bool result = vizcore3d.Model.ConvertToVIZWithAttribute(input, output, includeKey, excludeKey, attribute_path, false);
-            if(result == false)
-            {
-                MessageBox.Show("변환이 실패 했습니다.");
-                return;
-            }
-
-            // 적용된 결과 조회
-            vizcore3d.Model.Open(output);
-            vizcore3d.View.ResetView();
+            vizcore3d.Primitive.OpenWeldLine(wdl.INTRO_BLOCK, wdl.JL_DATA.Values.ToList());
         }
     }
 }

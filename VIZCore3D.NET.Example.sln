@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Note", "VIZCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.SelectionBox", "VIZCore3D.NET.SelectionBox\VIZCore3D.NET.SelectionBox.csproj", "{DF428C22-208B-4462-AF5B-AFFD2BEC600D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Import.WDL", "VIZCore3D.NET.Import.WDL\VIZCore3D.NET.Import.WDL.csproj", "{684014B8-D0D3-4654-AC4B-C45EE41EE7BC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,10 @@ Global
 		{DF428C22-208B-4462-AF5B-AFFD2BEC600D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF428C22-208B-4462-AF5B-AFFD2BEC600D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF428C22-208B-4462-AF5B-AFFD2BEC600D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{684014B8-D0D3-4654-AC4B-C45EE41EE7BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{684014B8-D0D3-4654-AC4B-C45EE41EE7BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{684014B8-D0D3-4654-AC4B-C45EE41EE7BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{684014B8-D0D3-4654-AC4B-C45EE41EE7BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -34,12 +34,13 @@
             this.btnCustomXML = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnNew = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lvAttribute = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnNew = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnImportMultiAttribute = new System.Windows.Forms.ToolStripButton();
             this.toolBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -51,6 +52,7 @@
             this.toolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnImportDump,
             this.btnCustomXML,
+            this.btnImportMultiAttribute,
             this.toolStripSeparator1,
             this.btnExport,
             this.toolStripSeparator2,
@@ -93,6 +95,21 @@
             this.btnExport.Text = "Export";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // btnNew
+            // 
+            this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
+            this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(94, 22);
+            this.btnNew.Text = "Close Model";
+            this.btnNew.ToolTipText = "Close Model";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -133,20 +150,14 @@
             this.columnHeader2.Text = "Value";
             this.columnHeader2.Width = 150;
             // 
-            // btnNew
+            // btnImportMultiAttribute
             // 
-            this.btnNew.Image = ((System.Drawing.Image)(resources.GetObject("btnNew.Image")));
-            this.btnNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(94, 22);
-            this.btnNew.Text = "Close Model";
-            this.btnNew.ToolTipText = "Close Model";
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.btnImportMultiAttribute.Image = ((System.Drawing.Image)(resources.GetObject("btnImportMultiAttribute.Image")));
+            this.btnImportMultiAttribute.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImportMultiAttribute.Name = "btnImportMultiAttribute";
+            this.btnImportMultiAttribute.Size = new System.Drawing.Size(146, 22);
+            this.btnImportMultiAttribute.Text = "Import Multi Attribute";
+            this.btnImportMultiAttribute.Click += new System.EventHandler(this.btnImportMultiAttribute_Click);
             // 
             // FrmMain
             // 
@@ -182,6 +193,7 @@
         private System.Windows.Forms.ToolStripButton btnExport;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnNew;
+        private System.Windows.Forms.ToolStripButton btnImportMultiAttribute;
     }
 }
 
