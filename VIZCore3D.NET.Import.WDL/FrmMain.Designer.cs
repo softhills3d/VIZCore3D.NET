@@ -32,10 +32,11 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.wdlTree = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnMakeModel = new System.Windows.Forms.Button();
             this.btnOpenWdl = new System.Windows.Forms.Button();
             this.btnOpenModel = new System.Windows.Forms.Button();
-            this.wdlTree = new System.Windows.Forms.TreeView();
             this.lvParts = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,7 +51,8 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnMakeModel = new System.Windows.Forms.Button();
+            this.ckXray = new System.Windows.Forms.CheckBox();
+            this.ckHighlight = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -76,6 +78,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.ckHighlight);
+            this.splitContainer1.Panel2.Controls.Add(this.ckXray);
             this.splitContainer1.Panel2.Controls.Add(this.lvParts);
             this.splitContainer1.Size = new System.Drawing.Size(1198, 757);
             this.splitContainer1.SplitterDistance = 530;
@@ -108,6 +112,15 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tree";
             // 
+            // wdlTree
+            // 
+            this.wdlTree.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wdlTree.Location = new System.Drawing.Point(3, 17);
+            this.wdlTree.Name = "wdlTree";
+            this.wdlTree.Size = new System.Drawing.Size(365, 407);
+            this.wdlTree.TabIndex = 0;
+            this.wdlTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.wdlTree_AfterSelect);
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -121,6 +134,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Files";
+            // 
+            // btnMakeModel
+            // 
+            this.btnMakeModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMakeModel.Location = new System.Drawing.Point(258, 30);
+            this.btnMakeModel.Name = "btnMakeModel";
+            this.btnMakeModel.Size = new System.Drawing.Size(98, 23);
+            this.btnMakeModel.TabIndex = 2;
+            this.btnMakeModel.Text = "Make Model";
+            this.btnMakeModel.UseVisualStyleBackColor = true;
+            this.btnMakeModel.Click += new System.EventHandler(this.btnMakeModel_Click);
             // 
             // btnOpenWdl
             // 
@@ -142,15 +166,6 @@
             this.btnOpenModel.UseVisualStyleBackColor = true;
             this.btnOpenModel.Click += new System.EventHandler(this.btnOpenModel_Click);
             // 
-            // wdlTree
-            // 
-            this.wdlTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wdlTree.Location = new System.Drawing.Point(3, 17);
-            this.wdlTree.Name = "wdlTree";
-            this.wdlTree.Size = new System.Drawing.Size(365, 407);
-            this.wdlTree.TabIndex = 0;
-            this.wdlTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.wdlTree_AfterSelect);
-            // 
             // lvParts
             // 
             this.lvParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -167,16 +182,16 @@
             this.columnHeader12,
             this.columnHeader16,
             this.columnHeader17});
-            this.lvParts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvParts.FullRowSelect = true;
             this.lvParts.GridLines = true;
             this.lvParts.HideSelection = false;
-            this.lvParts.Location = new System.Drawing.Point(0, 0);
+            this.lvParts.Location = new System.Drawing.Point(12, 38);
             this.lvParts.Name = "lvParts";
-            this.lvParts.Size = new System.Drawing.Size(1198, 223);
+            this.lvParts.Size = new System.Drawing.Size(1174, 163);
             this.lvParts.TabIndex = 0;
             this.lvParts.UseCompatibleStateImageBehavior = false;
             this.lvParts.View = System.Windows.Forms.View.Details;
+            this.lvParts.DoubleClick += new System.EventHandler(this.lvParts_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -247,16 +262,27 @@
             this.columnHeader17.Text = "비고";
             this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // btnMakeModel
+            // ckXray
             // 
-            this.btnMakeModel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMakeModel.Location = new System.Drawing.Point(258, 30);
-            this.btnMakeModel.Name = "btnMakeModel";
-            this.btnMakeModel.Size = new System.Drawing.Size(98, 23);
-            this.btnMakeModel.TabIndex = 2;
-            this.btnMakeModel.Text = "Make Model";
-            this.btnMakeModel.UseVisualStyleBackColor = true;
-            this.btnMakeModel.Click += new System.EventHandler(this.btnMakeModel_Click);
+            this.ckXray.AutoSize = true;
+            this.ckXray.Location = new System.Drawing.Point(41, 13);
+            this.ckXray.Name = "ckXray";
+            this.ckXray.Size = new System.Drawing.Size(50, 16);
+            this.ckXray.TabIndex = 1;
+            this.ckXray.Text = "Xray";
+            this.ckXray.UseVisualStyleBackColor = true;
+            this.ckXray.CheckedChanged += new System.EventHandler(this.ckXray_CheckedChanged);
+            // 
+            // ckHighlight
+            // 
+            this.ckHighlight.AutoSize = true;
+            this.ckHighlight.Location = new System.Drawing.Point(138, 16);
+            this.ckHighlight.Name = "ckHighlight";
+            this.ckHighlight.Size = new System.Drawing.Size(72, 16);
+            this.ckHighlight.TabIndex = 2;
+            this.ckHighlight.Text = "Highlight";
+            this.ckHighlight.UseVisualStyleBackColor = true;
+            this.ckHighlight.CheckedChanged += new System.EventHandler(this.ckHighlight_CheckedChanged);
             // 
             // FrmMain
             // 
@@ -270,6 +296,7 @@
             this.Text = "VIZCore3D.NET.Import.WDL";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -305,6 +332,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.Button btnMakeModel;
+        private System.Windows.Forms.CheckBox ckXray;
+        private System.Windows.Forms.CheckBox ckHighlight;
     }
 }
 

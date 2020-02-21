@@ -433,6 +433,9 @@ namespace VIZCore3D.NET.Import.WDL
                             , jlData.WeldingTypeDetail          /* 비고 */
                         }
                     );
+
+                lvi.Tag = jlData;
+
                 lvParts.Items.Add(lvi);
             }
 
@@ -441,7 +444,91 @@ namespace VIZCore3D.NET.Import.WDL
 
         private void btnMakeModel_Click(object sender, EventArgs e)
         {
-            vizcore3d.Primitive.OpenWeldLine(wdl.INTRO_BLOCK, wdl.JL_DATA.Values.ToList());
+            int colorIndex = 4;
+
+            // Automation
+            vizcore3d.Primitive.OpenWeldLine(string.Format("{0} WELD", wdl.INTRO_BLOCK), colorIndex, wdl.JL_DATA.Values.ToList());
+
+            // API
+            /*
+            VIZCore3D.NET.Manager.PrimitiveObject root = vizcore3d.Primitive.AddNode("WELD");
+
+            foreach (Importer.ShxWdlJLData item in wdl.JL_DATA.Values.ToList())
+            {
+                VIZCore3D.NET.Manager.PrimitiveObject node = root.AddNode(item.Part);
+
+                foreach (Importer.ShxWdlJLDataPoint point in item.WeldLine)
+                {
+                    VIZCore3D.NET.Manager.PrimitiveCylinder cylinder = new VIZCore3D.NET.Manager.PrimitiveCylinder();
+                    cylinder.ColorIndex = colorIndex;
+                    cylinder.Set2Point(point.StartPoint, point.EndPoint, 5);
+                    node.AddPrimitive(cylinder);
+                }
+            }
+
+            string output = string.Format("{0}{1} WELD.rev", System.IO.Path.GetTempPath(), wdl.INTRO_BLOCK);
+            bool result = vizcore3d.Primitive.Export(output);
+            if (result == false) return;
+
+            vizcore3d.Model.Add(new string[] { output });
+            */
+        }
+
+        private void ckXray_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.View.XRay.Enable = ckXray.Checked;
+        }
+
+        private void ckHighlight_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckHighlight.Checked == false)
+            {
+                vizcore3d.View.XRay.Clear();
+            }
+            else
+            {
+                List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(
+                    new List<string>() { "WELD" }
+                    , false
+                    , true
+                    , false
+                    , false
+                    , true
+                    , false
+                    );
+
+                if (items.Count == 0) return;
+
+                vizcore3d.View.XRay.Select(items, true, false);
+            }
+        }
+
+        private void lvParts_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvParts.SelectedItems.Count == 0) return;
+            ListViewItem lvi = lvParts.SelectedItems[0];
+            if (lvi == null) return;
+            if (lvi.Tag == null) return;
+
+            VIZCore3D.NET.Importer.ShxWdlJLData jl = (VIZCore3D.NET.Importer.ShxWdlJLData)lvi.Tag;
+            string name = jl.Part;
+
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(
+                new List<string>() { name }
+                , false
+                , false
+                , false
+                , false
+                , true
+                , false
+                );
+
+            if (items.Count == 0) return;
+
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3d.Object3D.Select(items, true, true);
+
+            vizcore3d.View.FlyToObject3d(1.0f);
         }
     }
 }
