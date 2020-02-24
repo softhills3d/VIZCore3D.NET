@@ -299,7 +299,7 @@ namespace VIZCore3D.NET.Note
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
-            vizcore3d.ToolbarNote.Visible = false;
+            vizcore3d.ToolbarNote.Visible = true;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
@@ -329,7 +329,117 @@ namespace VIZCore3D.NET.Note
 
         private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
         {
+            if (e.Node.Count == 0) return;
+            if (ckEnable.Checked == false) return;
+
+            Data.Node node = vizcore3d.Object3D.FromIndex(e.Node[0].Index, true);
             
+            // 현재 노트 스타일 가져오기 및 수정
+            Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
+            {
+                // 화살표 색상
+                style.ArrowColor = Color.Black;
+                // 화살표 두께
+                style.ArrowWidth = 10;
+
+                // 배경 투명하게 처리 여부
+                style.BackgroudTransparent = ckTransparent.Checked;
+                // 배경 색상 - 배경을 투명하게 처리할 경우, 적용되지 않음
+                style.BackgroundColor = Color.White;
+
+                // 노트 글자 색상
+                style.FontColor = Color.Black;
+                // 노트 글자 크기
+                style.FontSize = Manager.NoteManager.FontSizeKind.SIZE18;
+                // 노트 글자 굵게 표시 여부
+                style.FontBold = false;
+
+                // 라인 색상
+                style.LineColor = Color.Red;
+                // 라인 두께
+                style.LineWidth = 3;
+
+                // 텍스트 상자 표시 여부
+                style.UseTextBox = true;
+
+                // 라인과 텍스트 박스의 연결 위치
+                style.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+
+                // 심볼 배경색
+                style.SymbolBackgroundColor = Color.Yellow;
+                // 심볼 글자 색상
+                style.SymbolFontColor = Color.Black;
+                // 심볼 글자 크기
+                style.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE16;
+                // 심볼 글자 굵게 표시 여부
+                style.SymbolFontBold = true;
+                // 심볼 위치
+                style.SymbolPosition = Manager.NoteManager.SymbolPositionKind.ARROW;
+                // 심볼 크기
+                style.SymbolSize = 10;
+
+                // 심볼 사용 유무
+                style.UseSymbol = ckUseSymbol.Checked;
+                // 심볼 텍스트
+                style.SymbolText = Convert.ToString(vizcore3d.Review.Note.GetID().Count + 1);
+            }
+
+            // 색상 텍스트 생성
+            VIZCore3D.NET.Data.MultiColorText text = new Data.MultiColorText();
+            text.Add("MODEL : ", Color.Black);
+            text.AddLine(string.Format("{0}", vizcore3d.Object3D.FromIndex(0).NodeName), Color.Red);
+            text.Add("NAME : ", Color.Black);
+            text.AddLine(node.NodeName, Color.Red);
+
+            //{
+            //    text.NewLine();
+
+            //    // Geometry 속성 조회
+            //    Data.Object3DProperty prop = vizcore3d.Object3D.GeometryProperty.FromIndex(e.Node[0].Index, false);
+
+            //    text.Add("Center : ", Color.Black);
+            //    text.AddLine(string.Format("{0}", prop.CenterPoint.ToString()), Color.Purple);
+
+            //    text.Add("Min. : ", Color.Black);
+            //    text.AddLine(string.Format("{0}", prop.MinPoint.ToString()), Color.Purple);
+
+            //    text.Add("Max. : ", Color.Black);
+            //    text.AddLine(string.Format("{0}", prop.MaxPoint.ToString()), Color.Purple);
+            //}
+
+            //{
+            //    text.NewLine();
+
+            //    // UDA(User Define Attribute) 조회
+            //    Dictionary<string, string> uda = vizcore3d.Object3D.UDA.FromIndex(node.Index);
+
+            //    foreach (KeyValuePair<string, string> item in uda)
+            //    {
+            //        text.Add(string.Format("{0} : ", item.Key), Color.Red);
+            //        text.AddLine(string.Format("{0}", item.Value), Color.DarkGray);
+            //    }
+            //}
+
+            // 부재의 표면점 조회
+            Data.Vertex3D surfacePt = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { node.Index });
+
+            // 화면 갱신 차단
+            vizcore3d.BeginUpdate();
+
+            // 노트 생성
+            vizcore3d.Review.Note.AddNoteSurface(text
+                , new Data.Vertex3D(surfacePt.X + 2000.0f, surfacePt.Y, surfacePt.Z + 2000.0f)
+                , surfacePt
+                , style
+                );
+
+            // 화면 갱신 차단 해제
+            vizcore3d.EndUpdate();
+        }
+
+        private void ckEnableDepthTest_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.Review.Note.EnableDepthTest(ckEnableDepthTest.Checked);
         }
     }
 }
