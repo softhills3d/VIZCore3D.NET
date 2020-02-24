@@ -332,16 +332,49 @@ namespace VIZCore3D.NET.Import.WDL
         {
             if (e.Node.Count == 0)
             {
-                
             }
             else
             {
-                
+                VIZCore3D.NET.Data.Node item = vizcore3d.Object3D.FromIndex(e.Node[0].Index, true);
+                // WELDLINE 모델은 NodePath에 "WELD"가 포함되어 있음.
+                if (item.NodePath.Contains("WELD") == false) return;
+
+                List<VIZCore3D.NET.Importer.ShxWdlTreeData> items = wdl.GetTree(item.NodeName);
+
+                if (items.Count == 0) return;
+
+                wdlTree.AfterSelect -= new System.Windows.Forms.TreeViewEventHandler(this.wdlTree_AfterSelect);
+                TreeNode itemNode = null;
+                foreach (TreeNode node in wdlTree.Nodes)
+                {
+                    itemNode = FromID(items[0], node);
+                    if (itemNode != null) break;
+                }
+                if (itemNode != null)
+                    wdlTree.SelectedNode = itemNode;
+                wdlTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.wdlTree_AfterSelect);
             }
         }
 
+        public TreeNode FromID(VIZCore3D.NET.Importer.ShxWdlTreeData item, TreeNode rootNode)
+        {
+            foreach (TreeNode node in rootNode.Nodes)
+            {
+                if (node.Tag.Equals(item)) return node;
+                TreeNode next = FromID(item, node);
+                if (next != null) return next;
+            }
+            return null;
+        }
+        
+
         private void btnOpenModel_Click(object sender, EventArgs e)
         {
+            if(vizcore3d.Model.IsOpen() == true)
+            {
+                vizcore3d.Model.Close();
+            }
+
             vizcore3d.Model.OpenFileDialog();
         }
 
@@ -396,17 +429,18 @@ namespace VIZCore3D.NET.Import.WDL
             VIZCore3D.NET.Importer.ShxWdlMatchingTree parts = wdl.GetParts(tree);
             if (parts == null) return;
 
+            List<string> filter = new List<string>();
 
             lvParts.BeginUpdate();
             lvParts.Items.Clear();
 
             Dictionary<string, int> Count = new Dictionary<string, int>();
-            foreach (string item in parts.Parts)
+            foreach (KeyValuePair<string, string> item in parts.Parts)
             {
-                if (Count.ContainsKey(item) == false)
-                    Count.Add(item, 1);
+                if (Count.ContainsKey(item.Key) == false)
+                    Count.Add(item.Key, 1);
                 else
-                    Count[item] = Count[item] + 1;
+                    Count[item.Key] = Count[item.Key] + 1;
             }
 
             foreach (KeyValuePair<string, int> item in Count)
@@ -437,17 +471,51 @@ namespace VIZCore3D.NET.Import.WDL
                 lvi.Tag = jlData;
 
                 lvParts.Items.Add(lvi);
+
+                filter.Add(jlData.Part);
             }
 
             lvParts.EndUpdate();
+
+            if (ckXray.Checked == true && filter.Count != 0)
+            {
+                List<VIZCore3D.NET.Data.Node> find = vizcore3d.Object3D.Find.QuickSearch(
+                    filter
+                    , false
+                    , ckUnit.Checked == true ? false : true
+                    , false
+                    , false
+                    , true
+                    , true
+                    );
+
+                List<VIZCore3D.NET.Data.Node> result = new List<Data.Node>();
+                foreach (VIZCore3D.NET.Data.Node item in find)
+                {
+                    if (item.NodePath.Contains("WELD") == false) continue;
+                    result.Add(item);
+                }
+
+                if (result.Count == 0) return;
+
+                vizcore3d.View.XRay.Clear();
+                vizcore3d.View.XRay.Select(result, true, true);
+                vizcore3d.View.FlyToObject3d(result, 1.0f);
+            }
         }
 
         private void btnMakeModel_Click(object sender, EventArgs e)
         {
-            int colorIndex = 4;
+            int colorIndex = 8;
+            vizcore3d.Primitive.Clear();
 
             // Automation
-            vizcore3d.Primitive.OpenWeldLine(string.Format("{0} WELD", wdl.INTRO_BLOCK), colorIndex, wdl.JL_DATA.Values.ToList());
+            vizcore3d.Primitive.OpenWeldLine(
+                string.Format("{0} WELD", wdl.INTRO_BLOCK)
+                , colorIndex
+                , ckUnit.Checked == true ? Manager.PrimitiveManager.PrimitiveGenerationUnit.BUNDLE : Manager.PrimitiveManager.PrimitiveGenerationUnit.SEGMENTATION
+                , wdl.JL_DATA.Values.ToList()
+                );
 
             // API
             /*
@@ -456,13 +524,32 @@ namespace VIZCore3D.NET.Import.WDL
             foreach (Importer.ShxWdlJLData item in wdl.JL_DATA.Values.ToList())
             {
                 VIZCore3D.NET.Manager.PrimitiveObject node = root.AddNode(item.Part);
+                node.ColorIndex = colorIndex;
 
-                foreach (Importer.ShxWdlJLDataPoint point in item.WeldLine)
+                if (ckUnit.Checked == true)
                 {
-                    VIZCore3D.NET.Manager.PrimitiveCylinder cylinder = new VIZCore3D.NET.Manager.PrimitiveCylinder();
-                    cylinder.ColorIndex = colorIndex;
-                    cylinder.Set2Point(point.StartPoint, point.EndPoint, 5);
-                    node.AddPrimitive(cylinder);
+                    foreach (Importer.ShxWdlJLDataPoint point in item.WeldLine)
+                    {
+                        VIZCore3D.NET.Manager.PrimitiveCylinder cylinder = new VIZCore3D.NET.Manager.PrimitiveCylinder();
+                        cylinder.Set2Point(point.StartPoint, point.EndPoint, 5);
+                        node.AddPrimitive(cylinder);
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < item.WeldLine.Count; i++)
+                    {
+                        string name = string.Format("WELDLINE {0} of {1}", i + 1, item.Part);
+                        VIZCore3D.NET.Manager.PrimitiveObject part = node.AddNode(name);
+                        part.ColorIndex = colorIndex;
+
+                        Importer.ShxWdlJLDataPoint point = item.WeldLine[i];
+
+                        VIZCore3D.NET.Manager.PrimitiveCylinder cylinder = new VIZCore3D.NET.Manager.PrimitiveCylinder();
+                        cylinder.ColorIndex = colorIndex;
+                        cylinder.Set2Point(point.StartPoint, point.EndPoint, 5);
+                        part.AddPrimitive(cylinder);
+                    }
                 }
             }
 
