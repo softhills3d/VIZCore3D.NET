@@ -19,6 +19,9 @@ namespace VIZCore3D.NET.Import.WDL
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        /// <summary>
+        /// WDL Importer
+        /// </summary>
 
         private VIZCore3D.NET.Importer.ShxWdl wdl;
 
