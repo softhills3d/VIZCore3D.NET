@@ -29,7 +29,7 @@ namespace VIZCore3D.NET.SelectionBox
             // Construction
             vizcore3d = new VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            splitContainer2.Panel1.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;            
@@ -540,6 +540,8 @@ namespace VIZCore3D.NET.SelectionBox
             DisplayMessage(id);
 
             vizcore3d.EndUpdate();
+
+            ShowObject3DInSelectionBox(id);
         }
 
         private void DisplayMessage(int id)
@@ -577,6 +579,14 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.SelectionBox.Select(new List<int>() { id }, true);
             vizcore3d.SelectionBox.Focus(id);
             vizcore3d.EndUpdate();
+
+            ShowObject3DInSelectionBox(id);
+        }
+
+        private void ShowObject3DInSelectionBox(int id)
+        {
+            List<VIZCore3D.NET.Data.Node> object3d = vizcore3d.SelectionBox.GetObject3D(id, Data.BoundBoxSearchOption.FullyContained);
+            dgView.DataSource = object3d;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
