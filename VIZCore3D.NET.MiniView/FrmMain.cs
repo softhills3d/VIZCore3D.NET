@@ -335,10 +335,13 @@ namespace VIZCore3D.NET.MiniView
 
         private void btnShow_Click(object sender, EventArgs e)
         {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
             if(rbSelected.Checked == true)
             {
                 List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
-                vizcore3d.ShowMiniViewDialog(items);
+                if (items.Count == 0) return;
+                vizcore3d.View.MiniView.Show(items, ckTopMost.Checked);
             }
             else if(rbIndex.Checked == true)
             {
@@ -346,13 +349,32 @@ namespace VIZCore3D.NET.MiniView
                 VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(Convert.ToInt32(txtIndex.Text));
                 if (node == null) return;
 
-                vizcore3d.ShowMiniViewDialog(new List<Data.Node>() { node });
+                vizcore3d.View.MiniView.Show(new List<Data.Node>() { node }, ckTopMost.Checked);
             }
         }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
-            vizcore3d.HideMiniViewDialog();
+            vizcore3d.View.MiniView.Hide();
+        }
+
+        private void btnUpdateModel_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            if (items.Count == 0) return;
+
+            vizcore3d.View.MiniView.SetObject3D(items);
+        }
+
+        private void ckTopMost_CheckedChanged(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            if (items.Count == 0) return;
+
+            vizcore3d.View.MiniView.TopMost = ckTopMost.Checked;
         }
     }
 }
