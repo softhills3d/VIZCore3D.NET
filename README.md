@@ -14,9 +14,13 @@
 | VIZCore3D.NET.ExportNode | 모델 내보내기 | 특정 노드 혹은 전체 노드 단위로 내보내기  |
 | VIZCore3D.NET.GeometryProperty | Geometry 속성 조회 예제 | 최소점, 최대점, 중심점, 개체크기, 부피, 중량 등 정보 조회  |
 | VIZCore3D.NET.Group | 개체 그룹 관리 | 선택, 검색, 속성 등을 이용하여 개체 그룹을 생성하고, 조작 및   |
+| VIZCore3D.NET.Import.WDL | WELD 정보 불러오기 | WELD LINE 정보 조회 및 가시화 |
 | VIZCore3D.NET.ImportAttribute | Attribute 파일 분석 및 Import | 속성 파일을 분석하여, 모델에 API를 통해 속성을 추가  |
 | VIZCore3D.NET.LockedHidden | 개체숨김 기능 예제 | 조회중인 모델에서 항상 숨김상태를 유지해야 하는 모델을 검색하고, 숨김상태를 유지 |
+| VIZCore3D.NET.MiniView | 미니뷰 예제 | 선택 혹은 지정된 개체를 별도의 미니뷰에서 조회 |
 | VIZCore3D.NET.ModelComparison | 모델 비교 기능 예제 | 2개의 모델파일을 비교(구조, 위치, 형상)하여 차이점을 조회 |
+| VIZCore3D.NET.Note | 노트 생성 및 활용 | 2D/3D/표면노트 생성 및 활용 예제 |
+| VIZCore3D.NET.Projection2D | 3D 모델의 외곽형상 추출 | 조회중인 모델의 외곽라인 정보 및 PathGeometry를 활용한 가시화 |
 | VIZCore3D.NET.SelectionBox | 선택상자 관리 | 영역(구획)을 구분하고, Label, Size, 영역 내 모델 검색  |
 | VIZCore3D.NET.ShapeDrawing | 3D 화면상에 Shape 그리기 | Line, Cube, Cylinder, Vertex 유형을 화면에 추가 및 관리  |
 | VIZCore3D.NET.SpaceSearch | 모델 기반 공간 검색 | 모델 파일을 활용하여 특정 영역의 모델을 파일단위 혹은 노드 단위로 검색 및 조회  |
