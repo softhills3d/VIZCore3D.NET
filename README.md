@@ -94,6 +94,9 @@
 ##### 선택상자 / 구획상자
 ![선택상자](./Gallery/VIZCore3D.NET.SelectionBox.png)
 
+##### WDL
+![용접선](./Gallery/VIZCore3D.NET.Import.WDL.png)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
