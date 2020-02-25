@@ -97,6 +97,9 @@
 ##### WDL
 ![용접선](./Gallery/VIZCore3D.NET.Import.WDL.png)
 
+##### Mini View
+![미니뷰](./Gallery/VIZCore3D.NET.MiniView.png)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
