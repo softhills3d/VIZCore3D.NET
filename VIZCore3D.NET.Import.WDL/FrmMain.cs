@@ -516,6 +516,7 @@ namespace VIZCore3D.NET.Import.WDL
             vizcore3d.Primitive.OpenWeldLine(
                 string.Format("{0} WELD", wdl.INTRO_BLOCK)
                 , colorIndex
+                , 5
                 , ckUnit.Checked == true ? Manager.PrimitiveManager.PrimitiveGenerationUnit.BUNDLE : Manager.PrimitiveManager.PrimitiveGenerationUnit.SEGMENTATION
                 , wdl.JL_DATA.Values.ToList()
                 );
