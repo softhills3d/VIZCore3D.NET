@@ -46,6 +46,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Import.WDL", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MiniView", "VIZCore3D.NET.MiniView\VIZCore3D.NET.MiniView.csproj", "{4293F576-7E7F-4934-A2BE-3EADF80D3867}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ClashTest", "VIZCore3D.NET.ClashTest\VIZCore3D.NET.ClashTest.csproj", "{EECEF237-9091-44B1-B12A-C7A9C6AE8AE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -128,6 +130,10 @@ Global
 		{4293F576-7E7F-4934-A2BE-3EADF80D3867}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4293F576-7E7F-4934-A2BE-3EADF80D3867}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4293F576-7E7F-4934-A2BE-3EADF80D3867}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EECEF237-9091-44B1-B12A-C7A9C6AE8AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EECEF237-9091-44B1-B12A-C7A9C6AE8AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EECEF237-9091-44B1-B12A-C7A9C6AE8AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EECEF237-9091-44B1-B12A-C7A9C6AE8AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
