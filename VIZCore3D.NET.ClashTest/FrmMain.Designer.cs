@@ -31,31 +31,32 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnDeleteResult = new System.Windows.Forms.Button();
-            this.btnPerformTest = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnAddGroupB = new System.Windows.Forms.Button();
+            this.btnAddGroupA = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbTestKind = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ckVisibleOnly = new System.Windows.Forms.CheckBox();
-            this.ckUseRangeValue = new System.Windows.Forms.CheckBox();
-            this.ckUsePenetrationTolerance = new System.Windows.Forms.CheckBox();
-            this.txtRangeValue = new System.Windows.Forms.TextBox();
-            this.txtPenetrationTolerance = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cbBottomLevel = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPenetrationTolerance = new System.Windows.Forms.TextBox();
+            this.txtRangeValue = new System.Windows.Forms.TextBox();
+            this.ckUsePenetrationTolerance = new System.Windows.Forms.CheckBox();
+            this.ckUseRangeValue = new System.Windows.Forms.CheckBox();
+            this.ckVisibleOnly = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbTestKind = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnPerformTest = new System.Windows.Forms.Button();
+            this.btnDeleteResult = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lvResult = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnAddGroupA = new System.Windows.Forms.Button();
-            this.btnAddGroupB = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -73,7 +74,20 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbAxis = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtStartPos = new System.Windows.Forms.TextBox();
+            this.txtInterval = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnAddPath = new System.Windows.Forms.Button();
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ckResultAssembly = new System.Windows.Forms.CheckBox();
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -81,10 +95,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -115,6 +131,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox6);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
@@ -123,61 +140,58 @@
             this.splitContainer2.SplitterDistance = 391;
             this.splitContainer2.TabIndex = 0;
             // 
-            // groupBox1
+            // groupBox5
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnClear);
-            this.groupBox1.Controls.Add(this.btnPerformTest);
-            this.groupBox1.Controls.Add(this.btnDeleteResult);
-            this.groupBox1.Controls.Add(this.btnDelete);
-            this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 100);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Clash";
+            this.groupBox5.Controls.Add(this.btnAddPath);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.txtInterval);
+            this.groupBox5.Controls.Add(this.txtStartPos);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.cbAxis);
+            this.groupBox5.Controls.Add(this.label3);
+            this.groupBox5.Location = new System.Drawing.Point(12, 397);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(367, 100);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Path";
             // 
-            // btnAdd
+            // groupBox4
             // 
-            this.btnAdd.Location = new System.Drawing.Point(18, 31);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(89, 23);
-            this.btnAdd.TabIndex = 0;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnAddGroupB);
+            this.groupBox4.Controls.Add(this.btnAddGroupA);
+            this.groupBox4.Location = new System.Drawing.Point(12, 313);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(367, 78);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Group";
             // 
-            // btnDelete
+            // btnAddGroupB
             // 
-            this.btnDelete.Location = new System.Drawing.Point(113, 31);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 23);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.btnAddGroupB.Location = new System.Drawing.Point(159, 36);
+            this.btnAddGroupB.Name = "btnAddGroupB";
+            this.btnAddGroupB.Size = new System.Drawing.Size(117, 23);
+            this.btnAddGroupB.TabIndex = 1;
+            this.btnAddGroupB.Text = "Add Group B";
+            this.btnAddGroupB.UseVisualStyleBackColor = true;
+            this.btnAddGroupB.Click += new System.EventHandler(this.btnAddGroupB_Click);
             // 
-            // btnDeleteResult
+            // btnAddGroupA
             // 
-            this.btnDeleteResult.Location = new System.Drawing.Point(18, 60);
-            this.btnDeleteResult.Name = "btnDeleteResult";
-            this.btnDeleteResult.Size = new System.Drawing.Size(89, 23);
-            this.btnDeleteResult.TabIndex = 2;
-            this.btnDeleteResult.Text = "DEL. Result";
-            this.btnDeleteResult.UseVisualStyleBackColor = true;
-            this.btnDeleteResult.Click += new System.EventHandler(this.btnDeleteResult_Click);
-            // 
-            // btnPerformTest
-            // 
-            this.btnPerformTest.Location = new System.Drawing.Point(113, 60);
-            this.btnPerformTest.Name = "btnPerformTest";
-            this.btnPerformTest.Size = new System.Drawing.Size(89, 23);
-            this.btnPerformTest.TabIndex = 3;
-            this.btnPerformTest.Text = "Start";
-            this.btnPerformTest.UseVisualStyleBackColor = true;
-            this.btnPerformTest.Click += new System.EventHandler(this.btnPerformTest_Click);
+            this.btnAddGroupA.Location = new System.Drawing.Point(18, 36);
+            this.btnAddGroupA.Name = "btnAddGroupA";
+            this.btnAddGroupA.Size = new System.Drawing.Size(117, 23);
+            this.btnAddGroupA.TabIndex = 0;
+            this.btnAddGroupA.Text = "Add Group A";
+            this.btnAddGroupA.UseVisualStyleBackColor = true;
+            this.btnAddGroupA.Click += new System.EventHandler(this.btnAddGroupA_Click);
             // 
             // groupBox2
             // 
@@ -199,86 +213,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
             // 
-            // cbTestKind
-            // 
-            this.cbTestKind.FormattingEnabled = true;
-            this.cbTestKind.Items.AddRange(new object[] {
-            "모델 검사",
-            "장비 검사",
-            "그룹 검사",
-            "이동 검사"});
-            this.cbTestKind.Location = new System.Drawing.Point(75, 35);
-            this.cbTestKind.Name = "cbTestKind";
-            this.cbTestKind.Size = new System.Drawing.Size(95, 20);
-            this.cbTestKind.TabIndex = 0;
-            this.cbTestKind.Text = "그룹 검사";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "검사유형";
-            // 
-            // ckVisibleOnly
-            // 
-            this.ckVisibleOnly.AutoSize = true;
-            this.ckVisibleOnly.Location = new System.Drawing.Point(222, 39);
-            this.ckVisibleOnly.Name = "ckVisibleOnly";
-            this.ckVisibleOnly.Size = new System.Drawing.Size(92, 16);
-            this.ckVisibleOnly.TabIndex = 2;
-            this.ckVisibleOnly.Text = "Visible Only";
-            this.ckVisibleOnly.UseVisualStyleBackColor = true;
-            // 
-            // ckUseRangeValue
-            // 
-            this.ckUseRangeValue.AutoSize = true;
-            this.ckUseRangeValue.Location = new System.Drawing.Point(18, 81);
-            this.ckUseRangeValue.Name = "ckUseRangeValue";
-            this.ckUseRangeValue.Size = new System.Drawing.Size(96, 16);
-            this.ckUseRangeValue.TabIndex = 3;
-            this.ckUseRangeValue.Text = "근접허용범위";
-            this.ckUseRangeValue.UseVisualStyleBackColor = true;
-            // 
-            // ckUsePenetrationTolerance
-            // 
-            this.ckUsePenetrationTolerance.AutoSize = true;
-            this.ckUsePenetrationTolerance.Checked = true;
-            this.ckUsePenetrationTolerance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckUsePenetrationTolerance.Location = new System.Drawing.Point(18, 113);
-            this.ckUsePenetrationTolerance.Name = "ckUsePenetrationTolerance";
-            this.ckUsePenetrationTolerance.Size = new System.Drawing.Size(96, 16);
-            this.ckUsePenetrationTolerance.TabIndex = 4;
-            this.ckUsePenetrationTolerance.Text = "접촉허용오차";
-            this.ckUsePenetrationTolerance.UseVisualStyleBackColor = true;
-            // 
-            // txtRangeValue
-            // 
-            this.txtRangeValue.Location = new System.Drawing.Point(128, 76);
-            this.txtRangeValue.Name = "txtRangeValue";
-            this.txtRangeValue.Size = new System.Drawing.Size(100, 21);
-            this.txtRangeValue.TabIndex = 5;
-            this.txtRangeValue.Text = "2";
-            // 
-            // txtPenetrationTolerance
-            // 
-            this.txtPenetrationTolerance.Location = new System.Drawing.Point(128, 111);
-            this.txtPenetrationTolerance.Name = "txtPenetrationTolerance";
-            this.txtPenetrationTolerance.Size = new System.Drawing.Size(100, 21);
-            this.txtPenetrationTolerance.TabIndex = 6;
-            this.txtPenetrationTolerance.Text = "1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 152);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 12);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "검사제외 끝레벨";
-            // 
             // cbBottomLevel
             // 
             this.cbBottomLevel.FormattingEnabled = true;
@@ -299,6 +233,152 @@
             this.cbBottomLevel.TabIndex = 8;
             this.cbBottomLevel.Text = "2";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 152);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 12);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "검사제외 끝레벨";
+            // 
+            // txtPenetrationTolerance
+            // 
+            this.txtPenetrationTolerance.Location = new System.Drawing.Point(128, 111);
+            this.txtPenetrationTolerance.Name = "txtPenetrationTolerance";
+            this.txtPenetrationTolerance.Size = new System.Drawing.Size(100, 21);
+            this.txtPenetrationTolerance.TabIndex = 6;
+            this.txtPenetrationTolerance.Text = "1";
+            // 
+            // txtRangeValue
+            // 
+            this.txtRangeValue.Location = new System.Drawing.Point(128, 76);
+            this.txtRangeValue.Name = "txtRangeValue";
+            this.txtRangeValue.Size = new System.Drawing.Size(100, 21);
+            this.txtRangeValue.TabIndex = 5;
+            this.txtRangeValue.Text = "2";
+            // 
+            // ckUsePenetrationTolerance
+            // 
+            this.ckUsePenetrationTolerance.AutoSize = true;
+            this.ckUsePenetrationTolerance.Checked = true;
+            this.ckUsePenetrationTolerance.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckUsePenetrationTolerance.Location = new System.Drawing.Point(18, 113);
+            this.ckUsePenetrationTolerance.Name = "ckUsePenetrationTolerance";
+            this.ckUsePenetrationTolerance.Size = new System.Drawing.Size(96, 16);
+            this.ckUsePenetrationTolerance.TabIndex = 4;
+            this.ckUsePenetrationTolerance.Text = "접촉허용오차";
+            this.ckUsePenetrationTolerance.UseVisualStyleBackColor = true;
+            // 
+            // ckUseRangeValue
+            // 
+            this.ckUseRangeValue.AutoSize = true;
+            this.ckUseRangeValue.Location = new System.Drawing.Point(18, 81);
+            this.ckUseRangeValue.Name = "ckUseRangeValue";
+            this.ckUseRangeValue.Size = new System.Drawing.Size(96, 16);
+            this.ckUseRangeValue.TabIndex = 3;
+            this.ckUseRangeValue.Text = "근접허용범위";
+            this.ckUseRangeValue.UseVisualStyleBackColor = true;
+            // 
+            // ckVisibleOnly
+            // 
+            this.ckVisibleOnly.AutoSize = true;
+            this.ckVisibleOnly.Location = new System.Drawing.Point(222, 39);
+            this.ckVisibleOnly.Name = "ckVisibleOnly";
+            this.ckVisibleOnly.Size = new System.Drawing.Size(92, 16);
+            this.ckVisibleOnly.TabIndex = 2;
+            this.ckVisibleOnly.Text = "Visible Only";
+            this.ckVisibleOnly.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "검사유형";
+            // 
+            // cbTestKind
+            // 
+            this.cbTestKind.FormattingEnabled = true;
+            this.cbTestKind.Items.AddRange(new object[] {
+            "모델 검사",
+            "장비 검사",
+            "그룹 검사",
+            "이동 검사"});
+            this.cbTestKind.Location = new System.Drawing.Point(75, 35);
+            this.cbTestKind.Name = "cbTestKind";
+            this.cbTestKind.Size = new System.Drawing.Size(95, 20);
+            this.cbTestKind.TabIndex = 0;
+            this.cbTestKind.Text = "그룹 검사";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnNew);
+            this.groupBox1.Controls.Add(this.btnClear);
+            this.groupBox1.Controls.Add(this.btnPerformTest);
+            this.groupBox1.Controls.Add(this.btnDeleteResult);
+            this.groupBox1.Controls.Add(this.btnDelete);
+            this.groupBox1.Controls.Add(this.btnAdd);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(367, 100);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Clash";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(208, 31);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(89, 23);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            // 
+            // btnPerformTest
+            // 
+            this.btnPerformTest.Location = new System.Drawing.Point(113, 60);
+            this.btnPerformTest.Name = "btnPerformTest";
+            this.btnPerformTest.Size = new System.Drawing.Size(89, 23);
+            this.btnPerformTest.TabIndex = 3;
+            this.btnPerformTest.Text = "Start";
+            this.btnPerformTest.UseVisualStyleBackColor = true;
+            this.btnPerformTest.Click += new System.EventHandler(this.btnPerformTest_Click);
+            // 
+            // btnDeleteResult
+            // 
+            this.btnDeleteResult.Location = new System.Drawing.Point(18, 60);
+            this.btnDeleteResult.Name = "btnDeleteResult";
+            this.btnDeleteResult.Size = new System.Drawing.Size(89, 23);
+            this.btnDeleteResult.TabIndex = 2;
+            this.btnDeleteResult.Text = "DEL. Result";
+            this.btnDeleteResult.UseVisualStyleBackColor = true;
+            this.btnDeleteResult.Click += new System.EventHandler(this.btnDeleteResult_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(113, 31);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(89, 23);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(18, 31);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(89, 23);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lvResult);
@@ -313,8 +393,10 @@
             // lvResult
             // 
             this.lvResult.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader22,
             this.columnHeader1,
             this.columnHeader2,
+            this.columnHeader23,
             this.columnHeader21,
             this.columnHeader3,
             this.columnHeader4,
@@ -348,6 +430,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "ID";
+            this.columnHeader1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader1.Width = 115;
             // 
             // columnHeader2
@@ -356,64 +439,15 @@
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader2.Width = 125;
             // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Result Kind";
+            // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "Node Index A";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader3.Width = 149;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnAddGroupB);
-            this.groupBox4.Controls.Add(this.btnAddGroupA);
-            this.groupBox4.Location = new System.Drawing.Point(12, 313);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(367, 78);
-            this.groupBox4.TabIndex = 2;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Group";
-            // 
-            // btnAddGroupA
-            // 
-            this.btnAddGroupA.Location = new System.Drawing.Point(18, 36);
-            this.btnAddGroupA.Name = "btnAddGroupA";
-            this.btnAddGroupA.Size = new System.Drawing.Size(117, 23);
-            this.btnAddGroupA.TabIndex = 0;
-            this.btnAddGroupA.Text = "Add Group A";
-            this.btnAddGroupA.UseVisualStyleBackColor = true;
-            this.btnAddGroupA.Click += new System.EventHandler(this.btnAddGroupA_Click);
-            // 
-            // btnAddGroupB
-            // 
-            this.btnAddGroupB.Location = new System.Drawing.Point(159, 36);
-            this.btnAddGroupB.Name = "btnAddGroupB";
-            this.btnAddGroupB.Size = new System.Drawing.Size(117, 23);
-            this.btnAddGroupB.TabIndex = 1;
-            this.btnAddGroupB.Text = "Add Group B";
-            this.btnAddGroupB.UseVisualStyleBackColor = true;
-            this.btnAddGroupB.Click += new System.EventHandler(this.btnAddGroupB_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(208, 31);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(89, 23);
-            this.btnClear.TabIndex = 5;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Location = new System.Drawing.Point(12, 397);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(367, 100);
-            this.groupBox5.TabIndex = 3;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Path";
             // 
             // columnHeader4
             // 
@@ -488,9 +522,129 @@
             // 
             this.columnHeader20.Text = "Node Path B";
             // 
-            // columnHeader21
+            // label3
             // 
-            this.columnHeader21.Text = "Result Kind";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Axis";
+            // 
+            // cbAxis
+            // 
+            this.cbAxis.FormattingEnabled = true;
+            this.cbAxis.Items.AddRange(new object[] {
+            "X",
+            "Y",
+            "Z"});
+            this.cbAxis.Location = new System.Drawing.Point(93, 22);
+            this.cbAxis.Name = "cbAxis";
+            this.cbAxis.Size = new System.Drawing.Size(100, 20);
+            this.cbAxis.TabIndex = 1;
+            this.cbAxis.Text = "Z";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "시작 위치";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 12);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "이동 간격";
+            // 
+            // txtStartPos
+            // 
+            this.txtStartPos.Location = new System.Drawing.Point(93, 48);
+            this.txtStartPos.Name = "txtStartPos";
+            this.txtStartPos.Size = new System.Drawing.Size(100, 21);
+            this.txtStartPos.TabIndex = 6;
+            this.txtStartPos.Text = "10000";
+            // 
+            // txtInterval
+            // 
+            this.txtInterval.Location = new System.Drawing.Point(93, 72);
+            this.txtInterval.Name = "txtInterval";
+            this.txtInterval.Size = new System.Drawing.Size(100, 21);
+            this.txtInterval.TabIndex = 7;
+            this.txtInterval.Text = "2000";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(199, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 12);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "mm";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(199, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "mm";
+            // 
+            // btnAddPath
+            // 
+            this.btnAddPath.Location = new System.Drawing.Point(254, 70);
+            this.btnAddPath.Name = "btnAddPath";
+            this.btnAddPath.Size = new System.Drawing.Size(93, 23);
+            this.btnAddPath.TabIndex = 10;
+            this.btnAddPath.Text = "Add Path";
+            this.btnAddPath.UseVisualStyleBackColor = true;
+            this.btnAddPath.Click += new System.EventHandler(this.btnAddPath_Click);
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "NO.";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ckResultAssembly);
+            this.groupBox6.Location = new System.Drawing.Point(12, 503);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(367, 65);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Result Filter";
+            // 
+            // ckResultAssembly
+            // 
+            this.ckResultAssembly.AutoSize = true;
+            this.ckResultAssembly.Location = new System.Drawing.Point(23, 31);
+            this.ckResultAssembly.Name = "ckResultAssembly";
+            this.ckResultAssembly.Size = new System.Drawing.Size(81, 16);
+            this.ckResultAssembly.TabIndex = 0;
+            this.ckResultAssembly.Text = "Assembly";
+            this.ckResultAssembly.UseVisualStyleBackColor = true;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Translation";
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(208, 60);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(89, 23);
+            this.btnNew.TabIndex = 6;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // FrmMain
             // 
@@ -509,11 +663,15 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -565,6 +723,20 @@
         private System.Windows.Forms.ColumnHeader columnHeader19;
         private System.Windows.Forms.ColumnHeader columnHeader20;
         private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtInterval;
+        private System.Windows.Forms.TextBox txtStartPos;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbAxis;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAddPath;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox ckResultAssembly;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.Button btnNew;
     }
 }
 

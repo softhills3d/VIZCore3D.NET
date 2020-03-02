@@ -349,17 +349,30 @@ namespace VIZCore3D.NET.ClashTest
             lvResult.BeginUpdate();
             lvResult.Items.Clear();
 
-            List<VIZCore3D.NET.Data.ClashTestResultItem> items = clash.GetResultItem(Data.ClashTest.ResultGroupingOptions.PART);
-            //List<VIZCore3D.NET.Data.ClashTestResultItem> items = clash.GetResultAllSubItem(Data.ClashTest.ResultGroupingOptions.PART);
+            List<VIZCore3D.NET.Data.ClashTestResultItem> items = null;
 
-            foreach (VIZCore3D.NET.Data.ClashTestResultItem item in items)
+            if(clash.TestKind != Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
             {
+                items = vizcore3d.Clash.GetResultItem(clash, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
+            }
+            else
+            {
+                //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
+                items = vizcore3d.Clash.GetResultAllSubItem(clash, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
+            }
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                VIZCore3D.NET.Data.ClashTestResultItem item = items[i];
+
                 ListViewItem lvi = new ListViewItem(
                     new string[]
                         {
-                            item.ID.ToString()
+                            Convert.ToString(i + 1)
+                            , item.ID.ToString()
                             , item.SUBID.ToString()
-                            , item.ResultKind.ToString()
+                            , item.Path != null ? item.Path.ToString() : String.Empty
+                            , item.GetResultKindString()
                             , item.NodeIndexA.ToString()
                             , item.NodeIndexB.ToString()
                             , item.NodeNameA
@@ -392,7 +405,19 @@ namespace VIZCore3D.NET.ClashTest
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (clash == null) return;
-            
+
+            if(clash.GroupA.Count == 0)
+            {
+                MessageBox.Show("Group A 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (clash.GroupB.Count == 0)
+            {
+                MessageBox.Show("Group B 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             clash.Name = "CLASH TEST #1";
             clash.TestKind = (Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
 
@@ -403,6 +428,12 @@ namespace VIZCore3D.NET.ClashTest
 
             clash.VisibleOnly = ckVisibleOnly.Checked;
             clash.BottomLevel = cbBottomLevel.SelectedIndex + 1;
+
+            if (clash.TestKind == Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count == 0)
+            {
+                MessageBox.Show("이동 경로(Path)를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             if (clash.ID == -1)
             {
@@ -455,6 +486,8 @@ namespace VIZCore3D.NET.ClashTest
                 return;
             }
             clash.GroupA = items;
+
+            MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnAddGroupB_Click(object sender, EventArgs e)
@@ -466,6 +499,23 @@ namespace VIZCore3D.NET.ClashTest
                 return;
             }
             clash.GroupB = items;
+
+            MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnAddPath_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtStartPos.Text) == true) return;
+            if (String.IsNullOrEmpty(txtInterval.Text) == true) return;
+
+            clash.AddTranslation((Data.Axis)cbAxis.SelectedIndex, Convert.ToSingle(txtStartPos.Text), Convert.ToSingle(txtInterval.Text));
+
+            MessageBox.Show("이동 경로(Path)를 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            clash = new Data.ClashTest();
         }
     }
 }
