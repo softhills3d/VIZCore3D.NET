@@ -50,6 +50,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ClashTest", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.GenerateThumbnail", "VIZCore3D.NET.GenerateThumbnail\VIZCore3D.NET.GenerateThumbnail.csproj", "{11A4D8B3-0619-4283-A6DE-048BF770385B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.StructureThumbnail", "VIZCore3D.NET.StructureThumbnail\VIZCore3D.NET.StructureThumbnail.csproj", "{3A58E16A-0E2A-42B4-BA02-6FD72E8E4EE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -140,6 +142,10 @@ Global
 		{11A4D8B3-0619-4283-A6DE-048BF770385B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11A4D8B3-0619-4283-A6DE-048BF770385B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11A4D8B3-0619-4283-A6DE-048BF770385B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A58E16A-0E2A-42B4-BA02-6FD72E8E4EE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A58E16A-0E2A-42B4-BA02-6FD72E8E4EE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A58E16A-0E2A-42B4-BA02-6FD72E8E4EE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A58E16A-0E2A-42B4-BA02-6FD72E8E4EE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
