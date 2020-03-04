@@ -27,6 +27,7 @@
 | VIZCore3D.NET.ShapeDrawing | 3D 화면상에 Shape 그리기 | Line, Cube, Cylinder, Vertex 유형을 화면에 추가 및 관리  |
 | VIZCore3D.NET.SpaceSearch | 모델 기반 공간 검색 | 모델 파일을 활용하여 특정 영역의 모델을 파일단위 혹은 노드 단위로 검색 및 조회  |
 | VIZCore3D.NET.Structure | VIZ 파일 Structure 조회 | 파일의 Structure 및 노드별 Property 조회  |
+| VIZCore3D.NET.StructureThumbnail | VIZ 파일 Structure 및 노드별 미리보기 조회 | VIZ 파일의 각 노드별 미리보기 이미지 생성 및 결과 조회  |
 | VIZCore3D.NET.Thumbnail | VIZ 파일 Thumbnail 조회 | 파일의 Thumbnail 및 BoundBox 정보 조회  |
 | VIZCore3D.NET.ToVIZ | VIZ 파일 형식으로 내보내기 | 모델 원본을 VIZ 파일 형식으로 저장 |
 | VIZCore3D.NET.UDA | 모델의 UDA(User-Define Attribute) 조회 예제 | 모델 파일에 포함되어 있는 속성 정보를 표시 |
