@@ -10,6 +10,7 @@
 | 구분  | 설명 | 비고 |
 | ------------- | ------------- | ------------- |
 | Gallery | 스크린샷 | 주요 기능 화면 |
+| VIZCore3D.NET.ClashTest | 간섭검사 | 장비, 모델, 그룹, 이동(탑재) 검사 수행 및 결과 조회 |
 | VIZCore3D.NET.Demo | 주요 기능 API 활용 예제 | 개체목록, 검색, 기타  |
 | VIZCore3D.NET.ExportNode | 모델 내보내기 | 특정 노드 혹은 전체 노드 단위로 내보내기  |
 | VIZCore3D.NET.GeometryProperty | Geometry 속성 조회 예제 | 최소점, 최대점, 중심점, 개체크기, 부피, 중량 등 정보 조회  |
