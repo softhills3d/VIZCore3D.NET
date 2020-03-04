@@ -101,6 +101,9 @@
 ##### Mini View
 ![미니뷰](./Gallery/VIZCore3D.NET.MiniView.png)
 
+##### 3D 블록 배치 PROTOTYPE (Youtube)
+[![3D 블록 배치](http://img.youtube.com/vi/R9nommKn1wg/0.jpg)](https://youtu.be/R9nommKn1wg?t=0s)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
