@@ -33,6 +33,8 @@ namespace VIZCore3D.NET.StructureThumbnail
         /// </summary>
         public Dictionary<int, int> ImageListIndexMap { get; set; }
 
+        public int ImageSize = 64;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -351,9 +353,12 @@ namespace VIZCore3D.NET.StructureThumbnail
             ImageListIndexMap = new Dictionary<int, int>();
 
             ImageList imageList = new ImageList();
-            imageList.ImageSize = new Size(32, 32);
+            imageList.ImageSize = new Size(ImageSize / 2, ImageSize / 2);
 
             tvStructure.ImageList = imageList;
+
+            vizcore3d.View.XRay.Clear();
+            vizcore3d.View.XRay.Enable = false;
 
             this.Cursor = Cursors.WaitCursor;
             GenerateNodeThumbnail(txtPath.Text, ref imageList);
@@ -364,7 +369,7 @@ namespace VIZCore3D.NET.StructureThumbnail
         private void GenerateNodeThumbnail(string path, ref ImageList imgList)
         {
             // 파일의 노드별 미리보기 이미지 생성
-            NodeThumbnail = vizcore3d.Model.GetModelNodeThumbnail(path, Data.CameraDirection.ISO_PLUS, 64, 64);
+            NodeThumbnail = vizcore3d.Model.GetModelNodeThumbnail(path, Data.CameraDirection.ISO_PLUS, ImageSize, ImageSize);
 
             // 모델 열기
             vizcore3d.Model.Open(path);
@@ -389,6 +394,12 @@ namespace VIZCore3D.NET.StructureThumbnail
                 if (img != null)
                 {
                     imgList.Images.Add(img);
+                    ImageListIndexMap.Add(-1, imgList.Images.Count - 1);
+                }
+                else
+                {
+                    System.Drawing.Image modelThumb = vizcore3d.Model.GetModelThumbnail(path, Data.CameraDirection.ISO_PLUS, ImageSize, ImageSize);
+                    imgList.Images.Add(modelThumb);
                     ImageListIndexMap.Add(-1, imgList.Images.Count - 1);
                 }
             }
