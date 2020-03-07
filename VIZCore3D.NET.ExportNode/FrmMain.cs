@@ -384,7 +384,7 @@ namespace VIZCore3D.NET.ExportNode
 
             this.Cursor = Cursors.Default;
 
-            System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", path));
+            VIZCore3D.NET.Utility.ExplorerHelper.Show(path);
         }
     }
 }

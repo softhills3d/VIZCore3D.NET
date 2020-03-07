@@ -594,7 +594,7 @@ namespace VIZCore3D.NET.Demo
             }
             else
             {
-                System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", dlg.FileName));
+                VIZCore3D.NET.Utility.ExplorerHelper.Show(dlg.FileName);
             }
         }
 
