@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{21D4441D-7891-4D51-B29B-3724A7073A98}</ProjectGuid>
+    <ProjectGuid>{44B16D23-940D-4905-94E0-7CFDE1EB5B9A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>VIZCore3D.NET.Demo</RootNamespace>
     <AssemblyName>VIZCore3D.NET.Demo</AssemblyName>
