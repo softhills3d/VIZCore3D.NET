@@ -19,6 +19,10 @@ namespace VIZCore3D.NET.PlacementStatus
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        private List<string> Models { get; set; }
+
+        private Dictionary<string, Data.BoundBox3D> SpaceManager { get; set; }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -33,6 +37,9 @@ namespace VIZCore3D.NET.PlacementStatus
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
+
+            Models = new List<string>();
+            SpaceManager = new Dictionary<string, Data.BoundBox3D>();
         }
 
 
@@ -343,9 +350,8 @@ namespace VIZCore3D.NET.PlacementStatus
             float contentsWidth = Convert.ToSingle(txtContentsWidth.Text); // 15000.0f;
             float contentsHeight = Convert.ToSingle(txtContentsHeight.Text); // 15000.0f;
 
-            Dictionary<string, Data.BoundBox3D> space = new Dictionary<string, Data.BoundBox3D>();
-
             vizcore3d.Model.Close();
+            SpaceManager.Clear();
 
             VIZCore3D.NET.Manager.PrimitiveObject root = vizcore3d.Primitive.AddNode("DASHBOARD");
 
@@ -356,7 +362,7 @@ namespace VIZCore3D.NET.PlacementStatus
                 VIZCore3D.NET.Data.Vertex3D min = new Data.Vertex3D(0, 0, -500);
                 VIZCore3D.NET.Data.Vertex3D max = new Data.Vertex3D(contentsColumn * contentsWidth, -titleHeight, 0);
                 VIZCore3D.NET.Data.BoundBox3D boundbox = new Data.BoundBox3D(min, max);
-                space.Add("TITLE", boundbox);
+                SpaceManager.Add("TITLE", boundbox);
                 box.SetMinMaxPoints(boundbox);
                 title.AddPrimitive(box);
             }
@@ -389,7 +395,7 @@ namespace VIZCore3D.NET.PlacementStatus
                                 , 0
                                 );
                             VIZCore3D.NET.Data.BoundBox3D groupBoundBox = new Data.BoundBox3D(min, max);
-                            space.Add(string.Format("GROUP_{0:D2}", ID), groupBoundBox);
+                            SpaceManager.Add(string.Format("GROUP_{0:D2}", ID), groupBoundBox);
                             groupTitleBox.SetMinMaxPoints(groupBoundBox);
                             groupItem.AddPrimitive(groupTitleBox);
                         }
@@ -410,7 +416,7 @@ namespace VIZCore3D.NET.PlacementStatus
                                 , 0
                                 );
                             VIZCore3D.NET.Data.BoundBox3D thumbnailBoundBox = new Data.BoundBox3D(min, max);
-                            space.Add(string.Format("MODEL_{0:D2}", ID), thumbnailBoundBox);
+                            SpaceManager.Add(string.Format("MODEL_{0:D2}", ID), thumbnailBoundBox);
                             thumbnailBox.SetMinMaxPoints(thumbnailBoundBox);
                             modelItem.AddPrimitive(thumbnailBox);
                         }
@@ -425,7 +431,7 @@ namespace VIZCore3D.NET.PlacementStatus
                 vizcore3d.TextDrawing.Clear();
 
                 {
-                    Data.BoundBox3D boundbox = space["TITLE"];
+                    Data.BoundBox3D boundbox = SpaceManager["TITLE"];
 
                     VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
                     center.X = boundbox.MinX + ((contentsColumn * contentsWidth) * 0.5f);
@@ -443,7 +449,7 @@ namespace VIZCore3D.NET.PlacementStatus
                 }
 
                 {
-                    foreach (KeyValuePair<string, Data.BoundBox3D> item in space)
+                    foreach (KeyValuePair<string, Data.BoundBox3D> item in SpaceManager)
                     {
                         if (item.Key.Contains("MODEL_") == false) continue;
 
@@ -466,9 +472,89 @@ namespace VIZCore3D.NET.PlacementStatus
 
             vizcore3d.Primitive.OpenModel("BAY_BLOCK");
 
+            if(Models.Count != 0)
+            {
+                PlaceModel();
+            }
+            else
+            {
+                vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
+                vizcore3d.View.Navigation = Data.NavigationModes.PAN;
+                vizcore3d.View.SetRenderMode(Data.RenderModes.SMOOTH_EDGE);
+
+                vizcore3d.View.FitToView();
+            }
+        }
+
+        private void PlaceModel()
+        {
+            vizcore3d.BeginUpdate();
+
+            int contentsColumn = Convert.ToInt32(txtContentsColumn.Text); // 4.0f;
+            int contentsRow = Convert.ToInt32(txtContentsRow.Text); // 5.0f;
+
+            int count = contentsColumn * contentsRow;
+
+            if(Models.Count < count)
+            {
+                vizcore3d.Model.Add(Models);
+            }
+            else
+            {
+                List<string> subModel = new List<string>();
+                for (int i = 0; i < count; i++)
+                {
+                    subModel.Add(Models[i]);
+                }
+                vizcore3d.Model.Add(subModel);
+                Models = subModel;
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                if (Models.Count - 1 < i) continue;
+
+                // MODEL NAME
+                string name = System.IO.Path.GetFileNameWithoutExtension(Models[i]).ToUpper();
+
+                // MODEL BOUNDBOX
+                VIZCore3D.NET.Data.BoundBox3D boundBox = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(Models[i]);
+
+                List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { name }, false, true, false, false, true, false);
+                if (node.Count == 0) continue;
+
+                string spaceName = string.Format("MODEL_{0:D2}", i + 1);
+
+                if (SpaceManager.ContainsKey(spaceName) == false) continue;
+
+                VIZCore3D.NET.Data.BoundBox3D modelBoundBox = SpaceManager[spaceName];
+
+                vizcore3d.Object3D.Transform.Move(
+                    new int[] { node[0].Index }
+                    , modelBoundBox.CenterX - boundBox.CenterX
+                    , modelBoundBox.CenterY - boundBox.CenterY
+                    , modelBoundBox.CenterZ - boundBox.CenterZ + (ckModelISO.Checked == false ? boundBox.LengthZ * 0.5f : boundBox.LengthZ * 3.0f)
+                    , false
+                    );
+
+                if (ckModelISO.Checked == true)
+                {
+                    vizcore3d.Object3D.Select(node, true);
+
+                    vizcore3d.Object3D.Transform.Rotate(
+                        new Data.Vertex3D(50.0f, -40.0f, -30.0f)
+                        , true
+                        );
+
+                    vizcore3d.Object3D.Select(node, false);
+                }
+            }
+
             vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
             vizcore3d.View.Navigation = Data.NavigationModes.PAN;
             vizcore3d.View.SetRenderMode(Data.RenderModes.SMOOTH_EDGE);
+
+            vizcore3d.EndUpdate();
 
             vizcore3d.View.FitToView();
         }
@@ -476,6 +562,58 @@ namespace VIZCore3D.NET.PlacementStatus
         private void btnMake_Click(object sender, EventArgs e)
         {
             MakeDashboard();
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = vizcore3d.Model.OpenFilter;
+            dlg.Multiselect = true;
+
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            Models.Clear();
+
+            foreach (string item in dlg.FileNames)
+            {
+                Models.Add(item);
+            }
+
+            txtContentsWidth.ReadOnly = true;
+            txtContentsHeight.ReadOnly = true;
+
+            VIZCore3D.NET.Data.BoundBox3D boundBox = GetModelBoundBox();
+
+            float max = boundBox.MaxLengthXY * 0.6f;
+
+            txtContentsWidth.Text = max.ToString();
+            txtContentsHeight.Text = max.ToString();
+        }
+
+        private VIZCore3D.NET.Data.BoundBox3D GetModelBoundBox()
+        {
+            VIZCore3D.NET.Data.BoundBox3D ModelBoundBox = new VIZCore3D.NET.Data.BoundBox3D();
+
+            foreach (string item in Models)
+            {
+                VIZCore3D.NET.Data.BoundBox3D mBox = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(item);
+
+                if (mBox.ResetData == false)
+                    ModelBoundBox.Add(mBox);
+            }
+
+            return ModelBoundBox;
+        }
+
+        private void btnClearModel_Click(object sender, EventArgs e)
+        {
+            Models.Clear();
+
+            txtContentsWidth.ReadOnly = false;
+            txtContentsHeight.ReadOnly = false;
+
+            txtContentsWidth.Text = "15000";
+            txtContentsHeight.Text = "15000";
         }
     }
 }
