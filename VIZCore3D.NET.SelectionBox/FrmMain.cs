@@ -389,9 +389,9 @@ namespace VIZCore3D.NET.SelectionBox
 
             VIZCore3D.NET.Data.BoundBox3D box = vizcore3d.Model.BoundBox;
 
-            float xWidth = box.GetLengthX() / xCount;
-            float yWidth = box.GetLengthY() / yCount;
-            float zWidth = box.GetLengthZ() / zCount;
+            float xWidth = box.LengthX / xCount;
+            float yWidth = box.LengthY / yCount;
+            float zWidth = box.LengthZ / zCount;
 
             vizcore3d.BeginUpdate();
 

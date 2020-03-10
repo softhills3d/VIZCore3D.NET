@@ -54,6 +54,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.StructureThum
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.PlacementStatus", "VIZCore3D.NET.PlacementStatus\VIZCore3D.NET.PlacementStatus.csproj", "{C468BD78-ED7A-4E39-AC4A-BB235A581C5E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Disassembly", "VIZCore3D.NET.Disassembly\VIZCore3D.NET.Disassembly.csproj", "{FCBC55FF-B010-48AD-9F54-50E2DFE7F07D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -152,6 +154,10 @@ Global
 		{C468BD78-ED7A-4E39-AC4A-BB235A581C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C468BD78-ED7A-4E39-AC4A-BB235A581C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C468BD78-ED7A-4E39-AC4A-BB235A581C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCBC55FF-B010-48AD-9F54-50E2DFE7F07D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCBC55FF-B010-48AD-9F54-50E2DFE7F07D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCBC55FF-B010-48AD-9F54-50E2DFE7F07D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCBC55FF-B010-48AD-9F54-50E2DFE7F07D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

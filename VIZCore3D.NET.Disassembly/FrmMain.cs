@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.SpaceSearch
+namespace VIZCore3D.NET.Disassembly
 {
     public partial class FrmMain : Form
     {
@@ -23,7 +23,6 @@ namespace VIZCore3D.NET.SpaceSearch
         public FrmMain()
         {
             InitializeComponent();
-
             // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
@@ -208,6 +207,39 @@ namespace VIZCore3D.NET.SpaceSearch
             // ================================================================
             // 설정 - 노트
             // ================================================================
+            #region 설정 - 노트
+            // 배경색
+            vizcore3d.Review.Note.BackgroundColor = Color.White;
+            // 배경 투명
+            vizcore3d.Review.Note.BackgroudTransparent = false;
+            // 글자색
+            vizcore3d.Review.Note.FontColor = Color.Black;
+            // 글자 크기
+            vizcore3d.Review.Note.FontSize = Manager.NoteManager.FontSizeKind.SIZE12;
+            // 글자 굵게
+            vizcore3d.Review.Note.FontBold = false;
+            // 지시선(라인) 색상
+            vizcore3d.Review.Note.LineColor = Color.Black;
+            // 지시선(라인) 두께
+            vizcore3d.Review.Note.LineWidth = 3;
+            // 지시선 중앙 연결
+            vizcore3d.Review.Note.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+            // 화살표 색상
+            vizcore3d.Review.Note.ArrowColor = Color.Red;
+            // 화살표 두께
+            vizcore3d.Review.Note.ArrowWidth = 10;
+
+            // 심볼 배경색
+            vizcore3d.Review.Note.SymbolBackgroundColor = Color.Yellow;
+            // 심볼 글자색
+            vizcore3d.Review.Note.SymbolFontColor = Color.Red;
+            // 심볼 크기
+            vizcore3d.Review.Note.SymbolSize = 10;
+            // 심볼 글자 크기
+            vizcore3d.Review.Note.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE10;
+            // 심볼 글자 굵게
+            vizcore3d.Review.Note.SymbolFontBold = true;
+            #endregion
 
 
             // ================================================================
@@ -292,201 +324,63 @@ namespace VIZCore3D.NET.SpaceSearch
         {
         }
 
-        private void btnSelectFiles_Click(object sender, EventArgs e)
+        private void SetOption()
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Multiselect = true;
-            dlg.Filter = "VIZ (*.viz)|*.viz";
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
-            vizcore3d.Model.SpaceSearch.Models.Clear();
-
-            vizcore3d.Model.SpaceSearch.AddModel(dlg.FileNames);
-
-            this.Cursor = Cursors.WaitCursor;
-            CalcBoundBox();
-            this.Cursor = Cursors.Default;
+            vizcore3d.Object3D.Disassembly.EnableAnimation = ckAnimation.Checked;
+            vizcore3d.Object3D.Disassembly.Distance = Convert.ToSingle(txtDistance.Text);
+            vizcore3d.Object3D.Disassembly.SideGap = Convert.ToSingle(txtSideGap.Text);
+            vizcore3d.Object3D.Disassembly.Target = ckSelectedObject.Checked == false ? Manager.DisassemblyManager.TargetKind.ALL : Manager.DisassemblyManager.TargetKind.SELECTED;
         }
 
-        private void CalcBoundBox()
+        private void btnDisassemble_Click(object sender, EventArgs e)
         {
-            lbCount.Text = string.Format("Count : {0} EA", vizcore3d.Model.SpaceSearch.ModelCount);
+            if (vizcore3d.Model.IsOpen() == false) return;
 
-            VIZCore3D.NET.Data.BoundBox3D ModelBoundBox = vizcore3d.Model.SpaceSearch.GetModelBoundBox();
+            SetOption();
 
-            lbMinX.Text = Convert.ToInt64(ModelBoundBox.MinX).ToString("n0");
-            lbMinY.Text = Convert.ToInt64(ModelBoundBox.MinY).ToString("n0");
-            lbMinZ.Text = Convert.ToInt64(ModelBoundBox.MinZ).ToString("n0");
+            vizcore3d.Object3D.Disassembly.Axis = (Manager.DisassemblyManager.AxisKind)cbAxis.SelectedIndex;
+            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.AXIS;
 
-            lbMaxX.Text = Convert.ToInt64(ModelBoundBox.MaxX).ToString("n0");
-            lbMaxY.Text = Convert.ToInt64(ModelBoundBox.MaxY).ToString("n0");
-            lbMaxZ.Text = Convert.ToInt64(ModelBoundBox.MaxZ).ToString("n0");
-
-            VIZCore3D.NET.Data.Vertex3D center = ModelBoundBox.GetCenter();
-            txtCenterX.Text = Convert.ToInt64(center.X).ToString();
-            txtCenterY.Text = Convert.ToInt64(center.Y).ToString();
-            txtCenterZ.Text = Convert.ToInt64(center.Z).ToString();
-
-            this.tbX.Scroll -= new System.EventHandler(this.tbX_Scroll);
-            this.tbY.Scroll -= new System.EventHandler(this.tbY_Scroll);
-            this.tbZ.Scroll -= new System.EventHandler(this.tbZ_Scroll);
-
-            tbX.Minimum = tbY.Minimum = tbZ.Minimum = 0;
-            tbX.Maximum = tbY.Maximum = tbZ.Maximum = 100;
-            tbX.Value = tbY.Value = tbZ.Value = 50;
-
-            this.tbX.Scroll += new System.EventHandler(this.tbX_Scroll);
-            this.tbY.Scroll += new System.EventHandler(this.tbY_Scroll);
-            this.tbZ.Scroll += new System.EventHandler(this.tbZ_Scroll);
+            vizcore3d.Object3D.Disassembly.Disassemble();
         }
 
-        private void tbX_Scroll(object sender, EventArgs e)
+        private void btnAxis_Click(object sender, EventArgs e)
         {
-            float pos = vizcore3d.Model.SpaceSearch.ModelBoundBox.MinX + (vizcore3d.Model.SpaceSearch.ModelBoundBox.LengthX / 100.0f * tbX.Value);
-            txtCenterX.Text = Convert.ToInt32(pos).ToString();
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            SetOption();
+
+            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.AXIS;
         }
 
-        private void tbY_Scroll(object sender, EventArgs e)
+        private void btnLinear_Click(object sender, EventArgs e)
         {
-            float pos = vizcore3d.Model.SpaceSearch.ModelBoundBox.MinY + (vizcore3d.Model.SpaceSearch.ModelBoundBox.LengthY / 100.0f * tbY.Value);
-            txtCenterY.Text = Convert.ToInt32(pos).ToString();
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            SetOption();
+
+            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.LINEAR;
         }
 
-        private void tbZ_Scroll(object sender, EventArgs e)
+        private void btnSphere_Click(object sender, EventArgs e)
         {
-            float pos = vizcore3d.Model.SpaceSearch.ModelBoundBox.MinZ + (vizcore3d.Model.SpaceSearch.ModelBoundBox.LengthZ / 100.0f * tbZ.Value);
-            txtCenterZ.Text = Convert.ToInt32(pos).ToString();
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            SetOption();
+
+            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.SPHERE;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void btnRestoreAll_Click(object sender, EventArgs e)
         {
-            bool result = vizcore3d.Model.SpaceSearch.Search(
-                new VIZCore3D.NET.Data.Vertex3D
-                (
-                    txtCenterX.Text
-                    , txtCenterY.Text
-                    , txtCenterZ.Text
-                )
-                , Convert.ToSingle(txtLengthX.Text)
-                , Convert.ToSingle(txtLengthY.Text)
-                , Convert.ToSingle(txtLengthZ.Text)
-                , rbFile.Checked == true ? Manager.SearchTarget.MODEL : Manager.SearchTarget.NODE
-                );
-
-            ShowResultList();
+            vizcore3d.Object3D.Transform.RestoreTransformAll();
         }
 
-        private void ShowResultList()
+        private void btnRestoreSelectedObject_Click(object sender, EventArgs e)
         {
-            lbResultFile.Text = string.Format("File : {0} EA", vizcore3d.Model.SpaceSearch.ResultFileCount);
-            lbResultNode.Text = string.Format("Node : {0} EA", vizcore3d.Model.SpaceSearch.ResultNodeCount);
-
-            lvResult.BeginUpdate();
-            lvResult.Groups.Clear();
-            lvResult.Items.Clear();
-
-            if(rbFile.Checked == true)
-            {
-                foreach (KeyValuePair<string, List<string>> item in vizcore3d.Model.SpaceSearch.SearchResult)
-                {
-                    ListViewItem lvi = new ListViewItem(new string[] { System.IO.Path.GetFileName(item.Key) });
-                    lvi.Tag = item.Key;
-                    lvResult.Items.Add(lvi);
-                }
-            }
-            else
-            {
-                foreach (KeyValuePair<string, List<string>> item in vizcore3d.Model.SpaceSearch.SearchResult)
-                {
-                    ListViewGroup group = new ListViewGroup(System.IO.Path.GetFileName(item.Key), HorizontalAlignment.Left);
-                    lvResult.Groups.Add(group);
-
-                    foreach (string nodePath in item.Value)
-                    {
-                        ListViewItem lvi = new ListViewItem(new string[] { nodePath });
-                        lvi.Tag = nodePath;
-                        lvi.Group = group;
-                        lvResult.Items.Add(lvi);
-                    }
-                }
-            }
-
-            lvResult.EndUpdate();
+            vizcore3d.Object3D.Transform.RestoreTransform();
         }
 
-        private void btnViewModel_Click(object sender, EventArgs e)
-        {
-            if (vizcore3d.Model.SpaceSearch.ResultFileCount == 0) return;
-
-            vizcore3d.Model.Close();
-
-            // 파일 단위 검색 결과의 경우
-            if (rbFile.Checked == true)
-            {
-                // 결과 모델 열기
-                vizcore3d.Model.SpaceSearch.OpenResultModelFile();
-            }
-            // 노드 단위 검색 결과의 경우
-            else
-            {
-                // 파일 단위로 조회 후, 검색 결과 하이라이트
-                if(rbFileUnit.Checked == true)
-                {
-                    // 결과 모델 열기
-                    vizcore3d.Model.SpaceSearch.OpenResultModelFile();
-
-                    // 로드된 검색 결과 노드 목록 조회
-                    List<VIZCore3D.NET.Data.Node> resultNode = vizcore3d.Model.SpaceSearch.GetResultNodeLoaded();
-
-                    // 검색 결과 하이라이트
-                    vizcore3d.View.XRay.Enable = true;
-                    vizcore3d.View.XRay.Clear();
-                    vizcore3d.View.XRay.Select(resultNode, true, true);
-                    vizcore3d.View.FlyToObject3d(resultNode, 1.2f);
-                }
-                // 검색 결과 노드만 조회
-                else
-                {
-                    vizcore3d.View.XRay.Enable = false;
-
-                    // 검색 결과 노드만 조회
-                    vizcore3d.Model.SpaceSearch.OpenResultModelNode();
-
-                    // VIZXML은 모델이 언로드 상태로 조회 되므로, 최상위 노드를 조회 상태로 변경
-                    vizcore3d.Object3D.ShowVIZXMLRoot();
-                }
-            }
-        }
-
-        //private string CreateVIZXML()
-        //{
-        //    VIZCore3D.NET.Manager.VIZXMLManager vizxml = new Manager.VIZXMLManager("SPACE_SEARCH");
-
-        //    foreach (KeyValuePair<string, List<string>> item in vizcore3d.Model.SpaceSearch.SearchResult)
-        //    {
-        //        VIZCore3D.NET.Manager.VIZXMLNode model = new Manager.VIZXMLNode(System.IO.Path.GetFileNameWithoutExtension(item.Key).ToUpper());
-
-        //        foreach (string nodePath in item.Value)
-        //        {
-        //            string[] path = nodePath.Split(new char[] { '\\' });
-
-        //            VIZCore3D.NET.Manager.VIZXMLNode node = new Manager.VIZXMLNode(
-        //                path[path.Length - 1]
-        //                , item.Key
-        //                , nodePath
-        //                , Manager.VIZXML_MODEL_KIND.Part
-        //                );
-
-        //            model.AddNode(node);
-        //        }
-
-        //        vizxml.AddNode(model);
-        //    }
-
-        //    bool result = vizxml.ExportVIZXML();
-
-        //    if (result == true) return vizxml.GetFilePath();
-        //    else return String.Empty;
-        //}
+        
     }
 }
