@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Disassembly
+namespace VIZCore3D.NET.Osnap
 {
     public partial class FrmMain : Form
     {
@@ -22,9 +22,7 @@ namespace VIZCore3D.NET.Disassembly
 
         public FrmMain()
         {
-            InitializeComponent();
-
-            // Initialize VIZCore3D.NET
+            InitializeComponent();// Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
@@ -243,6 +241,8 @@ namespace VIZCore3D.NET.Disassembly
             #endregion
 
 
+
+
             // ================================================================
             // 설정 - 측정
             // ================================================================
@@ -298,6 +298,7 @@ namespace VIZCore3D.NET.Disassembly
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
+            vizcore3d.ToolbarMain.Visible = true;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
@@ -323,65 +324,59 @@ namespace VIZCore3D.NET.Disassembly
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
         }
-
-        private void SetOption()
-        {
-            vizcore3d.Object3D.Disassembly.EnableAnimation = ckAnimation.Checked;
-            vizcore3d.Object3D.Disassembly.Distance = Convert.ToSingle(txtDistance.Text);
-            vizcore3d.Object3D.Disassembly.SideGap = Convert.ToSingle(txtSideGap.Text);
-            vizcore3d.Object3D.Disassembly.Target = ckSelectedObject.Checked == false ? Manager.DisassemblyManager.TargetKind.ALL : Manager.DisassemblyManager.TargetKind.SELECTED;
-        }
-
-        private void btnDisassemble_Click(object sender, EventArgs e)
-        {
-            if (vizcore3d.Model.IsOpen() == false) return;
-
-            SetOption();
-
-            vizcore3d.Object3D.Disassembly.Axis = (Manager.DisassemblyManager.AxisKind)cbAxis.SelectedIndex;
-            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.AXIS;
-
-            vizcore3d.Object3D.Disassembly.Disassemble();
-        }
-
-        private void btnAxis_Click(object sender, EventArgs e)
-        {
-            if (vizcore3d.Model.IsOpen() == false) return;
-
-            SetOption();
-
-            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.AXIS;
-        }
-
-        private void btnLinear_Click(object sender, EventArgs e)
-        {
-            if (vizcore3d.Model.IsOpen() == false) return;
-
-            SetOption();
-
-            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.LINEAR;
-        }
-
-        private void btnSphere_Click(object sender, EventArgs e)
-        {
-            if (vizcore3d.Model.IsOpen() == false) return;
-
-            SetOption();
-
-            vizcore3d.Object3D.Disassembly.Option = Manager.DisassemblyManager.DisassemblyOption.SPHERE;
-        }
-
-        private void btnRestoreAll_Click(object sender, EventArgs e)
-        {
-            vizcore3d.Object3D.Transform.RestoreTransformAll();
-        }
-
-        private void btnRestoreSelectedObject_Click(object sender, EventArgs e)
-        {
-            vizcore3d.Object3D.Transform.RestoreTransform();
-        }
-
         
+
+        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
+        {
+        }
+
+        private void GeometryUtility_OnOsnapPickingItem(object sender, Event.EventManager.OsnapPickingItemEventArgs e)
+        {
+            lvOsnap.BeginUpdate();
+
+            ListViewItem lvi = new ListViewItem(new string[]
+                {
+                    e.Kind.ToString()
+                    , e.Point == null ? "" : e.Point.ToString()
+                    , e.Start == null ? "" : e.Start.ToString()
+                    , e.End == null ? "" : e.End.ToString()
+                    , e.Normal == null ? "" : e.Normal.ToString()
+                }
+                );
+            
+            lvOsnap.Items.Add(lvi);
+
+            lvOsnap.EndUpdate();
+        }
+
+        private void btnShowOsnap_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+
+            // 개체 선택 방식
+            if(items.Count == 0)
+            {
+                vizcore3d.GeometryUtility.ShowOsnap(
+                    ckSurface.Checked
+                    , ckVertex.Checked
+                    , ckLine.Checked
+                    , ckCircle.Checked
+                    );
+            }
+            // 개체 지정 방식
+            else
+            {
+                vizcore3d.GeometryUtility.ShowOsnap(
+                    items[0].Index
+                    , ckSurface.Checked
+                    , ckVertex.Checked
+                    , ckLine.Checked
+                    , ckCircle.Checked
+                    );
+            }
+        }
     }
 }
