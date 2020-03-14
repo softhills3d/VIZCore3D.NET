@@ -78,6 +78,7 @@ namespace VIZCore3D.NET.ToVIZ
             // 저장 파일명 설정
             string file = string.Format("{0}\\{1}.viz", output, name);
 
+            // 모델 열고, 저장
             if (mode == ToVIZMode.EXPORT)
             {
                 // 모델 파일 열기
@@ -95,12 +96,33 @@ namespace VIZCore3D.NET.ToVIZ
                 // VIZ 파일 형식으로 내보내기
                 return vizcore3d.Model.ExportVIZ(file);
             }
+            // 메모리에서 처리
             else if (mode == ToVIZMode.CONVERT)
             {
                 // 저장 옵션
                 vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
 
                 return vizcore3d.Model.ConvertToVIZ(source, file, false);
+            }
+            // 외형 검색 후, 저장
+            else if(mode == ToVIZMode.OUTSIDE)
+            {
+                // 모델 파일 열기
+                vizcore3d.Model.Open(source);
+
+                // 모델 개체 조회
+                List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
+
+                // 개체 확인
+                if (items.Count == 0) return false;
+
+                // 저장 옵션
+                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+
+                List<Data.Node> outside = vizcore3d.Object3D.Find.GetOutsidePart(false);
+
+                // VIZ 파일 형식으로 내보내기
+                return vizcore3d.Model.ExportVIZ(file, outside);
             }
             else
             {

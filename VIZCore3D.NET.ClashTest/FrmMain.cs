@@ -406,20 +406,25 @@ namespace VIZCore3D.NET.ClashTest
         {
             if (clash == null) return;
 
-            if(clash.GroupA.Count == 0)
+            clash.Name = "CLASH TEST #1";
+            clash.TestKind = (Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
+
+            if (clash.GroupA.Count == 0)
             {
                 MessageBox.Show("Group A 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (clash.GroupB.Count == 0)
+            if (clash.TestKind == Data.ClashTest.ClashTestKind.GROUP_VS_GROUP
+                || clash.TestKind == Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
             {
-                MessageBox.Show("Group B 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                if (clash.GroupB.Count == 0)
+                {
+                    MessageBox.Show("Group B 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
 
-            clash.Name = "CLASH TEST #1";
-            clash.TestKind = (Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
 
             clash.UseRangeValue = ckUseRangeValue.Checked;
             clash.RangeValue = Convert.ToSingle(txtRangeValue.Text);

@@ -12,7 +12,8 @@ namespace VIZCore3D.NET.ToVIZ
     public enum ToVIZMode
     {
         EXPORT = 0,
-        CONVERT = 1
+        CONVERT = 1,
+        OUTSIDE = 2
     }
 
     public partial class FileExplorerControl : UserControl
@@ -111,6 +112,31 @@ namespace VIZCore3D.NET.ToVIZ
                 args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
                 args.Output = output;
                 args.Mode = ToVIZMode.CONVERT;
+
+                bool result = OnToVIZEvent(this, args);
+
+                lvFiles.Invoke(new EventHandler(delegate
+                {
+                    item.SubItems[1].Text = result == true ? "OK" : "NG";
+                    item.EnsureVisible();
+                    lvFiles.Refresh();
+                }));
+            }
+        }
+
+        private void btnExportOutside_Click(object sender, EventArgs e)
+        {
+            if (OnToVIZEvent == null) return;
+
+            string source = txtSource.Text;
+            string output = txtOutput.Text;
+
+            foreach (ListViewItem item in lvFiles.Items)
+            {
+                ToVIZEventArgs args = new ToVIZEventArgs();
+                args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
+                args.Output = output;
+                args.Mode = ToVIZMode.OUTSIDE;
 
                 bool result = OnToVIZEvent(this, args);
 

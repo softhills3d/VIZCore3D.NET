@@ -35,6 +35,7 @@
             this.btnSelectPath = new System.Windows.Forms.Button();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckVIZ = new System.Windows.Forms.CheckBox();
             this.ckRVT = new System.Windows.Forms.CheckBox();
             this.ckRVM = new System.Windows.Forms.CheckBox();
             this.ckREV = new System.Windows.Forms.CheckBox();
@@ -44,7 +45,7 @@
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnToVIZ = new System.Windows.Forms.Button();
             this.btnToVIZConversion = new System.Windows.Forms.Button();
-            this.ckVIZ = new System.Windows.Forms.CheckBox();
+            this.btnExportOutside = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -130,6 +131,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filter";
             // 
+            // ckVIZ
+            // 
+            this.ckVIZ.AutoSize = true;
+            this.ckVIZ.Location = new System.Drawing.Point(311, 32);
+            this.ckVIZ.Name = "ckVIZ";
+            this.ckVIZ.Size = new System.Drawing.Size(43, 16);
+            this.ckVIZ.TabIndex = 3;
+            this.ckVIZ.Text = "VIZ";
+            this.ckVIZ.UseVisualStyleBackColor = true;
+            // 
             // ckRVT
             // 
             this.ckRVT.AutoSize = true;
@@ -207,7 +218,7 @@
             // btnToVIZ
             // 
             this.btnToVIZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToVIZ.Location = new System.Drawing.Point(271, 213);
+            this.btnToVIZ.Location = new System.Drawing.Point(153, 213);
             this.btnToVIZ.Name = "btnToVIZ";
             this.btnToVIZ.Size = new System.Drawing.Size(155, 23);
             this.btnToVIZ.TabIndex = 3;
@@ -218,7 +229,7 @@
             // btnToVIZConversion
             // 
             this.btnToVIZConversion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToVIZConversion.Location = new System.Drawing.Point(448, 213);
+            this.btnToVIZConversion.Location = new System.Drawing.Point(330, 213);
             this.btnToVIZConversion.Name = "btnToVIZConversion";
             this.btnToVIZConversion.Size = new System.Drawing.Size(183, 23);
             this.btnToVIZConversion.TabIndex = 4;
@@ -226,20 +237,22 @@
             this.btnToVIZConversion.UseVisualStyleBackColor = true;
             this.btnToVIZConversion.Click += new System.EventHandler(this.btnToVIZConversion_Click);
             // 
-            // ckVIZ
+            // btnExportOutside
             // 
-            this.ckVIZ.AutoSize = true;
-            this.ckVIZ.Location = new System.Drawing.Point(311, 32);
-            this.ckVIZ.Name = "ckVIZ";
-            this.ckVIZ.Size = new System.Drawing.Size(43, 16);
-            this.ckVIZ.TabIndex = 3;
-            this.ckVIZ.Text = "VIZ";
-            this.ckVIZ.UseVisualStyleBackColor = true;
+            this.btnExportOutside.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportOutside.Location = new System.Drawing.Point(525, 213);
+            this.btnExportOutside.Name = "btnExportOutside";
+            this.btnExportOutside.Size = new System.Drawing.Size(122, 23);
+            this.btnExportOutside.TabIndex = 5;
+            this.btnExportOutside.Text = "To VIZ (Outside)";
+            this.btnExportOutside.UseVisualStyleBackColor = true;
+            this.btnExportOutside.Click += new System.EventHandler(this.btnExportOutside_Click);
             // 
             // FileExplorerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnExportOutside);
             this.Controls.Add(this.btnToVIZConversion);
             this.Controls.Add(this.btnToVIZ);
             this.Controls.Add(this.groupBox3);
@@ -276,5 +289,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Button btnToVIZConversion;
         private System.Windows.Forms.CheckBox ckVIZ;
+        private System.Windows.Forms.Button btnExportOutside;
     }
 }
