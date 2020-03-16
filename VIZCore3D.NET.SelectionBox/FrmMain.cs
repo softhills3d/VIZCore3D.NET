@@ -347,7 +347,7 @@ namespace VIZCore3D.NET.SelectionBox
 
         private void SelectionBox_OnSelectionBoxDragEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
         {
-            VIZCore3D.NET.Data.SelectionBox info = vizcore3d.SelectionBox.Get(e.ID);
+            VIZCore3D.NET.Data.SelectionBox info = vizcore3d.SelectionBox.GetData(e.ID);
 
             vizcore3d.View.Message.Show(Data.MessageId.ID_05, string.Format("Size : {0} / {1}", info.MinPoint.ToString(), info.MaxPoint.ToString()), 5, 65, Data.FontSize.Size_14, Color.Blue);
         }
@@ -546,7 +546,7 @@ namespace VIZCore3D.NET.SelectionBox
 
         private void DisplayMessage(int id)
         {
-            VIZCore3D.NET.Data.SelectionBox info = vizcore3d.SelectionBox.Get(id);
+            VIZCore3D.NET.Data.SelectionBox info = vizcore3d.SelectionBox.GetData(id);
             VIZCore3D.NET.Data.Vertex3D cog = vizcore3d.SelectionBox.GetCOG(id, Data.BoundBoxSearchOption.FullyContained);
 
             vizcore3d.View.Message.Show(Data.MessageId.ID_01, "선택상자", 5, 5, Data.FontSize.Size_14_Bold, Color.Red);
