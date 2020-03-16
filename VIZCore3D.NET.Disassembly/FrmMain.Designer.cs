@@ -34,6 +34,7 @@
             this.btnRestoreSelectedObject = new System.Windows.Forms.Button();
             this.btnRestoreAll = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDisassemble = new System.Windows.Forms.Button();
             this.btnSphere = new System.Windows.Forms.Button();
             this.btnLinear = new System.Windows.Forms.Button();
             this.btnAxis = new System.Windows.Forms.Button();
@@ -46,13 +47,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDistance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDisassemble = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnAddGroup = new System.Windows.Forms.Button();
+            this.btnClearGroup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -63,6 +67,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
@@ -76,7 +81,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnRestoreSelectedObject);
             this.groupBox3.Controls.Add(this.btnRestoreAll);
-            this.groupBox3.Location = new System.Drawing.Point(12, 338);
+            this.groupBox3.Location = new System.Drawing.Point(12, 411);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(418, 80);
             this.groupBox3.TabIndex = 2;
@@ -113,12 +118,22 @@
             this.groupBox2.Controls.Add(this.btnAxis);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.cbAxis);
-            this.groupBox2.Location = new System.Drawing.Point(12, 200);
+            this.groupBox2.Location = new System.Drawing.Point(12, 273);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(418, 132);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Disassembly";
+            // 
+            // btnDisassemble
+            // 
+            this.btnDisassemble.Location = new System.Drawing.Point(224, 32);
+            this.btnDisassemble.Name = "btnDisassemble";
+            this.btnDisassemble.Size = new System.Drawing.Size(103, 23);
+            this.btnDisassemble.TabIndex = 5;
+            this.btnDisassemble.Text = "Disassemble";
+            this.btnDisassemble.UseVisualStyleBackColor = true;
+            this.btnDisassemble.Click += new System.EventHandler(this.btnDisassemble_Click);
             // 
             // btnSphere
             // 
@@ -238,7 +253,7 @@
             this.txtDistance.Name = "txtDistance";
             this.txtDistance.Size = new System.Drawing.Size(100, 21);
             this.txtDistance.TabIndex = 1;
-            this.txtDistance.Text = "10";
+            this.txtDistance.Text = "10000";
             // 
             // label1
             // 
@@ -249,15 +264,38 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Distance";
             // 
-            // btnDisassemble
+            // groupBox4
             // 
-            this.btnDisassemble.Location = new System.Drawing.Point(224, 32);
-            this.btnDisassemble.Name = "btnDisassemble";
-            this.btnDisassemble.Size = new System.Drawing.Size(103, 23);
-            this.btnDisassemble.TabIndex = 5;
-            this.btnDisassemble.Text = "Disassemble";
-            this.btnDisassemble.UseVisualStyleBackColor = true;
-            this.btnDisassemble.Click += new System.EventHandler(this.btnDisassemble_Click);
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnClearGroup);
+            this.groupBox4.Controls.Add(this.btnAddGroup);
+            this.groupBox4.Location = new System.Drawing.Point(12, 190);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(418, 77);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Group";
+            // 
+            // btnAddGroup
+            // 
+            this.btnAddGroup.Location = new System.Drawing.Point(49, 36);
+            this.btnAddGroup.Name = "btnAddGroup";
+            this.btnAddGroup.Size = new System.Drawing.Size(75, 23);
+            this.btnAddGroup.TabIndex = 0;
+            this.btnAddGroup.Text = "Add Group";
+            this.btnAddGroup.UseVisualStyleBackColor = true;
+            this.btnAddGroup.Click += new System.EventHandler(this.btnAddGroup_Click);
+            // 
+            // btnClearGroup
+            // 
+            this.btnClearGroup.Location = new System.Drawing.Point(147, 36);
+            this.btnClearGroup.Name = "btnClearGroup";
+            this.btnClearGroup.Size = new System.Drawing.Size(75, 23);
+            this.btnClearGroup.TabIndex = 1;
+            this.btnClearGroup.Text = "Clear";
+            this.btnClearGroup.UseVisualStyleBackColor = true;
+            this.btnClearGroup.Click += new System.EventHandler(this.btnClearGroup_Click);
             // 
             // FrmMain
             // 
@@ -277,6 +315,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -301,6 +340,9 @@
         private System.Windows.Forms.Button btnRestoreSelectedObject;
         private System.Windows.Forms.Button btnRestoreAll;
         private System.Windows.Forms.Button btnDisassemble;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnClearGroup;
+        private System.Windows.Forms.Button btnAddGroup;
     }
 }
 

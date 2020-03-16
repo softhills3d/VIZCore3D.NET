@@ -650,5 +650,29 @@ namespace VIZCore3D.NET.SelectionBox
         {
             vizcore3d.SelectionBox.ShowLabel(false);
         }
+
+        private void ckControllerX_CheckedChanged(object sender, EventArgs e)
+        {
+            SetControllerStatus();
+        }
+
+        private void ckControllerY_CheckedChanged(object sender, EventArgs e)
+        {
+            SetControllerStatus();
+        }
+
+        private void ckControllerZ_CheckedChanged(object sender, EventArgs e)
+        {
+            SetControllerStatus();
+        }
+
+        private void SetControllerStatus()
+        {
+            vizcore3d.SelectionBox.EnableController(
+                ckControllerX.Checked
+                , ckControllerY.Checked
+                , ckControllerZ.Checked
+                );
+        }
     }
 }
