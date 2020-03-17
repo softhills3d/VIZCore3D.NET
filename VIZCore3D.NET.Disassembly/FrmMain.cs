@@ -375,6 +375,8 @@ namespace VIZCore3D.NET.Disassembly
         private void btnRestoreAll_Click(object sender, EventArgs e)
         {
             vizcore3d.Object3D.Transform.RestoreTransformAll();
+
+            vizcore3d.View.ResetView();
         }
 
         private void btnRestoreSelectedObject_Click(object sender, EventArgs e)
@@ -382,6 +384,27 @@ namespace VIZCore3D.NET.Disassembly
             vizcore3d.Object3D.Transform.RestoreTransform();
         }
 
-        
+        private void btnAddGroup_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> child = 
+                vizcore3d.Object3D.GetChildObject3d(
+                    0                                       /* Root Node Index */
+                    , Data.Object3DChildOption.CHILD_ONLY   /* Sub Node */
+                    );
+
+            for (int i = 0; i < child.Count; i++)
+            {
+                bool result = vizcore3d.Object3D.Disassembly.AddGroup(
+                    i                   /* ID : 0 ~ */
+                    , child[i].Index    /* NODE INDEX */
+                    , true              /* Recursive */
+                    );
+            }
+        }
+
+        private void btnClearGroup_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Disassembly.ClearGroup();
+        }
     }
 }
