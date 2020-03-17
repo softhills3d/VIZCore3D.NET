@@ -84,61 +84,28 @@ namespace VIZCore3D.NET.ToVIZ
                 ToVIZEventArgs args = new ToVIZEventArgs();
                 args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
                 args.Output = output;
-                args.Mode = ToVIZMode.EXPORT;
+
+                if (rbExport.Checked)
+                    args.Mode = ToVIZMode.EXPORT;
+                else if (rbConversion.Checked)
+                    args.Mode = ToVIZMode.CONVERT;
+                else if (rbOutside.Checked)
+                    args.Mode = ToVIZMode.OUTSIDE;
+                else
+                    args.Mode = ToVIZMode.EXPORT;
+
+                if (rbAsIs.Checked)
+                    args.MergeMode = Data.MergeStructureModes.NONE;
+                else if (rbLeafAssembly.Checked)
+                    args.MergeMode = Data.MergeStructureModes.LEAF_ASM_TO_PART;
+                else if (rbPart.Checked)
+                    args.MergeMode = Data.MergeStructureModes.ALL_TO_PART;
+                else
+                    args.MergeMode = Data.MergeStructureModes.NONE;
 
                 this.Cursor = Cursors.WaitCursor;
                 bool result = OnToVIZEvent(this, args);
                 this.Cursor = Cursors.Default;
-
-                lvFiles.Invoke(new EventHandler(delegate
-                {
-                    item.SubItems[1].Text = result == true ? "OK" : "NG";
-                    item.EnsureVisible();
-                    lvFiles.Refresh();
-                }));
-            }
-        }
-
-        private void btnToVIZConversion_Click(object sender, EventArgs e)
-        {
-            if (OnToVIZEvent == null) return;
-
-            string source = txtSource.Text;
-            string output = txtOutput.Text;
-
-            foreach (ListViewItem item in lvFiles.Items)
-            {
-                ToVIZEventArgs args = new ToVIZEventArgs();
-                args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
-                args.Output = output;
-                args.Mode = ToVIZMode.CONVERT;
-
-                bool result = OnToVIZEvent(this, args);
-
-                lvFiles.Invoke(new EventHandler(delegate
-                {
-                    item.SubItems[1].Text = result == true ? "OK" : "NG";
-                    item.EnsureVisible();
-                    lvFiles.Refresh();
-                }));
-            }
-        }
-
-        private void btnExportOutside_Click(object sender, EventArgs e)
-        {
-            if (OnToVIZEvent == null) return;
-
-            string source = txtSource.Text;
-            string output = txtOutput.Text;
-
-            foreach (ListViewItem item in lvFiles.Items)
-            {
-                ToVIZEventArgs args = new ToVIZEventArgs();
-                args.Source = string.Format("{0}\\{1}", txtSource.Text, item.Text);
-                args.Output = output;
-                args.Mode = ToVIZMode.OUTSIDE;
-
-                bool result = OnToVIZEvent(this, args);
 
                 lvFiles.Invoke(new EventHandler(delegate
                 {
@@ -157,5 +124,6 @@ namespace VIZCore3D.NET.ToVIZ
         public ToVIZMode Mode { get; set; }
         public string Source { get; set; }
         public string Output { get; set; }
+        public VIZCore3D.NET.Data.MergeStructureModes MergeMode { get; set; }
     }
 }
