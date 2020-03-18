@@ -302,7 +302,7 @@ namespace VIZCore3D.NET.CaptureImage
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
-            vizcore3d.ToolbarNote.Visible = false;
+            vizcore3d.ToolbarNote.Visible = true;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
@@ -389,7 +389,6 @@ namespace VIZCore3D.NET.CaptureImage
             ListViewItem lvi = new ListViewItem("", imgThumb.Images.Count -1);
             lvi.Tag = img;
             
-
             lvImage.Items.Add(lvi);
 
             lvImage.EnsureVisible(lvImage.Items.Count - 1);

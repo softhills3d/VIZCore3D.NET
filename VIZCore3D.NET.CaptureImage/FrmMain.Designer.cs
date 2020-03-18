@@ -31,15 +31,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnCapture = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.btnSelectPath = new System.Windows.Forms.Button();
-            this.btnSaveFile = new System.Windows.Forms.Button();
             this.lvImage = new System.Windows.Forms.ListView();
-            this.imgThumb = new System.Windows.Forms.ImageList(this.components);
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imgThumb = new System.Windows.Forms.ImageList(this.components);
+            this.btnSaveFile = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSelectPath = new System.Windows.Forms.Button();
+            this.txtPath = new System.Windows.Forms.TextBox();
+            this.btnCapture = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -60,72 +59,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel2.Controls.Add(this.btnCapture);
             this.splitContainer1.Size = new System.Drawing.Size(1318, 812);
-            this.splitContainer1.SplitterDistance = 992;
+            this.splitContainer1.SplitterDistance = 1035;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // btnCapture
-            // 
-            this.btnCapture.Location = new System.Drawing.Point(26, 26);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(75, 23);
-            this.btnCapture.TabIndex = 0;
-            this.btnCapture.Text = "Capture";
-            this.btnCapture.UseVisualStyleBackColor = true;
-            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnSelectPath);
-            this.groupBox1.Controls.Add(this.txtPath);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(13, 65);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(297, 68);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Option";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 31);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Path";
-            // 
-            // txtPath
-            // 
-            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPath.Location = new System.Drawing.Point(58, 28);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(167, 21);
-            this.txtPath.TabIndex = 1;
-            // 
-            // btnSelectPath
-            // 
-            this.btnSelectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectPath.Location = new System.Drawing.Point(231, 26);
-            this.btnSelectPath.Name = "btnSelectPath";
-            this.btnSelectPath.Size = new System.Drawing.Size(60, 23);
-            this.btnSelectPath.TabIndex = 2;
-            this.btnSelectPath.Text = "Select";
-            this.btnSelectPath.UseVisualStyleBackColor = true;
-            this.btnSelectPath.Click += new System.EventHandler(this.btnSelectPath_Click);
-            // 
-            // btnSaveFile
-            // 
-            this.btnSaveFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSaveFile.Location = new System.Drawing.Point(229, 26);
-            this.btnSaveFile.Name = "btnSaveFile";
-            this.btnSaveFile.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveFile.TabIndex = 2;
-            this.btnSaveFile.Text = "Save";
-            this.btnSaveFile.UseVisualStyleBackColor = true;
-            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
             // 
             // lvImage
             // 
@@ -138,13 +73,18 @@
             this.lvImage.GridLines = true;
             this.lvImage.HideSelection = false;
             this.lvImage.LargeImageList = this.imgThumb;
-            this.lvImage.Location = new System.Drawing.Point(13, 139);
+            this.lvImage.Location = new System.Drawing.Point(13, 133);
             this.lvImage.Name = "lvImage";
-            this.lvImage.Size = new System.Drawing.Size(297, 661);
+            this.lvImage.Size = new System.Drawing.Size(254, 667);
             this.lvImage.SmallImageList = this.imgThumb;
             this.lvImage.TabIndex = 3;
             this.lvImage.UseCompatibleStateImageBehavior = false;
             this.lvImage.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Image";
+            this.columnHeader1.Width = 278;
             // 
             // imgThumb
             // 
@@ -152,10 +92,59 @@
             this.imgThumb.ImageSize = new System.Drawing.Size(200, 128);
             this.imgThumb.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // columnHeader1
+            // btnSaveFile
             // 
-            this.columnHeader1.Text = "Image";
-            this.columnHeader1.Width = 278;
+            this.btnSaveFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSaveFile.Location = new System.Drawing.Point(186, 26);
+            this.btnSaveFile.Name = "btnSaveFile";
+            this.btnSaveFile.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveFile.TabIndex = 2;
+            this.btnSaveFile.Text = "Save";
+            this.btnSaveFile.UseVisualStyleBackColor = true;
+            this.btnSaveFile.Click += new System.EventHandler(this.btnSaveFile_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnSelectPath);
+            this.groupBox1.Controls.Add(this.txtPath);
+            this.groupBox1.Location = new System.Drawing.Point(13, 65);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(254, 62);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Path";
+            // 
+            // btnSelectPath
+            // 
+            this.btnSelectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSelectPath.Location = new System.Drawing.Point(188, 23);
+            this.btnSelectPath.Name = "btnSelectPath";
+            this.btnSelectPath.Size = new System.Drawing.Size(60, 23);
+            this.btnSelectPath.TabIndex = 2;
+            this.btnSelectPath.Text = "Select";
+            this.btnSelectPath.UseVisualStyleBackColor = true;
+            this.btnSelectPath.Click += new System.EventHandler(this.btnSelectPath_Click);
+            // 
+            // txtPath
+            // 
+            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPath.Location = new System.Drawing.Point(24, 25);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(158, 21);
+            this.txtPath.TabIndex = 1;
+            // 
+            // btnCapture
+            // 
+            this.btnCapture.Location = new System.Drawing.Point(26, 26);
+            this.btnCapture.Name = "btnCapture";
+            this.btnCapture.Size = new System.Drawing.Size(75, 23);
+            this.btnCapture.TabIndex = 0;
+            this.btnCapture.Text = "Capture";
+            this.btnCapture.UseVisualStyleBackColor = true;
+            this.btnCapture.Click += new System.EventHandler(this.btnCapture_Click);
             // 
             // FrmMain
             // 
@@ -185,7 +174,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSelectPath;
         private System.Windows.Forms.TextBox txtPath;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCapture;
         private System.Windows.Forms.ColumnHeader columnHeader1;
     }
