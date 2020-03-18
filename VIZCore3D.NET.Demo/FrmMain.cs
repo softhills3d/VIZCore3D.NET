@@ -46,7 +46,7 @@ namespace VIZCore3D.NET.Demo
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
-            vizcore3d = new VIZCore3DControl();
+            vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
             panelView.Controls.Add(vizcore3d);
 
@@ -86,7 +86,7 @@ namespace VIZCore3D.NET.Demo
             VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
-            if (result != Data.LicenseResults.SUCCESS)
+            if (result != VIZCore3D.NET.Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -109,7 +109,7 @@ namespace VIZCore3D.NET.Demo
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">Event Args</param>
-        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
+        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
         {
             if(e.Node.Count > 0)
             {
@@ -121,13 +121,13 @@ namespace VIZCore3D.NET.Demo
                     vizcore3d.BeginUpdate();
                     Data.Object3DProperty prop = vizcore3d.Object3D.GeometryProperty.FromIndex(e.Node[0].Index, true);
 
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("Name : {0}", e.Node[0].NodeName), 5, 5, Data.FontSize.Size_14_Bold, Color.Red);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_02, string.Format("Path : {0}", prop.AssemblyPath), 5, 20, Data.FontSize.Size_14, Color.Orange);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_03, string.Format("Center : {0}", prop.CenterPoint.ToString()), 5, 35, Data.FontSize.Size_14, Color.Yellow);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_04, string.Format("Min. : {0}", prop.MinPoint.ToString()), 5, 50, Data.FontSize.Size_14, Color.Green);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_05, string.Format("Max. : {0}", prop.MaxPoint.ToString()), 5, 65, Data.FontSize.Size_14, Color.Blue);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_06, string.Format("Mass : {0}", prop.Mass), 5, 80, Data.FontSize.Size_14, Color.Indigo);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_07, string.Format("Area : {0}", prop.SurfaceArea), 5, 95, Data.FontSize.Size_14, Color.Purple);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_01, string.Format("Name : {0}", e.Node[0].NodeName), 5, 5, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Red);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_02, string.Format("Path : {0}", prop.AssemblyPath), 5, 20, VIZCore3D.NET.Data.FontSize.Size_14, Color.Orange);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_03, string.Format("Center : {0}", prop.CenterPoint.ToString()), 5, 35, VIZCore3D.NET.Data.FontSize.Size_14, Color.Yellow);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_04, string.Format("Min. : {0}", prop.MinPoint.ToString()), 5, 50, VIZCore3D.NET.Data.FontSize.Size_14, Color.Green);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_05, string.Format("Max. : {0}", prop.MaxPoint.ToString()), 5, 65, VIZCore3D.NET.Data.FontSize.Size_14, Color.Blue);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_06, string.Format("Mass : {0}", prop.Mass), 5, 80, VIZCore3D.NET.Data.FontSize.Size_14, Color.Indigo);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_07, string.Format("Area : {0}", prop.SurfaceArea), 5, 95, VIZCore3D.NET.Data.FontSize.Size_14, Color.Purple);
 
                     vizcore3d.EndUpdate();
                 }
@@ -141,14 +141,14 @@ namespace VIZCore3D.NET.Demo
                     vizcore3d.BeginUpdate();
 
                     vizcore3d.View.Message.Clear();
-                    Data.BoundBox3D bbox = vizcore3d.Model.BoundBox;
+                    VIZCore3D.NET.Data.BoundBox3D bbox = vizcore3d.Model.BoundBox;
 
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("Min. X : {0}", bbox.MinX), 5, 5, Data.FontSize.Size_14, Color.Red);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_02, string.Format("Min. Y : {0}", bbox.MinY), 5, 20, Data.FontSize.Size_14, Color.Orange);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_03, string.Format("Min. Z : {0}", bbox.MinZ), 5, 35, Data.FontSize.Size_14, Color.Yellow);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_04, string.Format("Max. X : {0}", bbox.MaxX), 5, 50, Data.FontSize.Size_14, Color.Green);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_05, string.Format("Max. Y : {0}", bbox.MaxY), 5, 65, Data.FontSize.Size_14, Color.Blue);
-                    vizcore3d.View.Message.Show(Data.MessageId.ID_06, string.Format("Max. Z : {0}", bbox.MaxZ), 5, 80, Data.FontSize.Size_14, Color.Indigo);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_01, string.Format("Min. X : {0}", bbox.MinX), 5, 5, VIZCore3D.NET.Data.FontSize.Size_14, Color.Red);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_02, string.Format("Min. Y : {0}", bbox.MinY), 5, 20, VIZCore3D.NET.Data.FontSize.Size_14, Color.Orange);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_03, string.Format("Min. Z : {0}", bbox.MinZ), 5, 35, VIZCore3D.NET.Data.FontSize.Size_14, Color.Yellow);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_04, string.Format("Max. X : {0}", bbox.MaxX), 5, 50, VIZCore3D.NET.Data.FontSize.Size_14, Color.Green);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_05, string.Format("Max. Y : {0}", bbox.MaxY), 5, 65, VIZCore3D.NET.Data.FontSize.Size_14, Color.Blue);
+                    vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_06, string.Format("Max. Z : {0}", bbox.MaxZ), 5, 80, VIZCore3D.NET.Data.FontSize.Size_14, Color.Indigo);
 
                     vizcore3d.EndUpdate();
                 }
@@ -161,23 +161,23 @@ namespace VIZCore3D.NET.Demo
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">Event Args</param>
-        private void Section_OnSectionEvent(object sender, Event.EventManager.SectionEventArgs e)
+        private void Section_OnSectionEvent(object sender, VIZCore3D.NET.Event.EventManager.SectionEventArgs e)
         {   
             switch (e.EventType)
             {                
-                case Manager.SectionManager.EventTypes.ADD:
+                case VIZCore3D.NET.Manager.SectionManager.EventTypes.ADD:
                     //생성 이벤트
                     break;
-                case Manager.SectionManager.EventTypes.DELETE:
+                case VIZCore3D.NET.Manager.SectionManager.EventTypes.DELETE:
                     //삭제 이벤트
                     break;
-                case Manager.SectionManager.EventTypes.DELETE_ALL:
+                case VIZCore3D.NET.Manager.SectionManager.EventTypes.DELETE_ALL:
                     //전체 삭제 이벤트
                     break;
-                case Manager.SectionManager.EventTypes.SELECT:
+                case VIZCore3D.NET.Manager.SectionManager.EventTypes.SELECT:
                     //선택 이벤트
                     break;
-                case Manager.SectionManager.EventTypes.TRANSFORM:
+                case VIZCore3D.NET.Manager.SectionManager.EventTypes.TRANSFORM:
                     //이동 및 회전 이벤트
                     break;
                 default:
@@ -190,13 +190,13 @@ namespace VIZCore3D.NET.Demo
 
             switch (e.Section.SectionType)
             {
-                case Manager.SectionManager.SectionTypes.SECTION:
+                case VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION:
                     // 단면
                     break;
-                case Manager.SectionManager.SectionTypes.SECTION_BOX:
+                case VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX:
                     // 상자
                     break;
-                case Manager.SectionManager.SectionTypes.SECTION_INBOX:
+                case VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_INBOX:
                     // 인박스
                     break;
                 default:
@@ -252,10 +252,10 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.View.EnableHardwareAcceleration = true;
 
             // 모델 열기 시, 스트럭처 병합 설정
-            vizcore3d.Model.OpenMergeStructureMode = Data.MergeStructureModes.NONE;
+            vizcore3d.Model.OpenMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 모델 저장 시, 스트럭처 병합 설정
-            vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+            vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 실린더 원형 품질 개수 : Nomal(12~36), Small(6~36)
             vizcore3d.Model.ReadNormalCylinderSide = 12;
@@ -264,13 +264,13 @@ namespace VIZCore3D.NET.Demo
             // 보이는 모델만 저장
 
             // VIZXML to VIZ 옵션
-            vizcore3d.Model.VIZXMLtoVIZOption = Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
+            vizcore3d.Model.VIZXMLtoVIZOption = VIZCore3D.NET.Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
 
             // 선택 가능 개체 : 전체, 불투명한 개체
-            vizcore3d.View.SelectionObject3DType = Data.SelectionObject3DTypes.ALL;
+            vizcore3d.View.SelectionObject3DType = VIZCore3D.NET.Data.SelectionObject3DTypes.ALL;
 
             // 개체 선택 유형 : 색상, 경계로 선택 (개체), 경계로 선택 (전체)
-            vizcore3d.View.SelectionMode = Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
+            vizcore3d.View.SelectionMode = VIZCore3D.NET.Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
 
             // 개체 선택 색상
             vizcore3d.View.SelectionColor = Color.Red;
@@ -303,7 +303,7 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.View.RotationAngle = 90.0f;
 
             // 회전 축
-            vizcore3d.View.RotationAxis = Data.Axis.X;
+            vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
             #endregion
 
             // ================================================================
@@ -329,7 +329,7 @@ namespace VIZCore3D.NET.Demo
             // 숙임
             vizcore3d.Walkthrough.UseAvatarBowWalk = false;
             // 모델
-            vizcore3d.Walkthrough.AvatarModel = (int)Data.AvatarModels.MAN1;
+            vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
             vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
             // 충돌상자보기
@@ -348,9 +348,9 @@ namespace VIZCore3D.NET.Demo
             // 모서리 굵기
             vizcore3d.View.EdgeWidthRatio = 0.0f;
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상
-            vizcore3d.View.XRay.ColorType = Data.XRayColorTypes.SELECTION_COLOR;
+            vizcore3d.View.XRay.ColorType = VIZCore3D.NET.Data.XRayColorTypes.SELECTION_COLOR;
             // 배경유형
-            //vizcore3d.View.BackgroundMode = Data.BackgroundModes.COLOR_ONE;
+            //vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
             // 배경색1
             //vizcore3d.View.BackgroundColor1 = Color.Gray;
             // 배경색2
@@ -368,7 +368,7 @@ namespace VIZCore3D.NET.Demo
             // 글자색
             vizcore3d.Review.Note.FontColor = Color.Black;
             // 글자 크기
-            vizcore3d.Review.Note.FontSize = Manager.NoteManager.FontSizeKind.SIZE12;
+            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE12;
             // 글자 굵게
             vizcore3d.Review.Note.FontBold = false;
             // 지시선(라인) 색상
@@ -376,7 +376,7 @@ namespace VIZCore3D.NET.Demo
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 3;
             // 지시선 중앙 연결
-            vizcore3d.Review.Note.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.END;
             // 화살표 색상
             vizcore3d.Review.Note.ArrowColor = Color.Red;
             // 화살표 두께
@@ -389,7 +389,7 @@ namespace VIZCore3D.NET.Demo
             // 심볼 크기
             vizcore3d.Review.Note.SymbolSize = 10;
             // 심볼 글자 크기
-            vizcore3d.Review.Note.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE10;
+            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE10;
             // 심볼 글자 굵게
             vizcore3d.Review.Note.SymbolFontBold = true;
             #endregion
@@ -792,7 +792,7 @@ namespace VIZCore3D.NET.Demo
         private void menuApiGeometryProperty_Click(object sender, EventArgs e)
         {
             // 선택된 노드의 Geometry 속성 정보 조회
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0) return;
 
             Dialogs.GeometryPropertyDialog dlg;
@@ -823,7 +823,7 @@ namespace VIZCore3D.NET.Demo
         private void menuApiUDAValues_Click(object sender, EventArgs e)
         {
             // 선택된 개체의 사용자 정의 속성 정보 조회
-            List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0) return;
 
             Dictionary<string, string> uda = vizcore3d.Object3D.UDA.FromIndex(items[0].Index);
@@ -850,10 +850,10 @@ namespace VIZCore3D.NET.Demo
             return vals;
         }
 
-        private List<Data.Node> UDATreeDialog_OnUDAValueNodeClickedEvent(object sender, Dialogs.UDAValueNodeClickedEventArgs e)
+        private List<VIZCore3D.NET.Data.Node> UDATreeDialog_OnUDAValueNodeClickedEvent(object sender, Dialogs.UDAValueNodeClickedEventArgs e)
         {
             // 사용자 정의 속성의 Key/Value에 해당하는 노드 목록 반환
-            List<Data.Node> nodes = vizcore3d.Object3D.UDA.GetNodes(e.Key, e.Value);
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.UDA.GetNodes(e.Key, e.Value);
             return nodes;
         }
 
@@ -886,10 +886,10 @@ namespace VIZCore3D.NET.Demo
             dlg.Show();
         }
 
-        private List<Data.Node> SearchNode_OnQuickSearchEvent(object sender, Dialogs.QuickSearchEventArgs e)
+        private List<VIZCore3D.NET.Data.Node> SearchNode_OnQuickSearchEvent(object sender, Dialogs.QuickSearchEventArgs e)
         {
             // 검색 GUI에서 요청한 Keyword로 검색 수행 결과 반환
-            List<Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(e.Keyword, e.JoinCondition, e.AssemblyOnly, e.VisibleOnly, e.SelectedOnly, e.FullMatch);
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(e.Keyword, e.JoinCondition, e.AssemblyOnly, e.VisibleOnly, e.SelectedOnly, e.FullMatch);
             return vizcore3d.Object3D.UpdateNodePath(items);
         }
 

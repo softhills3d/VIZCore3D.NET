@@ -29,7 +29,7 @@ namespace VIZCore3D.NET.ClashTest
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
-            vizcore3d = new VIZCore3DControl();
+            vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
             splitContainer2.Panel2.Controls.Add(vizcore3d);
 
@@ -64,7 +64,7 @@ namespace VIZCore3D.NET.ClashTest
             VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
-            if (result != Data.LicenseResults.SUCCESS)
+            if (result != VIZCore3D.NET.Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -103,10 +103,10 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.View.EnableHardwareAcceleration = true;
 
             // 모델 열기 시, 스트럭처 병합 설정
-            vizcore3d.Model.OpenMergeStructureMode = Data.MergeStructureModes.NONE;
+            vizcore3d.Model.OpenMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 모델 저장 시, 스트럭처 병합 설정
-            vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+            vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 실린더 원형 품질 개수 : Nomal(12~36), Small(6~36)
             vizcore3d.Model.ReadNormalCylinderSide = 12;
@@ -115,13 +115,13 @@ namespace VIZCore3D.NET.ClashTest
             // 보이는 모델만 저장
 
             // VIZXML to VIZ 옵션
-            vizcore3d.Model.VIZXMLtoVIZOption = Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
+            vizcore3d.Model.VIZXMLtoVIZOption = VIZCore3D.NET.Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
 
             // 선택 가능 개체 : 전체, 불투명한 개체
-            vizcore3d.View.SelectionObject3DType = Data.SelectionObject3DTypes.ALL;
+            vizcore3d.View.SelectionObject3DType = VIZCore3D.NET.Data.SelectionObject3DTypes.ALL;
 
             // 개체 선택 유형 : 색상, 경계로 선택 (개체), 경계로 선택 (전체)
-            vizcore3d.View.SelectionMode = Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
+            vizcore3d.View.SelectionMode = VIZCore3D.NET.Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
 
             // 개체 선택 색상
             vizcore3d.View.SelectionColor = Color.Red;
@@ -154,7 +154,7 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.View.RotationAngle = 90.0f;
 
             // 회전 축
-            vizcore3d.View.RotationAxis = Data.Axis.X;
+            vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
             #endregion
 
             // ================================================================
@@ -180,7 +180,7 @@ namespace VIZCore3D.NET.ClashTest
             // 숙임
             vizcore3d.Walkthrough.UseAvatarBowWalk = false;
             // 모델
-            vizcore3d.Walkthrough.AvatarModel = (int)Data.AvatarModels.MAN1;
+            vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
             vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
             // 충돌상자보기
@@ -199,9 +199,9 @@ namespace VIZCore3D.NET.ClashTest
             // 모서리 굵기
             vizcore3d.View.EdgeWidthRatio = 0.0f;
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상
-            vizcore3d.View.XRay.ColorType = Data.XRayColorTypes.SELECTION_COLOR;
+            vizcore3d.View.XRay.ColorType = VIZCore3D.NET.Data.XRayColorTypes.SELECTION_COLOR;
             // 배경유형
-            //vizcore3d.View.BackgroundMode = Data.BackgroundModes.COLOR_ONE;
+            //vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
             // 배경색1
             //vizcore3d.View.BackgroundColor1 = Color.Gray;
             // 배경색2
@@ -219,7 +219,7 @@ namespace VIZCore3D.NET.ClashTest
             // 글자색
             vizcore3d.Review.Note.FontColor = Color.Black;
             // 글자 크기
-            vizcore3d.Review.Note.FontSize = Manager.NoteManager.FontSizeKind.SIZE12;
+            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE12;
             // 글자 굵게
             vizcore3d.Review.Note.FontBold = false;
             // 지시선(라인) 색상
@@ -227,7 +227,7 @@ namespace VIZCore3D.NET.ClashTest
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 3;
             // 지시선 중앙 연결
-            vizcore3d.Review.Note.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.END;
             // 화살표 색상
             vizcore3d.Review.Note.ArrowColor = Color.Red;
             // 화살표 두께
@@ -240,7 +240,7 @@ namespace VIZCore3D.NET.ClashTest
             // 심볼 크기
             vizcore3d.Review.Note.SymbolSize = 10;
             // 심볼 글자 크기
-            vizcore3d.Review.Note.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE10;
+            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE10;
             // 심볼 글자 굵게
             vizcore3d.Review.Note.SymbolFontBold = true;
             #endregion
@@ -332,12 +332,12 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
         }
 
-        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
+        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
         {
             if (e.Node.Count == 0) return;
         }
 
-        private void Clash_OnClashTestFinishedEvent(object sender, Event.EventManager.ClashEventArgs e)
+        private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
         {
             MessageBox.Show(string.Format("Clash Test Completed. : {0} / {1}", e.ID, clash.ElapsedTimeString), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -351,14 +351,24 @@ namespace VIZCore3D.NET.ClashTest
 
             List<VIZCore3D.NET.Data.ClashTestResultItem> items = null;
 
-            if(clash.TestKind != Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
+            if(clash.TestKind != VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
             {
-                items = vizcore3d.Clash.GetResultItem(clash, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
+                items = vizcore3d.Clash.GetResultItem(
+                    clash
+                    , ckResultAssembly.Checked == true 
+                    ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY 
+                    : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
+                    );
             }
             else
             {
                 //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
-                items = vizcore3d.Clash.GetResultAllSubItem(clash, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
+                items = vizcore3d.Clash.GetResultAllSubItem(
+                    clash
+                    , ckResultAssembly.Checked == true 
+                    ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY 
+                    : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
+                    );
             }
 
             for (int i = 0; i < items.Count; i++)
@@ -407,7 +417,7 @@ namespace VIZCore3D.NET.ClashTest
             if (clash == null) return;
 
             clash.Name = "CLASH TEST #1";
-            clash.TestKind = (Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
+            clash.TestKind = (VIZCore3D.NET.Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
 
             if (clash.GroupA.Count == 0)
             {
@@ -415,8 +425,8 @@ namespace VIZCore3D.NET.ClashTest
                 return;
             }
 
-            if (clash.TestKind == Data.ClashTest.ClashTestKind.GROUP_VS_GROUP
-                || clash.TestKind == Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
+            if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_GROUP
+                || clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
             {
                 if (clash.GroupB.Count == 0)
                 {
@@ -434,7 +444,7 @@ namespace VIZCore3D.NET.ClashTest
             clash.VisibleOnly = ckVisibleOnly.Checked;
             clash.BottomLevel = cbBottomLevel.SelectedIndex + 1;
 
-            if (clash.TestKind == Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count == 0)
+            if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count == 0)
             {
                 MessageBox.Show("이동 경로(Path)를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -484,7 +494,7 @@ namespace VIZCore3D.NET.ClashTest
 
         private void btnAddGroupA_Click(object sender, EventArgs e)
         {
-            List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0)
             {
                 MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -497,7 +507,7 @@ namespace VIZCore3D.NET.ClashTest
 
         private void btnAddGroupB_Click(object sender, EventArgs e)
         {
-            List<Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0)
             {
                 MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -513,7 +523,7 @@ namespace VIZCore3D.NET.ClashTest
             if (String.IsNullOrEmpty(txtStartPos.Text) == true) return;
             if (String.IsNullOrEmpty(txtInterval.Text) == true) return;
 
-            clash.AddTranslation((Data.Axis)cbAxis.SelectedIndex, Convert.ToSingle(txtStartPos.Text), Convert.ToSingle(txtInterval.Text));
+            clash.AddTranslation((VIZCore3D.NET.Data.Axis)cbAxis.SelectedIndex, Convert.ToSingle(txtStartPos.Text), Convert.ToSingle(txtInterval.Text));
 
             MessageBox.Show("이동 경로(Path)를 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

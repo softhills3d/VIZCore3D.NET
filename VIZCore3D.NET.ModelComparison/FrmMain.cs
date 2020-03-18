@@ -239,7 +239,6 @@ namespace VIZCore3D.NET.ModelComparison
 
         private void ResetViewFunc(VIZCore3D.NET.VIZCore3DControl ctrl)
         {
-            ctrl.View.XRay.Clear();
             ctrl.View.XRay.Enable = false;
             ctrl.View.ResetView();
         }

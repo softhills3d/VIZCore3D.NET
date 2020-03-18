@@ -31,7 +31,7 @@ namespace VIZCore3D.NET.PlacementStatus
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
-            vizcore3d = new VIZCore3DControl();
+            vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(vizcore3d);
 
@@ -68,7 +68,7 @@ namespace VIZCore3D.NET.PlacementStatus
             VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
-            if (result != Data.LicenseResults.SUCCESS)
+            if (result != VIZCore3D.NET.Data.LicenseResults.SUCCESS)
             {
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -107,10 +107,10 @@ namespace VIZCore3D.NET.PlacementStatus
             vizcore3d.View.EnableHardwareAcceleration = true;
 
             // 모델 열기 시, 스트럭처 병합 설정
-            vizcore3d.Model.OpenMergeStructureMode = Data.MergeStructureModes.NONE;
+            vizcore3d.Model.OpenMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 모델 저장 시, 스트럭처 병합 설정
-            vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
+            vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 실린더 원형 품질 개수 : Nomal(12~36), Small(6~36)
             vizcore3d.Model.ReadNormalCylinderSide = 12;
@@ -119,13 +119,13 @@ namespace VIZCore3D.NET.PlacementStatus
             // 보이는 모델만 저장
 
             // VIZXML to VIZ 옵션
-            vizcore3d.Model.VIZXMLtoVIZOption = Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
+            vizcore3d.Model.VIZXMLtoVIZOption = VIZCore3D.NET.Data.ExportVIZXMLToVIZOptions.LOAD_UNLOADED_NODE;
 
             // 선택 가능 개체 : 전체, 불투명한 개체
-            vizcore3d.View.SelectionObject3DType = Data.SelectionObject3DTypes.ALL;
+            vizcore3d.View.SelectionObject3DType = VIZCore3D.NET.Data.SelectionObject3DTypes.ALL;
 
             // 개체 선택 유형 : 색상, 경계로 선택 (개체), 경계로 선택 (전체)
-            vizcore3d.View.SelectionMode = Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
+            vizcore3d.View.SelectionMode = VIZCore3D.NET.Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
 
             // 개체 선택 색상
             vizcore3d.View.SelectionColor = Color.Red;
@@ -158,7 +158,7 @@ namespace VIZCore3D.NET.PlacementStatus
             vizcore3d.View.RotationAngle = 90.0f;
 
             // 회전 축
-            vizcore3d.View.RotationAxis = Data.Axis.X;
+            vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
             #endregion
 
             // ================================================================
@@ -184,7 +184,7 @@ namespace VIZCore3D.NET.PlacementStatus
             // 숙임
             vizcore3d.Walkthrough.UseAvatarBowWalk = false;
             // 모델
-            vizcore3d.Walkthrough.AvatarModel = (int)Data.AvatarModels.MAN1;
+            vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
             vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
             // 충돌상자보기
@@ -203,9 +203,9 @@ namespace VIZCore3D.NET.PlacementStatus
             // 모서리 굵기
             vizcore3d.View.EdgeWidthRatio = 0.0f;
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상
-            vizcore3d.View.XRay.ColorType = Data.XRayColorTypes.SELECTION_COLOR;
+            vizcore3d.View.XRay.ColorType = VIZCore3D.NET.Data.XRayColorTypes.SELECTION_COLOR;
             // 배경유형
-            //vizcore3d.View.BackgroundMode = Data.BackgroundModes.COLOR_ONE;
+            //vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
             // 배경색1
             //vizcore3d.View.BackgroundColor1 = Color.Gray;
             // 배경색2
@@ -223,7 +223,7 @@ namespace VIZCore3D.NET.PlacementStatus
             // 글자색
             vizcore3d.Review.Note.FontColor = Color.Black;
             // 글자 크기
-            vizcore3d.Review.Note.FontSize = Manager.NoteManager.FontSizeKind.SIZE12;
+            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE12;
             // 글자 굵게
             vizcore3d.Review.Note.FontBold = false;
             // 지시선(라인) 색상
@@ -231,7 +231,7 @@ namespace VIZCore3D.NET.PlacementStatus
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 3;
             // 지시선 중앙 연결
-            vizcore3d.Review.Note.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.END;
             // 화살표 색상
             vizcore3d.Review.Note.ArrowColor = Color.Red;
             // 화살표 두께
@@ -244,7 +244,7 @@ namespace VIZCore3D.NET.PlacementStatus
             // 심볼 크기
             vizcore3d.Review.Note.SymbolSize = 10;
             // 심볼 글자 크기
-            vizcore3d.Review.Note.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE10;
+            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE10;
             // 심볼 글자 굵게
             vizcore3d.Review.Note.SymbolFontBold = true;
             #endregion
@@ -336,7 +336,7 @@ namespace VIZCore3D.NET.PlacementStatus
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
         }
 
-        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
+        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
         {
             if (e.Node.Count == 0) return;
         }
@@ -358,10 +358,10 @@ namespace VIZCore3D.NET.PlacementStatus
             VIZCore3D.NET.Manager.PrimitiveObject title = root.AddNode("TITLE", 3);
 
             {
-                VIZCore3D.NET.Manager.PrimitiveBox box = new Manager.PrimitiveBox();
-                VIZCore3D.NET.Data.Vertex3D min = new Data.Vertex3D(0, 0, -500);
-                VIZCore3D.NET.Data.Vertex3D max = new Data.Vertex3D(contentsColumn * contentsWidth, -titleHeight, 0);
-                VIZCore3D.NET.Data.BoundBox3D boundbox = new Data.BoundBox3D(min, max);
+                VIZCore3D.NET.Manager.PrimitiveBox box = new VIZCore3D.NET.Manager.PrimitiveBox();
+                VIZCore3D.NET.Data.Vertex3D min = new VIZCore3D.NET.Data.Vertex3D(0, 0, -500);
+                VIZCore3D.NET.Data.Vertex3D max = new VIZCore3D.NET.Data.Vertex3D(contentsColumn * contentsWidth, -titleHeight, 0);
+                VIZCore3D.NET.Data.BoundBox3D boundbox = new VIZCore3D.NET.Data.BoundBox3D(min, max);
                 SpaceManager.Add("TITLE", boundbox);
                 box.SetMinMaxPoints(boundbox);
                 title.AddPrimitive(box);
@@ -384,17 +384,17 @@ namespace VIZCore3D.NET.PlacementStatus
 
                             // Title
                             VIZCore3D.NET.Manager.PrimitiveBox groupTitleBox = new Manager.PrimitiveBox();
-                            VIZCore3D.NET.Data.Vertex3D min = new Data.Vertex3D(
+                            VIZCore3D.NET.Data.Vertex3D min = new VIZCore3D.NET.Data.Vertex3D(
                                 j * contentsWidth
                                 , -titleHeight - (i * (subTitleHeight + contentsHeight))
                                 , -500
                                 );
-                            VIZCore3D.NET.Data.Vertex3D max = new Data.Vertex3D(
+                            VIZCore3D.NET.Data.Vertex3D max = new VIZCore3D.NET.Data.Vertex3D(
                                 (j + 1) * contentsWidth
                                 , -titleHeight - (i * (subTitleHeight + contentsHeight)) - subTitleHeight
                                 , 0
                                 );
-                            VIZCore3D.NET.Data.BoundBox3D groupBoundBox = new Data.BoundBox3D(min, max);
+                            VIZCore3D.NET.Data.BoundBox3D groupBoundBox = new VIZCore3D.NET.Data.BoundBox3D(min, max);
                             SpaceManager.Add(string.Format("GROUP_{0:D2}", ID), groupBoundBox);
                             groupTitleBox.SetMinMaxPoints(groupBoundBox);
                             groupItem.AddPrimitive(groupTitleBox);
@@ -404,18 +404,18 @@ namespace VIZCore3D.NET.PlacementStatus
                             VIZCore3D.NET.Manager.PrimitiveObject modelItem = model.AddNode(string.Format("MODEL_{0:D2}", ID), 10);
 
                             // Thumbnail
-                            VIZCore3D.NET.Manager.PrimitiveBox thumbnailBox = new Manager.PrimitiveBox();
-                            VIZCore3D.NET.Data.Vertex3D min = new Data.Vertex3D(
+                            VIZCore3D.NET.Manager.PrimitiveBox thumbnailBox = new VIZCore3D.NET.Manager.PrimitiveBox();
+                            VIZCore3D.NET.Data.Vertex3D min = new VIZCore3D.NET.Data.Vertex3D(
                                 j * contentsWidth
                                 , -titleHeight - (i * (subTitleHeight + contentsHeight)) - subTitleHeight
                                 , -500
                                 );
-                            VIZCore3D.NET.Data.Vertex3D max = new Data.Vertex3D(
+                            VIZCore3D.NET.Data.Vertex3D max = new VIZCore3D.NET.Data.Vertex3D(
                                 (j + 1) * contentsWidth
                                 , -titleHeight - ((i + 1) * (subTitleHeight + contentsHeight))
                                 , 0
                                 );
-                            VIZCore3D.NET.Data.BoundBox3D thumbnailBoundBox = new Data.BoundBox3D(min, max);
+                            VIZCore3D.NET.Data.BoundBox3D thumbnailBoundBox = new VIZCore3D.NET.Data.BoundBox3D(min, max);
                             SpaceManager.Add(string.Format("MODEL_{0:D2}", ID), thumbnailBoundBox);
                             thumbnailBox.SetMinMaxPoints(thumbnailBoundBox);
                             modelItem.AddPrimitive(thumbnailBox);
@@ -431,7 +431,7 @@ namespace VIZCore3D.NET.PlacementStatus
                 vizcore3d.TextDrawing.Clear();
 
                 {
-                    Data.BoundBox3D boundbox = SpaceManager["TITLE"];
+                    VIZCore3D.NET.Data.BoundBox3D boundbox = SpaceManager["TITLE"];
 
                     VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
                     center.X = boundbox.MinX + ((contentsColumn * contentsWidth) * 0.5f);
@@ -478,9 +478,9 @@ namespace VIZCore3D.NET.PlacementStatus
             }
             else
             {
-                vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
-                vizcore3d.View.Navigation = Data.NavigationModes.PAN;
-                vizcore3d.View.SetRenderMode(Data.RenderModes.SMOOTH_EDGE);
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_PLUS);
+                vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.PAN;
+                vizcore3d.View.SetRenderMode(VIZCore3D.NET.Data.RenderModes.SMOOTH_EDGE);
 
                 vizcore3d.View.FitToView();
             }
@@ -542,7 +542,7 @@ namespace VIZCore3D.NET.PlacementStatus
                     vizcore3d.Object3D.Select(node, true);
 
                     vizcore3d.Object3D.Transform.Rotate(
-                        new Data.Vertex3D(50.0f, -40.0f, -30.0f)
+                        new VIZCore3D.NET.Data.Vertex3D(50.0f, -40.0f, -30.0f)
                         , true
                         );
 
@@ -550,9 +550,9 @@ namespace VIZCore3D.NET.PlacementStatus
                 }
             }
 
-            vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
-            vizcore3d.View.Navigation = Data.NavigationModes.PAN;
-            vizcore3d.View.SetRenderMode(Data.RenderModes.SMOOTH_EDGE);
+            vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_PLUS);
+            vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.PAN;
+            vizcore3d.View.SetRenderMode(VIZCore3D.NET.Data.RenderModes.SMOOTH_EDGE);
 
             vizcore3d.EndUpdate();
 
