@@ -105,7 +105,7 @@ namespace VIZCore3D.NET.ShapeDrawing
             vizcore3d.Model.OpenMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 모델 저장 시, 스트럭처 병합 설정
-            vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.MergeStructureModes.NONE;
+            vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
             // 실린더 원형 품질 개수 : Nomal(12~36), Small(6~36)
             vizcore3d.Model.ReadNormalCylinderSide = 12;
