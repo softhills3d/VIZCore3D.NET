@@ -38,21 +38,18 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Size = new System.Drawing.Size(2183, 1190);
-            this.splitContainer1.SplitterDistance = 832;
-            this.splitContainer1.SplitterWidth = 6;
+            this.splitContainer1.Size = new System.Drawing.Size(1389, 680);
+            this.splitContainer1.SplitterDistance = 529;
             this.splitContainer1.TabIndex = 0;
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2183, 1190);
+            this.ClientSize = new System.Drawing.Size(1389, 680);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VIZCore3D.NET.ToVIZ";

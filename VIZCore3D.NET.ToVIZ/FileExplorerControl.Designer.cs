@@ -44,14 +44,15 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnToVIZ = new System.Windows.Forms.Button();
             this.rbOutside = new System.Windows.Forms.RadioButton();
             this.rbConversion = new System.Windows.Forms.RadioButton();
             this.rbExport = new System.Windows.Forms.RadioButton();
+            this.btnToVIZ = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.rbAsIs = new System.Windows.Forms.RadioButton();
-            this.rbLeafAssembly = new System.Windows.Forms.RadioButton();
             this.rbPart = new System.Windows.Forms.RadioButton();
+            this.rbLeafAssembly = new System.Windows.Forms.RadioButton();
+            this.rbAsIs = new System.Windows.Forms.RadioButton();
+            this.ckDGN = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -128,6 +129,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.ckDGN);
             this.groupBox2.Controls.Add(this.ckVIZ);
             this.groupBox2.Controls.Add(this.ckRVT);
             this.groupBox2.Controls.Add(this.ckRVM);
@@ -142,7 +144,7 @@
             // ckVIZ
             // 
             this.ckVIZ.AutoSize = true;
-            this.ckVIZ.Location = new System.Drawing.Point(311, 21);
+            this.ckVIZ.Location = new System.Drawing.Point(386, 21);
             this.ckVIZ.Name = "ckVIZ";
             this.ckVIZ.Size = new System.Drawing.Size(43, 16);
             this.ckVIZ.TabIndex = 3;
@@ -237,17 +239,6 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Mode";
             // 
-            // btnToVIZ
-            // 
-            this.btnToVIZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToVIZ.Location = new System.Drawing.Point(556, 165);
-            this.btnToVIZ.Name = "btnToVIZ";
-            this.btnToVIZ.Size = new System.Drawing.Size(75, 83);
-            this.btnToVIZ.TabIndex = 3;
-            this.btnToVIZ.Text = "To VIZ";
-            this.btnToVIZ.UseVisualStyleBackColor = true;
-            this.btnToVIZ.Click += new System.EventHandler(this.btnToVIZ_Click);
-            // 
             // rbOutside
             // 
             this.rbOutside.AutoSize = true;
@@ -280,6 +271,17 @@
             this.rbExport.Text = "Export";
             this.rbExport.UseVisualStyleBackColor = true;
             // 
+            // btnToVIZ
+            // 
+            this.btnToVIZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnToVIZ.Location = new System.Drawing.Point(556, 165);
+            this.btnToVIZ.Name = "btnToVIZ";
+            this.btnToVIZ.Size = new System.Drawing.Size(75, 83);
+            this.btnToVIZ.TabIndex = 3;
+            this.btnToVIZ.Text = "To VIZ";
+            this.btnToVIZ.UseVisualStyleBackColor = true;
+            this.btnToVIZ.Click += new System.EventHandler(this.btnToVIZ_Click);
+            // 
             // groupBox5
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -293,17 +295,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Write Mode";
             // 
-            // rbAsIs
+            // rbPart
             // 
-            this.rbAsIs.AutoSize = true;
-            this.rbAsIs.Checked = true;
-            this.rbAsIs.Location = new System.Drawing.Point(27, 20);
-            this.rbAsIs.Name = "rbAsIs";
-            this.rbAsIs.Size = new System.Drawing.Size(54, 16);
-            this.rbAsIs.TabIndex = 0;
-            this.rbAsIs.TabStop = true;
-            this.rbAsIs.Text = "As-Is";
-            this.rbAsIs.UseVisualStyleBackColor = true;
+            this.rbPart.AutoSize = true;
+            this.rbPart.Location = new System.Drawing.Point(27, 62);
+            this.rbPart.Name = "rbPart";
+            this.rbPart.Size = new System.Drawing.Size(45, 16);
+            this.rbPart.TabIndex = 2;
+            this.rbPart.TabStop = true;
+            this.rbPart.Text = "Part";
+            this.rbPart.UseVisualStyleBackColor = true;
             // 
             // rbLeafAssembly
             // 
@@ -316,16 +317,27 @@
             this.rbLeafAssembly.Text = "Leaf Assembly To Part";
             this.rbLeafAssembly.UseVisualStyleBackColor = true;
             // 
-            // rbPart
+            // rbAsIs
             // 
-            this.rbPart.AutoSize = true;
-            this.rbPart.Location = new System.Drawing.Point(27, 62);
-            this.rbPart.Name = "rbPart";
-            this.rbPart.Size = new System.Drawing.Size(45, 16);
-            this.rbPart.TabIndex = 2;
-            this.rbPart.TabStop = true;
-            this.rbPart.Text = "Part";
-            this.rbPart.UseVisualStyleBackColor = true;
+            this.rbAsIs.AutoSize = true;
+            this.rbAsIs.Checked = true;
+            this.rbAsIs.Location = new System.Drawing.Point(27, 20);
+            this.rbAsIs.Name = "rbAsIs";
+            this.rbAsIs.Size = new System.Drawing.Size(54, 16);
+            this.rbAsIs.TabIndex = 0;
+            this.rbAsIs.TabStop = true;
+            this.rbAsIs.Text = "As-Is";
+            this.rbAsIs.UseVisualStyleBackColor = true;
+            // 
+            // ckDGN
+            // 
+            this.ckDGN.AutoSize = true;
+            this.ckDGN.Location = new System.Drawing.Point(310, 21);
+            this.ckDGN.Name = "ckDGN";
+            this.ckDGN.Size = new System.Drawing.Size(50, 16);
+            this.ckDGN.TabIndex = 4;
+            this.ckDGN.Text = "DGN";
+            this.ckDGN.UseVisualStyleBackColor = true;
             // 
             // FileExplorerControl
             // 
@@ -379,5 +391,6 @@
         private System.Windows.Forms.RadioButton rbPart;
         private System.Windows.Forms.RadioButton rbLeafAssembly;
         private System.Windows.Forms.RadioButton rbAsIs;
+        private System.Windows.Forms.CheckBox ckDGN;
     }
 }

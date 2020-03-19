@@ -78,6 +78,9 @@ namespace VIZCore3D.NET.ToVIZ
             // 저장 파일명 설정
             string file = string.Format("{0}\\{1}.viz", output, name);
 
+            if (System.IO.Path.GetFileNameWithoutExtension(source).ToUpper() == ".DGN")
+                vizcore3d.Model.SetDgnDeviationDialog();
+
             // 모델 열고, 저장
             if (mode == ToVIZMode.EXPORT)
             {

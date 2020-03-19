@@ -52,6 +52,8 @@ namespace VIZCore3D.NET.ToVIZ
                 files.AddRange(GetFiles(sourcePath, "*.rvt"));
             if(ckVIZ.Checked == true)
                 files.AddRange(GetFiles(sourcePath, "*.viz"));
+            if(ckDGN.Checked == true)
+                files.AddRange(GetFiles(sourcePath, "*.dgn"));
 
             lvFiles.BeginUpdate();
             lvFiles.Items.Clear();
