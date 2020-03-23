@@ -343,6 +343,7 @@ namespace VIZCore3D.NET.Osnap
                     , e.Point == null ? "" : e.Point.ToString()
                     , e.Start == null ? "" : e.Start.ToString()
                     , e.End == null ? "" : e.End.ToString()
+                    , e.Center == null ? "" : e.Center.ToString()
                     , e.Normal == null ? "" : e.Normal.ToString()
                 }
                 );
