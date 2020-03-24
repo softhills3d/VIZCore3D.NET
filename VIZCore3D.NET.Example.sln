@@ -60,6 +60,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Osnap", "VIZC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.CaptureImage", "VIZCore3D.NET.CaptureImage\VIZCore3D.NET.CaptureImage.csproj", "{A0CB8F46-B0EA-486F-922F-0B42B4D65598}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.UserView", "VIZCore3D.NET.UserView\VIZCore3D.NET.UserView.csproj", "{4EA3BFF5-B915-46F6-9750-D0C236F02F91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,6 +172,10 @@ Global
 		{A0CB8F46-B0EA-486F-922F-0B42B4D65598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0CB8F46-B0EA-486F-922F-0B42B4D65598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0CB8F46-B0EA-486F-922F-0B42B4D65598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA3BFF5-B915-46F6-9750-D0C236F02F91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA3BFF5-B915-46F6-9750-D0C236F02F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA3BFF5-B915-46F6-9750-D0C236F02F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA3BFF5-B915-46F6-9750-D0C236F02F91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

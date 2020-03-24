@@ -13,7 +13,8 @@ namespace VIZCore3D.NET.ToVIZ
     {
         EXPORT = 0,
         CONVERT = 1,
-        OUTSIDE = 2
+        OUTSIDE = 2,
+        SIMPLIFIED = 3
     }
 
     public partial class FileExplorerControl : UserControl
@@ -93,6 +94,8 @@ namespace VIZCore3D.NET.ToVIZ
                     args.Mode = ToVIZMode.CONVERT;
                 else if (rbOutside.Checked)
                     args.Mode = ToVIZMode.OUTSIDE;
+                else if (rbSimplified.Checked)
+                    args.Mode = ToVIZMode.SIMPLIFIED;
                 else
                     args.Mode = ToVIZMode.EXPORT;
 

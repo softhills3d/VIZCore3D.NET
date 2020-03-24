@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.ToVIZ
+namespace VIZCore3D.NET.UserView
 {
     public partial class FrmMain : Form
     {
@@ -19,12 +19,6 @@ namespace VIZCore3D.NET.ToVIZ
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        private FileExplorerControl fileExplorer;
-
-
-        // ================================================
-        // Construction
-        // ================================================
         public FrmMain()
         {
             InitializeComponent();
@@ -35,111 +29,10 @@ namespace VIZCore3D.NET.ToVIZ
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            splitContainer1.Panel1.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-
-            fileExplorer = new FileExplorerControl();
-            fileExplorer.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(fileExplorer);
-
-            // Event
-            fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
-        }
-
-        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption);
-        private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
-        {
-            if(this.InvokeRequired == true)
-            {
-                DToVIZ call = new DToVIZ(ToVIZ);
-                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode });
-            }
-            else
-            {
-                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode);
-            }
-        }
-
-        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption)
-        {
-            // 저장 위치 설정
-            string path = System.IO.Path.GetDirectoryName(source);
-            string name = System.IO.Path.GetFileNameWithoutExtension(source).ToUpper();
-
-            string output = System.IO.Path.Combine(path, target);
-
-            // 저장소 디렉토리 유무 체크
-            if (System.IO.Directory.Exists(output) == false)
-                System.IO.Directory.CreateDirectory(output);
-
-            // 저장 파일명 설정
-            string file = string.Format("{0}\\{1}.viz", output, name);
-
-            if (System.IO.Path.GetFileNameWithoutExtension(source).ToUpper() == ".DGN")
-                vizcore3d.Model.SetDgnDeviationDialog();
-
-            // 모델 열고, 저장
-            if (mode == ToVIZMode.EXPORT)
-            {
-                // 모델 파일 열기
-                vizcore3d.Model.Open(source);
-
-                // 모델 개체 조회
-                List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
-
-                // 개체 확인
-                if (items.Count == 0) return false;
-
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = saveOption;
-
-                // VIZ 파일 형식으로 내보내기
-                return vizcore3d.Model.ExportVIZ(file);
-            }
-            // 메모리에서 처리
-            else if (mode == ToVIZMode.CONVERT)
-            {
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = saveOption;
-
-                return vizcore3d.Model.ConvertToVIZ(source, file, false);
-            }
-            // 외형 검색 후, 저장
-            else if(mode == ToVIZMode.OUTSIDE)
-            {
-                // 모델 파일 열기
-                vizcore3d.Model.Open(source);
-
-                // 모델 개체 조회
-                List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL);
-
-                // 개체 확인
-                if (items.Count == 0) return false;
-
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = saveOption;
-
-                List<VIZCore3D.NET.Data.Node> outside = vizcore3d.Object3D.Find.GetOutsidePart(false);
-
-                vizcore3d.EnableProgressForm = false;
-
-                // VIZ 파일 형식으로 내보내기
-                return vizcore3d.Model.ExportVIZ(file, outside);
-            }
-            else if(mode == ToVIZMode.SIMPLIFIED)
-            {
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
-
-                return vizcore3d.Model.ExportSimplifiedModel(source, file, false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, 0, false);
-            }
-            else
-            {
-                return false;
-            }
         }
 
         // ================================================
@@ -415,7 +308,7 @@ namespace VIZCore3D.NET.ToVIZ
             // ================================================================
             // 설정 - 상태바
             // ================================================================
-            vizcore3d.Statusbar.Visible = true;
+            vizcore3d.Statusbar.Visible = false;
 
 
             // ================================================================
@@ -429,6 +322,311 @@ namespace VIZCore3D.NET.ToVIZ
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            // Add
+            int id = vizcore3d.Review.UserView.Add(string.Format("Snapshot #{0}", tvUserView.GetNodeCount(true)), "description");
+
+            if (id < 1) return;
+
+            // Get Snapshot Image
+            System.Drawing.Image img = vizcore3d.Review.SetReviewImage(id, 1024, 768);
+
+            if (img == null) return;
+
+            pbImage.Image = img;
+
+            // Create Node
+            TreeNode snapshot = new TreeNode(string.Format("Snapshot #{0}", tvUserView.GetNodeCount(true)), 2, 2);
+
+            if (tvUserView.SelectedNode == null)
+            {
+                // Add Root
+                tvUserView.Nodes.Add(snapshot);
+                // Set Tag
+                VIZCore3D.NET.Data.ReviewItem review = vizcore3d.Review.GetItem(id);
+                snapshot.Tag = review;
+            }
+            else
+            {
+                // Add Child
+                tvUserView.SelectedNode.Nodes.Add(snapshot);
+                // Attach Folder
+                vizcore3d.Review.MoveItem(id, GetSelectedNodeFolderId());
+                // Set Tag
+                VIZCore3D.NET.Data.ReviewItem review = vizcore3d.Review.GetItem(id);
+                snapshot.Tag = review;
+            }
+        }
+
+        private int GetParentNodeReviewId()
+        {
+            if (tvUserView.SelectedNode == null)
+            {
+                return -1;
+            }
+            else
+            {
+                TreeNode node = tvUserView.SelectedNode;
+                if (node == null) return -1;
+                if (node.Tag == null) return -1;
+
+                VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)node.Tag;
+
+                if (review.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER)
+                    return -1;
+                else
+                    return review.ID;
+            }
+        }
+
+        private int GetSelectedNodeFolderId()
+        {
+            if (tvUserView.SelectedNode == null)
+            {
+                return -1;
+            }
+            else
+            {
+                TreeNode node = tvUserView.SelectedNode;
+                if (node == null) return -1;
+                if (node.Tag == null) return -1;
+
+                VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)node.Tag;
+
+                if (review.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER)
+                    return review.ID;
+                else
+                    return -1;
+            }
+        }
+
+        private bool IsNodeFolder()
+        {
+            if (tvUserView.SelectedNode == null)
+            {
+                return false;
+            }
+            else
+            {
+                TreeNode node = tvUserView.SelectedNode;
+                if (node == null) return false;
+                if (node.Tag == null) return false;
+
+                VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)node.Tag;
+                if (review.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER) return true;
+                else return false;
+            }
+        }
+
+        private void btnAddFolder_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            VIZCore3D.NET.Dialogs.AddNodeDialog dlg = new Dialogs.AddNodeDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            string nodeName = dlg.NodeName;
+
+            // Add Folder
+            int id = vizcore3d.Review.AddFolder(GetSelectedNodeFolderId(), nodeName, Manager.ReviewManager.ReviewFolderKind.UserView);
+
+            TreeNode node = new TreeNode(nodeName);
+
+            if(GetSelectedNodeFolderId() == -1)
+            {
+                tvUserView.Nodes.Add(node);
+            }
+            else
+            {
+                tvUserView.SelectedNode.Nodes.Add(node);
+            }
+
+            // Set Tag
+            VIZCore3D.NET.Data.ReviewItem review = vizcore3d.Review.GetItem(id);
+            node.Tag = review;
+        }
+
+        private void btnRename_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (IsNodeFolder() == false) return;
+
+            // Get Tag(ReviewItem)
+            VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)tvUserView.SelectedNode.Tag;
+            // Refresh
+            review = vizcore3d.Review.GetItem(review.ID);
+
+            VIZCore3D.NET.Dialogs.AddNodeDialog dlg = new Dialogs.AddNodeDialog();
+            dlg.NodeName = review.Title;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            // If Title is same...
+            if (dlg.NodeName == review.Title) return;
+
+            // Update Title
+            if (vizcore3d.Review.UpdateText(review.ID, review.Title) == false)
+            {
+                MessageBox.Show("Fail to VIZCore3D.NET.Manager.ReviewManager.UpdateText", "VIZCore3D.NET.UserView", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Refresh
+            review = vizcore3d.Review.GetItem(review.ID);
+
+            // Set Tag
+            tvUserView.SelectedNode.Tag = review;
+
+            tvUserView.SelectedNode.Text = dlg.NodeName;
+        }
+
+        private void tvUserView_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node == null) return;
+            if (e.Node.Tag == null) return;
+
+            VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)tvUserView.SelectedNode.Tag;
+            if (review.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER) return;
+
+            // Show Image
+            System.Drawing.Image img = vizcore3d.Review.GetReviewImage(review.ID);
+            if(img != null)
+            {
+                pbImage.Image = img;
+            }
+
+            if (ckView.Checked == false) return;
+
+            // Show Snapshot
+            vizcore3d.Review.Select(review.ID, true, ckAnimation.Checked, false);
+        }
+
+        private void ckAnimation_CheckedChanged(object sender, EventArgs e)
+        {
+            tvUserView.SelectedNode = null;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (tvUserView.SelectedNode == null) return;
+            if (tvUserView.SelectedNode.Tag == null) return;
+
+            // Get Tag(ReviewItem)
+            VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)tvUserView.SelectedNode.Tag;
+
+            // Delete
+            vizcore3d.Review.Delete(review.ID);
+
+            this.tvUserView.AfterSelect -= new System.Windows.Forms.TreeViewEventHandler(this.tvUserView_AfterSelect);
+            tvUserView.Nodes.Remove(tvUserView.SelectedNode);
+            tvUserView.SelectedNode = null;
+            this.tvUserView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvUserView_AfterSelect);
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            //vizcore3d.Review.Open("...");
+            string file = vizcore3d.Review.OpenFileDialog(true);
+
+            if(vizcore3d.Model.IsOpen() == false)
+            {
+                // Has Model Info
+                string model = vizcore3d.Review.GetModelPathInReviewFile(file);
+                if (String.IsNullOrEmpty(model) == false && System.IO.File.Exists(model) == true)
+                    vizcore3d.Model.Open(model);
+            }
+
+            // Open Review
+            vizcore3d.Review.Open(file);
+
+            RefreshTree();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            string model = String.Empty;
+            if (vizcore3d.Model.Count == 1)
+                model = vizcore3d.Model.Files[0];
+
+            //vizcore3d.Review.Save("...");
+            vizcore3d.Review.SaveFileDialog(model);
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            //vizcore3d.Review.Import("...", true);
+            vizcore3d.Review.ImportFileDialog();
+
+            RefreshTree();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            //vizcore3d.Review.Export("...", new List<int>() { 0, 1, 2 });
+        }
+
+        private void RefreshTree()
+        {
+            tvUserView.BeginUpdate();
+            tvUserView.Nodes.Clear();
+
+            List<VIZCore3D.NET.Data.ReviewItem> items = vizcore3d.Review.UserView.GetList();
+
+            foreach (VIZCore3D.NET.Data.ReviewItem item in items)
+            {
+                if (item.ParentID != -1) continue;
+
+                if(item.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER)
+                {
+                    TreeNode node = new TreeNode(item.Title, 0, 1);
+                    node.Tag = item;
+                    tvUserView.Nodes.Add(node);
+
+                    RefreshNode(item, node, items);
+                }
+                else
+                {
+                    TreeNode node = new TreeNode(item.Title, 2, 2);
+                    node.Tag = item;
+                    tvUserView.Nodes.Add(node);
+
+                    RefreshNode(item, node, items);
+                }
+            }
+
+            tvUserView.EndUpdate();
+        }
+
+        private void RefreshNode(VIZCore3D.NET.Data.ReviewItem pReview, TreeNode pNode, List<VIZCore3D.NET.Data.ReviewItem> items)
+        {
+            foreach (VIZCore3D.NET.Data.ReviewItem item in items)
+            {
+                if (item.ParentID != pReview.ID) continue;
+
+                if (item.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER)
+                {
+                    TreeNode node = new TreeNode(item.Title, 0, 1);
+                    node.Tag = item;
+                    pNode.Nodes.Add(node);
+
+                    RefreshNode(item, node, items);
+                }
+                else
+                {
+                    TreeNode node = new TreeNode(item.Title, 2, 2);
+                    node.Tag = item;
+                    pNode.Nodes.Add(node);
+
+                    RefreshNode(item, node, items);
+                }
+            }
         }
     }
 }

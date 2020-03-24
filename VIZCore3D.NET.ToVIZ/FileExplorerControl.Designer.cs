@@ -35,6 +35,7 @@
             this.btnSelectPath = new System.Windows.Forms.Button();
             this.txtSource = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckDGN = new System.Windows.Forms.CheckBox();
             this.ckVIZ = new System.Windows.Forms.CheckBox();
             this.ckRVT = new System.Windows.Forms.CheckBox();
             this.ckRVM = new System.Windows.Forms.CheckBox();
@@ -52,7 +53,7 @@
             this.rbPart = new System.Windows.Forms.RadioButton();
             this.rbLeafAssembly = new System.Windows.Forms.RadioButton();
             this.rbAsIs = new System.Windows.Forms.RadioButton();
-            this.ckDGN = new System.Windows.Forms.CheckBox();
+            this.rbSimplified = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -140,6 +141,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filter";
+            // 
+            // ckDGN
+            // 
+            this.ckDGN.AutoSize = true;
+            this.ckDGN.Location = new System.Drawing.Point(310, 21);
+            this.ckDGN.Name = "ckDGN";
+            this.ckDGN.Size = new System.Drawing.Size(50, 16);
+            this.ckDGN.TabIndex = 4;
+            this.ckDGN.Text = "DGN";
+            this.ckDGN.UseVisualStyleBackColor = true;
             // 
             // ckVIZ
             // 
@@ -229,6 +240,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.rbSimplified);
             this.groupBox4.Controls.Add(this.rbOutside);
             this.groupBox4.Controls.Add(this.rbConversion);
             this.groupBox4.Controls.Add(this.rbExport);
@@ -329,15 +341,15 @@
             this.rbAsIs.Text = "As-Is";
             this.rbAsIs.UseVisualStyleBackColor = true;
             // 
-            // ckDGN
+            // rbSimplified
             // 
-            this.ckDGN.AutoSize = true;
-            this.ckDGN.Location = new System.Drawing.Point(310, 21);
-            this.ckDGN.Name = "ckDGN";
-            this.ckDGN.Size = new System.Drawing.Size(50, 16);
-            this.ckDGN.TabIndex = 4;
-            this.ckDGN.Text = "DGN";
-            this.ckDGN.UseVisualStyleBackColor = true;
+            this.rbSimplified.AutoSize = true;
+            this.rbSimplified.Location = new System.Drawing.Point(159, 23);
+            this.rbSimplified.Name = "rbSimplified";
+            this.rbSimplified.Size = new System.Drawing.Size(78, 16);
+            this.rbSimplified.TabIndex = 3;
+            this.rbSimplified.Text = "Simplified";
+            this.rbSimplified.UseVisualStyleBackColor = true;
             // 
             // FileExplorerControl
             // 
@@ -392,5 +404,6 @@
         private System.Windows.Forms.RadioButton rbLeafAssembly;
         private System.Windows.Forms.RadioButton rbAsIs;
         private System.Windows.Forms.CheckBox ckDGN;
+        private System.Windows.Forms.RadioButton rbSimplified;
     }
 }
