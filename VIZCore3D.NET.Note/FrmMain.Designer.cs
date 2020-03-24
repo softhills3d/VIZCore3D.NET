@@ -31,17 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.ckEnableDepthTest = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckTransparent = new System.Windows.Forms.CheckBox();
             this.ckUseSymbol = new System.Windows.Forms.CheckBox();
             this.ckEnable = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lbEvent = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -52,6 +55,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1061, 701);
@@ -70,6 +74,15 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Setting";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(65, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(209, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "(Only Surface Note without Symbol)";
             // 
             // ckEnableDepthTest
             // 
@@ -132,14 +145,28 @@
             this.ckEnable.Text = "Enable";
             this.ckEnable.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // groupBox3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(65, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "(Only Surface Note without Symbol)";
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.lbEvent);
+            this.groupBox3.Location = new System.Drawing.Point(12, 263);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(328, 426);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Event";
+            // 
+            // lbEvent
+            // 
+            this.lbEvent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbEvent.FormattingEnabled = true;
+            this.lbEvent.ItemHeight = 12;
+            this.lbEvent.Location = new System.Drawing.Point(3, 17);
+            this.lbEvent.Name = "lbEvent";
+            this.lbEvent.Size = new System.Drawing.Size(322, 406);
+            this.lbEvent.TabIndex = 0;
             // 
             // FrmMain
             // 
@@ -158,6 +185,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -172,6 +200,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.CheckBox ckEnableDepthTest;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox lbEvent;
     }
 }
 

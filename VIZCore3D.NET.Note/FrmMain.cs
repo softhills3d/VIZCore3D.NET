@@ -325,6 +325,7 @@ namespace VIZCore3D.NET.Note
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Review.OnReviewChangedEvent += Review_OnReviewChangedEvent;
         }
 
         private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
@@ -440,6 +441,50 @@ namespace VIZCore3D.NET.Note
         private void ckEnableDepthTest_CheckedChanged(object sender, EventArgs e)
         {
             vizcore3d.Review.Note.EnableDepthTest(ckEnableDepthTest.Checked);
+        }
+
+        private void Review_OnReviewChangedEvent(object sender, Event.EventManager.ReviewEventArgs e)
+        {
+            string log = String.Empty;
+
+            switch (e.EventKind)
+            {
+                case Manager.ReviewManager.ReviewEventKind.DESELECTED_REVIEW:
+                    log = string.Format("[{0}] 모두 선택해제", (int)e.EventKind);
+                    break;
+                case Manager.ReviewManager.ReviewEventKind.SELECT_REVIEW:
+                    log = string.Format("[{0}] 리뷰 선택 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
+                    break;
+                case Manager.ReviewManager.ReviewEventKind.SELECT_REVIEW_ADD:
+                    log = string.Format("[{0}] 리뷰 선택 (추가) : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
+                    break;
+                case Manager.ReviewManager.ReviewEventKind.CHANGED_REVIEW_DATA:
+                    log = string.Format("[{0}] 리뷰 정보 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
+                    break;
+                case Manager.ReviewManager.ReviewEventKind.ADDED_SURFACE_NODE:
+                    log = string.Format("[{0}] 표면노트 추가 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
+                    break;
+                case Manager.ReviewManager.ReviewEventKind.CANCELED_ADD:
+                    log = string.Format("[{0}] 추가 동작 취소", (int)e.EventKind);
+                    break;
+                case Manager.ReviewManager.ReviewEventKind.CHANGED_ARROW_POSITION:
+                    log = string.Format("[{0}] 지시선 위치 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
+                    break;
+                default:
+                    break;
+            }
+
+            AddLog(log);
+        }
+
+        private void AddLog(string str)
+        {
+            if (String.IsNullOrEmpty(str) == true) return;
+
+            lbEvent.Invoke(new EventHandler(delegate
+            {
+                lbEvent.Items.Insert(0, str);
+            }));
         }
     }
 }
