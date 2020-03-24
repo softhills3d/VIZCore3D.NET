@@ -507,7 +507,8 @@ namespace VIZCore3D.NET.UserView
             if (ckView.Checked == false) return;
 
             // Show Snapshot
-            vizcore3d.Review.Select(review.ID, true, ckAnimation.Checked, false);
+            //vizcore3d.Review.Select(review.ID, true, ckAnimation.Checked, false);
+            vizcore3d.Review.UserView.Select(review.ID, ckAnimation.Checked);
         }
 
         private void ckAnimation_CheckedChanged(object sender, EventArgs e)

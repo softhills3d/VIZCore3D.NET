@@ -31,6 +31,10 @@ namespace VIZCore3D.NET.Snapshot
             vizcore3d.Dock = DockStyle.Fill;
             plView.Controls.Add(vizcore3d);
 
+            lvSnapshot.Dock = DockStyle.Fill;
+            lvSnapshot.SendToBack();
+            
+
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
         }
@@ -440,12 +444,39 @@ namespace VIZCore3D.NET.Snapshot
 
             int id = vizcore3d.Review.UserView.Add("title", "description");
 
-            System.Drawing.Image img = vizcore3d.Review.SetReviewImage(id, 1024, 768, true, true);
+            System.Drawing.Image img = vizcore3d.Review.SetReviewImage(id, 1024, 1024, true, true);
+
+            imgList.Images.Add(img);
+
+            ListViewItem lvi = new ListViewItem("", imgList.Images.Count - 1);
+            lvi.Tag = id;
+            lvSnapshot.Items.Add(lvi);
         }
 
         private void btnSnapshotList_Click(object sender, EventArgs e)
         {
+            lvSnapshot.BringToFront();
+        }
 
+        private void btnResetView_Click(object sender, EventArgs e)
+        {
+            vizcore3d.BringToFront();
+        }
+
+        private void lvSnapshot_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lvSnapshot.SelectedItems.Count == 0) return;
+
+            vizcore3d.BringToFront();
+
+            plView.Refresh();
+
+            ListViewItem lvi = lvSnapshot.SelectedItems[0];
+
+            int id = (int)lvi.Tag;
+
+            //vizcore3d.Review.Select(id, true, true, false);
+            vizcore3d.Review.UserView.Select(id, true);
         }
     }
 }
