@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.LockedHidden
+namespace VIZCore3D.NET.Snapshot
 {
     public partial class FrmMain : Form
     {
@@ -19,7 +19,6 @@ namespace VIZCore3D.NET.LockedHidden
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-
         public FrmMain()
         {
             InitializeComponent();
@@ -30,7 +29,7 @@ namespace VIZCore3D.NET.LockedHidden
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer2.Panel2.Controls.Add(vizcore3d);
+            plView.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
@@ -121,7 +120,7 @@ namespace VIZCore3D.NET.LockedHidden
             vizcore3d.View.SelectionObject3DType = VIZCore3D.NET.Data.SelectionObject3DTypes.ALL;
 
             // 개체 선택 유형 : 색상, 경계로 선택 (개체), 경계로 선택 (전체)
-            vizcore3d.View.SelectionMode = VIZCore3D.NET.Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
+            vizcore3d.View.SelectionMode = Data.Object3DSelectionOptions.HIGHLIGHT_COLOR;
 
             // 개체 선택 색상
             vizcore3d.View.SelectionColor = Color.Red;
@@ -301,6 +300,7 @@ namespace VIZCore3D.NET.LockedHidden
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
+            vizcore3d.ToolbarMain.Visible = false;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
@@ -316,6 +316,12 @@ namespace VIZCore3D.NET.LockedHidden
 
 
             // ================================================================
+            // 설정 - Shape Drawing
+            // ================================================================
+            vizcore3d.ShapeDrawing.UseDepthTest(true);
+
+
+            // ================================================================
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.View.EndUpdate();
@@ -327,87 +333,119 @@ namespace VIZCore3D.NET.LockedHidden
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Model.OnStreamProgressChangedEvent += Model_OnStreamProgressChangedEvent;
         }
 
-        private void RefreshList()
+        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
         {
-            List<VIZCore3D.NET.Data.Node> list = vizcore3d.Object3D.LockedHidden.List();
-            dgView.DataSource = list;
+            if (e.Node.Count == 0) return;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void Model_OnStreamProgressChangedEvent(object sender, Event.EventManager.StreamProgressEventArgs e)
         {
-            if(String.IsNullOrEmpty(txtKeyword.Text) == true)
+            if (vizcore3d.EnableProgressForm == true) return;
+
+            if (e.Index == 0)
             {
-                MessageBox.Show("검색어를 입력하여 주십시오.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                vizcore3d.ShowProgressForm("Stream 처리중...", string.Format("Progress : {0}/{1}", e.Index, e.Count));
             }
-
-            if(vizcore3d.Model.IsOpen() == false)
+            else
             {
-                MessageBox.Show("조회중인 모델이 없습니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                vizcore3d.UpdateProgressFormValue(e.Index, e.Count, string.Format("Progress : {0}/{1}", e.Index, e.Count));
             }
-
-            List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.Find.QuickSearch(
-                new List<string>(){ txtKeyword.Text } 
-                , false     /* OR 검색 */
-                , true      /* Assembly Only */
-                , false     /* All Node */
-                , false     /* All Node */
-                , false     /* Contains */
-                );
-
-            if(node.Count == 0)
-            {
-                MessageBox.Show("결과가 없습니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // 잠금숨김 추가
-            vizcore3d.Object3D.LockedHidden.Add(node);
-
-            // 목록 갱신
-            RefreshList();
         }
 
-        private void txtKeyword_KeyUp(object sender, KeyEventArgs e)
+        private void btnModelOpen_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-                btnSearch.PerformClick();
-        }
+            // Case 1 : Using Inner Function
+            vizcore3d.Model.AddStreamFileDialog();
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            // 개체숨김 초기화
-            vizcore3d.Object3D.LockedHidden.Clear();
+            // Case 2 : AddStream Multi
+            /*
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter =  "VIZ (*.viz)|*.viz";
+            dlg.Multiselect = true;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
 
-            // 목록 갱신
-            RefreshList();
-        }
+            string[] file = dlg.FileNames;
 
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            int selectedRowCount = dgView.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            List<VIZCore3D.NET.Data.StreamData> items = new List<VIZCore3D.NET.Data.StreamData>();
 
-            if(selectedRowCount == 0)
+            foreach (string item in file)
             {
-                MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                VIZCore3D.NET.Data.StreamData stream = new VIZCore3D.NET.Data.StreamData(
+                    System.IO.File.ReadAllBytes(item)
+                    , System.IO.Path.GetFileNameWithoutExtension(item).ToUpper()
+                    );
+
+                items.Add(stream);
             }
 
-            List<int> index = new List<int>();
+            vizcore3d.Model.AddStream(items);
+            */
 
-            for (int i = 0; i < selectedRowCount; i++)
+            // Case 3 : AddStream Single
+            /*
+            vizcore3d.EnableProgressForm = false;
+            vizcore3d.Model.OnStreamProgressChangedEvent -= Model_OnStreamProgressChangedEvent;
+
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "VIZ (*.viz)|*.viz";
+            dlg.Multiselect = true;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            string[] file = dlg.FileNames;
+
+            vizcore3d.ShowProgressForm("Stream 처리중...", string.Format("Progress : {0}/{1}", 0, file.Length));
+
+            for (int i = 0; i < file.Length; i++)
             {
-                int val = Convert.ToInt32(dgView.SelectedRows[i].Cells[1].Value);
-                index.Add(val);
+                string item = file[i];
+                VIZCore3D.NET.Data.StreamData stream = new VIZCore3D.NET.Data.StreamData(
+                    System.IO.File.ReadAllBytes(item)
+                    , System.IO.Path.GetFileNameWithoutExtension(item).ToUpper()
+                    );
+
+                if(i == file.Length - 1)
+                {
+                    vizcore3d.Model.AddStream(new List<Data.StreamData>() { stream }, true);
+                }
+                else
+                {
+                    vizcore3d.Model.AddStream(new List<Data.StreamData>() { stream }, false);
+                }
+
+                vizcore3d.UpdateProgressFormValue(i, file.Length, string.Format("Progress : {0}/{1}", i + 1, file.Length));
+
             }
 
-            vizcore3d.Object3D.LockedHidden.Delete(index);
+            if (vizcore3d.EnableProgressForm == false)
+            {
+                vizcore3d.CloseProgressForm();
+            }
+            */
+        }
 
-            // 목록 갱신
-            RefreshList();
+        private void btnModelClose_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            vizcore3d.Model.Close();
+        }
+
+        private void btnSnapshotAdd_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            int id = vizcore3d.Review.UserView.Add("title", "description");
+
+            System.Drawing.Image img = vizcore3d.Review.SetReviewImage(id, 1024, 768, true, true);
+        }
+
+        private void btnSnapshotList_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -41,6 +41,7 @@ namespace VIZCore3D.NET.ModelComparison
             splitContainer2.SplitterDistance = this.Width / 2;
         }
 
+        #region Event - OnInitializedVIZCore3D
         private void VIZCore3D1_OnInitializedVIZCore3D(object sender, EventArgs e)
         {
             //MessageBox.Show("OnInitializedVIZCore3D", "VIZCore3D.NET");
@@ -107,7 +108,8 @@ namespace VIZCore3D.NET.ModelComparison
 
             // 옵션 설정
             vizcore2.View.EnablePreSelect = false;
-        }
+        } 
+        #endregion
 
         private void btnOpen1_Click(object sender, EventArgs e)
         {

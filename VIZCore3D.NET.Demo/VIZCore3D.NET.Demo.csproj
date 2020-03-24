@@ -70,6 +70,12 @@
     <Compile Include="Dialogs\InputNameDialog.Designer.cs">
       <DependentUpon>InputNameDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\LicenseDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dialogs\LicenseDialog.Designer.cs">
+      <DependentUpon>LicenseDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\NodeDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\InputNameDialog.resx">
       <DependentUpon>InputNameDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\LicenseDialog.resx">
+      <DependentUpon>LicenseDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\NodeDialog.resx">
       <DependentUpon>NodeDialog.cs</DependentUpon>

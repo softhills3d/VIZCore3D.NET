@@ -54,6 +54,7 @@ namespace VIZCore3D.NET.StructureThumbnail
         // ================================================
         // Event - VIZCore3D.NET
         // ================================================
+        #region Event - OnInitializedVIZCore3D
         private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
         {
             //MessageBox.Show("OnInitializedVIZCore3D", "VIZCore3D.NET");
@@ -86,10 +87,12 @@ namespace VIZCore3D.NET.StructureThumbnail
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
         }
+        #endregion
 
         // ================================================
         // Function - VIZCore3D.NET : Initialize
         // ================================================
+        #region Function - VIZCore3D.NET : Initialize
         private void InitializeVIZCore3D()
         {
             // ================================================================
@@ -331,7 +334,8 @@ namespace VIZCore3D.NET.StructureThumbnail
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.View.EndUpdate();
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 이벤트 등록

@@ -38,6 +38,7 @@ namespace VIZCore3D.NET.Note
         // ================================================
         // Event - VIZCore3D.NET
         // ================================================
+        #region Event - OnInitializedVIZCore3D
         private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
         {
             //MessageBox.Show("OnInitializedVIZCore3D", "VIZCore3D.NET");
@@ -69,11 +70,13 @@ namespace VIZCore3D.NET.Note
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
-        }
+        } 
+        #endregion
 
         // ================================================
         // Function - VIZCore3D.NET : Initialize
         // ================================================
+        #region Function - VIZCore3D.NET : Initialize
         private void InitializeVIZCore3D()
         {
             // ================================================================
@@ -238,7 +241,7 @@ namespace VIZCore3D.NET.Note
             // 심볼 글자 크기
             vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE10;
             // 심볼 글자 굵게
-            vizcore3d.Review.Note.SymbolFontBold = true; 
+            vizcore3d.Review.Note.SymbolFontBold = true;
             #endregion
 
 
@@ -317,7 +320,8 @@ namespace VIZCore3D.NET.Note
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.View.EndUpdate();
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 이벤트 등록

@@ -58,12 +58,19 @@ namespace VIZCore3D.NET.Demo
 
             // Message
             EnableMessage = false;
+
+
+            vizcore3d.ToolbarAnimation.Visible = false;
+            vizcore3d.ToolbarSimulation.Visible = false;
+            vizcore3d.ToolbarMeasurement.Visible = false;
+            vizcore3d.ToolbarClash.Visible = false;
         }
 
 
         // ================================================
         // Event - VIZCore3D.NET
         // ================================================
+        #region Event - OnInitializedVIZCore3D
         private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
         {
             //MessageBox.Show("OnInitializedVIZCore3D", "VIZCore3D.NET");
@@ -83,7 +90,25 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             // TEST
             // ================================================================
-            VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
+            Dialogs.LicenseDialog dlg = new Dialogs.LicenseDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            VIZCore3D.NET.Data.LicenseResults result;
+
+            if (String.IsNullOrEmpty(dlg.LicenseFile) == false)
+            {
+                result = vizcore3d.License.LicenseFile(dlg.LicenseFile);
+            }
+            else if(String.IsNullOrEmpty(dlg.LicenseIp) == false && String.IsNullOrEmpty(dlg.LicensePort) == false)
+            {
+                result = vizcore3d.License.LicenseServer(dlg.LicenseIp, Convert.ToInt32(dlg.LicensePort));
+            }
+            else
+            {
+                return;
+            }
+
+            //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("192.168.0.215", 8901);
             if (result != VIZCore3D.NET.Data.LicenseResults.SUCCESS)
@@ -91,13 +116,14 @@ namespace VIZCore3D.NET.Demo
                 MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
-        }
+        } 
+        #endregion
 
-        
+
         private void Model_OnModelProgressChangedEvent(object sender, VIZCore3D.NET.Event.EventManager.ModelProgressEventArgs e)
         {
             //e.Progress;
@@ -227,6 +253,7 @@ namespace VIZCore3D.NET.Demo
         // ================================================
         // Function - VIZCore3D.NET : Initialize
         // ================================================
+        #region Function - VIZCore3D.NET : Initialize
         private void InitializeVIZCore3D()
         {
             // ================================================================
@@ -468,7 +495,8 @@ namespace VIZCore3D.NET.Demo
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.View.EndUpdate();
-        }
+        } 
+        #endregion
 
         /// <summary>
         /// 이벤트 등록
