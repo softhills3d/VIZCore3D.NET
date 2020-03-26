@@ -345,5 +345,48 @@ namespace VIZCore3D.NET.Projection2D
 
             result.SetData(projection);
         }
-    }
+
+        private void btnSetModelMatrix_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtM00.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM01.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM02.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM03.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM10.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM11.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM12.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM13.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM20.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM21.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM22.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM23.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM30.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM31.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM32.Text) == true) return;
+            if (String.IsNullOrEmpty(txtM33.Text) == true) return;
+
+            float[] matrix = new float[16];
+
+            matrix[0] = Convert.ToSingle(txtM00.Text);
+            matrix[1] = Convert.ToSingle(txtM01.Text);
+            matrix[2] = Convert.ToSingle(txtM02.Text);
+            matrix[3] = Convert.ToSingle(txtM03.Text);
+            matrix[4] = Convert.ToSingle(txtM10.Text);
+            matrix[5] = Convert.ToSingle(txtM11.Text);
+            matrix[6] = Convert.ToSingle(txtM12.Text);
+            matrix[7] = Convert.ToSingle(txtM13.Text);
+            matrix[8] = Convert.ToSingle(txtM20.Text);
+            matrix[9] = Convert.ToSingle(txtM21.Text);
+            matrix[10] = Convert.ToSingle(txtM22.Text);
+            matrix[11] = Convert.ToSingle(txtM23.Text);
+            matrix[12] = Convert.ToSingle(txtM30.Text);
+            matrix[13] = Convert.ToSingle(txtM31.Text);
+            matrix[14] = Convert.ToSingle(txtM32.Text);
+            matrix[15] = Convert.ToSingle(txtM33.Text);
+
+            vizcore3d.Model.SetModelMatrix(matrix);
+            //vizcore3d.View.ResetView();
+            vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
+        }
+    }                                        
 }
