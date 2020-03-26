@@ -437,10 +437,12 @@ namespace VIZCore3D.NET.Import.WDL
             if (parts == null) return;
 
             List<string> filter = new List<string>();
+            List<string> filterEx = new List<string>();
 
             lvParts.BeginUpdate();
             lvParts.Items.Clear();
 
+            // 중복 제거 및 Count
             Dictionary<string, int> Count = new Dictionary<string, int>();
             foreach (KeyValuePair<string, string> item in parts.Parts)
             {
@@ -480,13 +482,16 @@ namespace VIZCore3D.NET.Import.WDL
                 lvParts.Items.Add(lvi);
 
                 filter.Add(jlData.Part);
+                filterEx.Add(jlData.Part);
+                filterEx.Add(jlData.ContactPart);
             }
 
             lvParts.EndUpdate();
 
-            if (ckXray.Checked == true && filter.Count != 0)
-            {
-                List<VIZCore3D.NET.Data.Node> find = vizcore3d.Object3D.Find.QuickSearch(
+            if (filter.Count == 0) return;
+            if (ckXray.Checked == false) return;
+
+            List<VIZCore3D.NET.Data.Node> find = vizcore3d.Object3D.Find.QuickSearch(
                     filter
                     , false
                     , ckUnit.Checked == true ? false : true
@@ -496,19 +501,81 @@ namespace VIZCore3D.NET.Import.WDL
                     , true
                     );
 
-                List<VIZCore3D.NET.Data.Node> result = new List<Data.Node>();
-                foreach (VIZCore3D.NET.Data.Node item in find)
-                {
-                    if (item.NodePath.Contains("WELD") == false) continue;
-                    result.Add(item);
-                }
-
-                if (result.Count == 0) return;
-
-                vizcore3d.View.XRay.Clear();
-                vizcore3d.View.XRay.Select(result, true, true);
-                vizcore3d.View.FlyToObject3d(result, 1.0f);
+            List<VIZCore3D.NET.Data.Node> result = new List<Data.Node>();
+            foreach (VIZCore3D.NET.Data.Node item in find)
+            {
+                if (item.NodePath.Contains("WELD") == false) continue;
+                result.Add(item);
             }
+
+            if (result.Count == 0) return;
+
+            vizcore3d.View.XRay.Clear();
+            vizcore3d.View.XRay.Select(result, true, true);
+            vizcore3d.View.FlyToObject3d(result, 1.0f);
+
+            //if (ckHighlightPart.Checked == false)
+            //{
+            //    List<VIZCore3D.NET.Data.Node> find = vizcore3d.Object3D.Find.QuickSearch(
+            //        filter
+            //        , false
+            //        , ckUnit.Checked == true ? false : true
+            //        , false
+            //        , false
+            //        , true
+            //        , true
+            //        );
+
+            //    List<VIZCore3D.NET.Data.Node> result = new List<Data.Node>();
+            //    foreach (VIZCore3D.NET.Data.Node item in find)
+            //    {
+            //        if (item.NodePath.Contains("WELD") == false) continue;
+            //        result.Add(item);
+            //    }
+
+            //    if (result.Count == 0) return;
+
+            //    vizcore3d.View.XRay.Clear();
+            //    vizcore3d.View.XRay.Select(result, true, true);
+            //    vizcore3d.View.FlyToObject3d(result, 1.0f);
+            //}
+            //else if(ckHighlightPart.Checked == true)
+            //{
+            //    Dictionary<string, string> filterPart = new Dictionary<string, string>();
+            //    foreach (string item in filterEx)
+            //    {
+            //        string[] filterArray = item.Split(new char[] { '-' });
+            //        string name = string.Format("{0}-{1}", filterArray[0], filterArray[1]);
+
+            //        if (filterPart.ContainsKey(name) == false)
+            //            filterPart.Add(name, name);
+            //    }
+
+            //    List<VIZCore3D.NET.Data.Node> find = vizcore3d.Object3D.Find.QuickSearch(
+            //        filterPart.Keys.ToList()      /* Keyword */
+            //        , false     /* Join Condition : True - And, False - Or */
+            //        , true      /* Assembly Only : True - Assembly Only, False - All */
+            //        , false     /* Visible Only : True - Visible Only, False - All */
+            //        , false     /* Selected Only : True - Selected Only, False - All */
+            //        , true      /* Full Match : True - Full Match, False - Contains */
+            //        , true      /* Include Node Path : True - Include, False - Exclude */
+            //        );
+
+            //    List<VIZCore3D.NET.Data.Node> result = new List<Data.Node>();
+            //    foreach (VIZCore3D.NET.Data.Node item in find)
+            //    {
+            //        if (item.NodePath.Contains("WELD") == true) continue;
+            //        result.Add(item);
+            //    }
+
+            //    //vizcore3d.View.XRay.Clear();
+
+            //    if (result.Count != 0)
+            //    {
+            //        vizcore3d.View.XRay.Select(result, true, true);
+            //        vizcore3d.View.FlyToObject3d(result, 1.0f);
+            //    }
+            //}
         }
 
         private void btnMakeModel_Click(object sender, EventArgs e)
@@ -561,14 +628,13 @@ namespace VIZCore3D.NET.Import.WDL
                     }
                 }
             }
-            */
 
             string output = string.Format("{0}{1} WELD.rev", System.IO.Path.GetTempPath(), wdl.INTRO_BLOCK);
             bool result = vizcore3d.Primitive.Export(output);
             if (result == false) return;
 
             vizcore3d.Model.Add(new string[] { output });
-
+            */
         }
 
         private void ckXray_CheckedChanged(object sender, EventArgs e)
@@ -631,6 +697,173 @@ namespace VIZCore3D.NET.Import.WDL
             vizcore3d.Object3D.Select(items, true, true);
 
             vizcore3d.View.FlyToObject3d(1.0f);
+        }
+
+        private List<List<Data.Node>> STAGE1;
+        private List<List<Data.Node>> STAGE2;
+
+        private void btnMakeStage_Click(object sender, EventArgs e)
+        {
+            STAGE1 = new List<List<Data.Node>>();
+            STAGE2 = new List<List<Data.Node>>();
+
+            List<VIZCore3D.NET.Importer.ShxWdlTreeData> roots = wdl.GetRootTree();
+
+            VIZCore3D.NET.Data.Node model = vizcore3d.Object3D.FromIndex(0);
+
+            foreach (VIZCore3D.NET.Importer.ShxWdlTreeData item in roots)
+            {
+                if (model.NodeName != item.FullName) continue;
+
+                if (item.Child.Count == 0) continue;
+                MakeChildStageNode(item);
+            }
+
+            MessageBox.Show(string.Format("STAGE : {0} EA", STAGE1.Count), "VIZCore3D.NET.Import.WDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MakeChildStageNode(VIZCore3D.NET.Importer.ShxWdlTreeData treeData)
+        {
+            foreach (VIZCore3D.NET.Importer.ShxWdlTreeData item in treeData.Child)
+            {
+                if(item.Child.Count == 0)
+                {
+                    Dictionary<string, string> partCache = new Dictionary<string, string>();
+
+                    VIZCore3D.NET.Importer.ShxWdlMatchingTree part = wdl.GetParts(item);
+
+                    foreach (KeyValuePair<string, string> partItem in part.Parts)
+                    {
+                        if (partCache.ContainsKey(partItem.Key) == false)
+                            partCache.Add(partItem.Key, partItem.Key);
+                    }
+
+                    List<string> partList1 = new List<string>();
+                    List<string> partList2 = new List<string>();
+
+                    foreach (KeyValuePair<string, string> partName in partCache)
+                    {
+                        VIZCore3D.NET.Importer.ShxWdlJLData jlData = wdl.GetJLData(partName.Key);
+                        if (jlData == null) continue;
+
+                        partList1.Add(jlData.Part);
+                        partList2.Add(jlData.ContactPart);
+                    }
+
+                    Dictionary<string, string> filterPart1 = new Dictionary<string, string>();
+                    Dictionary<string, string> filterPart2 = new Dictionary<string, string>();
+                    foreach (string filter in partList1)
+                    {
+                        string[] filterArray = filter.Split(new char[] { '-' });
+                        string name = string.Format("{0}-{1}", filterArray[0], filterArray[1]);
+
+                        if (filterPart1.ContainsKey(name) == false)
+                            filterPart1.Add(name, name);
+                    }
+
+                    foreach (string filter in partList2)
+                    {
+                        string[] filterArray = filter.Split(new char[] { '-' });
+                        string name = string.Format("{0}-{1}", filterArray[0], filterArray[1]);
+
+                        if (filterPart2.ContainsKey(name) == false)
+                            filterPart2.Add(name, name);
+                    }
+
+                    List<VIZCore3D.NET.Data.Node> find1 = vizcore3d.Object3D.Find.QuickSearch(
+                        filterPart1.Keys.ToList()      /* Keyword */
+                        , false     /* Join Condition : True - And, False - Or */
+                        , true      /* Assembly Only : True - Assembly Only, False - All */
+                        , false     /* Visible Only : True - Visible Only, False - All */
+                        , false     /* Selected Only : True - Selected Only, False - All */
+                        , true      /* Full Match : True - Full Match, False - Contains */
+                        , true      /* Include Node Path : True - Include, False - Exclude */
+                        );
+
+                    List<VIZCore3D.NET.Data.Node> find2 = vizcore3d.Object3D.Find.QuickSearch(
+                        filterPart2.Keys.ToList()      /* Keyword */
+                        , false     /* Join Condition : True - And, False - Or */
+                        , true      /* Assembly Only : True - Assembly Only, False - All */
+                        , false     /* Visible Only : True - Visible Only, False - All */
+                        , false     /* Selected Only : True - Selected Only, False - All */
+                        , true      /* Full Match : True - Full Match, False - Contains */
+                        , true      /* Include Node Path : True - Include, False - Exclude */
+                        );
+
+                    STAGE1.Add(find1);
+                    STAGE2.Add(find2);
+                }
+                else
+                {
+                    MakeChildStageNode(item);
+                }
+            }
+        }
+
+        private bool IsRotatedCamera = false;
+
+        private void btnShowStage_Click(object sender, EventArgs e)
+        {
+            if (STAGE1 == null || STAGE1.Count == 0)
+            {
+                MessageBox.Show("STAGE 구성이 되지 않았습니다.", "VIZCore3D.NET.Import.WDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (IsRotatedCamera == false)
+            {
+                vizcore3d.View.RotateCameraByAxis(Data.Axis.X, Data.Directions.PLUS, 180);
+                vizcore3d.View.RotateCameraByAxis(Data.Axis.Z, Data.Directions.PLUS, 180);
+                vizcore3d.View.FitToView();
+
+                IsRotatedCamera = true;
+            }
+
+            vizcore3d.View.XRay.Enable = true;
+
+            backgroundWorkerStage.RunWorkerAsync(STAGE1.Count);
+        }
+
+        private void backgroundWorkerStage_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int count = (int)e.Argument;
+
+            for (int i = 0; i < count; i++)
+            {
+                backgroundWorkerStage.ReportProgress(i);
+
+                System.Threading.Thread.Sleep(1000);
+            }   
+        }
+
+        private void backgroundWorkerStage_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3d.Object3D.Color.RestoreColorAll();
+            vizcore3d.View.XRay.Enable = false;
+        }
+
+        private void backgroundWorkerStage_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            vizcore3d.BeginUpdate();
+
+            vizcore3d.Object3D.Color.RestoreColorAll();
+
+            List<Data.Node> nodes1 = STAGE1[e.ProgressPercentage];
+            List<Data.Node> nodes2 = STAGE2[e.ProgressPercentage];
+
+            if (nodes1.Count == 0)
+            {
+                vizcore3d.EndUpdate();
+                return;
+            }
+
+            vizcore3d.Object3D.Color.SetColor(nodes2, Color.Blue);
+            vizcore3d.Object3D.Color.SetColor(nodes1, Color.Red);
+            vizcore3d.View.XRay.Select(nodes1, true, false);
+            vizcore3d.View.XRay.Select(nodes2, true, false);
+
+            vizcore3d.EndUpdate();
         }
     }
 }

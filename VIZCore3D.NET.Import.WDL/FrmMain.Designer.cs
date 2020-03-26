@@ -34,6 +34,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.wdlTree = new System.Windows.Forms.TreeView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckUnit = new System.Windows.Forms.CheckBox();
             this.btnMakeModel = new System.Windows.Forms.Button();
             this.btnOpenWdl = new System.Windows.Forms.Button();
             this.btnOpenModel = new System.Windows.Forms.Button();
@@ -53,7 +54,9 @@
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ckUnit = new System.Windows.Forms.CheckBox();
+            this.btnMakeStage = new System.Windows.Forms.Button();
+            this.btnShowStage = new System.Windows.Forms.Button();
+            this.backgroundWorkerStage = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -107,9 +110,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.wdlTree);
-            this.groupBox2.Location = new System.Drawing.Point(13, 87);
+            this.groupBox2.Location = new System.Drawing.Point(13, 124);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(447, 427);
+            this.groupBox2.Size = new System.Drawing.Size(447, 390);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tree";
@@ -119,7 +122,7 @@
             this.wdlTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.wdlTree.Location = new System.Drawing.Point(3, 17);
             this.wdlTree.Name = "wdlTree";
-            this.wdlTree.Size = new System.Drawing.Size(441, 407);
+            this.wdlTree.Size = new System.Drawing.Size(441, 370);
             this.wdlTree.TabIndex = 0;
             this.wdlTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.wdlTree_AfterSelect);
             // 
@@ -127,16 +130,29 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnShowStage);
+            this.groupBox1.Controls.Add(this.btnMakeStage);
             this.groupBox1.Controls.Add(this.ckUnit);
             this.groupBox1.Controls.Add(this.btnMakeModel);
             this.groupBox1.Controls.Add(this.btnOpenWdl);
             this.groupBox1.Controls.Add(this.btnOpenModel);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(448, 69);
+            this.groupBox1.Size = new System.Drawing.Size(448, 106);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Files";
+            // 
+            // ckUnit
+            // 
+            this.ckUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ckUnit.AutoSize = true;
+            this.ckUnit.Location = new System.Drawing.Point(367, 34);
+            this.ckUnit.Name = "ckUnit";
+            this.ckUnit.Size = new System.Drawing.Size(63, 16);
+            this.ckUnit.TabIndex = 3;
+            this.ckUnit.Text = "Bundle";
+            this.ckUnit.UseVisualStyleBackColor = true;
             // 
             // btnMakeModel
             // 
@@ -290,16 +306,32 @@
             this.columnHeader17.Text = "비고";
             this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ckUnit
+            // btnMakeStage
             // 
-            this.ckUnit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ckUnit.AutoSize = true;
-            this.ckUnit.Location = new System.Drawing.Point(367, 34);
-            this.ckUnit.Name = "ckUnit";
-            this.ckUnit.Size = new System.Drawing.Size(63, 16);
-            this.ckUnit.TabIndex = 3;
-            this.ckUnit.Text = "Bundle";
-            this.ckUnit.UseVisualStyleBackColor = true;
+            this.btnMakeStage.Location = new System.Drawing.Point(29, 68);
+            this.btnMakeStage.Name = "btnMakeStage";
+            this.btnMakeStage.Size = new System.Drawing.Size(75, 23);
+            this.btnMakeStage.TabIndex = 4;
+            this.btnMakeStage.Text = "Stage 구성";
+            this.btnMakeStage.UseVisualStyleBackColor = true;
+            this.btnMakeStage.Click += new System.EventHandler(this.btnMakeStage_Click);
+            // 
+            // btnShowStage
+            // 
+            this.btnShowStage.Location = new System.Drawing.Point(126, 68);
+            this.btnShowStage.Name = "btnShowStage";
+            this.btnShowStage.Size = new System.Drawing.Size(75, 23);
+            this.btnShowStage.TabIndex = 5;
+            this.btnShowStage.Text = "Stage 조회";
+            this.btnShowStage.UseVisualStyleBackColor = true;
+            this.btnShowStage.Click += new System.EventHandler(this.btnShowStage_Click);
+            // 
+            // backgroundWorkerStage
+            // 
+            this.backgroundWorkerStage.WorkerReportsProgress = true;
+            this.backgroundWorkerStage.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStage_DoWork);
+            this.backgroundWorkerStage.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerStage_ProgressChanged);
+            this.backgroundWorkerStage.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerStage_RunWorkerCompleted);
             // 
             // FrmMain
             // 
@@ -353,6 +385,9 @@
         private System.Windows.Forms.CheckBox ckXray;
         private System.Windows.Forms.CheckBox ckHighlight;
         private System.Windows.Forms.CheckBox ckUnit;
+        private System.Windows.Forms.Button btnMakeStage;
+        private System.Windows.Forms.Button btnShowStage;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerStage;
     }
 }
 
