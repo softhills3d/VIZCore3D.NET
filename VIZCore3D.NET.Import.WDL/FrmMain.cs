@@ -832,7 +832,7 @@ namespace VIZCore3D.NET.Import.WDL
             {
                 backgroundWorkerStage.ReportProgress(i);
 
-                System.Threading.Thread.Sleep(1000);
+                System.Threading.Thread.Sleep(500);
             }   
         }
 
