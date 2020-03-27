@@ -389,5 +389,12 @@ namespace VIZCore3D.NET.Thumbnail
 
             vizcore3d.Model.Open(file);
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            ShowFiles(txtPath.Text);
+            this.Cursor = Cursors.Default;
+        }
     }
 }

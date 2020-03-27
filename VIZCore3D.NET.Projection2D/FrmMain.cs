@@ -385,8 +385,35 @@ namespace VIZCore3D.NET.Projection2D
             matrix[15] = Convert.ToSingle(txtM33.Text);
 
             vizcore3d.Model.SetModelMatrix(matrix);
-            //vizcore3d.View.ResetView();
+            vizcore3d.View.ResetView();
             vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
+        }
+
+        private void btnPasteMatrix_Click(object sender, EventArgs e)
+        {
+            string str = Clipboard.GetText();
+
+            if (String.IsNullOrEmpty(str) == true) return;
+
+            string[] mat = str.Split(new char[] { ',' });
+            if (mat == null || mat.Length != 16) return;
+
+            txtM00.Text = mat[0];
+            txtM01.Text = mat[1];
+            txtM02.Text = mat[2];
+            txtM03.Text = mat[3];
+            txtM10.Text = mat[4];
+            txtM11.Text = mat[5];
+            txtM12.Text = mat[6];
+            txtM13.Text = mat[7];
+            txtM20.Text = mat[8];
+            txtM21.Text = mat[9];
+            txtM22.Text = mat[10];
+            txtM23.Text = mat[11];
+            txtM30.Text = mat[12];
+            txtM31.Text = mat[13];
+            txtM32.Text = mat[14];
+            txtM33.Text = mat[15];
         }
     }                                        
 }

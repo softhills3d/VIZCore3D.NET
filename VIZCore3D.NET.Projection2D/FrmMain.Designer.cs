@@ -50,6 +50,7 @@
             this.txtM01 = new System.Windows.Forms.TextBox();
             this.txtM00 = new System.Windows.Forms.TextBox();
             this.btnProjection2D = new System.Windows.Forms.Button();
+            this.btnPasteMatrix = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -83,6 +84,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.btnPasteMatrix);
             this.splitContainer2.Panel1.Controls.Add(this.btnSetModelMatrix);
             this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel1);
             this.splitContainer2.Panel1.Controls.Add(this.btnProjection2D);
@@ -276,6 +278,16 @@
             this.btnProjection2D.UseVisualStyleBackColor = true;
             this.btnProjection2D.Click += new System.EventHandler(this.btnProjection2D_Click);
             // 
+            // btnPasteMatrix
+            // 
+            this.btnPasteMatrix.Location = new System.Drawing.Point(41, 204);
+            this.btnPasteMatrix.Name = "btnPasteMatrix";
+            this.btnPasteMatrix.Size = new System.Drawing.Size(120, 23);
+            this.btnPasteMatrix.TabIndex = 3;
+            this.btnPasteMatrix.Text = "Paste (Clipboar)";
+            this.btnPasteMatrix.UseVisualStyleBackColor = true;
+            this.btnPasteMatrix.Click += new System.EventHandler(this.btnPasteMatrix_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -321,6 +333,7 @@
         private System.Windows.Forms.TextBox txtM02;
         private System.Windows.Forms.TextBox txtM01;
         private System.Windows.Forms.TextBox txtM00;
+        private System.Windows.Forms.Button btnPasteMatrix;
     }
 }
 

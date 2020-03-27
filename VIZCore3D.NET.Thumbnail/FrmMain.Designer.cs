@@ -39,6 +39,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPath = new System.Windows.Forms.Button();
             this.txtPath = new System.Windows.Forms.TextBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -118,6 +119,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnRefresh);
             this.groupBox1.Controls.Add(this.btnPath);
             this.groupBox1.Controls.Add(this.txtPath);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -130,11 +132,11 @@
             // btnPath
             // 
             this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPath.Location = new System.Drawing.Point(314, 37);
+            this.btnPath.Image = ((System.Drawing.Image)(resources.GetObject("btnPath.Image")));
+            this.btnPath.Location = new System.Drawing.Point(307, 37);
             this.btnPath.Name = "btnPath";
-            this.btnPath.Size = new System.Drawing.Size(75, 23);
+            this.btnPath.Size = new System.Drawing.Size(37, 23);
             this.btnPath.TabIndex = 1;
-            this.btnPath.Text = "Select";
             this.btnPath.UseVisualStyleBackColor = true;
             this.btnPath.Click += new System.EventHandler(this.btnPath_Click);
             // 
@@ -147,6 +149,17 @@
             this.txtPath.ReadOnly = true;
             this.txtPath.Size = new System.Drawing.Size(271, 21);
             this.txtPath.TabIndex = 0;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(354, 37);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(37, 23);
+            this.btnRefresh.TabIndex = 2;
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // FrmMain
             // 
@@ -180,6 +193,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 
