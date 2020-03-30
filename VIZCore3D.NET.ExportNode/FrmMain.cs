@@ -357,9 +357,12 @@ namespace VIZCore3D.NET.ExportNode
             {
                 node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL);
             }
-            else
+            else if(rbSelectedNode.Checked == true)
             {
-                node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_ALL);
+                if(ckByNode.Checked == true)
+                    node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_ALL);
+                else
+                    node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             }
             this.Cursor = Cursors.Default;
 
@@ -378,10 +381,22 @@ namespace VIZCore3D.NET.ExportNode
             if (System.IO.Directory.Exists(path) == false)
                 System.IO.Directory.CreateDirectory(path);
 
-            foreach (VIZCore3D.NET.Data.Node item in node)
+            if (ckByNode.Checked == true)
             {
-                string file = string.Format("{0}\\{1}.viz", path, item.GetValidFileName());
-                vizcore3d.Model.ExportNode(item.Index, file);
+                foreach (VIZCore3D.NET.Data.Node item in node)
+                {
+                    string file = string.Format("{0}\\{1}.viz", path, item.GetValidFileName());
+                    vizcore3d.Model.ExportNode(item.Index, file);
+                }
+            }
+            else
+            {
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Filter = "VIZ (*.viz)|*.viz";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    vizcore3d.Model.ExportVIZ(dlg.FileName, node);
+                }
             }
 
             vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
@@ -389,6 +404,13 @@ namespace VIZCore3D.NET.ExportNode
             this.Cursor = Cursors.Default;
 
             VIZCore3D.NET.Utility.ExplorerHelper.Show(path);
+        }
+
+        private void btnCloseModel_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            vizcore3d.Model.Close();
         }
     }
 }

@@ -50,6 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDistance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnSelectAll = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnSelectAll);
             this.groupBox3.Controls.Add(this.btnRestoreSelectedObject);
             this.groupBox3.Controls.Add(this.btnRestoreAll);
             this.groupBox3.Location = new System.Drawing.Point(12, 411);
@@ -298,6 +300,16 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Distance";
             // 
+            // btnSelectAll
+            // 
+            this.btnSelectAll.Location = new System.Drawing.Point(252, 32);
+            this.btnSelectAll.Name = "btnSelectAll";
+            this.btnSelectAll.Size = new System.Drawing.Size(75, 23);
+            this.btnSelectAll.TabIndex = 5;
+            this.btnSelectAll.Text = "Select All";
+            this.btnSelectAll.UseVisualStyleBackColor = true;
+            this.btnSelectAll.Click += new System.EventHandler(this.btnSelectAll_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -344,6 +356,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnClearGroup;
         private System.Windows.Forms.Button btnAddGroup;
+        private System.Windows.Forms.Button btnSelectAll;
     }
 }
 

@@ -30,23 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbNone = new System.Windows.Forms.RadioButton();
-            this.rbAssembly = new System.Windows.Forms.RadioButton();
-            this.rbPart = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.rbAll = new System.Windows.Forms.RadioButton();
-            this.rbSelectedNode = new System.Windows.Forms.RadioButton();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.txtPath = new System.Windows.Forms.TextBox();
-            this.btnPath = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnPath = new System.Windows.Forms.Button();
+            this.txtPath = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rbSelectedNode = new System.Windows.Forms.RadioButton();
+            this.rbAll = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbPart = new System.Windows.Forms.RadioButton();
+            this.rbAssembly = new System.Windows.Forms.RadioButton();
+            this.rbNone = new System.Windows.Forms.RadioButton();
+            this.ckByNode = new System.Windows.Forms.CheckBox();
+            this.btnCloseModel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -57,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnCloseModel);
             this.splitContainer1.Panel1.Controls.Add(this.btnExport);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -64,6 +67,86 @@
             this.splitContainer1.Size = new System.Drawing.Size(1256, 624);
             this.splitContainer1.SplitterDistance = 418;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(310, 378);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 3;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnPath);
+            this.groupBox3.Controls.Add(this.txtPath);
+            this.groupBox3.Location = new System.Drawing.Point(12, 289);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(394, 78);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Dest.";
+            // 
+            // btnPath
+            // 
+            this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPath.Location = new System.Drawing.Point(298, 33);
+            this.btnPath.Name = "btnPath";
+            this.btnPath.Size = new System.Drawing.Size(75, 23);
+            this.btnPath.TabIndex = 1;
+            this.btnPath.Text = "Select";
+            this.btnPath.UseVisualStyleBackColor = true;
+            this.btnPath.Click += new System.EventHandler(this.btnPath_Click);
+            // 
+            // txtPath
+            // 
+            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPath.Location = new System.Drawing.Point(39, 35);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.ReadOnly = true;
+            this.txtPath.Size = new System.Drawing.Size(253, 21);
+            this.txtPath.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.ckByNode);
+            this.groupBox2.Controls.Add(this.rbSelectedNode);
+            this.groupBox2.Controls.Add(this.rbAll);
+            this.groupBox2.Location = new System.Drawing.Point(12, 142);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(394, 141);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Source";
+            // 
+            // rbSelectedNode
+            // 
+            this.rbSelectedNode.AutoSize = true;
+            this.rbSelectedNode.Location = new System.Drawing.Point(39, 58);
+            this.rbSelectedNode.Name = "rbSelectedNode";
+            this.rbSelectedNode.Size = new System.Drawing.Size(106, 16);
+            this.rbSelectedNode.TabIndex = 1;
+            this.rbSelectedNode.Text = "Selected Node";
+            this.rbSelectedNode.UseVisualStyleBackColor = true;
+            // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
+            this.rbAll.Location = new System.Drawing.Point(39, 27);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(71, 16);
+            this.rbAll.TabIndex = 0;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All Node";
+            this.rbAll.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -79,6 +162,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Option";
             // 
+            // rbPart
+            // 
+            this.rbPart.AutoSize = true;
+            this.rbPart.Location = new System.Drawing.Point(39, 89);
+            this.rbPart.Name = "rbPart";
+            this.rbPart.Size = new System.Drawing.Size(45, 16);
+            this.rbPart.TabIndex = 2;
+            this.rbPart.Text = "Part";
+            this.rbPart.UseVisualStyleBackColor = true;
+            // 
+            // rbAssembly
+            // 
+            this.rbAssembly.AutoSize = true;
+            this.rbAssembly.Location = new System.Drawing.Point(39, 60);
+            this.rbAssembly.Name = "rbAssembly";
+            this.rbAssembly.Size = new System.Drawing.Size(224, 16);
+            this.rbAssembly.TabIndex = 1;
+            this.rbAssembly.Text = "Assembly (Leaf Assembly To Part)";
+            this.rbAssembly.UseVisualStyleBackColor = true;
+            // 
             // rbNone
             // 
             this.rbNone.AutoSize = true;
@@ -91,104 +194,25 @@
             this.rbNone.Text = "NONE";
             this.rbNone.UseVisualStyleBackColor = true;
             // 
-            // rbAssembly
+            // ckByNode
             // 
-            this.rbAssembly.AutoSize = true;
-            this.rbAssembly.Location = new System.Drawing.Point(39, 60);
-            this.rbAssembly.Name = "rbAssembly";
-            this.rbAssembly.Size = new System.Drawing.Size(224, 16);
-            this.rbAssembly.TabIndex = 1;
-            this.rbAssembly.Text = "Assembly (Leaf Assembly To Part)";
-            this.rbAssembly.UseVisualStyleBackColor = true;
+            this.ckByNode.AutoSize = true;
+            this.ckByNode.Location = new System.Drawing.Point(39, 95);
+            this.ckByNode.Name = "ckByNode";
+            this.ckByNode.Size = new System.Drawing.Size(73, 16);
+            this.ckByNode.TabIndex = 2;
+            this.ckByNode.Text = "By Node";
+            this.ckByNode.UseVisualStyleBackColor = true;
             // 
-            // rbPart
+            // btnCloseModel
             // 
-            this.rbPart.AutoSize = true;
-            this.rbPart.Location = new System.Drawing.Point(39, 89);
-            this.rbPart.Name = "rbPart";
-            this.rbPart.Size = new System.Drawing.Size(45, 16);
-            this.rbPart.TabIndex = 2;
-            this.rbPart.Text = "Part";
-            this.rbPart.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.rbSelectedNode);
-            this.groupBox2.Controls.Add(this.rbAll);
-            this.groupBox2.Location = new System.Drawing.Point(12, 142);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(394, 100);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Source";
-            // 
-            // rbAll
-            // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Checked = true;
-            this.rbAll.Location = new System.Drawing.Point(39, 27);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(71, 16);
-            this.rbAll.TabIndex = 0;
-            this.rbAll.TabStop = true;
-            this.rbAll.Text = "All Node";
-            this.rbAll.UseVisualStyleBackColor = true;
-            // 
-            // rbSelectedNode
-            // 
-            this.rbSelectedNode.AutoSize = true;
-            this.rbSelectedNode.Location = new System.Drawing.Point(39, 58);
-            this.rbSelectedNode.Name = "rbSelectedNode";
-            this.rbSelectedNode.Size = new System.Drawing.Size(106, 16);
-            this.rbSelectedNode.TabIndex = 1;
-            this.rbSelectedNode.Text = "Selected Node";
-            this.rbSelectedNode.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnPath);
-            this.groupBox3.Controls.Add(this.txtPath);
-            this.groupBox3.Location = new System.Drawing.Point(12, 248);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(394, 78);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Dest.";
-            // 
-            // txtPath
-            // 
-            this.txtPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPath.Location = new System.Drawing.Point(39, 35);
-            this.txtPath.Name = "txtPath";
-            this.txtPath.ReadOnly = true;
-            this.txtPath.Size = new System.Drawing.Size(253, 21);
-            this.txtPath.TabIndex = 0;
-            // 
-            // btnPath
-            // 
-            this.btnPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPath.Location = new System.Drawing.Point(298, 33);
-            this.btnPath.Name = "btnPath";
-            this.btnPath.Size = new System.Drawing.Size(75, 23);
-            this.btnPath.TabIndex = 1;
-            this.btnPath.Text = "Select";
-            this.btnPath.UseVisualStyleBackColor = true;
-            this.btnPath.Click += new System.EventHandler(this.btnPath_Click);
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(310, 337);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(75, 23);
-            this.btnExport.TabIndex = 3;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.btnCloseModel.Location = new System.Drawing.Point(12, 378);
+            this.btnCloseModel.Name = "btnCloseModel";
+            this.btnCloseModel.Size = new System.Drawing.Size(110, 23);
+            this.btnCloseModel.TabIndex = 4;
+            this.btnCloseModel.Text = "Close Model";
+            this.btnCloseModel.UseVisualStyleBackColor = true;
+            this.btnCloseModel.Click += new System.EventHandler(this.btnCloseModel_Click);
             // 
             // FrmMain
             // 
@@ -203,12 +227,12 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -227,6 +251,8 @@
         private System.Windows.Forms.RadioButton rbPart;
         private System.Windows.Forms.RadioButton rbAssembly;
         private System.Windows.Forms.RadioButton rbNone;
+        private System.Windows.Forms.CheckBox ckByNode;
+        private System.Windows.Forms.Button btnCloseModel;
     }
 }
 

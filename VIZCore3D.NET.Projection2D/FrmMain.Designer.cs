@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.btnPasteMatrix = new System.Windows.Forms.Button();
             this.btnSetModelMatrix = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtM33 = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.txtM01 = new System.Windows.Forms.TextBox();
             this.txtM00 = new System.Windows.Forms.TextBox();
             this.btnProjection2D = new System.Windows.Forms.Button();
-            this.btnPasteMatrix = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -91,6 +91,16 @@
             this.splitContainer2.Size = new System.Drawing.Size(514, 846);
             this.splitContainer2.SplitterDistance = 237;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // btnPasteMatrix
+            // 
+            this.btnPasteMatrix.Location = new System.Drawing.Point(41, 204);
+            this.btnPasteMatrix.Name = "btnPasteMatrix";
+            this.btnPasteMatrix.Size = new System.Drawing.Size(120, 23);
+            this.btnPasteMatrix.TabIndex = 3;
+            this.btnPasteMatrix.Text = "Paste (Clipboar)";
+            this.btnPasteMatrix.UseVisualStyleBackColor = true;
+            this.btnPasteMatrix.Click += new System.EventHandler(this.btnPasteMatrix_Click);
             // 
             // btnSetModelMatrix
             // 
@@ -277,16 +287,6 @@
             this.btnProjection2D.Text = "Projection 2D";
             this.btnProjection2D.UseVisualStyleBackColor = true;
             this.btnProjection2D.Click += new System.EventHandler(this.btnProjection2D_Click);
-            // 
-            // btnPasteMatrix
-            // 
-            this.btnPasteMatrix.Location = new System.Drawing.Point(41, 204);
-            this.btnPasteMatrix.Name = "btnPasteMatrix";
-            this.btnPasteMatrix.Size = new System.Drawing.Size(120, 23);
-            this.btnPasteMatrix.TabIndex = 3;
-            this.btnPasteMatrix.Text = "Paste (Clipboar)";
-            this.btnPasteMatrix.UseVisualStyleBackColor = true;
-            this.btnPasteMatrix.Click += new System.EventHandler(this.btnPasteMatrix_Click);
             // 
             // FrmMain
             // 

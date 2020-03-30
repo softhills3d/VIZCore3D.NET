@@ -412,5 +412,12 @@ namespace VIZCore3D.NET.Disassembly
         {
             vizcore3d.Object3D.Disassembly.ClearGroup();
         }
+
+        private void btnSelectAll_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            vizcore3d.Object3D.Select(new List<int>() { 0 }, true, false);
+        }
     }
 }
