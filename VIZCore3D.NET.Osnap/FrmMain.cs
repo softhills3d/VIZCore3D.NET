@@ -22,7 +22,9 @@ namespace VIZCore3D.NET.Osnap
 
         public FrmMain()
         {
-            InitializeComponent();// Initialize VIZCore3D.NET
+            InitializeComponent();
+            
+            // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
