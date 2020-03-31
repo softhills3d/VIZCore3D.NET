@@ -35,14 +35,13 @@
             this.btnPath = new System.Windows.Forms.Button();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckByNode = new System.Windows.Forms.CheckBox();
             this.rbSelectedNode = new System.Windows.Forms.RadioButton();
             this.rbAll = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbPart = new System.Windows.Forms.RadioButton();
             this.rbAssembly = new System.Windows.Forms.RadioButton();
             this.rbNone = new System.Windows.Forms.RadioButton();
-            this.ckByNode = new System.Windows.Forms.CheckBox();
-            this.btnCloseModel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -54,12 +53,12 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.btnCloseModel);
             this.splitContainer1.Panel1.Controls.Add(this.btnExport);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -125,6 +124,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Source";
+            // 
+            // ckByNode
+            // 
+            this.ckByNode.AutoSize = true;
+            this.ckByNode.Location = new System.Drawing.Point(39, 95);
+            this.ckByNode.Name = "ckByNode";
+            this.ckByNode.Size = new System.Drawing.Size(73, 16);
+            this.ckByNode.TabIndex = 2;
+            this.ckByNode.Text = "By Node";
+            this.ckByNode.UseVisualStyleBackColor = true;
             // 
             // rbSelectedNode
             // 
@@ -194,26 +203,6 @@
             this.rbNone.Text = "NONE";
             this.rbNone.UseVisualStyleBackColor = true;
             // 
-            // ckByNode
-            // 
-            this.ckByNode.AutoSize = true;
-            this.ckByNode.Location = new System.Drawing.Point(39, 95);
-            this.ckByNode.Name = "ckByNode";
-            this.ckByNode.Size = new System.Drawing.Size(73, 16);
-            this.ckByNode.TabIndex = 2;
-            this.ckByNode.Text = "By Node";
-            this.ckByNode.UseVisualStyleBackColor = true;
-            // 
-            // btnCloseModel
-            // 
-            this.btnCloseModel.Location = new System.Drawing.Point(12, 378);
-            this.btnCloseModel.Name = "btnCloseModel";
-            this.btnCloseModel.Size = new System.Drawing.Size(110, 23);
-            this.btnCloseModel.TabIndex = 4;
-            this.btnCloseModel.Text = "Close Model";
-            this.btnCloseModel.UseVisualStyleBackColor = true;
-            this.btnCloseModel.Click += new System.EventHandler(this.btnCloseModel_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -252,7 +241,6 @@
         private System.Windows.Forms.RadioButton rbAssembly;
         private System.Windows.Forms.RadioButton rbNone;
         private System.Windows.Forms.CheckBox ckByNode;
-        private System.Windows.Forms.Button btnCloseModel;
     }
 }
 

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.ExportNode
+namespace VIZCore3D.NET.Painting
 {
     public partial class FrmMain : Form
     {
@@ -18,6 +18,8 @@ namespace VIZCore3D.NET.ExportNode
         /// VIZCore3D.NET
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+
+        private VIZCore3D.NET.Utility.ColorPaletteHelper palette;
 
         public FrmMain()
         {
@@ -70,7 +72,11 @@ namespace VIZCore3D.NET.ExportNode
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
-        } 
+
+            // Init. Configuration
+            SetPaletteColor();
+            SetPaletteName();
+        }
         #endregion
 
         // ================================================
@@ -245,6 +251,8 @@ namespace VIZCore3D.NET.ExportNode
             #endregion
 
 
+
+
             // ================================================================
             // 설정 - 측정
             // ================================================================
@@ -300,6 +308,7 @@ namespace VIZCore3D.NET.ExportNode
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
+            vizcore3d.ToolbarMain.Visible = true;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasurement.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
@@ -318,100 +327,147 @@ namespace VIZCore3D.NET.ExportNode
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.View.EndUpdate();
-        } 
+        }
         #endregion
+
+        private void SetPaletteColor()
+        {
+            btnSelectColor1.BackColor = Color.FromArgb(128, 0, 0);
+            btnSelectColor2.BackColor = Color.Black;
+            btnSelectColor3.BackColor = Color.FromArgb(250, 250, 250);
+        }
+
+        private void SetPaletteName()
+        {
+            palette = new Utility.ColorPaletteHelper();
+            List<string> items = palette.GetPaletteNames();
+            for (int i = 0; i < items.Count; i++)
+            {
+                cbPalette.Items.Add(items[i]);
+            }
+            cbPalette.SelectedIndex = 0;
+        }
 
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
         }
 
-        private void btnPath_Click(object sender, EventArgs e)
+        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
         {
-            //Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog dlg = new Microsoft.WindowsAPICodePack.Dialogs.CommonOpenFileDialog();
-            //dlg.IsFolderPicker = true;
-            //dlg.RestoreDirectory = true;
-            //if (dlg.ShowDialog() != Microsoft.WindowsAPICodePack.Dialogs.CommonFileDialogResult.Ok) return;
-            //txtPath.Text = dlg.FileName;
+            if (ckSetColorByDefaultColor.Checked == false) return;
 
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            if (String.IsNullOrEmpty(txtPath.Text) == false)
-                dlg.SelectedPath = txtPath.Text;
+            if(rbColor1.Checked == true)
+                vizcore3d.Object3D.Color.SetColor(btnSelectColor1.BackColor);
+            else if(rbColor2.Checked == true)
+                vizcore3d.Object3D.Color.SetColor(btnSelectColor2.BackColor);
+            else if (rbColor3.Checked == true)
+                vizcore3d.Object3D.Color.SetColor(btnSelectColor3.BackColor);
+        }
+
+        private void btnSelectColor1_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.AllowFullOpen = true;
+            dlg.ShowHelp = true;
+            dlg.Color = btnSelectColor1.BackColor;
+
             if (dlg.ShowDialog() != DialogResult.OK) return;
-            txtPath.Text = dlg.SelectedPath;
+
+            btnSelectColor1.BackColor = dlg.Color;
         }
 
-        private void btnExport_Click(object sender, EventArgs e)
+        private void btnSelectColor2_Click(object sender, EventArgs e)
         {
-            if (vizcore3d.Model.IsOpen() == false) return;
+            ColorDialog dlg = new ColorDialog();
+            dlg.AllowFullOpen = true;
+            dlg.ShowHelp = true;
+            dlg.Color = btnSelectColor2.BackColor;
 
-            // 선택항목 내보내기 시, 선택항목이 없을 경우 종료
-            if (rbSelectedNode.Checked == true && vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP).Count == 0) return;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
 
-            List<VIZCore3D.NET.Data.Node> node = null;
+            btnSelectColor2.BackColor = dlg.Color;
+        }
 
-            this.Cursor = Cursors.WaitCursor;
-            // 전체 내보내기
-            if (rbAll.Checked == true)
+        private void btnSelectColor3_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.AllowFullOpen = true;
+            dlg.ShowHelp = true;
+            dlg.Color = btnSelectColor3.BackColor;
+
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            btnSelectColor3.BackColor = dlg.Color;
+        }
+
+        private void btnSetColor1_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Color.SetColor(btnSelectColor1.BackColor);
+        }
+
+        private void btnSetColor2_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Color.SetColor(btnSelectColor2.BackColor);
+        }
+
+        private void btnSetColor3_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Color.SetColor(btnSelectColor3.BackColor);
+        }
+
+        private void btnSetColorSelectedObject_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            if (items.Count == 0) return;
+
+            if(ckChildren.Checked == true)
             {
-                node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL);
-            }
-            // 선택항목 내보내기
-            else if(rbSelectedNode.Checked == true)
-            {
-                // 노드 단위로 내보내기
-                if(ckByNode.Checked == true)
-                    node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_ALL);
-                // 파일로 내보내기
-                else
-                    node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
-            }
-            this.Cursor = Cursors.Default;
+                List<VIZCore3D.NET.Data.Node> children = new List<Data.Node>();
 
-            if (node == null || node.Count == 0) return;
-
-
-            this.Cursor = Cursors.WaitCursor;
-            // 저장 유형
-            if (rbNone.Checked == true)
-                vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
-            else if (rbAssembly.Checked == true)
-                vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.LEAF_ASM_TO_PART;
-            else if (rbPart.Checked == true)
-                vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.ALL_TO_PART;
-
-            string path = string.Format("{0}\\EXPORT_{1}", txtPath.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
-            if (System.IO.Directory.Exists(path) == false)
-                System.IO.Directory.CreateDirectory(path);
-
-            // 노드 단위
-            if (ckByNode.Checked == true)
-            {
-                foreach (VIZCore3D.NET.Data.Node item in node)
+                foreach (VIZCore3D.NET.Data.Node item in items)
                 {
-                    string file = string.Format("{0}\\{1}.viz", path, item.GetValidFileName());
-                    vizcore3d.Model.ExportNode(item.Index, file);
+                    List<VIZCore3D.NET.Data.Node> child = vizcore3d.Object3D.GetChildObject3d(
+                        item.Index
+                        , Data.Object3DChildOption.CHILD_ONLY
+                        );
+
+                    if (child.Count == 0) continue;
+
+                    children.AddRange(child);
                 }
+
+                SetPaletteColor(children);
             }
-            // 전체
             else
             {
-                SaveFileDialog dlg = new SaveFileDialog();
-                dlg.Filter = "VIZ (*.viz)|*.viz";
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    vizcore3d.Model.ExportVIZ(dlg.FileName, node);
-                }
+                SetPaletteColor(items);
+            }
+        }
+
+        private void SetPaletteColor(List<VIZCore3D.NET.Data.Node> items)
+        {
+            int index = cbPalette.SelectedIndex;
+            if (index == -1) return;
+
+            palette.SetPaletteIndex(index);
+
+            vizcore3d.BeginUpdate();
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                VIZCore3D.NET.Data.Node item = items[i];
+
+                vizcore3d.Object3D.Color.SetColor(
+                    new List<int>() { item.Index }
+                    , palette.GetPaletteColor(i).Color1
+                    );
             }
 
-            // 설정 복원
-            vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
-
-            this.Cursor = Cursors.Default;
-
-            VIZCore3D.NET.Utility.ExplorerHelper.Show(path);
+            vizcore3d.EndUpdate();
         }
     }
 }
