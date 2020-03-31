@@ -382,13 +382,15 @@ namespace VIZCore3D.NET.ExportNode
             else if (rbPart.Checked == true)
                 vizcore3d.Model.SaveMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.ALL_TO_PART;
 
-            string path = string.Format("{0}\\EXPORT_{1}", txtPath.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
-            if (System.IO.Directory.Exists(path) == false)
-                System.IO.Directory.CreateDirectory(path);
+            string path = String.Empty;
 
             // 노드 단위
             if (ckByNode.Checked == true)
             {
+                path = string.Format("{0}\\EXPORT_{1}", txtPath.Text, DateTime.Now.ToString("yyyyMMddHHmmss"));
+                if (System.IO.Directory.Exists(path) == false)
+                    System.IO.Directory.CreateDirectory(path);
+
                 foreach (VIZCore3D.NET.Data.Node item in node)
                 {
                     string file = string.Format("{0}\\{1}.viz", path, item.GetValidFileName());
@@ -411,7 +413,8 @@ namespace VIZCore3D.NET.ExportNode
 
             this.Cursor = Cursors.Default;
 
-            VIZCore3D.NET.Utility.ExplorerHelper.Show(path);
+            if(String.IsNullOrEmpty(path) == false)
+                VIZCore3D.NET.Utility.ExplorerHelper.Show(path);
         }
     }
 }
