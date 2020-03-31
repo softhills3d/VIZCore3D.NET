@@ -37,7 +37,6 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
 
             Console.WriteLine(myPath.Data.ToString());
 
-
             MyCanvas.Children.Add(myPath);
         }
 
