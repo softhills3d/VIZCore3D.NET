@@ -28,12 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnMoveCenter = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ckControllerZ = new System.Windows.Forms.CheckBox();
+            this.ckControllerY = new System.Windows.Forms.CheckBox();
+            this.ckControllerX = new System.Windows.Forms.CheckBox();
             this.ckMouseSelection = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -75,9 +79,9 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgView = new System.Windows.Forms.DataGridView();
-            this.ckControllerX = new System.Windows.Forms.CheckBox();
-            this.ckControllerY = new System.Windows.Forms.CheckBox();
-            this.ckControllerZ = new System.Windows.Forms.CheckBox();
+            this.contextMenuSelectionBox = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.cxSelectionBoxDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnSetCustomContextMenu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -92,6 +96,7 @@
             this.splitContainer2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
+            this.contextMenuSelectionBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -153,6 +158,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnSetCustomContextMenu);
             this.groupBox4.Controls.Add(this.ckControllerZ);
             this.groupBox4.Controls.Add(this.ckControllerY);
             this.groupBox4.Controls.Add(this.ckControllerX);
@@ -163,6 +169,45 @@
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Option";
+            // 
+            // ckControllerZ
+            // 
+            this.ckControllerZ.AutoSize = true;
+            this.ckControllerZ.Checked = true;
+            this.ckControllerZ.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckControllerZ.Location = new System.Drawing.Point(251, 20);
+            this.ckControllerZ.Name = "ckControllerZ";
+            this.ckControllerZ.Size = new System.Drawing.Size(32, 16);
+            this.ckControllerZ.TabIndex = 3;
+            this.ckControllerZ.Text = "Z";
+            this.ckControllerZ.UseVisualStyleBackColor = true;
+            this.ckControllerZ.CheckedChanged += new System.EventHandler(this.ckControllerZ_CheckedChanged);
+            // 
+            // ckControllerY
+            // 
+            this.ckControllerY.AutoSize = true;
+            this.ckControllerY.Checked = true;
+            this.ckControllerY.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckControllerY.Location = new System.Drawing.Point(213, 20);
+            this.ckControllerY.Name = "ckControllerY";
+            this.ckControllerY.Size = new System.Drawing.Size(32, 16);
+            this.ckControllerY.TabIndex = 2;
+            this.ckControllerY.Text = "Y";
+            this.ckControllerY.UseVisualStyleBackColor = true;
+            this.ckControllerY.CheckedChanged += new System.EventHandler(this.ckControllerY_CheckedChanged);
+            // 
+            // ckControllerX
+            // 
+            this.ckControllerX.AutoSize = true;
+            this.ckControllerX.Checked = true;
+            this.ckControllerX.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckControllerX.Location = new System.Drawing.Point(175, 20);
+            this.ckControllerX.Name = "ckControllerX";
+            this.ckControllerX.Size = new System.Drawing.Size(32, 16);
+            this.ckControllerX.TabIndex = 1;
+            this.ckControllerX.Text = "X";
+            this.ckControllerX.UseVisualStyleBackColor = true;
+            this.ckControllerX.CheckedChanged += new System.EventHandler(this.ckControllerX_CheckedChanged);
             // 
             // ckMouseSelection
             // 
@@ -589,44 +634,29 @@
             this.dgView.Size = new System.Drawing.Size(902, 151);
             this.dgView.TabIndex = 0;
             // 
-            // ckControllerX
+            // contextMenuSelectionBox
             // 
-            this.ckControllerX.AutoSize = true;
-            this.ckControllerX.Checked = true;
-            this.ckControllerX.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckControllerX.Location = new System.Drawing.Point(207, 20);
-            this.ckControllerX.Name = "ckControllerX";
-            this.ckControllerX.Size = new System.Drawing.Size(32, 16);
-            this.ckControllerX.TabIndex = 1;
-            this.ckControllerX.Text = "X";
-            this.ckControllerX.UseVisualStyleBackColor = true;
-            this.ckControllerX.CheckedChanged += new System.EventHandler(this.ckControllerX_CheckedChanged);
+            this.contextMenuSelectionBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cxSelectionBoxDelete});
+            this.contextMenuSelectionBox.Name = "contextMenuSelectionBox";
+            this.contextMenuSelectionBox.Size = new System.Drawing.Size(147, 26);
             // 
-            // ckControllerY
+            // cxSelectionBoxDelete
             // 
-            this.ckControllerY.AutoSize = true;
-            this.ckControllerY.Checked = true;
-            this.ckControllerY.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckControllerY.Location = new System.Drawing.Point(245, 20);
-            this.ckControllerY.Name = "ckControllerY";
-            this.ckControllerY.Size = new System.Drawing.Size(32, 16);
-            this.ckControllerY.TabIndex = 2;
-            this.ckControllerY.Text = "Y";
-            this.ckControllerY.UseVisualStyleBackColor = true;
-            this.ckControllerY.CheckedChanged += new System.EventHandler(this.ckControllerY_CheckedChanged);
+            this.cxSelectionBoxDelete.Name = "cxSelectionBoxDelete";
+            this.cxSelectionBoxDelete.Size = new System.Drawing.Size(146, 22);
+            this.cxSelectionBoxDelete.Text = "(커스텀) 삭제";
+            this.cxSelectionBoxDelete.Click += new System.EventHandler(this.cxSelectionBoxDelete_Click);
             // 
-            // ckControllerZ
+            // btnSetCustomContextMenu
             // 
-            this.ckControllerZ.AutoSize = true;
-            this.ckControllerZ.Checked = true;
-            this.ckControllerZ.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckControllerZ.Location = new System.Drawing.Point(283, 20);
-            this.ckControllerZ.Name = "ckControllerZ";
-            this.ckControllerZ.Size = new System.Drawing.Size(32, 16);
-            this.ckControllerZ.TabIndex = 3;
-            this.ckControllerZ.Text = "Z";
-            this.ckControllerZ.UseVisualStyleBackColor = true;
-            this.ckControllerZ.CheckedChanged += new System.EventHandler(this.ckControllerZ_CheckedChanged);
+            this.btnSetCustomContextMenu.Location = new System.Drawing.Point(289, 16);
+            this.btnSetCustomContextMenu.Name = "btnSetCustomContextMenu";
+            this.btnSetCustomContextMenu.Size = new System.Drawing.Size(128, 23);
+            this.btnSetCustomContextMenu.TabIndex = 4;
+            this.btnSetCustomContextMenu.Text = "Custom Menu";
+            this.btnSetCustomContextMenu.UseVisualStyleBackColor = true;
+            this.btnSetCustomContextMenu.Click += new System.EventHandler(this.btnSetCustomContextMenu_Click);
             // 
             // FrmMain
             // 
@@ -655,6 +685,7 @@
             this.splitContainer2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
+            this.contextMenuSelectionBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -710,6 +741,9 @@
         private System.Windows.Forms.CheckBox ckControllerZ;
         private System.Windows.Forms.CheckBox ckControllerY;
         private System.Windows.Forms.CheckBox ckControllerX;
+        private System.Windows.Forms.ContextMenuStrip contextMenuSelectionBox;
+        private System.Windows.Forms.ToolStripMenuItem cxSelectionBoxDelete;
+        private System.Windows.Forms.Button btnSetCustomContextMenu;
     }
 }
 

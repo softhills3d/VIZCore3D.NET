@@ -685,5 +685,19 @@ namespace VIZCore3D.NET.SelectionBox
                 , ckControllerZ.Checked
                 );
         }
+
+        private void cxSelectionBoxDelete_Click(object sender, EventArgs e)
+        {
+            List<int> items = vizcore3d.SelectionBox.GetSelectedItems();
+            if (items.Count == 0) return;
+
+            vizcore3d.SelectionBox.Delete(items);
+        }
+
+        private void btnSetCustomContextMenu_Click(object sender, EventArgs e)
+        {
+            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.SINGLE_SELCTIONBOX, contextMenuSelectionBox);
+            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.MULTI_SELECTIONBOX, contextMenuSelectionBox);
+        }
     }
 }
