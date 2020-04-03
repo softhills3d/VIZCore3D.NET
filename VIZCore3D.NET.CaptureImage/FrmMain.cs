@@ -410,7 +410,7 @@ namespace VIZCore3D.NET.CaptureImage
 
         private void btnCaptureAuto_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.BeginMemoryRenderingMode(800, 600);
+            vizcore3d.View.BeginBackgroundRenderingMode(800, 600);
 
             CaptureAuto(Data.CameraDirection.ISO_PLUS);
             CaptureAuto(Data.CameraDirection.ISO_MINUS);
@@ -421,14 +421,14 @@ namespace VIZCore3D.NET.CaptureImage
             CaptureAuto(Data.CameraDirection.Z_PLUS);
             CaptureAuto(Data.CameraDirection.Z_MINUS);
 
-            vizcore3d.View.EndMemoryRenderingMode();
+            vizcore3d.View.EndBackgroundRenderingMode();
         }
 
         private void CaptureAuto(Data.CameraDirection camera)
         {
             vizcore3d.View.MoveCamera(camera);
 
-            System.Drawing.Image img = vizcore3d.View.GetMemoryRenderingImage();
+            System.Drawing.Image img = vizcore3d.View.GetBackgroundRenderingImage();
 
             imgThumb.Images.Add(img);
 
