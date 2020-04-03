@@ -334,7 +334,8 @@ namespace VIZCore3D.NET.Painting
         {
             btnSelectColor1.BackColor = Color.FromArgb(128, 0, 0);
             btnSelectColor2.BackColor = Color.Black;
-            btnSelectColor3.BackColor = Color.FromArgb(250, 250, 250);
+            //btnSelectColor3.BackColor = Color.FromArgb(250, 250, 250);
+            btnSelectColor3.BackColor = Color.FromArgb(255, 239, 187);
         }
 
         private void SetPaletteName()
