@@ -344,7 +344,7 @@ namespace VIZCore3D.NET.UserView
             if (img == null) return;
 
             pbImage.Image = img;
-
+            
             // Create Node
             TreeNode snapshot = new TreeNode(string.Format("Snapshot #{0}", tvUserView.GetNodeCount(true)), 2, 2);
 
