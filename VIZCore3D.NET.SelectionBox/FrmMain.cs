@@ -327,7 +327,11 @@ namespace VIZCore3D.NET.SelectionBox
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            // 개체 선택 이벤트
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+
+            // 뷰 영역 Drag & Drop 이벤트
+            vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
 
             cbFontSize.SelectedIndexChanged += CbFontSize_SelectedIndexChanged;
 
@@ -348,6 +352,7 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.SelectionBox.OnSelectionBoxDeselectedEvent += SelectionBox_OnSelectionBoxDeselectedEvent;
         }
 
+        
 
         private void SelectionBox_OnSelectionBoxDragEvent(object sender, VIZCore3D.NET.Event.EventManager.SelectionBoxEventArgs e)
         {
@@ -596,8 +601,16 @@ namespace VIZCore3D.NET.SelectionBox
 
         private void ShowObject3DInSelectionBox(int id)
         {
-            List<VIZCore3D.NET.Data.Node> object3d = vizcore3d.SelectionBox.GetObject3D(id, VIZCore3D.NET.Data.BoundBoxSearchOption.FullyContained);
+            List<VIZCore3D.NET.Data.Node> object3d = vizcore3d.SelectionBox.GetObject3D(
+                id
+                , ckFullyContained.Checked == true 
+                    ? VIZCore3D.NET.Data.BoundBoxSearchOption.FullyContained
+                    : Data.BoundBoxSearchOption.IncludingPart
+                );
+
             dgView.DataSource = object3d;
+
+            txtItemCount.Text = object3d.Count.ToString();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -698,6 +711,56 @@ namespace VIZCore3D.NET.SelectionBox
         {
             vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.SINGLE_SELCTIONBOX, contextMenuSelectionBox);
             vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.MULTI_SELECTIONBOX, contextMenuSelectionBox);
+        }
+
+        private void btnGetItemByScreenPosition_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtScreenX.Text) == true) return;
+            if (String.IsNullOrEmpty(txtScreenY.Text) == true) return;
+
+            int x = Convert.ToInt32(txtScreenX.Text);
+            int y = Convert.ToInt32(txtScreenY.Text);
+
+            int id = vizcore3d.SelectionBox.HitTest(x, y);
+
+            txtSelectionBoxID.Text = id.ToString();
+        }
+
+        private void View_OnViewDragDrop(object sender, Event.EventManager.ViewDragDropEventArgs e)
+        {
+            // ================================================
+            // 기존 함수 활용
+            // ================================================
+            txtScreenX.Text = e.X.ToString();
+            txtScreenY.Text = e.Y.ToString();
+
+            btnGetItemByScreenPosition.PerformClick();
+
+
+            // ================================================
+            // API
+            // ================================================
+            int id = vizcore3d.SelectionBox.HitTest(e.X, e.Y);
+            if(id == -1)
+            {
+                // 선택상자(SelectionBox) 없음
+            }
+            else
+            {
+                // 선택상자(SelectionBox) 있음
+            }
+
+            // 확인
+            if(id != -1 && e.DragItem != null && e.DragItem is ListViewItem)
+            {
+                ListViewItem lvi = (ListViewItem)e.DragItem;
+                MessageBox.Show(string.Format("{0} - SelectionBox ID : {1}", lvi.Text, id), "VIZCore3D.NET.SelectionBox", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void lvDragItem_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            DoDragDrop(e.Item, DragDropEffects.Copy);
         }
     }
 }

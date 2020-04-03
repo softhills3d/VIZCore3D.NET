@@ -490,5 +490,13 @@ namespace VIZCore3D.NET.Note
                 lbEvent.Items.Insert(0, str);
             }));
         }
+
+        private void btnGetSize_Click(object sender, EventArgs e)
+        {
+            Size size = vizcore3d.View.Size;
+
+            txtWidth.Text = size.Width.ToString();
+            txtHeight.Text = size.Height.ToString();
+        }
     }
 }

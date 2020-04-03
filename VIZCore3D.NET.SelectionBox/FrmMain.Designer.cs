@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Item 1");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Item 2");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Item 3");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Item 4");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnMoveCenter = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSetCustomContextMenu = new System.Windows.Forms.Button();
             this.ckControllerZ = new System.Windows.Forms.CheckBox();
             this.ckControllerY = new System.Windows.Forms.CheckBox();
             this.ckControllerX = new System.Windows.Forms.CheckBox();
@@ -81,7 +86,21 @@
             this.dgView = new System.Windows.Forms.DataGridView();
             this.contextMenuSelectionBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cxSelectionBoxDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnSetCustomContextMenu = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtScreenX = new System.Windows.Forms.TextBox();
+            this.txtScreenY = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnGetItemByScreenPosition = new System.Windows.Forms.Button();
+            this.txtSelectionBoxID = new System.Windows.Forms.TextBox();
+            this.ckFullyContained = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtItemCount = new System.Windows.Forms.TextBox();
+            this.tabSelectionBox = new System.Windows.Forms.TabControl();
+            this.tpItems = new System.Windows.Forms.TabPage();
+            this.tpDrag = new System.Windows.Forms.TabPage();
+            this.lvDragItem = new System.Windows.Forms.ListView();
+            this.chDragItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,6 +116,10 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.contextMenuSelectionBox.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.tabSelectionBox.SuspendLayout();
+            this.tpItems.SuspendLayout();
+            this.tpDrag.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -108,6 +131,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox7);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
@@ -117,7 +141,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1368, 766);
+            this.splitContainer1.Size = new System.Drawing.Size(1368, 845);
             this.splitContainer1.SplitterDistance = 456;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -127,9 +151,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.btnDelete);
             this.groupBox5.Controls.Add(this.btnMoveCenter);
-            this.groupBox5.Location = new System.Drawing.Point(12, 326);
+            this.groupBox5.Location = new System.Drawing.Point(12, 303);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(432, 64);
+            this.groupBox5.Size = new System.Drawing.Size(432, 56);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Selected Item";
@@ -163,12 +187,22 @@
             this.groupBox4.Controls.Add(this.ckControllerY);
             this.groupBox4.Controls.Add(this.ckControllerX);
             this.groupBox4.Controls.Add(this.ckMouseSelection);
-            this.groupBox4.Location = new System.Drawing.Point(12, 266);
+            this.groupBox4.Location = new System.Drawing.Point(12, 247);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(432, 54);
+            this.groupBox4.Size = new System.Drawing.Size(432, 50);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Option";
+            // 
+            // btnSetCustomContextMenu
+            // 
+            this.btnSetCustomContextMenu.Location = new System.Drawing.Point(289, 16);
+            this.btnSetCustomContextMenu.Name = "btnSetCustomContextMenu";
+            this.btnSetCustomContextMenu.Size = new System.Drawing.Size(128, 23);
+            this.btnSetCustomContextMenu.TabIndex = 4;
+            this.btnSetCustomContextMenu.Text = "Custom Menu";
+            this.btnSetCustomContextMenu.UseVisualStyleBackColor = true;
+            this.btnSetCustomContextMenu.Click += new System.EventHandler(this.btnSetCustomContextMenu_Click);
             // 
             // ckControllerZ
             // 
@@ -240,9 +274,9 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.btnFaceColor);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 95);
+            this.groupBox3.Location = new System.Drawing.Point(12, 79);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(432, 167);
+            this.groupBox3.Size = new System.Drawing.Size(432, 162);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Style";
@@ -408,15 +442,15 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.tabSelectionBox);
             this.groupBox2.Controls.Add(this.btnHideLabel);
             this.groupBox2.Controls.Add(this.btnShowLabel);
             this.groupBox2.Controls.Add(this.btnHideAll);
             this.groupBox2.Controls.Add(this.btnShowAll);
             this.groupBox2.Controls.Add(this.btnClear);
-            this.groupBox2.Controls.Add(this.lvList);
-            this.groupBox2.Location = new System.Drawing.Point(12, 396);
+            this.groupBox2.Location = new System.Drawing.Point(12, 427);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(432, 358);
+            this.groupBox2.Size = new System.Drawing.Size(432, 406);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List";
@@ -473,21 +507,19 @@
             // 
             // lvList
             // 
-            this.lvList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.lvList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5});
+            this.lvList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvList.FullRowSelect = true;
             this.lvList.GridLines = true;
             this.lvList.HideSelection = false;
-            this.lvList.Location = new System.Drawing.Point(6, 59);
+            this.lvList.Location = new System.Drawing.Point(3, 3);
             this.lvList.Name = "lvList";
-            this.lvList.Size = new System.Drawing.Size(420, 293);
+            this.lvList.Size = new System.Drawing.Size(405, 319);
             this.lvList.TabIndex = 0;
             this.lvList.UseCompatibleStateImageBehavior = false;
             this.lvList.View = System.Windows.Forms.View.Details;
@@ -529,7 +561,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(432, 70);
+            this.groupBox1.Size = new System.Drawing.Size(432, 61);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "자동 분할";
@@ -606,12 +638,15 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox6);
-            this.splitContainer2.Size = new System.Drawing.Size(908, 766);
-            this.splitContainer2.SplitterDistance = 591;
+            this.splitContainer2.Size = new System.Drawing.Size(908, 845);
+            this.splitContainer2.SplitterDistance = 670;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.txtItemCount);
+            this.groupBox6.Controls.Add(this.label14);
+            this.groupBox6.Controls.Add(this.ckFullyContained);
             this.groupBox6.Controls.Add(this.dgView);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(0, 0);
@@ -625,13 +660,15 @@
             // 
             this.dgView.AllowUserToAddRows = false;
             this.dgView.AllowUserToDeleteRows = false;
+            this.dgView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgView.Location = new System.Drawing.Point(3, 17);
+            this.dgView.Location = new System.Drawing.Point(3, 43);
             this.dgView.Name = "dgView";
             this.dgView.ReadOnly = true;
             this.dgView.RowTemplate.Height = 23;
-            this.dgView.Size = new System.Drawing.Size(902, 151);
+            this.dgView.Size = new System.Drawing.Size(902, 125);
             this.dgView.TabIndex = 0;
             // 
             // contextMenuSelectionBox
@@ -648,21 +685,168 @@
             this.cxSelectionBoxDelete.Text = "(커스텀) 삭제";
             this.cxSelectionBoxDelete.Click += new System.EventHandler(this.cxSelectionBoxDelete_Click);
             // 
-            // btnSetCustomContextMenu
+            // groupBox7
             // 
-            this.btnSetCustomContextMenu.Location = new System.Drawing.Point(289, 16);
-            this.btnSetCustomContextMenu.Name = "btnSetCustomContextMenu";
-            this.btnSetCustomContextMenu.Size = new System.Drawing.Size(128, 23);
-            this.btnSetCustomContextMenu.TabIndex = 4;
-            this.btnSetCustomContextMenu.Text = "Custom Menu";
-            this.btnSetCustomContextMenu.UseVisualStyleBackColor = true;
-            this.btnSetCustomContextMenu.Click += new System.EventHandler(this.btnSetCustomContextMenu_Click);
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.txtSelectionBoxID);
+            this.groupBox7.Controls.Add(this.btnGetItemByScreenPosition);
+            this.groupBox7.Controls.Add(this.txtScreenY);
+            this.groupBox7.Controls.Add(this.label13);
+            this.groupBox7.Controls.Add(this.txtScreenX);
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Location = new System.Drawing.Point(12, 365);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(432, 56);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Screen Position";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(26, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(13, 12);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "X";
+            // 
+            // txtScreenX
+            // 
+            this.txtScreenX.Location = new System.Drawing.Point(45, 24);
+            this.txtScreenX.Name = "txtScreenX";
+            this.txtScreenX.Size = new System.Drawing.Size(65, 21);
+            this.txtScreenX.TabIndex = 1;
+            // 
+            // txtScreenY
+            // 
+            this.txtScreenY.Location = new System.Drawing.Point(142, 24);
+            this.txtScreenY.Name = "txtScreenY";
+            this.txtScreenY.Size = new System.Drawing.Size(65, 21);
+            this.txtScreenY.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(123, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(13, 12);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Y";
+            // 
+            // btnGetItemByScreenPosition
+            // 
+            this.btnGetItemByScreenPosition.Location = new System.Drawing.Point(217, 22);
+            this.btnGetItemByScreenPosition.Name = "btnGetItemByScreenPosition";
+            this.btnGetItemByScreenPosition.Size = new System.Drawing.Size(49, 23);
+            this.btnGetItemByScreenPosition.TabIndex = 4;
+            this.btnGetItemByScreenPosition.Text = "Get";
+            this.btnGetItemByScreenPosition.UseVisualStyleBackColor = true;
+            this.btnGetItemByScreenPosition.Click += new System.EventHandler(this.btnGetItemByScreenPosition_Click);
+            // 
+            // txtSelectionBoxID
+            // 
+            this.txtSelectionBoxID.Location = new System.Drawing.Point(277, 24);
+            this.txtSelectionBoxID.Name = "txtSelectionBoxID";
+            this.txtSelectionBoxID.ReadOnly = true;
+            this.txtSelectionBoxID.Size = new System.Drawing.Size(60, 21);
+            this.txtSelectionBoxID.TabIndex = 5;
+            // 
+            // ckFullyContained
+            // 
+            this.ckFullyContained.AutoSize = true;
+            this.ckFullyContained.Checked = true;
+            this.ckFullyContained.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckFullyContained.Location = new System.Drawing.Point(6, 20);
+            this.ckFullyContained.Name = "ckFullyContained";
+            this.ckFullyContained.Size = new System.Drawing.Size(112, 16);
+            this.ckFullyContained.TabIndex = 1;
+            this.ckFullyContained.Text = "Fully Contained";
+            this.ckFullyContained.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(146, 21);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 12);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Item Count : ";
+            // 
+            // txtItemCount
+            // 
+            this.txtItemCount.Location = new System.Drawing.Point(230, 18);
+            this.txtItemCount.Name = "txtItemCount";
+            this.txtItemCount.ReadOnly = true;
+            this.txtItemCount.Size = new System.Drawing.Size(100, 21);
+            this.txtItemCount.TabIndex = 3;
+            // 
+            // tabSelectionBox
+            // 
+            this.tabSelectionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSelectionBox.Controls.Add(this.tpItems);
+            this.tabSelectionBox.Controls.Add(this.tpDrag);
+            this.tabSelectionBox.Location = new System.Drawing.Point(7, 49);
+            this.tabSelectionBox.Name = "tabSelectionBox";
+            this.tabSelectionBox.SelectedIndex = 0;
+            this.tabSelectionBox.Size = new System.Drawing.Size(419, 351);
+            this.tabSelectionBox.TabIndex = 6;
+            // 
+            // tpItems
+            // 
+            this.tpItems.Controls.Add(this.lvList);
+            this.tpItems.Location = new System.Drawing.Point(4, 22);
+            this.tpItems.Name = "tpItems";
+            this.tpItems.Padding = new System.Windows.Forms.Padding(3);
+            this.tpItems.Size = new System.Drawing.Size(411, 325);
+            this.tpItems.TabIndex = 0;
+            this.tpItems.Text = "Items";
+            this.tpItems.UseVisualStyleBackColor = true;
+            // 
+            // tpDrag
+            // 
+            this.tpDrag.Controls.Add(this.lvDragItem);
+            this.tpDrag.Location = new System.Drawing.Point(4, 22);
+            this.tpDrag.Name = "tpDrag";
+            this.tpDrag.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDrag.Size = new System.Drawing.Size(411, 325);
+            this.tpDrag.TabIndex = 1;
+            this.tpDrag.Text = "Drag Test";
+            this.tpDrag.UseVisualStyleBackColor = true;
+            // 
+            // lvDragItem
+            // 
+            this.lvDragItem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chDragItem});
+            this.lvDragItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvDragItem.FullRowSelect = true;
+            this.lvDragItem.GridLines = true;
+            this.lvDragItem.HideSelection = false;
+            this.lvDragItem.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
+            this.lvDragItem.Location = new System.Drawing.Point(3, 3);
+            this.lvDragItem.Name = "lvDragItem";
+            this.lvDragItem.Size = new System.Drawing.Size(405, 319);
+            this.lvDragItem.TabIndex = 0;
+            this.lvDragItem.UseCompatibleStateImageBehavior = false;
+            this.lvDragItem.View = System.Windows.Forms.View.Details;
+            this.lvDragItem.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvDragItem_ItemDrag);
+            // 
+            // chDragItem
+            // 
+            this.chDragItem.Text = "Item";
+            this.chDragItem.Width = 150;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1368, 766);
+            this.ClientSize = new System.Drawing.Size(1368, 845);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
@@ -684,8 +868,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
             this.contextMenuSelectionBox.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.tabSelectionBox.ResumeLayout(false);
+            this.tpItems.ResumeLayout(false);
+            this.tpDrag.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -744,6 +934,21 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuSelectionBox;
         private System.Windows.Forms.ToolStripMenuItem cxSelectionBoxDelete;
         private System.Windows.Forms.Button btnSetCustomContextMenu;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtSelectionBoxID;
+        private System.Windows.Forms.Button btnGetItemByScreenPosition;
+        private System.Windows.Forms.TextBox txtScreenY;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox txtScreenX;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.CheckBox ckFullyContained;
+        private System.Windows.Forms.TextBox txtItemCount;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TabControl tabSelectionBox;
+        private System.Windows.Forms.TabPage tpItems;
+        private System.Windows.Forms.TabPage tpDrag;
+        private System.Windows.Forms.ListView lvDragItem;
+        private System.Windows.Forms.ColumnHeader chDragItem;
     }
 }
 

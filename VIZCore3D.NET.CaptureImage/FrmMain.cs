@@ -407,5 +407,37 @@ namespace VIZCore3D.NET.CaptureImage
             vizcore3d.View.EnvironmentLight = enable;
             vizcore3d.View.AntiAliasing = enable;
         }
+
+        private void btnCaptureAuto_Click(object sender, EventArgs e)
+        {
+            vizcore3d.View.BeginMemoryRenderingMode(800, 600);
+
+            CaptureAuto(Data.CameraDirection.ISO_PLUS);
+            CaptureAuto(Data.CameraDirection.ISO_MINUS);
+            CaptureAuto(Data.CameraDirection.X_PLUS);
+            CaptureAuto(Data.CameraDirection.X_MINUS);
+            CaptureAuto(Data.CameraDirection.Y_PLUS);
+            CaptureAuto(Data.CameraDirection.Y_MINUS);
+            CaptureAuto(Data.CameraDirection.Z_PLUS);
+            CaptureAuto(Data.CameraDirection.Z_MINUS);
+
+            vizcore3d.View.EndMemoryRenderingMode();
+        }
+
+        private void CaptureAuto(Data.CameraDirection camera)
+        {
+            vizcore3d.View.MoveCamera(camera);
+
+            System.Drawing.Image img = vizcore3d.View.GetMemoryRenderingImage();
+
+            imgThumb.Images.Add(img);
+
+            ListViewItem lvi = new ListViewItem("", imgThumb.Images.Count - 1);
+            lvi.Tag = img;
+
+            lvImage.Items.Add(lvi);
+
+            lvImage.EnsureVisible(lvImage.Items.Count - 1);
+        }
     }
 }
