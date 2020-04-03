@@ -366,6 +366,10 @@ namespace VIZCore3D.NET.Disassembly
 
             SetOption();
 
+            vizcore3d.View.SelectionMode = Data.Object3DSelectionOptions.FULL_BOUNDARIES;
+
+            vizcore3d.Object3D.Select(new List<int>() { 0 }, true, false);
+
             vizcore3d.Object3D.Disassembly.Option = VIZCore3D.NET.Manager.DisassemblyManager.DisassemblyOption.LINEAR;
         }
 
@@ -374,6 +378,10 @@ namespace VIZCore3D.NET.Disassembly
             if (vizcore3d.Model.IsOpen() == false) return;
 
             SetOption();
+
+            vizcore3d.View.SelectionMode = Data.Object3DSelectionOptions.FULL_BOUNDARIES;
+
+            vizcore3d.Object3D.Select(new List<int>() { 0 }, true, false);
 
             vizcore3d.Object3D.Disassembly.Option = VIZCore3D.NET.Manager.DisassemblyManager.DisassemblyOption.SPHERE;
         }
@@ -392,17 +400,39 @@ namespace VIZCore3D.NET.Disassembly
 
         private void btnAddGroup_Click(object sender, EventArgs e)
         {
-            List<VIZCore3D.NET.Data.Node> child = 
-                vizcore3d.Object3D.GetChildObject3d(
-                    0                                       /* Root Node Index */
-                    , VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY   /* Sub Node */
-                    );
+            int index = cbGroupLevel.SelectedIndex;
 
-            for (int i = 0; i < child.Count; i++)
+            List<VIZCore3D.NET.Data.Node> items = null;
+
+            if (index == 0) // Children of Root
+            {
+                items = vizcore3d.Object3D.GetChildObject3d(
+                            0                                                       /* Root Node Index */
+                            , VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY     /* Sub Node */
+                            );
+
+                
+            }
+            else if(index == 1) // Part (Leaf Node)
+            {
+                items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PART);
+            }
+            else if(index == 2) // Leaf Assembly
+            {
+                items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.LEAF_ASSEMBLY);
+            }
+            else if(index == 3) // Parent of Leaf Assembly
+            {
+                items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PARENT_LEAF_ASSEMBLY);
+            }
+
+            if (items == null) return;
+
+            for (int i = 0; i < items.Count; i++)
             {
                 bool result = vizcore3d.Object3D.Disassembly.AddGroup(
                     i                   /* ID : 0 ~ */
-                    , child[i].Index    /* NODE INDEX */
+                    , items[i].Index    /* NODE INDEX */
                     , true              /* Recursive */
                     );
             }
@@ -413,11 +443,18 @@ namespace VIZCore3D.NET.Disassembly
             vizcore3d.Object3D.Disassembly.ClearGroup();
         }
 
-        private void btnSelectAll_Click(object sender, EventArgs e)
+        private void btnAddGroupLeafAssembly_Click(object sender, EventArgs e)
         {
-            if (vizcore3d.Model.IsOpen() == false) return;
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.LEAF_ASSEMBLY);
 
-            vizcore3d.Object3D.Select(new List<int>() { 0 }, true, false);
+            for (int i = 0; i < items.Count; i++)
+            {
+                bool result = vizcore3d.Object3D.Disassembly.AddGroup(
+                    i                   /* ID : 0 ~ */
+                    , items[i].Index    /* NODE INDEX */
+                    , true              /* Recursive */
+                    );
+            }
         }
     }
 }

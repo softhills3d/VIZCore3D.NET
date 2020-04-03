@@ -35,6 +35,13 @@
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Item 4");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtSelectionBoxID = new System.Windows.Forms.TextBox();
+            this.btnGetItemByScreenPosition = new System.Windows.Forms.Button();
+            this.txtScreenY = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtScreenX = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnMoveCenter = new System.Windows.Forms.Button();
@@ -62,17 +69,22 @@
             this.btnFaceColor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnHideLabel = new System.Windows.Forms.Button();
-            this.btnShowLabel = new System.Windows.Forms.Button();
-            this.btnHideAll = new System.Windows.Forms.Button();
-            this.btnShowAll = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
+            this.tabSelectionBox = new System.Windows.Forms.TabControl();
+            this.tpItems = new System.Windows.Forms.TabPage();
             this.lvList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tpDrag = new System.Windows.Forms.TabPage();
+            this.lvDragItem = new System.Windows.Forms.ListView();
+            this.chDragItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnHideLabel = new System.Windows.Forms.Button();
+            this.btnShowLabel = new System.Windows.Forms.Button();
+            this.btnHideAll = new System.Windows.Forms.Button();
+            this.btnShowAll = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtCountZ = new System.Windows.Forms.TextBox();
@@ -83,32 +95,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtItemCount = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ckFullyContained = new System.Windows.Forms.CheckBox();
             this.dgView = new System.Windows.Forms.DataGridView();
             this.contextMenuSelectionBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cxSelectionBoxDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtScreenX = new System.Windows.Forms.TextBox();
-            this.txtScreenY = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnGetItemByScreenPosition = new System.Windows.Forms.Button();
-            this.txtSelectionBoxID = new System.Windows.Forms.TextBox();
-            this.ckFullyContained = new System.Windows.Forms.CheckBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtItemCount = new System.Windows.Forms.TextBox();
-            this.tabSelectionBox = new System.Windows.Forms.TabControl();
-            this.tpItems = new System.Windows.Forms.TabPage();
-            this.tpDrag = new System.Windows.Forms.TabPage();
-            this.lvDragItem = new System.Windows.Forms.ListView();
-            this.chDragItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabSelectionBox.SuspendLayout();
+            this.tpItems.SuspendLayout();
+            this.tpDrag.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -116,10 +120,6 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).BeginInit();
             this.contextMenuSelectionBox.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.tabSelectionBox.SuspendLayout();
-            this.tpItems.SuspendLayout();
-            this.tpDrag.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -144,6 +144,73 @@
             this.splitContainer1.Size = new System.Drawing.Size(1368, 845);
             this.splitContainer1.SplitterDistance = 456;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.txtSelectionBoxID);
+            this.groupBox7.Controls.Add(this.btnGetItemByScreenPosition);
+            this.groupBox7.Controls.Add(this.txtScreenY);
+            this.groupBox7.Controls.Add(this.label13);
+            this.groupBox7.Controls.Add(this.txtScreenX);
+            this.groupBox7.Controls.Add(this.label12);
+            this.groupBox7.Location = new System.Drawing.Point(12, 365);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(432, 56);
+            this.groupBox7.TabIndex = 5;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Hit Test";
+            // 
+            // txtSelectionBoxID
+            // 
+            this.txtSelectionBoxID.Location = new System.Drawing.Point(277, 24);
+            this.txtSelectionBoxID.Name = "txtSelectionBoxID";
+            this.txtSelectionBoxID.ReadOnly = true;
+            this.txtSelectionBoxID.Size = new System.Drawing.Size(60, 21);
+            this.txtSelectionBoxID.TabIndex = 5;
+            // 
+            // btnGetItemByScreenPosition
+            // 
+            this.btnGetItemByScreenPosition.Location = new System.Drawing.Point(217, 22);
+            this.btnGetItemByScreenPosition.Name = "btnGetItemByScreenPosition";
+            this.btnGetItemByScreenPosition.Size = new System.Drawing.Size(49, 23);
+            this.btnGetItemByScreenPosition.TabIndex = 4;
+            this.btnGetItemByScreenPosition.Text = "Get";
+            this.btnGetItemByScreenPosition.UseVisualStyleBackColor = true;
+            this.btnGetItemByScreenPosition.Click += new System.EventHandler(this.btnGetItemByScreenPosition_Click);
+            // 
+            // txtScreenY
+            // 
+            this.txtScreenY.Location = new System.Drawing.Point(142, 24);
+            this.txtScreenY.Name = "txtScreenY";
+            this.txtScreenY.Size = new System.Drawing.Size(65, 21);
+            this.txtScreenY.TabIndex = 3;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(123, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(13, 12);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Y";
+            // 
+            // txtScreenX
+            // 
+            this.txtScreenX.Location = new System.Drawing.Point(45, 24);
+            this.txtScreenX.Name = "txtScreenX";
+            this.txtScreenX.Size = new System.Drawing.Size(65, 21);
+            this.txtScreenX.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(26, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(13, 12);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "X";
             // 
             // groupBox5
             // 
@@ -455,6 +522,110 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List";
             // 
+            // tabSelectionBox
+            // 
+            this.tabSelectionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabSelectionBox.Controls.Add(this.tpItems);
+            this.tabSelectionBox.Controls.Add(this.tpDrag);
+            this.tabSelectionBox.Location = new System.Drawing.Point(7, 49);
+            this.tabSelectionBox.Name = "tabSelectionBox";
+            this.tabSelectionBox.SelectedIndex = 0;
+            this.tabSelectionBox.Size = new System.Drawing.Size(419, 351);
+            this.tabSelectionBox.TabIndex = 6;
+            // 
+            // tpItems
+            // 
+            this.tpItems.Controls.Add(this.lvList);
+            this.tpItems.Location = new System.Drawing.Point(4, 22);
+            this.tpItems.Name = "tpItems";
+            this.tpItems.Padding = new System.Windows.Forms.Padding(3);
+            this.tpItems.Size = new System.Drawing.Size(411, 325);
+            this.tpItems.TabIndex = 0;
+            this.tpItems.Text = "Items";
+            this.tpItems.UseVisualStyleBackColor = true;
+            // 
+            // lvList
+            // 
+            this.lvList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.lvList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvList.FullRowSelect = true;
+            this.lvList.GridLines = true;
+            this.lvList.HideSelection = false;
+            this.lvList.Location = new System.Drawing.Point(3, 3);
+            this.lvList.Name = "lvList";
+            this.lvList.Size = new System.Drawing.Size(405, 319);
+            this.lvList.TabIndex = 0;
+            this.lvList.UseCompatibleStateImageBehavior = false;
+            this.lvList.View = System.Windows.Forms.View.Details;
+            this.lvList.Click += new System.EventHandler(this.lvList_Click);
+            this.lvList.DoubleClick += new System.EventHandler(this.lvList_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "TITLE";
+            this.columnHeader2.Width = 106;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "LABEL";
+            this.columnHeader3.Width = 103;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "MIN";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "MAX";
+            // 
+            // tpDrag
+            // 
+            this.tpDrag.Controls.Add(this.lvDragItem);
+            this.tpDrag.Location = new System.Drawing.Point(4, 22);
+            this.tpDrag.Name = "tpDrag";
+            this.tpDrag.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDrag.Size = new System.Drawing.Size(411, 325);
+            this.tpDrag.TabIndex = 1;
+            this.tpDrag.Text = "Drag Test";
+            this.tpDrag.UseVisualStyleBackColor = true;
+            // 
+            // lvDragItem
+            // 
+            this.lvDragItem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chDragItem});
+            this.lvDragItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvDragItem.FullRowSelect = true;
+            this.lvDragItem.GridLines = true;
+            this.lvDragItem.HideSelection = false;
+            this.lvDragItem.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4});
+            this.lvDragItem.Location = new System.Drawing.Point(3, 3);
+            this.lvDragItem.Name = "lvDragItem";
+            this.lvDragItem.Size = new System.Drawing.Size(405, 319);
+            this.lvDragItem.TabIndex = 0;
+            this.lvDragItem.UseCompatibleStateImageBehavior = false;
+            this.lvDragItem.View = System.Windows.Forms.View.Details;
+            this.lvDragItem.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvDragItem_ItemDrag);
+            // 
+            // chDragItem
+            // 
+            this.chDragItem.Text = "Item";
+            this.chDragItem.Width = 150;
+            // 
             // btnHideLabel
             // 
             this.btnHideLabel.Location = new System.Drawing.Point(317, 20);
@@ -504,49 +675,6 @@
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // lvList
-            // 
-            this.lvList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.lvList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvList.FullRowSelect = true;
-            this.lvList.GridLines = true;
-            this.lvList.HideSelection = false;
-            this.lvList.Location = new System.Drawing.Point(3, 3);
-            this.lvList.Name = "lvList";
-            this.lvList.Size = new System.Drawing.Size(405, 319);
-            this.lvList.TabIndex = 0;
-            this.lvList.UseCompatibleStateImageBehavior = false;
-            this.lvList.View = System.Windows.Forms.View.Details;
-            this.lvList.Click += new System.EventHandler(this.lvList_Click);
-            this.lvList.DoubleClick += new System.EventHandler(this.lvList_DoubleClick);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "ID";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "TITLE";
-            this.columnHeader2.Width = 106;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "LABEL";
-            this.columnHeader3.Width = 103;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "MIN";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "MAX";
             // 
             // groupBox1
             // 
@@ -656,6 +784,35 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Item";
             // 
+            // txtItemCount
+            // 
+            this.txtItemCount.Location = new System.Drawing.Point(230, 18);
+            this.txtItemCount.Name = "txtItemCount";
+            this.txtItemCount.ReadOnly = true;
+            this.txtItemCount.Size = new System.Drawing.Size(100, 21);
+            this.txtItemCount.TabIndex = 3;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(146, 21);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 12);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Item Count : ";
+            // 
+            // ckFullyContained
+            // 
+            this.ckFullyContained.AutoSize = true;
+            this.ckFullyContained.Checked = true;
+            this.ckFullyContained.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckFullyContained.Location = new System.Drawing.Point(6, 20);
+            this.ckFullyContained.Name = "ckFullyContained";
+            this.ckFullyContained.Size = new System.Drawing.Size(112, 16);
+            this.ckFullyContained.TabIndex = 1;
+            this.ckFullyContained.Text = "Fully Contained";
+            this.ckFullyContained.UseVisualStyleBackColor = true;
+            // 
             // dgView
             // 
             this.dgView.AllowUserToAddRows = false;
@@ -685,163 +842,6 @@
             this.cxSelectionBoxDelete.Text = "(커스텀) 삭제";
             this.cxSelectionBoxDelete.Click += new System.EventHandler(this.cxSelectionBoxDelete_Click);
             // 
-            // groupBox7
-            // 
-            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox7.Controls.Add(this.txtSelectionBoxID);
-            this.groupBox7.Controls.Add(this.btnGetItemByScreenPosition);
-            this.groupBox7.Controls.Add(this.txtScreenY);
-            this.groupBox7.Controls.Add(this.label13);
-            this.groupBox7.Controls.Add(this.txtScreenX);
-            this.groupBox7.Controls.Add(this.label12);
-            this.groupBox7.Location = new System.Drawing.Point(12, 365);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(432, 56);
-            this.groupBox7.TabIndex = 5;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Screen Position";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(26, 27);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(13, 12);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "X";
-            // 
-            // txtScreenX
-            // 
-            this.txtScreenX.Location = new System.Drawing.Point(45, 24);
-            this.txtScreenX.Name = "txtScreenX";
-            this.txtScreenX.Size = new System.Drawing.Size(65, 21);
-            this.txtScreenX.TabIndex = 1;
-            // 
-            // txtScreenY
-            // 
-            this.txtScreenY.Location = new System.Drawing.Point(142, 24);
-            this.txtScreenY.Name = "txtScreenY";
-            this.txtScreenY.Size = new System.Drawing.Size(65, 21);
-            this.txtScreenY.TabIndex = 3;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(123, 27);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(13, 12);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Y";
-            // 
-            // btnGetItemByScreenPosition
-            // 
-            this.btnGetItemByScreenPosition.Location = new System.Drawing.Point(217, 22);
-            this.btnGetItemByScreenPosition.Name = "btnGetItemByScreenPosition";
-            this.btnGetItemByScreenPosition.Size = new System.Drawing.Size(49, 23);
-            this.btnGetItemByScreenPosition.TabIndex = 4;
-            this.btnGetItemByScreenPosition.Text = "Get";
-            this.btnGetItemByScreenPosition.UseVisualStyleBackColor = true;
-            this.btnGetItemByScreenPosition.Click += new System.EventHandler(this.btnGetItemByScreenPosition_Click);
-            // 
-            // txtSelectionBoxID
-            // 
-            this.txtSelectionBoxID.Location = new System.Drawing.Point(277, 24);
-            this.txtSelectionBoxID.Name = "txtSelectionBoxID";
-            this.txtSelectionBoxID.ReadOnly = true;
-            this.txtSelectionBoxID.Size = new System.Drawing.Size(60, 21);
-            this.txtSelectionBoxID.TabIndex = 5;
-            // 
-            // ckFullyContained
-            // 
-            this.ckFullyContained.AutoSize = true;
-            this.ckFullyContained.Checked = true;
-            this.ckFullyContained.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckFullyContained.Location = new System.Drawing.Point(6, 20);
-            this.ckFullyContained.Name = "ckFullyContained";
-            this.ckFullyContained.Size = new System.Drawing.Size(112, 16);
-            this.ckFullyContained.TabIndex = 1;
-            this.ckFullyContained.Text = "Fully Contained";
-            this.ckFullyContained.UseVisualStyleBackColor = true;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(146, 21);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 12);
-            this.label14.TabIndex = 2;
-            this.label14.Text = "Item Count : ";
-            // 
-            // txtItemCount
-            // 
-            this.txtItemCount.Location = new System.Drawing.Point(230, 18);
-            this.txtItemCount.Name = "txtItemCount";
-            this.txtItemCount.ReadOnly = true;
-            this.txtItemCount.Size = new System.Drawing.Size(100, 21);
-            this.txtItemCount.TabIndex = 3;
-            // 
-            // tabSelectionBox
-            // 
-            this.tabSelectionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabSelectionBox.Controls.Add(this.tpItems);
-            this.tabSelectionBox.Controls.Add(this.tpDrag);
-            this.tabSelectionBox.Location = new System.Drawing.Point(7, 49);
-            this.tabSelectionBox.Name = "tabSelectionBox";
-            this.tabSelectionBox.SelectedIndex = 0;
-            this.tabSelectionBox.Size = new System.Drawing.Size(419, 351);
-            this.tabSelectionBox.TabIndex = 6;
-            // 
-            // tpItems
-            // 
-            this.tpItems.Controls.Add(this.lvList);
-            this.tpItems.Location = new System.Drawing.Point(4, 22);
-            this.tpItems.Name = "tpItems";
-            this.tpItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tpItems.Size = new System.Drawing.Size(411, 325);
-            this.tpItems.TabIndex = 0;
-            this.tpItems.Text = "Items";
-            this.tpItems.UseVisualStyleBackColor = true;
-            // 
-            // tpDrag
-            // 
-            this.tpDrag.Controls.Add(this.lvDragItem);
-            this.tpDrag.Location = new System.Drawing.Point(4, 22);
-            this.tpDrag.Name = "tpDrag";
-            this.tpDrag.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDrag.Size = new System.Drawing.Size(411, 325);
-            this.tpDrag.TabIndex = 1;
-            this.tpDrag.Text = "Drag Test";
-            this.tpDrag.UseVisualStyleBackColor = true;
-            // 
-            // lvDragItem
-            // 
-            this.lvDragItem.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chDragItem});
-            this.lvDragItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvDragItem.FullRowSelect = true;
-            this.lvDragItem.GridLines = true;
-            this.lvDragItem.HideSelection = false;
-            this.lvDragItem.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4});
-            this.lvDragItem.Location = new System.Drawing.Point(3, 3);
-            this.lvDragItem.Name = "lvDragItem";
-            this.lvDragItem.Size = new System.Drawing.Size(405, 319);
-            this.lvDragItem.TabIndex = 0;
-            this.lvDragItem.UseCompatibleStateImageBehavior = false;
-            this.lvDragItem.View = System.Windows.Forms.View.Details;
-            this.lvDragItem.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvDragItem_ItemDrag);
-            // 
-            // chDragItem
-            // 
-            this.chDragItem.Text = "Item";
-            this.chDragItem.Width = 150;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -856,12 +856,17 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.tabSelectionBox.ResumeLayout(false);
+            this.tpItems.ResumeLayout(false);
+            this.tpDrag.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -871,11 +876,6 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgView)).EndInit();
             this.contextMenuSelectionBox.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.tabSelectionBox.ResumeLayout(false);
-            this.tpItems.ResumeLayout(false);
-            this.tpDrag.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
