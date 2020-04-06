@@ -339,11 +339,28 @@ namespace VIZCore3D.NET.Projection2D
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
-            VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(80, false, 1);
+            vizcore3d.ShowWaitForm();
+
+            int scale = Convert.ToInt32(txtScale.Text);
+            bool vertexAll = ckVertexAll.Checked;
+            int quality = tbQuality.Value;
+
+            //VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(80, false, 1);
+            VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(scale, vertexAll, quality);
 
             if (projection == null) return;
 
-            result.SetData(projection);
+            System.Drawing.Point translation = new Point(0, 0);
+
+            if (String.IsNullOrEmpty(txtX.Text) == false)
+                translation.X = Convert.ToInt32(txtX.Text);
+
+            if (String.IsNullOrEmpty(txtY.Text) == false)
+                translation.Y = Convert.ToInt32(txtY.Text);
+
+            result.SetData(projection, translation);
+
+            vizcore3d.CloseWaitForm();
         }
 
         private void btnSetModelMatrix_Click(object sender, EventArgs e)

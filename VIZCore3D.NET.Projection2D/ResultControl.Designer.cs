@@ -36,22 +36,26 @@
             this.txtPoints = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtArea = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtVertexCount = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtVertexBoundBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtNodeBoundBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.txtMatrix = new System.Windows.Forms.TextBox();
+            this.txtNodeBoundBox = new System.Windows.Forms.TextBox();
+            this.txtVertexBoundBox = new System.Windows.Forms.TextBox();
+            this.txtVertexCount = new System.Windows.Forms.TextBox();
+            this.txtArea = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tbZoom = new System.Windows.Forms.TrackBar();
+            this.panelPath = new System.Windows.Forms.Panel();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -71,7 +75,7 @@
             this.txtPathGeometry.Location = new System.Drawing.Point(3, 3);
             this.txtPathGeometry.Multiline = true;
             this.txtPathGeometry.Name = "txtPathGeometry";
-            this.txtPathGeometry.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtPathGeometry.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtPathGeometry.Size = new System.Drawing.Size(483, 376);
             this.txtPathGeometry.TabIndex = 0;
             // 
@@ -92,7 +96,7 @@
             this.txtVertex.Location = new System.Drawing.Point(3, 3);
             this.txtVertex.Multiline = true;
             this.txtVertex.Name = "txtVertex";
-            this.txtVertex.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtVertex.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtVertex.Size = new System.Drawing.Size(483, 376);
             this.txtVertex.TabIndex = 0;
             // 
@@ -113,12 +117,14 @@
             this.txtPoints.Location = new System.Drawing.Point(3, 3);
             this.txtPoints.Multiline = true;
             this.txtPoints.Name = "txtPoints";
-            this.txtPoints.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txtPoints.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtPoints.Size = new System.Drawing.Size(483, 376);
             this.txtPoints.TabIndex = 0;
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.panelPath);
+            this.tabPage5.Controls.Add(this.tbZoom);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -147,68 +153,14 @@
             this.tabPage1.Text = "일반";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // txtMatrix
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Area";
-            // 
-            // txtArea
-            // 
-            this.txtArea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtArea.Location = new System.Drawing.Point(137, 16);
-            this.txtArea.Name = "txtArea";
-            this.txtArea.Size = new System.Drawing.Size(333, 21);
-            this.txtArea.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Vertex Count";
-            // 
-            // txtVertexCount
-            // 
-            this.txtVertexCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVertexCount.Location = new System.Drawing.Point(137, 53);
-            this.txtVertexCount.Name = "txtVertexCount";
-            this.txtVertexCount.Size = new System.Drawing.Size(333, 21);
-            this.txtVertexCount.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 12);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Vertex Bound Box";
-            // 
-            // txtVertexBoundBox
-            // 
-            this.txtVertexBoundBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVertexBoundBox.Location = new System.Drawing.Point(137, 90);
-            this.txtVertexBoundBox.Name = "txtVertexBoundBox";
-            this.txtVertexBoundBox.Size = new System.Drawing.Size(333, 21);
-            this.txtVertexBoundBox.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 129);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(101, 12);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Node Bound Box";
+            this.txtMatrix.Location = new System.Drawing.Point(137, 162);
+            this.txtMatrix.Name = "txtMatrix";
+            this.txtMatrix.Size = new System.Drawing.Size(333, 21);
+            this.txtMatrix.TabIndex = 9;
             // 
             // txtNodeBoundBox
             // 
@@ -219,6 +171,33 @@
             this.txtNodeBoundBox.Size = new System.Drawing.Size(333, 21);
             this.txtNodeBoundBox.TabIndex = 7;
             // 
+            // txtVertexBoundBox
+            // 
+            this.txtVertexBoundBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVertexBoundBox.Location = new System.Drawing.Point(137, 90);
+            this.txtVertexBoundBox.Name = "txtVertexBoundBox";
+            this.txtVertexBoundBox.Size = new System.Drawing.Size(333, 21);
+            this.txtVertexBoundBox.TabIndex = 5;
+            // 
+            // txtVertexCount
+            // 
+            this.txtVertexCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtVertexCount.Location = new System.Drawing.Point(137, 53);
+            this.txtVertexCount.Name = "txtVertexCount";
+            this.txtVertexCount.Size = new System.Drawing.Size(333, 21);
+            this.txtVertexCount.TabIndex = 3;
+            // 
+            // txtArea
+            // 
+            this.txtArea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtArea.Location = new System.Drawing.Point(137, 16);
+            this.txtArea.Name = "txtArea";
+            this.txtArea.Size = new System.Drawing.Size(333, 21);
+            this.txtArea.TabIndex = 1;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -228,14 +207,41 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Matrix";
             // 
-            // txtMatrix
+            // label4
             // 
-            this.txtMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMatrix.Location = new System.Drawing.Point(137, 162);
-            this.txtMatrix.Name = "txtMatrix";
-            this.txtMatrix.Size = new System.Drawing.Size(333, 21);
-            this.txtMatrix.TabIndex = 9;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 129);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(101, 12);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Node Bound Box";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 12);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Vertex Bound Box";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Vertex Count";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 19);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(31, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Area";
             // 
             // tabControl1
             // 
@@ -251,6 +257,30 @@
             this.tabControl1.Size = new System.Drawing.Size(497, 408);
             this.tabControl1.TabIndex = 0;
             // 
+            // tbZoom
+            // 
+            this.tbZoom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbZoom.LargeChange = 10;
+            this.tbZoom.Location = new System.Drawing.Point(6, 6);
+            this.tbZoom.Maximum = 100;
+            this.tbZoom.Minimum = 10;
+            this.tbZoom.Name = "tbZoom";
+            this.tbZoom.Size = new System.Drawing.Size(477, 45);
+            this.tbZoom.TabIndex = 0;
+            this.tbZoom.Value = 100;
+            // 
+            // panelPath
+            // 
+            this.panelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPath.AutoScroll = true;
+            this.panelPath.Location = new System.Drawing.Point(6, 57);
+            this.panelPath.Name = "panelPath";
+            this.panelPath.Size = new System.Drawing.Size(477, 319);
+            this.panelPath.TabIndex = 1;
+            // 
             // ResultControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -264,9 +294,12 @@
             this.tabPage3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,5 +325,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.Panel panelPath;
+        private System.Windows.Forms.TrackBar tbZoom;
     }
 }

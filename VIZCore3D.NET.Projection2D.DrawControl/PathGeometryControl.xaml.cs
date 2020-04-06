@@ -35,7 +35,7 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
             myPath.StrokeThickness = 1;
             myPath.Data = Geometry.Parse(PATHDATA);
 
-            Console.WriteLine(myPath.Data.ToString());
+            //Console.WriteLine(myPath.Data.ToString());
 
             MyCanvas.Children.Add(myPath);
         }

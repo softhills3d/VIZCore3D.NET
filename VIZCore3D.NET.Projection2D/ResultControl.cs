@@ -32,7 +32,7 @@ namespace VIZCore3D.NET.Projection2D
             InitializeComponent();
         }
 
-        public void SetData(VIZCore3D.NET.Data.Projection2D projection)
+        public void SetData(VIZCore3D.NET.Data.Projection2D projection, System.Drawing.Point translation)
         {
             txtArea.Text = projection.Area.ToString();
             txtVertexCount.Text = projection.VertexCount.ToString();
@@ -47,13 +47,15 @@ namespace VIZCore3D.NET.Projection2D
             if (ctrlHost == null)
             {
                 ctrlHost = new ElementHost();
-                ctrlHost.Dock = DockStyle.Fill;
-                tabPage5.Controls.Add(ctrlHost);
+                //ctrlHost.Dock = DockStyle.Fill;
+                ctrlHost.Size = new System.Drawing.Size(2000, 2000);
+                panelPath.Controls.Add(ctrlHost);
                 P2D_Viewer = new DrawControl.PathGeometryControl();
                 P2D_Viewer.InitializeComponent();
                 ctrlHost.Child = P2D_Viewer;
             }
-
+            
+            projection.MovePoints(translation.X, translation.Y, true);
             P2D_Viewer.DrawPathGeometry(projection.PathGeometryString);
         }
     }
