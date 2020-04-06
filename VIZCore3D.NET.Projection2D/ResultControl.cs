@@ -26,14 +26,17 @@ namespace VIZCore3D.NET.Projection2D
     {
         private ElementHost ctrlHost = null;
         private VIZCore3D.NET.Projection2D.DrawControl.PathGeometryControl P2D_Viewer = null;
+        private VIZCore3D.NET.Data.Projection2D projection;
 
         public ResultControl()
         {
             InitializeComponent();
         }
 
-        public void SetData(VIZCore3D.NET.Data.Projection2D projection, System.Drawing.Point translation)
+        public void SetData(VIZCore3D.NET.Data.Projection2D projectionData, System.Drawing.Point translation)
         {
+            projection = projectionData;
+
             txtArea.Text = projection.Area.ToString();
             txtVertexCount.Text = projection.VertexCount.ToString();
             txtVertexBoundBox.Text = projection.BoundBoxVertex.ToString();
@@ -48,7 +51,7 @@ namespace VIZCore3D.NET.Projection2D
             {
                 ctrlHost = new ElementHost();
                 //ctrlHost.Dock = DockStyle.Fill;
-                ctrlHost.Size = new System.Drawing.Size(2000, 2000);
+                ctrlHost.Size = new System.Drawing.Size(5000, 5000);
                 panelPath.Controls.Add(ctrlHost);
                 P2D_Viewer = new DrawControl.PathGeometryControl();
                 P2D_Viewer.InitializeComponent();
@@ -57,6 +60,12 @@ namespace VIZCore3D.NET.Projection2D
             
             projection.MovePoints(translation.X, translation.Y, true);
             P2D_Viewer.DrawPathGeometry(projection.PathGeometryString);
+        }
+
+        private void tbZoom_Scroll(object sender, EventArgs e)
+        {
+            string path = projection.ZoomOut(tbZoom.Value, false);
+            P2D_Viewer.DrawPathGeometry(path);
         }
     }
 }

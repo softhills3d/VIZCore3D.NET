@@ -269,6 +269,7 @@
             this.tbZoom.Size = new System.Drawing.Size(477, 45);
             this.tbZoom.TabIndex = 0;
             this.tbZoom.Value = 100;
+            this.tbZoom.Scroll += new System.EventHandler(this.tbZoom_Scroll);
             // 
             // panelPath
             // 

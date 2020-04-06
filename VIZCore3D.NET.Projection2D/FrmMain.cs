@@ -346,7 +346,7 @@ namespace VIZCore3D.NET.Projection2D
             int quality = tbQuality.Value;
 
             //VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(80, false, 1);
-            VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(scale, vertexAll, quality);
+            VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(scale, vertexAll, quality, 4096, 4096);
 
             if (projection == null) return;
 
