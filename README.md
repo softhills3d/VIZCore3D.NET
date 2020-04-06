@@ -106,6 +106,12 @@
 ##### 3D 블록 배치 PROTOTYPE (Youtube)
 [![3D 블록 배치](http://img.youtube.com/vi/R9nommKn1wg/0.jpg)](https://youtu.be/R9nommKn1wg?t=0s)
 
+##### 3D 블록 분해/조립 (Youtube)
+[![3D 블록 분해/조립](http://img.youtube.com/vi/AVN5uk11_Gc/0.jpg)](https://youtu.be/AVN5uk11_Gc?t=0s)
+
+##### 3D 탑재 시뮬레이션 By VIZZARD (Youtube)
+[![3D 탑재 시뮬레이션](http://img.youtube.com/vi/4dL3yYfhNlk/0.jpg)](https://youtu.be/4dL3yYfhNlk?t=0s)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
