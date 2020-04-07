@@ -43,6 +43,9 @@ namespace VIZCore3D.NET.Projection2D
             txtNodeBoundBox.Text = projection.BoundBoxNode.ToStringMax();
             txtMatrix.Text = projection.Matrix;
 
+            txtCorrectionFactorX.Text = projection.CorrectionFactor.X.ToString();
+            txtCorrectionFactorY.Text = projection.CorrectionFactor.Y.ToString();
+
             txtPoints.Text = projection.Points;
             txtVertex.Text = projection.Vertex;
             txtPathGeometry.Text = projection.PathGeometryString;
@@ -58,7 +61,9 @@ namespace VIZCore3D.NET.Projection2D
                 ctrlHost.Child = P2D_Viewer;
             }
             
-            projection.MovePoints(translation.X, translation.Y, true);
+            if(projection.EnableCoordinateCorrection == true)
+                projection.MovePoints(translation.X, translation.Y, true);
+
             P2D_Viewer.DrawPathGeometry(projection.PathGeometryString);
         }
 

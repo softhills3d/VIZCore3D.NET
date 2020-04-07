@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtY = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtX = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbQuality = new System.Windows.Forms.TrackBar();
@@ -58,22 +63,23 @@
             this.btnSetModelMatrix = new System.Windows.Forms.Button();
             this.btnPasteMatrix = new System.Windows.Forms.Button();
             this.btnProjection2D = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtX = new System.Windows.Forms.TextBox();
-            this.txtY = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.txtVirtualImageWidth = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtVirtualImageHeight = new System.Windows.Forms.TextBox();
+            this.ckCoordinateCorrection = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQuality)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -105,13 +111,68 @@
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel1.Controls.Add(this.btnProjection2D);
             this.splitContainer2.Size = new System.Drawing.Size(514, 846);
-            this.splitContainer2.SplitterDistance = 445;
+            this.splitContainer2.SplitterDistance = 473;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.txtY);
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.txtX);
+            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Location = new System.Drawing.Point(12, 401);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(488, 63);
+            this.groupBox3.TabIndex = 6;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Margine";
+            // 
+            // txtY
+            // 
+            this.txtY.Location = new System.Drawing.Point(204, 30);
+            this.txtY.Name = "txtY";
+            this.txtY.Size = new System.Drawing.Size(100, 21);
+            this.txtY.TabIndex = 3;
+            this.txtY.Text = "10";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(185, 33);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Y";
+            // 
+            // txtX
+            // 
+            this.txtX.Location = new System.Drawing.Point(46, 30);
+            this.txtX.Name = "txtX";
+            this.txtX.Size = new System.Drawing.Size(100, 21);
+            this.txtX.TabIndex = 1;
+            this.txtX.Text = "10";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 33);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "X";
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.ckCoordinateCorrection);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.txtVirtualImageHeight);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.txtVirtualImageWidth);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.tbQuality);
             this.groupBox2.Controls.Add(this.ckVertexAll);
@@ -119,7 +180,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(12, 256);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(488, 108);
+            this.groupBox2.Size = new System.Drawing.Size(488, 141);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
@@ -379,54 +440,60 @@
             this.btnProjection2D.UseVisualStyleBackColor = true;
             this.btnProjection2D.Click += new System.EventHandler(this.btnProjection2D_Click);
             // 
-            // groupBox3
+            // txtVirtualImageWidth
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.txtY);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.txtX);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(12, 370);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(488, 63);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Move Point";
+            this.txtVirtualImageWidth.Location = new System.Drawing.Point(160, 109);
+            this.txtVirtualImageWidth.Name = "txtVirtualImageWidth";
+            this.txtVirtualImageWidth.Size = new System.Drawing.Size(49, 21);
+            this.txtVirtualImageWidth.TabIndex = 6;
+            this.txtVirtualImageWidth.Text = "1024";
             // 
-            // label3
+            // label5
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 33);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "X";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 112);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 12);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Virtual Image";
             // 
-            // txtX
+            // label6
             // 
-            this.txtX.Location = new System.Drawing.Point(46, 30);
-            this.txtX.Name = "txtX";
-            this.txtX.Size = new System.Drawing.Size(100, 21);
-            this.txtX.TabIndex = 1;
-            this.txtX.Text = "10";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(119, 112);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Width";
             // 
-            // txtY
+            // label7
             // 
-            this.txtY.Location = new System.Drawing.Point(204, 30);
-            this.txtY.Name = "txtY";
-            this.txtY.Size = new System.Drawing.Size(100, 21);
-            this.txtY.TabIndex = 3;
-            this.txtY.Text = "10";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(234, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Height";
             // 
-            // label4
+            // txtVirtualImageHeight
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(185, 33);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "Y";
+            this.txtVirtualImageHeight.Location = new System.Drawing.Point(280, 109);
+            this.txtVirtualImageHeight.Name = "txtVirtualImageHeight";
+            this.txtVirtualImageHeight.Size = new System.Drawing.Size(49, 21);
+            this.txtVirtualImageHeight.TabIndex = 8;
+            this.txtVirtualImageHeight.Text = "1024";
+            // 
+            // ckCoordinateCorrection
+            // 
+            this.ckCoordinateCorrection.AutoSize = true;
+            this.ckCoordinateCorrection.Checked = true;
+            this.ckCoordinateCorrection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckCoordinateCorrection.Location = new System.Drawing.Point(346, 113);
+            this.ckCoordinateCorrection.Name = "ckCoordinateCorrection";
+            this.ckCoordinateCorrection.Size = new System.Drawing.Size(82, 16);
+            this.ckCoordinateCorrection.TabIndex = 10;
+            this.ckCoordinateCorrection.Text = "Correction";
+            this.ckCoordinateCorrection.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -444,14 +511,14 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQuality)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -492,6 +559,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtX;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtVirtualImageHeight;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtVirtualImageWidth;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox ckCoordinateCorrection;
     }
 }
 

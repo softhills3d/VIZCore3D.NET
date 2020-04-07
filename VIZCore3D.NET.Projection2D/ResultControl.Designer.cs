@@ -35,6 +35,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtPoints = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.panelPath = new System.Windows.Forms.Panel();
+            this.tbZoom = new System.Windows.Forms.TrackBar();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtMatrix = new System.Windows.Forms.TextBox();
             this.txtNodeBoundBox = new System.Windows.Forms.TextBox();
@@ -47,15 +49,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tbZoom = new System.Windows.Forms.TrackBar();
-            this.panelPath = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCorrectionFactorX = new System.Windows.Forms.TextBox();
+            this.txtCorrectionFactorY = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -133,8 +137,37 @@
             this.tabPage5.Text = "Preview";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // panelPath
+            // 
+            this.panelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPath.AutoScroll = true;
+            this.panelPath.Location = new System.Drawing.Point(6, 57);
+            this.panelPath.Name = "panelPath";
+            this.panelPath.Size = new System.Drawing.Size(477, 319);
+            this.panelPath.TabIndex = 1;
+            // 
+            // tbZoom
+            // 
+            this.tbZoom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbZoom.LargeChange = 10;
+            this.tbZoom.Location = new System.Drawing.Point(6, 6);
+            this.tbZoom.Maximum = 100;
+            this.tbZoom.Minimum = 10;
+            this.tbZoom.Name = "tbZoom";
+            this.tbZoom.Size = new System.Drawing.Size(477, 45);
+            this.tbZoom.TabIndex = 0;
+            this.tbZoom.Value = 100;
+            this.tbZoom.Scroll += new System.EventHandler(this.tbZoom_Scroll);
+            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.txtCorrectionFactorY);
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.txtCorrectionFactorX);
+            this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.txtMatrix);
             this.tabPage1.Controls.Add(this.txtNodeBoundBox);
             this.tabPage1.Controls.Add(this.txtVertexBoundBox);
@@ -157,45 +190,45 @@
             // 
             this.txtMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMatrix.Location = new System.Drawing.Point(137, 162);
+            this.txtMatrix.Location = new System.Drawing.Point(157, 162);
             this.txtMatrix.Name = "txtMatrix";
-            this.txtMatrix.Size = new System.Drawing.Size(333, 21);
+            this.txtMatrix.Size = new System.Drawing.Size(313, 21);
             this.txtMatrix.TabIndex = 9;
             // 
             // txtNodeBoundBox
             // 
             this.txtNodeBoundBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNodeBoundBox.Location = new System.Drawing.Point(137, 126);
+            this.txtNodeBoundBox.Location = new System.Drawing.Point(157, 126);
             this.txtNodeBoundBox.Name = "txtNodeBoundBox";
-            this.txtNodeBoundBox.Size = new System.Drawing.Size(333, 21);
+            this.txtNodeBoundBox.Size = new System.Drawing.Size(313, 21);
             this.txtNodeBoundBox.TabIndex = 7;
             // 
             // txtVertexBoundBox
             // 
             this.txtVertexBoundBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVertexBoundBox.Location = new System.Drawing.Point(137, 90);
+            this.txtVertexBoundBox.Location = new System.Drawing.Point(157, 90);
             this.txtVertexBoundBox.Name = "txtVertexBoundBox";
-            this.txtVertexBoundBox.Size = new System.Drawing.Size(333, 21);
+            this.txtVertexBoundBox.Size = new System.Drawing.Size(313, 21);
             this.txtVertexBoundBox.TabIndex = 5;
             // 
             // txtVertexCount
             // 
             this.txtVertexCount.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtVertexCount.Location = new System.Drawing.Point(137, 53);
+            this.txtVertexCount.Location = new System.Drawing.Point(157, 53);
             this.txtVertexCount.Name = "txtVertexCount";
-            this.txtVertexCount.Size = new System.Drawing.Size(333, 21);
+            this.txtVertexCount.Size = new System.Drawing.Size(313, 21);
             this.txtVertexCount.TabIndex = 3;
             // 
             // txtArea
             // 
             this.txtArea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtArea.Location = new System.Drawing.Point(137, 16);
+            this.txtArea.Location = new System.Drawing.Point(157, 16);
             this.txtArea.Name = "txtArea";
-            this.txtArea.Size = new System.Drawing.Size(333, 21);
+            this.txtArea.Size = new System.Drawing.Size(313, 21);
             this.txtArea.TabIndex = 1;
             // 
             // label5
@@ -257,30 +290,41 @@
             this.tabControl1.Size = new System.Drawing.Size(497, 408);
             this.tabControl1.TabIndex = 0;
             // 
-            // tbZoom
+            // label6
             // 
-            this.tbZoom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 211);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 12);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Correction Factor X";
+            // 
+            // txtCorrectionFactorX
+            // 
+            this.txtCorrectionFactorX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbZoom.LargeChange = 10;
-            this.tbZoom.Location = new System.Drawing.Point(6, 6);
-            this.tbZoom.Maximum = 100;
-            this.tbZoom.Minimum = 10;
-            this.tbZoom.Name = "tbZoom";
-            this.tbZoom.Size = new System.Drawing.Size(477, 45);
-            this.tbZoom.TabIndex = 0;
-            this.tbZoom.Value = 100;
-            this.tbZoom.Scroll += new System.EventHandler(this.tbZoom_Scroll);
+            this.txtCorrectionFactorX.Location = new System.Drawing.Point(157, 208);
+            this.txtCorrectionFactorX.Name = "txtCorrectionFactorX";
+            this.txtCorrectionFactorX.Size = new System.Drawing.Size(313, 21);
+            this.txtCorrectionFactorX.TabIndex = 11;
             // 
-            // panelPath
+            // txtCorrectionFactorY
             // 
-            this.panelPath.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtCorrectionFactorY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelPath.AutoScroll = true;
-            this.panelPath.Location = new System.Drawing.Point(6, 57);
-            this.panelPath.Name = "panelPath";
-            this.panelPath.Size = new System.Drawing.Size(477, 319);
-            this.panelPath.TabIndex = 1;
+            this.txtCorrectionFactorY.Location = new System.Drawing.Point(157, 235);
+            this.txtCorrectionFactorY.Name = "txtCorrectionFactorY";
+            this.txtCorrectionFactorY.Size = new System.Drawing.Size(313, 21);
+            this.txtCorrectionFactorY.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 238);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 12);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Correction Factor Y";
             // 
             // ResultControl
             // 
@@ -297,10 +341,10 @@
             this.tabPage2.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -328,5 +372,9 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.Panel panelPath;
         private System.Windows.Forms.TrackBar tbZoom;
+        private System.Windows.Forms.TextBox txtCorrectionFactorY;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCorrectionFactorX;
+        private System.Windows.Forms.Label label6;
     }
 }
