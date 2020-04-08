@@ -350,6 +350,9 @@ namespace VIZCore3D.NET.ClashTest
 
         private void ShowResultList()
         {
+            // 침투만 조회
+            bool PenetrationOnly = ckPenetration.Checked;
+
             lvResult.BeginUpdate();
             lvResult.Items.Clear();
 
@@ -408,8 +411,14 @@ namespace VIZCore3D.NET.ClashTest
                         }
                     );
                 lvi.Tag = item;
-                lvResult.Items.Add(lvi);
+
+                if(PenetrationOnly == true && item.ResultKind == Data.ClashTestResultItem.ClashResultKind.PENETRATION)
+                    lvResult.Items.Add(lvi);
+                else if(PenetrationOnly == false)
+                    lvResult.Items.Add(lvi);
             }
+
+            gbResult.Text = string.Format("Result : {0:N0} EA", lvResult.Items.Count);
 
             lvResult.EndUpdate();
         }
@@ -535,6 +544,11 @@ namespace VIZCore3D.NET.ClashTest
         private void btnNew_Click(object sender, EventArgs e)
         {
             clash = new Data.ClashTest();
+        }
+
+        private void btnRefreshList_Click(object sender, EventArgs e)
+        {
+            ShowResultList();
         }
     }
 }

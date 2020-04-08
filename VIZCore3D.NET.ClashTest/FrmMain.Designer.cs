@@ -31,7 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ckResultAssembly = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnAddPath = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtInterval = new System.Windows.Forms.TextBox();
+            this.txtStartPos = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbAxis = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAddGroupB = new System.Windows.Forms.Button();
             this.btnAddGroupA = new System.Windows.Forms.Button();
@@ -46,15 +57,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbTestKind = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnNew = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnPerformTest = new System.Windows.Forms.Button();
             this.btnDeleteResult = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gbResult = new System.Windows.Forms.GroupBox();
             this.lvResult = new System.Windows.Forms.ListView();
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -74,20 +88,8 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbAxis = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtStartPos = new System.Windows.Forms.TextBox();
-            this.txtInterval = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnAddPath = new System.Windows.Forms.Button();
-            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ckResultAssembly = new System.Windows.Forms.CheckBox();
-            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnNew = new System.Windows.Forms.Button();
+            this.btnRefreshList = new System.Windows.Forms.Button();
+            this.ckPenetration = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -95,12 +97,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.gbResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -117,9 +119,9 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox3);
-            this.splitContainer1.Size = new System.Drawing.Size(1402, 803);
-            this.splitContainer1.SplitterDistance = 629;
+            this.splitContainer1.Panel2.Controls.Add(this.gbResult);
+            this.splitContainer1.Size = new System.Drawing.Size(1402, 920);
+            this.splitContainer1.SplitterDistance = 670;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -136,9 +138,33 @@
             this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(1402, 629);
+            this.splitContainer2.Size = new System.Drawing.Size(1402, 670);
             this.splitContainer2.SplitterDistance = 391;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ckPenetration);
+            this.groupBox6.Controls.Add(this.btnRefreshList);
+            this.groupBox6.Controls.Add(this.ckResultAssembly);
+            this.groupBox6.Location = new System.Drawing.Point(12, 503);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(367, 99);
+            this.groupBox6.TabIndex = 4;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Result Filter";
+            // 
+            // ckResultAssembly
+            // 
+            this.ckResultAssembly.AutoSize = true;
+            this.ckResultAssembly.Location = new System.Drawing.Point(23, 31);
+            this.ckResultAssembly.Name = "ckResultAssembly";
+            this.ckResultAssembly.Size = new System.Drawing.Size(81, 16);
+            this.ckResultAssembly.TabIndex = 0;
+            this.ckResultAssembly.Text = "Assembly";
+            this.ckResultAssembly.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -159,6 +185,90 @@
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Path";
+            // 
+            // btnAddPath
+            // 
+            this.btnAddPath.Location = new System.Drawing.Point(254, 70);
+            this.btnAddPath.Name = "btnAddPath";
+            this.btnAddPath.Size = new System.Drawing.Size(93, 23);
+            this.btnAddPath.TabIndex = 10;
+            this.btnAddPath.Text = "Add Path";
+            this.btnAddPath.UseVisualStyleBackColor = true;
+            this.btnAddPath.Click += new System.EventHandler(this.btnAddPath_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(199, 75);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "mm";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(199, 51);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(27, 12);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "mm";
+            // 
+            // txtInterval
+            // 
+            this.txtInterval.Location = new System.Drawing.Point(93, 72);
+            this.txtInterval.Name = "txtInterval";
+            this.txtInterval.Size = new System.Drawing.Size(100, 21);
+            this.txtInterval.TabIndex = 7;
+            this.txtInterval.Text = "2000";
+            // 
+            // txtStartPos
+            // 
+            this.txtStartPos.Location = new System.Drawing.Point(93, 48);
+            this.txtStartPos.Name = "txtStartPos";
+            this.txtStartPos.Size = new System.Drawing.Size(100, 21);
+            this.txtStartPos.TabIndex = 6;
+            this.txtStartPos.Text = "10000";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 12);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "이동 간격";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 51);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "시작 위치";
+            // 
+            // cbAxis
+            // 
+            this.cbAxis.FormattingEnabled = true;
+            this.cbAxis.Items.AddRange(new object[] {
+            "X",
+            "Y",
+            "Z"});
+            this.cbAxis.Location = new System.Drawing.Point(93, 22);
+            this.cbAxis.Name = "cbAxis";
+            this.cbAxis.Size = new System.Drawing.Size(100, 20);
+            this.cbAxis.TabIndex = 1;
+            this.cbAxis.Text = "Z";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(30, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Axis";
             // 
             // groupBox4
             // 
@@ -330,6 +440,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clash";
             // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(208, 60);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(89, 23);
+            this.btnNew.TabIndex = 6;
+            this.btnNew.Text = "New";
+            this.btnNew.UseVisualStyleBackColor = true;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
             // btnClear
             // 
             this.btnClear.Location = new System.Drawing.Point(208, 31);
@@ -379,16 +499,16 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // groupBox3
+            // gbResult
             // 
-            this.groupBox3.Controls.Add(this.lvResult);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 0);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1402, 170);
-            this.groupBox3.TabIndex = 0;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Result";
+            this.gbResult.Controls.Add(this.lvResult);
+            this.gbResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbResult.Location = new System.Drawing.Point(0, 0);
+            this.gbResult.Name = "gbResult";
+            this.gbResult.Size = new System.Drawing.Size(1402, 246);
+            this.gbResult.TabIndex = 0;
+            this.gbResult.TabStop = false;
+            this.gbResult.Text = "Result";
             // 
             // lvResult
             // 
@@ -422,10 +542,14 @@
             this.lvResult.HideSelection = false;
             this.lvResult.Location = new System.Drawing.Point(3, 17);
             this.lvResult.Name = "lvResult";
-            this.lvResult.Size = new System.Drawing.Size(1396, 150);
+            this.lvResult.Size = new System.Drawing.Size(1396, 226);
             this.lvResult.TabIndex = 0;
             this.lvResult.UseCompatibleStateImageBehavior = false;
             this.lvResult.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "NO.";
             // 
             // columnHeader1
             // 
@@ -438,6 +562,10 @@
             this.columnHeader2.Text = "SUB ID";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader2.Width = 125;
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Translation";
             // 
             // columnHeader21
             // 
@@ -522,135 +650,31 @@
             // 
             this.columnHeader20.Text = "Node Path B";
             // 
-            // label3
+            // btnRefreshList
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 25);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Axis";
+            this.btnRefreshList.Location = new System.Drawing.Point(254, 20);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(93, 23);
+            this.btnRefreshList.TabIndex = 1;
+            this.btnRefreshList.Text = "Refresh";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
-            // cbAxis
+            // ckPenetration
             // 
-            this.cbAxis.FormattingEnabled = true;
-            this.cbAxis.Items.AddRange(new object[] {
-            "X",
-            "Y",
-            "Z"});
-            this.cbAxis.Location = new System.Drawing.Point(93, 22);
-            this.cbAxis.Name = "cbAxis";
-            this.cbAxis.Size = new System.Drawing.Size(100, 20);
-            this.cbAxis.TabIndex = 1;
-            this.cbAxis.Text = "Z";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 51);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "시작 위치";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 12);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "이동 간격";
-            // 
-            // txtStartPos
-            // 
-            this.txtStartPos.Location = new System.Drawing.Point(93, 48);
-            this.txtStartPos.Name = "txtStartPos";
-            this.txtStartPos.Size = new System.Drawing.Size(100, 21);
-            this.txtStartPos.TabIndex = 6;
-            this.txtStartPos.Text = "10000";
-            // 
-            // txtInterval
-            // 
-            this.txtInterval.Location = new System.Drawing.Point(93, 72);
-            this.txtInterval.Name = "txtInterval";
-            this.txtInterval.Size = new System.Drawing.Size(100, 21);
-            this.txtInterval.TabIndex = 7;
-            this.txtInterval.Text = "2000";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(199, 51);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 12);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "mm";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(199, 75);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(27, 12);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "mm";
-            // 
-            // btnAddPath
-            // 
-            this.btnAddPath.Location = new System.Drawing.Point(254, 70);
-            this.btnAddPath.Name = "btnAddPath";
-            this.btnAddPath.Size = new System.Drawing.Size(93, 23);
-            this.btnAddPath.TabIndex = 10;
-            this.btnAddPath.Text = "Add Path";
-            this.btnAddPath.UseVisualStyleBackColor = true;
-            this.btnAddPath.Click += new System.EventHandler(this.btnAddPath_Click);
-            // 
-            // columnHeader22
-            // 
-            this.columnHeader22.Text = "NO.";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.ckResultAssembly);
-            this.groupBox6.Location = new System.Drawing.Point(12, 503);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(367, 65);
-            this.groupBox6.TabIndex = 4;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Result Filter";
-            // 
-            // ckResultAssembly
-            // 
-            this.ckResultAssembly.AutoSize = true;
-            this.ckResultAssembly.Location = new System.Drawing.Point(23, 31);
-            this.ckResultAssembly.Name = "ckResultAssembly";
-            this.ckResultAssembly.Size = new System.Drawing.Size(81, 16);
-            this.ckResultAssembly.TabIndex = 0;
-            this.ckResultAssembly.Text = "Assembly";
-            this.ckResultAssembly.UseVisualStyleBackColor = true;
-            // 
-            // columnHeader23
-            // 
-            this.columnHeader23.Text = "Translation";
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(208, 60);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(89, 23);
-            this.btnNew.TabIndex = 6;
-            this.btnNew.Text = "New";
-            this.btnNew.UseVisualStyleBackColor = true;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            this.ckPenetration.AutoSize = true;
+            this.ckPenetration.Location = new System.Drawing.Point(23, 63);
+            this.ckPenetration.Name = "ckPenetration";
+            this.ckPenetration.Size = new System.Drawing.Size(116, 16);
+            this.ckPenetration.TabIndex = 2;
+            this.ckPenetration.Text = "침투 결과만 조회";
+            this.ckPenetration.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1402, 803);
+            this.ClientSize = new System.Drawing.Size(1402, 920);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
@@ -663,15 +687,15 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.gbResult.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -695,7 +719,7 @@
         private System.Windows.Forms.CheckBox ckVisibleOnly;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbTestKind;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gbResult;
         private System.Windows.Forms.ListView lvResult;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -737,6 +761,8 @@
         private System.Windows.Forms.CheckBox ckResultAssembly;
         private System.Windows.Forms.ColumnHeader columnHeader23;
         private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnRefreshList;
+        private System.Windows.Forms.CheckBox ckPenetration;
     }
 }
 
