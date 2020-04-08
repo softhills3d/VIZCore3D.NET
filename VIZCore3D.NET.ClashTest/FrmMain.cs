@@ -517,6 +517,8 @@ namespace VIZCore3D.NET.ClashTest
             clash.GroupA = items;
 
             MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
         }
 
         private void btnAddGroupB_Click(object sender, EventArgs e)
@@ -530,6 +532,8 @@ namespace VIZCore3D.NET.ClashTest
             clash.GroupB = items;
 
             MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
         }
 
         private void btnAddPath_Click(object sender, EventArgs e)
