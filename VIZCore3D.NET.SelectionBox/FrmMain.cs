@@ -350,6 +350,8 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.SelectionBox.OnSelectionBoxSelectedEvent += SelectionBox_OnSelectionBoxSelectedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxAddSelectionEvent += SelectionBox_OnSelectionBoxAddSelectionEvent;
             vizcore3d.SelectionBox.OnSelectionBoxDeselectedEvent += SelectionBox_OnSelectionBoxDeselectedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxDeletedEvent += SelectionBox_OnSelectionBoxDeletedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxClearedEvent += SelectionBox_OnSelectionBoxClearedEvent;
         }
 
         
@@ -374,6 +376,40 @@ namespace VIZCore3D.NET.SelectionBox
         private void SelectionBox_OnSelectionBoxDeselectedEvent(object sender, VIZCore3D.NET.Event.EventManager.SelectionBoxEventArgs e)
         {
             vizcore3d.View.Message.Clear();
+        }
+
+        private void SelectionBox_OnSelectionBoxDeletedEvent(object sender, Event.EventManager.SelectionBoxDeletedEventArgs e)
+        {
+            if (e.ID == null || e.ID.Count == 0) return;
+
+            lvList.BeginUpdate();
+            foreach (int item in e.ID)
+            {
+                int index = -1;
+                for (int i = 0; i < lvList.Items.Count; i++)
+                {
+                    ListViewItem lvi = lvList.Items[i];
+                    if (lvi.Tag == null) continue;
+                    VIZCore3D.NET.Data.SelectionBox box = (VIZCore3D.NET.Data.SelectionBox)lvi.Tag;
+
+                    if(box.ID == item)
+                    {
+                        index = i;
+                        break;
+                    }
+                }
+
+                if(index != -1)
+                {
+                    lvList.Items.RemoveAt(index);
+                }
+            }
+            lvList.EndUpdate();
+        }
+
+        private void SelectionBox_OnSelectionBoxClearedEvent(object sender, EventArgs e)
+        {
+            lvList.Items.Clear();
         }
 
         private void CbFontSize_SelectedIndexChanged(object sender, EventArgs e)
@@ -461,6 +497,7 @@ namespace VIZCore3D.NET.SelectionBox
                     , item.MinPoint.ToString()
                     , item.MaxPoint.ToString()
                 });
+                lvi.Tag = item;
 
                 lvList.Items.Add(lvi);
             }
@@ -616,7 +653,7 @@ namespace VIZCore3D.NET.SelectionBox
         private void btnClear_Click(object sender, EventArgs e)
         {
             vizcore3d.SelectionBox.Clear();
-            ShowSelectionBoxList();
+            //ShowSelectionBoxList();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -626,7 +663,7 @@ namespace VIZCore3D.NET.SelectionBox
 
             vizcore3d.SelectionBox.Delete(id);
 
-            ShowSelectionBoxList();
+            //ShowSelectionBoxList();
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
