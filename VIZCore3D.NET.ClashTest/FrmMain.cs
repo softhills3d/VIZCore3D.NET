@@ -341,10 +341,11 @@ namespace VIZCore3D.NET.ClashTest
             if (e.Node.Count == 0) return;
         }
 
+        
+
         private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
         {
             MessageBox.Show(string.Format("Clash Test Completed. : {0} / {1}", e.ID, clash.ElapsedTimeString), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             ShowResultList();
         }
 
