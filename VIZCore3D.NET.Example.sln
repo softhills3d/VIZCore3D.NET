@@ -64,6 +64,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.UserView", "V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Snapshot", "VIZCore3D.NET.Snapshot\VIZCore3D.NET.Snapshot.csproj", "{C329C2DF-47F1-4008-A428-7AD1B42ECA73}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ZoneObjects", "VIZCore3D.NET.ZoneObjects\VIZCore3D.NET.ZoneObjects.csproj", "{4171475B-33F8-475A-90F4-C06560C06C09}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -182,6 +184,10 @@ Global
 		{C329C2DF-47F1-4008-A428-7AD1B42ECA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C329C2DF-47F1-4008-A428-7AD1B42ECA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C329C2DF-47F1-4008-A428-7AD1B42ECA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4171475B-33F8-475A-90F4-C06560C06C09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4171475B-33F8-475A-90F4-C06560C06C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4171475B-33F8-475A-90F4-C06560C06C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4171475B-33F8-475A-90F4-C06560C06C09}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
