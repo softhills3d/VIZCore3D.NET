@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.ClashTest
+namespace VIZCore3D.NET.ZoneObjects
 {
     public partial class FrmMain : Form
     {
@@ -19,7 +19,7 @@ namespace VIZCore3D.NET.ClashTest
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        private VIZCore3D.NET.Data.ClashTest clash;
+        private int SelectionBoxID = -1;
 
         public FrmMain()
         {
@@ -31,12 +31,10 @@ namespace VIZCore3D.NET.ClashTest
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer2.Panel2.Controls.Add(vizcore3d);
+            splitContainer1.Panel1.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-            clash = new Data.ClashTest();
         }
 
         // ================================================
@@ -249,8 +247,6 @@ namespace VIZCore3D.NET.ClashTest
             #endregion
 
 
-
-
             // ================================================================
             // 설정 - 측정
             // ================================================================
@@ -324,7 +320,7 @@ namespace VIZCore3D.NET.ClashTest
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.View.EndUpdate();
-        } 
+        }
         #endregion
 
         /// <summary>
@@ -332,228 +328,39 @@ namespace VIZCore3D.NET.ClashTest
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
-            vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
+
         }
 
-        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
+        private void btnAddBox_Click(object sender, EventArgs e)
         {
-            if (e.Node.Count == 0) return;
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            Data.BoundBox3D box = vizcore3d.Model.BoundBox;
+
+            SelectionBoxID = vizcore3d.SelectionBox.Add(
+                box
+                , vizcore3d.SelectionBox.GetTransparencyColor(Color.White, 80)
+                , Color.Black
+                , String.Empty
+                );
+
+            // SelectionBox Options
+            vizcore3d.SelectionBox.MouseSelectionMode = true;
         }
 
-        
-
-        private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
+        private void btnGetZoneObjects_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(string.Format("Clash Test Completed. : {0} / {1}", e.ID, clash.ElapsedTimeString), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            ShowResultList();
-        }
+            if (SelectionBoxID == -1) return;
+            if (cbFilter.SelectedIndex == -1) return;
 
-        private void ShowResultList()
-        {
-            // 침투만 조회
-            bool PenetrationOnly = ckPenetration.Checked;
+            VIZCore3D.NET.Data.BoundBox3D box = vizcore3d.SelectionBox.GetItem(SelectionBoxID).BoundBox;
+            VIZCore3D.NET.Data.BoundBoxSearchOption option = (Data.BoundBoxSearchOption)cbFilter.SelectedIndex;
 
-            lvResult.BeginUpdate();
-            lvResult.Items.Clear();
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromZone(box, option);
 
-            List<VIZCore3D.NET.Data.ClashTestResultItem> items = null;
+            dataGridNode.DataSource = items;
 
-            if(clash.TestKind != VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
-            {
-                items = vizcore3d.Clash.GetResultItem(
-                    clash
-                    , ckResultAssembly.Checked == true 
-                    ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY 
-                    : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
-                    );
-            }
-            else
-            {
-                //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
-                items = vizcore3d.Clash.GetResultAllSubItem(
-                    clash
-                    , ckResultAssembly.Checked == true 
-                    ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY 
-                    : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
-                    );
-            }
-
-            for (int i = 0; i < items.Count; i++)
-            {
-                VIZCore3D.NET.Data.ClashTestResultItem item = items[i];
-
-                ListViewItem lvi = new ListViewItem(
-                    new string[]
-                        {
-                            Convert.ToString(i + 1)
-                            , item.ID.ToString()
-                            , item.SUBID.ToString()
-                            , item.Path != null ? item.Path.ToString() : String.Empty
-                            , item.GetResultKindString()
-                            , item.NodeIndexA.ToString()
-                            , item.NodeIndexB.ToString()
-                            , item.NodeNameA
-                            , item.NodeNameB
-                            , item.Distance.ToString()
-                            , item.HotPoint.ToString()
-                            , item.FrameStringX
-                            , item.FrameStringY
-                            , item.FrameStringZ
-                            , item.Flag.ToString()
-                            , item.NodeIdA.ToString()
-                            , item.NodeIdB.ToString()
-                            , item.Comment1
-                            , item.Comment2
-                            , item.ParentNodeNameA
-                            , item.ParentNodeNameB
-                            , item.NodePathA
-                            , item.NodePathB
-                        }
-                    );
-                lvi.Tag = item;
-
-                if(PenetrationOnly == true && item.ResultKind == Data.ClashTestResultItem.ClashResultKind.PENETRATION)
-                    lvResult.Items.Add(lvi);
-                else if(PenetrationOnly == false)
-                    lvResult.Items.Add(lvi);
-            }
-
-            gbResult.Text = string.Format("Result : {0:N0} EA", lvResult.Items.Count);
-
-            lvResult.EndUpdate();
-        }
-
-        
-
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            if (clash == null) return;
-
-            clash.Name = "CLASH TEST #1";
-            clash.TestKind = (VIZCore3D.NET.Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
-
-            if (clash.GroupA.Count == 0)
-            {
-                MessageBox.Show("Group A 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_GROUP
-                || clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
-            {
-                if (clash.GroupB.Count == 0)
-                {
-                    MessageBox.Show("Group B 를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-
-
-            clash.UseRangeValue = ckUseRangeValue.Checked;
-            clash.RangeValue = Convert.ToSingle(txtRangeValue.Text);
-            clash.UsePenetrationTolerance = ckUsePenetrationTolerance.Checked;
-            clash.PenetrationTolerance = Convert.ToSingle(txtPenetrationTolerance.Text);
-
-            clash.VisibleOnly = ckVisibleOnly.Checked;
-            clash.BottomLevel = cbBottomLevel.SelectedIndex + 1;
-
-            if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count == 0)
-            {
-                MessageBox.Show("이동 경로(Path)를 설정 하십시오.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (clash.ID == -1)
-            {
-                bool result = vizcore3d.Clash.Add(clash);
-
-                MessageBox.Show(string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, result == true ? MessageBoxIcon.Information : MessageBoxIcon.Error);
-            }
-            else
-            {
-                vizcore3d.Clash.Update(clash);
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (clash.ID == -1)
-            {
-                MessageBox.Show("추가되지 않은 항목입니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            vizcore3d.Clash.Delete(clash);
-        }
-
-        private void btnDeleteResult_Click(object sender, EventArgs e)
-        {
-            if (clash.ID == -1)
-            {
-                MessageBox.Show("추가되지 않은 항목입니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            vizcore3d.Clash.DeleteResultItem(clash);
-        }
-
-        private void btnPerformTest_Click(object sender, EventArgs e)
-        {
-            if (clash.ID == -1)
-            {
-                MessageBox.Show("추가되지 않은 항목입니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
-        }
-
-        private void btnAddGroupA_Click(object sender, EventArgs e)
-        {
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
-            if (items.Count == 0)
-            {
-                MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            clash.GroupA = items;
-
-            MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
-        }
-
-        private void btnAddGroupB_Click(object sender, EventArgs e)
-        {
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
-            if (items.Count == 0)
-            {
-                MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            clash.GroupB = items;
-
-            MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
-        }
-
-        private void btnAddPath_Click(object sender, EventArgs e)
-        {
-            if (String.IsNullOrEmpty(txtStartPos.Text) == true) return;
-            if (String.IsNullOrEmpty(txtInterval.Text) == true) return;
-
-            clash.AddTranslation((VIZCore3D.NET.Data.Axis)cbAxis.SelectedIndex, Convert.ToSingle(txtStartPos.Text), Convert.ToSingle(txtInterval.Text));
-
-            MessageBox.Show("이동 경로(Path)를 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            clash = new Data.ClashTest();
-        }
-
-        private void btnRefreshList_Click(object sender, EventArgs e)
-        {
-            ShowResultList();
+            gbObjects.Text = string.Format("Objects - {0:N0}", items.Count);
         }
     }
 }

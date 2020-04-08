@@ -510,9 +510,7 @@ namespace VIZCore3D.NET.SelectionBox
             if(ckTransparency.Checked == true)
             {
                 int transparency = Convert.ToInt32(txtTransparency.Text);
-
-                System.Drawing.Color transparencyColor = Color.FromArgb(transparency, color.R, color.G, color.B);
-                return transparencyColor;
+                return vizcore3d.SelectionBox.GetTransparencyColor(color, transparency);
             }
             else
             {
