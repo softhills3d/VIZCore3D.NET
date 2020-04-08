@@ -348,7 +348,7 @@ namespace VIZCore3D.NET.UserView
             // Create Node
             TreeNode snapshot = new TreeNode(string.Format("Snapshot #{0}", tvUserView.GetNodeCount(true)), 2, 2);
 
-            if (tvUserView.SelectedNode == null)
+            if (tvUserView.SelectedNode == null || GetSelectedNodeFolderId() == -1)
             {
                 // Add Root
                 tvUserView.Nodes.Add(snapshot);
@@ -365,6 +365,9 @@ namespace VIZCore3D.NET.UserView
                 // Set Tag
                 VIZCore3D.NET.Data.ReviewItem review = vizcore3d.Review.GetItem(id);
                 snapshot.Tag = review;
+
+                // Expand Node
+                tvUserView.SelectedNode.Expand();
             }
         }
 
@@ -433,6 +436,7 @@ namespace VIZCore3D.NET.UserView
             if (vizcore3d.Model.IsOpen() == false) return;
 
             VIZCore3D.NET.Dialogs.AddNodeDialog dlg = new Dialogs.AddNodeDialog();
+            dlg.NodeName = "Node...";
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
             string nodeName = dlg.NodeName;
@@ -449,6 +453,7 @@ namespace VIZCore3D.NET.UserView
             else
             {
                 tvUserView.SelectedNode.Nodes.Add(node);
+                tvUserView.SelectedNode.Expand();
             }
 
             // Set Tag
@@ -502,6 +507,7 @@ namespace VIZCore3D.NET.UserView
             if(img != null)
             {
                 pbImage.Image = img;
+                pbImage.Refresh();
             }
 
             if (ckView.Checked == false) return;
