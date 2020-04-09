@@ -66,6 +66,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Snapshot", "V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ZoneObjects", "VIZCore3D.NET.ZoneObjects\VIZCore3D.NET.ZoneObjects.csproj", "{4171475B-33F8-475A-90F4-C06560C06C09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.NodeDetail", "VIZCore3D.NET.NodeDetail\VIZCore3D.NET.NodeDetail.csproj", "{8DC09B9F-8FC0-4901-B025-D999F8D95F76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +190,10 @@ Global
 		{4171475B-33F8-475A-90F4-C06560C06C09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4171475B-33F8-475A-90F4-C06560C06C09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4171475B-33F8-475A-90F4-C06560C06C09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC09B9F-8FC0-4901-B025-D999F8D95F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC09B9F-8FC0-4901-B025-D999F8D95F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC09B9F-8FC0-4901-B025-D999F8D95F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC09B9F-8FC0-4901-B025-D999F8D95F76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

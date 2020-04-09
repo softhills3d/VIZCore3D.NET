@@ -352,6 +352,8 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.SelectionBox.OnSelectionBoxDeselectedEvent += SelectionBox_OnSelectionBoxDeselectedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxDeletedEvent += SelectionBox_OnSelectionBoxDeletedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxClearedEvent += SelectionBox_OnSelectionBoxClearedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxDividedEvent += SelectionBox_OnSelectionBoxDividedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxMergedEvent += SelectionBox_OnSelectionBoxMergedEvent;
         }
 
         
@@ -410,6 +412,16 @@ namespace VIZCore3D.NET.SelectionBox
         private void SelectionBox_OnSelectionBoxClearedEvent(object sender, EventArgs e)
         {
             lvList.Items.Clear();
+        }
+
+        private void SelectionBox_OnSelectionBoxDividedEvent(object sender, Event.EventManager.SelectionBoxDividedEventArgs e)
+        {
+            ShowSelectionBoxList();
+        }
+
+        private void SelectionBox_OnSelectionBoxMergedEvent(object sender, Event.EventManager.SelectionBoxMergedEventArgs e)
+        {
+            ShowSelectionBoxList();
         }
 
         private void CbFontSize_SelectedIndexChanged(object sender, EventArgs e)
