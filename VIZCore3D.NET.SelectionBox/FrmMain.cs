@@ -350,6 +350,7 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.SelectionBox.OnSelectionBoxSelectedEvent += SelectionBox_OnSelectionBoxSelectedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxAddSelectionEvent += SelectionBox_OnSelectionBoxAddSelectionEvent;
             vizcore3d.SelectionBox.OnSelectionBoxDeselectedEvent += SelectionBox_OnSelectionBoxDeselectedEvent;
+            vizcore3d.SelectionBox.OnSelectionboxResizedEvent += SelectionBox_OnSelectionboxResizedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxDeletedEvent += SelectionBox_OnSelectionBoxDeletedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxClearedEvent += SelectionBox_OnSelectionBoxClearedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxDividedEvent += SelectionBox_OnSelectionBoxDividedEvent;
@@ -378,6 +379,11 @@ namespace VIZCore3D.NET.SelectionBox
         private void SelectionBox_OnSelectionBoxDeselectedEvent(object sender, VIZCore3D.NET.Event.EventManager.SelectionBoxEventArgs e)
         {
             vizcore3d.View.Message.Clear();
+        }
+
+        private void SelectionBox_OnSelectionboxResizedEvent(object sender, Event.EventManager.SelectionBoxResizedEventArgs e)
+        {
+            DisplayMessage(e.ID);
         }
 
         private void SelectionBox_OnSelectionBoxDeletedEvent(object sender, Event.EventManager.SelectionBoxDeletedEventArgs e)
