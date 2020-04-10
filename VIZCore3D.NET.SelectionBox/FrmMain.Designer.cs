@@ -363,7 +363,7 @@
             this.txtTransparency.Name = "txtTransparency";
             this.txtTransparency.Size = new System.Drawing.Size(100, 21);
             this.txtTransparency.TabIndex = 14;
-            this.txtTransparency.Text = "150";
+            this.txtTransparency.Text = "240";
             // 
             // ckTransparency
             // 
