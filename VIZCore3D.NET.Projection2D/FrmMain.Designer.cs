@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -37,6 +38,12 @@
             this.txtX = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckCoordinateCorrection = new System.Windows.Forms.CheckBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtVirtualImageHeight = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtVirtualImageWidth = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbQuality = new System.Windows.Forms.TrackBar();
             this.ckVertexAll = new System.Windows.Forms.CheckBox();
@@ -63,12 +70,14 @@
             this.btnSetModelMatrix = new System.Windows.Forms.Button();
             this.btnPasteMatrix = new System.Windows.Forms.Button();
             this.btnProjection2D = new System.Windows.Forms.Button();
-            this.txtVirtualImageWidth = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtVirtualImageHeight = new System.Windows.Forms.TextBox();
-            this.ckCoordinateCorrection = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtCustomMargineY = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCustomMargineX = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.ckCustomMargine = new System.Windows.Forms.CheckBox();
+            this.btnAuto = new System.Windows.Forms.Button();
+            this.timerAuto = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -80,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbQuality)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -106,12 +116,13 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel1.Controls.Add(this.btnProjection2D);
             this.splitContainer2.Size = new System.Drawing.Size(514, 846);
-            this.splitContainer2.SplitterDistance = 473;
+            this.splitContainer2.SplitterDistance = 501;
             this.splitContainer2.TabIndex = 0;
             // 
             // groupBox3
@@ -124,14 +135,14 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Location = new System.Drawing.Point(12, 401);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(488, 63);
+            this.groupBox3.Size = new System.Drawing.Size(488, 47);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Margine";
             // 
             // txtY
             // 
-            this.txtY.Location = new System.Drawing.Point(204, 30);
+            this.txtY.Location = new System.Drawing.Point(204, 16);
             this.txtY.Name = "txtY";
             this.txtY.Size = new System.Drawing.Size(100, 21);
             this.txtY.TabIndex = 3;
@@ -140,7 +151,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(185, 33);
+            this.label4.Location = new System.Drawing.Point(185, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(13, 12);
             this.label4.TabIndex = 2;
@@ -148,7 +159,7 @@
             // 
             // txtX
             // 
-            this.txtX.Location = new System.Drawing.Point(46, 30);
+            this.txtX.Location = new System.Drawing.Point(46, 16);
             this.txtX.Name = "txtX";
             this.txtX.Size = new System.Drawing.Size(100, 21);
             this.txtX.TabIndex = 1;
@@ -157,7 +168,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 33);
+            this.label3.Location = new System.Drawing.Point(27, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 12);
             this.label3.TabIndex = 0;
@@ -184,6 +195,61 @@
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
+            // 
+            // ckCoordinateCorrection
+            // 
+            this.ckCoordinateCorrection.AutoSize = true;
+            this.ckCoordinateCorrection.Checked = true;
+            this.ckCoordinateCorrection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckCoordinateCorrection.Location = new System.Drawing.Point(346, 113);
+            this.ckCoordinateCorrection.Name = "ckCoordinateCorrection";
+            this.ckCoordinateCorrection.Size = new System.Drawing.Size(82, 16);
+            this.ckCoordinateCorrection.TabIndex = 10;
+            this.ckCoordinateCorrection.Text = "Correction";
+            this.ckCoordinateCorrection.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(234, 112);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Height";
+            // 
+            // txtVirtualImageHeight
+            // 
+            this.txtVirtualImageHeight.Location = new System.Drawing.Point(280, 109);
+            this.txtVirtualImageHeight.Name = "txtVirtualImageHeight";
+            this.txtVirtualImageHeight.Size = new System.Drawing.Size(49, 21);
+            this.txtVirtualImageHeight.TabIndex = 8;
+            this.txtVirtualImageHeight.Text = "1024";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(119, 112);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Width";
+            // 
+            // txtVirtualImageWidth
+            // 
+            this.txtVirtualImageWidth.Location = new System.Drawing.Point(160, 109);
+            this.txtVirtualImageWidth.Name = "txtVirtualImageWidth";
+            this.txtVirtualImageWidth.Size = new System.Drawing.Size(49, 21);
+            this.txtVirtualImageWidth.TabIndex = 6;
+            this.txtVirtualImageWidth.Text = "1024";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(27, 112);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(79, 12);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Virtual Image";
             // 
             // label2
             // 
@@ -440,60 +506,79 @@
             this.btnProjection2D.UseVisualStyleBackColor = true;
             this.btnProjection2D.Click += new System.EventHandler(this.btnProjection2D_Click);
             // 
-            // txtVirtualImageWidth
+            // groupBox4
             // 
-            this.txtVirtualImageWidth.Location = new System.Drawing.Point(160, 109);
-            this.txtVirtualImageWidth.Name = "txtVirtualImageWidth";
-            this.txtVirtualImageWidth.Size = new System.Drawing.Size(49, 21);
-            this.txtVirtualImageWidth.TabIndex = 6;
-            this.txtVirtualImageWidth.Text = "1024";
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnAuto);
+            this.groupBox4.Controls.Add(this.ckCustomMargine);
+            this.groupBox4.Controls.Add(this.txtCustomMargineY);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.txtCustomMargineX);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Location = new System.Drawing.Point(12, 454);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(488, 42);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Custom Margine";
             // 
-            // label5
+            // txtCustomMargineY
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(27, 112);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 12);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Virtual Image";
+            this.txtCustomMargineY.Location = new System.Drawing.Point(204, 15);
+            this.txtCustomMargineY.Name = "txtCustomMargineY";
+            this.txtCustomMargineY.Size = new System.Drawing.Size(100, 21);
+            this.txtCustomMargineY.TabIndex = 7;
             // 
-            // label6
+            // label8
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(119, 112);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 12);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Width";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(185, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(13, 12);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Y";
             // 
-            // label7
+            // txtCustomMargineX
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(234, 112);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 12);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "Height";
+            this.txtCustomMargineX.Location = new System.Drawing.Point(46, 15);
+            this.txtCustomMargineX.Name = "txtCustomMargineX";
+            this.txtCustomMargineX.Size = new System.Drawing.Size(100, 21);
+            this.txtCustomMargineX.TabIndex = 5;
             // 
-            // txtVirtualImageHeight
+            // label9
             // 
-            this.txtVirtualImageHeight.Location = new System.Drawing.Point(280, 109);
-            this.txtVirtualImageHeight.Name = "txtVirtualImageHeight";
-            this.txtVirtualImageHeight.Size = new System.Drawing.Size(49, 21);
-            this.txtVirtualImageHeight.TabIndex = 8;
-            this.txtVirtualImageHeight.Text = "1024";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(13, 12);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "X";
             // 
-            // ckCoordinateCorrection
+            // ckCustomMargine
             // 
-            this.ckCoordinateCorrection.AutoSize = true;
-            this.ckCoordinateCorrection.Checked = true;
-            this.ckCoordinateCorrection.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckCoordinateCorrection.Location = new System.Drawing.Point(346, 113);
-            this.ckCoordinateCorrection.Name = "ckCoordinateCorrection";
-            this.ckCoordinateCorrection.Size = new System.Drawing.Size(82, 16);
-            this.ckCoordinateCorrection.TabIndex = 10;
-            this.ckCoordinateCorrection.Text = "Correction";
-            this.ckCoordinateCorrection.UseVisualStyleBackColor = true;
+            this.ckCustomMargine.AutoSize = true;
+            this.ckCustomMargine.Location = new System.Drawing.Point(346, 17);
+            this.ckCustomMargine.Name = "ckCustomMargine";
+            this.ckCustomMargine.Size = new System.Drawing.Size(68, 16);
+            this.ckCustomMargine.TabIndex = 11;
+            this.ckCustomMargine.Text = "Custom";
+            this.ckCustomMargine.UseVisualStyleBackColor = true;
+            // 
+            // btnAuto
+            // 
+            this.btnAuto.Image = ((System.Drawing.Image)(resources.GetObject("btnAuto.Image")));
+            this.btnAuto.Location = new System.Drawing.Point(430, 13);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(43, 23);
+            this.btnAuto.TabIndex = 12;
+            this.btnAuto.UseVisualStyleBackColor = true;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
+            // 
+            // timerAuto
+            // 
+            this.timerAuto.Interval = 500;
+            this.timerAuto.Tick += new System.EventHandler(this.timerAuto_Tick);
             // 
             // FrmMain
             // 
@@ -519,6 +604,8 @@
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -565,6 +652,14 @@
         private System.Windows.Forms.TextBox txtVirtualImageWidth;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox ckCoordinateCorrection;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtCustomMargineY;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtCustomMargineX;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox ckCustomMargine;
+        private System.Windows.Forms.Button btnAuto;
+        private System.Windows.Forms.Timer timerAuto;
     }
 }
 

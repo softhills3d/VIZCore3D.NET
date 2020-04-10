@@ -33,7 +33,7 @@ namespace VIZCore3D.NET.Projection2D
             InitializeComponent();
         }
 
-        public void SetData(VIZCore3D.NET.Data.Projection2D projectionData, System.Drawing.Point translation)
+        public void SetData(VIZCore3D.NET.Data.Projection2D projectionData, System.Drawing.Point translation, bool enableCustomMargine, System.Drawing.Point CustomTranslation)
         {
             projection = projectionData;
 
@@ -54,7 +54,7 @@ namespace VIZCore3D.NET.Projection2D
             {
                 ctrlHost = new ElementHost();
                 //ctrlHost.Dock = DockStyle.Fill;
-                ctrlHost.Size = new System.Drawing.Size(5000, 5000);
+                ctrlHost.Size = new System.Drawing.Size(3000, 3000);
                 panelPath.Controls.Add(ctrlHost);
                 P2D_Viewer = new DrawControl.PathGeometryControl();
                 P2D_Viewer.InitializeComponent();
@@ -63,6 +63,9 @@ namespace VIZCore3D.NET.Projection2D
             
             if(projection.EnableCoordinateCorrection == true)
                 projection.MovePoints(translation.X, translation.Y, true);
+
+            if(enableCustomMargine == true)
+                projection.MovePoints(CustomTranslation.X, CustomTranslation.Y, true);
 
             P2D_Viewer.DrawPathGeometry(projection.PathGeometryString);
         }

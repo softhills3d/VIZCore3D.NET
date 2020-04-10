@@ -371,7 +371,15 @@ namespace VIZCore3D.NET.Projection2D
             if (String.IsNullOrEmpty(txtY.Text) == false)
                 translation.Y = Convert.ToInt32(txtY.Text);
 
-            result.SetData(projection, translation);
+            System.Drawing.Point customTranslation = new Point(0, 0);
+
+            if (String.IsNullOrEmpty(txtCustomMargineX.Text) == false)
+                customTranslation.X = Convert.ToInt32(txtCustomMargineX.Text);
+
+            if (String.IsNullOrEmpty(txtCustomMargineY.Text) == false)
+                customTranslation.Y = Convert.ToInt32(txtCustomMargineY.Text);
+
+            result.SetData(projection, translation, ckCustomMargine.Checked, customTranslation);
 
             vizcore3d.CloseWaitForm();
         }
@@ -445,5 +453,111 @@ namespace VIZCore3D.NET.Projection2D
             txtM32.Text = mat[14];
             txtM33.Text = mat[15];
         }
+
+        private void timerAuto_Tick(object sender, EventArgs e)
+        {
+            timerAuto.Enabled = false;
+
+            //if(BlockNetworkIndex == BlockNetwork.Count)
+            //{
+            //    timerAuto.Enabled = false;
+            //    return;
+            //}
+
+            //List<int> items = GetPart(BlockNetwork[BlockNetworkIndex]);
+            //BlockNetworkIndex++;
+
+            //HideBlock(items);
+
+            //btnProjection2D.PerformClick();
+        }
+
+        private List<int> GetPart(List<int> block)
+        {
+            List<string> keywork = new List<string>();
+            foreach (int item in block)
+            {
+                keywork.Add(item.ToString());
+            }
+
+            List<Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(keywork, false, false, false, false, true, false);
+
+            List<int> result = new List<int>();
+            foreach (Data.Node item in items)
+            {
+                if (item.Kind != Data.NodeKind.PART) continue;
+                result.Add(item.Index);
+            }
+
+            return result;
+        }
+
+        private void HideBlock(List<int> block)
+        {
+            vizcore3d.Object3D.Show(block, false);
+        }
+
+        private void btnAuto_Click(object sender, EventArgs e)
+        {
+            BlockNetworkIndex = 0;
+                 
+            BlockNetwork = new List<List<int>>();
+            BlockNetwork.Add(new List<int>() { 801, 802, 803, 804, 810, 824, 825, 834, 835, 701, 702, 703, 704, 705, 706, 707, 708, 421, 422, 424, 425, 426, 428, 431, 432, 434, 435, 436, 438 });
+            BlockNetwork.Add(new List<int>() { 508 });
+            BlockNetwork.Add(new List<int>() { 507 });
+            BlockNetwork.Add(new List<int>() { 506 });
+            BlockNetwork.Add(new List<int>() { 505 });
+            BlockNetwork.Add(new List<int>() { 504 });
+            BlockNetwork.Add(new List<int>() { 503 });
+            BlockNetwork.Add(new List<int>() { 502 });
+            BlockNetwork.Add(new List<int>() { 501 });
+            BlockNetwork.Add(new List<int>() { 639, 629 });
+            BlockNetwork.Add(new List<int>() { 638, 628 });
+            BlockNetwork.Add(new List<int>() { 637, 627 });
+            BlockNetwork.Add(new List<int>() { 636, 626 });
+            BlockNetwork.Add(new List<int>() { 635, 625 });
+            BlockNetwork.Add(new List<int>() { 634, 624 });
+            BlockNetwork.Add(new List<int>() { 633, 623 });
+            BlockNetwork.Add(new List<int>() { 632, 622 });
+            BlockNetwork.Add(new List<int>() { 631, 621 });
+            BlockNetwork.Add(new List<int>() { 209 });
+            BlockNetwork.Add(new List<int>() { 208 });
+            BlockNetwork.Add(new List<int>() { 237, 227 });
+            BlockNetwork.Add(new List<int>() { 236, 226 });
+            BlockNetwork.Add(new List<int>() { 235, 225 });
+            BlockNetwork.Add(new List<int>() { 234, 224 });
+            BlockNetwork.Add(new List<int>() { 233, 223 });
+            BlockNetwork.Add(new List<int>() { 232, 222 });
+            BlockNetwork.Add(new List<int>() { 651, 641, 201 });
+            BlockNetwork.Add(new List<int>() { 310 });
+            BlockNetwork.Add(new List<int>() { 305 });
+            BlockNetwork.Add(new List<int>() { 304 });
+            BlockNetwork.Add(new List<int>() { 313 });
+            BlockNetwork.Add(new List<int>() { 303 });
+            BlockNetwork.Add(new List<int>() { 312 });
+            BlockNetwork.Add(new List<int>() { 311 });
+            BlockNetwork.Add(new List<int>() { 302 });
+            BlockNetwork.Add(new List<int>() { 321, 331 });
+            BlockNetwork.Add(new List<int>() { 301 });
+            BlockNetwork.Add(new List<int>() { 134, 124 });
+            BlockNetwork.Add(new List<int>() { 154, 144 });
+            BlockNetwork.Add(new List<int>() { 135, 125 });
+            BlockNetwork.Add(new List<int>() { 133, 123 });
+            BlockNetwork.Add(new List<int>() { 153, 143 });
+            BlockNetwork.Add(new List<int>() { 113 });
+            BlockNetwork.Add(new List<int>() { 111 });
+            BlockNetwork.Add(new List<int>() { 132, 122 });
+            BlockNetwork.Add(new List<int>() { 152, 142 });
+            BlockNetwork.Add(new List<int>() { 131, 121, 104 });
+            BlockNetwork.Add(new List<int>() { 103 });
+            BlockNetwork.Add(new List<int>() { 151, 141 });
+            BlockNetwork.Add(new List<int>() { 110 });
+            //BlockNetwork.Add(new List<int>() { 101 });
+
+            timerAuto.Enabled = true;
+        }
+
+        private List<List<int>> BlockNetwork;
+        private int BlockNetworkIndex;
     }                                        
 }
