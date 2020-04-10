@@ -112,6 +112,9 @@
 ##### 3D 탑재 시뮬레이션 By VIZZARD (Youtube)
 [![3D 탑재 시뮬레이션](http://img.youtube.com/vi/4dL3yYfhNlk/0.jpg)](https://youtu.be/4dL3yYfhNlk?t=0s)
 
+##### 2D Projection(투영) (Youtube)
+[![2D PROJECTION](http://img.youtube.com/vi/PH0DIHkoW94/0.jpg)](https://youtu.be/PH0DIHkoW94?t=0s)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
