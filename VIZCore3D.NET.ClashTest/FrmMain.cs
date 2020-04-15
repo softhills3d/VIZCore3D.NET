@@ -333,6 +333,7 @@ namespace VIZCore3D.NET.ClashTest
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Clash.OnClashProgressEvent += Clash_OnClashProgressEvent;
             vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
         }
 
@@ -341,7 +342,10 @@ namespace VIZCore3D.NET.ClashTest
             if (e.Node.Count == 0) return;
         }
 
-        
+        private void Clash_OnClashProgressEvent(object sender, Event.EventManager.ClashProgressEventArgs e)
+        {
+            System.Diagnostics.Trace.WriteLine(string.Format("{0}% - {1:N0} EA", e.Progress, e.Count));
+        }
 
         private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
         {
