@@ -45,6 +45,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbSimplified = new System.Windows.Forms.RadioButton();
             this.rbOutside = new System.Windows.Forms.RadioButton();
             this.rbConversion = new System.Windows.Forms.RadioButton();
             this.rbExport = new System.Windows.Forms.RadioButton();
@@ -53,12 +54,14 @@
             this.rbPart = new System.Windows.Forms.RadioButton();
             this.rbLeafAssembly = new System.Windows.Forms.RadioButton();
             this.rbAsIs = new System.Windows.Forms.RadioButton();
-            this.rbSimplified = new System.Windows.Forms.RadioButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ckIncludeEdge = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -72,7 +75,7 @@
             this.groupBox1.Controls.Add(this.txtSource);
             this.groupBox1.Location = new System.Drawing.Point(4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(651, 100);
+            this.groupBox1.Size = new System.Drawing.Size(620, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Path";
@@ -83,7 +86,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtOutput.Location = new System.Drawing.Point(97, 64);
             this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(431, 21);
+            this.txtOutput.Size = new System.Drawing.Size(400, 21);
             this.txtOutput.TabIndex = 4;
             this.txtOutput.Text = "Output";
             // 
@@ -108,7 +111,7 @@
             // btnSelectPath
             // 
             this.btnSelectPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectPath.Location = new System.Drawing.Point(552, 32);
+            this.btnSelectPath.Location = new System.Drawing.Point(521, 32);
             this.btnSelectPath.Name = "btnSelectPath";
             this.btnSelectPath.Size = new System.Drawing.Size(75, 23);
             this.btnSelectPath.TabIndex = 1;
@@ -123,7 +126,7 @@
             this.txtSource.Location = new System.Drawing.Point(97, 32);
             this.txtSource.Name = "txtSource";
             this.txtSource.ReadOnly = true;
-            this.txtSource.Size = new System.Drawing.Size(431, 21);
+            this.txtSource.Size = new System.Drawing.Size(400, 21);
             this.txtSource.TabIndex = 0;
             // 
             // groupBox2
@@ -137,7 +140,7 @@
             this.groupBox2.Controls.Add(this.ckREV);
             this.groupBox2.Location = new System.Drawing.Point(4, 110);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(651, 46);
+            this.groupBox2.Size = new System.Drawing.Size(620, 46);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Filter";
@@ -202,9 +205,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lvFiles);
-            this.groupBox3.Location = new System.Drawing.Point(4, 254);
+            this.groupBox3.Location = new System.Drawing.Point(4, 313);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(651, 446);
+            this.groupBox3.Size = new System.Drawing.Size(620, 496);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Files";
@@ -220,7 +223,7 @@
             this.lvFiles.HideSelection = false;
             this.lvFiles.Location = new System.Drawing.Point(3, 17);
             this.lvFiles.Name = "lvFiles";
-            this.lvFiles.Size = new System.Drawing.Size(645, 426);
+            this.lvFiles.Size = new System.Drawing.Size(614, 476);
             this.lvFiles.TabIndex = 0;
             this.lvFiles.UseCompatibleStateImageBehavior = false;
             this.lvFiles.View = System.Windows.Forms.View.Details;
@@ -246,15 +249,25 @@
             this.groupBox4.Controls.Add(this.rbExport);
             this.groupBox4.Location = new System.Drawing.Point(4, 162);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(320, 86);
+            this.groupBox4.Size = new System.Drawing.Size(536, 49);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Mode";
             // 
+            // rbSimplified
+            // 
+            this.rbSimplified.AutoSize = true;
+            this.rbSimplified.Location = new System.Drawing.Point(321, 23);
+            this.rbSimplified.Name = "rbSimplified";
+            this.rbSimplified.Size = new System.Drawing.Size(78, 16);
+            this.rbSimplified.TabIndex = 3;
+            this.rbSimplified.Text = "Simplified";
+            this.rbSimplified.UseVisualStyleBackColor = true;
+            // 
             // rbOutside
             // 
             this.rbOutside.AutoSize = true;
-            this.rbOutside.Location = new System.Drawing.Point(46, 64);
+            this.rbOutside.Location = new System.Drawing.Point(240, 23);
             this.rbOutside.Name = "rbOutside";
             this.rbOutside.Size = new System.Drawing.Size(66, 16);
             this.rbOutside.TabIndex = 2;
@@ -264,7 +277,7 @@
             // rbConversion
             // 
             this.rbConversion.AutoSize = true;
-            this.rbConversion.Location = new System.Drawing.Point(46, 44);
+            this.rbConversion.Location = new System.Drawing.Point(131, 23);
             this.rbConversion.Name = "rbConversion";
             this.rbConversion.Size = new System.Drawing.Size(87, 16);
             this.rbConversion.TabIndex = 1;
@@ -286,9 +299,9 @@
             // btnToVIZ
             // 
             this.btnToVIZ.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnToVIZ.Location = new System.Drawing.Point(556, 165);
+            this.btnToVIZ.Location = new System.Drawing.Point(546, 165);
             this.btnToVIZ.Name = "btnToVIZ";
-            this.btnToVIZ.Size = new System.Drawing.Size(75, 83);
+            this.btnToVIZ.Size = new System.Drawing.Size(75, 142);
             this.btnToVIZ.TabIndex = 3;
             this.btnToVIZ.Text = "To VIZ";
             this.btnToVIZ.UseVisualStyleBackColor = true;
@@ -296,13 +309,14 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.rbPart);
             this.groupBox5.Controls.Add(this.rbLeafAssembly);
             this.groupBox5.Controls.Add(this.rbAsIs);
-            this.groupBox5.Location = new System.Drawing.Point(330, 165);
+            this.groupBox5.Location = new System.Drawing.Point(4, 217);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(202, 83);
+            this.groupBox5.Size = new System.Drawing.Size(536, 45);
             this.groupBox5.TabIndex = 7;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Write Mode";
@@ -310,7 +324,7 @@
             // rbPart
             // 
             this.rbPart.AutoSize = true;
-            this.rbPart.Location = new System.Drawing.Point(27, 62);
+            this.rbPart.Location = new System.Drawing.Point(261, 20);
             this.rbPart.Name = "rbPart";
             this.rbPart.Size = new System.Drawing.Size(45, 16);
             this.rbPart.TabIndex = 2;
@@ -321,7 +335,7 @@
             // rbLeafAssembly
             // 
             this.rbLeafAssembly.AutoSize = true;
-            this.rbLeafAssembly.Location = new System.Drawing.Point(27, 42);
+            this.rbLeafAssembly.Location = new System.Drawing.Point(97, 20);
             this.rbLeafAssembly.Name = "rbLeafAssembly";
             this.rbLeafAssembly.Size = new System.Drawing.Size(153, 16);
             this.rbLeafAssembly.TabIndex = 1;
@@ -341,20 +355,35 @@
             this.rbAsIs.Text = "As-Is";
             this.rbAsIs.UseVisualStyleBackColor = true;
             // 
-            // rbSimplified
+            // groupBox6
             // 
-            this.rbSimplified.AutoSize = true;
-            this.rbSimplified.Location = new System.Drawing.Point(159, 23);
-            this.rbSimplified.Name = "rbSimplified";
-            this.rbSimplified.Size = new System.Drawing.Size(78, 16);
-            this.rbSimplified.TabIndex = 3;
-            this.rbSimplified.Text = "Simplified";
-            this.rbSimplified.UseVisualStyleBackColor = true;
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ckIncludeEdge);
+            this.groupBox6.Location = new System.Drawing.Point(4, 265);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(536, 42);
+            this.groupBox6.TabIndex = 8;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Edge";
+            // 
+            // ckIncludeEdge
+            // 
+            this.ckIncludeEdge.AutoSize = true;
+            this.ckIncludeEdge.Checked = true;
+            this.ckIncludeEdge.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckIncludeEdge.Location = new System.Drawing.Point(28, 20);
+            this.ckIncludeEdge.Name = "ckIncludeEdge";
+            this.ckIncludeEdge.Size = new System.Drawing.Size(127, 16);
+            this.ckIncludeEdge.TabIndex = 0;
+            this.ckIncludeEdge.Text = "Include Edge Data";
+            this.ckIncludeEdge.UseVisualStyleBackColor = true;
             // 
             // FileExplorerControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnToVIZ);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -363,7 +392,7 @@
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FileExplorerControl";
-            this.Size = new System.Drawing.Size(658, 703);
+            this.Size = new System.Drawing.Size(627, 812);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -373,6 +402,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -405,5 +436,7 @@
         private System.Windows.Forms.RadioButton rbAsIs;
         private System.Windows.Forms.CheckBox ckDGN;
         private System.Windows.Forms.RadioButton rbSimplified;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox ckIncludeEdge;
     }
 }

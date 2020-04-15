@@ -49,21 +49,21 @@ namespace VIZCore3D.NET.ToVIZ
             fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
         }
 
-        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption);
+        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge);
         private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
         {
             if(this.InvokeRequired == true)
             {
                 DToVIZ call = new DToVIZ(ToVIZ);
-                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode });
+                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge });
             }
             else
             {
-                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode);
+                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge);
             }
         }
 
-        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption)
+        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge)
         {
             // 저장 위치 설정
             string path = System.IO.Path.GetDirectoryName(source);
@@ -84,6 +84,9 @@ namespace VIZCore3D.NET.ToVIZ
             // 모델 열고, 저장
             if (mode == ToVIZMode.EXPORT)
             {
+                // Edge 읽기
+                vizcore3d.Model.LoadEdgeData = includeEdge;
+
                 // 모델 파일 열기
                 vizcore3d.Model.Open(source);
 
@@ -105,7 +108,7 @@ namespace VIZCore3D.NET.ToVIZ
                 // 저장 옵션
                 vizcore3d.Model.SaveMergeStructureMode = saveOption;
 
-                return vizcore3d.Model.ConvertToVIZ(source, file, false);
+                return vizcore3d.Model.ConvertToVIZ(source, file, includeEdge, false);
             }
             // 외형 검색 후, 저장
             else if(mode == ToVIZMode.OUTSIDE)

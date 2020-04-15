@@ -108,6 +108,8 @@ namespace VIZCore3D.NET.ToVIZ
                 else
                     args.MergeMode = Data.MergeStructureModes.NONE;
 
+                args.IncludeEdge = ckIncludeEdge.Checked;
+
                 this.Cursor = Cursors.WaitCursor;
                 bool result = OnToVIZEvent(this, args);
                 this.Cursor = Cursors.Default;
@@ -130,5 +132,6 @@ namespace VIZCore3D.NET.ToVIZ
         public string Source { get; set; }
         public string Output { get; set; }
         public VIZCore3D.NET.Data.MergeStructureModes MergeMode { get; set; }
+        public bool IncludeEdge { get; set; }
     }
 }
