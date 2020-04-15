@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.ZoneObjects
+namespace VIZCore3D.NET.SelectionBox.V2
 {
     public partial class FrmMain : Form
     {
@@ -19,7 +19,6 @@ namespace VIZCore3D.NET.ZoneObjects
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        private int SelectionBoxID = -1;
 
         public FrmMain()
         {
@@ -31,7 +30,7 @@ namespace VIZCore3D.NET.ZoneObjects
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(vizcore3d);
+            splitContainer1.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
@@ -323,46 +322,191 @@ namespace VIZCore3D.NET.ZoneObjects
         }
         #endregion
 
+
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            // 개체 선택 이벤트
+            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
 
+            // 뷰 영역 Drag & Drop 이벤트
+            vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
+
+            vizcore3d.SelectionBox.OnSelectionBoxDragEvent += SelectionBox_OnSelectionBoxDragEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxSelectedEvent += SelectionBox_OnSelectionBoxSelectedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxAddSelectionEvent += SelectionBox_OnSelectionBoxAddSelectionEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxDeselectedEvent += SelectionBox_OnSelectionBoxDeselectedEvent;
+            vizcore3d.SelectionBox.OnSelectionboxResizedEvent += SelectionBox_OnSelectionboxResizedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxDeletedEvent += SelectionBox_OnSelectionBoxDeletedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxClearedEvent += SelectionBox_OnSelectionBoxClearedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxDividedEvent += SelectionBox_OnSelectionBoxDividedEvent;
+            vizcore3d.SelectionBox.OnSelectionBoxMergedEvent += SelectionBox_OnSelectionBoxMergedEvent;
+
+            InitUserList();
+
+            vizcore3d.SelectionBox.EnableController(true, true, false);
         }
 
-        private void btnAddBox_Click(object sender, EventArgs e)
+        private void InitUserList()
+        {
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "ANDREW" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "ANNE" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "JANET" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "LAURA" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "MARGARET" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "MICHAEL" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "NANCY" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "ROBERT" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "STEVEN" }, 0));
+        }
+
+        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
+        {
+        }
+
+        private void View_OnViewDragDrop(object sender, Event.EventManager.ViewDragDropEventArgs e)
+        {
+            // ================================================
+            // API
+            // ================================================
+            int id = vizcore3d.SelectionBox.HitTest(e.X, e.Y);
+            if (id == -1) return;
+
+            // 확인
+            if (id != -1 && e.DragItem != null && e.DragItem is ListViewItem)
+            {
+                ListViewItem lvi = (ListViewItem)e.DragItem;
+
+                vizcore3d.SelectionBox.SetLabel(id, lvi.SubItems[1].Text);
+
+                vizcore3d.SelectionBox.SetFaceColor(id, GetTransparencyColor(Color.Blue));
+                vizcore3d.SelectionBox.SetFontColor(id, Color.Black);
+            }
+        }
+
+        private void SelectionBox_OnSelectionBoxMergedEvent(object sender, Event.EventManager.SelectionBoxMergedEventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionBoxDividedEvent(object sender, Event.EventManager.SelectionBoxDividedEventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionBoxClearedEvent(object sender, EventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionBoxDeletedEvent(object sender, Event.EventManager.SelectionBoxDeletedEventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionboxResizedEvent(object sender, Event.EventManager.SelectionBoxResizedEventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionBoxDeselectedEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionBoxAddSelectionEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
+        {
+        }
+
+        private void SelectionBox_OnSelectionBoxSelectedEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
+        {
+            string label = vizcore3d.SelectionBox.GetLabel(e.ID);
+
+            if (String.IsNullOrEmpty(label) == true) return;
+            int index = -1;
+            for (int i = 0; i < lvUser.Items.Count; i++)
+            {
+                lvUser.Items[i].Selected = false;
+                string name = lvUser.Items[i].SubItems[1].Text;
+
+                if (index == -1 && label == name)
+                {
+                    index = i;
+                }
+            }
+
+            if (index == -1) return;
+
+            lvUser.EnsureVisible(index);
+            lvUser.Items[index].Selected = true;
+        }
+
+        private void SelectionBox_OnSelectionBoxDragEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
+        {
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
-            Data.BoundBox3D box = vizcore3d.Model.BoundBox;
+            int xCount = Convert.ToInt32(txtCountX.Text);
+            int yCount = Convert.ToInt32(txtCountY.Text);
+            int zCount = Convert.ToInt32(txtCountZ.Text);
 
-            vizcore3d.SelectionBox.Clear();
+            VIZCore3D.NET.Data.BoundBox3D box = vizcore3d.Model.BoundBox;
 
-            SelectionBoxID = vizcore3d.SelectionBox.Add(
-                box
-                , vizcore3d.SelectionBox.GetTransparencyColor(Color.White, 80)
-                , Color.Black
-                , String.Empty
-                );
+            float xWidth = box.LengthX / xCount;
+            float yWidth = box.LengthY / yCount;
+            float zWidth = box.LengthZ / zCount;
 
-            // SelectionBox Options
+            vizcore3d.BeginUpdate();
+
+            for (int x = 0; x < xCount; x++)
+            {
+                for (int y = 0; y < yCount; y++)
+                {
+                    for (int z = 0; z < zCount; z++)
+                    {
+                        string title = string.Format("선택상자 - {0}/{1}/{2}", x + 1, y + 1, z + 1);
+                        string label = string.Format("{0}/{1}/{2}", x + 1, y + 1, z + 1);
+
+                        VIZCore3D.NET.Data.Vertex3D min = new Data.Vertex3D(
+                            box.MinX + (xWidth * x)
+                            , box.MinY + (yWidth * y)
+                            , box.MinZ + (zWidth * z)
+                            );
+
+                        VIZCore3D.NET.Data.Vertex3D max = new Data.Vertex3D(
+                            min.X + xWidth
+                            , min.Y + yWidth
+                            , min.Z + zWidth
+                            );
+
+                        VIZCore3D.NET.Data.BoundBox3D selectionbox = new Data.BoundBox3D(min, max);
+
+                        int id = vizcore3d.SelectionBox.Add(
+                            selectionbox
+                            , GetTransparencyColor(Color.FromArgb(100, 255, 255, 255))
+                            , GetTransparencyColor(Color.Black)
+                            , title
+                            );
+
+                        vizcore3d.SelectionBox.SetLabel(id, label);
+                    } // z
+                } // y
+            }// x
+
+
+            vizcore3d.EndUpdate();
+
             vizcore3d.SelectionBox.MouseSelectionMode = true;
         }
 
-        private void btnGetZoneObjects_Click(object sender, EventArgs e)
+        private System.Drawing.Color GetTransparencyColor(System.Drawing.Color color)
         {
-            if (SelectionBoxID == -1) return;
-            if (cbFilter.SelectedIndex == -1) return;
+            int transparency = 70;
+            return vizcore3d.SelectionBox.GetTransparencyColor(color, transparency);
+        }
 
-            VIZCore3D.NET.Data.BoundBox3D box = vizcore3d.SelectionBox.GetItem(SelectionBoxID).BoundBox;
-            VIZCore3D.NET.Data.BoundBoxSearchOption option = (Data.BoundBoxSearchOption)cbFilter.SelectedIndex;
-
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromZone(box, option);
-
-            dataGridNode.DataSource = items;
-
-            gbObjects.Text = string.Format("Objects - {0:N0}", items.Count);
+        private void lvUser_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            DoDragDrop(e.Item, DragDropEffects.Copy);
         }
     }
 }

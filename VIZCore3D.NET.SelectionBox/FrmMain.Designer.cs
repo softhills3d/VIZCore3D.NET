@@ -355,7 +355,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 12);
             this.label11.TabIndex = 15;
-            this.label11.Text = "(0~255)";
+            this.label11.Text = "(0~100)";
             // 
             // txtTransparency
             // 
@@ -363,7 +363,7 @@
             this.txtTransparency.Name = "txtTransparency";
             this.txtTransparency.Size = new System.Drawing.Size(100, 21);
             this.txtTransparency.TabIndex = 14;
-            this.txtTransparency.Text = "240";
+            this.txtTransparency.Text = "70";
             // 
             // ckTransparency
             // 
