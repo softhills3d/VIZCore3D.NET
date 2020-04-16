@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7722C395-A09E-44D9-B7DF-628284A350CC}</ProjectGuid>
+    <ProjectGuid>{7939BF4E-EC05-41CB-862A-F3252D5D3D7D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VIZCore3D.NET.ToVIZ</RootNamespace>
-    <AssemblyName>VIZCore3D.NET.ToVIZ</AssemblyName>
+    <RootNamespace>VIZCore3D.NET.ShortestDistance</RootNamespace>
+    <AssemblyName>VIZCore3D.NET.ShortestDistance</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -45,18 +45,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="VIZCore3D.NET, Version=1.3.20.416, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="VIZCore3D.NET">
       <HintPath>..\..\..\SH_SVN\SH_Product\VIZCore3D.NET_V2\VIZCore3D.NET\bin\Release\VIZCore3D.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileExplorerControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="FileExplorerControl.Designer.cs">
-      <DependentUpon>FileExplorerControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,9 +58,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FileExplorerControl.resx">
-      <DependentUpon>FileExplorerControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,7 +70,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rbOsnap = new System.Windows.Forms.RadioButton();
+            this.rbEdgeVertex = new System.Windows.Forms.RadioButton();
+            this.rbBoundBox = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDeleteGroup = new System.Windows.Forms.Button();
             this.btnDeleteChecked = new System.Windows.Forms.Button();
@@ -66,19 +70,15 @@
             this.rbCylinder = new System.Windows.Forms.RadioButton();
             this.rbCube = new System.Windows.Forms.RadioButton();
             this.rbLine = new System.Windows.Forms.RadioButton();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rbBoundBox = new System.Windows.Forms.RadioButton();
-            this.rbEdgeVertex = new System.Windows.Forms.RadioButton();
-            this.rbOsnap = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -99,6 +99,54 @@
             this.splitContainer1.Size = new System.Drawing.Size(1236, 778);
             this.splitContainer1.SplitterDistance = 433;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.rbOsnap);
+            this.groupBox6.Controls.Add(this.rbEdgeVertex);
+            this.groupBox6.Controls.Add(this.rbBoundBox);
+            this.groupBox6.Location = new System.Drawing.Point(12, 12);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(408, 62);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Source";
+            // 
+            // rbOsnap
+            // 
+            this.rbOsnap.AutoSize = true;
+            this.rbOsnap.Location = new System.Drawing.Point(233, 32);
+            this.rbOsnap.Name = "rbOsnap";
+            this.rbOsnap.Size = new System.Drawing.Size(60, 16);
+            this.rbOsnap.TabIndex = 2;
+            this.rbOsnap.TabStop = true;
+            this.rbOsnap.Text = "Osnap";
+            this.rbOsnap.UseVisualStyleBackColor = true;
+            // 
+            // rbEdgeVertex
+            // 
+            this.rbEdgeVertex.AutoSize = true;
+            this.rbEdgeVertex.Location = new System.Drawing.Point(122, 32);
+            this.rbEdgeVertex.Name = "rbEdgeVertex";
+            this.rbEdgeVertex.Size = new System.Drawing.Size(92, 16);
+            this.rbEdgeVertex.TabIndex = 1;
+            this.rbEdgeVertex.TabStop = true;
+            this.rbEdgeVertex.Text = "Edge Vertex";
+            this.rbEdgeVertex.UseVisualStyleBackColor = true;
+            // 
+            // rbBoundBox
+            // 
+            this.rbBoundBox.AutoSize = true;
+            this.rbBoundBox.Checked = true;
+            this.rbBoundBox.Location = new System.Drawing.Point(21, 32);
+            this.rbBoundBox.Name = "rbBoundBox";
+            this.rbBoundBox.Size = new System.Drawing.Size(81, 16);
+            this.rbBoundBox.TabIndex = 0;
+            this.rbBoundBox.TabStop = true;
+            this.rbBoundBox.Text = "BoundBox";
+            this.rbBoundBox.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -476,54 +524,6 @@
             this.rbLine.Text = "Line";
             this.rbLine.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.rbOsnap);
-            this.groupBox6.Controls.Add(this.rbEdgeVertex);
-            this.groupBox6.Controls.Add(this.rbBoundBox);
-            this.groupBox6.Location = new System.Drawing.Point(12, 12);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(408, 62);
-            this.groupBox6.TabIndex = 5;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Source";
-            // 
-            // rbBoundBox
-            // 
-            this.rbBoundBox.AutoSize = true;
-            this.rbBoundBox.Checked = true;
-            this.rbBoundBox.Location = new System.Drawing.Point(21, 32);
-            this.rbBoundBox.Name = "rbBoundBox";
-            this.rbBoundBox.Size = new System.Drawing.Size(81, 16);
-            this.rbBoundBox.TabIndex = 0;
-            this.rbBoundBox.TabStop = true;
-            this.rbBoundBox.Text = "BoundBox";
-            this.rbBoundBox.UseVisualStyleBackColor = true;
-            // 
-            // rbEdgeVertex
-            // 
-            this.rbEdgeVertex.AutoSize = true;
-            this.rbEdgeVertex.Location = new System.Drawing.Point(122, 32);
-            this.rbEdgeVertex.Name = "rbEdgeVertex";
-            this.rbEdgeVertex.Size = new System.Drawing.Size(92, 16);
-            this.rbEdgeVertex.TabIndex = 1;
-            this.rbEdgeVertex.TabStop = true;
-            this.rbEdgeVertex.Text = "Edge Vertex";
-            this.rbEdgeVertex.UseVisualStyleBackColor = true;
-            // 
-            // rbOsnap
-            // 
-            this.rbOsnap.AutoSize = true;
-            this.rbOsnap.Location = new System.Drawing.Point(233, 32);
-            this.rbOsnap.Name = "rbOsnap";
-            this.rbOsnap.Size = new System.Drawing.Size(60, 16);
-            this.rbOsnap.TabIndex = 2;
-            this.rbOsnap.TabStop = true;
-            this.rbOsnap.Text = "Osnap";
-            this.rbOsnap.UseVisualStyleBackColor = true;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -537,6 +537,8 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -546,8 +548,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }

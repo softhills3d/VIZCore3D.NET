@@ -70,6 +70,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.NodeDetail", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.SelectionBox.V2", "VIZCore3D.NET.SelectionBox.V2\VIZCore3D.NET.SelectionBox.V2.csproj", "{595E8905-1AEF-4BAD-83D1-3610F303BC28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ShortestDistance", "VIZCore3D.NET.ShortestDistance\VIZCore3D.NET.ShortestDistance.csproj", "{7939BF4E-EC05-41CB-862A-F3252D5D3D7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -200,6 +202,10 @@ Global
 		{595E8905-1AEF-4BAD-83D1-3610F303BC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{595E8905-1AEF-4BAD-83D1-3610F303BC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{595E8905-1AEF-4BAD-83D1-3610F303BC28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7939BF4E-EC05-41CB-862A-F3252D5D3D7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7939BF4E-EC05-41CB-862A-F3252D5D3D7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7939BF4E-EC05-41CB-862A-F3252D5D3D7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7939BF4E-EC05-41CB-862A-F3252D5D3D7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
