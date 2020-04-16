@@ -334,6 +334,7 @@ namespace VIZCore3D.NET.SelectionBox.V2
             // 뷰 영역 Drag & Drop 이벤트
             vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
 
+            // 선택상자(Selection Box) 이벤트
             vizcore3d.SelectionBox.OnSelectionBoxDragEvent += SelectionBox_OnSelectionBoxDragEvent;
             vizcore3d.SelectionBox.OnSelectionBoxSelectedEvent += SelectionBox_OnSelectionBoxSelectedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxAddSelectionEvent += SelectionBox_OnSelectionBoxAddSelectionEvent;
@@ -344,22 +345,26 @@ namespace VIZCore3D.NET.SelectionBox.V2
             vizcore3d.SelectionBox.OnSelectionBoxDividedEvent += SelectionBox_OnSelectionBoxDividedEvent;
             vizcore3d.SelectionBox.OnSelectionBoxMergedEvent += SelectionBox_OnSelectionBoxMergedEvent;
 
+            lvUser.SelectedIndexChanged += LvUser_SelectedIndexChanged;
+
             InitUserList();
 
             vizcore3d.SelectionBox.EnableController(true, true, false);
         }
 
+        
+
         private void InitUserList()
         {
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "ANDREW" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "ANNE" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "JANET" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "LAURA" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "MARGARET" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "MICHAEL" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "NANCY" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "ROBERT" }, 0));
-            lvUser.Items.Add(new ListViewItem(new string[] { "", "STEVEN" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "ANDREW", "Blue" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "ANNE", "Orange" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "JANET", "Yellow" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "LAURA", "Green" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "MARGARET", "Indigo" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "MICHAEL", "Purple" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "NANCY", "Beige" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "ROBERT", "Crimson" }, 0));
+            lvUser.Items.Add(new ListViewItem(new string[] { "", "STEVEN", "Khaki" }, 0));
         }
 
         private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
@@ -378,10 +383,14 @@ namespace VIZCore3D.NET.SelectionBox.V2
             if (id != -1 && e.DragItem != null && e.DragItem is ListViewItem)
             {
                 ListViewItem lvi = (ListViewItem)e.DragItem;
+                lvi.Tag = id;
+
+                string strColor = lvi.SubItems[2].Text;
+                Color color = Color.FromName(strColor);
 
                 vizcore3d.SelectionBox.SetLabel(id, lvi.SubItems[1].Text);
 
-                vizcore3d.SelectionBox.SetFaceColor(id, GetTransparencyColor(Color.Blue));
+                vizcore3d.SelectionBox.SetFaceColor(id, GetTransparencyColor(color));
                 vizcore3d.SelectionBox.SetFontColor(id, Color.Black);
             }
         }
@@ -414,11 +423,16 @@ namespace VIZCore3D.NET.SelectionBox.V2
         {
         }
 
+
+
         private void SelectionBox_OnSelectionBoxSelectedEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
         {
             string label = vizcore3d.SelectionBox.GetLabel(e.ID);
 
             if (String.IsNullOrEmpty(label) == true) return;
+
+            lvUser.SelectedIndexChanged -= LvUser_SelectedIndexChanged;
+
             int index = -1;
             for (int i = 0; i < lvUser.Items.Count; i++)
             {
@@ -431,10 +445,16 @@ namespace VIZCore3D.NET.SelectionBox.V2
                 }
             }
 
-            if (index == -1) return;
+            if (index == -1)
+            {
+                lvUser.SelectedIndexChanged += LvUser_SelectedIndexChanged;
+                return;
+            }
 
             lvUser.EnsureVisible(index);
             lvUser.Items[index].Selected = true;
+
+            lvUser.SelectedIndexChanged += LvUser_SelectedIndexChanged;
         }
 
         private void SelectionBox_OnSelectionBoxDragEvent(object sender, Event.EventManager.SelectionBoxEventArgs e)
@@ -444,6 +464,8 @@ namespace VIZCore3D.NET.SelectionBox.V2
         private void btnCreate_Click(object sender, EventArgs e)
         {
             if (vizcore3d.Model.IsOpen() == false) return;
+
+            vizcore3d.SelectionBox.Clear();
 
             int xCount = Convert.ToInt32(txtCountX.Text);
             int yCount = Convert.ToInt32(txtCountY.Text);
@@ -496,6 +518,23 @@ namespace VIZCore3D.NET.SelectionBox.V2
             vizcore3d.EndUpdate();
 
             vizcore3d.SelectionBox.MouseSelectionMode = true;
+        }
+
+        private void LvUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ckMoveCenter.Checked == false) return;
+            if (lvUser.SelectedItems.Count == 0) return;
+
+            ListViewItem lvi = lvUser.SelectedItems[0];
+            if (lvi.Tag == null) return;
+
+            int id = (int)lvi.Tag;
+
+            vizcore3d.BeginUpdate();
+            vizcore3d.SelectionBox.Select(false);   // 전체 선택 취소
+            vizcore3d.SelectionBox.Select(new List<int>() { id }, true); // 선택항목 설정
+            vizcore3d.SelectionBox.MoveCenterScreen(true);
+            vizcore3d.EndUpdate();
         }
 
         private System.Drawing.Color GetTransparencyColor(System.Drawing.Color color)

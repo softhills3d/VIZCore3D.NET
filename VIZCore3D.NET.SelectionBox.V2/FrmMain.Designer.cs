@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvUser = new System.Windows.Forms.ListView();
+            this.chProfile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imgList = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtCountZ = new System.Windows.Forms.TextBox();
@@ -39,16 +44,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCountX = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lvUser = new System.Windows.Forms.ListView();
-            this.chProfile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.imgList = new System.Windows.Forms.ImageList(this.components);
+            this.chColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ckMoveCenter = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,11 +64,61 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1395, 750);
             this.splitContainer1.SplitterDistance = 448;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.lvUser);
+            this.groupBox2.Location = new System.Drawing.Point(12, 158);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(425, 417);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "작업자";
+            // 
+            // lvUser
+            // 
+            this.lvUser.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.chProfile,
+            this.chName,
+            this.chColor});
+            this.lvUser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvUser.FullRowSelect = true;
+            this.lvUser.GridLines = true;
+            this.lvUser.HideSelection = false;
+            this.lvUser.LargeImageList = this.imgList;
+            this.lvUser.Location = new System.Drawing.Point(3, 17);
+            this.lvUser.Name = "lvUser";
+            this.lvUser.Size = new System.Drawing.Size(419, 397);
+            this.lvUser.SmallImageList = this.imgList;
+            this.lvUser.TabIndex = 0;
+            this.lvUser.UseCompatibleStateImageBehavior = false;
+            this.lvUser.View = System.Windows.Forms.View.Details;
+            this.lvUser.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvUser_ItemDrag);
+            // 
+            // chProfile
+            // 
+            this.chProfile.Text = "Profile";
+            this.chProfile.Width = 137;
+            // 
+            // chName
+            // 
+            this.chName.Text = "Name";
+            this.chName.Width = 148;
+            // 
+            // imgList
+            // 
+            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
+            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
+            this.imgList.Images.SetKeyName(0, "profile-icon.png");
             // 
             // groupBox1
             // 
@@ -146,52 +200,32 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "X";
             // 
-            // groupBox2
+            // chColor
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.chColor.Text = "Color";
+            this.chColor.Width = 87;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.lvUser);
-            this.groupBox2.Location = new System.Drawing.Point(12, 79);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(425, 531);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "작업자";
+            this.groupBox3.Controls.Add(this.ckMoveCenter);
+            this.groupBox3.Location = new System.Drawing.Point(12, 79);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(425, 73);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "옵션";
             // 
-            // lvUser
+            // ckMoveCenter
             // 
-            this.lvUser.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.chProfile,
-            this.chName});
-            this.lvUser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvUser.FullRowSelect = true;
-            this.lvUser.GridLines = true;
-            this.lvUser.HideSelection = false;
-            this.lvUser.LargeImageList = this.imgList;
-            this.lvUser.Location = new System.Drawing.Point(3, 17);
-            this.lvUser.Name = "lvUser";
-            this.lvUser.Size = new System.Drawing.Size(419, 511);
-            this.lvUser.SmallImageList = this.imgList;
-            this.lvUser.TabIndex = 0;
-            this.lvUser.UseCompatibleStateImageBehavior = false;
-            this.lvUser.View = System.Windows.Forms.View.Details;
-            this.lvUser.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.lvUser_ItemDrag);
-            // 
-            // chProfile
-            // 
-            this.chProfile.Text = "Profile";
-            this.chProfile.Width = 137;
-            // 
-            // chName
-            // 
-            this.chName.Text = "Name";
-            this.chName.Width = 148;
-            // 
-            // imgList
-            // 
-            this.imgList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgList.ImageStream")));
-            this.imgList.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgList.Images.SetKeyName(0, "profile-icon.png");
+            this.ckMoveCenter.AutoSize = true;
+            this.ckMoveCenter.Location = new System.Drawing.Point(28, 34);
+            this.ckMoveCenter.Name = "ckMoveCenter";
+            this.ckMoveCenter.Size = new System.Drawing.Size(96, 16);
+            this.ckMoveCenter.TabIndex = 0;
+            this.ckMoveCenter.Text = "Move Center";
+            this.ckMoveCenter.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -206,9 +240,11 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -229,6 +265,9 @@
         private System.Windows.Forms.ColumnHeader chProfile;
         private System.Windows.Forms.ColumnHeader chName;
         private System.Windows.Forms.ImageList imgList;
+        private System.Windows.Forms.ColumnHeader chColor;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox ckMoveCenter;
     }
 }
 

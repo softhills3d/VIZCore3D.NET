@@ -446,6 +446,8 @@ namespace VIZCore3D.NET.SelectionBox
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
+            vizcore3d.SelectionBox.Clear();
+
             int xCount = Convert.ToInt32(txtCountX.Text);
             int yCount = Convert.ToInt32(txtCountY.Text);
             int zCount = Convert.ToInt32(txtCountZ.Text);
