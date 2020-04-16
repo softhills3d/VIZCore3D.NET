@@ -100,6 +100,9 @@
 ##### 선택상자 / 구획상자 (Youtube)
 [![SELECTIONBOX](http://img.youtube.com/vi/Ye_LcePhs9c/0.jpg)](https://youtu.be/Ye_LcePhs9c?t=0s)
 
+##### 선택상자 / 구획상자 (Youtube)
+[![SELECTIONBOX](http://img.youtube.com/vi/zvUw15NIeTs/0.jpg)](https://youtu.be/zvUw15NIeTst=0s)
+
 ##### WDL
 ![용접선](./Gallery/VIZCore3D.NET.Import.WDL.png)
 
