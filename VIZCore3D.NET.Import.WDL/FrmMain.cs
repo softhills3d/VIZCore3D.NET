@@ -584,16 +584,15 @@ namespace VIZCore3D.NET.Import.WDL
             vizcore3d.Primitive.Clear();
 
             // Automation
-            vizcore3d.Primitive.OpenWeldLine(
-                string.Format("{0} WELD", wdl.INTRO_BLOCK)
-                , colorIndex
-                , 20
-                , ckUnit.Checked == true ? Manager.PrimitiveManager.PrimitiveGenerationUnit.BUNDLE : Manager.PrimitiveManager.PrimitiveGenerationUnit.SEGMENTATION
-                , wdl.JL_DATA.Values.ToList()
-                );
+            //vizcore3d.Primitive.OpenWeldLine(
+            //    string.Format("{0} WELD", wdl.INTRO_BLOCK)
+            //    , colorIndex
+            //    , 20
+            //    , ckUnit.Checked == true ? Manager.PrimitiveManager.PrimitiveGenerationUnit.BUNDLE : Manager.PrimitiveManager.PrimitiveGenerationUnit.SEGMENTATION
+            //    , wdl.JL_DATA.Values.ToList()
+            //    );
 
             // API
-            /*
             VIZCore3D.NET.Manager.PrimitiveObject root = vizcore3d.Primitive.AddNode("WELD");
 
             foreach (Importer.ShxWdlJLData item in wdl.JL_DATA.Values.ToList())
@@ -607,10 +606,6 @@ namespace VIZCore3D.NET.Import.WDL
                         VIZCore3D.NET.Manager.PrimitiveCylinder cylinder = new VIZCore3D.NET.Manager.PrimitiveCylinder();
                         cylinder.Set2Point(point.StartPoint, point.EndPoint, 5);
                         node.AddPrimitive(cylinder);
-
-                        //VIZCore3D.NET.Manager.PrimitiveBox box = new Manager.PrimitiveBox();
-                        //box.Set2Point(point.StartPoint, point.EndPoint, 10, 20);
-                        //node.AddPrimitive(box);
                     }
                 }
                 else
@@ -634,7 +629,6 @@ namespace VIZCore3D.NET.Import.WDL
             if (result == false) return;
 
             vizcore3d.Model.Add(new string[] { output });
-            */
         }
 
         private void ckXray_CheckedChanged(object sender, EventArgs e)
