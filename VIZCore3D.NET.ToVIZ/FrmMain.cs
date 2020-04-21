@@ -49,21 +49,21 @@ namespace VIZCore3D.NET.ToVIZ
             fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
         }
 
-        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge);
+        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver);
         private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
         {
             if(this.InvokeRequired == true)
             {
                 DToVIZ call = new DToVIZ(ToVIZ);
-                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge });
+                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version });
             }
             else
             {
-                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge);
+                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version);
             }
         }
 
-        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge)
+        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver)
         {
             // 저장 위치 설정
             string path = System.IO.Path.GetDirectoryName(source);
@@ -108,7 +108,7 @@ namespace VIZCore3D.NET.ToVIZ
                 // 저장 옵션
                 vizcore3d.Model.SaveMergeStructureMode = saveOption;
 
-                return vizcore3d.Model.ConvertToVIZ(source, file, includeEdge, false);
+                return vizcore3d.Model.ConvertToVIZ(source, file, includeEdge, ver, false);
             }
             // 외형 검색 후, 저장
             else if(mode == ToVIZMode.OUTSIDE)

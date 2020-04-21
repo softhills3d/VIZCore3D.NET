@@ -56,6 +56,7 @@
             this.rbAsIs = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.ckIncludeEdge = new System.Windows.Forms.CheckBox();
+            this.cbVersion = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -359,13 +360,14 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.cbVersion);
             this.groupBox6.Controls.Add(this.ckIncludeEdge);
             this.groupBox6.Location = new System.Drawing.Point(4, 265);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(536, 42);
             this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Edge";
+            this.groupBox6.Text = "Option";
             // 
             // ckIncludeEdge
             // 
@@ -378,6 +380,20 @@
             this.ckIncludeEdge.TabIndex = 0;
             this.ckIncludeEdge.Text = "Include Edge Data";
             this.ckIncludeEdge.UseVisualStyleBackColor = true;
+            // 
+            // cbVersion
+            // 
+            this.cbVersion.FormattingEnabled = true;
+            this.cbVersion.Items.AddRange(new object[] {
+            "V.203",
+            "V.204",
+            "V.208",
+            "V.303"});
+            this.cbVersion.Location = new System.Drawing.Point(239, 16);
+            this.cbVersion.Name = "cbVersion";
+            this.cbVersion.Size = new System.Drawing.Size(121, 20);
+            this.cbVersion.TabIndex = 1;
+            this.cbVersion.Text = "V.303";
             // 
             // FileExplorerControl
             // 
@@ -438,5 +454,6 @@
         private System.Windows.Forms.RadioButton rbSimplified;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox ckIncludeEdge;
+        private System.Windows.Forms.ComboBox cbVersion;
     }
 }

@@ -499,7 +499,7 @@ namespace VIZCore3D.NET.Projection2D
 
         private void btnAuto_Click(object sender, EventArgs e)
         {
-            BlockNetworkIndex = 0;
+            //BlockNetworkIndex = 0;
                  
             BlockNetwork = new List<List<int>>();
             BlockNetwork.Add(new List<int>() { 801, 802, 803, 804, 810, 824, 825, 834, 835, 701, 702, 703, 704, 705, 706, 707, 708, 421, 422, 424, 425, 426, 428, 431, 432, 434, 435, 436, 438 });
@@ -558,6 +558,6 @@ namespace VIZCore3D.NET.Projection2D
         }
 
         private List<List<int>> BlockNetwork;
-        private int BlockNetworkIndex;
+        //private int BlockNetworkIndex;
     }                                        
 }

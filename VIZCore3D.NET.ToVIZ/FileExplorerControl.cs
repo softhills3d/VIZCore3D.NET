@@ -110,6 +110,16 @@ namespace VIZCore3D.NET.ToVIZ
 
                 args.IncludeEdge = ckIncludeEdge.Checked;
 
+                int nVersion = cbVersion.SelectedIndex;
+                if (nVersion == 0)
+                    args.Version = Manager.ModelManager.FileVersion.V203;
+                else if (nVersion == 1)
+                    args.Version = Manager.ModelManager.FileVersion.V204;
+                else if (nVersion == 2)
+                    args.Version = Manager.ModelManager.FileVersion.V208;
+                else if (nVersion == 3)
+                    args.Version = Manager.ModelManager.FileVersion.V303;
+
                 this.Cursor = Cursors.WaitCursor;
                 bool result = OnToVIZEvent(this, args);
                 this.Cursor = Cursors.Default;
@@ -133,5 +143,6 @@ namespace VIZCore3D.NET.ToVIZ
         public string Output { get; set; }
         public VIZCore3D.NET.Data.MergeStructureModes MergeMode { get; set; }
         public bool IncludeEdge { get; set; }
+        public VIZCore3D.NET.Manager.ModelManager.FileVersion Version { get; set; }
     }
 }
