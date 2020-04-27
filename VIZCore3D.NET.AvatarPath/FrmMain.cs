@@ -328,6 +328,9 @@ namespace VIZCore3D.NET.AvatarPath
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            // 모델 닫기
+            vizcore3d.Model.OnModelClosedEvent += Model_OnModelClosedEvent;
+
             // 위치 목록 갱신
             vizcore3d.Walkthrough.AvatarPath.OnPositionUpdatedEvent += AvatarPath_OnPositionUpdatedEvent;
 
@@ -335,7 +338,11 @@ namespace VIZCore3D.NET.AvatarPath
             vizcore3d.Walkthrough.AvatarPath.OnAnimationFinishedEvent += AvatarPath_OnAnimationFinishedEvent;
         }
 
-        
+        private void Model_OnModelClosedEvent(object sender, EventArgs e)
+        {
+            lvPath.Items.Clear();
+            lvPosition.Items.Clear();
+        }
 
         private void AvatarPath_OnPositionUpdatedEvent(object sender, Event.EventManager.AvatarPathEventArgs e)
         {
