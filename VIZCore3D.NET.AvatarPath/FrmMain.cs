@@ -101,6 +101,9 @@ namespace VIZCore3D.NET.AvatarPath
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
 
+            // Undo/Redo
+            vizcore3d.Model.EnableUndoRedo = false;
+
             // 모델 열기 시, 스트럭처 병합 설정
             vizcore3d.Model.OpenMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
@@ -181,7 +184,7 @@ namespace VIZCore3D.NET.AvatarPath
             // 모델
             vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
@@ -464,22 +467,32 @@ namespace VIZCore3D.NET.AvatarPath
 
         private void btnShowPath_Click(object sender, EventArgs e)
         {
+            if (vizcore3d.Walkthrough.AvatarPath.PathID == -1) return;
+            vizcore3d.Walkthrough.AvatarPath.PathItem.VisiblePath = true;
+
+            /*
             if (lvPath.SelectedItems.Count == 0) return;
             if (lvPath.SelectedItems[0].Tag == null) return;
 
             VIZCore3D.NET.Data.AvatarPathItem item = (VIZCore3D.NET.Data.AvatarPathItem)lvPath.SelectedItems[0].Tag;
 
             item.VisiblePath = true;
+            */
         }
 
         private void btnHidePath_Click(object sender, EventArgs e)
         {
+            if (vizcore3d.Walkthrough.AvatarPath.PathID == -1) return;
+            vizcore3d.Walkthrough.AvatarPath.PathItem.VisiblePath = false;
+
+            /*
             if (lvPath.SelectedItems.Count == 0) return;
             if (lvPath.SelectedItems[0].Tag == null) return;
 
             VIZCore3D.NET.Data.AvatarPathItem item = (VIZCore3D.NET.Data.AvatarPathItem)lvPath.SelectedItems[0].Tag;
 
             item.VisiblePath = false;
+            */
         }
 
         private void btnAddPos_Click(object sender, EventArgs e)
