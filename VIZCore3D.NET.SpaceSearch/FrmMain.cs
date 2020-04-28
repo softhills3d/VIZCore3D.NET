@@ -102,6 +102,9 @@ namespace VIZCore3D.NET.SpaceSearch
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
 
+            // Undo/Redo (비)활성화
+            vizcore3d.Model.EnableUndoRedo = false;
+
             // 모델 열기 시, 스트럭처 병합 설정
             vizcore3d.Model.OpenMergeStructureMode = VIZCore3D.NET.Data.MergeStructureModes.NONE;
 
