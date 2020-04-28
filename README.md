@@ -121,6 +121,9 @@
 ##### 2D Projection(투영) (Youtube)
 [![2D PROJECTION](http://img.youtube.com/vi/PH0DIHkoW94/0.jpg)](https://youtu.be/PH0DIHkoW94?t=0s)
 
+##### Avatar Path (Youtube)
+[![Avatar Path](http://img.youtube.com/vi/03ytY3zdNRA/0.jpg)](https://youtu.be/03ytY3zdNRA?t=0s)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
