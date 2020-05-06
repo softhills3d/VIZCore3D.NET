@@ -198,7 +198,7 @@ namespace VIZCore3D.NET.Demo
                 case VIZCore3D.NET.Manager.SectionManager.EventTypes.DELETE:
                     break;
                 // 전체 삭제 이벤트
-                case VIZCore3D.NET.Manager.SectionManager.EventTypes.DELETE_ALL:
+                case VIZCore3D.NET.Manager.SectionManager.EventTypes.CLEAR:
                     break;
                 // 선택 이벤트
                 case VIZCore3D.NET.Manager.SectionManager.EventTypes.SELECT:
