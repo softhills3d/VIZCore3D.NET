@@ -62,7 +62,7 @@ namespace VIZCore3D.NET.Demo
 
             vizcore3d.ToolbarAnimation.Visible = false;
             vizcore3d.ToolbarSimulation.Visible = false;
-            vizcore3d.ToolbarMeasurement.Visible = false;
+            vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
         }
 
@@ -481,7 +481,7 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             #region 설정 - 툴바
             vizcore3d.ToolbarNote.Visible = false;
-            vizcore3d.ToolbarMeasurement.Visible = false;
+            vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;

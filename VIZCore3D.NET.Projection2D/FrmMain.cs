@@ -310,7 +310,7 @@ namespace VIZCore3D.NET.Projection2D
             // ================================================================
             #region 설정 - 툴바
             vizcore3d.ToolbarNote.Visible = false;
-            vizcore3d.ToolbarMeasurement.Visible = false;
+            vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;

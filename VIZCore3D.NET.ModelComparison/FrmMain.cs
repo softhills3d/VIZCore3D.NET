@@ -66,7 +66,7 @@ namespace VIZCore3D.NET.ModelComparison
 
             // 툴바 설정
             vizcore1.ToolbarNote.Visible = false;
-            vizcore1.ToolbarMeasurement.Visible = false;
+            vizcore1.ToolbarMeasure.Visible = false;
             vizcore1.ToolbarSection.Visible = false;
             vizcore1.ToolbarClash.Visible = false;
             vizcore1.ToolbarAnimation.Visible = false;
@@ -100,7 +100,7 @@ namespace VIZCore3D.NET.ModelComparison
 
             // 툴바 설정
             vizcore2.ToolbarNote.Visible = false;
-            vizcore2.ToolbarMeasurement.Visible = false;
+            vizcore2.ToolbarMeasure.Visible = false;
             vizcore2.ToolbarSection.Visible = false;
             vizcore2.ToolbarClash.Visible = false;
             vizcore2.ToolbarAnimation.Visible = false;
