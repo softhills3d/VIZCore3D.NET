@@ -468,7 +468,7 @@ namespace VIZCore3D.NET.Note
                 case Manager.ReviewManager.ReviewEventKind.CHANGED_REVIEW_DATA:
                     log = string.Format("[{0}] 리뷰 정보 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                     break;
-                case Manager.ReviewManager.ReviewEventKind.ADDED_SURFACE_NODE:
+                case Manager.ReviewManager.ReviewEventKind.ADDED_SURFACE_NOTE:
                     log = string.Format("[{0}] 표면노트 추가 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                     break;
                 case Manager.ReviewManager.ReviewEventKind.CANCELED_ADD:
