@@ -221,7 +221,7 @@ namespace VIZCore3D.NET.Note
             // 글자색
             vizcore3d.Review.Note.FontColor = Color.Black;
             // 글자 크기
-            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE12;
+            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE12;
             // 글자 굵게
             vizcore3d.Review.Note.FontBold = false;
             // 지시선(라인) 색상
@@ -242,7 +242,7 @@ namespace VIZCore3D.NET.Note
             // 심볼 크기
             vizcore3d.Review.Note.SymbolSize = 10;
             // 심볼 글자 크기
-            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Manager.NoteManager.FontSizeKind.SIZE10;
+            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE10;
             // 심볼 글자 굵게
             vizcore3d.Review.Note.SymbolFontBold = true;
             #endregion
@@ -358,7 +358,7 @@ namespace VIZCore3D.NET.Note
                 // 노트 글자 색상
                 style.FontColor = Color.Black;
                 // 노트 글자 크기
-                style.FontSize = Manager.NoteManager.FontSizeKind.SIZE18;
+                style.FontSize = Data.FontSizeKind.SIZE18;
                 // 노트 글자 굵게 표시 여부
                 style.FontBold = false;
 
@@ -378,7 +378,7 @@ namespace VIZCore3D.NET.Note
                 // 심볼 글자 색상
                 style.SymbolFontColor = Color.Black;
                 // 심볼 글자 크기
-                style.SymbolFontSize = Manager.NoteManager.FontSizeKind.SIZE16;
+                style.SymbolFontSize = Data.FontSizeKind.SIZE16;
                 // 심볼 글자 굵게 표시 여부
                 style.SymbolFontBold = true;
                 // 심볼 위치
