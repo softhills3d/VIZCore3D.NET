@@ -19,6 +19,10 @@ namespace VIZCore3D.NET.Search
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        public List<Data.Node> SearchResult1 { get; set; }
+        public List<Data.Node> SearchResult2 { get; set; }
+        public List<Data.Node> SearchResult3 { get; set; }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -29,7 +33,7 @@ namespace VIZCore3D.NET.Search
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer2.Panel1.Controls.Add(vizcore3d);
+            splitContainer3.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
@@ -329,6 +333,102 @@ namespace VIZCore3D.NET.Search
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+        }
+
+        
+
+        private void btnSearch1_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (String.IsNullOrEmpty(txtKeyword1.Text) == true) return;
+
+            List<VIZCore3D.NET.Data.Node> items =
+                vizcore3d.Object3D.Find.QuickSearch(
+                    new List<string>() { txtKeyword1.Text }
+                    , false     /* Join Condition */
+                    , true      /* Assembly Only */
+                    , false     /* Visible Only */
+                    , false     /* Selected Node Only */
+                    , false     /* Full Match */
+                    , false     /* Include Node Path */
+                    );
+
+            lvResult1.Items.Clear();
+            SearchResult1 = items;
+
+            lvResult1.BeginUpdate();
+            foreach (VIZCore3D.NET.Data.Node item in items)
+            {
+                ListViewItem lvi = new ListViewItem(new string[] { item.Index.ToString(), item.ID.ToString(), item.NodeName });
+                lvResult1.Items.Add(lvi);
+            }
+            lvResult1.EndUpdate();
+
+            txtKeyword2.Text = String.Empty;
+            lvResult2.Items.Clear();
+            SearchResult2 = null;
+
+            txtKeyword3.Text = String.Empty;
+            lvResult3.Items.Clear();
+            SearchResult3 = null;
+        }
+
+        private void btnSearch2_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (String.IsNullOrEmpty(txtKeyword2.Text) == true) return;
+
+            List<VIZCore3D.NET.Data.Node> items =
+                vizcore3d.Object3D.Find.QuickSearch(
+                    SearchResult1
+                    , new List<string>() { txtKeyword2.Text }
+                    , false     /* Join Condition */
+                    , true      /* Assembly Only */
+                    , false     /* Visible Only */
+                    , false     /* Full Match */
+                    );
+
+            lvResult2.Items.Clear();
+            SearchResult2 = items;
+
+            lvResult2.BeginUpdate();
+            foreach (VIZCore3D.NET.Data.Node item in items)
+            {
+                ListViewItem lvi = new ListViewItem(new string[] { item.Index.ToString(), item.ID.ToString(), item.NodeName });
+                lvResult2.Items.Add(lvi);
+            }
+            lvResult2.EndUpdate();
+
+            txtKeyword3.Text = String.Empty;
+            lvResult3.Items.Clear();
+            SearchResult3 = null;
+        }
+
+        private void btnSearch3_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (String.IsNullOrEmpty(txtKeyword3.Text) == true) return;
+
+            List<VIZCore3D.NET.Data.Node> items =
+                vizcore3d.Object3D.Find.QuickSearch(
+                    SearchResult2
+                    , new List<string>() { txtKeyword3.Text }
+                    , false     /* Join Condition */
+                    , true      /* Assembly Only */
+                    , false     /* Visible Only */
+                    , false     /* Full Match */
+                    );
+
+            lvResult3.Items.Clear();
+            SearchResult3 = items;
+
+            lvResult3.BeginUpdate();
+            foreach (VIZCore3D.NET.Data.Node item in items)
+            {
+                ListViewItem lvi = new ListViewItem(new string[] { item.Index.ToString(), item.ID.ToString(), item.NodeName });
+                lvResult3.Items.Add(lvi);
+            }
+            lvResult3.EndUpdate();
         }
     }
 }
