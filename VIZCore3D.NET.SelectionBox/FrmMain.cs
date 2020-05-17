@@ -767,8 +767,8 @@ namespace VIZCore3D.NET.SelectionBox
 
         private void btnSetCustomContextMenu_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.SINGLE_SELCTIONBOX, contextMenuSelectionBox);
-            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.MULTI_SELECTIONBOX, contextMenuSelectionBox);
+            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.SELECTIONBOX_SINGLE, contextMenuSelectionBox);
+            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.SELECTIONBOX_MULTI, contextMenuSelectionBox);
         }
 
         private void btnGetItemByScreenPosition_Click(object sender, EventArgs e)
