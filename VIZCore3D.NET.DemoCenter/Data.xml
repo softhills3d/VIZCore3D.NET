@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<DemoCenter>
+  <Item Name="Avatar Path" Project="VIZCore3D.NET.AvatarPath">
+    <YouTube>https://youtu.be/03ytY3zdNRA</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Capture Image" Project="VIZCore3D.NET.CaptureImage">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Clash Test" Project="VIZCore3D.NET.ClashTest">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Disassembly" Project="VIZCore3D.NET.Disassembly">
+    <YouTube>https://youtu.be/AVN5uk11_Gc</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Export Node" Project="VIZCore3D.NET.ExportNode">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Thumbnail V2" Project="VIZCore3D.NET.GenerateThumbnail">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Geometry Property" Project="VIZCore3D.NET.GeometryProperty">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Group" Project="VIZCore3D.NET.Group">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="WDL" Project="VIZCore3D.NET.Import.WDL">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Attribute (UDA) V2" Project="VIZCore3D.NET.ImportAttribute">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Mini View" Project="VIZCore3D.NET.MiniView">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Comparison" Project="VIZCore3D.NET.ModelComparison">
+    <YouTube>https://youtu.be/gxabhy8otTo</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Node" Project="VIZCore3D.NET.NodeDetail">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Note" Project="VIZCore3D.NET.Note">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="O(Object) SNAP" Project="VIZCore3D.NET.Osnap">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Painting" Project="VIZCore3D.NET.Painting">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="3D Dashboard" Project="VIZCore3D.NET.PlacementStatus">
+    <YouTube>https://youtu.be/8JqaJNwlk3Q</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="2D Projection" Project="VIZCore3D.NET.Projection2D">
+    <YouTube>https://youtu.be/PH0DIHkoW94</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Search" Project="VIZCore3D.NET.Search">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Divide / Group" Project="VIZCore3D.NET.SelectionBox">
+    <YouTube>https://youtu.be/Ye_LcePhs9c</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Drag &amp; Drop" Project="VIZCore3D.NET.SelectionBox.V2">
+    <YouTube>https://youtu.be/zvUw15NIeTs</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Custom Drawing" Project="VIZCore3D.NET.ShapeDrawing">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Shortest Distance" Project="VIZCore3D.NET.ShortestDistance">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="SnapShot" Project="VIZCore3D.NET.Snapshot">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Space Search" Project="VIZCore3D.NET.SpaceSearch">
+    <YouTube>https://youtu.be/0b5o5Va1S18</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Structure" Project="VIZCore3D.NET.Structure">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Structure / Thumbnail (Node)" Project="VIZCore3D.NET.StructureThumbnail">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Thumbnail V1" Project="VIZCore3D.NET.Thumbnail">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Lightweight" Project="VIZCore3D.NET.ToVIZ">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Attribute (UDA) V1" Project="VIZCore3D.NET.UDA">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="UserView" Project="VIZCore3D.NET.UserView">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Objects in Zone" Project="VIZCore3D.NET.ZoneObjects">
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+  <Item Name="Block Arrangement" Project="VIZCore3D.NET.BlockArrangement">
+    <YouTube>https://youtu.be/R9nommKn1wg</YouTube>
+    <Contents><![CDATA[ ... ]]></Contents>
+  </Item>
+</DemoCenter>

@@ -99,7 +99,10 @@
             treeNode37,
             treeNode38});
             System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Custom Drawing");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Block Arrangement");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
+            treeNode41});
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
             treeNode10,
             treeNode20,
             treeNode25,
@@ -109,16 +112,39 @@
             treeNode34,
             treeNode36,
             treeNode39,
-            treeNode40});
+            treeNode40,
+            treeNode42});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tvHierarchy = new System.Windows.Forms.TreeView();
             this.imgTreeNode = new System.Windows.Forms.ImageList(this.components);
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pbPreview = new System.Windows.Forms.PictureBox();
+            this.btnGitHub = new System.Windows.Forms.Button();
+            this.btnYouTube = new System.Windows.Forms.Button();
+            this.txtContents = new System.Windows.Forms.TextBox();
+            this.btnRun = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -131,7 +157,11 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(1136, 602);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(1509, 809);
             this.splitContainer1.SplitterDistance = 378;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -141,9 +171,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.tvHierarchy);
+            this.groupBox1.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 578);
+            this.groupBox1.Size = new System.Drawing.Size(353, 785);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Hierarchy";
@@ -154,94 +185,131 @@
             this.tvHierarchy.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tvHierarchy.ImageIndex = 0;
             this.tvHierarchy.ImageList = this.imgTreeNode;
-            this.tvHierarchy.Location = new System.Drawing.Point(3, 17);
+            this.tvHierarchy.Location = new System.Drawing.Point(3, 22);
             this.tvHierarchy.Name = "tvHierarchy";
             treeNode1.Name = "Lightweight";
+            treeNode1.Tag = "VIZCore3D.NET.ToVIZ";
             treeNode1.Text = "Lightweight";
             treeNode2.Name = "Export Node";
+            treeNode2.Tag = "VIZCore3D.NET.ExportNode";
             treeNode2.Text = "Export Node";
             treeNode3.Name = "Attribute (UDA) V1";
+            treeNode3.Tag = "VIZCore3D.NET.UDA";
             treeNode3.Text = "Attribute (UDA) V1";
             treeNode4.Name = "Attribute (UDA) V2";
+            treeNode4.Tag = "VIZCore3D.NET.ImportAttribute";
             treeNode4.Text = "Attribute (UDA) V2";
             treeNode5.Name = "Comparison";
+            treeNode5.Tag = "VIZCore3D.NET.ModelComparison";
             treeNode5.Text = "Comparison";
             treeNode6.Name = "Structure";
+            treeNode6.Tag = "VIZCore3D.NET.Structure";
             treeNode6.Text = "Structure";
             treeNode7.Name = "Structure / Thumbnail (Node)";
+            treeNode7.Tag = "VIZCore3D.NET.StructureThumbnail";
             treeNode7.Text = "Structure / Thumbnail (Node)";
             treeNode8.Name = "Thumbnail V1";
+            treeNode8.Tag = "VIZCore3D.NET.Thumbnail";
             treeNode8.Text = "Thumbnail V1";
             treeNode9.Name = "Thumbnail V2";
+            treeNode9.Tag = "VIZCore3D.NET.GenerateThumbnail";
             treeNode9.Text = "Thumbnail V2";
             treeNode10.Name = "Model";
             treeNode10.Text = "Model";
             treeNode11.Name = "Node";
+            treeNode11.Tag = "VIZCore3D.NET.NodeDetail";
             treeNode11.Text = "Node";
             treeNode12.Name = "Disassembly";
+            treeNode12.Tag = "VIZCore3D.NET.Disassembly";
             treeNode12.Text = "Disassembly";
             treeNode13.Name = "Geometry Property";
+            treeNode13.Tag = "VIZCore3D.NET.GeometryProperty";
             treeNode13.Text = "Geometry Property";
             treeNode14.Name = "Group";
+            treeNode14.Tag = "VIZCore3D.NET.Group";
             treeNode14.Text = "Group";
             treeNode15.Name = "O(Object) SNAP";
+            treeNode15.Tag = "VIZCore3D.NET.Osnap";
             treeNode15.Text = "O(Object) SNAP";
             treeNode16.Name = "Painting";
+            treeNode16.Tag = "VIZCore3D.NET.Painting";
             treeNode16.Text = "Painting";
             treeNode17.Name = "Search";
+            treeNode17.Tag = "VIZCore3D.NET.Search";
             treeNode17.Text = "Search";
             treeNode18.Name = "Space Search";
+            treeNode18.Tag = "VIZCore3D.NET.SpaceSearch";
             treeNode18.Text = "Space Search";
             treeNode19.Name = "Objects in Zone";
+            treeNode19.Tag = "VIZCore3D.NET.ZoneObjects";
             treeNode19.Text = "Objects in Zone";
             treeNode20.Name = "Object3D";
             treeNode20.Text = "Object3D";
             treeNode21.Name = "Capture Image";
+            treeNode21.Tag = "VIZCore3D.NET.CaptureImage";
             treeNode21.Text = "Capture Image";
             treeNode22.Name = "Mini View";
+            treeNode22.Tag = "VIZCore3D.NET.MiniView";
             treeNode22.Text = "Mini View";
             treeNode23.Name = "2D Projection";
+            treeNode23.Tag = "VIZCore3D.NET.Projection2D";
             treeNode23.Text = "2D Projection";
             treeNode24.Name = "Shortest Distance";
+            treeNode24.Tag = "VIZCore3D.NET.ShortestDistance";
             treeNode24.Text = "Shortest Distance";
             treeNode25.Name = "View";
             treeNode25.Text = "View";
             treeNode26.Name = "Note";
+            treeNode26.Tag = "VIZCore3D.NET.Note";
             treeNode26.Text = "Note";
             treeNode27.Name = "SnapShot";
+            treeNode27.Tag = "VIZCore3D.NET.Snapshot";
             treeNode27.Text = "SnapShot";
             treeNode28.Name = "UserView";
+            treeNode28.Tag = "VIZCore3D.NET.UserView";
             treeNode28.Text = "UserView";
             treeNode29.Name = "Review";
             treeNode29.Text = "Review";
             treeNode30.Name = "Clash Test";
+            treeNode30.Tag = "VIZCore3D.NET.ClashTest";
             treeNode30.Text = "Clash Test";
             treeNode31.Name = "Avatar Path";
+            treeNode31.Tag = "VIZCore3D.NET.AvatarPath";
             treeNode31.Text = "Avatar Path";
             treeNode32.Name = "Walkthrough";
             treeNode32.Text = "Walkthrough";
             treeNode33.Name = "WDL";
+            treeNode33.Tag = "VIZCore3D.NET.Import.WDL";
             treeNode33.Text = "WDL";
             treeNode34.Name = "Import External Data";
             treeNode34.Text = "Import External Data";
             treeNode35.Name = "3D Dashboard";
+            treeNode35.Tag = "VIZCore3D.NET.PlacementStatus";
             treeNode35.Text = "3D Dashboard";
             treeNode36.Name = "Real-time shape creation";
             treeNode36.Text = "Real-time shape creation";
             treeNode37.Name = "Divide / Group";
+            treeNode37.Tag = "VIZCore3D.NET.SelectionBox";
             treeNode37.Text = "Divide / Group";
             treeNode38.Name = "Drag & Drop";
+            treeNode38.Tag = "VIZCore3D.NET.SelectionBox.V2";
             treeNode38.Text = "Drag & Drop";
             treeNode39.Name = "Selection Box";
             treeNode39.Text = "Selection Box";
             treeNode40.Name = "Custom Drawing";
+            treeNode40.Tag = "VIZCore3D.NET.ShapeDrawing";
             treeNode40.Text = "Custom Drawing";
-            treeNode41.Name = "VIZCore3D.NET";
-            treeNode41.Text = "VIZCore3D.NET";
+            treeNode41.Name = "Block Arrangement";
+            treeNode41.Tag = "VIZCore3D.NET.BlockArrangement";
+            treeNode41.Text = "Block Arrangement";
+            treeNode42.Name = "Etc.";
+            treeNode42.Text = "Etc.";
+            treeNode43.Name = "VIZCore3D.NET";
+            treeNode43.Text = "VIZCore3D.NET";
             this.tvHierarchy.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode41});
+            treeNode43});
             this.tvHierarchy.SelectedImageIndex = 0;
-            this.tvHierarchy.Size = new System.Drawing.Size(347, 558);
+            this.tvHierarchy.Size = new System.Drawing.Size(347, 760);
             this.tvHierarchy.TabIndex = 0;
             // 
             // imgTreeNode
@@ -250,20 +318,183 @@
             this.imgTreeNode.TransparentColor = System.Drawing.Color.Transparent;
             this.imgTreeNode.Images.SetKeyName(0, "VIZZARD_x16.png");
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.splitContainer3);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
+            this.splitContainer2.Size = new System.Drawing.Size(1127, 809);
+            this.splitContainer2.SplitterDistance = 374;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.groupBox2);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.groupBox3);
+            this.splitContainer3.Size = new System.Drawing.Size(1127, 374);
+            this.splitContainer3.SplitterDistance = 515;
+            this.splitContainer3.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnRun);
+            this.groupBox2.Controls.Add(this.btnYouTube);
+            this.groupBox2.Controls.Add(this.btnGitHub);
+            this.groupBox2.Controls.Add(this.pbPreview);
+            this.groupBox2.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(8, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(499, 350);
+            this.groupBox2.TabIndex = 0;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Preview";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.txtContents);
+            this.groupBox3.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Location = new System.Drawing.Point(6, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(593, 350);
+            this.groupBox3.TabIndex = 0;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Detail";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(8, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1110, 416);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "API";
+            // 
+            // pbPreview
+            // 
+            this.pbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbPreview.Location = new System.Drawing.Point(6, 71);
+            this.pbPreview.Name = "pbPreview";
+            this.pbPreview.Size = new System.Drawing.Size(487, 273);
+            this.pbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPreview.TabIndex = 0;
+            this.pbPreview.TabStop = false;
+            // 
+            // btnGitHub
+            // 
+            this.btnGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGitHub.Enabled = false;
+            this.btnGitHub.Image = ((System.Drawing.Image)(resources.GetObject("btnGitHub.Image")));
+            this.btnGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGitHub.Location = new System.Drawing.Point(273, 25);
+            this.btnGitHub.Name = "btnGitHub";
+            this.btnGitHub.Size = new System.Drawing.Size(103, 39);
+            this.btnGitHub.TabIndex = 1;
+            this.btnGitHub.Text = "GitHub";
+            this.btnGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGitHub.UseVisualStyleBackColor = true;
+            this.btnGitHub.Click += new System.EventHandler(this.btnGitHub_Click);
+            // 
+            // btnYouTube
+            // 
+            this.btnYouTube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnYouTube.Enabled = false;
+            this.btnYouTube.Image = ((System.Drawing.Image)(resources.GetObject("btnYouTube.Image")));
+            this.btnYouTube.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnYouTube.Location = new System.Drawing.Point(382, 26);
+            this.btnYouTube.Name = "btnYouTube";
+            this.btnYouTube.Size = new System.Drawing.Size(111, 38);
+            this.btnYouTube.TabIndex = 2;
+            this.btnYouTube.Text = "YouTube";
+            this.btnYouTube.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYouTube.UseVisualStyleBackColor = true;
+            this.btnYouTube.Click += new System.EventHandler(this.btnYouTube_Click);
+            // 
+            // txtContents
+            // 
+            this.txtContents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtContents.Location = new System.Drawing.Point(3, 22);
+            this.txtContents.Multiline = true;
+            this.txtContents.Name = "txtContents";
+            this.txtContents.ReadOnly = true;
+            this.txtContents.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtContents.Size = new System.Drawing.Size(587, 325);
+            this.txtContents.TabIndex = 0;
+            // 
+            // btnRun
+            // 
+            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRun.Enabled = false;
+            this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
+            this.btnRun.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRun.Location = new System.Drawing.Point(190, 26);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(77, 39);
+            this.btnRun.TabIndex = 3;
+            this.btnRun.Text = "Run";
+            this.btnRun.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1136, 602);
+            this.ClientSize = new System.Drawing.Size(1509, 809);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VIZCore3D.NET.DemoCenter";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -274,6 +505,16 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TreeView tvHierarchy;
         private System.Windows.Forms.ImageList imgTreeNode;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.PictureBox pbPreview;
+        private System.Windows.Forms.Button btnYouTube;
+        private System.Windows.Forms.Button btnGitHub;
+        private System.Windows.Forms.TextBox txtContents;
+        private System.Windows.Forms.Button btnRun;
     }
 }
 
