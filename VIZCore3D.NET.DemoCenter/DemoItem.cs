@@ -71,7 +71,7 @@ namespace VIZCore3D.NET.DemoCenter
 
             string[] files = System.IO.Directory.GetFiles(path, "*.cs", System.IO.SearchOption.AllDirectories);
 
-            List<string> api = new List<string>();
+            Dictionary<string, string> api = new Dictionary<string, string>();
 
             foreach (string item in files)
             {
@@ -83,13 +83,15 @@ namespace VIZCore3D.NET.DemoCenter
                     if (code.Contains("vizcore3d.") == false) continue;
                     if (code.Substring(0, 2) == "//") continue;
 
-                    api.Add(code);
+                    if (api.ContainsKey(code) == false)
+                        api.Add(code, code);
                 }
                 sr.Close();
             }
 
-            api.Sort();
-            return api;
+            List<string> keys = api.Keys.ToList();
+            keys.Sort();
+            return keys;
         }
     }
 }
