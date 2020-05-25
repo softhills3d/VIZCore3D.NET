@@ -48,6 +48,19 @@ namespace VIZCore3D.NET.DemoCenter
                 return String.Empty;
         }
 
+        public string GetProjectPath(string basePath)
+        {
+            System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);
+            System.IO.DirectoryInfo root = info.Parent.Parent.Parent;
+
+            string path = string.Format("{0}\\{1}", root.FullName, ProjectCode);
+
+            if (System.IO.Directory.Exists(path) == true)
+                return path;
+            else
+                return String.Empty;
+        }
+
         public List<string> GetApi(string basePath)
         {
             System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);

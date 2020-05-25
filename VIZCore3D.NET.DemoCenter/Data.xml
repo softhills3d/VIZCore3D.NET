@@ -2,110 +2,463 @@
 <DemoCenter>
   <Item Name="Avatar Path" Project="VIZCore3D.NET.AvatarPath">
     <YouTube>https://youtu.be/03ytY3zdNRA</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.AvatarPath
+      
+Features
+- 아바타 이동 경로 관리
+- 아바타 이동 정점 관리
+- 이동경로에 따른 자동 재생
+- 복수 경로 관리
+- 선속도 / 각속도 설정
+    ]]></Contents>
   </Item>
   <Item Name="Capture Image" Project="VIZCore3D.NET.CaptureImage">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.CaptureImage
+      
+Features
+- 현재 뷰 화면 캡처
+- 캡처된 이미지 목록 관리
+- 지정된 경로에 일괄 저장
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Clash Test" Project="VIZCore3D.NET.ClashTest">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ClashTest
+      
+Features
+- 검사유형 : 모델, 장비, 그룹, 이동
+          - 모델 검사 : 지정된 모델 내부의 부재간 간섭 검사
+          - 장비 검사 : 지정된 모델과 이외의 모델간 간섭 검사
+          - 그룹 검사 : 지정된 A, B 그룹간 간섭 검사
+          - 이동 검사 : 고정된 그룹과 이동되는 그룹간의 간섭 검사
+- 근접 허용 범위 및 접촉 허용 오차
+- 간섭 제외 끝 레벨
+- 이동 경로 등록 및 관리
+- 부재 단위 혹은 어셈블리 단위 결과 조회
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Disassembly" Project="VIZCore3D.NET.Disassembly">
     <YouTube>https://youtu.be/AVN5uk11_Gc</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Disassembly
+      
+Features
+- 모델 분해 / 조립
+- 분해 단위 설정을 위한 그룹 지정
+- 자동분해 / 선형 분해 / 구 분해
+- 사용자 지정한 거리 만큼 선형 / 구 분해
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Export Node" Project="VIZCore3D.NET.ExportNode">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ExportNode
+      
+Features
+- 모델 내보내기
+- 내보내기 시 모델 트리를 어셈블리 단위 혹은 전체를 하나로 병합
+- 내보내기 대상 : 전체 혹은 선택된 노드
+- 내보내기 시, 모델 트리의 노드 단위로 내보내기
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Thumbnail V2" Project="VIZCore3D.NET.GenerateThumbnail">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.GenerateThumbnail
+      
+Features
+- 선택된 모델의 미리보기 이미지 실시간 생성
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Geometry Property" Project="VIZCore3D.NET.GeometryProperty">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.GeometryProperty
+      
+Features
+- Geometry 기반 Property 정보 조회
+- 개체 크기
+- 중심점
+- 최대점
+- 최소점
+- 부피
+- 중량
+- 질량
+- 질량 중심
+- 표면적
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Group" Project="VIZCore3D.NET.Group">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Group
+      
+Features
+- 조회중인 모델의 그룹 관리
+- 그룹 생성 단위 : 선택된 모델, 검색, 속성(Key, Value) 기반 검색
+- 생성된 그룹 단위 다양한 동작 지원 : 선택, 색상 변경, 이동, 회전, 조회 등
+    ]]>
+    </Contents>
   </Item>
   <Item Name="WDL" Project="VIZCore3D.NET.Import.WDL">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Import.WDL
+      
+Features
+- 용접장 산출물(*.WDL) 파일 조회
+- 데이터 Hierarchy 가시화
+- 물량 조회
+- 용접 라인 모델 생성 및 가시화
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Attribute (UDA) V2" Project="VIZCore3D.NET.ImportAttribute">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ImportAttribute
+      
+Features
+- 모델 속성 정보 Import 예제
+- 모델(rev, rvm, rvt) : 속성(att) 파일 1:1 매핑
+- 모델(rev, rvm, rvt, viz) : 속성(xml) 파일 1:1 매핑
+- 모델(rev, rvm, rvt, viz) : 속성(att) 파일 1:N 매핑
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Mini View" Project="VIZCore3D.NET.MiniView">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MiniView
+      
+Features
+- 미니 뷰 기능
+- 선택된 모델 혹은 지정된 모델을 새로운 별도 다이얼로그로 조회
+- 미뉴 뷰 동작
+  - 확대/축소
+  - 회전(Rotate)
+  - 이동(Pan)
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Comparison" Project="VIZCore3D.NET.ModelComparison">
     <YouTube>https://youtu.be/gxabhy8otTo</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ModelComparison
+      
+Features
+- 2개의 모델을 비교
+- 비교 대상
+  - 모델 트리 : 구조적 비교
+  - 모델 위치 : 공간적 비교
+  - 모델 형상 : 형상 정보 비교
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Node" Project="VIZCore3D.NET.NodeDetail">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.NodeDetail
+      
+Features
+- 지정된 노드를 기반으로 조회 가능한 정보 및 동작 예시
+- 정보 조회
+  - Node Status
+  - Geometry Property
+  - UDA (User Define Attribute)
+- 노드 기반 동작
+  - 색상 / 투명도
+  - 이동 / 회전
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Note" Project="VIZCore3D.NET.Note">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Note
+      
+Features
+- 2D/3D/Surface Node 예제
+- 노트 Style
+  - 배경색 및 투명
+  - 화살표 색, 두께
+  - 글자 색, 크기
+  - 지시선 색, 두께
+  - 기타
+- 원형 Symbol
+  - 배경색
+  - 글자 색 및 크기
+  - 위치
+  - 심볼 문자열
+  - 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="O(Object) SNAP" Project="VIZCore3D.NET.Osnap">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Osnap
+      
+Features
+- Osnap(Object Snap) 가시화 및 정보 활용
+- 지정된 모델 혹은 선택된 모델의 Osanp 가시화
+- Surface, Point, Line, Circle 선택
+- 선택된 항목의 정보 반환(이벤트 : OnOsnapPickingItem)
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Painting" Project="VIZCore3D.NET.Painting">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Painting
+      
+Features
+- 모델 색상 변경을 위한 Utility
+- 사전에 선택해 놓은 색상으로 모델 선택 시, 자동 변경
+- 팔레트의 색상으로 모델 색상 변경
+    ]]>
+    </Contents>
   </Item>
   <Item Name="3D Dashboard" Project="VIZCore3D.NET.PlacementStatus">
     <YouTube>https://youtu.be/8JqaJNwlk3Q</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.PlacementStatus
+      
+Features
+- 3D 기반 블록 배치 현황 예제
+- 실시간 Template 형상 생성
+- 3D 블록 Top/ISO 배치
+- 3D 공간에 문자열 그리기
+    ]]>
+    </Contents>
   </Item>
   <Item Name="2D Projection" Project="VIZCore3D.NET.Projection2D">
     <YouTube>https://youtu.be/PH0DIHkoW94</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Projection2D
+      
+Features
+- 3D 형상의 투영 정보 생성
+- 최외곽 정보를 생성
+- 절대좌표 혹은 상대좌표 형식으로 생성
+- Legacy System 연동을 위한 좌표 데이터 내보내기
+- Scale 및 좌표보정 옵션 제공
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Search" Project="VIZCore3D.NET.Search">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Search
+      
+Features
+- 모델 노드 이름 기반으로 검색
+- 검색어 내 * (Asterisk) 지원
+- 복수 검색어 지원 : And, Or
+- 검색 대상 : 전체 혹은 선택된 모델 이하
+- 결과 내 재검색 지원
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Divide / Group" Project="VIZCore3D.NET.SelectionBox">
     <YouTube>https://youtu.be/Ye_LcePhs9c</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SelectionBox
+      
+Features
+- 선택상자(SelectionBox) 생성 및 관리
+- 스타일 지원
+  - Color : Face, Line, Font
+  - Font 크기
+  - Highlight Color : Face, Line)
+  - 투명도 지원
+- 크기 변경 컨트롤의 축별 조회/숨기기 지원
+- 지정된 선택상자 화면 중심 이동
+- 선택상자의 Custom Context Menu 할당
+- Label 조회/숨기기
+- 선택상자 분할/병합
+- 분할된 선택상자 크기 변경 시, 나머지 상자의 자동 크기 변경
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Drag &amp; Drop" Project="VIZCore3D.NET.SelectionBox.V2">
     <YouTube>https://youtu.be/zvUw15NIeTs</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SelectionBox.V2
+      
+Features
+- 선택상자 Drag & Drop 이벤트 지원
+- Hit Test를 통한 선택상자 조회
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Custom Drawing" Project="VIZCore3D.NET.ShapeDrawing">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ShapeDrawing
+      
+Features
+- 3D 뷰 상에 실시간 그리기 기능 예제
+- 그리기 유형 : Line, Cube, Cylinder, Vertex
+- 그리기 항목의 두께, 크기 지정
+- 그리기 항목 색상 설정
+- 그리기 항목 그룹 관리
+  - 그룹 별 보이기/숨기기
+  - 그룹 단위 삭제
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Shortest Distance" Project="VIZCore3D.NET.ShortestDistance">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ShortestDistance
+      
+Features
+- 3D 모델의 Osanp 조회
+- Osanp의 Surface, Point 선택
+- 선택된 Osnap의 축방향별 최단거리 부재 탐색
+  - X(+/-)
+  - Y(+/-)
+  - Z(+/-)
+- 탐색 옵션 : 보이는 모델만, 불투명한 모델만
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="SnapShot" Project="VIZCore3D.NET.Snapshot">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Snapshot
+      
+Features
+- 스냅샷 생성 및 관리
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Space Search" Project="VIZCore3D.NET.SpaceSearch">
     <YouTube>https://youtu.be/0b5o5Va1S18</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SpaceSearch
+      
+Features
+- 지정된 모델 파일 기반 공간검색
+- 중심점 및 거리를 통한 3차원 공간 검색
+- 검색 결과 조회
+  - 모델 단위
+  - 검색 결과 노드 단위
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Structure" Project="VIZCore3D.NET.Structure">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Structure
+      
+Features
+- 모델 파일이 로딩되지 않는 상태에서 모델 파일의 스트럭처 조회
+- 부모/자식 관계 구분
+- 특정 모델 검색 기능 지원
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Structure / Thumbnail (Node)" Project="VIZCore3D.NET.StructureThumbnail">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.StructureThumbnail
+      
+Features
+- 모델 파일이 로딩되지 않는 상태에서 모델 파일의 스트럭처 조회
+- 스트럭처 구조 상 해당 노드별 미리보기 이미지 실시간 생성 및 조회
+- 부모/자식 관계 구분
+- 특정 모델 검색 기능 지원
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Thumbnail V1" Project="VIZCore3D.NET.Thumbnail">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Thumbnail
+      
+Features
+- 모델 파일(VIZ)에 포함되어 있는 미리보기 이미지 조회
+- 미리보기 이미지 외 공간정보(BoundBox) 조회
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Lightweight" Project="VIZCore3D.NET.ToVIZ">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ToVIZ
+      
+Features
+- 모델 저장 기능
+  - 1. 모델 열기 및 저장
+  - 2. 모델 바로 저장
+  - 3. 외형 검색 결과 저장
+  - 4. 간소화 모델 저장
+- 입력 대상
+  - REV, RVM, RVT
+  - DGN
+  - VIZ
+- 모서리 데이터 포함 여부 지정 가능
+- 모델 파일 버전 설정 가능
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Attribute (UDA) V1" Project="VIZCore3D.NET.UDA">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.UDA
+      
+Features
+- 모델 파일의 UDA(User Define Attribute) 조회
+    ]]>
+    </Contents>
   </Item>
   <Item Name="UserView" Project="VIZCore3D.NET.UserView">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.UserView
+      
+Features
+- 사용자 뷰(User View: 관측점) 저장 및 삭제
+- 폴더 구조를 통한 구조적 관리
+- 내보내기/불러오기 지원
+- 생성된 사용자 뷰를 선택하여 이전 관측점으로 이동
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Objects in Zone" Project="VIZCore3D.NET.ZoneObjects">
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ZoneObjects
+      
+Features
+- 특정 구역 내 모델 정보 조회
+- 지원되는 구역
+  - 단면상자
+  - 선택상자
+  - BoundBox (Min. ~ Max.)
+- 검색 옵션
+  - 포함 모델
+  - 걸쳐 있는 모델 포함
+  - 걸쳐 있는 모델 만
+- 기타
+    ]]>
+    </Contents>
   </Item>
   <Item Name="Block Arrangement" Project="VIZCore3D.NET.BlockArrangement">
     <YouTube>https://youtu.be/R9nommKn1wg</YouTube>
-    <Contents><![CDATA[ ... ]]></Contents>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.BlockArrangement
+      
+Features
+- 블록 배치 공간 모델 가시화
+- 작업중인 블록 형상 조회
+- 가시화된 형상의 Label 조회
+- 유형별 형상 Highlight
+  - FACTORY
+  - ZONE
+  - BLOCK
+- 공정 진척 상태에 따른 색상 기반 Highlight
+- 마우스를 통한 BLOCK 이동/회전
+- BLOCK 실시간 간섭 체크 및 결과 조회
+- 기타
+    ]]>
+    </Contents>
   </Item>
 </DemoCenter>

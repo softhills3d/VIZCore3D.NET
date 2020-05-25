@@ -99,6 +99,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Media_32x32.png" />
+    <Content Include="Open2_32x32.png" />
     <Content Include="Preview\VIZCore3D.NET.API.Diagram.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

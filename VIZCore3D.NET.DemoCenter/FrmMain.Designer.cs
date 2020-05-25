@@ -129,9 +129,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtContents = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lbAPI = new System.Windows.Forms.Label();
             this.lvAPI = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lbAPI = new System.Windows.Forms.Label();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -364,6 +365,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnOpenFolder);
             this.groupBox2.Controls.Add(this.btnRun);
             this.groupBox2.Controls.Add(this.btnYouTube);
             this.groupBox2.Controls.Add(this.btnGitHub);
@@ -382,7 +384,7 @@
             this.btnRun.Enabled = false;
             this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
             this.btnRun.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRun.Location = new System.Drawing.Point(190, 24);
+            this.btnRun.Location = new System.Drawing.Point(190, 21);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(77, 39);
             this.btnRun.TabIndex = 3;
@@ -397,7 +399,7 @@
             this.btnYouTube.Enabled = false;
             this.btnYouTube.Image = ((System.Drawing.Image)(resources.GetObject("btnYouTube.Image")));
             this.btnYouTube.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYouTube.Location = new System.Drawing.Point(382, 24);
+            this.btnYouTube.Location = new System.Drawing.Point(382, 21);
             this.btnYouTube.Name = "btnYouTube";
             this.btnYouTube.Size = new System.Drawing.Size(111, 39);
             this.btnYouTube.TabIndex = 2;
@@ -412,7 +414,7 @@
             this.btnGitHub.Enabled = false;
             this.btnGitHub.Image = ((System.Drawing.Image)(resources.GetObject("btnGitHub.Image")));
             this.btnGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGitHub.Location = new System.Drawing.Point(273, 24);
+            this.btnGitHub.Location = new System.Drawing.Point(273, 21);
             this.btnGitHub.Name = "btnGitHub";
             this.btnGitHub.Size = new System.Drawing.Size(103, 39);
             this.btnGitHub.TabIndex = 1;
@@ -426,6 +428,8 @@
             this.pbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbPreview.Image = ((System.Drawing.Image)(resources.GetObject("pbPreview.Image")));
+            this.pbPreview.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbPreview.InitialImage")));
             this.pbPreview.Location = new System.Drawing.Point(6, 71);
             this.pbPreview.Name = "pbPreview";
             this.pbPreview.Size = new System.Drawing.Size(487, 273);
@@ -473,6 +477,15 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "API";
             // 
+            // lbAPI
+            // 
+            this.lbAPI.AutoSize = true;
+            this.lbAPI.Location = new System.Drawing.Point(47, 21);
+            this.lbAPI.Name = "lbAPI";
+            this.lbAPI.Size = new System.Drawing.Size(117, 19);
+            this.lbAPI.TabIndex = 1;
+            this.lbAPI.Text = "Items = 0 EA";
+            // 
             // lvAPI
             // 
             this.lvAPI.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -495,14 +508,20 @@
             this.columnHeader1.Text = "Code";
             this.columnHeader1.Width = 800;
             // 
-            // lbAPI
+            // btnOpenFolder
             // 
-            this.lbAPI.AutoSize = true;
-            this.lbAPI.Location = new System.Drawing.Point(47, 21);
-            this.lbAPI.Name = "lbAPI";
-            this.lbAPI.Size = new System.Drawing.Size(117, 19);
-            this.lbAPI.TabIndex = 1;
-            this.lbAPI.Text = "Items = 0 EA";
+            this.btnOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFolder.Enabled = false;
+            this.btnOpenFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFolder.Image")));
+            this.btnOpenFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOpenFolder.Location = new System.Drawing.Point(95, 21);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(89, 39);
+            this.btnOpenFolder.TabIndex = 4;
+            this.btnOpenFolder.Text = "Open";
+            this.btnOpenFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // FrmMain
             // 
@@ -557,6 +576,7 @@
         private System.Windows.Forms.ListView lvAPI;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.Label lbAPI;
+        private System.Windows.Forms.Button btnOpenFolder;
     }
 }
 

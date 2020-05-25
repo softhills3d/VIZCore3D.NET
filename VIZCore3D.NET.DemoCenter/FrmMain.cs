@@ -111,10 +111,13 @@ namespace VIZCore3D.NET.DemoCenter
             SelectedItem = info;
 
             pbPreview.ImageLocation = info.GetPreviewImagePath(Application.StartupPath);
+            btnOpenFolder.Enabled = !String.IsNullOrEmpty(info.GetProjectPath(Application.StartupPath));
             btnRun.Enabled = !String.IsNullOrEmpty(info.GetApplicationPath(Application.StartupPath));
             btnYouTube.Enabled = !String.IsNullOrEmpty(info.YouTube);
             btnGitHub.Enabled = !String.IsNullOrEmpty(info.GitHub);
-            txtContents.Text = info.Description;
+            string desc = info.Description;
+            desc = desc.Replace("\n", "\r\n");
+            txtContents.Text = desc;
 
             List<string> api = info.GetApi(Application.StartupPath);
             lbAPI.Text = string.Format("Items = {0:N0} EA", api.Count);
@@ -144,6 +147,13 @@ namespace VIZCore3D.NET.DemoCenter
         {
             if (SelectedItem == null) return;
             System.Diagnostics.Process.Start("CHROME.EXE", SelectedItem.YouTube);
+        }
+
+        private void btnOpenFolder_Click(object sender, EventArgs e)
+        {
+            if (SelectedItem == null) return;
+            string path = SelectedItem.GetProjectPath(Application.StartupPath);
+            System.Diagnostics.Process.Start("explorer.exe", string.Format("/select,\"{0}\"", path));
         }
     }
 }
