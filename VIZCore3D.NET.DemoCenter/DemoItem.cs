@@ -66,6 +66,9 @@ namespace VIZCore3D.NET.DemoCenter
             System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);
             System.IO.DirectoryInfo root = info.Parent.Parent.Parent;
             string path = string.Format("{0}\\{1}", root.FullName, ProjectCode);
+            string keyword = "vizcore3d.";
+            if (ProjectCode == "VIZCore3D.NET.ModelComparison")
+                keyword = "vizcore";
 
             if (System.IO.Directory.Exists(path) == false) return new List<string>();
 
@@ -80,7 +83,7 @@ namespace VIZCore3D.NET.DemoCenter
                 {
                     string code = sr.ReadLine().TrimStart();
 
-                    if (code.Contains("vizcore3d.") == false) continue;
+                    if (code.Contains(keyword) == false) continue;
                     if (code.Substring(0, 2) == "//") continue;
 
                     if (api.ContainsKey(code) == false)
