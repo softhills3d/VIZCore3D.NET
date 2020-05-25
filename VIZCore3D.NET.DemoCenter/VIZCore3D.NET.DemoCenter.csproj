@@ -96,6 +96,7 @@
   <ItemGroup>
     <Content Include="Data.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Media_32x32.png" />
     <Content Include="Preview\VIZCore3D.NET.API.Diagram.png">
@@ -107,6 +108,12 @@
     <Content Include="Preview\VIZCore3D.NET.BlockArrangement.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.CaptureImage.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.ClashTest.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.Disassembly.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -116,16 +123,34 @@
     <Content Include="Preview\VIZCore3D.NET.GenerateThumbnail.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.GeometryProperty.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.Group.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.Import.WDL.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Preview\VIZCore3D.NET.ImportAttribute.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.MiniView.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.ModelComparison.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Preview\VIZCore3D.NET.NodeDetail.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.Note.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.Osnap.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.Painting.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Preview\VIZCore3D.NET.PlacementStatus.png">
@@ -137,10 +162,22 @@
     <Content Include="Preview\VIZCore3D.NET.Projection2D.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.Search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.SelectionBox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Preview\VIZCore3D.NET.SelectionBox.V2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.ShapeDrawing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.ShortestDistance.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.Snapshot.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Preview\VIZCore3D.NET.SpaceSearch.png">
@@ -159,6 +196,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Preview\VIZCore3D.NET.UDA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.UserView.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Preview\VIZCore3D.NET.ZoneObjects.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="VIZZARD.ico" />
