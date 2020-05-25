@@ -115,6 +115,17 @@ namespace VIZCore3D.NET.DemoCenter
             btnYouTube.Enabled = !String.IsNullOrEmpty(info.YouTube);
             btnGitHub.Enabled = !String.IsNullOrEmpty(info.GitHub);
             txtContents.Text = info.Description;
+
+            List<string> api = info.GetApi(Application.StartupPath);
+            lbAPI.Text = string.Format("Items = {0:N0} EA", api.Count);
+            lvAPI.BeginUpdate();
+            lvAPI.Items.Clear();
+            foreach (string item in api)
+            {
+                ListViewItem lvi = new ListViewItem(new string[] { item });
+                lvAPI.Items.Add(lvi);
+            }
+            lvAPI.EndUpdate();
         }
 
         private void btnRun_Click(object sender, EventArgs e)

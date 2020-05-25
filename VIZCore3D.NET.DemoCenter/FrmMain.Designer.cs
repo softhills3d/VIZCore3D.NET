@@ -122,13 +122,16 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.pbPreview = new System.Windows.Forms.PictureBox();
-            this.btnGitHub = new System.Windows.Forms.Button();
-            this.btnYouTube = new System.Windows.Forms.Button();
-            this.txtContents = new System.Windows.Forms.TextBox();
             this.btnRun = new System.Windows.Forms.Button();
+            this.btnYouTube = new System.Windows.Forms.Button();
+            this.btnGitHub = new System.Windows.Forms.Button();
+            this.pbPreview = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtContents = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lvAPI = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lbAPI = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -143,8 +146,9 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -372,6 +376,63 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preview";
             // 
+            // btnRun
+            // 
+            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRun.Enabled = false;
+            this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
+            this.btnRun.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRun.Location = new System.Drawing.Point(190, 24);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(77, 39);
+            this.btnRun.TabIndex = 3;
+            this.btnRun.Text = "Run";
+            this.btnRun.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // btnYouTube
+            // 
+            this.btnYouTube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnYouTube.Enabled = false;
+            this.btnYouTube.Image = ((System.Drawing.Image)(resources.GetObject("btnYouTube.Image")));
+            this.btnYouTube.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnYouTube.Location = new System.Drawing.Point(382, 24);
+            this.btnYouTube.Name = "btnYouTube";
+            this.btnYouTube.Size = new System.Drawing.Size(111, 39);
+            this.btnYouTube.TabIndex = 2;
+            this.btnYouTube.Text = "YouTube";
+            this.btnYouTube.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnYouTube.UseVisualStyleBackColor = true;
+            this.btnYouTube.Click += new System.EventHandler(this.btnYouTube_Click);
+            // 
+            // btnGitHub
+            // 
+            this.btnGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGitHub.Enabled = false;
+            this.btnGitHub.Image = ((System.Drawing.Image)(resources.GetObject("btnGitHub.Image")));
+            this.btnGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGitHub.Location = new System.Drawing.Point(273, 24);
+            this.btnGitHub.Name = "btnGitHub";
+            this.btnGitHub.Size = new System.Drawing.Size(103, 39);
+            this.btnGitHub.TabIndex = 1;
+            this.btnGitHub.Text = "GitHub";
+            this.btnGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGitHub.UseVisualStyleBackColor = true;
+            this.btnGitHub.Click += new System.EventHandler(this.btnGitHub_Click);
+            // 
+            // pbPreview
+            // 
+            this.pbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbPreview.Location = new System.Drawing.Point(6, 71);
+            this.pbPreview.Name = "pbPreview";
+            this.pbPreview.Size = new System.Drawing.Size(487, 273);
+            this.pbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPreview.TabIndex = 0;
+            this.pbPreview.TabStop = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -386,61 +447,6 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detail";
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(8, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1110, 416);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "API";
-            // 
-            // pbPreview
-            // 
-            this.pbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbPreview.Location = new System.Drawing.Point(6, 71);
-            this.pbPreview.Name = "pbPreview";
-            this.pbPreview.Size = new System.Drawing.Size(487, 273);
-            this.pbPreview.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPreview.TabIndex = 0;
-            this.pbPreview.TabStop = false;
-            // 
-            // btnGitHub
-            // 
-            this.btnGitHub.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGitHub.Enabled = false;
-            this.btnGitHub.Image = ((System.Drawing.Image)(resources.GetObject("btnGitHub.Image")));
-            this.btnGitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGitHub.Location = new System.Drawing.Point(273, 25);
-            this.btnGitHub.Name = "btnGitHub";
-            this.btnGitHub.Size = new System.Drawing.Size(103, 39);
-            this.btnGitHub.TabIndex = 1;
-            this.btnGitHub.Text = "GitHub";
-            this.btnGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGitHub.UseVisualStyleBackColor = true;
-            this.btnGitHub.Click += new System.EventHandler(this.btnGitHub_Click);
-            // 
-            // btnYouTube
-            // 
-            this.btnYouTube.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnYouTube.Enabled = false;
-            this.btnYouTube.Image = ((System.Drawing.Image)(resources.GetObject("btnYouTube.Image")));
-            this.btnYouTube.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnYouTube.Location = new System.Drawing.Point(382, 26);
-            this.btnYouTube.Name = "btnYouTube";
-            this.btnYouTube.Size = new System.Drawing.Size(111, 38);
-            this.btnYouTube.TabIndex = 2;
-            this.btnYouTube.Text = "YouTube";
-            this.btnYouTube.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnYouTube.UseVisualStyleBackColor = true;
-            this.btnYouTube.Click += new System.EventHandler(this.btnYouTube_Click);
-            // 
             // txtContents
             // 
             this.txtContents.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -452,20 +458,51 @@
             this.txtContents.Size = new System.Drawing.Size(587, 325);
             this.txtContents.TabIndex = 0;
             // 
-            // btnRun
+            // groupBox4
             // 
-            this.btnRun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRun.Enabled = false;
-            this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
-            this.btnRun.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRun.Location = new System.Drawing.Point(190, 26);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(77, 39);
-            this.btnRun.TabIndex = 3;
-            this.btnRun.Text = "Run";
-            this.btnRun.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.lbAPI);
+            this.groupBox4.Controls.Add(this.lvAPI);
+            this.groupBox4.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(8, 3);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1110, 416);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "API";
+            // 
+            // lvAPI
+            // 
+            this.lvAPI.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvAPI.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvAPI.FullRowSelect = true;
+            this.lvAPI.GridLines = true;
+            this.lvAPI.HideSelection = false;
+            this.lvAPI.Location = new System.Drawing.Point(6, 49);
+            this.lvAPI.Name = "lvAPI";
+            this.lvAPI.Size = new System.Drawing.Size(1098, 361);
+            this.lvAPI.TabIndex = 0;
+            this.lvAPI.UseCompatibleStateImageBehavior = false;
+            this.lvAPI.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Code";
+            this.columnHeader1.Width = 800;
+            // 
+            // lbAPI
+            // 
+            this.lbAPI.AutoSize = true;
+            this.lbAPI.Location = new System.Drawing.Point(47, 21);
+            this.lbAPI.Name = "lbAPI";
+            this.lbAPI.Size = new System.Drawing.Size(117, 19);
+            this.lbAPI.TabIndex = 1;
+            this.lbAPI.Text = "Items = 0 EA";
             // 
             // FrmMain
             // 
@@ -492,9 +529,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -515,6 +554,9 @@
         private System.Windows.Forms.Button btnGitHub;
         private System.Windows.Forms.TextBox txtContents;
         private System.Windows.Forms.Button btnRun;
+        private System.Windows.Forms.ListView lvAPI;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.Label lbAPI;
     }
 }
 

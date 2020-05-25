@@ -47,5 +47,36 @@ namespace VIZCore3D.NET.DemoCenter
             else
                 return String.Empty;
         }
+
+        public List<string> GetApi(string basePath)
+        {
+            System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);
+            System.IO.DirectoryInfo root = info.Parent.Parent.Parent;
+            string path = string.Format("{0}\\{1}", root.FullName, ProjectCode);
+
+            if (System.IO.Directory.Exists(path) == false) return new List<string>();
+
+            string[] files = System.IO.Directory.GetFiles(path, "*.cs", System.IO.SearchOption.AllDirectories);
+
+            List<string> api = new List<string>();
+
+            foreach (string item in files)
+            {
+                System.IO.StreamReader sr = new System.IO.StreamReader(item);
+                while(!sr.EndOfStream)
+                {
+                    string code = sr.ReadLine().TrimStart();
+
+                    if (code.Contains("vizcore3d.") == false) continue;
+                    if (code.Substring(0, 2) == "//") continue;
+
+                    api.Add(code);
+                }
+                sr.Close();
+            }
+
+            api.Sort();
+            return api;
+        }
     }
 }
