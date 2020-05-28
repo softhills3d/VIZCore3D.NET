@@ -509,7 +509,7 @@ namespace VIZCore3D.NET.SelectionBox
             lvList.BeginUpdate();
             lvList.Items.Clear();
 
-            List<VIZCore3D.NET.Data.SelectionBox> items = vizcore3d.SelectionBox.List();
+            List<VIZCore3D.NET.Data.SelectionBox> items = vizcore3d.SelectionBox.Items;
 
             foreach (VIZCore3D.NET.Data.SelectionBox item in items)
             {
