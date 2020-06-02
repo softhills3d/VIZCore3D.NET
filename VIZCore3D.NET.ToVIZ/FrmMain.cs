@@ -127,8 +127,6 @@ namespace VIZCore3D.NET.ToVIZ
 
                 List<VIZCore3D.NET.Data.Node> outside = vizcore3d.Object3D.Find.GetOutsidePart(false);
 
-                vizcore3d.EnableProgressForm = false;
-
                 // VIZ 파일 형식으로 내보내기
                 return vizcore3d.Model.ExportVIZ(file, outside);
             }
