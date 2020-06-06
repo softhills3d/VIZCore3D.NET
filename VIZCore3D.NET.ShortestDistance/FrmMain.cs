@@ -82,7 +82,7 @@ namespace VIZCore3D.NET.ShortestDistance
             // ================================================================
             // 모델 열기 시, 3D 화면 Rendering 차단
             // ================================================================
-            vizcore3d.View.BeginUpdate();
+            vizcore3d.BeginUpdate();
 
 
             // ================================================================
@@ -133,6 +133,9 @@ namespace VIZCore3D.NET.ShortestDistance
 
             // 모델 조회 시, Pre-Select 색상 설정
             vizcore3d.View.PreSelectColor = Color.Lime;
+
+            // 모델 조회 시, Pre-Select Label
+            vizcore3d.View.PreSelectLabel = Manager.ViewManager.PreSelectLabelKind.HIERACHY_BOTTOM_UP;
             #endregion
 
 
@@ -326,7 +329,7 @@ namespace VIZCore3D.NET.ShortestDistance
             // ================================================================
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
-            vizcore3d.View.EndUpdate();
+            vizcore3d.EndUpdate();
         }
         #endregion
 
