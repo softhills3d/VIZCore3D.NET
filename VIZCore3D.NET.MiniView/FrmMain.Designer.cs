@@ -41,6 +41,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnHide = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -59,6 +60,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -72,9 +74,9 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btnUpdateModel);
-            this.groupBox4.Location = new System.Drawing.Point(12, 330);
+            this.groupBox4.Location = new System.Drawing.Point(12, 298);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(291, 100);
+            this.groupBox4.Size = new System.Drawing.Size(291, 81);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Update";
@@ -83,7 +85,7 @@
             // 
             this.btnUpdateModel.Location = new System.Drawing.Point(31, 35);
             this.btnUpdateModel.Name = "btnUpdateModel";
-            this.btnUpdateModel.Size = new System.Drawing.Size(120, 23);
+            this.btnUpdateModel.Size = new System.Drawing.Size(238, 31);
             this.btnUpdateModel.TabIndex = 0;
             this.btnUpdateModel.Text = "Update Model";
             this.btnUpdateModel.UseVisualStyleBackColor = true;
@@ -96,7 +98,7 @@
             this.groupBox3.Controls.Add(this.ckTopMost);
             this.groupBox3.Location = new System.Drawing.Point(12, 224);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(291, 100);
+            this.groupBox3.Size = new System.Drawing.Size(291, 68);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Property";
@@ -190,6 +192,17 @@
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Location = new System.Drawing.Point(12, 385);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(291, 200);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Mini View";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -227,6 +240,7 @@
         private System.Windows.Forms.CheckBox ckTopMost;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnUpdateModel;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 
