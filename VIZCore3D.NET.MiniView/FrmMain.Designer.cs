@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rbDialog = new System.Windows.Forms.RadioButton();
+            this.rbControl = new System.Windows.Forms.RadioButton();
+            this.rbDefault = new System.Windows.Forms.RadioButton();
             this.MiniViewContainer = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnUpdateModel = new System.Windows.Forms.Button();
@@ -42,18 +46,15 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnHide = new System.Windows.Forms.Button();
             this.btnShow = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rbDefault = new System.Windows.Forms.RadioButton();
-            this.rbControl = new System.Windows.Forms.RadioButton();
-            this.rbDialog = new System.Windows.Forms.RadioButton();
+            this.rbInfoPanel = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -74,6 +75,53 @@
             this.splitContainer1.Size = new System.Drawing.Size(1109, 677);
             this.splitContainer1.SplitterDistance = 322;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.rbInfoPanel);
+            this.groupBox6.Controls.Add(this.rbDialog);
+            this.groupBox6.Controls.Add(this.rbControl);
+            this.groupBox6.Controls.Add(this.rbDefault);
+            this.groupBox6.Location = new System.Drawing.Point(12, 80);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(291, 112);
+            this.groupBox6.TabIndex = 5;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Style";
+            // 
+            // rbDialog
+            // 
+            this.rbDialog.AutoSize = true;
+            this.rbDialog.Location = new System.Drawing.Point(133, 74);
+            this.rbDialog.Name = "rbDialog";
+            this.rbDialog.Size = new System.Drawing.Size(58, 16);
+            this.rbDialog.TabIndex = 2;
+            this.rbDialog.Text = "Dialog";
+            this.rbDialog.UseVisualStyleBackColor = true;
+            // 
+            // rbControl
+            // 
+            this.rbControl.AutoSize = true;
+            this.rbControl.Location = new System.Drawing.Point(133, 31);
+            this.rbControl.Name = "rbControl";
+            this.rbControl.Size = new System.Drawing.Size(63, 16);
+            this.rbControl.TabIndex = 1;
+            this.rbControl.Text = "Control";
+            this.rbControl.UseVisualStyleBackColor = true;
+            // 
+            // rbDefault
+            // 
+            this.rbDefault.AutoSize = true;
+            this.rbDefault.Checked = true;
+            this.rbDefault.Location = new System.Drawing.Point(34, 31);
+            this.rbDefault.Name = "rbDefault";
+            this.rbDefault.Size = new System.Drawing.Size(61, 16);
+            this.rbDefault.TabIndex = 0;
+            this.rbDefault.TabStop = true;
+            this.rbDefault.Text = "Default";
+            this.rbDefault.UseVisualStyleBackColor = true;
             // 
             // MiniViewContainer
             // 
@@ -114,9 +162,9 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.ckTopMost);
-            this.groupBox3.Location = new System.Drawing.Point(12, 263);
+            this.groupBox3.Location = new System.Drawing.Point(12, 288);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(291, 68);
+            this.groupBox3.Size = new System.Drawing.Size(291, 53);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Property";
@@ -124,7 +172,7 @@
             // ckTopMost
             // 
             this.ckTopMost.AutoSize = true;
-            this.ckTopMost.Location = new System.Drawing.Point(34, 30);
+            this.ckTopMost.Location = new System.Drawing.Point(34, 25);
             this.ckTopMost.Name = "ckTopMost";
             this.ckTopMost.Size = new System.Drawing.Size(78, 16);
             this.ckTopMost.TabIndex = 0;
@@ -139,9 +187,9 @@
             this.groupBox2.Controls.Add(this.txtIndex);
             this.groupBox2.Controls.Add(this.rbIndex);
             this.groupBox2.Controls.Add(this.rbSelected);
-            this.groupBox2.Location = new System.Drawing.Point(12, 157);
+            this.groupBox2.Location = new System.Drawing.Point(12, 198);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(291, 100);
+            this.groupBox2.Size = new System.Drawing.Size(291, 84);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Data";
@@ -150,7 +198,7 @@
             // 
             this.txtIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIndex.Location = new System.Drawing.Point(133, 60);
+            this.txtIndex.Location = new System.Drawing.Point(133, 51);
             this.txtIndex.Name = "txtIndex";
             this.txtIndex.Size = new System.Drawing.Size(100, 21);
             this.txtIndex.TabIndex = 2;
@@ -158,7 +206,7 @@
             // rbIndex
             // 
             this.rbIndex.AutoSize = true;
-            this.rbIndex.Location = new System.Drawing.Point(34, 61);
+            this.rbIndex.Location = new System.Drawing.Point(34, 52);
             this.rbIndex.Name = "rbIndex";
             this.rbIndex.Size = new System.Drawing.Size(59, 16);
             this.rbIndex.TabIndex = 1;
@@ -210,51 +258,15 @@
             this.btnShow.UseVisualStyleBackColor = true;
             this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
             // 
-            // groupBox6
+            // rbInfoPanel
             // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.rbDialog);
-            this.groupBox6.Controls.Add(this.rbControl);
-            this.groupBox6.Controls.Add(this.rbDefault);
-            this.groupBox6.Location = new System.Drawing.Point(12, 80);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(291, 71);
-            this.groupBox6.TabIndex = 5;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Style";
-            // 
-            // rbDefault
-            // 
-            this.rbDefault.AutoSize = true;
-            this.rbDefault.Checked = true;
-            this.rbDefault.Location = new System.Drawing.Point(34, 31);
-            this.rbDefault.Name = "rbDefault";
-            this.rbDefault.Size = new System.Drawing.Size(61, 16);
-            this.rbDefault.TabIndex = 0;
-            this.rbDefault.TabStop = true;
-            this.rbDefault.Text = "Default";
-            this.rbDefault.UseVisualStyleBackColor = true;
-            // 
-            // rbControl
-            // 
-            this.rbControl.AutoSize = true;
-            this.rbControl.Location = new System.Drawing.Point(111, 31);
-            this.rbControl.Name = "rbControl";
-            this.rbControl.Size = new System.Drawing.Size(63, 16);
-            this.rbControl.TabIndex = 1;
-            this.rbControl.Text = "Control";
-            this.rbControl.UseVisualStyleBackColor = true;
-            // 
-            // rbDialog
-            // 
-            this.rbDialog.AutoSize = true;
-            this.rbDialog.Location = new System.Drawing.Point(192, 31);
-            this.rbDialog.Name = "rbDialog";
-            this.rbDialog.Size = new System.Drawing.Size(58, 16);
-            this.rbDialog.TabIndex = 2;
-            this.rbDialog.Text = "Dialog";
-            this.rbDialog.UseVisualStyleBackColor = true;
+            this.rbInfoPanel.AutoSize = true;
+            this.rbInfoPanel.Location = new System.Drawing.Point(34, 74);
+            this.rbInfoPanel.Name = "rbInfoPanel";
+            this.rbInfoPanel.Size = new System.Drawing.Size(83, 16);
+            this.rbInfoPanel.TabIndex = 3;
+            this.rbInfoPanel.Text = "Info. Panel";
+            this.rbInfoPanel.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -269,14 +281,14 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -300,6 +312,7 @@
         private System.Windows.Forms.RadioButton rbDialog;
         private System.Windows.Forms.RadioButton rbControl;
         private System.Windows.Forms.RadioButton rbDefault;
+        private System.Windows.Forms.RadioButton rbInfoPanel;
     }
 }
 

@@ -21,6 +21,8 @@ namespace VIZCore3D.NET.MiniView
 
         private MiniViewDialog MiniViewDlg;
 
+        private MiniViewControl MiniViewCtrl;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -38,6 +40,8 @@ namespace VIZCore3D.NET.MiniView
 
             MiniViewDlg = new MiniViewDialog();
             MiniViewDlg.FormClosing += MiniViewDlg_FormClosing;
+
+            MiniViewCtrl = new MiniViewControl();
         }
 
         
@@ -364,6 +368,7 @@ namespace VIZCore3D.NET.MiniView
                 if (node == null) return;
                 items.Add(node);
             }
+            
 
             if (items.Count == 0) return;
 
@@ -375,13 +380,27 @@ namespace VIZCore3D.NET.MiniView
             {
                 vizcore3d.View.MiniView.SetMiniViewContainer(MiniViewDlg);
             }
+            else if(rbInfoPanel.Checked == true)
+            {
+                if(vizcore3d.InformationPanel.Controls.Count == 0)
+                {
+                    MiniViewCtrl.Dock = DockStyle.Fill;
+                    vizcore3d.InformationPanel.Controls.Add(MiniViewCtrl);
+                    vizcore3d.View.MiniView.SetMiniViewContainer(MiniViewCtrl.MiniViewContainer);
+                }
+
+                vizcore3d.InformationPanel.Visible = true;
+            }
 
             vizcore3d.View.MiniView.Show(items, ckTopMost.Checked);
         }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.MiniView.Hide();
+            if (rbInfoPanel.Checked == false)
+                vizcore3d.View.MiniView.Hide();
+            else
+                vizcore3d.InformationPanel.Visible = false;
         }
 
         private void btnUpdateModel_Click(object sender, EventArgs e)
