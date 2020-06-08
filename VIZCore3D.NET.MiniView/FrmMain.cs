@@ -19,6 +19,8 @@ namespace VIZCore3D.NET.MiniView
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        private MiniViewDialog MiniViewDlg;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -33,7 +35,12 @@ namespace VIZCore3D.NET.MiniView
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
+
+            MiniViewDlg = new MiniViewDialog();
+            MiniViewDlg.FormClosing += MiniViewDlg_FormClosing;
         }
+
+        
 
 
         // ================================================
@@ -344,20 +351,32 @@ namespace VIZCore3D.NET.MiniView
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
-            if(rbSelected.Checked == true)
+            List<VIZCore3D.NET.Data.Node> items = null;
+
+            if (rbSelected.Checked == true)
             {
-                List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
-                if (items.Count == 0) return;
-                vizcore3d.View.MiniView.Show(items, ckTopMost.Checked);
+                items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
             }
             else if(rbIndex.Checked == true)
             {
                 if (String.IsNullOrEmpty(txtIndex.Text) == true) return;
                 VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(Convert.ToInt32(txtIndex.Text));
                 if (node == null) return;
-
-                vizcore3d.View.MiniView.Show(new List<VIZCore3D.NET.Data.Node>() { node }, ckTopMost.Checked);
+                items.Add(node);
             }
+
+            if (items.Count == 0) return;
+
+            if(rbControl.Checked == true)
+            {
+                vizcore3d.View.MiniView.SetMiniViewContainer((Control)MiniViewContainer);
+            }
+            else if(rbDialog.Checked == true)
+            {
+                vizcore3d.View.MiniView.SetMiniViewContainer(MiniViewDlg);
+            }
+
+            vizcore3d.View.MiniView.Show(items, ckTopMost.Checked);
         }
 
         private void btnHide_Click(object sender, EventArgs e)
@@ -382,6 +401,14 @@ namespace VIZCore3D.NET.MiniView
             if (items.Count == 0) return;
 
             vizcore3d.View.MiniView.TopMost = ckTopMost.Checked;
+        }
+
+        private void MiniViewDlg_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+
+            MiniViewDlg.ShowInTaskbar = false;
+            MiniViewDlg.Hide();
         }
     }
 }
