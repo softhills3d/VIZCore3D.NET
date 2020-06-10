@@ -135,13 +135,16 @@ namespace VIZCore3D.NET.Import.WDL
             vizcore3d.View.SelectionColor = Color.Red;
 
             // 모델 조회 시, Pre-Select 설정
-            vizcore3d.View.EnablePreSelect = false;
+            vizcore3d.View.PreSelect.Enable = false;
 
             // 모델 조회 시, Pre-Select 색상 설정
-            vizcore3d.View.PreSelectColor = Color.Lime;
+            vizcore3d.View.PreSelect.HighlightColor = Color.Lime;
 
             // 모델 조회 시, Pre-Select Label
-            vizcore3d.View.PreSelectLabel = Manager.ViewManager.PreSelectLabelKind.HIERACHY_BOTTOM_UP;
+            vizcore3d.View.PreSelect.Label = VIZCore3D.NET.Data.PreSelectStyle.LabelKind.HIERACHY_BOTTOM_UP;
+
+            // 모델 조회 시, Pre-Select Font
+            vizcore3d.View.PreSelect.LabelFont = new Font("Arial", 10.0f);
             #endregion
 
 

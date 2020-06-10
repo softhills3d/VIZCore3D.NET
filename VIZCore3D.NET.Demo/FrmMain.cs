@@ -306,13 +306,16 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.View.SelectionColor = Color.Red;
 
             // 모델 조회 시, Pre-Select 설정
-            vizcore3d.View.EnablePreSelect = false;
+            vizcore3d.View.PreSelect.Enable = false;
 
             // 모델 조회 시, Pre-Select 색상 설정
-            vizcore3d.View.PreSelectColor = Color.Lime;
+            vizcore3d.View.PreSelect.HighlightColor = Color.Lime;
 
             // 모델 조회 시, Pre-Select Label
-            vizcore3d.View.PreSelectLabel = Manager.ViewManager.PreSelectLabelKind.HIERACHY_BOTTOM_UP;
+            vizcore3d.View.PreSelect.Label = VIZCore3D.NET.Data.PreSelectStyle.LabelKind.HIERACHY_BOTTOM_UP;
+
+            // 모델 조회 시, Pre-Select Font
+            vizcore3d.View.PreSelect.LabelFont = new Font("Arial", 10.0f);
             #endregion
 
 
@@ -766,7 +769,7 @@ namespace VIZCore3D.NET.Demo
         private void menuApiViewPreSelect_Click(object sender, EventArgs e)
         {
             // PreSelect 기능 활성화/비활성화
-            vizcore3d.View.EnablePreSelect = !vizcore3d.View.EnablePreSelect;
+            vizcore3d.View.PreSelect.Enable = !vizcore3d.View.PreSelect.Enable;
         }
 
         private void menuApiViewXrayColor_Click(object sender, EventArgs e)

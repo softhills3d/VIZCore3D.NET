@@ -73,7 +73,7 @@ namespace VIZCore3D.NET.ModelComparison
             vizcore1.ToolbarSimulation.Visible = false;
 
             // 옵션 설정
-            vizcore1.View.EnablePreSelect = false;
+            vizcore1.View.PreSelect.Enable = false;
         }
 
         private void VIZCore3D2_OnInitializedVIZCore3D(object sender, EventArgs e)
@@ -107,7 +107,7 @@ namespace VIZCore3D.NET.ModelComparison
             vizcore2.ToolbarSimulation.Visible = false;
 
             // 옵션 설정
-            vizcore2.View.EnablePreSelect = false;
+            vizcore2.View.PreSelect.Enable = false;
         } 
         #endregion
 
