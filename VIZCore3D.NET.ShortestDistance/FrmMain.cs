@@ -165,6 +165,7 @@ namespace VIZCore3D.NET.ShortestDistance
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
             #endregion
 
+
             // ================================================================
             // 설정 - 탐색
             // ================================================================
@@ -216,55 +217,125 @@ namespace VIZCore3D.NET.ShortestDistance
             //vizcore3d.View.BackgroundColor2 = Color.Gray; 
             #endregion
 
+
             // ================================================================
             // 설정 - 노트
             // ================================================================
             #region 설정 - 노트
             // 배경색
-            vizcore3d.Review.Note.BackgroundColor = Color.White;
+            vizcore3d.Review.Note.BackgroundColor = Color.Yellow;
             // 배경 투명
             vizcore3d.Review.Note.BackgroudTransparent = false;
             // 글자색
             vizcore3d.Review.Note.FontColor = Color.Black;
             // 글자 크기
-            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE12;
+            vizcore3d.Review.Note.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE16;
             // 글자 굵게
-            vizcore3d.Review.Note.FontBold = false;
+            vizcore3d.Review.Note.FontBold = true;
             // 지시선(라인) 색상
-            vizcore3d.Review.Note.LineColor = Color.Black;
+            vizcore3d.Review.Note.LineColor = Color.White;
             // 지시선(라인) 두께
-            vizcore3d.Review.Note.LineWidth = 3;
+            vizcore3d.Review.Note.LineWidth = 2;
             // 지시선 중앙 연결
             vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.END;
             // 화살표 색상
             vizcore3d.Review.Note.ArrowColor = Color.Red;
             // 화살표 두께
             vizcore3d.Review.Note.ArrowWidth = 10;
+            // 텍스트상자 라인 색상
+            vizcore3d.Review.Note.TextBoxLineColor = Color.Black;
 
             // 심볼 배경색
-            vizcore3d.Review.Note.SymbolBackgroundColor = Color.Yellow;
+            vizcore3d.Review.Note.SymbolBackgroundColor = Color.Red;
             // 심볼 글자색
-            vizcore3d.Review.Note.SymbolFontColor = Color.Red;
+            vizcore3d.Review.Note.SymbolFontColor = Color.White;
             // 심볼 크기
             vizcore3d.Review.Note.SymbolSize = 10;
             // 심볼 글자 크기
-            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE10;
+            vizcore3d.Review.Note.SymbolFontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE16;
             // 심볼 글자 굵게
-            vizcore3d.Review.Note.SymbolFontBold = true;
+            vizcore3d.Review.Note.SymbolFontBold = false;
             #endregion
 
 
             // ================================================================
             // 설정 - 측정
             // ================================================================
+            #region 설정 - 측정
+            // 반복 모드
+            vizcore3d.Review.Measure.RepeatMode = false;
 
+            // 기본 스타일
+            VIZCore3D.NET.Data.MeasureStyle measureStyle = vizcore3d.Review.Measure.GetStyle();
+
+            // Prefix 조회
+            measureStyle.Prefix = true;
+            // Frame(좌표계)로 표시
+            measureStyle.Frame = true;
+            // DX, DY, DZ 표시
+            measureStyle.DX_DY_DZ = true;
+            // 측정 단위 표시
+            measureStyle.Unit = true;
+            // 측정 단위 유형
+            measureStyle.UnitKind = Data.MeasureUnitKind.RUT_MILLIMETER;
+            // 소수점 이하 자리수
+            measureStyle.NumberOfDecimalPlaces = 2;
+            // 연속거리 표시
+            measureStyle.ContinuousDistance = true;
+
+            // 배경 투명
+            measureStyle.BackgroundTransparent = false;
+            // 배경색
+            measureStyle.BackgroundColor = Color.Blue;
+            // 글자색
+            measureStyle.FontColor = Color.White;
+            // 글자크기
+            measureStyle.FontSize = Data.FontSizeKind.SIZE14;
+            // 글자 두껍게
+            measureStyle.FontBold = false;
+            // 지시선 색
+            measureStyle.LineColor = Color.White;
+            // 지시선 두께
+            measureStyle.LineWidth = 2;
+            // 화살표 색
+            measureStyle.ArrowColor = Color.Red;
+            // 화살표 크기
+            measureStyle.ArrowSize = 10;
+            // 보조 지시선 표시
+            measureStyle.AssistantLine = true;
+            // 보조 지시선 표시 개수
+            measureStyle.AssistantLineCount = -1;
+            // 보조 지시선 라인 스타일
+            measureStyle.AssistantLineStyle = Data.MeasureStyle.AssistantLineType.DOTTEDLINE;
+            // 선택 위치 표시
+            measureStyle.PickPosition = true;
+            // 거리 측정 텍스트 정렬
+            measureStyle.AlignDistanceText = true;
+            // 거리 측정 텍스트 위치
+            measureStyle.AlignDistanceTextPosition = 2;
+            // 거리 측정 텍스트 오프셋
+            measureStyle.AlignDistanceTextMargine = 5;
+
+            // 측정 스타일 설정
+            vizcore3d.Review.Measure.SetStyle(measureStyle);
+            #endregion
 
 
             // ================================================================
             // 설정 - 단면
             // ================================================================
+            #region 설정 - 단면
             // 단면 좌표간격으로 이동
             vizcore3d.Section.MoveSectionByFrameGrid = true;
+            // 단면 보기
+            vizcore3d.Section.ShowSectionPlane = true;
+            // 단면선 표시
+            vizcore3d.Section.ShowSectionLine = true;
+            // 단면 단일색 표시
+            vizcore3d.Section.ShowSectionLineColor = false;
+            // 단면 단일색
+            vizcore3d.Section.SectionLineColor = Color.Red;
+            #endregion
 
 
             // ================================================================
@@ -304,7 +375,6 @@ namespace VIZCore3D.NET.ShortestDistance
             #endregion
 
 
-
             // ================================================================
             // 설정 - 툴바
             // ================================================================
@@ -316,6 +386,7 @@ namespace VIZCore3D.NET.ShortestDistance
             vizcore3d.ToolbarAnimation.Visible = false;
             vizcore3d.ToolbarSimulation.Visible = false;
             #endregion
+
 
             // ================================================================
             // 설정 - 상태바
