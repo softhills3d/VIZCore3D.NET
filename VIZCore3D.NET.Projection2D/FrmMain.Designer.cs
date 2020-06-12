@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnLoadTest = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnAuto = new System.Windows.Forms.Button();
             this.ckCustomMargine = new System.Windows.Forms.CheckBox();
@@ -78,21 +80,19 @@
             this.btnPasteMatrix = new System.Windows.Forms.Button();
             this.btnProjection2D = new System.Windows.Forms.Button();
             this.timerAuto = new System.Windows.Forms.Timer(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnLoadTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQuality)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -128,6 +128,28 @@
             this.splitContainer2.Size = new System.Drawing.Size(514, 846);
             this.splitContainer2.SplitterDistance = 570;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnLoadTest);
+            this.groupBox5.Location = new System.Drawing.Point(12, 502);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(488, 52);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "TEST";
+            // 
+            // btnLoadTest
+            // 
+            this.btnLoadTest.Location = new System.Drawing.Point(46, 20);
+            this.btnLoadTest.Name = "btnLoadTest";
+            this.btnLoadTest.Size = new System.Drawing.Size(100, 23);
+            this.btnLoadTest.TabIndex = 0;
+            this.btnLoadTest.Text = "Load Test";
+            this.btnLoadTest.UseVisualStyleBackColor = true;
+            this.btnLoadTest.Click += new System.EventHandler(this.btnLoadTest_Click);
             // 
             // groupBox4
             // 
@@ -584,28 +606,6 @@
             this.timerAuto.Interval = 500;
             this.timerAuto.Tick += new System.EventHandler(this.timerAuto_Tick);
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.btnLoadTest);
-            this.groupBox5.Location = new System.Drawing.Point(12, 502);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(488, 52);
-            this.groupBox5.TabIndex = 8;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "TEST";
-            // 
-            // btnLoadTest
-            // 
-            this.btnLoadTest.Location = new System.Drawing.Point(46, 20);
-            this.btnLoadTest.Name = "btnLoadTest";
-            this.btnLoadTest.Size = new System.Drawing.Size(100, 23);
-            this.btnLoadTest.TabIndex = 0;
-            this.btnLoadTest.Text = "Load Test";
-            this.btnLoadTest.UseVisualStyleBackColor = true;
-            this.btnLoadTest.Click += new System.EventHandler(this.btnLoadTest_Click);
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -622,6 +622,7 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -632,7 +633,6 @@
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
