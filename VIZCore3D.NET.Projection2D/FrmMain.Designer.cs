@@ -32,6 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnAuto = new System.Windows.Forms.Button();
+            this.ckCustomMargine = new System.Windows.Forms.CheckBox();
+            this.txtCustomMargineY = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCustomMargineX = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtY = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -70,26 +77,22 @@
             this.btnSetModelMatrix = new System.Windows.Forms.Button();
             this.btnPasteMatrix = new System.Windows.Forms.Button();
             this.btnProjection2D = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtCustomMargineY = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtCustomMargineX = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ckCustomMargine = new System.Windows.Forms.CheckBox();
-            this.btnAuto = new System.Windows.Forms.Button();
             this.timerAuto = new System.Windows.Forms.Timer(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnLoadTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQuality)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -116,14 +119,84 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer2.Panel1.Controls.Add(this.btnProjection2D);
             this.splitContainer2.Size = new System.Drawing.Size(514, 846);
-            this.splitContainer2.SplitterDistance = 501;
+            this.splitContainer2.SplitterDistance = 570;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnAuto);
+            this.groupBox4.Controls.Add(this.ckCustomMargine);
+            this.groupBox4.Controls.Add(this.txtCustomMargineY);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.txtCustomMargineX);
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Location = new System.Drawing.Point(12, 454);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(488, 42);
+            this.groupBox4.TabIndex = 7;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Custom Margine";
+            // 
+            // btnAuto
+            // 
+            this.btnAuto.Image = ((System.Drawing.Image)(resources.GetObject("btnAuto.Image")));
+            this.btnAuto.Location = new System.Drawing.Point(430, 13);
+            this.btnAuto.Name = "btnAuto";
+            this.btnAuto.Size = new System.Drawing.Size(43, 23);
+            this.btnAuto.TabIndex = 12;
+            this.btnAuto.UseVisualStyleBackColor = true;
+            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
+            // 
+            // ckCustomMargine
+            // 
+            this.ckCustomMargine.AutoSize = true;
+            this.ckCustomMargine.Location = new System.Drawing.Point(346, 17);
+            this.ckCustomMargine.Name = "ckCustomMargine";
+            this.ckCustomMargine.Size = new System.Drawing.Size(68, 16);
+            this.ckCustomMargine.TabIndex = 11;
+            this.ckCustomMargine.Text = "Custom";
+            this.ckCustomMargine.UseVisualStyleBackColor = true;
+            // 
+            // txtCustomMargineY
+            // 
+            this.txtCustomMargineY.Location = new System.Drawing.Point(204, 15);
+            this.txtCustomMargineY.Name = "txtCustomMargineY";
+            this.txtCustomMargineY.Size = new System.Drawing.Size(100, 21);
+            this.txtCustomMargineY.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(185, 18);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(13, 12);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Y";
+            // 
+            // txtCustomMargineX
+            // 
+            this.txtCustomMargineX.Location = new System.Drawing.Point(46, 15);
+            this.txtCustomMargineX.Name = "txtCustomMargineX";
+            this.txtCustomMargineX.Size = new System.Drawing.Size(100, 21);
+            this.txtCustomMargineX.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(27, 18);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(13, 12);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "X";
             // 
             // groupBox3
             // 
@@ -506,79 +579,32 @@
             this.btnProjection2D.UseVisualStyleBackColor = true;
             this.btnProjection2D.Click += new System.EventHandler(this.btnProjection2D_Click);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnAuto);
-            this.groupBox4.Controls.Add(this.ckCustomMargine);
-            this.groupBox4.Controls.Add(this.txtCustomMargineY);
-            this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.txtCustomMargineX);
-            this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Location = new System.Drawing.Point(12, 454);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(488, 42);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Custom Margine";
-            // 
-            // txtCustomMargineY
-            // 
-            this.txtCustomMargineY.Location = new System.Drawing.Point(204, 15);
-            this.txtCustomMargineY.Name = "txtCustomMargineY";
-            this.txtCustomMargineY.Size = new System.Drawing.Size(100, 21);
-            this.txtCustomMargineY.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(185, 18);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 12);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Y";
-            // 
-            // txtCustomMargineX
-            // 
-            this.txtCustomMargineX.Location = new System.Drawing.Point(46, 15);
-            this.txtCustomMargineX.Name = "txtCustomMargineX";
-            this.txtCustomMargineX.Size = new System.Drawing.Size(100, 21);
-            this.txtCustomMargineX.TabIndex = 5;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(27, 18);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(13, 12);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "X";
-            // 
-            // ckCustomMargine
-            // 
-            this.ckCustomMargine.AutoSize = true;
-            this.ckCustomMargine.Location = new System.Drawing.Point(346, 17);
-            this.ckCustomMargine.Name = "ckCustomMargine";
-            this.ckCustomMargine.Size = new System.Drawing.Size(68, 16);
-            this.ckCustomMargine.TabIndex = 11;
-            this.ckCustomMargine.Text = "Custom";
-            this.ckCustomMargine.UseVisualStyleBackColor = true;
-            // 
-            // btnAuto
-            // 
-            this.btnAuto.Image = ((System.Drawing.Image)(resources.GetObject("btnAuto.Image")));
-            this.btnAuto.Location = new System.Drawing.Point(430, 13);
-            this.btnAuto.Name = "btnAuto";
-            this.btnAuto.Size = new System.Drawing.Size(43, 23);
-            this.btnAuto.TabIndex = 12;
-            this.btnAuto.UseVisualStyleBackColor = true;
-            this.btnAuto.Click += new System.EventHandler(this.btnAuto_Click);
-            // 
             // timerAuto
             // 
             this.timerAuto.Interval = 500;
             this.timerAuto.Tick += new System.EventHandler(this.timerAuto_Tick);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnLoadTest);
+            this.groupBox5.Location = new System.Drawing.Point(12, 502);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(488, 52);
+            this.groupBox5.TabIndex = 8;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "TEST";
+            // 
+            // btnLoadTest
+            // 
+            this.btnLoadTest.Location = new System.Drawing.Point(46, 20);
+            this.btnLoadTest.Name = "btnLoadTest";
+            this.btnLoadTest.Size = new System.Drawing.Size(100, 23);
+            this.btnLoadTest.TabIndex = 0;
+            this.btnLoadTest.Text = "Load Test";
+            this.btnLoadTest.UseVisualStyleBackColor = true;
+            this.btnLoadTest.Click += new System.EventHandler(this.btnLoadTest_Click);
             // 
             // FrmMain
             // 
@@ -596,6 +622,8 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -604,8 +632,7 @@
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -660,6 +687,8 @@
         private System.Windows.Forms.CheckBox ckCustomMargine;
         private System.Windows.Forms.Button btnAuto;
         private System.Windows.Forms.Timer timerAuto;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnLoadTest;
     }
 }
 

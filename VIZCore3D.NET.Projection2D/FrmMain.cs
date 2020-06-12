@@ -639,6 +639,69 @@ namespace VIZCore3D.NET.Projection2D
         }
 
         private List<List<int>> BlockNetwork;
-        //private int BlockNetworkIndex;
+
+        private void btnLoadTest_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Multiselect = true;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            List<string> models = dlg.FileNames.ToList();
+
+            int scale = Convert.ToInt32(txtScale.Text);
+            bool vertexAll = ckVertexAll.Checked;
+            int quality = tbQuality.Value;
+
+            int virtualImageWidth = Convert.ToInt32(txtVirtualImageWidth.Text);
+            int virtualImageHeight = Convert.ToInt32(txtVirtualImageHeight.Text);
+
+            bool enableCoordinateCorrection = ckCoordinateCorrection.Checked;
+
+            vizcore3d.EnableProgressForm = false;
+            vizcore3d.EnableWaitForm = false;
+
+            while (true)
+            {
+                foreach (string item in models)
+                {
+                    //vizcore3d.ShowWaitForm();
+
+                    vizcore3d.Model.Open(item);
+
+                    VIZCore3D.NET.Data.Projection2D projection = vizcore3d.View.Get2DProjectionVertex(
+                        scale                           /* Scale이 클수록 Point의 범위가 줄어듬. 실제 모델의 축소 비율 */
+                        , vertexAll                     /* True : 모든 형상의 데이터, False : 영역이 제일 큰 형상의 외곽 정보만 추출 */
+                        , quality                       /* 투영 공간 개수. 범위(1~10). 1(빠르게 처리되지만 품질 보통) ~ 10(오래걸리지만 품질 높음) */
+                        , virtualImageWidth             /* 투영 공간의 가로 길이. PX단위. 원격(혹은 콘솔) 모드에서는 1024만 가능 */
+                        , virtualImageHeight            /* 투영 공간의 세로 길이. PX단위. 원격(혹은 콘솔) 모드에서는 1024만 가능 */
+                        , enableCoordinateCorrection    /* 2D 투영 포인트 좌표 보정 여부. True(XY평면좌표), False(투영결과좌표) */
+                        );
+
+                    if (projection == null) return;
+
+                    System.Drawing.Point translation = new Point(0, 0);
+
+                    if (String.IsNullOrEmpty(txtX.Text) == false)
+                        translation.X = Convert.ToInt32(txtX.Text);
+
+                    if (String.IsNullOrEmpty(txtY.Text) == false)
+                        translation.Y = Convert.ToInt32(txtY.Text);
+
+                    System.Drawing.Point customTranslation = new Point(0, 0);
+
+                    if (String.IsNullOrEmpty(txtCustomMargineX.Text) == false)
+                        customTranslation.X = Convert.ToInt32(txtCustomMargineX.Text);
+
+                    if (String.IsNullOrEmpty(txtCustomMargineY.Text) == false)
+                        customTranslation.Y = Convert.ToInt32(txtCustomMargineY.Text);
+
+                    result.SetData(projection, translation, ckCustomMargine.Checked, customTranslation);
+
+                    //vizcore3d.CloseWaitForm();
+                }
+            }
+        }
+        
+
     }                                        
 }
