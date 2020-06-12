@@ -50,9 +50,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="VIZCore3D.NET, Version=1.2.20.406, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="VIZCore3D.NET, Version=1.4.20.611, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\SH_SVN\SH_Product\VIZCore3D.NET_V2\VIZCore3D.NET\bin\Release\VIZCore3D.NET.dll</HintPath>
+      <HintPath>..\VIZCore3D.NET.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
