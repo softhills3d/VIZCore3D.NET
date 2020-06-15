@@ -482,6 +482,9 @@ namespace VIZCore3D.NET.ShapeDrawing
             int shapeId = -1;
             int groupId = GetGroupId(node);
             string shapeType = String.Empty;
+            List<int> ids = new List<int>();
+
+            vizcore3d.BeginUpdate();
 
             if (rbLine.Checked == true)
             {
@@ -493,6 +496,21 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , btnColor.BackColor
                     , Convert.ToSingle(txtThickness.Text)
                     , true
+                    );
+
+                ids.Add(shapeId);
+            }
+            else if (rbDashLine.Checked == true)
+            {
+                shapeType = "DashLine";
+
+                ids = vizcore3d.ShapeDrawing.AddDashLine(
+                    GetVertexListDash()
+                    , groupId
+                    , btnColor.BackColor
+                    , Convert.ToSingle(txtThickness.Text)
+                    , true
+                    , Convert.ToSingle(txtDashLength.Text)
                     );
             }
             else if (rbCube.Checked == true)
@@ -506,6 +524,8 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
             }
             else if (rbCylinder.Checked == true)
             {
@@ -518,6 +538,8 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
             }
             else if (rbVertex.Checked == true)
             {
@@ -531,9 +553,13 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtSize.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
             }
 
-            AddList(shapeId, groupId, shapeType);
+            vizcore3d.EndUpdate();
+
+            AddList(ids, groupId, shapeType);
         }
 
         private void DrawByEdgeVertex(List<Data.Node> node)
@@ -565,6 +591,7 @@ namespace VIZCore3D.NET.ShapeDrawing
             int groupId = GetGroupId(node);
             string shapeType = String.Empty;
             int index = node[0].Index;
+            List<int> ids = new List<int>();
 
             if (rbLine.Checked == true)
             {
@@ -577,6 +604,23 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtThickness.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
+            }
+            else if (rbDashLine.Checked == true)
+            {
+                shapeType = "DashLine";
+
+                ids = vizcore3d.ShapeDrawing.AddDashLine(
+                    GetVertexList(index)
+                    , groupId
+                    , btnColor.BackColor
+                    , Convert.ToSingle(txtThickness.Text)
+                    , true
+                    , Convert.ToSingle(txtDashLength.Text)
+                    );
+
+                ids.Add(shapeId);
             }
             else if (rbCube.Checked == true)
             {
@@ -589,6 +633,8 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
             }
             else if (rbCylinder.Checked == true)
             {
@@ -601,6 +647,8 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
             }
             else if (rbVertex.Checked == true)
             {
@@ -614,14 +662,16 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtSize.Text)
                     , true
                     );
+
+                ids.Add(shapeId);
             }
 
-            AddList(shapeId, groupId, shapeType);
+            AddList(ids, groupId, shapeType);
         }
 
-        private void AddList(int id, int groupId, string shapeType)
+        private void AddList(List<int> id, int groupId, string shapeType)
         {
-            ListViewItem lvi = new ListViewItem(new string[] { id.ToString(), groupId.ToString(), shapeType, "True" });
+            ListViewItem lvi = new ListViewItem(new string[] { id.Count == 1 ? id[0].ToString() : string.Format("{0} - {1} EA", id[0], id.Count -1), groupId.ToString(), shapeType, "True" });
             lvList.Items.Add(lvi);
         }
 
@@ -699,6 +749,137 @@ namespace VIZCore3D.NET.ShapeDrawing
 
             {
                 VIZCore3D.NET.Data.Vertex3DItemCollection item = new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+
+                vertex.Add(item);
+            }
+
+            return vertex;
+        }
+
+        private List<VIZCore3D.NET.Data.Vertex3DItemCollection> GetVertexListDash()
+        {
+            List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex =
+                new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+
+            VIZCore3D.NET.Data.BoundBox3D boundbox =
+                vizcore3d.Object3D.GeometryProperty.FromSelectedObject3D(false).GetBoundBox();
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+                item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+
+                vertex.Add(item);
+            }
+
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                    new VIZCore3D.NET.Data.Vertex3DItemCollection();
 
                 item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
                 item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));

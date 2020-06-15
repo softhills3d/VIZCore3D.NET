@@ -70,6 +70,9 @@
             this.rbCylinder = new System.Windows.Forms.RadioButton();
             this.rbCube = new System.Windows.Forms.RadioButton();
             this.rbLine = new System.Windows.Forms.RadioButton();
+            this.rbDashLine = new System.Windows.Forms.RadioButton();
+            this.txtDashLength = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -97,7 +100,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1236, 778);
-            this.splitContainer1.SplitterDistance = 433;
+            this.splitContainer1.SplitterDistance = 435;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox6
@@ -109,7 +112,7 @@
             this.groupBox6.Controls.Add(this.rbBoundBox);
             this.groupBox6.Location = new System.Drawing.Point(12, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(408, 62);
+            this.groupBox6.Size = new System.Drawing.Size(410, 62);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Source";
@@ -165,7 +168,7 @@
             this.groupBox5.Controls.Add(this.btnShowAll);
             this.groupBox5.Location = new System.Drawing.Point(12, 380);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(408, 386);
+            this.groupBox5.Size = new System.Drawing.Size(410, 386);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "List";
@@ -246,7 +249,7 @@
             this.lvList.HideSelection = false;
             this.lvList.Location = new System.Drawing.Point(6, 118);
             this.lvList.Name = "lvList";
-            this.lvList.Size = new System.Drawing.Size(396, 262);
+            this.lvList.Size = new System.Drawing.Size(398, 262);
             this.lvList.TabIndex = 3;
             this.lvList.UseCompatibleStateImageBehavior = false;
             this.lvList.View = System.Windows.Forms.View.Details;
@@ -308,7 +311,7 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Location = new System.Drawing.Point(12, 316);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(408, 58);
+            this.groupBox4.Size = new System.Drawing.Size(410, 58);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "TAG";
@@ -348,7 +351,7 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Location = new System.Drawing.Point(12, 247);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(408, 63);
+            this.groupBox3.Size = new System.Drawing.Size(410, 63);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Style";
@@ -376,6 +379,8 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtDashLength);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.ckUseDepthTest);
             this.groupBox2.Controls.Add(this.txtSize);
             this.groupBox2.Controls.Add(this.txtRadius);
@@ -385,7 +390,7 @@
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Location = new System.Drawing.Point(12, 140);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(408, 101);
+            this.groupBox2.Size = new System.Drawing.Size(410, 101);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
@@ -458,6 +463,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.rbDashLine);
             this.groupBox1.Controls.Add(this.ckEnable);
             this.groupBox1.Controls.Add(this.rbVertex);
             this.groupBox1.Controls.Add(this.rbCylinder);
@@ -465,7 +471,7 @@
             this.groupBox1.Controls.Add(this.rbLine);
             this.groupBox1.Location = new System.Drawing.Point(12, 80);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(408, 54);
+            this.groupBox1.Size = new System.Drawing.Size(410, 54);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Shape";
@@ -485,7 +491,7 @@
             // rbVertex
             // 
             this.rbVertex.AutoSize = true;
-            this.rbVertex.Location = new System.Drawing.Point(317, 23);
+            this.rbVertex.Location = new System.Drawing.Point(349, 23);
             this.rbVertex.Name = "rbVertex";
             this.rbVertex.Size = new System.Drawing.Size(59, 16);
             this.rbVertex.TabIndex = 3;
@@ -495,7 +501,7 @@
             // rbCylinder
             // 
             this.rbCylinder.AutoSize = true;
-            this.rbCylinder.Location = new System.Drawing.Point(242, 23);
+            this.rbCylinder.Location = new System.Drawing.Point(274, 23);
             this.rbCylinder.Name = "rbCylinder";
             this.rbCylinder.Size = new System.Drawing.Size(70, 16);
             this.rbCylinder.TabIndex = 2;
@@ -505,7 +511,7 @@
             // rbCube
             // 
             this.rbCube.AutoSize = true;
-            this.rbCube.Location = new System.Drawing.Point(181, 23);
+            this.rbCube.Location = new System.Drawing.Point(213, 23);
             this.rbCube.Name = "rbCube";
             this.rbCube.Size = new System.Drawing.Size(53, 16);
             this.rbCube.TabIndex = 1;
@@ -516,13 +522,39 @@
             // 
             this.rbLine.AutoSize = true;
             this.rbLine.Checked = true;
-            this.rbLine.Location = new System.Drawing.Point(126, 23);
+            this.rbLine.Location = new System.Drawing.Point(102, 23);
             this.rbLine.Name = "rbLine";
             this.rbLine.Size = new System.Drawing.Size(47, 16);
             this.rbLine.TabIndex = 0;
-            this.rbLine.TabStop = true;
             this.rbLine.Text = "Line";
             this.rbLine.UseVisualStyleBackColor = true;
+            // 
+            // rbDashLine
+            // 
+            this.rbDashLine.AutoSize = true;
+            this.rbDashLine.Location = new System.Drawing.Point(155, 23);
+            this.rbDashLine.Name = "rbDashLine";
+            this.rbDashLine.Size = new System.Drawing.Size(52, 16);
+            this.rbDashLine.TabIndex = 5;
+            this.rbDashLine.Text = "Dash";
+            this.rbDashLine.UseVisualStyleBackColor = true;
+            // 
+            // txtDashLength
+            // 
+            this.txtDashLength.Location = new System.Drawing.Point(331, 65);
+            this.txtDashLength.Name = "txtDashLength";
+            this.txtDashLength.Size = new System.Drawing.Size(56, 21);
+            this.txtDashLength.TabIndex = 8;
+            this.txtDashLength.Text = "300";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(246, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Dash Length";
             // 
             // FrmMain
             // 
@@ -595,6 +627,9 @@
         private System.Windows.Forms.RadioButton rbOsnap;
         private System.Windows.Forms.RadioButton rbEdgeVertex;
         private System.Windows.Forms.RadioButton rbBoundBox;
+        private System.Windows.Forms.RadioButton rbDashLine;
+        private System.Windows.Forms.TextBox txtDashLength;
+        private System.Windows.Forms.Label label6;
     }
 }
 
