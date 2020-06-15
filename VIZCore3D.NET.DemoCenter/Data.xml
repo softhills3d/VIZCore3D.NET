@@ -461,4 +461,15 @@ Features
     ]]>
     </Contents>
   </Item>
+  <Item Name="Block Animation" Project="VIZCore3D.NET.Animation.Block">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Animation.Block
+      
+Features
+- 애니메이션 기본 API 활용
+- 탑재 블록 단위 애니메이션 활용 예제
+    ]]>
+    </Contents>
+  </Item>
 </DemoCenter>

@@ -87,22 +87,25 @@
             System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Avatar Path");
             System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Walkthrough", new System.Windows.Forms.TreeNode[] {
             treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("WDL");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Import External Data", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Block Animation");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Animation", new System.Windows.Forms.TreeNode[] {
             treeNode33});
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("3D Dashboard");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Real-time shape creation", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("WDL");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Import External Data", new System.Windows.Forms.TreeNode[] {
             treeNode35});
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("Divide / Group");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Drag & Drop");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Selection Box", new System.Windows.Forms.TreeNode[] {
-            treeNode37,
-            treeNode38});
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Custom Drawing");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Block Arrangement");
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
-            treeNode41});
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("3D Dashboard");
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("Real-time shape creation", new System.Windows.Forms.TreeNode[] {
+            treeNode37});
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("Divide / Group");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("Drag & Drop");
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Selection Box", new System.Windows.Forms.TreeNode[] {
+            treeNode39,
+            treeNode40});
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Custom Drawing");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Block Arrangement");
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
+            treeNode43});
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
             treeNode10,
             treeNode20,
             treeNode25,
@@ -111,9 +114,10 @@
             treeNode32,
             treeNode34,
             treeNode36,
-            treeNode39,
-            treeNode40,
-            treeNode42});
+            treeNode38,
+            treeNode41,
+            treeNode42,
+            treeNode44});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -122,6 +126,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnYouTube = new System.Windows.Forms.Button();
             this.btnGitHub = new System.Windows.Forms.Button();
@@ -132,7 +137,6 @@
             this.lbAPI = new System.Windows.Forms.Label();
             this.lvAPI = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnOpenFolder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -283,36 +287,41 @@
             treeNode31.Text = "Avatar Path";
             treeNode32.Name = "Walkthrough";
             treeNode32.Text = "Walkthrough";
-            treeNode33.Name = "WDL";
-            treeNode33.Tag = "VIZCore3D.NET.Import.WDL";
-            treeNode33.Text = "WDL";
-            treeNode34.Name = "Import External Data";
-            treeNode34.Text = "Import External Data";
-            treeNode35.Name = "3D Dashboard";
-            treeNode35.Tag = "VIZCore3D.NET.PlacementStatus";
-            treeNode35.Text = "3D Dashboard";
-            treeNode36.Name = "Real-time shape creation";
-            treeNode36.Text = "Real-time shape creation";
-            treeNode37.Name = "Divide / Group";
-            treeNode37.Tag = "VIZCore3D.NET.SelectionBox";
-            treeNode37.Text = "Divide / Group";
-            treeNode38.Name = "Drag & Drop";
-            treeNode38.Tag = "VIZCore3D.NET.SelectionBox.V2";
-            treeNode38.Text = "Drag & Drop";
-            treeNode39.Name = "Selection Box";
-            treeNode39.Text = "Selection Box";
-            treeNode40.Name = "Custom Drawing";
-            treeNode40.Tag = "VIZCore3D.NET.ShapeDrawing";
-            treeNode40.Text = "Custom Drawing";
-            treeNode41.Name = "Block Arrangement";
-            treeNode41.Tag = "VIZCore3D.NET.BlockArrangement";
-            treeNode41.Text = "Block Arrangement";
-            treeNode42.Name = "Etc.";
-            treeNode42.Text = "Etc.";
-            treeNode43.Name = "VIZCore3D.NET";
-            treeNode43.Text = "VIZCore3D.NET";
+            treeNode33.Name = "Block Animation";
+            treeNode33.Tag = "VIZCore3D.NET.Animation.Block";
+            treeNode33.Text = "Block Animation";
+            treeNode34.Name = "Animation";
+            treeNode34.Text = "Animation";
+            treeNode35.Name = "WDL";
+            treeNode35.Tag = "VIZCore3D.NET.Import.WDL";
+            treeNode35.Text = "WDL";
+            treeNode36.Name = "Import External Data";
+            treeNode36.Text = "Import External Data";
+            treeNode37.Name = "3D Dashboard";
+            treeNode37.Tag = "VIZCore3D.NET.PlacementStatus";
+            treeNode37.Text = "3D Dashboard";
+            treeNode38.Name = "Real-time shape creation";
+            treeNode38.Text = "Real-time shape creation";
+            treeNode39.Name = "Divide / Group";
+            treeNode39.Tag = "VIZCore3D.NET.SelectionBox";
+            treeNode39.Text = "Divide / Group";
+            treeNode40.Name = "Drag & Drop";
+            treeNode40.Tag = "VIZCore3D.NET.SelectionBox.V2";
+            treeNode40.Text = "Drag & Drop";
+            treeNode41.Name = "Selection Box";
+            treeNode41.Text = "Selection Box";
+            treeNode42.Name = "Custom Drawing";
+            treeNode42.Tag = "VIZCore3D.NET.ShapeDrawing";
+            treeNode42.Text = "Custom Drawing";
+            treeNode43.Name = "Block Arrangement";
+            treeNode43.Tag = "VIZCore3D.NET.BlockArrangement";
+            treeNode43.Text = "Block Arrangement";
+            treeNode44.Name = "Etc.";
+            treeNode44.Text = "Etc.";
+            treeNode45.Name = "VIZCore3D.NET";
+            treeNode45.Text = "VIZCore3D.NET";
             this.tvHierarchy.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode43});
+            treeNode45});
             this.tvHierarchy.SelectedImageIndex = 0;
             this.tvHierarchy.Size = new System.Drawing.Size(347, 760);
             this.tvHierarchy.TabIndex = 0;
@@ -377,6 +386,21 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preview";
+            // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenFolder.Enabled = false;
+            this.btnOpenFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFolder.Image")));
+            this.btnOpenFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOpenFolder.Location = new System.Drawing.Point(95, 21);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(89, 39);
+            this.btnOpenFolder.TabIndex = 4;
+            this.btnOpenFolder.Text = "Open";
+            this.btnOpenFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // btnRun
             // 
@@ -507,21 +531,6 @@
             // 
             this.columnHeader1.Text = "Code";
             this.columnHeader1.Width = 800;
-            // 
-            // btnOpenFolder
-            // 
-            this.btnOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFolder.Enabled = false;
-            this.btnOpenFolder.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFolder.Image")));
-            this.btnOpenFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOpenFolder.Location = new System.Drawing.Point(95, 21);
-            this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(89, 39);
-            this.btnOpenFolder.TabIndex = 4;
-            this.btnOpenFolder.Text = "Open";
-            this.btnOpenFolder.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnOpenFolder.UseVisualStyleBackColor = true;
-            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // FrmMain
             // 
