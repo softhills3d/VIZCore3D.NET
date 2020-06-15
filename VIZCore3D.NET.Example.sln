@@ -80,6 +80,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Painting", "V
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.DemoCenter", "VIZCore3D.NET.DemoCenter\VIZCore3D.NET.DemoCenter.csproj", "{926662D5-1449-49BE-AE06-3934F433EE17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Animation.Block", "VIZCore3D.NET.Animation.Block\VIZCore3D.NET.Animation.Block.csproj", "{F8034192-2E5A-4829-B7A4-1C60ABB64F92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -230,6 +232,10 @@ Global
 		{926662D5-1449-49BE-AE06-3934F433EE17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{926662D5-1449-49BE-AE06-3934F433EE17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{926662D5-1449-49BE-AE06-3934F433EE17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8034192-2E5A-4829-B7A4-1C60ABB64F92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8034192-2E5A-4829-B7A4-1C60ABB64F92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8034192-2E5A-4829-B7A4-1C60ABB64F92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8034192-2E5A-4829-B7A4-1C60ABB64F92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
