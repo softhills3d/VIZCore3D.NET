@@ -462,5 +462,69 @@ namespace VIZCore3D.NET.Animation.Block
             // 애니메이션 종료
             //vizcore3d.Walkthrough.AvatarPath.OnAnimationFinishedEvent += AvatarPath_OnAnimationFinishedEvent;
         }
+
+
+
+        // ================================================
+        // Basic Model
+        // ================================================
+        private void btnLoadBlock_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Model.AddFileDialog();
+        }
+
+        private void btnCreateDock_Click(object sender, EventArgs e)
+        {
+            Data.Vertex3D center = new Data.Vertex3D();
+            if (vizcore3d.Model.IsOpen() == true)
+            {
+                Data.BoundBox3D boundbox = vizcore3d.Model.BoundBox;
+                center = boundbox.GetCenter();
+            }
+            else
+            {
+                center.X = 87614.0f;
+                center.Y = 478.0f;
+                center.Z = 21646.0f;
+            }
+
+            center.Z = center.Z - (center.Z * 0.9f);
+
+            vizcore3d.Primitive.OpenCustomShapeDock(
+                "DOCK_MODEL"                                /* MODEL NAME */
+                , 8                                         /* COLOR INDEX */
+                , center                                    /* CENTER */
+                , new Data.Vertex3D(195000, 40000, 13000)   /* Axis Length */
+                , 40000                                     /* Ground Length */
+                , 1000                                      /* Thickness */
+                );
+
+            List<Data.Node> dock = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "DOCK", "GROUND" }, false, true, false, false, true, false);
+            vizcore3d.Object3D.Color.SetTransparency(dock, 70);
+        }
+
+        private void btnLoadCrane_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Model.AddFileDialog();
+        }
+
+        private void btnGenerateAnimation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Animation.Start(false, 0);
+        }
+
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Animation.Pause();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
