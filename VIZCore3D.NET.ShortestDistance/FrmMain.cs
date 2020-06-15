@@ -443,7 +443,7 @@ namespace VIZCore3D.NET.ShortestDistance
             // ================================================================
             // 설정 - Shape Drawing
             // ================================================================
-            vizcore3d.ShapeDrawing.UseDepthTest(true);
+            vizcore3d.ShapeDrawing.DepthTest = true;
 
 
             // ================================================================

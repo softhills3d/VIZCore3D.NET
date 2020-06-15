@@ -446,7 +446,7 @@ namespace VIZCore3D.NET.ShapeDrawing
             // ================================================================
             // 설정 - Shape Drawing
             // ================================================================
-            vizcore3d.ShapeDrawing.UseDepthTest(true);
+            vizcore3d.ShapeDrawing.DepthTest = true;
 
 
             // ================================================================
@@ -761,7 +761,7 @@ namespace VIZCore3D.NET.ShapeDrawing
 
         private void ckUseDepthTest_CheckedChanged(object sender, EventArgs e)
         {
-            vizcore3d.ShapeDrawing.UseDepthTest(ckUseDepthTest.Checked);
+            vizcore3d.ShapeDrawing.DepthTest = ckUseDepthTest.Checked;
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)
