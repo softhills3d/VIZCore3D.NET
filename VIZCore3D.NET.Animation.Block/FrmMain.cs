@@ -19,6 +19,19 @@ namespace VIZCore3D.NET.Animation.Block
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        private Dictionary<int, List<VIZCore3D.NET.Data.Node>> Nodes = null;
+
+        public bool TestMode
+        {
+            get
+            {
+                string name = System.Environment.MachineName.ToUpper();
+
+                if (name == "GJKIM-DELL" || name == "GJKIM-PC") return true;
+                else return false;
+            }
+        }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -470,7 +483,16 @@ namespace VIZCore3D.NET.Animation.Block
         // ================================================
         private void btnLoadBlock_Click(object sender, EventArgs e)
         {
-            vizcore3d.Model.AddFileDialog();
+            if(TestMode == false)
+            {
+                vizcore3d.Model.AddFileDialog();
+            }
+            else
+            {
+                string path = @"C:\Users\gjkim\Desktop\MODELS_ANIMATION\FIXED_V3_SIMPLEFIED_V2";
+                string[] file = System.IO.Directory.GetFiles(path, "*.viz");
+                vizcore3d.Model.Add(file);
+            }
         }
 
         private void btnCreateDock_Click(object sender, EventArgs e)
@@ -505,17 +527,88 @@ namespace VIZCore3D.NET.Animation.Block
 
         private void btnLoadCrane_Click(object sender, EventArgs e)
         {
-            vizcore3d.Model.AddFileDialog();
+            if (TestMode == false)
+            {
+                vizcore3d.Model.AddFileDialog();
+            }
+            else
+            {
+                string path = @"C:\Users\gjkim\Desktop\MODELS_ANIMATION\MISC\CRANE_ASSEMBLY_2";
+                string[] file = System.IO.Directory.GetFiles(path, "*.viz");
+                vizcore3d.Model.Add(file);
+            }
         }
 
         private void btnGenerateAnimation_Click(object sender, EventArgs e)
         {
+            if (vizcore3d.Model.IsOpen() == false) return;
 
+            // 모델 데이터 맵핑
+            GetNodes();
+
+            vizcore3d.View.EnableAutoFit = false;                                    /* 자동 화면맞춤 비활성 */
+            //vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;  /* 원근 뷰 설정 */
+            vizcore3d.Animation.UseEffect = false;                                   /* 기본 효과 사용안함 설정 */
+
+            //vizcore3d.ShowWaitForm();
+
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
+            VIZCore3D.NET.Data.Vertex3D bay = new Data.Vertex3D(83772, -41271, 8664);
+
+            foreach (KeyValuePair<int, List<VIZCore3D.NET.Data.Node>> item in Nodes)
+            {
+                if (item.Key == -2) continue;
+                if (item.Key == -1) continue;
+                if (item.Key == 0) continue;
+
+                List<int> index = new List<int>();
+                foreach (VIZCore3D.NET.Data.Node node in item.Value)
+                {
+                    //index.Add(node.Index);
+                    //VIZCore3D.NET.Data.Object3DProperty prop = vizcore3d.Object3D.GeometryProperty.FromIndex(node.Index);
+
+                    //vizcore3d.Object3D.Transform.Move(
+                    ////new int[] { node.Index } 
+                    //index.ToArray()
+                    //, -prop.CenterPoint.X
+                    //, -prop.CenterPoint.Y
+                    //, -prop.CenterPoint.Z
+                    //, false
+                    //);
+
+                    //vizcore3d.Object3D.Transform.Move(
+                    //    index.ToArray()
+                    //    new int[] { node.Index }
+                    //    , 0
+                    //    , 0
+                    //    , 10000
+                    //    , false
+                    //    );
+                }
+
+                vizcore3d.Object3D.Transform.Move(
+                    item.Value
+                    , new VIZCore3D.NET.Data.Vertex3D(0, 0, 10000)
+                    , false
+                    );
+            }
+
+
+            foreach (KeyValuePair<int, List<VIZCore3D.NET.Data.Node>> item in Nodes)
+            {
+                if (item.Key == -2) continue;
+                if (item.Key == -1) continue;
+                if (item.Key == 0) continue;
+
+                //vizcore3d.Object3D.Show(item.Value, false);
+            }
+
+            //vizcore3d.CloseWaitForm();
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
-            vizcore3d.Animation.Start(false, 0);
+            vizcore3d.Animation.Play(false, 0);
         }
 
         private void btnPause_Click(object sender, EventArgs e)
@@ -525,6 +618,122 @@ namespace VIZCore3D.NET.Animation.Block
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+        }
+
+        private void btnShowGroup_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3d.View.XRay.Clear();
+
+            int index = cbGroup.SelectedIndex;
+
+            if (index == -1) return;
+
+            if (GetGroup().ContainsKey(index + 1) == false) return;
+
+            GetNodes();
+
+            List<VIZCore3D.NET.Data.Node> nodes = Nodes[index + 1];
+
+            vizcore3d.Object3D.Select(nodes, true, true);
+            vizcore3d.View.XRay.Select(nodes, true, false);
+        }
+
+        private void GetNodes()
+        {
+            if (Nodes == null)
+                Nodes = new Dictionary<int, List<Data.Node>>();
+            else
+                return;
+
+            foreach (KeyValuePair<int, List<string>> item in GetGroup())
+            {
+                List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.Find.QuickSearch(GetGroup()[item.Key], false, true, false, false, true, false);
+
+                Nodes.Add(item.Key, nodes);
+            }
+        }
+
+        private Dictionary<int, List<string>> GetGroup()
+        {
+            Dictionary<int, List<string>> map = new Dictionary<int, List<string>>();
+
+            {
+                List<string> items = new List<string>() { "CRANE_LIFT" };
+                map.Add(-2, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_LIFT", "CRANE_SHELL" };
+                map.Add(-1, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "DOCK_MODEL" };
+                map.Add(0, items);
+            }
+
+            {
+                List<string> items = new List<string>() {"101", "103", "104", "110"};
+                map.Add(1, items);
+            }
+
+            {
+                List<string> items = new List<string>() {"111", "121", "122", "131", "132", "141", "142", "151", "152"};
+                map.Add(2, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "113", "123", "133", "143", "153"};
+                map.Add(3, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "124", "125", "134", "135", "144", "154" };
+                map.Add(4, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "201", "222", "232", "501", "502", "621", "622", "631", "632", "641", "651" };
+                map.Add(5, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "223", "224", "233", "234", "503", "504", "623", "624", "633", "634" };
+                map.Add(6, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "225", "226", "235", "236", "505", "625", "626", "635", "636" };
+                map.Add(7, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "208", "227", "237", "506", "507", "508", "627", "628", "637", "638" };
+                map.Add(8, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "209", "629", "639", "801", "802", "803", "804", "810", "824", "825", "834", "835" };
+                map.Add(9, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "301", "311", "321", "331" };
+                map.Add(10, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "310", "312", "313" };
+                map.Add(11, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "302", "303", "304", "305" };
+                map.Add(12, items);
+            }
+
+            return map;
         }
     }
 }

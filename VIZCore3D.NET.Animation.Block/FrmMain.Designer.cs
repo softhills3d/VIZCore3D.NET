@@ -30,22 +30,24 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLoadBlock = new System.Windows.Forms.Button();
-            this.btnCreateDock = new System.Windows.Forms.Button();
-            this.btnLoadCrane = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnStop = new System.Windows.Forms.Button();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.btnPlay = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnGenerateAnimation = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnPlay = new System.Windows.Forms.Button();
-            this.btnPause = new System.Windows.Forms.Button();
-            this.btnStop = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLoadCrane = new System.Windows.Forms.Button();
+            this.btnCreateDock = new System.Windows.Forms.Button();
+            this.btnLoadBlock = new System.Windows.Forms.Button();
+            this.cbGroup = new System.Windows.Forms.ComboBox();
+            this.btnShowGroup = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,54 +66,56 @@
             this.splitContainer1.SplitterDistance = 472;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox1
+            // groupBox3
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnLoadCrane);
-            this.groupBox1.Controls.Add(this.btnCreateDock);
-            this.groupBox1.Controls.Add(this.btnLoadBlock);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(447, 80);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Model";
+            this.groupBox3.Controls.Add(this.btnStop);
+            this.groupBox3.Controls.Add(this.btnPause);
+            this.groupBox3.Controls.Add(this.btnPlay);
+            this.groupBox3.Location = new System.Drawing.Point(12, 179);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(447, 80);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Animation";
             // 
-            // btnLoadBlock
+            // btnStop
             // 
-            this.btnLoadBlock.Location = new System.Drawing.Point(21, 20);
-            this.btnLoadBlock.Name = "btnLoadBlock";
-            this.btnLoadBlock.Size = new System.Drawing.Size(75, 45);
-            this.btnLoadBlock.TabIndex = 0;
-            this.btnLoadBlock.Text = "Block";
-            this.btnLoadBlock.UseVisualStyleBackColor = true;
-            this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
+            this.btnStop.Location = new System.Drawing.Point(233, 37);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 23);
+            this.btnStop.TabIndex = 2;
+            this.btnStop.Text = "Stop";
+            this.btnStop.UseVisualStyleBackColor = true;
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // btnCreateDock
+            // btnPause
             // 
-            this.btnCreateDock.Location = new System.Drawing.Point(117, 20);
-            this.btnCreateDock.Name = "btnCreateDock";
-            this.btnCreateDock.Size = new System.Drawing.Size(75, 45);
-            this.btnCreateDock.TabIndex = 1;
-            this.btnCreateDock.Text = "Dock";
-            this.btnCreateDock.UseVisualStyleBackColor = true;
-            this.btnCreateDock.Click += new System.EventHandler(this.btnCreateDock_Click);
+            this.btnPause.Location = new System.Drawing.Point(127, 37);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(75, 23);
+            this.btnPause.TabIndex = 1;
+            this.btnPause.Text = "Pause";
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
             // 
-            // btnLoadCrane
+            // btnPlay
             // 
-            this.btnLoadCrane.Location = new System.Drawing.Point(213, 20);
-            this.btnLoadCrane.Name = "btnLoadCrane";
-            this.btnLoadCrane.Size = new System.Drawing.Size(75, 45);
-            this.btnLoadCrane.TabIndex = 2;
-            this.btnLoadCrane.Text = "Crane";
-            this.btnLoadCrane.UseVisualStyleBackColor = true;
-            this.btnLoadCrane.Click += new System.EventHandler(this.btnLoadCrane_Click);
+            this.btnPlay.Location = new System.Drawing.Point(21, 37);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(75, 23);
+            this.btnPlay.TabIndex = 0;
+            this.btnPlay.Text = "Play";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnShowGroup);
+            this.groupBox2.Controls.Add(this.cbGroup);
             this.groupBox2.Controls.Add(this.btnGenerateAnimation);
             this.groupBox2.Location = new System.Drawing.Point(12, 98);
             this.groupBox2.Name = "groupBox2";
@@ -130,49 +134,80 @@
             this.btnGenerateAnimation.UseVisualStyleBackColor = true;
             this.btnGenerateAnimation.Click += new System.EventHandler(this.btnGenerateAnimation_Click);
             // 
-            // groupBox3
+            // groupBox1
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnStop);
-            this.groupBox3.Controls.Add(this.btnPause);
-            this.groupBox3.Controls.Add(this.btnPlay);
-            this.groupBox3.Location = new System.Drawing.Point(12, 179);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(447, 80);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Animation";
+            this.groupBox1.Controls.Add(this.btnLoadCrane);
+            this.groupBox1.Controls.Add(this.btnCreateDock);
+            this.groupBox1.Controls.Add(this.btnLoadBlock);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(447, 80);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Model";
             // 
-            // btnPlay
+            // btnLoadCrane
             // 
-            this.btnPlay.Location = new System.Drawing.Point(21, 37);
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(75, 23);
-            this.btnPlay.TabIndex = 0;
-            this.btnPlay.Text = "Play";
-            this.btnPlay.UseVisualStyleBackColor = true;
-            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
+            this.btnLoadCrane.Location = new System.Drawing.Point(213, 20);
+            this.btnLoadCrane.Name = "btnLoadCrane";
+            this.btnLoadCrane.Size = new System.Drawing.Size(75, 45);
+            this.btnLoadCrane.TabIndex = 2;
+            this.btnLoadCrane.Text = "Crane";
+            this.btnLoadCrane.UseVisualStyleBackColor = true;
+            this.btnLoadCrane.Click += new System.EventHandler(this.btnLoadCrane_Click);
             // 
-            // btnPause
+            // btnCreateDock
             // 
-            this.btnPause.Location = new System.Drawing.Point(127, 37);
-            this.btnPause.Name = "btnPause";
-            this.btnPause.Size = new System.Drawing.Size(75, 23);
-            this.btnPause.TabIndex = 1;
-            this.btnPause.Text = "Pause";
-            this.btnPause.UseVisualStyleBackColor = true;
-            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            this.btnCreateDock.Location = new System.Drawing.Point(117, 20);
+            this.btnCreateDock.Name = "btnCreateDock";
+            this.btnCreateDock.Size = new System.Drawing.Size(75, 45);
+            this.btnCreateDock.TabIndex = 1;
+            this.btnCreateDock.Text = "Dock";
+            this.btnCreateDock.UseVisualStyleBackColor = true;
+            this.btnCreateDock.Click += new System.EventHandler(this.btnCreateDock_Click);
             // 
-            // btnStop
+            // btnLoadBlock
             // 
-            this.btnStop.Location = new System.Drawing.Point(233, 37);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 23);
-            this.btnStop.TabIndex = 2;
-            this.btnStop.Text = "Stop";
-            this.btnStop.UseVisualStyleBackColor = true;
-            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
+            this.btnLoadBlock.Location = new System.Drawing.Point(21, 20);
+            this.btnLoadBlock.Name = "btnLoadBlock";
+            this.btnLoadBlock.Size = new System.Drawing.Size(75, 45);
+            this.btnLoadBlock.TabIndex = 0;
+            this.btnLoadBlock.Text = "Block";
+            this.btnLoadBlock.UseVisualStyleBackColor = true;
+            this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
+            // 
+            // cbGroup
+            // 
+            this.cbGroup.FormattingEnabled = true;
+            this.cbGroup.Items.AddRange(new object[] {
+            "GROUP 01",
+            "GROUP 02",
+            "GROUP 03",
+            "GROUP 04",
+            "GROUP 05",
+            "GROUP 06",
+            "GROUP 07",
+            "GROUP 08",
+            "GROUP 09",
+            "GROUP 10",
+            "GROUP 11",
+            "GROUP 12"});
+            this.cbGroup.Location = new System.Drawing.Point(152, 35);
+            this.cbGroup.Name = "cbGroup";
+            this.cbGroup.Size = new System.Drawing.Size(121, 20);
+            this.cbGroup.TabIndex = 2;
+            // 
+            // btnShowGroup
+            // 
+            this.btnShowGroup.Location = new System.Drawing.Point(279, 33);
+            this.btnShowGroup.Name = "btnShowGroup";
+            this.btnShowGroup.Size = new System.Drawing.Size(103, 23);
+            this.btnShowGroup.TabIndex = 3;
+            this.btnShowGroup.Text = "Show Group";
+            this.btnShowGroup.UseVisualStyleBackColor = true;
+            this.btnShowGroup.Click += new System.EventHandler(this.btnShowGroup_Click);
             // 
             // FrmMain
             // 
@@ -187,9 +222,9 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -207,6 +242,8 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnGenerateAnimation;
+        private System.Windows.Forms.Button btnShowGroup;
+        private System.Windows.Forms.ComboBox cbGroup;
     }
 }
 
