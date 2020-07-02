@@ -109,7 +109,7 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "INDEX";
+            this.columnHeader1.Text = "ID";
             this.columnHeader1.Width = 80;
             // 
             // columnHeader2

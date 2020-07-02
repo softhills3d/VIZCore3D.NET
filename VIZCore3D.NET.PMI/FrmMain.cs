@@ -452,6 +452,13 @@ namespace VIZCore3D.NET.PMI
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            // 모델 열기 완료 후, 이벤트
+            vizcore3d.Model.OnModelOpenedEvent += Model_OnModelOpenedEvent;
+        }
+
+        private void Model_OnModelOpenedEvent(object sender, EventArgs e)
+        {
+            ShowItems();
         }
 
         private void btnShowAll_Click(object sender, EventArgs e)

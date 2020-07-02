@@ -157,6 +157,9 @@
     <Content Include="Preview\VIZCore3D.NET.PlacementStatus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.PMI.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
