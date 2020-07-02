@@ -256,7 +256,7 @@ namespace VIZCore3D.NET.ImportAttribute
             // 시야각
             vizcore3d.View.FOV = 60.0f;
             // 광원 세기
-            vizcore3d.View.SpecularGamma = 100.0f;
+            vizcore3d.View.SpecularGamma = 30.0f;
             // 모서리 굵기
             vizcore3d.View.EdgeWidthRatio = 0.0f;
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상
@@ -564,7 +564,7 @@ namespace VIZCore3D.NET.ImportAttribute
                 int nodeCount = 0;
                 int attCount = 0;
 
-                Dictionary<string, Data.Node> nodes = vizcore3d.Object3D.GetNodeNameMap();
+                Dictionary<string, Data.Node> nodes = vizcore3d.Object3D.GetNodeNameMap(false);
 
                 foreach (ShxAttributeXmlNode item in xmlHelper.AttributeList)
                 {

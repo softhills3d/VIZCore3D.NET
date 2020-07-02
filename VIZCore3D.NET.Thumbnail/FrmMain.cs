@@ -250,7 +250,7 @@ namespace VIZCore3D.NET.Thumbnail
             // 시야각
             vizcore3d.View.FOV = 60.0f;
             // 광원 세기
-            vizcore3d.View.SpecularGamma = 100.0f;
+            vizcore3d.View.SpecularGamma = 30.0f;
             // 모서리 굵기
             vizcore3d.View.EdgeWidthRatio = 0.0f;
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상

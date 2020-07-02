@@ -472,4 +472,17 @@ Features
     ]]>
     </Contents>
   </Item>
+  <Item Name="PMI" Project="VIZCore3D.NET.PMI">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.PMI
+      
+Features
+- Mechanical CAD 에서 생성된 PMI (Product Manufacturing Information) 정보 조회
+- 모두 보이기/숨기기
+- 선택적 보이기/숨기기
+- PMI 뷰 정렬
+    ]]>
+    </Contents>
+  </Item>
 </DemoCenter>

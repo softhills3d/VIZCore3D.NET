@@ -101,11 +101,12 @@
             System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("Selection Box", new System.Windows.Forms.TreeNode[] {
             treeNode39,
             treeNode40});
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("Custom Drawing");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Block Arrangement");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
-            treeNode43});
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("PMI");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("Custom Drawing");
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("Block Arrangement");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
+            treeNode44});
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
             treeNode10,
             treeNode20,
             treeNode25,
@@ -117,7 +118,8 @@
             treeNode38,
             treeNode41,
             treeNode42,
-            treeNode44});
+            treeNode43,
+            treeNode45});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -310,18 +312,21 @@
             treeNode40.Text = "Drag & Drop";
             treeNode41.Name = "Selection Box";
             treeNode41.Text = "Selection Box";
-            treeNode42.Name = "Custom Drawing";
-            treeNode42.Tag = "VIZCore3D.NET.ShapeDrawing";
-            treeNode42.Text = "Custom Drawing";
-            treeNode43.Name = "Block Arrangement";
-            treeNode43.Tag = "VIZCore3D.NET.BlockArrangement";
-            treeNode43.Text = "Block Arrangement";
-            treeNode44.Name = "Etc.";
-            treeNode44.Text = "Etc.";
-            treeNode45.Name = "VIZCore3D.NET";
-            treeNode45.Text = "VIZCore3D.NET";
+            treeNode42.Name = "PMI";
+            treeNode42.Tag = "VIZCore3D.NET.PMI";
+            treeNode42.Text = "PMI";
+            treeNode43.Name = "Custom Drawing";
+            treeNode43.Tag = "VIZCore3D.NET.ShapeDrawing";
+            treeNode43.Text = "Custom Drawing";
+            treeNode44.Name = "Block Arrangement";
+            treeNode44.Tag = "VIZCore3D.NET.BlockArrangement";
+            treeNode44.Text = "Block Arrangement";
+            treeNode45.Name = "Etc.";
+            treeNode45.Text = "Etc.";
+            treeNode46.Name = "VIZCore3D.NET";
+            treeNode46.Text = "VIZCore3D.NET";
             this.tvHierarchy.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode45});
+            treeNode46});
             this.tvHierarchy.SelectedImageIndex = 0;
             this.tvHierarchy.Size = new System.Drawing.Size(347, 760);
             this.tvHierarchy.TabIndex = 0;

@@ -258,7 +258,7 @@ namespace VIZCore3D.NET.PlacementStatus
             // 시야각
             vizcore3d.View.FOV = 60.0f;
             // 광원 세기
-            vizcore3d.View.SpecularGamma = 100.0f;
+            vizcore3d.View.SpecularGamma = 30.0f;
             // 모서리 굵기
             vizcore3d.View.EdgeWidthRatio = 0.0f;
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상
@@ -462,6 +462,23 @@ namespace VIZCore3D.NET.PlacementStatus
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+
+            // 커스텀 드로잉(텍스트) 클릭 이벤트
+            vizcore3d.TextDrawing.OnTextDrawingItemClickedEvent += TextDrawing_OnTextDrawingItemClickedEvent;
+        }
+
+        private void TextDrawing_OnTextDrawingItemClickedEvent(object sender, Event.EventManager.TextDrawingItemClickedEventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("Event : {0}\n", "OnTextDrawingItemClickedEvent");
+            sb.AppendFormat("ID : {0}\n", e.Item.ID);
+            sb.AppendFormat("Center : {0}\n", e.Item.Center.ToString());
+            sb.AppendFormat("Direction : {0}\n", e.Item.Direction.ToString());
+            sb.AppendFormat("UpDirection : {0}\n", e.Item.UpDirection.ToString());
+            sb.AppendFormat("Height : {0}\n", e.Item.Height);
+            sb.AppendFormat("Color : {0}\n", e.Item.FontColor.ToString());
+            sb.AppendFormat("Text : {0}\n", e.Item.Text);
+            System.Diagnostics.Trace.WriteLine(sb.ToString());
         }
 
         private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)

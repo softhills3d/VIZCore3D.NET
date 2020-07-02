@@ -35,19 +35,22 @@
             this.btnPause = new System.Windows.Forms.Button();
             this.btnPlay = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnShowGroup = new System.Windows.Forms.Button();
+            this.cbGroup = new System.Windows.Forms.ComboBox();
             this.btnGenerateAnimation = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLoadCrane = new System.Windows.Forms.Button();
             this.btnCreateDock = new System.Windows.Forms.Button();
             this.btnLoadBlock = new System.Windows.Forms.Button();
-            this.cbGroup = new System.Windows.Forms.ComboBox();
-            this.btnShowGroup = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSetMaterialDock = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -59,6 +62,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
@@ -73,7 +77,7 @@
             this.groupBox3.Controls.Add(this.btnStop);
             this.groupBox3.Controls.Add(this.btnPause);
             this.groupBox3.Controls.Add(this.btnPlay);
-            this.groupBox3.Location = new System.Drawing.Point(12, 179);
+            this.groupBox3.Location = new System.Drawing.Point(12, 268);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(447, 80);
             this.groupBox3.TabIndex = 2;
@@ -117,12 +121,43 @@
             this.groupBox2.Controls.Add(this.btnShowGroup);
             this.groupBox2.Controls.Add(this.cbGroup);
             this.groupBox2.Controls.Add(this.btnGenerateAnimation);
-            this.groupBox2.Location = new System.Drawing.Point(12, 98);
+            this.groupBox2.Location = new System.Drawing.Point(12, 190);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(447, 75);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Animation Creation";
+            // 
+            // btnShowGroup
+            // 
+            this.btnShowGroup.Location = new System.Drawing.Point(279, 33);
+            this.btnShowGroup.Name = "btnShowGroup";
+            this.btnShowGroup.Size = new System.Drawing.Size(103, 23);
+            this.btnShowGroup.TabIndex = 3;
+            this.btnShowGroup.Text = "Show Group";
+            this.btnShowGroup.UseVisualStyleBackColor = true;
+            this.btnShowGroup.Click += new System.EventHandler(this.btnShowGroup_Click);
+            // 
+            // cbGroup
+            // 
+            this.cbGroup.FormattingEnabled = true;
+            this.cbGroup.Items.AddRange(new object[] {
+            "GROUP 01",
+            "GROUP 02",
+            "GROUP 03",
+            "GROUP 04",
+            "GROUP 05",
+            "GROUP 06",
+            "GROUP 07",
+            "GROUP 08",
+            "GROUP 09",
+            "GROUP 10",
+            "GROUP 11",
+            "GROUP 12"});
+            this.cbGroup.Location = new System.Drawing.Point(152, 35);
+            this.cbGroup.Name = "cbGroup";
+            this.cbGroup.Size = new System.Drawing.Size(121, 20);
+            this.cbGroup.TabIndex = 2;
             // 
             // btnGenerateAnimation
             // 
@@ -178,36 +213,27 @@
             this.btnLoadBlock.UseVisualStyleBackColor = true;
             this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
             // 
-            // cbGroup
+            // groupBox4
             // 
-            this.cbGroup.FormattingEnabled = true;
-            this.cbGroup.Items.AddRange(new object[] {
-            "GROUP 01",
-            "GROUP 02",
-            "GROUP 03",
-            "GROUP 04",
-            "GROUP 05",
-            "GROUP 06",
-            "GROUP 07",
-            "GROUP 08",
-            "GROUP 09",
-            "GROUP 10",
-            "GROUP 11",
-            "GROUP 12"});
-            this.cbGroup.Location = new System.Drawing.Point(152, 35);
-            this.cbGroup.Name = "cbGroup";
-            this.cbGroup.Size = new System.Drawing.Size(121, 20);
-            this.cbGroup.TabIndex = 2;
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnSetMaterialDock);
+            this.groupBox4.Location = new System.Drawing.Point(12, 98);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(447, 86);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Material";
             // 
-            // btnShowGroup
+            // btnSetMaterialDock
             // 
-            this.btnShowGroup.Location = new System.Drawing.Point(279, 33);
-            this.btnShowGroup.Name = "btnShowGroup";
-            this.btnShowGroup.Size = new System.Drawing.Size(103, 23);
-            this.btnShowGroup.TabIndex = 3;
-            this.btnShowGroup.Text = "Show Group";
-            this.btnShowGroup.UseVisualStyleBackColor = true;
-            this.btnShowGroup.Click += new System.EventHandler(this.btnShowGroup_Click);
+            this.btnSetMaterialDock.Location = new System.Drawing.Point(21, 20);
+            this.btnSetMaterialDock.Name = "btnSetMaterialDock";
+            this.btnSetMaterialDock.Size = new System.Drawing.Size(75, 45);
+            this.btnSetMaterialDock.TabIndex = 2;
+            this.btnSetMaterialDock.Text = "Dock";
+            this.btnSetMaterialDock.UseVisualStyleBackColor = true;
+            this.btnSetMaterialDock.Click += new System.EventHandler(this.btnSetMaterialDock_Click);
             // 
             // FrmMain
             // 
@@ -225,6 +251,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -244,6 +271,8 @@
         private System.Windows.Forms.Button btnGenerateAnimation;
         private System.Windows.Forms.Button btnShowGroup;
         private System.Windows.Forms.ComboBox cbGroup;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnSetMaterialDock;
     }
 }
 
