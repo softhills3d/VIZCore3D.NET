@@ -543,7 +543,7 @@ namespace VIZCore3D.NET.Animation.Block
                 );
 
             List<Data.Node> dock = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "DOCK", "GROUND" }, false, true, false, false, true, false);
-            vizcore3d.Object3D.Color.SetTransparency(dock, 70);
+            vizcore3d.Object3D.Color.SetTransparency(dock, 30);
         }
 
         private void btnLoadCrane_Click(object sender, EventArgs e)
@@ -578,6 +578,9 @@ namespace VIZCore3D.NET.Animation.Block
             {
                 VIZCore3D.NET.Data.BoundBox3D boundbox =
                          vizcore3d.Object3D.GeometryProperty.FromIndex(item.Index).GetBoundBox();
+
+                boundbox.MaxZ = boundbox.MaxZ + 10.0f;
+
                 int id = vizcore3d.ShapeDrawing.AddBox(
                               boundbox
                               , 1
@@ -596,6 +599,17 @@ namespace VIZCore3D.NET.Animation.Block
             {
                 vizcore3d.ShapeDrawing.SetMaterial(item, MaterialID);
             }
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void btnSetMaterialSea_Click(object sender, EventArgs e)
+        {
+            vizcore3d.BeginUpdate();
+
+            Data.BoundBox3D boundbox = vizcore3d.Model.BoundBox;
+
+            vizcore3d.ShapeDrawing.AddSea(boundbox.MinZ, true);
 
             vizcore3d.EndUpdate();
         }

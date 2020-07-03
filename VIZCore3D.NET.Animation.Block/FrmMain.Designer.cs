@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSetMaterialDock = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnPause = new System.Windows.Forms.Button();
@@ -42,15 +44,14 @@
             this.btnLoadCrane = new System.Windows.Forms.Button();
             this.btnCreateDock = new System.Windows.Forms.Button();
             this.btnLoadBlock = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnSetMaterialDock = new System.Windows.Forms.Button();
+            this.btnSetMaterialSea = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,6 +70,29 @@
             this.splitContainer1.Size = new System.Drawing.Size(1159, 602);
             this.splitContainer1.SplitterDistance = 472;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnSetMaterialSea);
+            this.groupBox4.Controls.Add(this.btnSetMaterialDock);
+            this.groupBox4.Location = new System.Drawing.Point(12, 98);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(447, 86);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Material";
+            // 
+            // btnSetMaterialDock
+            // 
+            this.btnSetMaterialDock.Location = new System.Drawing.Point(21, 20);
+            this.btnSetMaterialDock.Name = "btnSetMaterialDock";
+            this.btnSetMaterialDock.Size = new System.Drawing.Size(75, 45);
+            this.btnSetMaterialDock.TabIndex = 2;
+            this.btnSetMaterialDock.Text = "Dock";
+            this.btnSetMaterialDock.UseVisualStyleBackColor = true;
+            this.btnSetMaterialDock.Click += new System.EventHandler(this.btnSetMaterialDock_Click);
             // 
             // groupBox3
             // 
@@ -213,27 +237,15 @@
             this.btnLoadBlock.UseVisualStyleBackColor = true;
             this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
             // 
-            // groupBox4
+            // btnSetMaterialSea
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnSetMaterialDock);
-            this.groupBox4.Location = new System.Drawing.Point(12, 98);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(447, 86);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Material";
-            // 
-            // btnSetMaterialDock
-            // 
-            this.btnSetMaterialDock.Location = new System.Drawing.Point(21, 20);
-            this.btnSetMaterialDock.Name = "btnSetMaterialDock";
-            this.btnSetMaterialDock.Size = new System.Drawing.Size(75, 45);
-            this.btnSetMaterialDock.TabIndex = 2;
-            this.btnSetMaterialDock.Text = "Dock";
-            this.btnSetMaterialDock.UseVisualStyleBackColor = true;
-            this.btnSetMaterialDock.Click += new System.EventHandler(this.btnSetMaterialDock_Click);
+            this.btnSetMaterialSea.Location = new System.Drawing.Point(117, 20);
+            this.btnSetMaterialSea.Name = "btnSetMaterialSea";
+            this.btnSetMaterialSea.Size = new System.Drawing.Size(75, 45);
+            this.btnSetMaterialSea.TabIndex = 3;
+            this.btnSetMaterialSea.Text = "Sea";
+            this.btnSetMaterialSea.UseVisualStyleBackColor = true;
+            this.btnSetMaterialSea.Click += new System.EventHandler(this.btnSetMaterialSea_Click);
             // 
             // FrmMain
             // 
@@ -248,10 +260,10 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -273,6 +285,7 @@
         private System.Windows.Forms.ComboBox cbGroup;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnSetMaterialDock;
+        private System.Windows.Forms.Button btnSetMaterialSea;
     }
 }
 

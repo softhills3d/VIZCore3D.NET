@@ -174,10 +174,12 @@
             // columnHeader9
             // 
             this.columnHeader9.Text = "BoundBox 1";
+            this.columnHeader9.Width = 109;
             // 
             // columnHeader10
             // 
             this.columnHeader10.Text = "BoundBox 2";
+            this.columnHeader10.Width = 117;
             // 
             // groupBox1
             // 
