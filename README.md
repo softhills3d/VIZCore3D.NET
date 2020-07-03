@@ -124,6 +124,9 @@
 ##### Avatar Path (Youtube)
 [![Avatar Path](http://img.youtube.com/vi/03ytY3zdNRA/0.jpg)](https://youtu.be/03ytY3zdNRA?t=0s)
 
+##### PMI (Product Manufacturing Information) (Youtube)
+[![PMI](http://img.youtube.com/vi/XIiNnUe5fY8/0.jpg)](https://youtu.be/XIiNnUe5fY8?t=0s)
+
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
 
