@@ -509,7 +509,6 @@ namespace VIZCore3D.NET.Animation.Block
             }
             else
             {
-                //string path = @"C:\Users\gjkim\Desktop\MODELS_ANIMATION\FIXED_V3_SIMPLEFIED_V2";
                 string path = @"C:\Users\Gjkim\Desktop\MODELS\H6501_REV_FIXED\FIXED_V3_SIMPLEFIED_V2";
                 string[] file = System.IO.Directory.GetFiles(path, "*.viz");
                 vizcore3d.Model.Add(file);
@@ -554,8 +553,7 @@ namespace VIZCore3D.NET.Animation.Block
             }
             else
             {
-                //string path = @"C:\Users\gjkim\Desktop\MODELS_ANIMATION\MISC\CRANE_ASSEMBLY_2";
-                string path = @"C:\Users\Gjkim\Desktop\MODELS\MISC\CRANE_ASSEMBLY_2";
+                string path = @"C:\Users\Gjkim\Desktop\MODELS\MISC\CRANE_ASSEMBLY_4";
                 string[] file = System.IO.Directory.GetFiles(path, "*.viz");
                 vizcore3d.Model.Add(file);
             }
@@ -609,7 +607,21 @@ namespace VIZCore3D.NET.Animation.Block
 
             Data.BoundBox3D boundbox = vizcore3d.Model.BoundBox;
 
-            vizcore3d.ShapeDrawing.AddSea(boundbox.MinZ, true);
+            // SEA(바다) 커스텀 개체 추가
+            int customSeaId = vizcore3d.ShapeDrawing.AddSea(
+                boundbox.MinZ - 10.0f   /* 높이 : Z축 */
+                , true                  /* Visible */
+                );
+
+            // 기본 리소스 (SEA Material) 복사
+            int material = vizcore3d.Object3D.Material.Copy(Data.ResourceMaterials.SEA);
+            Color color = Color.FromArgb(127, 255, 255, 255);
+
+            // 리소스 색상 변경
+            vizcore3d.Object3D.Material.SetColor(material, color);
+
+            // 수정된 리소스 (Material) 를 기존 커스텀 개체에 지정 
+            vizcore3d.ShapeDrawing.SetMaterial(customSeaId, material);
 
             vizcore3d.EndUpdate();
         }
@@ -740,8 +752,8 @@ namespace VIZCore3D.NET.Animation.Block
         /// </summary>
         public void AddKey(bool modelKey = true, bool cameraKey = false)
         {
-            if (cameraKey)
-                vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.CAMERA);
+            //if (cameraKey)
+            //    vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.CAMERA);
 
             if (modelKey)
                 vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.MODEL);
@@ -811,12 +823,12 @@ namespace VIZCore3D.NET.Animation.Block
             Dictionary<int, List<string>> map = new Dictionary<int, List<string>>();
 
             {
-                List<string> items = new List<string>() { "CRANE_LIFT" };
+                List<string> items = new List<string>() { "CRANE_HOIST" };
                 map.Add(-2, items);
             }
 
             {
-                List<string> items = new List<string>() { "CRANE_LIFT", "CRANE_SHELL" };
+                List<string> items = new List<string>() { "CRANE_LEG", "CRANE_GIRDER", "CRANE_HOIST" };
                 map.Add(-1, items);
             }
 
