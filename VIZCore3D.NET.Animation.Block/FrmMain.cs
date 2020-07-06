@@ -32,7 +32,7 @@ namespace VIZCore3D.NET.Animation.Block
 
         private Dictionary<int, List<VIZCore3D.NET.Data.Node>> Nodes = null;
 
-        private Dictionary<int, VIZCore3D.NET.Data.Vertex3D> CenterPoint = null;
+        private Dictionary<int, VIZCore3D.NET.Data.Object3DProperty> ObjectProperty = null;
 
         public bool TestMode
         {
@@ -494,6 +494,7 @@ namespace VIZCore3D.NET.Animation.Block
         private void Animation_OnAnimationPlaybackFinishedEvent(object sender, Event.EventManager.AnimationPlaybackEventArgs e)
         {
             System.Diagnostics.Trace.WriteLine(string.Format("OnAnimationPlaybackFinishedEvent - ID : {0}", e.ID));
+            MessageBox.Show(string.Format("Animation Finished : {0}", e.ID), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -564,6 +565,17 @@ namespace VIZCore3D.NET.Animation.Block
         {
             vizcore3d.BeginUpdate();
 
+            SetMaterialDock();
+            AddTextDock1();     // DOCK
+            AddTextDock2();     // SOFTHILLS
+            AddTextDock3();     // H2014
+            AddTextDock4();     // VIZCore3D.NET
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void SetMaterialDock()
+        {
             List<Data.Node> ground = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "GROUND" }, false, true, false, false, true, false);
             if (ground.Count == 0) return;
 
@@ -590,15 +602,98 @@ namespace VIZCore3D.NET.Animation.Block
             }
 
             string image = "D:\\Concrete-Texture.jpg";
-            if(MaterialID == -1)
+            if (MaterialID == -1)
                 MaterialID = vizcore3d.Object3D.Material.Add(image);
 
             foreach (int item in customBox)
             {
                 vizcore3d.ShapeDrawing.SetMaterial(item, MaterialID);
             }
+        }
 
-            vizcore3d.EndUpdate();
+        private void AddTextDock1()
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "GROUND_03" }, false, false, false, false, true, false);
+            if (items.Count == 0) return;
+
+            VIZCore3D.NET.Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromNode(items, false).GetBoundBox();
+
+            VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
+            center.X = boundbox.MinX + 30000.0f;
+            center.Y = boundbox.MaxY - 10000.0f;
+            center.Z = boundbox.MaxZ + 11.0f;
+
+            vizcore3d.TextDrawing.Add(
+                center
+                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , 10000
+                , Color.White
+                , "DOCK #01"
+                );
+        }
+        private void AddTextDock2()
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "GROUND_04" }, false, false, false, false, true, false);
+            if (items.Count == 0) return;
+
+            VIZCore3D.NET.Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromNode(items, false).GetBoundBox();
+
+            VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
+            center.X = boundbox.MaxX - 33000.0f;
+            center.Y = boundbox.MaxY - 70000.0f;
+            center.Z = boundbox.MaxZ + 11.0f;
+
+            vizcore3d.TextDrawing.Add(
+                center
+                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , 10000
+                , Color.Black
+                , "SOFTHILLS"
+                );
+        }
+        private void AddTextDock3()
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "GROUND_03" }, false, false, false, false, true, false);
+            if (items.Count == 0) return;
+
+            VIZCore3D.NET.Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromNode(items, false).GetBoundBox();
+
+            VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
+            center.X = boundbox.MinX + 22000.0f;
+            center.Y = boundbox.MaxY - 150000.0f;
+            center.Z = boundbox.MaxZ + 11.0f;
+
+            vizcore3d.TextDrawing.Add(
+                center
+                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , 10000
+                , Color.White
+                , "H2014"
+                );
+        }
+        private void AddTextDock4()
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "GROUND_03" }, false, false, false, false, true, false);
+            if (items.Count == 0) return;
+
+            VIZCore3D.NET.Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromNode(items, false).GetBoundBox();
+
+            VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
+            center.X = boundbox.MaxX - 48000.0f;
+            center.Y = boundbox.MaxY - 10000.0f;
+            center.Z = boundbox.MaxZ + 11.0f;
+
+            vizcore3d.TextDrawing.Add(
+                center
+                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , 10000
+                , Color.Black
+                , "VIZCore3D.NET"
+                );
         }
 
         private void btnSetMaterialSea_Click(object sender, EventArgs e)
@@ -632,11 +727,11 @@ namespace VIZCore3D.NET.Animation.Block
 
             // 모델 데이터 맵핑
             GetNodes();
-            CenterPoint = new Dictionary<int, Data.Vertex3D>();
+            ObjectProperty = new Dictionary<int, VIZCore3D.NET.Data.Object3DProperty>();
 
-            vizcore3d.View.EnableAutoFit = false;                                    /* 자동 화면맞춤 비활성 */
-            //vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;  /* 원근 뷰 설정 */
-            vizcore3d.Animation.UseEffect = false;                                   /* 기본 효과 사용안함 설정 */
+            vizcore3d.View.EnableAutoFit = false;                                       /* 자동 화면맞춤 비활성 */
+            //vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;   /* 원근 뷰 설정 */
+            vizcore3d.Animation.UseEffect = false;                                      /* 기본 효과 사용안함 설정 */
 
             vizcore3d.Animation.Clear();
             vizcore3d.Animation.Add("Animation");
@@ -650,14 +745,24 @@ namespace VIZCore3D.NET.Animation.Block
 
             foreach (KeyValuePair<int, List<VIZCore3D.NET.Data.Node>> item in Nodes)
             {
+                if (item.Key == -11) continue;
+                if (item.Key == -10) continue;
+                if (item.Key == -9) continue;
+                if (item.Key == -8) continue;
+                if (item.Key == -7) continue;
+                if (item.Key == -6) continue;
+
+                if (item.Key == -5) continue;
+                if (item.Key == -4) continue;
+                if (item.Key == -3) continue;
                 if (item.Key == -2) continue;
                 if (item.Key == -1) continue;
                 if (item.Key == 0) continue;
 
                 VIZCore3D.NET.Data.Object3DProperty prop = vizcore3d.Object3D.GeometryProperty.FromNode(Nodes[item.Key], false);
 
-                if (CenterPoint.ContainsKey(item.Key) == false)
-                    CenterPoint.Add(item.Key, prop.CenterPoint);
+                if (ObjectProperty.ContainsKey(item.Key) == false)
+                    ObjectProperty.Add(item.Key, prop);
 
                 vizcore3d.Object3D.Transform.Move(
                 Nodes[item.Key]
@@ -670,6 +775,16 @@ namespace VIZCore3D.NET.Animation.Block
 
             foreach (KeyValuePair<int, List<VIZCore3D.NET.Data.Node>> item in Nodes)
             {
+                if (item.Key == -11) continue;
+                if (item.Key == -10) continue;
+                if (item.Key == -9) continue;
+                if (item.Key == -8) continue;
+                if (item.Key == -7) continue;
+                if (item.Key == -6) continue;
+
+                if (item.Key == -5) continue;
+                if (item.Key == -4) continue;
+                if (item.Key == -3) continue;
                 if (item.Key == -2) continue;
                 if (item.Key == -1) continue;
                 if (item.Key == 0) continue;
@@ -677,9 +792,8 @@ namespace VIZCore3D.NET.Animation.Block
                 vizcore3d.Object3D.Show(item.Value, false);
             }
 
-
             // 애니메이션 키 추가
-            AddKey(true, true);
+            AddKey(true, false, TimeInterval);
 
             for (int i = 1; i < 13; i++)
             {
@@ -687,57 +801,202 @@ namespace VIZCore3D.NET.Animation.Block
                 vizcore3d.Object3D.Show(Nodes[i], true);
 
                 // 애니메이션 키 추가
-                AddKey(true, true);
+                AddKey(true, false, TimeInterval);
 
-                // 크레인 위치 확인
-                VIZCore3D.NET.Data.Vertex3D tranc = vizcore3d.Object3D.Transform.GetMovedDistance(Nodes[-1]);
+                // 크레인 이동 (BAY) : 블록 위치로...
+                //vizcore3d.Object3D.Transform.Move(Nodes[-2], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-4], new VIZCore3D.NET.Data.Vertex3D(bay.X, 0.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-5], new VIZCore3D.NET.Data.Vertex3D(bay.X, 0.0f, 0.0f), true);
 
-                // 크레인 이동 (BAY)
-                vizcore3d.Object3D.Transform.Move(Nodes[-1], new VIZCore3D.NET.Data.Vertex3D(bay.X, 0.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-6], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(bay.X, -6000.0f, 0.0f), true);
 
                 // 애니메이션 키 추가
-                AddKey(true, true);
+                AddKey(true, false, TimeInterval);
+                
+                // 크레인 호이스트 이동 : 블록 위치로...
+                //vizcore3d.Object3D.Transform.Move(Nodes[-2], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-6], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(bay.X, bay.Y - 6000.0f, 0.0f), true);
 
+                // 애니메이션 키 추가
+                AddKey(true, false, TimeInterval);
 
-                // 블록 Bring To Top
+                // 크레인 호이스트 : Bring To Bottom
+                for (int j = 1; j < 5; j++)
+                {
+                    vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+
+                    if (j > 2)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    }
+
+                    if (j > 3)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    }
+
+                    if (j > 4)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    }
+
+                    AddKey(true, false, TimeInterval * 0.25f);
+                }
+
+                // 블록 위치 확인
                 VIZCore3D.NET.Data.Vertex3D tran1 = vizcore3d.Object3D.Transform.GetMovedDistance(Nodes[i]);
 
-                // 블록
+                
+                // 블록 : Bring To Top
                 VIZCore3D.NET.Data.Vertex3D tran2 = new VIZCore3D.NET.Data.Vertex3D(tran1.X, tran1.Y, tran1.Z + 20000);
-                vizcore3d.Object3D.Transform.Move(Nodes[i], tran2, true);
+                {
+                    for (int j = 1; j < 4; j++)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
 
-                // 애니메이션 키 추가
-                AddKey(true, true);
+                        if (j > 2)
+                        {
+                            vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        }
 
-                // 블록
-                VIZCore3D.NET.Data.Vertex3D tran3 = new VIZCore3D.NET.Data.Vertex3D(tran2.X, CenterPoint[i].Y, tran2.Z);
+                        if (j > 3)
+                        {
+                            vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        }
+
+                        if (j > 4)
+                        {
+                            vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        }
+
+                        vizcore3d.Object3D.Transform.Move(
+                            Nodes[i]
+                            , new VIZCore3D.NET.Data.Vertex3D(tran1.X, tran1.Y, tran1.Z + (5000 * j))
+                            , true
+                            );
+
+                        // 애니메이션 키 추가
+                        AddKey(true, false, 0.25f);
+                    }
+                }
+
+                // 블록 : Bring To Center(Y)
+                VIZCore3D.NET.Data.Vertex3D tran3 = new VIZCore3D.NET.Data.Vertex3D(tran2.X, ObjectProperty[i].CenterPoint.Y, tran2.Z);
                 vizcore3d.Object3D.Transform.Move(Nodes[i], tran3, true);
 
-                // 크레인 이동 (BAY)
-                //vizcore3d.Object3D.Transform.Move(Nodes[-1], new VIZCore3D.NET.Data.Vertex3D(tran3.X, 0.0f, 0.0f), true);
+                // 크레인 호이스트 이동
+                //vizcore3d.Object3D.Transform.Move(Nodes[-2], new VIZCore3D.NET.Data.Vertex3D(bay.X, CenterPoint[i].Y - 6000.0f, 0.0f), true);
+
+                vizcore3d.Object3D.Transform.Move(Nodes[-6], new VIZCore3D.NET.Data.Vertex3D(bay.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(bay.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(bay.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(bay.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(bay.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(bay.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
 
                 // 애니메이션 키 추가
-                AddKey(true, true);
+                AddKey(true, false, TimeInterval * 2.0f);
 
-                // 블록
-                VIZCore3D.NET.Data.Vertex3D tran4 = new VIZCore3D.NET.Data.Vertex3D(0, CenterPoint[i].Y, tran3.Z);
+                // 블록 : Bring To Original(X)
+                VIZCore3D.NET.Data.Vertex3D tran4 = new VIZCore3D.NET.Data.Vertex3D(0, ObjectProperty[i].CenterPoint.Y, tran3.Z);
                 vizcore3d.Object3D.Transform.Move(Nodes[i], tran4, true);
 
                 // 크레인 이동 (BAY)
-                //vizcore3d.Object3D.Transform.Move(Nodes[-1], new VIZCore3D.NET.Data.Vertex3D(tran4.X, 0.0f, 0.0f), true);
-                vizcore3d.Object3D.Transform.Move(Nodes[-1], new VIZCore3D.NET.Data.Vertex3D(CenterPoint[i].X, 0.0f, 0.0f), true);
+                // 크레인 호이스트 이동
+                //vizcore3d.Object3D.Transform.Move(Nodes[-2], new VIZCore3D.NET.Data.Vertex3D(CenterPoint[i].X, CenterPoint[i].Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-4], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, 0.0, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-5], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, 0.0, 0.0f), true);
+
+                vizcore3d.Object3D.Transform.Move(Nodes[-6], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(ObjectProperty[i].CenterPoint.X, ObjectProperty[i].CenterPoint.Y - 6000.0f, 0.0f), true);
 
                 // 애니메이션 키 추가
-                AddKey(true, true);
+                AddKey(true, false, TimeInterval);
 
-                // 블록
-                vizcore3d.Object3D.Transform.RestoreTransform(Nodes[i]);
+                // 크레인 호이스트 : Bring To Bottom
+                for (int j = 1; j < 5; j++)
+                {
+                    float blockZ = tran4.Z - 20000.0f + ObjectProperty[i].MinPoint.Z - bay.Z;
+                    float blockZ1 = blockZ * 0.25f;
+
+                    vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+
+                    if (j > 2)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    }
+
+                    if (j > 3)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    }
+
+                    if (j > 4)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -4000.0f), false);
+                    }
+
+                    // 블록 : Bring To Original
+                    VIZCore3D.NET.Data.Vertex3D tran5 = new Data.Vertex3D(0, 0, blockZ1 * j);
+                    //VIZCore3D.NET.Data.Vertex3D tran5 = new Data.Vertex3D(0, 0, blockZ);
+                    vizcore3d.Object3D.Transform.Move(Nodes[i], tran5, true);
+                    //vizcore3d.Object3D.Transform.RestoreTransform(Nodes[i]);
+
+                    AddKey(true, false, TimeInterval * 0.25f);
+                }
+
+                // 블록 : Bring To Original
+                //vizcore3d.Object3D.Transform.RestoreTransform(Nodes[i]);
+
+                // 블록 : Bring To Top
+                {
+                    for (int j = 1; j < 4; j++)
+                    {
+                        vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+
+                        if (j > 2)
+                        {
+                            vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        }
+
+                        if (j > 3)
+                        {
+                            vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        }
+
+                        if (j > 4)
+                        {
+                            vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 4000.0f), false);
+                        }
+
+                        // 애니메이션 키 추가
+                        AddKey(true, false, 0.25f);
+                    }
+                }
 
                 // 애니메이션 키 추가
-                AddKey(true, true);
+                AddKey(true, false, TimeInterval);
             }
 
-            AddKey(true, true);
+            AddKey(true, false, TimeInterval);
 
             vizcore3d.EndUpdate();
 
@@ -750,15 +1009,15 @@ namespace VIZCore3D.NET.Animation.Block
         /// <summary>
         /// 애니메이션 키 추가
         /// </summary>
-        public void AddKey(bool modelKey = true, bool cameraKey = false)
+        public void AddKey(bool modelKey, bool cameraKey, float internval)
         {
-            //if (cameraKey)
-            //    vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.CAMERA);
+            if (cameraKey)
+                vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.CAMERA);
 
             if (modelKey)
                 vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.MODEL);
 
-            Time += TimeInterval;
+            Time += internval;
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -823,11 +1082,56 @@ namespace VIZCore3D.NET.Animation.Block
             Dictionary<int, List<string>> map = new Dictionary<int, List<string>>();
 
             {
+                List<string> items = new List<string>() { "CRANE_HOIST_CABLE4" };
+                map.Add(-11, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_HOIST_CABLE3" };
+                map.Add(-10, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_HOIST_CABLE2" };
+                map.Add(-9, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_HOIST_CABLE1" };
+                map.Add(-8, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_HOIST_BOTTOM" };
+                map.Add(-7, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_HOIST_TOP" };
+                map.Add(-6, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_GIRDER" };
+                map.Add(-5, items);
+            }
+
+            {
+                List<string> items = new List<string>() { "CRANE_LEG" };
+                map.Add(-4, items);
+            }
+
+            { // 미사용
+                List<string> items = new List<string>() { "CRANE_HOIST_TOP", "CRANE_HOIST_BOTTOM", "CRANE_HOIST_CABLE1", "CRANE_HOIST_CABLE2", "CRANE_HOIST_CABLE3", "CRANE_HOIST_CABLE4" };
+                map.Add(-3, items);
+            }
+
+            { // 미사용
                 List<string> items = new List<string>() { "CRANE_HOIST" };
                 map.Add(-2, items);
             }
 
-            {
+            { // 미사용
                 List<string> items = new List<string>() { "CRANE_LEG", "CRANE_GIRDER", "CRANE_HOIST" };
                 map.Add(-1, items);
             }
@@ -899,7 +1203,5 @@ namespace VIZCore3D.NET.Animation.Block
 
             return map;
         }
-
-        
     }
 }
