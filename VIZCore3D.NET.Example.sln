@@ -86,6 +86,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ModelComparis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.PMI", "VIZCore3D.NET.PMI\VIZCore3D.NET.PMI.csproj", "{245732B3-42E1-4277-B930-B4E81476DF49}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.TextObject", "VIZCore3D.NET.TextObject\VIZCore3D.NET.TextObject.csproj", "{34DE0824-158A-4EA2-A553-13C90381FD78}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -248,6 +250,10 @@ Global
 		{245732B3-42E1-4277-B930-B4E81476DF49}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{245732B3-42E1-4277-B930-B4E81476DF49}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{245732B3-42E1-4277-B930-B4E81476DF49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34DE0824-158A-4EA2-A553-13C90381FD78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34DE0824-158A-4EA2-A553-13C90381FD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34DE0824-158A-4EA2-A553-13C90381FD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34DE0824-158A-4EA2-A553-13C90381FD78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
