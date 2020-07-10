@@ -579,8 +579,8 @@ namespace VIZCore3D.NET.PlacementStatus
                     VIZCore3D.NET.Data.BoundBox3D boundbox = SpaceManager["TITLE"];
 
                     VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
-                    center.X = boundbox.MinX + ((contentsColumn * contentsWidth) * 0.5f);
-                    center.Y = boundbox.MinY - (titleHeight * 0.5f);
+                    center.X = boundbox.MinX + (boundbox.LengthX * 0.5f);
+                    center.Y = boundbox.MinY + (boundbox.LengthY * 0.5f);
                     center.Z = boundbox.MaxZ;
 
                     vizcore3d.TextDrawing.Add(
@@ -596,11 +596,11 @@ namespace VIZCore3D.NET.PlacementStatus
                 {
                     foreach (KeyValuePair<string, Data.BoundBox3D> item in SpaceManager)
                     {
-                        if (item.Key.Contains("MODEL_") == false) continue;
+                        if (item.Key.Contains("GROUP_") == false) continue;
 
                         VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D();
                         center.X = item.Value.MinX + (contentsWidth * 0.5f);
-                        center.Y = item.Value.MinY + (subTitleHeight * 0.5f);
+                        center.Y = item.Value.MinY + (item.Value.LengthY * 0.5f);
                         center.Z = item.Value.MaxZ;
 
                         vizcore3d.TextDrawing.Add(
@@ -609,7 +609,7 @@ namespace VIZCore3D.NET.PlacementStatus
                             , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                             , 1000
                             , Color.Black
-                            , item.Key
+                            , item.Key.Replace("GROUP", "MODEL")
                             );
                     }
                 }
@@ -707,6 +707,8 @@ namespace VIZCore3D.NET.PlacementStatus
         private void btnMake_Click(object sender, EventArgs e)
         {
             MakeDashboard();
+
+            vizcore3d.View.SilhouetteEdge = true;
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -727,12 +729,31 @@ namespace VIZCore3D.NET.PlacementStatus
             txtContentsWidth.ReadOnly = true;
             txtContentsHeight.ReadOnly = true;
 
-            VIZCore3D.NET.Data.BoundBox3D boundBox = GetModelBoundBox();
+            //VIZCore3D.NET.Data.BoundBox3D boundBox = GetModelBoundBox();
 
-            float max = boundBox.MaxLengthXY * 0.6f;
+            //float max = boundBox.MaxLengthXY * 0.6f;
 
-            txtContentsWidth.Text = max.ToString();
-            txtContentsHeight.Text = max.ToString();
+            //txtContentsWidth.Text = max.ToString();
+            //txtContentsHeight.Text = max.ToString();
+
+
+            float lengthX = 0.0f;
+            float lengthY = 0.0f;
+            int nBoundCount = 0;
+
+            foreach (string item in Models)
+            {
+                VIZCore3D.NET.Data.BoundBox3D mBox = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(item);
+                lengthX = Math.Max(lengthX, mBox.LengthX);
+                lengthY = Math.Max(lengthY, mBox.LengthY);
+                nBoundCount++;
+            }
+
+            if (nBoundCount != 0)
+            {
+                txtContentsWidth.Text = Convert.ToString(lengthX + 2000.0f);
+                txtContentsHeight.Text = Convert.ToString(lengthY + 2000.0f);
+            }
         }
 
         private VIZCore3D.NET.Data.BoundBox3D GetModelBoundBox()
