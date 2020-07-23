@@ -32,6 +32,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ckPenetration = new System.Windows.Forms.CheckBox();
+            this.btnRefreshList = new System.Windows.Forms.Button();
             this.ckResultAssembly = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnAddPath = new System.Windows.Forms.Button();
@@ -88,8 +90,6 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnRefreshList = new System.Windows.Forms.Button();
-            this.ckPenetration = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -155,6 +155,26 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Result Filter";
+            // 
+            // ckPenetration
+            // 
+            this.ckPenetration.AutoSize = true;
+            this.ckPenetration.Location = new System.Drawing.Point(23, 63);
+            this.ckPenetration.Name = "ckPenetration";
+            this.ckPenetration.Size = new System.Drawing.Size(116, 16);
+            this.ckPenetration.TabIndex = 2;
+            this.ckPenetration.Text = "침투 결과만 조회";
+            this.ckPenetration.UseVisualStyleBackColor = true;
+            // 
+            // btnRefreshList
+            // 
+            this.btnRefreshList.Location = new System.Drawing.Point(254, 20);
+            this.btnRefreshList.Name = "btnRefreshList";
+            this.btnRefreshList.Size = new System.Drawing.Size(93, 23);
+            this.btnRefreshList.TabIndex = 1;
+            this.btnRefreshList.Text = "Refresh";
+            this.btnRefreshList.UseVisualStyleBackColor = true;
+            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
             // 
             // ckResultAssembly
             // 
@@ -458,6 +478,7 @@
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnPerformTest
             // 
@@ -649,26 +670,6 @@
             // columnHeader20
             // 
             this.columnHeader20.Text = "Node Path B";
-            // 
-            // btnRefreshList
-            // 
-            this.btnRefreshList.Location = new System.Drawing.Point(254, 20);
-            this.btnRefreshList.Name = "btnRefreshList";
-            this.btnRefreshList.Size = new System.Drawing.Size(93, 23);
-            this.btnRefreshList.TabIndex = 1;
-            this.btnRefreshList.Text = "Refresh";
-            this.btnRefreshList.UseVisualStyleBackColor = true;
-            this.btnRefreshList.Click += new System.EventHandler(this.btnRefreshList_Click);
-            // 
-            // ckPenetration
-            // 
-            this.ckPenetration.AutoSize = true;
-            this.ckPenetration.Location = new System.Drawing.Point(23, 63);
-            this.ckPenetration.Name = "ckPenetration";
-            this.ckPenetration.Size = new System.Drawing.Size(116, 16);
-            this.ckPenetration.TabIndex = 2;
-            this.ckPenetration.Text = "침투 결과만 조회";
-            this.ckPenetration.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 

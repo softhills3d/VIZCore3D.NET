@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnSetMaterialSea = new System.Windows.Forms.Button();
             this.btnSetMaterialDock = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnStop = new System.Windows.Forms.Button();
@@ -44,7 +45,7 @@
             this.btnLoadCrane = new System.Windows.Forms.Button();
             this.btnCreateDock = new System.Windows.Forms.Button();
             this.btnLoadBlock = new System.Windows.Forms.Button();
-            this.btnSetMaterialSea = new System.Windows.Forms.Button();
+            this.btnSky = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnSky);
             this.groupBox4.Controls.Add(this.btnSetMaterialSea);
             this.groupBox4.Controls.Add(this.btnSetMaterialDock);
             this.groupBox4.Location = new System.Drawing.Point(12, 98);
@@ -83,6 +85,16 @@
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Material";
+            // 
+            // btnSetMaterialSea
+            // 
+            this.btnSetMaterialSea.Location = new System.Drawing.Point(117, 20);
+            this.btnSetMaterialSea.Name = "btnSetMaterialSea";
+            this.btnSetMaterialSea.Size = new System.Drawing.Size(75, 45);
+            this.btnSetMaterialSea.TabIndex = 3;
+            this.btnSetMaterialSea.Text = "Sea";
+            this.btnSetMaterialSea.UseVisualStyleBackColor = true;
+            this.btnSetMaterialSea.Click += new System.EventHandler(this.btnSetMaterialSea_Click);
             // 
             // btnSetMaterialDock
             // 
@@ -237,15 +249,15 @@
             this.btnLoadBlock.UseVisualStyleBackColor = true;
             this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
             // 
-            // btnSetMaterialSea
+            // btnSky
             // 
-            this.btnSetMaterialSea.Location = new System.Drawing.Point(117, 20);
-            this.btnSetMaterialSea.Name = "btnSetMaterialSea";
-            this.btnSetMaterialSea.Size = new System.Drawing.Size(75, 45);
-            this.btnSetMaterialSea.TabIndex = 3;
-            this.btnSetMaterialSea.Text = "Sea";
-            this.btnSetMaterialSea.UseVisualStyleBackColor = true;
-            this.btnSetMaterialSea.Click += new System.EventHandler(this.btnSetMaterialSea_Click);
+            this.btnSky.Location = new System.Drawing.Point(213, 20);
+            this.btnSky.Name = "btnSky";
+            this.btnSky.Size = new System.Drawing.Size(75, 45);
+            this.btnSky.TabIndex = 4;
+            this.btnSky.Text = "Sky";
+            this.btnSky.UseVisualStyleBackColor = true;
+            this.btnSky.Click += new System.EventHandler(this.btnSky_Click);
             // 
             // FrmMain
             // 
@@ -286,6 +298,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnSetMaterialDock;
         private System.Windows.Forms.Button btnSetMaterialSea;
+        private System.Windows.Forms.Button btnSky;
     }
 }
 

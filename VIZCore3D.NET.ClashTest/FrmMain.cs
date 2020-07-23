@@ -287,7 +287,7 @@ namespace VIZCore3D.NET.ClashTest
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 2;
             // 지시선 중앙 연결
-            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.END;
+            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
             // 화살표 색상
             vizcore3d.Review.Note.ArrowColor = Color.Red;
             // 화살표 두께
@@ -611,7 +611,15 @@ namespace VIZCore3D.NET.ClashTest
                 MessageBox.Show("추가되지 않은 항목입니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            int count1 = vizcore3d.Clash.ClashTestCount;
+
             vizcore3d.Clash.Delete(clash);
+
+            int count2 = vizcore3d.Clash.ClashTestCount;
+            MessageBox.Show(string.Format("Clash Test Count : {0} -> {1}", count1, count2));
+
+            clash = new Data.ClashTest();
         }
 
         private void btnDeleteResult_Click(object sender, EventArgs e)
@@ -682,6 +690,18 @@ namespace VIZCore3D.NET.ClashTest
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
             ShowResultList();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            int count1 = vizcore3d.Clash.ClashTestCount;
+
+            vizcore3d.Clash.Clear();
+
+            int count2 = vizcore3d.Clash.ClashTestCount;
+            MessageBox.Show(string.Format("Clash Test Count : {0} -> {1}", count1, count2));
+
+            clash = new Data.ClashTest();
         }
     }
 }

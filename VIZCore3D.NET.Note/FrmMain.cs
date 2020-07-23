@@ -283,7 +283,7 @@ namespace VIZCore3D.NET.Note
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 2;
             // 지시선 중앙 연결
-            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.END;
+            vizcore3d.Review.Note.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
             // 화살표 색상
             vizcore3d.Review.Note.ArrowColor = Color.Red;
             // 화살표 두께
@@ -492,7 +492,7 @@ namespace VIZCore3D.NET.Note
                 style.UseTextBox = true;
 
                 // 라인과 텍스트 박스의 연결 위치
-                style.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.END;
+                style.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
 
                 // 심볼 배경색
                 style.SymbolBackgroundColor = Color.Yellow;
