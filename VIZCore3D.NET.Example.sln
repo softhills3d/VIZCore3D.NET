@@ -88,6 +88,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.PMI", "VIZCor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.TextObject", "VIZCore3D.NET.TextObject\VIZCore3D.NET.TextObject.csproj", "{34DE0824-158A-4EA2-A553-13C90381FD78}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Camera.CCTV", "VIZCore3D.NET.Camera.CCTV\VIZCore3D.NET.Camera.CCTV.csproj", "{0970D383-3F3F-4481-BA70-CF35104662F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MeshEdit", "VIZCore3D.NET.MeshEdit\VIZCore3D.NET.MeshEdit.csproj", "{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -254,6 +258,14 @@ Global
 		{34DE0824-158A-4EA2-A553-13C90381FD78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34DE0824-158A-4EA2-A553-13C90381FD78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34DE0824-158A-4EA2-A553-13C90381FD78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0970D383-3F3F-4481-BA70-CF35104662F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0970D383-3F3F-4481-BA70-CF35104662F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0970D383-3F3F-4481-BA70-CF35104662F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0970D383-3F3F-4481-BA70-CF35104662F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
