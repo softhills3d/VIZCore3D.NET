@@ -127,8 +127,11 @@
 ##### PMI (Product Manufacturing Information) (Youtube)
 [![PMI](http://img.youtube.com/vi/XIiNnUe5fY8/0.jpg)](https://youtu.be/XIiNnUe5fY8?t=0s)
 
-##### PMI (Block Mounting Animation) (Youtube)
-[![PMI](http://img.youtube.com/vi/oVBSp22N7EI/0.jpg)](https://youtu.be/oVBSp22N7EI?t=0s)
+##### Block Mounting Animation (Youtube)
+[![Block Animation](http://img.youtube.com/vi/oVBSp22N7EI/0.jpg)](https://youtu.be/oVBSp22N7EI?t=0s)
+
+##### CCTV Camera (Youtube)
+[![CCTV Camera](http://img.youtube.com/vi/5QQeqhDjoZA/0.jpg)](https://youtu.be/5QQeqhDjoZA?t=0s)
 
 ##### 기본 설정 다이얼로그
 ![설정](./Gallery/VIZCore3D.NET.Setting.png)
