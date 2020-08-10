@@ -56,28 +56,10 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modules\MergeBodyControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Modules\MergeBodyControl.Designer.cs">
-      <DependentUpon>MergeBodyControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\MoveVertexControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Modules\MoveVertexControl.Designer.cs">
-      <DependentUpon>MoveVertexControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\MergeBodyControl.resx">
-      <DependentUpon>MergeBodyControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Modules\MoveVertexControl.resx">
-      <DependentUpon>MoveVertexControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
