@@ -547,46 +547,7 @@ namespace VIZCore3D.NET.MeshEdit
                 dataGridNode.DataSource = items;
 
                 // 선택 노드 Edge Loop
-                List<VIZCore3D.NET.Data.EdgeLoops> edgeLoop = vizcore3d.MeshEdit.GetEdgeLoops(e.Node[0].Index);
-
-                StringBuilder sb = new StringBuilder();
-
-                for (int i = 0; i < edgeLoop.Count; i++)
-                {
-                    sb.AppendLine(string.Format("Vertex Count : {0} EA", edgeLoop[i].Vertex.Count));
-                    sb.AppendLine("");
-
-                    for (int j = 0; j < edgeLoop[i].Vertex.Count; j++)
-                    {
-                        sb.AppendLine(string.Format("{0} : {1}", j + 1, edgeLoop[i].Vertex[j].ToString()));
-                    }
-                    sb.AppendLine("");
-
-                    sb.AppendLine(string.Format("Edge Loop Count : {0} EA", edgeLoop[i].Loop.Count));
-                    sb.AppendLine("");
-
-                    foreach (KeyValuePair<int, int> item in edgeLoop[i].Loop)
-                    {
-                        sb.AppendLine(string.Format("Loop Vertex Start Index : {0}, Count : {1}", item.Key, item.Value));
-                    }
-                    sb.AppendLine("");
-
-                    for (int j = 0; j < edgeLoop[i].LoopVertex.Count; j++)
-                    {
-                        VIZCore3D.NET.Data.Vertex3DItemCollection item = edgeLoop[i].LoopVertex[j];
-
-                        sb.AppendLine(string.Format("No: {0} / Count : {1}", j + 1, item.Count));
-                        for (int k = 0; k < item.Count; k++)
-                        {
-                            VIZCore3D.NET.Data.Vertex3D vertex = item[k];
-                            sb.AppendLine(string.Format("{0} : {1}", k + 1, vertex.ToString()));
-                        }
-
-                        sb.AppendLine("");
-                    }
-                }
-
-                txtEdgeLoop.Text = sb.ToString();
+                ShowLogEdgeLoop(e.Node[0].Index);
             }
         }
 
@@ -597,9 +558,9 @@ namespace VIZCore3D.NET.MeshEdit
             sb.AppendLine(string.Format("Kind : {0}", e.Kind.ToString()));
             sb.AppendLine(string.Format("Point : {0}", e.Point == null ? "" : e.Point.ToString()));
             sb.AppendLine(string.Format("Start : {0}", e.Start == null ? "" : e.Start.ToString()));
-            sb.AppendLine(string.Format("End : {0}", e.Start == null ? "" : e.End.ToString()));
-            sb.AppendLine(string.Format("Center : {0}", e.Start == null ? "" : e.Center.ToString()));
-            sb.AppendLine(string.Format("Normal : {0}", e.Start == null ? "" : e.Normal.ToString()));
+            sb.AppendLine(string.Format("End : {0}", e.End == null ? "" : e.End.ToString()));
+            sb.AppendLine(string.Format("Center : {0}", e.Center == null ? "" : e.Center.ToString()));
+            sb.AppendLine(string.Format("Normal : {0}", e.Normal == null ? "" : e.Normal.ToString()));
 
             txtOsnap.Text = sb.ToString();
         }
@@ -932,6 +893,50 @@ namespace VIZCore3D.NET.MeshEdit
                     , true  /* Circle */
                     );
             }
+        }
+
+        private void ShowLogEdgeLoop(int index)
+        {
+            List<VIZCore3D.NET.Data.EdgeLoops> edgeLoop = vizcore3d.MeshEdit.GetEdgeLoops(index);
+
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < edgeLoop.Count; i++)
+            {
+                sb.AppendLine(string.Format("Vertex Count : {0} EA", edgeLoop[i].Vertex.Count));
+                sb.AppendLine("");
+
+                for (int j = 0; j < edgeLoop[i].Vertex.Count; j++)
+                {
+                    sb.AppendLine(string.Format("{0} : {1}", j + 1, edgeLoop[i].Vertex[j].ToString()));
+                }
+                sb.AppendLine("");
+
+                sb.AppendLine(string.Format("Edge Loop Count : {0} EA", edgeLoop[i].Loop.Count));
+                sb.AppendLine("");
+
+                foreach (KeyValuePair<int, int> item in edgeLoop[i].Loop)
+                {
+                    sb.AppendLine(string.Format("Loop Vertex Start Index : {0}, Count : {1}", item.Key, item.Value));
+                }
+                sb.AppendLine("");
+
+                for (int j = 0; j < edgeLoop[i].LoopVertex.Count; j++)
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item = edgeLoop[i].LoopVertex[j];
+
+                    sb.AppendLine(string.Format("No: {0} / Count : {1}", j + 1, item.Count));
+                    for (int k = 0; k < item.Count; k++)
+                    {
+                        VIZCore3D.NET.Data.Vertex3D vertex = item[k];
+                        sb.AppendLine(string.Format("{0} : {1}", k + 1, vertex.ToString()));
+                    }
+
+                    sb.AppendLine("");
+                }
+            }
+
+            txtEdgeLoop.Text = sb.ToString();
         }
     }
 }
