@@ -453,16 +453,18 @@ namespace VIZCore3D.NET.ShapeDrawing
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.EndUpdate();
-        } 
+        }
         #endregion
 
+        #region Function - VIZCore3D.NET : Add Event Handler
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
-        }
+        } 
+        #endregion
 
         private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
         {

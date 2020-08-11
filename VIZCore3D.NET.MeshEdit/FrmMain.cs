@@ -536,6 +536,9 @@ namespace VIZCore3D.NET.MeshEdit
             }
             else
             {
+                txtEdgeLoopIndex.Text = e.Node[0].Index.ToString();
+                txtOsnapIndex.Text = e.Node[0].Index.ToString();
+
                 // 선택 노드 및 하위 목록
                 List<VIZCore3D.NET.Data.Node> items = new List<Data.Node>();
                 items.Add(e.Node[0]);
@@ -874,7 +877,7 @@ namespace VIZCore3D.NET.MeshEdit
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
-            if(String.IsNullOrEmpty(txtNodeIndex.Text) == true)
+            if(String.IsNullOrEmpty(txtOsnapIndex.Text) == true)
             {
                 vizcore3d.GeometryUtility.ShowOsnap(
                     false   /* Surface */
@@ -886,7 +889,7 @@ namespace VIZCore3D.NET.MeshEdit
             else
             {
                 vizcore3d.GeometryUtility.ShowOsnap(
-                    Convert.ToInt32(txtNodeIndex.Text)
+                    Convert.ToInt32(txtOsnapIndex.Text)
                     , false /* Surface */
                     , true  /* Vertex */
                     , true  /* Line */
@@ -937,6 +940,78 @@ namespace VIZCore3D.NET.MeshEdit
             }
 
             txtEdgeLoop.Text = sb.ToString();
+        }
+
+        private void btnDrawEdgeLoop_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtEdgeLoopIndex.Text) == true) return;
+
+            int nodeIndex = Convert.ToInt32(txtEdgeLoopIndex.Text);
+
+            vizcore3d.Object3D.Select(new List<int>() { nodeIndex }, false, false);
+
+            List<VIZCore3D.NET.Data.EdgeLoops> edgeLoop = vizcore3d.MeshEdit.GetEdgeLoops(nodeIndex);
+
+            if (edgeLoop.Count == 0) return;
+
+            VIZCore3D.NET.Utility.ColorPaletteHelper palette = new Utility.ColorPaletteHelper("Default");
+
+            vizcore3d.BeginUpdate();
+
+            if (rbDrawLine.Checked == true)
+            {
+                for (int i = 0; i < edgeLoop.Count; i++)
+                {
+                    // 전체 한번에 그리기
+                    //vizcore3d.ShapeDrawing.AddLine(
+                    //    edgeLoop[i].LoopVertex              /* Vertex List */
+                    //    , i                                 /* Group Id */
+                    //    , palette.GetPaletteColor(i).Color1 /* Color */
+                    //    , 3.0f                              /* Thickness */
+                    //    , true                              /* Visible */
+                    //    );
+
+                    for (int j = 0; j < edgeLoop[i].LoopVertex.Count; j++)
+                    {
+                        VIZCore3D.NET.Data.Vertex3DItemCollection item = edgeLoop[i].LoopVertex[j];
+
+                        // 개별로 그리기
+                        vizcore3d.ShapeDrawing.AddLine(
+                            new List<Data.Vertex3DItemCollection>() { item }    /* Vertex List */
+                            , j                                                 /* Group Id */
+                            , palette.GetPaletteColor(j).Color1                 /* Color */
+                            , 3.0f                                              /* Thickness */
+                            , true                                              /* Visible */
+                            );
+                    }
+                }
+            }
+            else if(rbDrawVertex.Checked == true)
+            {
+                for (int i = 0; i < edgeLoop.Count; i++)
+                {
+                    for (int j = 0; j < edgeLoop[i].LoopVertex.Count; j++)
+                    {
+                        VIZCore3D.NET.Data.Vertex3DItemCollection item = edgeLoop[i].LoopVertex[j];
+
+                        vizcore3d.ShapeDrawing.AddVertex(
+                            item.BaseCollection
+                            , j
+                            , palette.GetPaletteColor(j).Color1
+                            , 3.0f
+                            , 5.0f
+                            , true
+                            );
+                    }
+                }
+            }
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void ckEnableXray_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.View.XRay.Enable = ckEnableXray.Checked;
         }
     }
 }

@@ -52,6 +52,10 @@
             this.btnSimplifyAPI = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSimplifyCustom = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtOsnapIndex = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnShowOsnap = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ckEnableParam = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -81,21 +85,25 @@
             this.txtEdgeLoop = new System.Windows.Forms.TextBox();
             this.tpOsnap = new System.Windows.Forms.TabPage();
             this.txtOsnap = new System.Windows.Forms.TextBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnShowOsnap = new System.Windows.Forms.Button();
-            this.txtNodeIndex = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.tpNodeVertexChanged = new System.Windows.Forms.TabPage();
             this.txtNodeVertexChanged = new System.Windows.Forms.TextBox();
             this.tpNodeRemoved = new System.Windows.Forms.TabPage();
             this.txtNodeRemoved = new System.Windows.Forms.TextBox();
             this.tpNodeIndexChanged = new System.Windows.Forms.TabPage();
             this.txtNodeIndexChanged = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtEdgeLoopIndex = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnDrawEdgeLoop = new System.Windows.Forms.Button();
+            this.rbDrawLine = new System.Windows.Forms.RadioButton();
+            this.rbDrawVertex = new System.Windows.Forms.RadioButton();
+            this.ckEnableXray = new System.Windows.Forms.CheckBox();
             this.toolbar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -109,10 +117,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridNode)).BeginInit();
             this.tpDataEdgeLoop.SuspendLayout();
             this.tpOsnap.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.tpNodeVertexChanged.SuspendLayout();
             this.tpNodeRemoved.SuspendLayout();
             this.tpNodeIndexChanged.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolbar
@@ -322,6 +330,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox7);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox6);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
@@ -334,6 +343,48 @@
             this.splitContainer1.Size = new System.Drawing.Size(1495, 806);
             this.splitContainer1.SplitterDistance = 243;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.txtOsnapIndex);
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.btnShowOsnap);
+            this.groupBox6.Location = new System.Drawing.Point(12, 488);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(220, 105);
+            this.groupBox6.TabIndex = 11;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Osnap";
+            // 
+            // txtOsnapIndex
+            // 
+            this.txtOsnapIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtOsnapIndex.Location = new System.Drawing.Point(95, 26);
+            this.txtOsnapIndex.Name = "txtOsnapIndex";
+            this.txtOsnapIndex.Size = new System.Drawing.Size(100, 21);
+            this.txtOsnapIndex.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Index";
+            // 
+            // btnShowOsnap
+            // 
+            this.btnShowOsnap.Location = new System.Drawing.Point(27, 63);
+            this.btnShowOsnap.Name = "btnShowOsnap";
+            this.btnShowOsnap.Size = new System.Drawing.Size(168, 23);
+            this.btnShowOsnap.TabIndex = 0;
+            this.btnShowOsnap.Text = "Show Osnap";
+            this.btnShowOsnap.UseVisualStyleBackColor = true;
+            this.btnShowOsnap.Click += new System.EventHandler(this.btnShowOsnap_Click);
             // 
             // groupBox5
             // 
@@ -650,48 +701,6 @@
             this.txtOsnap.Size = new System.Drawing.Size(1228, 119);
             this.txtOsnap.TabIndex = 0;
             // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.txtNodeIndex);
-            this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Controls.Add(this.btnShowOsnap);
-            this.groupBox6.Location = new System.Drawing.Point(12, 488);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(220, 105);
-            this.groupBox6.TabIndex = 11;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Osnap";
-            // 
-            // btnShowOsnap
-            // 
-            this.btnShowOsnap.Location = new System.Drawing.Point(27, 63);
-            this.btnShowOsnap.Name = "btnShowOsnap";
-            this.btnShowOsnap.Size = new System.Drawing.Size(168, 23);
-            this.btnShowOsnap.TabIndex = 0;
-            this.btnShowOsnap.Text = "Show Osnap";
-            this.btnShowOsnap.UseVisualStyleBackColor = true;
-            this.btnShowOsnap.Click += new System.EventHandler(this.btnShowOsnap_Click);
-            // 
-            // txtNodeIndex
-            // 
-            this.txtNodeIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNodeIndex.Location = new System.Drawing.Point(95, 26);
-            this.txtNodeIndex.Name = "txtNodeIndex";
-            this.txtNodeIndex.Size = new System.Drawing.Size(100, 21);
-            this.txtNodeIndex.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Index";
-            // 
             // tpNodeVertexChanged
             // 
             this.tpNodeVertexChanged.Controls.Add(this.txtNodeVertexChanged);
@@ -755,6 +764,84 @@
             this.txtNodeIndexChanged.Size = new System.Drawing.Size(1228, 119);
             this.txtNodeIndexChanged.TabIndex = 0;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.ckEnableXray);
+            this.groupBox7.Controls.Add(this.rbDrawVertex);
+            this.groupBox7.Controls.Add(this.rbDrawLine);
+            this.groupBox7.Controls.Add(this.txtEdgeLoopIndex);
+            this.groupBox7.Controls.Add(this.label4);
+            this.groupBox7.Controls.Add(this.btnDrawEdgeLoop);
+            this.groupBox7.Location = new System.Drawing.Point(12, 599);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(220, 141);
+            this.groupBox7.TabIndex = 12;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Draw Edge Loop";
+            // 
+            // txtEdgeLoopIndex
+            // 
+            this.txtEdgeLoopIndex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEdgeLoopIndex.Location = new System.Drawing.Point(95, 26);
+            this.txtEdgeLoopIndex.Name = "txtEdgeLoopIndex";
+            this.txtEdgeLoopIndex.Size = new System.Drawing.Size(100, 21);
+            this.txtEdgeLoopIndex.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Index";
+            // 
+            // btnDrawEdgeLoop
+            // 
+            this.btnDrawEdgeLoop.Location = new System.Drawing.Point(27, 83);
+            this.btnDrawEdgeLoop.Name = "btnDrawEdgeLoop";
+            this.btnDrawEdgeLoop.Size = new System.Drawing.Size(168, 23);
+            this.btnDrawEdgeLoop.TabIndex = 0;
+            this.btnDrawEdgeLoop.Text = "Draw";
+            this.btnDrawEdgeLoop.UseVisualStyleBackColor = true;
+            this.btnDrawEdgeLoop.Click += new System.EventHandler(this.btnDrawEdgeLoop_Click);
+            // 
+            // rbDrawLine
+            // 
+            this.rbDrawLine.AutoSize = true;
+            this.rbDrawLine.Checked = true;
+            this.rbDrawLine.Location = new System.Drawing.Point(30, 56);
+            this.rbDrawLine.Name = "rbDrawLine";
+            this.rbDrawLine.Size = new System.Drawing.Size(47, 16);
+            this.rbDrawLine.TabIndex = 5;
+            this.rbDrawLine.TabStop = true;
+            this.rbDrawLine.Text = "Line";
+            this.rbDrawLine.UseVisualStyleBackColor = true;
+            // 
+            // rbDrawVertex
+            // 
+            this.rbDrawVertex.AutoSize = true;
+            this.rbDrawVertex.Location = new System.Drawing.Point(95, 56);
+            this.rbDrawVertex.Name = "rbDrawVertex";
+            this.rbDrawVertex.Size = new System.Drawing.Size(59, 16);
+            this.rbDrawVertex.TabIndex = 6;
+            this.rbDrawVertex.Text = "Vertex";
+            this.rbDrawVertex.UseVisualStyleBackColor = true;
+            // 
+            // ckEnableXray
+            // 
+            this.ckEnableXray.AutoSize = true;
+            this.ckEnableXray.Location = new System.Drawing.Point(30, 113);
+            this.ckEnableXray.Name = "ckEnableXray";
+            this.ckEnableXray.Size = new System.Drawing.Size(60, 16);
+            this.ckEnableXray.TabIndex = 7;
+            this.ckEnableXray.Text = "X-Ray";
+            this.ckEnableXray.UseVisualStyleBackColor = true;
+            this.ckEnableXray.CheckedChanged += new System.EventHandler(this.ckEnableXray_CheckedChanged);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -772,6 +859,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -790,14 +879,14 @@
             this.tpDataEdgeLoop.PerformLayout();
             this.tpOsnap.ResumeLayout(false);
             this.tpOsnap.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.tpNodeVertexChanged.ResumeLayout(false);
             this.tpNodeVertexChanged.PerformLayout();
             this.tpNodeRemoved.ResumeLayout(false);
             this.tpNodeRemoved.PerformLayout();
             this.tpNodeIndexChanged.ResumeLayout(false);
             this.tpNodeIndexChanged.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,7 +947,7 @@
         private System.Windows.Forms.TabPage tpOsnap;
         private System.Windows.Forms.TextBox txtOsnap;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.TextBox txtNodeIndex;
+        private System.Windows.Forms.TextBox txtOsnapIndex;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnShowOsnap;
         private System.Windows.Forms.TabPage tpNodeVertexChanged;
@@ -867,6 +956,13 @@
         private System.Windows.Forms.TextBox txtNodeRemoved;
         private System.Windows.Forms.TabPage tpNodeIndexChanged;
         private System.Windows.Forms.TextBox txtNodeIndexChanged;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.RadioButton rbDrawVertex;
+        private System.Windows.Forms.RadioButton rbDrawLine;
+        private System.Windows.Forms.TextBox txtEdgeLoopIndex;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnDrawEdgeLoop;
+        private System.Windows.Forms.CheckBox ckEnableXray;
     }
 }
 
