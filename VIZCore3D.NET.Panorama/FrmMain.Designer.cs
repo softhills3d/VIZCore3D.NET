@@ -1,0 +1,179 @@
+﻿namespace VIZCore3D.NET.Panorama
+{
+    partial class FrmMain
+    {
+        /// <summary>
+        /// 필수 디자이너 변수입니다.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// 사용 중인 모든 리소스를 정리합니다.
+        /// </summary>
+        /// <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form 디자이너에서 생성한 코드
+
+        /// <summary>
+        /// 디자이너 지원에 필요한 메서드입니다. 
+        /// 이 메서드의 내용을 코드 편집기로 수정하지 마세요.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lvSample = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnAddCustomObject = new System.Windows.Forms.Button();
+            this.btnDeleteCustomObject = new System.Windows.Forms.Button();
+            this.btnLoadSample = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Size = new System.Drawing.Size(1358, 772);
+            this.splitContainer1.SplitterDistance = 291;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnLoadSample);
+            this.groupBox1.Controls.Add(this.lvSample);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(267, 446);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sample";
+            // 
+            // lvSample
+            // 
+            this.lvSample.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvSample.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvSample.FullRowSelect = true;
+            this.lvSample.GridLines = true;
+            this.lvSample.HideSelection = false;
+            this.lvSample.Location = new System.Drawing.Point(6, 49);
+            this.lvSample.Name = "lvSample";
+            this.lvSample.Size = new System.Drawing.Size(255, 391);
+            this.lvSample.TabIndex = 0;
+            this.lvSample.UseCompatibleStateImageBehavior = false;
+            this.lvSample.View = System.Windows.Forms.View.Details;
+            this.lvSample.DoubleClick += new System.EventHandler(this.lvSample_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 220;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnDeleteCustomObject);
+            this.groupBox2.Controls.Add(this.btnAddCustomObject);
+            this.groupBox2.Location = new System.Drawing.Point(12, 464);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(267, 135);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Custom Object";
+            // 
+            // btnAddCustomObject
+            // 
+            this.btnAddCustomObject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddCustomObject.Location = new System.Drawing.Point(30, 39);
+            this.btnAddCustomObject.Name = "btnAddCustomObject";
+            this.btnAddCustomObject.Size = new System.Drawing.Size(208, 23);
+            this.btnAddCustomObject.TabIndex = 0;
+            this.btnAddCustomObject.Text = "Add";
+            this.btnAddCustomObject.UseVisualStyleBackColor = true;
+            this.btnAddCustomObject.Click += new System.EventHandler(this.btnAddCustomObject_Click);
+            // 
+            // btnDeleteCustomObject
+            // 
+            this.btnDeleteCustomObject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteCustomObject.Location = new System.Drawing.Point(30, 80);
+            this.btnDeleteCustomObject.Name = "btnDeleteCustomObject";
+            this.btnDeleteCustomObject.Size = new System.Drawing.Size(208, 23);
+            this.btnDeleteCustomObject.TabIndex = 1;
+            this.btnDeleteCustomObject.Text = "Delete";
+            this.btnDeleteCustomObject.UseVisualStyleBackColor = true;
+            this.btnDeleteCustomObject.Click += new System.EventHandler(this.btnDeleteCustomObject_Click);
+            // 
+            // btnLoadSample
+            // 
+            this.btnLoadSample.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLoadSample.Location = new System.Drawing.Point(6, 20);
+            this.btnLoadSample.Name = "btnLoadSample";
+            this.btnLoadSample.Size = new System.Drawing.Size(255, 23);
+            this.btnLoadSample.TabIndex = 1;
+            this.btnLoadSample.Text = "Load Sample";
+            this.btnLoadSample.UseVisualStyleBackColor = true;
+            this.btnLoadSample.Click += new System.EventHandler(this.btnLoadSample_Click);
+            // 
+            // FrmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1358, 772);
+            this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "VIZCore3D.NET.Panorama";
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ListView lvSample;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnDeleteCustomObject;
+        private System.Windows.Forms.Button btnAddCustomObject;
+        private System.Windows.Forms.Button btnLoadSample;
+    }
+}
+
