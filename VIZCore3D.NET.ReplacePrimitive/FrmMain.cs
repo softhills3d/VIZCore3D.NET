@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Osnap
+namespace VIZCore3D.NET.ReplacePrimitive
 {
     public partial class FrmMain : Form
     {
@@ -19,11 +19,10 @@ namespace VIZCore3D.NET.Osnap
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-
         public FrmMain()
         {
             InitializeComponent();
-            
+
             // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
@@ -218,7 +217,7 @@ namespace VIZCore3D.NET.Osnap
             // ================================================================
             #region 설정 - 탐색
             // Z축 고정
-            vizcore3d.Walkthrough.LockZAxis = true;
+            vizcore3d.Walkthrough.LockZAxis = false;
             // 선속도 : m/s
             vizcore3d.Walkthrough.Speed = 2.0f;
             // 각속도
@@ -238,7 +237,7 @@ namespace VIZCore3D.NET.Osnap
             // 모델
             vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
@@ -456,60 +455,226 @@ namespace VIZCore3D.NET.Osnap
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
-            vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
-        } 
-        #endregion
-
-
-        private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
-        {
         }
 
-        private void GeometryUtility_OnOsnapPickingItem(object sender, VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs e)
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
-            lvOsnap.BeginUpdate();
-
-            ListViewItem lvi = new ListViewItem(new string[]
-                {
-                    e.Kind.ToString()
-                    , e.Point == null ? "" : e.Point.ToString()
-                    , e.Start == null ? "" : e.Start.ToString()
-                    , e.End == null ? "" : e.End.ToString()
-                    , e.Center == null ? "" : e.Center.ToString()
-                    , e.Normal == null ? "" : e.Normal.ToString()
-                }
-                );
-            
-            lvOsnap.Items.Add(lvi);
-
-            lvOsnap.EndUpdate();
-        }
-
-        private void btnShowOsnap_Click(object sender, EventArgs e)
-        {
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
-
-            // 개체 선택 방식
-            if(items.Count == 0)
+            if(e.Node.Count == 0)
             {
-                vizcore3d.GeometryUtility.ShowOsnap(
-                    ckSurface.Checked
-                    , ckVertex.Checked
-                    , ckLine.Checked
-                    , ckCircle.Checked
-                    );
+                txtNodeIndex.Text = String.Empty;
+                btnNodeColor.BackColor = Color.FromKnownColor(KnownColor.Control);
+
+                txtBodyIndex.Text = String.Empty;
+                btnBodyColor.BackColor = Color.FromKnownColor(KnownColor.Control);
+
+                txtLengthXCube.Text = String.Empty;
+                txtLengthYCube.Text = String.Empty;
+                txtLengthZCube.Text = String.Empty;
+
+                txtMatrix11.Text = "1";
+                txtMatrix12.Text = "0";
+                txtMatrix13.Text = "0";
+                txtMatrix41.Text = "0";
+
+                txtMatrix21.Text = "0";
+                txtMatrix22.Text = "1";
+                txtMatrix23.Text = "0";
+                txtMatrix42.Text = "0";
+
+                txtMatrix31.Text = "0";
+                txtMatrix32.Text = "0";
+                txtMatrix33.Text = "1";
+                txtMatrix43.Text = "0";
             }
-            // 개체 지정 방식
             else
             {
-                vizcore3d.GeometryUtility.ShowOsnap(
-                    items[0].Index
-                    , ckSurface.Checked
-                    , ckVertex.Checked
-                    , ckLine.Checked
-                    , ckCircle.Checked
-                    );
+                txtNodeIndex.Text = e.Node[0].Index.ToString();
+                btnNodeColor.BackColor = vizcore3d.Object3D.Color.GetColor(e.Node[0].Index);
+
+                txtBodyIndex.Text = Convert.ToString(e.Node[0].Index + 1);
+                btnBodyColor.BackColor = vizcore3d.Object3D.Color.GetColor(e.Node[0].Index);
+
+                VIZCore3D.NET.Data.BoundBox3D boundBox = e.Node[0].GetGeometryProperty().GetBoundBox();
+
+                txtLengthXCube.Text = boundBox.LengthX.ToString();
+                txtLengthYCube.Text = boundBox.LengthY.ToString();
+                txtLengthZCube.Text = boundBox.LengthZ.ToString();
+
+                if (rbCylinderXAxis.Checked == true)
+                {
+                    txtCylinderRadius.Text = Convert.ToString(boundBox.LengthZ * 0.5f);
+                }
+                else if (rbCylinderYAxis.Checked == true)
+                {
+                    txtCylinderRadius.Text = Convert.ToString(boundBox.LengthX * 0.5f);
+                }
+                else if (rbCylinderZAxis.Checked == true)
+                {
+                    txtCylinderRadius.Text = Convert.ToString(boundBox.LengthY * 0.5f);
+                }
+
+                if (tabPrimitive.SelectedIndex == 0)
+                {
+                    txtMatrix11.Text = "1";
+                    txtMatrix12.Text = "0";
+                    txtMatrix13.Text = "0";
+                    
+                    txtMatrix21.Text = "0";
+                    txtMatrix22.Text = "1";
+                    txtMatrix23.Text = "0";
+
+                    txtMatrix31.Text = "0";
+                    txtMatrix32.Text = "0";
+                    txtMatrix33.Text = "1";
+
+                    txtMatrix41.Text = boundBox.CenterX.ToString();
+                    txtMatrix42.Text = boundBox.CenterY.ToString();
+                    txtMatrix43.Text = boundBox.CenterZ.ToString();
+                }
+                else if (tabPrimitive.SelectedIndex == 1)
+                {
+                    VIZCore3D.NET.Data.Vertex3D cyliCenter = 
+                        new Data.Vertex3D(
+                            boundBox.CenterX
+                            , boundBox.CenterY
+                            , boundBox.CenterZ
+                            );
+
+                    VIZCore3D.NET.Data.Vertex3D min = cyliCenter.Clone();
+                    VIZCore3D.NET.Data.Vertex3D max = cyliCenter.Clone();
+
+                    if (rbCylinderXAxis.Checked == true)
+                    {
+                        min.X = boundBox.MinX;
+                        max.X = boundBox.MaxX;
+                    }
+                    else if (rbCylinderYAxis.Checked == true)
+                    {
+                        min.Y = boundBox.MinY;
+                        max.Y = boundBox.MaxY;
+                    }
+                    else if (rbCylinderZAxis.Checked == true)
+                    {
+                        min.Z = boundBox.MinZ;
+                        max.Z = boundBox.MaxZ;
+                    }
+
+                    VIZCore3D.NET.Manager.PrimitiveCylinder cyli = new Manager.PrimitiveCylinder();
+                    cyli.Set2Point(min, max, Convert.ToSingle(txtCylinderRadius.Text));
+
+                    txtMatrix11.Text = cyli.Matrix[0].ToString();
+                    txtMatrix12.Text = cyli.Matrix[1].ToString();
+                    txtMatrix13.Text = cyli.Matrix[2].ToString();                    
+
+                    txtMatrix21.Text = cyli.Matrix[4].ToString();
+                    txtMatrix22.Text = cyli.Matrix[5].ToString();
+                    txtMatrix23.Text = cyli.Matrix[6].ToString();                    
+
+                    txtMatrix31.Text = cyli.Matrix[8].ToString();
+                    txtMatrix32.Text = cyli.Matrix[9].ToString();
+                    txtMatrix33.Text = cyli.Matrix[10].ToString();
+
+                    txtMatrix41.Text = cyli.Matrix[3].ToString();
+                    txtMatrix42.Text = cyli.Matrix[7].ToString();
+                    txtMatrix43.Text = cyli.Matrix[11].ToString();
+                }
             }
+        }
+        #endregion
+
+        private void btnBodyColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.AllowFullOpen = true;
+            dlg.ShowHelp = true;
+
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            btnBodyColor.BackColor = dlg.Color;
+        }
+
+        private VIZCore3D.NET.Data.Matrix3D GetMatrix()
+        {
+            VIZCore3D.NET.Data.Matrix3D matrix = new Data.Matrix3D();
+
+            matrix.Matrix[0] = Convert.ToSingle(txtMatrix11.Text);
+            matrix.Matrix[1] = Convert.ToSingle(txtMatrix12.Text);
+            matrix.Matrix[2] = Convert.ToSingle(txtMatrix13.Text);
+
+            matrix.Matrix[3] = Convert.ToSingle(txtMatrix21.Text);
+            matrix.Matrix[4] = Convert.ToSingle(txtMatrix22.Text);
+            matrix.Matrix[5] = Convert.ToSingle(txtMatrix23.Text);
+
+            matrix.Matrix[6] = Convert.ToSingle(txtMatrix31.Text);
+            matrix.Matrix[7] = Convert.ToSingle(txtMatrix32.Text);
+            matrix.Matrix[8] = Convert.ToSingle(txtMatrix33.Text);
+
+            matrix.Matrix[9] = Convert.ToSingle(txtMatrix41.Text);
+            matrix.Matrix[10] = Convert.ToSingle(txtMatrix42.Text);
+            matrix.Matrix[11] = Convert.ToSingle(txtMatrix43.Text);
+
+            return matrix;
+        }
+
+        public float GetUnitScale()
+        {
+            return Convert.ToSingle(txtUnitScale.Text);
+        }
+
+        public int GetBodyIndex()
+        {
+            return Convert.ToInt32(txtBodyIndex.Text);
+        }
+
+        public System.Drawing.Color GetBodyColor()
+        {
+            return btnBodyColor.BackColor;
+        }
+
+        private void rbNotProcessed_CheckedChanged(object sender, EventArgs e)
+        {
+            //vizcore3d.Model.PrimitiveDataReadWrite = Data.PrimitiveDataReadWriteOption.NOT_PROCESSED;
+            vizcore3d.Object3D.Primitivive.PrimitiveDataReadWrite = Data.PrimitiveDataReadWriteOption.NOT_PROCESSED;
+        }
+
+        private void rbReadOnly_CheckedChanged(object sender, EventArgs e)
+        {
+            //vizcore3d.Model.PrimitiveDataReadWrite = Data.PrimitiveDataReadWriteOption.READ_ONLY;
+            vizcore3d.Object3D.Primitivive.PrimitiveDataReadWrite = Data.PrimitiveDataReadWriteOption.READ_ONLY;
+        }
+
+        private void rbReadWrite_CheckedChanged(object sender, EventArgs e)
+        {
+            //vizcore3d.Model.PrimitiveDataReadWrite = Data.PrimitiveDataReadWriteOption.READ_WRITE;
+            vizcore3d.Object3D.Primitivive.PrimitiveDataReadWrite = Data.PrimitiveDataReadWriteOption.READ_WRITE;
+        }
+
+        private void btnSetPrimitiveCube_Click(object sender, EventArgs e)
+        {            
+            List<float> length = new List<float>();
+            length.Add(Convert.ToSingle(txtLengthXCube.Text));
+            length.Add(Convert.ToSingle(txtLengthYCube.Text));
+            length.Add(Convert.ToSingle(txtLengthZCube.Text));
+
+            vizcore3d.Object3D.Primitivive.SetPrimitiveBox(
+                GetBodyIndex()
+                , GetBodyColor()
+                , GetMatrix()
+                , length
+                , GetUnitScale()
+                );
+        }
+
+        private void btnSetPrimitiveCylinder_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Primitivive.SetPrimitiveCylinder(
+                 GetBodyIndex()
+                , GetBodyColor()
+                , GetMatrix()
+                , Convert.ToSingle(txtCylinderRadius.Text)
+                , Convert.ToInt32(txtCylinderSideCount.Text)
+                , GetUnitScale()
+                );
         }
     }
 }

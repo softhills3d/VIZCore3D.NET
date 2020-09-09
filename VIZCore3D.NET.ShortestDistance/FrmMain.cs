@@ -458,13 +458,13 @@ namespace VIZCore3D.NET.ShortestDistance
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
 
             vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
             vizcore3d.GeometryUtility.OnNearestObjectByPicking += GeometryUtility_OnNearestObjectByPicking;
         }
 
-        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
+        private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
         {
 
         }

@@ -455,7 +455,7 @@ namespace VIZCore3D.NET.SelectionBox.V2
         private void InitializeVIZCore3DEvent()
         {
             // 개체 선택 이벤트
-            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
 
             // 뷰 영역 Drag & Drop 이벤트
             vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
@@ -493,7 +493,7 @@ namespace VIZCore3D.NET.SelectionBox.V2
             lvUser.Items.Add(new ListViewItem(new string[] { "", "STEVEN", "Khaki" }, 0));
         }
 
-        private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
         }
 

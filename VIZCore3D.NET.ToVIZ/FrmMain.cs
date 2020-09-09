@@ -135,7 +135,7 @@ namespace VIZCore3D.NET.ToVIZ
                 // 저장 옵션
                 vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
 
-                return vizcore3d.Model.ExportSimplifiedModel(source, file, false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, 0, false);
+                return vizcore3d.Model.ExportSimplifiedModel(source, file, false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, 0, Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH);
             }
             else
             {

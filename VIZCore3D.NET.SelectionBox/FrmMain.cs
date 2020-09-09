@@ -454,7 +454,7 @@ namespace VIZCore3D.NET.SelectionBox
         private void InitializeVIZCore3DEvent()
         {
             // 개체 선택 이벤트
-            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
 
             // 뷰 영역 Drag & Drop 이벤트
             vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
@@ -561,7 +561,7 @@ namespace VIZCore3D.NET.SelectionBox
             vizcore3d.SelectionBox.SetFontSize((VIZCore3D.NET.Data.SelectionBoxFontSize)cbFontSize.SelectedIndex);
         }
 
-        private void Object3D_OnSelectedObject3D(object sender, VIZCore3D.NET.Event.EventManager.SelectedObject3DEventArgs e)
+        private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
         {
             vizcore3d.BeginUpdate();
             vizcore3d.SelectionBox.Select(false);

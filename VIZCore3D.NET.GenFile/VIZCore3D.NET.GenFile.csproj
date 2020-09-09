@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EECEF237-9091-44B1-B12A-C7A9C6AE8AE8}</ProjectGuid>
+    <ProjectGuid>{4D431784-17C5-4126-925A-4790797A576F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>VIZCore3D.NET.ClashTest</RootNamespace>
-    <AssemblyName>VIZCore3D.NET.ClashTest</AssemblyName>
+    <RootNamespace>VIZCore3D.NET.GenFile</RootNamespace>
+    <AssemblyName>VIZCore3D.NET.GenFile</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

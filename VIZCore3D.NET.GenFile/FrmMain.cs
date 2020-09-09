@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Osnap
+namespace VIZCore3D.NET.GenFile
 {
     public partial class FrmMain : Form
     {
@@ -19,18 +19,17 @@ namespace VIZCore3D.NET.Osnap
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-
         public FrmMain()
         {
             InitializeComponent();
-            
+
             // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            splitContainer2.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
@@ -218,7 +217,7 @@ namespace VIZCore3D.NET.Osnap
             // ================================================================
             #region 설정 - 탐색
             // Z축 고정
-            vizcore3d.Walkthrough.LockZAxis = true;
+            vizcore3d.Walkthrough.LockZAxis = false;
             // 선속도 : m/s
             vizcore3d.Walkthrough.Speed = 2.0f;
             // 각속도
@@ -238,7 +237,7 @@ namespace VIZCore3D.NET.Osnap
             // 모델
             vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
@@ -426,7 +425,6 @@ namespace VIZCore3D.NET.Osnap
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
-            vizcore3d.ToolbarMain.Visible = true;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
@@ -455,60 +453,39 @@ namespace VIZCore3D.NET.Osnap
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
-            vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
-        } 
+            // Init. GUI
+            InitGUI();
+        }
         #endregion
 
 
-        private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
+        // ================================================
+        // GUI
+        // ================================================
+        private void InitGUI()
         {
-        }
-
-        private void GeometryUtility_OnOsnapPickingItem(object sender, VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs e)
-        {
-            lvOsnap.BeginUpdate();
-
-            ListViewItem lvi = new ListViewItem(new string[]
-                {
-                    e.Kind.ToString()
-                    , e.Point == null ? "" : e.Point.ToString()
-                    , e.Start == null ? "" : e.Start.ToString()
-                    , e.End == null ? "" : e.End.ToString()
-                    , e.Center == null ? "" : e.Center.ToString()
-                    , e.Normal == null ? "" : e.Normal.ToString()
-                }
-                );
-            
-            lvOsnap.Items.Add(lvi);
-
-            lvOsnap.EndUpdate();
-        }
-
-        private void btnShowOsnap_Click(object sender, EventArgs e)
-        {
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
-
-            // 개체 선택 방식
-            if(items.Count == 0)
             {
-                vizcore3d.GeometryUtility.ShowOsnap(
-                    ckSurface.Checked
-                    , ckVertex.Checked
-                    , ckLine.Checked
-                    , ckCircle.Checked
-                    );
+                VIZCore3D.NET.Extension.Generic.GenericFileControl fileControl = 
+                    vizcore3d.GenericData.GetGenericFileControl();
+                fileControl.Dock = DockStyle.Fill;
+
+                groupBox1.Controls.Add(fileControl);
             }
-            // 개체 지정 방식
-            else
+
             {
-                vizcore3d.GeometryUtility.ShowOsnap(
-                    items[0].Index
-                    , ckSurface.Checked
-                    , ckVertex.Checked
-                    , ckLine.Checked
-                    , ckCircle.Checked
-                    );
+                VIZCore3D.NET.Extension.Generic.GenericStructureControl structureControl =
+                    vizcore3d.GenericData.GetGenericStructureControl();
+                structureControl.Dock = DockStyle.Fill;
+
+                groupBox2.Controls.Add(structureControl);
+            }
+
+            {
+                VIZCore3D.NET.Extension.Generic.GenericAttributeControl attributeControl =
+                    vizcore3d.GenericData.GetGenericAttributeControl();
+                attributeControl.Dock = DockStyle.Fill;
+
+                groupBox3.Controls.Add(attributeControl);
             }
         }
     }

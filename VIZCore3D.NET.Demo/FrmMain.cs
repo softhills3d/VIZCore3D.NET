@@ -584,7 +584,7 @@ namespace VIZCore3D.NET.Demo
         private void InitializeVIZCore3DEvent()
         {
             // 모델 선택/해제 이벤트
-            vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
+            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
 
             // 단면(상자) 갱신 이벤트
             vizcore3d.Section.OnSectionEvent += Section_OnSectionEvent;
