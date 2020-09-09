@@ -119,6 +119,14 @@ namespace VIZCore3D.NET.ToVIZ
                     args.Version = Manager.ModelManager.FileVersion.V208;
                 else if (nVersion == 3)
                     args.Version = Manager.ModelManager.FileVersion.V303;
+                else if(nVersion == 4)
+                    args.Version = Manager.ModelManager.FileVersion.V304;
+
+                int nSimplifiedUnit = cbSimplifiedUnit.SelectedIndex;
+                if (nSimplifiedUnit == 0)
+                    args.SimplifiedUnit = Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH;
+                else if (nSimplifiedUnit == 1)
+                    args.SimplifiedUnit = Manager.ModelManager.SimplifiedUnit.TRIANGLE_SET_MESH;
 
                 this.Cursor = Cursors.WaitCursor;
                 bool result = OnToVIZEvent(this, args);
@@ -144,5 +152,6 @@ namespace VIZCore3D.NET.ToVIZ
         public VIZCore3D.NET.Data.MergeStructureModes MergeMode { get; set; }
         public bool IncludeEdge { get; set; }
         public VIZCore3D.NET.Manager.ModelManager.FileVersion Version { get; set; }
+        public VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit SimplifiedUnit { get; set; }
     }
 }

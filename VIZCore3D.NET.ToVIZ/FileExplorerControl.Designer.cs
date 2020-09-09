@@ -45,6 +45,7 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbSimplifiedUnit = new System.Windows.Forms.ComboBox();
             this.rbSimplified = new System.Windows.Forms.RadioButton();
             this.rbOutside = new System.Windows.Forms.RadioButton();
             this.rbConversion = new System.Windows.Forms.RadioButton();
@@ -55,8 +56,8 @@
             this.rbLeafAssembly = new System.Windows.Forms.RadioButton();
             this.rbAsIs = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ckIncludeEdge = new System.Windows.Forms.CheckBox();
             this.cbVersion = new System.Windows.Forms.ComboBox();
+            this.ckIncludeEdge = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -244,6 +245,7 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.cbSimplifiedUnit);
             this.groupBox4.Controls.Add(this.rbSimplified);
             this.groupBox4.Controls.Add(this.rbOutside);
             this.groupBox4.Controls.Add(this.rbConversion);
@@ -254,6 +256,18 @@
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Mode";
+            // 
+            // cbSimplifiedUnit
+            // 
+            this.cbSimplifiedUnit.FormattingEnabled = true;
+            this.cbSimplifiedUnit.Items.AddRange(new object[] {
+            "MESH",
+            "MESH SET"});
+            this.cbSimplifiedUnit.Location = new System.Drawing.Point(405, 20);
+            this.cbSimplifiedUnit.Name = "cbSimplifiedUnit";
+            this.cbSimplifiedUnit.Size = new System.Drawing.Size(92, 20);
+            this.cbSimplifiedUnit.TabIndex = 4;
+            this.cbSimplifiedUnit.Text = "MESH";
             // 
             // rbSimplified
             // 
@@ -369,6 +383,21 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Option";
             // 
+            // cbVersion
+            // 
+            this.cbVersion.FormattingEnabled = true;
+            this.cbVersion.Items.AddRange(new object[] {
+            "V.203",
+            "V.204",
+            "V.208",
+            "V.303",
+            "V.304"});
+            this.cbVersion.Location = new System.Drawing.Point(239, 16);
+            this.cbVersion.Name = "cbVersion";
+            this.cbVersion.Size = new System.Drawing.Size(121, 20);
+            this.cbVersion.TabIndex = 1;
+            this.cbVersion.Text = "V.303";
+            // 
             // ckIncludeEdge
             // 
             this.ckIncludeEdge.AutoSize = true;
@@ -380,20 +409,6 @@
             this.ckIncludeEdge.TabIndex = 0;
             this.ckIncludeEdge.Text = "Include Edge Data";
             this.ckIncludeEdge.UseVisualStyleBackColor = true;
-            // 
-            // cbVersion
-            // 
-            this.cbVersion.FormattingEnabled = true;
-            this.cbVersion.Items.AddRange(new object[] {
-            "V.203",
-            "V.204",
-            "V.208",
-            "V.303"});
-            this.cbVersion.Location = new System.Drawing.Point(239, 16);
-            this.cbVersion.Name = "cbVersion";
-            this.cbVersion.Size = new System.Drawing.Size(121, 20);
-            this.cbVersion.TabIndex = 1;
-            this.cbVersion.Text = "V.303";
             // 
             // FileExplorerControl
             // 
@@ -455,5 +470,6 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox ckIncludeEdge;
         private System.Windows.Forms.ComboBox cbVersion;
+        private System.Windows.Forms.ComboBox cbSimplifiedUnit;
     }
 }

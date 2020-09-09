@@ -49,21 +49,21 @@ namespace VIZCore3D.NET.ToVIZ
             fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
         }
 
-        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver);
+        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit);
         private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
         {
             if(this.InvokeRequired == true)
             {
                 DToVIZ call = new DToVIZ(ToVIZ);
-                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version });
+                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit });
             }
             else
             {
-                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version);
+                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit);
             }
         }
 
-        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver)
+        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit)
         {
             // 저장 위치 설정
             string path = System.IO.Path.GetDirectoryName(source);
@@ -135,7 +135,7 @@ namespace VIZCore3D.NET.ToVIZ
                 // 저장 옵션
                 vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
 
-                return vizcore3d.Model.ExportSimplifiedModel(source, file, false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, 0, Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH);
+                return vizcore3d.Model.ExportSimplifiedModel(source, file, false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, 0, simplifiedUnit);
             }
             else
             {
