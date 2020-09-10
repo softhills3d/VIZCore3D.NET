@@ -63,18 +63,20 @@
             this.txtLengthXCube = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tpCylinder = new System.Windows.Forms.TabPage();
+            this.txtCylinderHeight = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnSetPrimitiveCylinder = new System.Windows.Forms.Button();
+            this.rbCylinderZAxis = new System.Windows.Forms.RadioButton();
+            this.rbCylinderYAxis = new System.Windows.Forms.RadioButton();
+            this.rbCylinderXAxis = new System.Windows.Forms.RadioButton();
+            this.txtCylinderSideCount = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtCylinderRadius = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbReadWrite = new System.Windows.Forms.RadioButton();
             this.rbReadOnly = new System.Windows.Forms.RadioButton();
             this.rbNotProcessed = new System.Windows.Forms.RadioButton();
-            this.txtCylinderRadius = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtCylinderSideCount = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.rbCylinderXAxis = new System.Windows.Forms.RadioButton();
-            this.rbCylinderYAxis = new System.Windows.Forms.RadioButton();
-            this.rbCylinderZAxis = new System.Windows.Forms.RadioButton();
-            this.btnSetPrimitiveCylinder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -126,7 +128,7 @@
             this.groupBox2.Controls.Add(this.txtMatrix41);
             this.groupBox2.Controls.Add(this.txtMatrix12);
             this.groupBox2.Controls.Add(this.txtMatrix13);
-            this.groupBox2.Location = new System.Drawing.Point(12, 274);
+            this.groupBox2.Location = new System.Drawing.Point(12, 332);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(371, 236);
             this.groupBox2.TabIndex = 4;
@@ -298,7 +300,7 @@
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.txtNodeIndex);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(12, 516);
+            this.groupBox3.Location = new System.Drawing.Point(12, 574);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(371, 112);
             this.groupBox3.TabIndex = 3;
@@ -348,7 +350,7 @@
             this.tabPrimitive.Location = new System.Drawing.Point(12, 83);
             this.tabPrimitive.Name = "tabPrimitive";
             this.tabPrimitive.SelectedIndex = 0;
-            this.tabPrimitive.Size = new System.Drawing.Size(375, 185);
+            this.tabPrimitive.Size = new System.Drawing.Size(375, 243);
             this.tabPrimitive.TabIndex = 2;
             // 
             // tpCube
@@ -361,7 +363,7 @@
             this.tpCube.Location = new System.Drawing.Point(4, 22);
             this.tpCube.Name = "tpCube";
             this.tpCube.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCube.Size = new System.Drawing.Size(367, 159);
+            this.tpCube.Size = new System.Drawing.Size(367, 217);
             this.tpCube.TabIndex = 0;
             this.tpCube.Text = "Cube";
             this.tpCube.UseVisualStyleBackColor = true;
@@ -412,6 +414,8 @@
             // 
             // tpCylinder
             // 
+            this.tpCylinder.Controls.Add(this.txtCylinderHeight);
+            this.tpCylinder.Controls.Add(this.label10);
             this.tpCylinder.Controls.Add(this.btnSetPrimitiveCylinder);
             this.tpCylinder.Controls.Add(this.rbCylinderZAxis);
             this.tpCylinder.Controls.Add(this.rbCylinderYAxis);
@@ -423,10 +427,104 @@
             this.tpCylinder.Location = new System.Drawing.Point(4, 22);
             this.tpCylinder.Name = "tpCylinder";
             this.tpCylinder.Padding = new System.Windows.Forms.Padding(3);
-            this.tpCylinder.Size = new System.Drawing.Size(367, 159);
+            this.tpCylinder.Size = new System.Drawing.Size(367, 217);
             this.tpCylinder.TabIndex = 1;
             this.tpCylinder.Text = "Cylinder";
             this.tpCylinder.UseVisualStyleBackColor = true;
+            // 
+            // txtCylinderHeight
+            // 
+            this.txtCylinderHeight.Location = new System.Drawing.Point(97, 50);
+            this.txtCylinderHeight.Name = "txtCylinderHeight";
+            this.txtCylinderHeight.Size = new System.Drawing.Size(68, 21);
+            this.txtCylinderHeight.TabIndex = 28;
+            this.txtCylinderHeight.Text = "1";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 53);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(40, 12);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "Height";
+            // 
+            // btnSetPrimitiveCylinder
+            // 
+            this.btnSetPrimitiveCylinder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSetPrimitiveCylinder.Location = new System.Drawing.Point(271, 79);
+            this.btnSetPrimitiveCylinder.Name = "btnSetPrimitiveCylinder";
+            this.btnSetPrimitiveCylinder.Size = new System.Drawing.Size(75, 23);
+            this.btnSetPrimitiveCylinder.TabIndex = 26;
+            this.btnSetPrimitiveCylinder.Text = "Set Prim.";
+            this.btnSetPrimitiveCylinder.UseVisualStyleBackColor = true;
+            this.btnSetPrimitiveCylinder.Click += new System.EventHandler(this.btnSetPrimitiveCylinder_Click);
+            // 
+            // rbCylinderZAxis
+            // 
+            this.rbCylinderZAxis.AutoSize = true;
+            this.rbCylinderZAxis.Checked = true;
+            this.rbCylinderZAxis.Location = new System.Drawing.Point(200, 82);
+            this.rbCylinderZAxis.Name = "rbCylinderZAxis";
+            this.rbCylinderZAxis.Size = new System.Drawing.Size(60, 16);
+            this.rbCylinderZAxis.TabIndex = 16;
+            this.rbCylinderZAxis.TabStop = true;
+            this.rbCylinderZAxis.Text = "Z Axis";
+            this.rbCylinderZAxis.UseVisualStyleBackColor = true;
+            // 
+            // rbCylinderYAxis
+            // 
+            this.rbCylinderYAxis.AutoSize = true;
+            this.rbCylinderYAxis.Location = new System.Drawing.Point(107, 82);
+            this.rbCylinderYAxis.Name = "rbCylinderYAxis";
+            this.rbCylinderYAxis.Size = new System.Drawing.Size(60, 16);
+            this.rbCylinderYAxis.TabIndex = 15;
+            this.rbCylinderYAxis.Text = "Y Axis";
+            this.rbCylinderYAxis.UseVisualStyleBackColor = true;
+            // 
+            // rbCylinderXAxis
+            // 
+            this.rbCylinderXAxis.AutoSize = true;
+            this.rbCylinderXAxis.Location = new System.Drawing.Point(24, 82);
+            this.rbCylinderXAxis.Name = "rbCylinderXAxis";
+            this.rbCylinderXAxis.Size = new System.Drawing.Size(60, 16);
+            this.rbCylinderXAxis.TabIndex = 14;
+            this.rbCylinderXAxis.Text = "X Axis";
+            this.rbCylinderXAxis.UseVisualStyleBackColor = true;
+            // 
+            // txtCylinderSideCount
+            // 
+            this.txtCylinderSideCount.Location = new System.Drawing.Point(268, 23);
+            this.txtCylinderSideCount.Name = "txtCylinderSideCount";
+            this.txtCylinderSideCount.Size = new System.Drawing.Size(68, 21);
+            this.txtCylinderSideCount.TabIndex = 13;
+            this.txtCylinderSideCount.Text = "12";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(195, 26);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(67, 12);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Side Count";
+            // 
+            // txtCylinderRadius
+            // 
+            this.txtCylinderRadius.Location = new System.Drawing.Point(97, 23);
+            this.txtCylinderRadius.Name = "txtCylinderRadius";
+            this.txtCylinderRadius.Size = new System.Drawing.Size(68, 21);
+            this.txtCylinderRadius.TabIndex = 11;
+            this.txtCylinderRadius.Text = "1";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 12);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Radius";
             // 
             // groupBox1
             // 
@@ -476,83 +574,6 @@
             this.rbNotProcessed.Text = "Not Processed";
             this.rbNotProcessed.UseVisualStyleBackColor = true;
             this.rbNotProcessed.CheckedChanged += new System.EventHandler(this.rbNotProcessed_CheckedChanged);
-            // 
-            // txtCylinderRadius
-            // 
-            this.txtCylinderRadius.Location = new System.Drawing.Point(97, 23);
-            this.txtCylinderRadius.Name = "txtCylinderRadius";
-            this.txtCylinderRadius.Size = new System.Drawing.Size(68, 21);
-            this.txtCylinderRadius.TabIndex = 11;
-            this.txtCylinderRadius.Text = "1";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 12);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Radius";
-            // 
-            // txtCylinderSideCount
-            // 
-            this.txtCylinderSideCount.Location = new System.Drawing.Point(97, 61);
-            this.txtCylinderSideCount.Name = "txtCylinderSideCount";
-            this.txtCylinderSideCount.Size = new System.Drawing.Size(68, 21);
-            this.txtCylinderSideCount.TabIndex = 13;
-            this.txtCylinderSideCount.Text = "12";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 12);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "Side Count";
-            // 
-            // rbCylinderXAxis
-            // 
-            this.rbCylinderXAxis.AutoSize = true;
-            this.rbCylinderXAxis.Location = new System.Drawing.Point(26, 98);
-            this.rbCylinderXAxis.Name = "rbCylinderXAxis";
-            this.rbCylinderXAxis.Size = new System.Drawing.Size(60, 16);
-            this.rbCylinderXAxis.TabIndex = 14;
-            this.rbCylinderXAxis.Text = "X Axis";
-            this.rbCylinderXAxis.UseVisualStyleBackColor = true;
-            // 
-            // rbCylinderYAxis
-            // 
-            this.rbCylinderYAxis.AutoSize = true;
-            this.rbCylinderYAxis.Location = new System.Drawing.Point(109, 98);
-            this.rbCylinderYAxis.Name = "rbCylinderYAxis";
-            this.rbCylinderYAxis.Size = new System.Drawing.Size(60, 16);
-            this.rbCylinderYAxis.TabIndex = 15;
-            this.rbCylinderYAxis.Text = "Y Axis";
-            this.rbCylinderYAxis.UseVisualStyleBackColor = true;
-            // 
-            // rbCylinderZAxis
-            // 
-            this.rbCylinderZAxis.AutoSize = true;
-            this.rbCylinderZAxis.Checked = true;
-            this.rbCylinderZAxis.Location = new System.Drawing.Point(202, 98);
-            this.rbCylinderZAxis.Name = "rbCylinderZAxis";
-            this.rbCylinderZAxis.Size = new System.Drawing.Size(60, 16);
-            this.rbCylinderZAxis.TabIndex = 16;
-            this.rbCylinderZAxis.TabStop = true;
-            this.rbCylinderZAxis.Text = "Z Axis";
-            this.rbCylinderZAxis.UseVisualStyleBackColor = true;
-            // 
-            // btnSetPrimitiveCylinder
-            // 
-            this.btnSetPrimitiveCylinder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSetPrimitiveCylinder.Location = new System.Drawing.Point(271, 121);
-            this.btnSetPrimitiveCylinder.Name = "btnSetPrimitiveCylinder";
-            this.btnSetPrimitiveCylinder.Size = new System.Drawing.Size(75, 23);
-            this.btnSetPrimitiveCylinder.TabIndex = 26;
-            this.btnSetPrimitiveCylinder.Text = "Set Prim.";
-            this.btnSetPrimitiveCylinder.UseVisualStyleBackColor = true;
-            this.btnSetPrimitiveCylinder.Click += new System.EventHandler(this.btnSetPrimitiveCylinder_Click);
             // 
             // FrmMain
             // 
@@ -630,6 +651,8 @@
         private System.Windows.Forms.RadioButton rbCylinderZAxis;
         private System.Windows.Forms.RadioButton rbCylinderYAxis;
         private System.Windows.Forms.RadioButton rbCylinderXAxis;
+        private System.Windows.Forms.TextBox txtCylinderHeight;
+        private System.Windows.Forms.Label label10;
     }
 }
 

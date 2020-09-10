@@ -476,6 +476,7 @@ namespace VIZCore3D.NET.Animation.Block
         }
         #endregion
 
+        #region Function - VIZCore3D.NET : Add Event Handler
         /// <summary>
         /// 이벤트 등록
         /// </summary>
@@ -487,6 +488,7 @@ namespace VIZCore3D.NET.Animation.Block
             // 재생 종료
             vizcore3d.Animation.OnAnimationPlaybackFinishedEvent += Animation_OnAnimationPlaybackFinishedEvent;
         }
+        #endregion
 
         private void Animation_OnAnimationPlaybackPositionChangedEvent(object sender, Event.EventManager.AnimationPlaybackPositionEventArgs e)
         {
