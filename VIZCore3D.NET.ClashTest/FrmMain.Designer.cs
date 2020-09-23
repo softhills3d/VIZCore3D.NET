@@ -121,7 +121,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gbResult);
             this.splitContainer1.Size = new System.Drawing.Size(1402, 920);
-            this.splitContainer1.SplitterDistance = 670;
+            this.splitContainer1.SplitterDistance = 636;
             this.splitContainer1.TabIndex = 0;
             // 
             // splitContainer2
@@ -138,7 +138,7 @@
             this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox1);
-            this.splitContainer2.Size = new System.Drawing.Size(1402, 670);
+            this.splitContainer2.Size = new System.Drawing.Size(1402, 636);
             this.splitContainer2.SplitterDistance = 391;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -526,7 +526,7 @@
             this.gbResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbResult.Location = new System.Drawing.Point(0, 0);
             this.gbResult.Name = "gbResult";
-            this.gbResult.Size = new System.Drawing.Size(1402, 246);
+            this.gbResult.Size = new System.Drawing.Size(1402, 280);
             this.gbResult.TabIndex = 0;
             this.gbResult.TabStop = false;
             this.gbResult.Text = "Result";
@@ -563,10 +563,11 @@
             this.lvResult.HideSelection = false;
             this.lvResult.Location = new System.Drawing.Point(3, 17);
             this.lvResult.Name = "lvResult";
-            this.lvResult.Size = new System.Drawing.Size(1396, 226);
+            this.lvResult.Size = new System.Drawing.Size(1396, 260);
             this.lvResult.TabIndex = 0;
             this.lvResult.UseCompatibleStateImageBehavior = false;
             this.lvResult.View = System.Windows.Forms.View.Details;
+            this.lvResult.DoubleClick += new System.EventHandler(this.lvResult_DoubleClick);
             // 
             // columnHeader22
             // 

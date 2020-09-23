@@ -704,5 +704,50 @@ namespace VIZCore3D.NET.ClashTest
 
             clash = new Data.ClashTest();
         }
+
+        private void lvResult_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvResult.SelectedItems.Count == 0) return;
+            if (lvResult.SelectedItems[0].Tag == null) return;
+
+            VIZCore3D.NET.Data.ClashTestResultItem item = (VIZCore3D.NET.Data.ClashTestResultItem)lvResult.SelectedItems[0].Tag;
+
+            vizcore3d.BeginUpdate();
+
+            // Xray Mode
+            if (vizcore3d.View.XRay.Enable == false)
+                vizcore3d.View.XRay.Enable = true;
+
+            // Xray Mode Option
+            vizcore3d.View.XRay.ColorType = Data.XRayColorTypes.OBJECT_COLOR;
+            vizcore3d.View.XRay.SelectionObject3DType = Data.SelectionObject3DTypes.OPAQUE_OBJECT3D;
+
+            // Clear Selection
+            vizcore3d.View.XRay.Clear();
+
+            // Select
+            vizcore3d.View.XRay.Select(new List<int>() { item.NodeIndexA, item.NodeIndexB }, true);
+
+            // Fly
+            vizcore3d.View.FlyToObject3d(new List<int>() { item.NodeIndexA, item.NodeIndexB }, 2);
+
+            // Add Vertex :: HOT POINT
+            vizcore3d.ShapeDrawing.Clear();
+            vizcore3d.ShapeDrawing.AddVertex(new List<Data.Vertex3D>() { item.HotPoint }, 0, Color.Red, 10.0f, 10.0f, true);
+
+            // Set Pivot :: Rotation
+            vizcore3d.View.SetPivotPosition(item.HotPoint);
+
+            // Add Note :: Result Item
+            VIZCore3D.NET.Data.Vertex3D v1 = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { item.NodeIndexA });
+            VIZCore3D.NET.Data.Vertex3D v2 = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { item.NodeIndexB });
+
+            vizcore3d.Review.Note.Clear();
+
+            vizcore3d.Review.Note.AddNoteSurface(item.NodeNameA, v1.Clone().AddValue(Data.Axis.Y, 1000.0f), v1);
+            vizcore3d.Review.Note.AddNoteSurface(item.NodeNameB, v2.Clone().AddValue(Data.Axis.Y, 1000.0f), v2);
+
+            vizcore3d.EndUpdate();
+        }
     }
 }
