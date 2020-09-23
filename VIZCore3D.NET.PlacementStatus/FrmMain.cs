@@ -765,7 +765,7 @@ namespace VIZCore3D.NET.PlacementStatus
                 VIZCore3D.NET.Data.BoundBox3D mBox = VIZCore3D.NET.Manager.ModelManager.GetModelBoundBox(item);
 
                 if (mBox.ResetData == false)
-                    ModelBoundBox.Add(mBox);
+                    ModelBoundBox.Set(mBox);
             }
 
             return ModelBoundBox;

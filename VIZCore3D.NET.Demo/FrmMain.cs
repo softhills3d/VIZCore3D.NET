@@ -590,6 +590,11 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.Section.OnSectionEvent += Section_OnSectionEvent;
         }
 
+
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
+        {
+        }
+
         // ================================================
         // Event - Menu : FILE
         // ================================================
