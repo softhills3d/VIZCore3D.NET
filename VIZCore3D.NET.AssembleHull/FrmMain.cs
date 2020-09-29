@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.MiniView
+namespace VIZCore3D.NET.AssembleHull
 {
     public partial class FrmMain : Form
     {
@@ -18,10 +18,6 @@ namespace VIZCore3D.NET.MiniView
         /// VIZCore3D.NET
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
-
-        private MiniViewDialog MiniViewDlg;
-
-        private MiniViewControl MiniViewCtrl;
 
         public FrmMain()
         {
@@ -37,15 +33,7 @@ namespace VIZCore3D.NET.MiniView
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-            MiniViewDlg = new MiniViewDialog();
-            MiniViewDlg.FormClosing += MiniViewDlg_FormClosing;
-
-            MiniViewCtrl = new MiniViewControl();
         }
-
-        
-
 
         // ================================================
         // Event - VIZCore3D.NET
@@ -148,13 +136,13 @@ namespace VIZCore3D.NET.MiniView
             // ================================================================
             #region 설정 - 기본
             // 모델 자동 언로드 (파일 노드 언체크 시, 언로드)
-            vizcore3d.Model.UncheckToUnload = true;
+            vizcore3d.Model.UncheckToUnload = false;
 
             // 모델 열기 시, Edge 정보 로드 활성화
-            vizcore3d.Model.LoadEdgeData = true;
+            vizcore3d.Model.LoadEdgeData = false;
 
             // 모델 열기 시, Edge 정보 생성 활성화
-            vizcore3d.Model.GenerateEdgeData = true;
+            vizcore3d.Model.GenerateEdgeData = false;
 
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
@@ -249,7 +237,7 @@ namespace VIZCore3D.NET.MiniView
             // 모델
             vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
@@ -437,6 +425,7 @@ namespace VIZCore3D.NET.MiniView
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
+            vizcore3d.ToolbarMain.Visible = true;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
@@ -465,92 +454,263 @@ namespace VIZCore3D.NET.MiniView
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
+            vizcore3d.Model.OnModelOpenedEvent += Model_OnModelOpenedEvent;
         }
         #endregion
 
-        private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
+        private void EnableRenderingEffect(bool enable)
         {
-            
+            vizcore3d.View.PhongShading = true;
+            vizcore3d.View.ShadingEffect = enable;
+            vizcore3d.View.SilhouetteEdge = enable;
+            vizcore3d.View.RealtimeShadow = enable;
+            vizcore3d.View.AntiAliasing = enable;
+            vizcore3d.View.EnvironmentLight = enable;
         }
 
-        private void btnShow_Click(object sender, EventArgs e)
+        private void Model_OnModelOpenedEvent(object sender, EventArgs e)
         {
-            if (vizcore3d.Model.IsOpen() == false) return;
+            vizcore3d.View.Navigation = Data.NavigationModes.ROTATE;
 
-            List<VIZCore3D.NET.Data.Node> items = null;
+            if (tabControl1.SelectedIndex == 0)
+            {
+                vizcore3d.BeginUpdate();
 
-            if (rbSelected.Checked == true)
-            {
-                items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
-            }
-            else if(rbIndex.Checked == true)
-            {
-                if (String.IsNullOrEmpty(txtIndex.Text) == true) return;
-                VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(Convert.ToInt32(txtIndex.Text));
-                if (node == null) return;
-                items.Add(node);
-            }
-            
+                EnableRenderingEffect(true);
 
-            if (items.Count == 0) return;
+                List<VIZCore3D.NET.Data.Node> stage1 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage1, true);
 
-            if(rbControl.Checked == true)
-            {
-                vizcore3d.View.MiniView.SetMiniViewContainer((Control)MiniViewContainer);
+                List<VIZCore3D.NET.Data.Node> stage2 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage2, true);
+
+                List<VIZCore3D.NET.Data.Node> stage3 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage3, true);
+
+                List<VIZCore3D.NET.Data.Node> stage4 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage4, true);
+
+                vizcore3d.EndUpdate();
+
+                vizcore3d.View.ResetView();
+
+                vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
             }
-            else if(rbDialog.Checked == true)
+            else if(tabControl1.SelectedIndex == 1)
             {
-                vizcore3d.View.MiniView.SetMiniViewContainer(MiniViewDlg);
+                vizcore3d.BeginUpdate();
+
+                EnableRenderingEffect(true);
+
+                List<VIZCore3D.NET.Data.Node> stage1 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage1, true);
+
+                List<VIZCore3D.NET.Data.Node> stage11 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1_1" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage11, true);
+
+                List<VIZCore3D.NET.Data.Node> stage2 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage2, true);
+
+                List<VIZCore3D.NET.Data.Node> stage21 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2_1" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage21, true);
+
+                List<VIZCore3D.NET.Data.Node> stage3 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage3, true);
+
+                List<VIZCore3D.NET.Data.Node> stage31 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3_1" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage31, true);
+
+                List<VIZCore3D.NET.Data.Node> stage4 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage4, true);
+
+                List<VIZCore3D.NET.Data.Node> stage41 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4_1" }, false, true, false, false, true, false);
+                vizcore3d.Object3D.Show(stage41, true);
+
+                vizcore3d.EndUpdate();
+
+                vizcore3d.View.ResetView();
+
+                vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
             }
-            else if(rbInfoPanel.Checked == true)
+            else if (tabControl1.SelectedIndex == 2)
             {
-                if(vizcore3d.InformationPanel.Controls.Count == 0)
+                vizcore3d.BeginUpdate();
+
+                vizcore3d.Object3D.ShowVIZXMLRoot();
+
+                EnableRenderingEffect(true);
+
+                vizcore3d.View.Navigation = Data.NavigationModes.PAN;
+
+                vizcore3d.Review.DrawingMarkup.ShowAllItem(true);
+
+                vizcore3d.View.ResetView();
+
+                vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+
+                vizcore3d.EndUpdate();
+            }
+        }
+
+        private void btnLoadASP_Click(object sender, EventArgs e)
+        {
+            string path = @"D:\SAMPLE\E42P.vizxml";
+
+            if (vizcore3d.Model.IsOpen() == true)
+                vizcore3d.Model.Close();
+
+            vizcore3d.Model.Open(path);
+        }
+
+        private void btnDeckBase_Click(object sender, EventArgs e)
+        {
+            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+        }
+
+        private void btnDisassembly_Click(object sender, EventArgs e)
+        {
+            bool showOriginalLocation = ckShowOriginalLocation.Checked;
+
+            List<VIZCore3D.NET.Data.Node> stage4 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v4 = new VIZCore3D.NET.Data.Vertex3D(0, 5000, 0);
+            VIZCore3D.NET.Data.Object3DProperty prop4 = vizcore3d.Object3D.GeometryProperty.FromNode(stage4[0], false);
+            vizcore3d.Object3D.Transform.Move(stage4, v4);
+            System.Threading.Thread.Sleep(500);
+            if (showOriginalLocation == true) ShowOriginalLocation(0, prop4, v4);
+            System.Threading.Thread.Sleep(200);
+
+            List<VIZCore3D.NET.Data.Node> stage2 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v2 = new VIZCore3D.NET.Data.Vertex3D(-5000, 0, 0);
+            VIZCore3D.NET.Data.Object3DProperty prop2 = vizcore3d.Object3D.GeometryProperty.FromNode(stage2[0], false);
+            vizcore3d.Object3D.Transform.Move(stage2, v2);
+            System.Threading.Thread.Sleep(500);
+            if (showOriginalLocation == true) ShowOriginalLocation(1, prop2, v2);
+            System.Threading.Thread.Sleep(200);
+
+            List<VIZCore3D.NET.Data.Node> stage3 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v3 = new VIZCore3D.NET.Data.Vertex3D(8000, 0, 0);
+            VIZCore3D.NET.Data.Object3DProperty prop3 = vizcore3d.Object3D.GeometryProperty.FromNode(stage3[0], false);
+            vizcore3d.Object3D.Transform.Move(stage3, v3);
+            System.Threading.Thread.Sleep(500);
+            if (showOriginalLocation == true) ShowOriginalLocation(2, prop3, v3);
+
+            vizcore3d.View.FitToView();
+        }
+
+        private void ShowOriginalLocation(int index, VIZCore3D.NET.Data.Object3DProperty prop, VIZCore3D.NET.Data.Vertex3D v)
+        {
+            List<Color> color = new List<Color>();
+            color.Add(Color.FromArgb(10, 255, 0, 0));
+            color.Add(Color.FromArgb(10, 0, 255, 0));
+            color.Add(Color.FromArgb(10, 0, 0, 255));
+
+            vizcore3d.SelectionBox.Add(prop.GetBoundBox(), color[index], Color.FromArgb(100, 255, 255, 255), "");
+
+            VIZCore3D.NET.Data.Vertex3DItemCollection items = new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            items.Add(prop.CenterPoint);
+            items.Add(prop.CenterPoint + v);
+
+            vizcore3d.ShapeDrawing.AddLine(
+                new List<Data.Vertex3DItemCollection>()
                 {
-                    MiniViewCtrl.Dock = DockStyle.Fill;
-                    vizcore3d.InformationPanel.Controls.Add(MiniViewCtrl);
-                    vizcore3d.View.MiniView.SetMiniViewContainer(MiniViewCtrl.MiniViewContainer);
+                    items
                 }
-
-                vizcore3d.InformationPanel.Visible = true;
-            }
-
-            vizcore3d.View.MiniView.Show(items, ckTopMost.Checked);
+                , 0
+                , Color.Red
+                , 5.0f
+                , true
+                );
         }
 
-        private void btnHide_Click(object sender, EventArgs e)
+        private void btnLoadASPGhost_Click(object sender, EventArgs e)
         {
-            if (rbInfoPanel.Checked == false)
-                vizcore3d.View.MiniView.Hide();
-            else
-                vizcore3d.InformationPanel.Visible = false;
+            string path = @"D:\SAMPLE\E42P-COLOR.vizxml";
+
+            if (vizcore3d.Model.IsOpen() == true)
+                vizcore3d.Model.Close();
+
+            vizcore3d.Model.Open(path);
         }
 
-        private void btnUpdateModel_Click(object sender, EventArgs e)
+        private void btnDeckBaseGhost_Click(object sender, EventArgs e)
         {
-            if (vizcore3d.Model.IsOpen() == false) return;
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
-            if (items.Count == 0) return;
-
-            vizcore3d.View.MiniView.SetObject3D(items);
+            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
         }
 
-        private void ckTopMost_CheckedChanged(object sender, EventArgs e)
+        private void btnDisassemblyGhost_Click(object sender, EventArgs e)
         {
-            if (vizcore3d.Model.IsOpen() == false) return;
+            List<VIZCore3D.NET.Data.Node> stage41 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4_1" }, false, true, false, false, true, false);
+            vizcore3d.Object3D.Color.SetColorAndAlpha(stage41, Color.White, 20);
+            List<VIZCore3D.NET.Data.Node> stage4 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v4 = new VIZCore3D.NET.Data.Vertex3D(0, 5000, 0);
+            VIZCore3D.NET.Data.Object3DProperty prop4 = vizcore3d.Object3D.GeometryProperty.FromNode(stage4[0], false);
+            vizcore3d.Object3D.Transform.Move(stage4, v4);
+            System.Threading.Thread.Sleep(500);
 
-            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
-            if (items.Count == 0) return;
+            List<VIZCore3D.NET.Data.Node> stage21 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2_1" }, false, true, false, false, true, false);
+            vizcore3d.Object3D.Color.SetColorAndAlpha(stage21, Color.White, 20);
+            List<VIZCore3D.NET.Data.Node> stage2 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v2 = new VIZCore3D.NET.Data.Vertex3D(-5000, 0, 0);
+            VIZCore3D.NET.Data.Object3DProperty prop2 = vizcore3d.Object3D.GeometryProperty.FromNode(stage2[0], false);
+            vizcore3d.Object3D.Transform.Move(stage2, v2);
+            System.Threading.Thread.Sleep(500);
 
-            vizcore3d.View.MiniView.TopMost = ckTopMost.Checked;
+            List<VIZCore3D.NET.Data.Node> stage31 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3_1" }, false, true, false, false, true, false);
+            vizcore3d.Object3D.Color.SetColorAndAlpha(stage31, Color.White, 20);
+            List<VIZCore3D.NET.Data.Node> stage3 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v3 = new VIZCore3D.NET.Data.Vertex3D(8000, 0, 0);
+            VIZCore3D.NET.Data.Object3DProperty prop3 = vizcore3d.Object3D.GeometryProperty.FromNode(stage3[0], false);
+            vizcore3d.Object3D.Transform.Move(stage3, v3);
+            System.Threading.Thread.Sleep(500);
+
+            List<VIZCore3D.NET.Data.Node> stage11 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1_1" }, false, true, false, false, true, false);
+            vizcore3d.Object3D.Color.SetColorAndAlpha(stage11, Color.White, 20);
+            List<VIZCore3D.NET.Data.Node> stage1 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1" }, false, true, false, false, true, false);
+            VIZCore3D.NET.Data.Vertex3D v1 = new VIZCore3D.NET.Data.Vertex3D(0, 0, 5000);
+            VIZCore3D.NET.Data.Object3DProperty prop1 = vizcore3d.Object3D.GeometryProperty.FromNode(stage3[0], false);
+            vizcore3d.Object3D.Transform.Move(stage1, v1);
+            System.Threading.Thread.Sleep(500);
+
+            vizcore3d.View.FitToView();
         }
 
-        private void MiniViewDlg_FormClosing(object sender, FormClosingEventArgs e)
+        private void btnLoadAnimation_Click(object sender, EventArgs e)
         {
-            e.Cancel = true;
+            string path = @"D:\SAMPLE\ANIMATION_2.viz";
 
-            MiniViewDlg.ShowInTaskbar = false;
-            MiniViewDlg.Hide();
+            if (vizcore3d.Model.IsOpen() == true)
+                vizcore3d.Model.Close();
+
+            vizcore3d.Model.Open(path);
+        }
+        
+        
+        private void btnDeck_Click(object sender, EventArgs e)
+        {
+            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+        }
+
+        private void btnAddCustomMenu_Click(object sender, EventArgs e)
+        {
+            ContextMenuStrip menu = vizcore3d.View.GetContextMenu(Data.ViewContextMenuKind.NODE_SINGLE);
+            menu.Items.Add(new ToolStripSeparator());
+
+            ToolStripMenuItem miniView = new ToolStripMenuItem("Preview");
+            miniView.Click += MiniView_Click;
+
+            menu.Items.Add(miniView);
+
+            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.NODE_SINGLE, menu);
+
+            vizcore3d.View.MiniView.SetMiniViewContainer((Control)panelView);
+        }
+
+        private void MiniView_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            if (node.Count != 1) return;
+
+            vizcore3d.View.MiniView.SetObject3D(node);
         }
     }
 }
