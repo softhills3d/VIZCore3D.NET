@@ -19,6 +19,7 @@ namespace VIZCore3D.NET.AssembleHull
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+
         public FrmMain()
         {
             InitializeComponent();
@@ -34,6 +35,8 @@ namespace VIZCore3D.NET.AssembleHull
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
         }
+
+        
 
         // ================================================
         // Event - VIZCore3D.NET
@@ -708,7 +711,7 @@ namespace VIZCore3D.NET.AssembleHull
         private void MiniView_Click(object sender, EventArgs e)
         {
             List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
-            if (node.Count != 1) return;
+            if (node.Count != 1) return;            
 
             vizcore3d.View.MiniView.SetObject3D(node);
         }

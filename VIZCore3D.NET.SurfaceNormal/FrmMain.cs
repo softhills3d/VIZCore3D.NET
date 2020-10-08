@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.Note
+namespace VIZCore3D.NET.SurfaceNormal
 {
     public partial class FrmMain : Form
     {
@@ -18,6 +18,7 @@ namespace VIZCore3D.NET.Note
         /// VIZCore3D.NET
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+
 
         public FrmMain()
         {
@@ -34,6 +35,7 @@ namespace VIZCore3D.NET.Note
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
         }
+
 
         // ================================================
         // Event - VIZCore3D.NET
@@ -116,7 +118,7 @@ namespace VIZCore3D.NET.Note
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
-        } 
+        }
         #endregion
 
         // ================================================
@@ -136,13 +138,13 @@ namespace VIZCore3D.NET.Note
             // ================================================================
             #region 설정 - 기본
             // 모델 자동 언로드 (파일 노드 언체크 시, 언로드)
-            vizcore3d.Model.UncheckToUnload = true;
+            vizcore3d.Model.UncheckToUnload = false;
 
             // 모델 열기 시, Edge 정보 로드 활성화
-            vizcore3d.Model.LoadEdgeData = true;
+            vizcore3d.Model.LoadEdgeData = false;
 
             // 모델 열기 시, Edge 정보 생성 활성화
-            vizcore3d.Model.GenerateEdgeData = true;
+            vizcore3d.Model.GenerateEdgeData = false;
 
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
@@ -237,7 +239,7 @@ namespace VIZCore3D.NET.Note
             // 모델
             vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
@@ -425,8 +427,9 @@ namespace VIZCore3D.NET.Note
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
-            vizcore3d.ToolbarNote.Visible = true;
-            vizcore3d.ToolbarMeasure.Visible = false;
+            vizcore3d.ToolbarMain.Visible = true;
+            vizcore3d.ToolbarNote.Visible = false;
+            vizcore3d.ToolbarMeasure.Visible = true;
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
@@ -454,175 +457,160 @@ namespace VIZCore3D.NET.Note
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
-            vizcore3d.Review.OnReviewChangedEvent += Review_OnReviewChangedEvent;
+            vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
         }
         #endregion
 
-        private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
-            if (e.Node.Count == 0) return;
-            if (ckEnable.Checked == false) return;
+        }
 
-            Data.Node node = vizcore3d.Object3D.FromIndex(e.Node[0].Index, true);
-            
-            // 현재 노트 스타일 가져오기 및 수정
-            Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
+        private void GeometryUtility_OnOsnapPickingItem(object sender, Event.EventManager.OsnapPickingItemEventArgs e)
+        {
+            if (e.Kind != Data.OsnapKind.SURFACE) return;
+
+            AddSurfaceData(true, true, e.Point, e.Normal);
+
+            DrawLine(e.Point, e.Normal);
+        }
+
+        private void DrawLine(VIZCore3D.NET.Data.Vertex3D start, VIZCore3D.NET.Data.Vertex3D normal)
+        {
+            vizcore3d.ShapeDrawing.DepthTest = true;
+
+            VIZCore3D.NET.Data.Vertex3D end = start.PointToVector(normal, 1000.0f);
+
+            List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex = new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+            Data.Vertex3DItemCollection item = new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            item.Add(start);
+            item.Add(end);
+
+            vertex.Add(item);
+
+            int shapeId = vizcore3d.ShapeDrawing.AddLine(
+                    vertex
+                    , 0
+                    , Color.Orange
+                    , 5.0f
+                    , true
+                    );
+        }
+
+        private void btnShowOsnap_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+
+            if (items.Count == 0)
             {
-                // 화살표 색상
-                style.ArrowColor = Color.Black;
-                // 화살표 두께
-                style.ArrowWidth = 10;
-
-                // 배경 투명하게 처리 여부
-                style.BackgroudTransparent = ckTransparent.Checked;
-                // 배경 색상 - 배경을 투명하게 처리할 경우, 적용되지 않음
-                style.BackgroundColor = Color.White;
-
-                // 노트 글자 색상
-                style.FontColor = Color.Black;
-                // 노트 글자 크기
-                style.FontSize = Data.FontSizeKind.SIZE18;
-                // 노트 글자 굵게 표시 여부
-                style.FontBold = false;
-
-                // 라인 색상
-                style.LineColor = Color.Red;
-                // 라인 두께
-                style.LineWidth = 3;
-
-                // 텍스트 상자 표시 여부
-                style.UseTextBox = true;
-
-                // 라인과 텍스트 박스의 연결 위치
-                style.LinkArrowTailToText = Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
-
-                // 심볼 배경색
-                style.SymbolBackgroundColor = Color.Yellow;
-                // 심볼 글자 색상
-                style.SymbolFontColor = Color.Black;
-                // 심볼 글자 크기
-                style.SymbolFontSize = Data.FontSizeKind.SIZE16;
-                // 심볼 글자 굵게 표시 여부
-                style.SymbolFontBold = true;
-                // 심볼 위치
-                style.SymbolPosition = Manager.NoteManager.SymbolPositionKind.ARROW;
-                // 심볼 크기
-                style.SymbolSize = 10;
-
-                // 심볼 사용 유무
-                style.UseSymbol = ckUseSymbol.Checked;
-                // 심볼 텍스트
-                style.SymbolText = Convert.ToString(vizcore3d.Review.Note.GetID().Count + 1);
+                vizcore3d.GeometryUtility.ShowOsnap(
+                    true        /* Surface */
+                    , true     /* Vertex */
+                    , true     /* Line */
+                    , true     /* Circle */
+                    );
             }
-
-            // 색상 텍스트 생성
-            VIZCore3D.NET.Data.MultiColorText text = new Data.MultiColorText();
-            text.Add("MODEL : ", Color.Black);
-            text.AddLine(string.Format("{0}", vizcore3d.Object3D.FromIndex(0).NodeName), Color.Red);
-            text.Add("NAME : ", Color.Black);
-            text.AddLine(node.NodeName, Color.Red);
-
-            //{
-            //    text.NewLine();
-
-            //    // Geometry 속성 조회
-            //    Data.Object3DProperty prop = vizcore3d.Object3D.GeometryProperty.FromIndex(e.Node[0].Index, false);
-
-            //    text.Add("Center : ", Color.Black);
-            //    text.AddLine(string.Format("{0}", prop.CenterPoint.ToString()), Color.Purple);
-
-            //    text.Add("Min. : ", Color.Black);
-            //    text.AddLine(string.Format("{0}", prop.MinPoint.ToString()), Color.Purple);
-
-            //    text.Add("Max. : ", Color.Black);
-            //    text.AddLine(string.Format("{0}", prop.MaxPoint.ToString()), Color.Purple);
-            //}
-
-            //{
-            //    text.NewLine();
-
-            //    // UDA(User Define Attribute) 조회
-            //    Dictionary<string, string> uda = vizcore3d.Object3D.UDA.FromIndex(node.Index);
-
-            //    foreach (KeyValuePair<string, string> item in uda)
-            //    {
-            //        text.Add(string.Format("{0} : ", item.Key), Color.Red);
-            //        text.AddLine(string.Format("{0}", item.Value), Color.DarkGray);
-            //    }
-            //}
-
-            // 부재의 표면점 조회
-            Data.Vertex3D surfacePt = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { node.Index });
-
-            // 화면 갱신 차단
-            vizcore3d.BeginUpdate();
-
-            // 노트 생성
-            vizcore3d.Review.Note.AddNoteSurface(text
-                , new Data.Vertex3D(surfacePt.X + 2000.0f, surfacePt.Y, surfacePt.Z + 2000.0f)
-                , surfacePt
-                , style
-                );
-
-            // 화면 갱신 차단 해제
-            vizcore3d.EndUpdate();
-        }
-
-        private void ckEnableDepthTest_CheckedChanged(object sender, EventArgs e)
-        {
-            vizcore3d.Review.Note.EnableDepthTest(ckEnableDepthTest.Checked);
-        }
-
-        private void Review_OnReviewChangedEvent(object sender, Event.EventManager.ReviewEventArgs e)
-        {
-            string log = String.Empty;
-
-            switch (e.EventKind)
+            else
             {
-                case Manager.ReviewManager.ReviewEventKind.DESELECTED_REVIEW:
-                    log = string.Format("[{0}] 모두 선택해제", (int)e.EventKind);
-                    break;
-                case Manager.ReviewManager.ReviewEventKind.SELECT_REVIEW:
-                    log = string.Format("[{0}] 리뷰 선택 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
-                    break;
-                case Manager.ReviewManager.ReviewEventKind.SELECT_REVIEW_ADD:
-                    log = string.Format("[{0}] 리뷰 선택 (추가) : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
-                    break;
-                case Manager.ReviewManager.ReviewEventKind.CHANGED_REVIEW_DATA:
-                    log = string.Format("[{0}] 리뷰 정보 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
-                    break;
-                case Manager.ReviewManager.ReviewEventKind.ADDED_SURFACE_NOTE:
-                    log = string.Format("[{0}] 표면노트 추가 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
-                    break;
-                case Manager.ReviewManager.ReviewEventKind.CANCELED_ADD:
-                    log = string.Format("[{0}] 추가 동작 취소", (int)e.EventKind);
-                    break;
-                case Manager.ReviewManager.ReviewEventKind.CHANGED_ARROW_POSITION:
-                    log = string.Format("[{0}] 지시선 위치 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
-                    break;
-                default:
-                    break;
+                vizcore3d.GeometryUtility.ShowOsnap(
+                    items[0].Index
+                    , true      /* Surface */
+                    , true     /* Vertex */
+                    , true     /* Line */
+                    , true     /* Circle */
+                    );
             }
-
-            AddLog(log);
         }
 
-        private void AddLog(string str)
+        private void AddSurfaceData(bool pick, bool surface, VIZCore3D.NET.Data.Vertex3D position, VIZCore3D.NET.Data.Vertex3D normal)
         {
-            if (String.IsNullOrEmpty(str) == true) return;
+            ListViewItem lvi = new ListViewItem(
+                new string[] {
+                    pick == true ? "True" : "False"
+                    , surface == true ? "True" : "False"
+                    , position.ToString()
+                    , normal.ToString()
+                }
+            );
 
-            lbEvent.Invoke(new EventHandler(delegate
+            lvItems.Items.Add(lvi);
+        }
+
+        private void btnConvertWorldToScreen_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.Vertex3D point =
+                vizcore3d.View.WorldToScreen(
+                    Convert.ToSingle(txtWorldX.Text)
+                    , Convert.ToSingle(txtWorldY.Text)
+                    , Convert.ToSingle(txtWorldZ.Text)
+                    , ckUseCamera.Checked
+                    );
+
+            txtScreenX.Text = point.X.ToString();
+            txtScreenY.Text = point.Y.ToString();
+        }
+
+        private void btnGetCenter_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            if (items.Count == 0) return;
+
+            VIZCore3D.NET.Data.Object3DProperty prop =
+                vizcore3d.Object3D.GeometryProperty.FromNode(items[0], false);
+
+            txtWorldX.Text = prop.CenterPoint.X.ToString();
+            txtWorldY.Text = prop.CenterPoint.Y.ToString();
+            txtWorldZ.Text = prop.CenterPoint.Z.ToString();
+        }
+
+        private void btnGetNormal_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtScreenX.Text) == true) return;
+            if (String.IsNullOrEmpty(txtScreenY.Text) == true) return;
+
+            int x = Convert.ToInt32(Convert.ToSingle(txtScreenX.Text));
+            int y = Convert.ToInt32(Convert.ToSingle(txtScreenY.Text));
+
+            VIZCore3D.NET.Data.PickedSurfaceData item =
+                vizcore3d.View.GetPickedSurfaceNormalVector(x, y);
+
+            AddSurfaceData(
+                item.Picked
+                , item.Surface
+                , item.Position
+                , item.Normal);
+
+            if(item.Picked && item.Surface)
+                DrawLine(item.Position, item.Normal);
+        }
+
+        private void btnGetNormal3D_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(txtWorldX.Text) == true) return;
+            if (String.IsNullOrEmpty(txtWorldY.Text) == true) return;
+            if (String.IsNullOrEmpty(txtWorldZ.Text) == true) return;
+
+            VIZCore3D.NET.Data.Vertex3D position =
+            new VIZCore3D.NET.Data.Vertex3D(
+                        txtWorldX.Text
+                        , txtWorldY.Text
+                        , txtWorldZ.Text
+                        );
+
+            VIZCore3D.NET.Data.Vertex3D normal =
+                vizcore3d.View.GetSurfaceNormalVector(position);
+
+            if (normal == null)
             {
-                lbEvent.Items.Insert(0, str);
-            }));
-        }
+                AddSurfaceData(false, false, position, new Data.Vertex3D());
+            }
+            else
+            {
+                AddSurfaceData(true, true, position, normal);
 
-        private void btnGetSize_Click(object sender, EventArgs e)
-        {
-            Size size = vizcore3d.View.Size;
-
-            txtWidth.Text = size.Width.ToString();
-            txtHeight.Text = size.Height.ToString();
+                DrawLine(position, normal);
+            }
         }
     }
 }

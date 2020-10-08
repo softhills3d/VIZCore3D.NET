@@ -41,11 +41,11 @@
             this.btnDeckBaseGhost = new System.Windows.Forms.Button();
             this.btnLoadASPGhost = new System.Windows.Forms.Button();
             this.tpAnimation = new System.Windows.Forms.TabPage();
+            this.btnAddCustomMenu = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.panelView = new System.Windows.Forms.Panel();
             this.btnDeck = new System.Windows.Forms.Button();
             this.btnLoadAnimation = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAddCustomMenu = new System.Windows.Forms.Button();
-            this.panelView = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -193,6 +193,36 @@
             this.tpAnimation.Text = "Animation";
             this.tpAnimation.UseVisualStyleBackColor = true;
             // 
+            // btnAddCustomMenu
+            // 
+            this.btnAddCustomMenu.Location = new System.Drawing.Point(22, 66);
+            this.btnAddCustomMenu.Name = "btnAddCustomMenu";
+            this.btnAddCustomMenu.Size = new System.Drawing.Size(140, 23);
+            this.btnAddCustomMenu.TabIndex = 10;
+            this.btnAddCustomMenu.Text = "Add Custom Menu";
+            this.btnAddCustomMenu.UseVisualStyleBackColor = true;
+            this.btnAddCustomMenu.Click += new System.EventHandler(this.btnAddCustomMenu_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.panelView);
+            this.groupBox1.Location = new System.Drawing.Point(8, 120);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(315, 498);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Preview";
+            // 
+            // panelView
+            // 
+            this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelView.Location = new System.Drawing.Point(3, 17);
+            this.panelView.Name = "panelView";
+            this.panelView.Size = new System.Drawing.Size(309, 478);
+            this.panelView.TabIndex = 0;
+            // 
             // btnDeck
             // 
             this.btnDeck.Location = new System.Drawing.Point(183, 25);
@@ -212,36 +242,6 @@
             this.btnLoadAnimation.Text = "Load";
             this.btnLoadAnimation.UseVisualStyleBackColor = true;
             this.btnLoadAnimation.Click += new System.EventHandler(this.btnLoadAnimation_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.panelView);
-            this.groupBox1.Location = new System.Drawing.Point(8, 120);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(315, 308);
-            this.groupBox1.TabIndex = 9;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Preview";
-            // 
-            // btnAddCustomMenu
-            // 
-            this.btnAddCustomMenu.Location = new System.Drawing.Point(22, 66);
-            this.btnAddCustomMenu.Name = "btnAddCustomMenu";
-            this.btnAddCustomMenu.Size = new System.Drawing.Size(140, 23);
-            this.btnAddCustomMenu.TabIndex = 10;
-            this.btnAddCustomMenu.Text = "Add Custom Menu";
-            this.btnAddCustomMenu.UseVisualStyleBackColor = true;
-            this.btnAddCustomMenu.Click += new System.EventHandler(this.btnAddCustomMenu_Click);
-            // 
-            // panelView
-            // 
-            this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelView.Location = new System.Drawing.Point(3, 17);
-            this.panelView.Name = "panelView";
-            this.panelView.Size = new System.Drawing.Size(309, 288);
-            this.panelView.TabIndex = 0;
             // 
             // FrmMain
             // 
