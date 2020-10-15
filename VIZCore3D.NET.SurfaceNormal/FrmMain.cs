@@ -506,9 +506,9 @@ namespace VIZCore3D.NET.SurfaceNormal
             {
                 vizcore3d.GeometryUtility.ShowOsnap(
                     true        /* Surface */
-                    , true     /* Vertex */
-                    , true     /* Line */
-                    , true     /* Circle */
+                    , false     /* Vertex */
+                    , false     /* Line */
+                    , false     /* Circle */
                     );
             }
             else
@@ -516,9 +516,9 @@ namespace VIZCore3D.NET.SurfaceNormal
                 vizcore3d.GeometryUtility.ShowOsnap(
                     items[0].Index
                     , true      /* Surface */
-                    , true     /* Vertex */
-                    , true     /* Line */
-                    , true     /* Circle */
+                    , false     /* Vertex */
+                    , false     /* Line */
+                    , false     /* Circle */
                     );
             }
         }
