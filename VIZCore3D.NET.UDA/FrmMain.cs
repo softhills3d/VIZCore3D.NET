@@ -74,24 +74,24 @@ namespace VIZCore3D.NET.UDA
             // ================================================================
             #region 라이선스
             // 라이선스 정보 조회
-            Utility.LicenseHelper.LicenseData licenseData = Utility.LicenseHelper.GetLicenseDataKind();
+            VIZCore3D.NET.Utility.LicenseHelper.LicenseData licenseData = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind();
 
             // 등록된 정보 없는 경우, 설정 다이얼로그 실행
-            if (licenseData == Utility.LicenseHelper.LicenseData.NONE)
+            if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.NONE)
             {
-                VIZCore3D.NET.Dialogs.LicenseDialog dlg = new NET.Dialogs.LicenseDialog();
+                VIZCore3D.NET.Dialogs.LicenseDialog dlg = new VIZCore3D.NET.Dialogs.LicenseDialog();
                 if (dlg.ShowDialog() != DialogResult.OK) return;
             }
 
             // 라이선스 정보 재조회
-            licenseData = Utility.LicenseHelper.GetLicenseDataKind();
+            licenseData = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind();
 
             // 등록된 정보 조회
-            Dictionary<string, string> licenseInfo = Utility.LicenseHelper.GetLicenseInformation();
-            VIZCore3D.NET.Data.LicenseResults licenseResult = Data.LicenseResults.NONE;
+            Dictionary<string, string> licenseInfo = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseInformation();
+            VIZCore3D.NET.Data.LicenseResults licenseResult = VIZCore3D.NET.Data.LicenseResults.NONE;
 
             // 라이선스 서버
-            if (licenseData == Utility.LicenseHelper.LicenseData.SERVER)
+            if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.SERVER)
             {
                 licenseResult = vizcore3d.License.LicenseServer(
                     licenseInfo.ContainsKey("LICENSE_IP") == true ? licenseInfo["LICENSE_IP"] : String.Empty
@@ -99,7 +99,7 @@ namespace VIZCore3D.NET.UDA
                     );
             }
             // 라이선스 파일
-            else if (licenseData == Utility.LicenseHelper.LicenseData.FILE)
+            else if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.FILE)
             {
                 licenseResult = vizcore3d.License.LicenseFile(
                     licenseInfo.ContainsKey("LICENSE_FILE") == true ? licenseInfo["LICENSE_FILE"] : String.Empty
@@ -324,7 +324,7 @@ namespace VIZCore3D.NET.UDA
             // 측정 단위 표시
             measureStyle.Unit = true;
             // 측정 단위 유형
-            measureStyle.UnitKind = Data.MeasureUnitKind.RUT_MILLIMETER;
+            measureStyle.UnitKind = VIZCore3D.NET.Data.MeasureUnitKind.RUT_MILLIMETER;
             // 소수점 이하 자리수
             measureStyle.NumberOfDecimalPlaces = 2;
             // 연속거리 표시
@@ -337,7 +337,7 @@ namespace VIZCore3D.NET.UDA
             // 글자색
             measureStyle.FontColor = Color.White;
             // 글자크기
-            measureStyle.FontSize = Data.FontSizeKind.SIZE14;
+            measureStyle.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE14;
             // 글자 두껍게
             measureStyle.FontBold = false;
             // 지시선 색
@@ -353,7 +353,7 @@ namespace VIZCore3D.NET.UDA
             // 보조 지시선 표시 개수
             measureStyle.AssistantLineCount = -1;
             // 보조 지시선 라인 스타일
-            measureStyle.AssistantLineStyle = Data.MeasureStyle.AssistantLineType.DOTTEDLINE;
+            measureStyle.AssistantLineStyle = VIZCore3D.NET.Data.MeasureStyle.AssistantLineType.DOTTEDLINE;
             // 선택 위치 표시
             measureStyle.PickPosition = true;
             // 거리 측정 텍스트 정렬

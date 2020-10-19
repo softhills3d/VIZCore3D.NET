@@ -454,7 +454,7 @@ namespace VIZCore3D.NET.Demo
             // 측정 단위 표시
             measureStyle.Unit = true;
             // 측정 단위 유형
-            measureStyle.UnitKind = Data.MeasureUnitKind.RUT_MILLIMETER;
+            measureStyle.UnitKind = VIZCore3D.NET.Data.MeasureUnitKind.RUT_MILLIMETER;
             // 소수점 이하 자리수
             measureStyle.NumberOfDecimalPlaces = 2;
             // 연속거리 표시
@@ -467,7 +467,7 @@ namespace VIZCore3D.NET.Demo
             // 글자색
             measureStyle.FontColor = Color.White;
             // 글자크기
-            measureStyle.FontSize = Data.FontSizeKind.SIZE14;
+            measureStyle.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE14;
             // 글자 두껍게
             measureStyle.FontBold = false;
             // 지시선 색
@@ -483,7 +483,7 @@ namespace VIZCore3D.NET.Demo
             // 보조 지시선 표시 개수
             measureStyle.AssistantLineCount = -1;
             // 보조 지시선 라인 스타일
-            measureStyle.AssistantLineStyle = Data.MeasureStyle.AssistantLineType.DOTTEDLINE;
+            measureStyle.AssistantLineStyle = VIZCore3D.NET.Data.MeasureStyle.AssistantLineType.DOTTEDLINE;
             // 선택 위치 표시
             measureStyle.PickPosition = true;
             // 거리 측정 텍스트 정렬

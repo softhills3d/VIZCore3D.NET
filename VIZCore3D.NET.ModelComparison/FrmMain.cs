@@ -71,24 +71,24 @@ namespace VIZCore3D.NET.ModelComparison
             // ================================================================
             #region 라이선스
             // 라이선스 정보 조회
-            Utility.LicenseHelper.LicenseData licenseData = Utility.LicenseHelper.GetLicenseDataKind();
+            VIZCore3D.NET.Utility.LicenseHelper.LicenseData licenseData = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind();
 
             // 등록된 정보 없는 경우, 설정 다이얼로그 실행
-            if (licenseData == Utility.LicenseHelper.LicenseData.NONE)
+            if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.NONE)
             {
-                VIZCore3D.NET.Dialogs.LicenseDialog dlg = new NET.Dialogs.LicenseDialog();
+                VIZCore3D.NET.Dialogs.LicenseDialog dlg = new VIZCore3D.NET.Dialogs.LicenseDialog();
                 if (dlg.ShowDialog() != DialogResult.OK) return;
             }
 
             // 라이선스 정보 재조회
-            licenseData = Utility.LicenseHelper.GetLicenseDataKind();
+            licenseData = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind();
 
             // 등록된 정보 조회
-            Dictionary<string, string> licenseInfo = Utility.LicenseHelper.GetLicenseInformation();
-            VIZCore3D.NET.Data.LicenseResults licenseResult = Data.LicenseResults.NONE;
+            Dictionary<string, string> licenseInfo = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseInformation();
+            VIZCore3D.NET.Data.LicenseResults licenseResult = VIZCore3D.NET.Data.LicenseResults.NONE;
 
             // 라이선스 서버
-            if (licenseData == Utility.LicenseHelper.LicenseData.SERVER)
+            if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.SERVER)
             {
                 licenseResult = vizcore1.License.LicenseServer(
                     licenseInfo.ContainsKey("LICENSE_IP") == true ? licenseInfo["LICENSE_IP"] : String.Empty
@@ -96,7 +96,7 @@ namespace VIZCore3D.NET.ModelComparison
                     );
             }
             // 라이선스 파일
-            else if (licenseData == Utility.LicenseHelper.LicenseData.FILE)
+            else if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.FILE)
             {
                 licenseResult = vizcore1.License.LicenseFile(
                     licenseInfo.ContainsKey("LICENSE_FILE") == true ? licenseInfo["LICENSE_FILE"] : String.Empty
@@ -154,24 +154,24 @@ namespace VIZCore3D.NET.ModelComparison
             // ================================================================
             #region 라이선스
             // 라이선스 정보 조회
-            Utility.LicenseHelper.LicenseData licenseData = Utility.LicenseHelper.GetLicenseDataKind();
+            VIZCore3D.NET.Utility.LicenseHelper.LicenseData licenseData = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind();
 
             // 등록된 정보 없는 경우, 설정 다이얼로그 실행
-            if (licenseData == Utility.LicenseHelper.LicenseData.NONE)
+            if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.NONE)
             {
-                VIZCore3D.NET.Dialogs.LicenseDialog dlg = new NET.Dialogs.LicenseDialog();
+                VIZCore3D.NET.Dialogs.LicenseDialog dlg = new VIZCore3D.NET.Dialogs.LicenseDialog();
                 if (dlg.ShowDialog() != DialogResult.OK) return;
             }
 
             // 라이선스 정보 재조회
-            licenseData = Utility.LicenseHelper.GetLicenseDataKind();
+            licenseData = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind();
 
             // 등록된 정보 조회
-            Dictionary<string, string> licenseInfo = Utility.LicenseHelper.GetLicenseInformation();
-            VIZCore3D.NET.Data.LicenseResults licenseResult = Data.LicenseResults.NONE;
+            Dictionary<string, string> licenseInfo = VIZCore3D.NET.Utility.LicenseHelper.GetLicenseInformation();
+            VIZCore3D.NET.Data.LicenseResults licenseResult = VIZCore3D.NET.Data.LicenseResults.NONE;
 
             // 라이선스 서버
-            if (licenseData == Utility.LicenseHelper.LicenseData.SERVER)
+            if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.SERVER)
             {
                 licenseResult = vizcore2.License.LicenseServer(
                     licenseInfo.ContainsKey("LICENSE_IP") == true ? licenseInfo["LICENSE_IP"] : String.Empty
@@ -179,7 +179,7 @@ namespace VIZCore3D.NET.ModelComparison
                     );
             }
             // 라이선스 파일
-            else if (licenseData == Utility.LicenseHelper.LicenseData.FILE)
+            else if (licenseData == VIZCore3D.NET.Utility.LicenseHelper.LicenseData.FILE)
             {
                 licenseResult = vizcore2.License.LicenseFile(
                     licenseInfo.ContainsKey("LICENSE_FILE") == true ? licenseInfo["LICENSE_FILE"] : String.Empty
