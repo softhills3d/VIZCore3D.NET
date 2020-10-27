@@ -715,7 +715,7 @@ namespace VIZCore3D.NET.ShapeDrawing
             VIZCore3D.NET.Data.BoundBox3D boundbox = vizcore3d.Object3D.GeometryProperty.FromSelectedObject3D(false).GetBoundBox();
 
             {
-                Data.Vertex3DItemCollection item = new VIZCore3D.NET.Data.Vertex3DItemCollection();
+                VIZCore3D.NET.Data.Vertex3DItemCollection item = new VIZCore3D.NET.Data.Vertex3DItemCollection();
 
                 item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
                 item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
