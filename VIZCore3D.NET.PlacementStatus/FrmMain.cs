@@ -588,6 +588,7 @@ namespace VIZCore3D.NET.PlacementStatus
                         , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
                         , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                         , 2000
+                        , 100
                         , Color.Black
                         , txtTitle.Text
                         );
@@ -608,6 +609,7 @@ namespace VIZCore3D.NET.PlacementStatus
                             , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
                             , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                             , 1000
+                            , 100
                             , Color.Black
                             , item.Key.Replace("GROUP", "MODEL")
                             );

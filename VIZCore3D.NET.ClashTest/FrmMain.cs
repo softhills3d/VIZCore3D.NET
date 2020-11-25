@@ -460,6 +460,8 @@ namespace VIZCore3D.NET.ClashTest
 
             vizcore3d.Clash.OnClashProgressEvent += Clash_OnClashProgressEvent;
             vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
+
+            timerStatus.Enabled = true;
         }
 
         private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
@@ -640,7 +642,8 @@ namespace VIZCore3D.NET.ClashTest
                 MessageBox.Show("추가되지 않은 항목입니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
+
+            bool result = vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
         }
 
         private void btnAddGroupA_Click(object sender, EventArgs e)
@@ -748,6 +751,13 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.Review.Note.AddNoteSurface(item.NodeNameB, v2.Clone().AddValue(Data.Axis.Y, 1000.0f), v2);
 
             vizcore3d.EndUpdate();
+        }
+
+        private void timerStatus_Tick(object sender, EventArgs e)
+        {
+            System.Diagnostics.Trace.WriteLine(
+                vizcore3d.Clash.IsBusy == true ? "CLASH : BUSY" : "CLASH : NONE"
+                );
         }
     }
 }

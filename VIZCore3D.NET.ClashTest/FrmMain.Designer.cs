@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -90,6 +91,7 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.timerStatus = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -672,6 +674,11 @@
             // 
             this.columnHeader20.Text = "Node Path B";
             // 
+            // timerStatus
+            // 
+            this.timerStatus.Interval = 1000;
+            this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -765,6 +772,7 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.CheckBox ckPenetration;
+        private System.Windows.Forms.Timer timerStatus;
     }
 }
 

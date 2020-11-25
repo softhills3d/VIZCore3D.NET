@@ -506,6 +506,7 @@ namespace VIZCore3D.NET.TextObject
                 , new VIZCore3D.NET.Data.Vertex3D(txtDirX.Text, txtDirY.Text, txtDirZ.Text)
                 , new VIZCore3D.NET.Data.Vertex3D(txtUpX.Text, txtUpY.Text, txtUpZ.Text)
                 , Convert.ToSingle(txtSize.Text)
+                , 100
                 , btnFontColor.BackColor
                 , txtText.Text
                 );
