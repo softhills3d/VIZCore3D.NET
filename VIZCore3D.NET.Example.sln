@@ -30,9 +30,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.SpaceSearch", "VIZCore3D.NET.SpaceSearch\VIZCore3D.NET.SpaceSearch.csproj", "{BF3B137D-07B5-4235-89E8-71F28522088D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{346539F3-DF6F-45AA-9619-E90F416E3DF5}"
-	ProjectSection(SolutionItems) = preProject
-		Nuget_Package.txt = Nuget_Package.txt
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Projection2D", "VIZCore3D.NET.Projection2D\VIZCore3D.NET.Projection2D.csproj", "{104FBC88-359F-42EE-8580-ECDD9390CEC2}"
 EndProject
