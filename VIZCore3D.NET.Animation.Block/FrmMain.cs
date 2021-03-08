@@ -541,7 +541,7 @@ namespace VIZCore3D.NET.Animation.Block
                 "DOCK_MODEL"                                /* MODEL NAME */
                 , 8                                         /* COLOR INDEX */
                 , center                                    /* CENTER */
-                , new Data.Vertex3D(195000, 40000, 13000)   /* Axis Length */
+                , new Data.Vector3D(195000, 40000, 13000)   /* Axis Length */
                 , 40000                                     /* Ground Length */
                 , 1000                                      /* Thickness */
                 );
@@ -629,8 +629,8 @@ namespace VIZCore3D.NET.Animation.Block
 
             vizcore3d.TextDrawing.Add(
                 center
-                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
-                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                 , 10000
                 , 100
                 , Color.White
@@ -651,8 +651,8 @@ namespace VIZCore3D.NET.Animation.Block
 
             vizcore3d.TextDrawing.Add(
                 center
-                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
-                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                 , 10000
                 , 100
                 , Color.Black
@@ -673,8 +673,8 @@ namespace VIZCore3D.NET.Animation.Block
 
             vizcore3d.TextDrawing.Add(
                 center
-                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
-                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                 , 10000
                 , 100
                 , Color.White
@@ -695,8 +695,8 @@ namespace VIZCore3D.NET.Animation.Block
 
             vizcore3d.TextDrawing.Add(
                 center
-                , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
-                , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                 , 10000
                 , 100
                 , Color.Black
@@ -817,13 +817,13 @@ namespace VIZCore3D.NET.Animation.Block
                 UpCrane(true, Nodes[i], fOffset);
 
                 // 블록 : Bring To Center(Y)
-                VIZCore3D.NET.Data.Vertex3D tran3 = new VIZCore3D.NET.Data.Vertex3D(0, -vecTrans.Y, 0);
+                VIZCore3D.NET.Data.Vector3D tran3 = new VIZCore3D.NET.Data.Vector3D(0, -vecTrans.Y, 0);
                 vizcore3d.Object3D.Transform.Move(Nodes[i], tran3, false);
                 
                 // 크레인 호이스트 이동
                 MoveCrane(false, bay.X, ObjectProperty[i].CenterPoint.Y, 0.0f);
 
-                VIZCore3D.NET.Data.Vertex3D tran4 = new VIZCore3D.NET.Data.Vertex3D(-vecTrans.X, 0, 0);
+                VIZCore3D.NET.Data.Vector3D tran4 = new VIZCore3D.NET.Data.Vector3D(-vecTrans.X, 0, 0);
                 vizcore3d.Object3D.Transform.Move(Nodes[i], tran4, false);
 
                 // 크레인 이동 (BAY)
@@ -855,20 +855,20 @@ namespace VIZCore3D.NET.Animation.Block
             if (moveAll)
             {
                 // Leg
-                vizcore3d.Object3D.Transform.Move(Nodes[-4], new VIZCore3D.NET.Data.Vertex3D(x, y, z), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-4], new VIZCore3D.NET.Data.Vector3D(x, y, z), true);
                 // Girder
-                vizcore3d.Object3D.Transform.Move(Nodes[-5], new VIZCore3D.NET.Data.Vertex3D(x, y, z), true);
+                vizcore3d.Object3D.Transform.Move(Nodes[-5], new VIZCore3D.NET.Data.Vector3D(x, y, z), true);
             }
 
-            vizcore3d.Object3D.Transform.Move(Nodes[-6], new VIZCore3D.NET.Data.Vertex3D(x, y -6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(x, y -6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(x, y -6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vertex3D(x, y -6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vertex3D(x, y -6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vertex3D(x, y -6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-12], new VIZCore3D.NET.Data.Vertex3D(x, y - 6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-13], new VIZCore3D.NET.Data.Vertex3D(x, y - 6000.0f, z), true);
-            vizcore3d.Object3D.Transform.Move(Nodes[-14], new VIZCore3D.NET.Data.Vertex3D(x, y - 6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-6], new VIZCore3D.NET.Data.Vector3D(x, y -6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vector3D(x, y -6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vector3D(x, y -6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-9], new VIZCore3D.NET.Data.Vector3D(x, y -6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-10], new VIZCore3D.NET.Data.Vector3D(x, y -6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-11], new VIZCore3D.NET.Data.Vector3D(x, y -6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-12], new VIZCore3D.NET.Data.Vector3D(x, y - 6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-13], new VIZCore3D.NET.Data.Vector3D(x, y - 6000.0f, z), true);
+            vizcore3d.Object3D.Transform.Move(Nodes[-14], new VIZCore3D.NET.Data.Vector3D(x, y - 6000.0f, z), true);
 
             //vizcore3d.EndUpdate();
 
@@ -886,19 +886,19 @@ namespace VIZCore3D.NET.Animation.Block
             // 크레인 호이스트 : Bring To Bottom
             for (float j = 0; j < 6; j++)
             {
-                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
-                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
+                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
+                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
                 //vizcore3d.EndUpdate();
                 for (int k = 1; k <= j; k++)
                 {
                     int nKey = (int)(-8 - j);
-                    vizcore3d.Object3D.Transform.Move(Nodes[nKey], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
+                    vizcore3d.Object3D.Transform.Move(Nodes[nKey], new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
                     //vizcore3d.EndUpdate();
                 }
 
                 if (bModelMove)
                 {
-                    vizcore3d.Object3D.Transform.Move(model, new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
+                    vizcore3d.Object3D.Transform.Move(model, new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
                 }
 
                 AddKey(true, false, TimeInterval * 0.1f);
@@ -922,15 +922,15 @@ namespace VIZCore3D.NET.Animation.Block
                 for (int k = 5; k > j; k--)
                 {
                     int nKey = (int)(-13 + j);
-                    vizcore3d.Object3D.Transform.Move(Nodes[nKey], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
+                    vizcore3d.Object3D.Transform.Move(Nodes[nKey], new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
                 }
 
-                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
-                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
+                vizcore3d.Object3D.Transform.Move(Nodes[-7], new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
+                vizcore3d.Object3D.Transform.Move(Nodes[-8], new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
 
                 if (bModelMove)
                 {
-                    vizcore3d.Object3D.Transform.Move(model, new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, -fStep), false);
+                    vizcore3d.Object3D.Transform.Move(model, new VIZCore3D.NET.Data.Vector3D(0.0f, 0.0f, -fStep), false);
                 }
 
                 AddKey(true, false, TimeInterval * 0.1f);

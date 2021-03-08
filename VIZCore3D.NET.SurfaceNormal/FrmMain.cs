@@ -474,11 +474,11 @@ namespace VIZCore3D.NET.SurfaceNormal
             DrawLine(e.Point, e.Normal);
         }
 
-        private void DrawLine(VIZCore3D.NET.Data.Vertex3D start, VIZCore3D.NET.Data.Vertex3D normal)
+        private void DrawLine(VIZCore3D.NET.Data.Vertex3D start, VIZCore3D.NET.Data.Vector3D normal)
         {
             vizcore3d.ShapeDrawing.DepthTest = true;
 
-            VIZCore3D.NET.Data.Vertex3D end = start.PointToVector(normal, 1000.0f);
+            VIZCore3D.NET.Data.Vertex3D end = VIZCore3D.NET.Data.Vector3D.FromVertex3D(start).PointToVector(normal, 1000.0f).ToVertex3D();
 
             List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex = new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
             Data.Vertex3DItemCollection item = new VIZCore3D.NET.Data.Vertex3DItemCollection();
@@ -523,7 +523,7 @@ namespace VIZCore3D.NET.SurfaceNormal
             }
         }
 
-        private void AddSurfaceData(bool pick, bool surface, VIZCore3D.NET.Data.Vertex3D position, VIZCore3D.NET.Data.Vertex3D normal)
+        private void AddSurfaceData(bool pick, bool surface, VIZCore3D.NET.Data.Vertex3D position, VIZCore3D.NET.Data.Vector3D normal)
         {
             ListViewItem lvi = new ListViewItem(
                 new string[] {
@@ -598,12 +598,12 @@ namespace VIZCore3D.NET.SurfaceNormal
                         , txtWorldZ.Text
                         );
 
-            VIZCore3D.NET.Data.Vertex3D normal =
+            VIZCore3D.NET.Data.Vector3D normal =
                 vizcore3d.View.GetSurfaceNormalVector(position);
 
             if (normal == null)
             {
-                AddSurfaceData(false, false, position, new Data.Vertex3D());
+                AddSurfaceData(false, false, position, new Data.Vector3D());
             }
             else
             {

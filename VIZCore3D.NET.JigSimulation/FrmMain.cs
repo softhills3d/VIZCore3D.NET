@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.ToVIZ
+namespace VIZCore3D.NET.JigSimulation
 {
     public partial class FrmMain : Form
     {
@@ -19,12 +19,6 @@ namespace VIZCore3D.NET.ToVIZ
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        private FileExplorerControl fileExplorer;
-
-
-        // ================================================
-        // Construction
-        // ================================================
         public FrmMain()
         {
             InitializeComponent();
@@ -39,108 +33,6 @@ namespace VIZCore3D.NET.ToVIZ
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-
-            fileExplorer = new FileExplorerControl();
-            fileExplorer.Dock = DockStyle.Fill;
-            splitContainer1.Panel1.Controls.Add(fileExplorer);
-
-            // Event
-            fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
-        }
-
-        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit);
-        private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
-        {
-            if(this.InvokeRequired == true)
-            {
-                DToVIZ call = new DToVIZ(ToVIZ);
-                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit });
-            }
-            else
-            {
-                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit);
-            }
-        }
-
-        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit)
-        {
-            // 저장 위치 설정
-            string path = System.IO.Path.GetDirectoryName(source);
-            string name = System.IO.Path.GetFileNameWithoutExtension(source).ToUpper();
-
-            string output = System.IO.Path.Combine(path, target);
-
-            // 저장소 디렉토리 유무 체크
-            if (System.IO.Directory.Exists(output) == false)
-                System.IO.Directory.CreateDirectory(output);
-
-            // 저장 파일명 설정
-            string file = string.Format("{0}\\{1}.viz", output, name);
-
-            if (System.IO.Path.GetFileNameWithoutExtension(source).ToUpper() == ".DGN")
-                vizcore3d.Model.SetDgnDeviationDialog();
-
-            // 모델 열고, 저장
-            if (mode == ToVIZMode.EXPORT)
-            {
-                // Edge 읽기
-                vizcore3d.Model.LoadEdgeData = includeEdge;
-
-                // 모델 파일 열기
-                vizcore3d.Model.Open(source);
-
-                // 모델 개체 조회
-                List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.ALL);
-
-                // 개체 확인
-                if (items.Count == 0) return false;
-
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = saveOption;
-
-                // VIZ 파일 형식으로 내보내기
-                return vizcore3d.Model.ExportVIZ(file);
-            }
-            // 메모리에서 처리
-            else if (mode == ToVIZMode.CONVERT)
-            {
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = saveOption;
-
-                return vizcore3d.Model.ConvertToVIZ(source, file, includeEdge, ver, false);
-            }
-            // 외형 검색 후, 저장
-            else if(mode == ToVIZMode.OUTSIDE)
-            {
-                // 모델 파일 열기
-                vizcore3d.Model.Open(source);
-
-                // 모델 개체 조회
-                List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL);
-
-                // 개체 확인
-                if (items.Count == 0) return false;
-
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = saveOption;
-
-                List<VIZCore3D.NET.Data.Node> outside = vizcore3d.Object3D.Find.GetOutsidePart(false);
-
-                // VIZ 파일 형식으로 내보내기
-                return vizcore3d.Model.ExportVIZ(file, outside);
-            }
-            else if(mode == ToVIZMode.SIMPLIFIED)
-            {
-                // 저장 옵션
-                vizcore3d.Model.SaveMergeStructureMode = Data.MergeStructureModes.NONE;
-
-                return vizcore3d.Model.ExportSimplifiedModel(source, file, false, false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, false, 0, simplifiedUnit);
-            }
-            else
-            {
-                return false;
-            }
         }
 
         // ================================================
@@ -244,13 +136,13 @@ namespace VIZCore3D.NET.ToVIZ
             // ================================================================
             #region 설정 - 기본
             // 모델 자동 언로드 (파일 노드 언체크 시, 언로드)
-            vizcore3d.Model.UncheckToUnload = true;
+            vizcore3d.Model.UncheckToUnload = false;
 
             // 모델 열기 시, Edge 정보 로드 활성화
-            vizcore3d.Model.LoadEdgeData = true;
+            vizcore3d.Model.LoadEdgeData = false;
 
             // 모델 열기 시, Edge 정보 생성 활성화
-            vizcore3d.Model.GenerateEdgeData = true;
+            vizcore3d.Model.GenerateEdgeData = false;
 
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
@@ -345,7 +237,7 @@ namespace VIZCore3D.NET.ToVIZ
             // 모델
             vizcore3d.Walkthrough.AvatarModel = (int)VIZCore3D.NET.Data.AvatarModels.MAN1;
             // 자동줌
-            vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+            vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
             #endregion
@@ -533,6 +425,7 @@ namespace VIZCore3D.NET.ToVIZ
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
+            vizcore3d.ToolbarMain.Visible = true;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
@@ -545,21 +438,23 @@ namespace VIZCore3D.NET.ToVIZ
             // ================================================================
             // 설정 - 상태바
             // ================================================================
-            vizcore3d.Statusbar.Visible = true;
+            vizcore3d.Statusbar.Visible = false;
 
 
             // ================================================================
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.EndUpdate();
-        } 
+        }
         #endregion
 
+        #region Function - VIZCore3D.NET : Add Event Handler
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
         }
+        #endregion
     }
 }

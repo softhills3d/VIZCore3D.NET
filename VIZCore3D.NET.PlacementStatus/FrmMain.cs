@@ -585,8 +585,8 @@ namespace VIZCore3D.NET.PlacementStatus
 
                     vizcore3d.TextDrawing.Add(
                         center
-                        , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
-                        , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                        , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                        , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                         , 2000
                         , 100
                         , Color.Black
@@ -606,8 +606,8 @@ namespace VIZCore3D.NET.PlacementStatus
 
                         vizcore3d.TextDrawing.Add(
                             center
-                            , new VIZCore3D.NET.Data.Vertex3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
-                            , new VIZCore3D.NET.Data.Vertex3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                            , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                            , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
                             , 1000
                             , 100
                             , Color.Black
@@ -689,7 +689,7 @@ namespace VIZCore3D.NET.PlacementStatus
                     vizcore3d.Object3D.Select(node, true);
 
                     vizcore3d.Object3D.Transform.Rotate(
-                        new VIZCore3D.NET.Data.Vertex3D(50.0f, -40.0f, -30.0f)
+                        new VIZCore3D.NET.Data.Vector3D(50.0f, -40.0f, -30.0f)
                         , true
                         );
 

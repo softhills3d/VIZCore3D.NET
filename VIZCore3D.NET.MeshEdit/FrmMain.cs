@@ -741,6 +741,17 @@ namespace VIZCore3D.NET.MeshEdit
             return v;
         }
 
+        private VIZCore3D.NET.Data.Vector3D GetVector(TextBox input)
+        {
+            if (String.IsNullOrEmpty(input.Text) == true) return null;
+            string strVector = input.Text;
+            string[] vector = strVector.Split(new char[] { ',' });
+            if (vector.Length != 3) return null;
+
+            VIZCore3D.NET.Data.Vector3D v = new Data.Vector3D(vector[0], vector[1], vector[2]);
+            return v;
+        }
+
         private void CustomMergeBody()
         {
             if (String.IsNullOrEmpty(txtBodyIndex1.Text) == true) return;
@@ -833,7 +844,7 @@ namespace VIZCore3D.NET.MeshEdit
             VIZCore3D.NET.Data.Vertex3D line1 = GetVertex(txtVertex2);
             VIZCore3D.NET.Data.Vertex3D line2 = GetVertex(txtVertex3);
             VIZCore3D.NET.Data.Vertex3D plane = GetVertex(txtVertex4);
-            VIZCore3D.NET.Data.Vertex3D planeNormal = GetVertex(txtVertex5);
+            VIZCore3D.NET.Data.Vector3D planeNormal = GetVector(txtVertex5);
 
             if (v == null) return;
             if (line1 == null) return;

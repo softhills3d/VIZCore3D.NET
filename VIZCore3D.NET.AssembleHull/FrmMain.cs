@@ -575,7 +575,7 @@ namespace VIZCore3D.NET.AssembleHull
             bool showOriginalLocation = ckShowOriginalLocation.Checked;
 
             List<VIZCore3D.NET.Data.Node> stage4 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v4 = new VIZCore3D.NET.Data.Vertex3D(0, 5000, 0);
+            VIZCore3D.NET.Data.Vector3D v4 = new VIZCore3D.NET.Data.Vector3D(0, 5000, 0);
             VIZCore3D.NET.Data.Object3DProperty prop4 = vizcore3d.Object3D.GeometryProperty.FromNode(stage4[0], false);
             vizcore3d.Object3D.Transform.Move(stage4, v4);
             System.Threading.Thread.Sleep(500);
@@ -583,7 +583,7 @@ namespace VIZCore3D.NET.AssembleHull
             System.Threading.Thread.Sleep(200);
 
             List<VIZCore3D.NET.Data.Node> stage2 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v2 = new VIZCore3D.NET.Data.Vertex3D(-5000, 0, 0);
+            VIZCore3D.NET.Data.Vector3D v2 = new VIZCore3D.NET.Data.Vector3D(-5000, 0, 0);
             VIZCore3D.NET.Data.Object3DProperty prop2 = vizcore3d.Object3D.GeometryProperty.FromNode(stage2[0], false);
             vizcore3d.Object3D.Transform.Move(stage2, v2);
             System.Threading.Thread.Sleep(500);
@@ -591,7 +591,7 @@ namespace VIZCore3D.NET.AssembleHull
             System.Threading.Thread.Sleep(200);
 
             List<VIZCore3D.NET.Data.Node> stage3 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v3 = new VIZCore3D.NET.Data.Vertex3D(8000, 0, 0);
+            VIZCore3D.NET.Data.Vector3D v3 = new VIZCore3D.NET.Data.Vector3D(8000, 0, 0);
             VIZCore3D.NET.Data.Object3DProperty prop3 = vizcore3d.Object3D.GeometryProperty.FromNode(stage3[0], false);
             vizcore3d.Object3D.Transform.Move(stage3, v3);
             System.Threading.Thread.Sleep(500);
@@ -600,7 +600,7 @@ namespace VIZCore3D.NET.AssembleHull
             vizcore3d.View.FitToView();
         }
 
-        private void ShowOriginalLocation(int index, VIZCore3D.NET.Data.Object3DProperty prop, VIZCore3D.NET.Data.Vertex3D v)
+        private void ShowOriginalLocation(int index, VIZCore3D.NET.Data.Object3DProperty prop, VIZCore3D.NET.Data.Vector3D v)
         {
             List<Color> color = new List<Color>();
             color.Add(Color.FromArgb(10, 255, 0, 0));
@@ -611,7 +611,7 @@ namespace VIZCore3D.NET.AssembleHull
 
             VIZCore3D.NET.Data.Vertex3DItemCollection items = new VIZCore3D.NET.Data.Vertex3DItemCollection();
             items.Add(prop.CenterPoint);
-            items.Add(prop.CenterPoint + v);
+            items.Add(prop.CenterPoint + v.ToVertex3D());
 
             vizcore3d.ShapeDrawing.AddLine(
                 new List<Data.Vertex3DItemCollection>()
@@ -645,7 +645,7 @@ namespace VIZCore3D.NET.AssembleHull
             List<VIZCore3D.NET.Data.Node> stage41 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4_1" }, false, true, false, false, true, false);
             vizcore3d.Object3D.Color.SetColorAndAlpha(stage41, Color.White, 20);
             List<VIZCore3D.NET.Data.Node> stage4 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_4" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v4 = new VIZCore3D.NET.Data.Vertex3D(0, 5000, 0);
+            VIZCore3D.NET.Data.Vector3D v4 = new VIZCore3D.NET.Data.Vector3D(0, 5000, 0);
             VIZCore3D.NET.Data.Object3DProperty prop4 = vizcore3d.Object3D.GeometryProperty.FromNode(stage4[0], false);
             vizcore3d.Object3D.Transform.Move(stage4, v4);
             System.Threading.Thread.Sleep(500);
@@ -653,7 +653,7 @@ namespace VIZCore3D.NET.AssembleHull
             List<VIZCore3D.NET.Data.Node> stage21 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2_1" }, false, true, false, false, true, false);
             vizcore3d.Object3D.Color.SetColorAndAlpha(stage21, Color.White, 20);
             List<VIZCore3D.NET.Data.Node> stage2 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_2" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v2 = new VIZCore3D.NET.Data.Vertex3D(-5000, 0, 0);
+            VIZCore3D.NET.Data.Vector3D v2 = new VIZCore3D.NET.Data.Vector3D(-5000, 0, 0);
             VIZCore3D.NET.Data.Object3DProperty prop2 = vizcore3d.Object3D.GeometryProperty.FromNode(stage2[0], false);
             vizcore3d.Object3D.Transform.Move(stage2, v2);
             System.Threading.Thread.Sleep(500);
@@ -661,7 +661,7 @@ namespace VIZCore3D.NET.AssembleHull
             List<VIZCore3D.NET.Data.Node> stage31 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3_1" }, false, true, false, false, true, false);
             vizcore3d.Object3D.Color.SetColorAndAlpha(stage31, Color.White, 20);
             List<VIZCore3D.NET.Data.Node> stage3 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_3" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v3 = new VIZCore3D.NET.Data.Vertex3D(8000, 0, 0);
+            VIZCore3D.NET.Data.Vector3D v3 = new VIZCore3D.NET.Data.Vector3D(8000, 0, 0);
             VIZCore3D.NET.Data.Object3DProperty prop3 = vizcore3d.Object3D.GeometryProperty.FromNode(stage3[0], false);
             vizcore3d.Object3D.Transform.Move(stage3, v3);
             System.Threading.Thread.Sleep(500);
@@ -669,7 +669,7 @@ namespace VIZCore3D.NET.AssembleHull
             List<VIZCore3D.NET.Data.Node> stage11 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1_1" }, false, true, false, false, true, false);
             vizcore3d.Object3D.Color.SetColorAndAlpha(stage11, Color.White, 20);
             List<VIZCore3D.NET.Data.Node> stage1 = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "STAGE_1" }, false, true, false, false, true, false);
-            VIZCore3D.NET.Data.Vertex3D v1 = new VIZCore3D.NET.Data.Vertex3D(0, 0, 5000);
+            VIZCore3D.NET.Data.Vector3D v1 = new VIZCore3D.NET.Data.Vector3D(0, 0, 5000);
             VIZCore3D.NET.Data.Object3DProperty prop1 = vizcore3d.Object3D.GeometryProperty.FromNode(stage3[0], false);
             vizcore3d.Object3D.Transform.Move(stage1, v1);
             System.Threading.Thread.Sleep(500);
