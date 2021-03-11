@@ -64,6 +64,7 @@ namespace VIZCore3D.NET.Demo
             vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
+            vizcore3d.ToolbarPrimitive.Visible = false;
         }
 
 
