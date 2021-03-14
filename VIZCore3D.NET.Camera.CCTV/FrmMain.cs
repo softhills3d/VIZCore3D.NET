@@ -454,6 +454,7 @@ namespace VIZCore3D.NET.Camera.CCTV
             // 설정 - 툴바
             // ================================================================
             #region 설정 - 툴바
+            vizcore3d.ToolbarMain.Visible = true;
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasure.Visible = false;
             vizcore3d.ToolbarSection.Visible = false;
