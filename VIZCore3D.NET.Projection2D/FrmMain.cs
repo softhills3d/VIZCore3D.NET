@@ -628,8 +628,6 @@ namespace VIZCore3D.NET.Projection2D
 
         private void btnAuto_Click(object sender, EventArgs e)
         {
-            //BlockNetworkIndex = 0;
-                 
             BlockNetwork = new List<List<int>>();
             BlockNetwork.Add(new List<int>() { 801, 802, 803, 804, 810, 824, 825, 834, 835, 701, 702, 703, 704, 705, 706, 707, 708, 421, 422, 424, 425, 426, 428, 431, 432, 434, 435, 436, 438 });
             BlockNetwork.Add(new List<int>() { 508 });
@@ -681,7 +679,6 @@ namespace VIZCore3D.NET.Projection2D
             BlockNetwork.Add(new List<int>() { 103 });
             BlockNetwork.Add(new List<int>() { 151, 141 });
             BlockNetwork.Add(new List<int>() { 110 });
-            //BlockNetwork.Add(new List<int>() { 101 });
 
             timerAuto.Enabled = true;
         }
@@ -744,12 +741,8 @@ namespace VIZCore3D.NET.Projection2D
                         customTranslation.Y = Convert.ToInt32(txtCustomMargineY.Text);
 
                     result.SetData(projection, translation, ckCustomMargine.Checked, customTranslation);
-
-                    //vizcore3d.CloseWaitForm();
                 }
             }
         }
-        
-
     }                                        
 }
