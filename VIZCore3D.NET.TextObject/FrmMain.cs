@@ -507,8 +507,8 @@ namespace VIZCore3D.NET.TextObject
                 new VIZCore3D.NET.Data.Vertex3D(txtCenterX.Text, txtCenterY.Text, txtCenterZ.Text)
                 , new VIZCore3D.NET.Data.Vector3D(txtDirX.Text, txtDirY.Text, txtDirZ.Text)
                 , new VIZCore3D.NET.Data.Vector3D(txtUpX.Text, txtUpY.Text, txtUpZ.Text)
+                , Convert.ToSingle(txtHeight.Text)
                 , Convert.ToSingle(txtSize.Text)
-                , 100
                 , btnFontColor.BackColor
                 , txtText.Text
                 );
@@ -565,6 +565,103 @@ namespace VIZCore3D.NET.TextObject
             lvItems.Items.Remove(lvItems.SelectedItems[0]);
 
             vizcore3d.EndUpdate();
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D(txtCenterX.Text, txtCenterY.Text, txtCenterZ.Text);
+            VIZCore3D.NET.Data.Vector3D dir = new VIZCore3D.NET.Data.Vector3D(txtDirX.Text, txtDirY.Text, txtDirZ.Text);
+            VIZCore3D.NET.Data.Vector3D up = new VIZCore3D.NET.Data.Vector3D(txtUpX.Text, txtUpY.Text, txtUpZ.Text);
+            System.Drawing.Color fontColor = btnFontColor.BackColor;
+
+            int heightStart = Convert.ToInt32(txtHeight1.Text);
+            int heightEnd = Convert.ToInt32(txtHeight2.Text);
+
+            int sizeStart = Convert.ToInt32(txtSize1.Text);
+            int sizeEnd = Convert.ToInt32(txtSize2.Text);
+
+            int offsetHeight = Convert.ToInt32(txtOffsetHeight.Text);
+            int offsetSize = Convert.ToInt32(txtOffsetSize.Text);
+
+            bool fixingHeight = rbFixingHeight.Checked;
+            bool fixingSize = rbFixingSize.Checked;
+
+            vizcore3d.BeginUpdate();
+            lvItems.BeginUpdate();
+
+            if (fixingHeight == true)
+            {
+                int step = (sizeEnd - sizeStart) / offsetSize;
+
+                for (int i = 0; i < step; i++)
+                {
+                    int itemSize = sizeStart + (i * offsetSize);
+                    VIZCore3D.NET.Data.Vertex3D itemCenter = new VIZCore3D.NET.Data.Vertex3D(center.X, center.Y - (heightStart * i), center.Z);
+                    string title = string.Format("Height: {0} / Size: {1}", heightStart, itemSize);
+
+                    VIZCore3D.NET.Data.TextDrawingItem item = vizcore3d.TextDrawing.Add(
+                        itemCenter
+                        , dir
+                        , up
+                        , heightStart
+                        , itemSize
+                        , fontColor
+                        , title 
+                        );
+
+                    //AddList(item);
+                }
+            }
+            else
+            {
+                int step = (heightEnd - heightStart) / offsetHeight;
+
+                for (int i = 0; i < step; i++)
+                {
+                    int itemHeight = heightStart + (i * offsetHeight);
+                    VIZCore3D.NET.Data.Vertex3D itemCenter = new VIZCore3D.NET.Data.Vertex3D(center.X, center.Y - (itemHeight * i), center.Z);
+                    string title = string.Format("Height: {0} / Size: {1}", itemHeight, sizeStart);
+
+                    VIZCore3D.NET.Data.TextDrawingItem item = vizcore3d.TextDrawing.Add(
+                        itemCenter
+                        , dir
+                        , up
+                        , itemHeight
+                        , sizeStart
+                        , fontColor
+                        , title
+                        );
+
+                    //AddList(item);
+                }
+            }
+
+            lvItems.EndUpdate();
+            vizcore3d.EndUpdate();
+        }
+
+        private void rbFixingHeight_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbFixingHeight.Checked == true)
+            {
+                txtHeight2.Enabled = false;
+                txtSize2.Enabled = true;
+
+                txtOffsetHeight.Enabled = false;
+                txtOffsetSize.Enabled = true;
+            }
+        }
+
+        private void rbFixingSize_CheckedChanged(object sender, EventArgs e)
+        {
+            if(rbFixingSize.Checked == true)
+            {
+                txtHeight2.Enabled = true;
+                txtSize2.Enabled = false;
+
+                txtOffsetHeight.Enabled = true;
+                txtOffsetSize.Enabled = false;
+            }
         }
     }
 }
