@@ -380,7 +380,7 @@
             this.txtScale.Name = "txtScale";
             this.txtScale.Size = new System.Drawing.Size(100, 21);
             this.txtScale.TabIndex = 1;
-            this.txtScale.Text = "80";
+            this.txtScale.Text = "60";
             // 
             // label1
             // 
