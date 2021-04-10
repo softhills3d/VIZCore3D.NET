@@ -30,6 +30,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.SpaceSearch", "VIZCore3D.NET.SpaceSearch\VIZCore3D.NET.SpaceSearch.csproj", "{BF3B137D-07B5-4235-89E8-71F28522088D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{346539F3-DF6F-45AA-9619-E90F416E3DF5}"
+	ProjectSection(SolutionItems) = preProject
+		Clean.txt = Clean.txt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Projection2D", "VIZCore3D.NET.Projection2D\VIZCore3D.NET.Projection2D.csproj", "{104FBC88-359F-42EE-8580-ECDD9390CEC2}"
 EndProject
@@ -88,6 +91,18 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Camera.CCTV", "VIZCore3D.NET.Camera.CCTV\VIZCore3D.NET.Camera.CCTV.csproj", "{0970D383-3F3F-4481-BA70-CF35104662F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MeshEdit", "VIZCore3D.NET.MeshEdit\VIZCore3D.NET.MeshEdit.csproj", "{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.App", "VIZCore3D.NET.App\VIZCore3D.NET.App.csproj", "{F7A27C84-FF0B-4359-8308-9E30B5B58B86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.AssembleHull", "VIZCore3D.NET.AssembleHull\VIZCore3D.NET.AssembleHull.csproj", "{6012DBAB-3BD3-4941-9863-29C3E81B2F4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MeshCount", "VIZCore3D.NET.MeshCount\VIZCore3D.NET.MeshCount.csproj", "{DF883400-20DE-4DA1-BFB6-618DEE87659D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MetadataDemo", "VIZCore3D.NET.MetadataDemo\VIZCore3D.NET.MetadataDemo.csproj", "{AD677BC3-40A6-4159-8AA3-7A797A1287BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ReplacePrimitive", "VIZCore3D.NET.ReplacePrimitive\VIZCore3D.NET.ReplacePrimitive.csproj", "{BE9BFF86-D435-4D97-8CE8-44DFF8702033}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.SurfaceNormal", "VIZCore3D.NET.SurfaceNormal\VIZCore3D.NET.SurfaceNormal.csproj", "{4B47FFF2-98EF-46E2-B30C-1DFA87FB82B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -263,6 +278,30 @@ Global
 		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6294CE6E-7B67-45D7-80E2-29ABF22EA6CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A27C84-FF0B-4359-8308-9E30B5B58B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A27C84-FF0B-4359-8308-9E30B5B58B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A27C84-FF0B-4359-8308-9E30B5B58B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A27C84-FF0B-4359-8308-9E30B5B58B86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6012DBAB-3BD3-4941-9863-29C3E81B2F4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6012DBAB-3BD3-4941-9863-29C3E81B2F4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6012DBAB-3BD3-4941-9863-29C3E81B2F4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6012DBAB-3BD3-4941-9863-29C3E81B2F4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF883400-20DE-4DA1-BFB6-618DEE87659D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF883400-20DE-4DA1-BFB6-618DEE87659D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF883400-20DE-4DA1-BFB6-618DEE87659D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF883400-20DE-4DA1-BFB6-618DEE87659D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD677BC3-40A6-4159-8AA3-7A797A1287BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD677BC3-40A6-4159-8AA3-7A797A1287BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD677BC3-40A6-4159-8AA3-7A797A1287BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD677BC3-40A6-4159-8AA3-7A797A1287BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE9BFF86-D435-4D97-8CE8-44DFF8702033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9BFF86-D435-4D97-8CE8-44DFF8702033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9BFF86-D435-4D97-8CE8-44DFF8702033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9BFF86-D435-4D97-8CE8-44DFF8702033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B47FFF2-98EF-46E2-B30C-1DFA87FB82B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B47FFF2-98EF-46E2-B30C-1DFA87FB82B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B47FFF2-98EF-46E2-B30C-1DFA87FB82B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B47FFF2-98EF-46E2-B30C-1DFA87FB82B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
