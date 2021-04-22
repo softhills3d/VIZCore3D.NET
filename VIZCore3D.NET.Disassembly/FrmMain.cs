@@ -584,5 +584,14 @@ namespace VIZCore3D.NET.Disassembly
                     );
             }
         }
+
+        private void btnDisassembleBySphere_Click(object sender, EventArgs e)
+        {
+            vizcore3d.View.EnableAnimation = false;
+
+            float rate = Convert.ToSingle(txtRate.Text);
+
+            vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(rate);
+        }
     }
 }

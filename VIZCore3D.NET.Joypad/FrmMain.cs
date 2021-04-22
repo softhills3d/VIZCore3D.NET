@@ -543,8 +543,6 @@ namespace VIZCore3D.NET.Joypad
                 float x, y, z;
                 bool selected = vizcore3d.View.SelectByScreenPosition(size.Width / 2, size.Height / 2, out x, out y, out z);
 
-                MessageBox.Show(selected.ToString());
-
                 if (selected == false) return;
             }));
         }

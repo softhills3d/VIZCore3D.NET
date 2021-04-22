@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbGroupLevel = new System.Windows.Forms.ComboBox();
             this.btnClearGroup = new System.Windows.Forms.Button();
             this.btnAddGroup = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDistance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbGroupLevel = new System.Windows.Forms.ComboBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDisassembleBySphere = new System.Windows.Forms.Button();
+            this.txtRate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -58,6 +61,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,6 +73,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -90,6 +95,20 @@
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Group";
+            // 
+            // cbGroupLevel
+            // 
+            this.cbGroupLevel.FormattingEnabled = true;
+            this.cbGroupLevel.Items.AddRange(new object[] {
+            "LEVEL 1",
+            "BOTTOM 1 (PART)",
+            "BOTTOM 2 (Leaf Assembly)",
+            "BOTTOM 3 (Parent of Leaf Assembly)"});
+            this.cbGroupLevel.Location = new System.Drawing.Point(49, 24);
+            this.cbGroupLevel.Name = "cbGroupLevel";
+            this.cbGroupLevel.Size = new System.Drawing.Size(173, 20);
+            this.cbGroupLevel.TabIndex = 2;
+            this.cbGroupLevel.Text = "LEVEL 1";
             // 
             // btnClearGroup
             // 
@@ -117,16 +136,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnRestoreSelectedObject);
             this.groupBox3.Controls.Add(this.btnRestoreAll);
-            this.groupBox3.Location = new System.Drawing.Point(12, 416);
+            this.groupBox3.Location = new System.Drawing.Point(12, 501);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(359, 80);
+            this.groupBox3.Size = new System.Drawing.Size(359, 54);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Restore";
             // 
             // btnRestoreSelectedObject
             // 
-            this.btnRestoreSelectedObject.Location = new System.Drawing.Point(147, 32);
+            this.btnRestoreSelectedObject.Location = new System.Drawing.Point(147, 21);
             this.btnRestoreSelectedObject.Name = "btnRestoreSelectedObject";
             this.btnRestoreSelectedObject.Size = new System.Drawing.Size(75, 23);
             this.btnRestoreSelectedObject.TabIndex = 4;
@@ -136,7 +155,7 @@
             // 
             // btnRestoreAll
             // 
-            this.btnRestoreAll.Location = new System.Drawing.Point(49, 32);
+            this.btnRestoreAll.Location = new System.Drawing.Point(49, 21);
             this.btnRestoreAll.Name = "btnRestoreAll";
             this.btnRestoreAll.Size = new System.Drawing.Size(75, 23);
             this.btnRestoreAll.TabIndex = 3;
@@ -173,7 +192,7 @@
             // 
             // btnSphere
             // 
-            this.btnSphere.Location = new System.Drawing.Point(252, 79);
+            this.btnSphere.Location = new System.Drawing.Point(252, 66);
             this.btnSphere.Name = "btnSphere";
             this.btnSphere.Size = new System.Drawing.Size(75, 23);
             this.btnSphere.TabIndex = 4;
@@ -183,7 +202,7 @@
             // 
             // btnLinear
             // 
-            this.btnLinear.Location = new System.Drawing.Point(147, 79);
+            this.btnLinear.Location = new System.Drawing.Point(147, 66);
             this.btnLinear.Name = "btnLinear";
             this.btnLinear.Size = new System.Drawing.Size(75, 23);
             this.btnLinear.TabIndex = 3;
@@ -193,7 +212,7 @@
             // 
             // btnAxis
             // 
-            this.btnAxis.Location = new System.Drawing.Point(49, 79);
+            this.btnAxis.Location = new System.Drawing.Point(49, 66);
             this.btnAxis.Name = "btnAxis";
             this.btnAxis.Size = new System.Drawing.Size(75, 23);
             this.btnAxis.TabIndex = 2;
@@ -300,19 +319,36 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Distance";
             // 
-            // cbGroupLevel
+            // groupBox5
             // 
-            this.cbGroupLevel.FormattingEnabled = true;
-            this.cbGroupLevel.Items.AddRange(new object[] {
-            "LEVEL 1",
-            "BOTTOM 1 (PART)",
-            "BOTTOM 2 (Leaf Assembly)",
-            "BOTTOM 3 (Parent of Leaf Assembly)"});
-            this.cbGroupLevel.Location = new System.Drawing.Point(49, 24);
-            this.cbGroupLevel.Name = "cbGroupLevel";
-            this.cbGroupLevel.Size = new System.Drawing.Size(173, 20);
-            this.cbGroupLevel.TabIndex = 2;
-            this.cbGroupLevel.Text = "LEVEL 1";
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.txtRate);
+            this.groupBox5.Controls.Add(this.btnDisassembleBySphere);
+            this.groupBox5.Location = new System.Drawing.Point(12, 416);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(359, 76);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Disassembly V2";
+            // 
+            // btnDisassembleBySphere
+            // 
+            this.btnDisassembleBySphere.Location = new System.Drawing.Point(147, 35);
+            this.btnDisassembleBySphere.Name = "btnDisassembleBySphere";
+            this.btnDisassembleBySphere.Size = new System.Drawing.Size(103, 23);
+            this.btnDisassembleBySphere.TabIndex = 6;
+            this.btnDisassembleBySphere.Text = "Disassemble";
+            this.btnDisassembleBySphere.UseVisualStyleBackColor = true;
+            this.btnDisassembleBySphere.Click += new System.EventHandler(this.btnDisassembleBySphere_Click);
+            // 
+            // txtRate
+            // 
+            this.txtRate.Location = new System.Drawing.Point(41, 35);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.Size = new System.Drawing.Size(100, 21);
+            this.txtRate.TabIndex = 7;
+            this.txtRate.Text = "0.5";
             // 
             // FrmMain
             // 
@@ -334,6 +370,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -362,6 +400,9 @@
         private System.Windows.Forms.Button btnClearGroup;
         private System.Windows.Forms.Button btnAddGroup;
         private System.Windows.Forms.ComboBox cbGroupLevel;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox txtRate;
+        private System.Windows.Forms.Button btnDisassembleBySphere;
     }
 }
 
