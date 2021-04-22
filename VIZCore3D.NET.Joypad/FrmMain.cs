@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace VIZCore3D.NET.PMI
+namespace VIZCore3D.NET.Joypad
 {
     public partial class FrmMain : Form
     {
@@ -19,21 +19,61 @@ namespace VIZCore3D.NET.PMI
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        private JoypadController controller;
+
         public FrmMain()
         {
             InitializeComponent();
+
+            controller = new JoypadController();
+
+            InitVIZCore3D(null);
+        }
+
+        public FrmMain(string[] args)
+        {
+            InitializeComponent();
+
+            controller = new JoypadController();
+
+            InitVIZCore3D(args);
+        }
+
+        private void InitVIZCore3D(string[] args)
+        {
+            int background_mode = 0;
+            if(args != null && args.Length == 2)
+            {
+                if (args[0].ToUpper() == "BACKGROUND")
+                    background_mode = Convert.ToInt32(args[1]);
+            }
 
             // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
             // Construction
-            vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
+            string backgroudImagePath = System.IO.Path.Combine(Application.StartupPath, "background.jpg");
+            if (System.IO.File.Exists(backgroudImagePath) == true)
+            {
+                Image background = Image.FromFile(backgroudImagePath);
+                vizcore3d = new VIZCore3D.NET.VIZCore3DControl(background, VIZCore3D.NET.Data.ImageMode.CENTER, Color.Gray);
+            }
+            else
+            {
+                if (background_mode == 0)
+                    vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
+                else
+                    vizcore3d = new VIZCore3D.NET.VIZCore3DControl((NET.BackgroundImage)background_mode);
+            }
+
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            this.splitContainer1.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
         }
+
+        
 
         // ================================================
         // Event - VIZCore3D.NET
@@ -136,13 +176,13 @@ namespace VIZCore3D.NET.PMI
             // ================================================================
             #region 설정 - 기본
             // 모델 자동 언로드 (파일 노드 언체크 시, 언로드)
-            vizcore3d.Model.UncheckToUnload = true;
+            vizcore3d.Model.UncheckToUnload = false;
 
             // 모델 열기 시, Edge 정보 로드 활성화
-            vizcore3d.Model.LoadEdgeData = true;
+            vizcore3d.Model.LoadEdgeData = false;
 
             // 모델 열기 시, Edge 정보 생성 활성화
-            vizcore3d.Model.GenerateEdgeData = true;
+            vizcore3d.Model.GenerateEdgeData = false;
 
             // 모델 조회 시, 하드웨어 가속
             vizcore3d.View.EnableHardwareAcceleration = true;
@@ -256,11 +296,11 @@ namespace VIZCore3D.NET.PMI
             // X-Ray 모델 조회 시, 개체 색상 - 선택색상, 모델색상
             vizcore3d.View.XRay.ColorType = VIZCore3D.NET.Data.XRayColorTypes.SELECTION_COLOR;
             // 배경유형
-            vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
+            //vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
             // 배경색1
-            vizcore3d.View.BackgroundColor1 = Color.Black;
+            //vizcore3d.View.BackgroundColor1 = Color.Gray;
             // 배경색2
-            vizcore3d.View.BackgroundColor2 = Color.Black;
+            //vizcore3d.View.BackgroundColor2 = Color.Gray; 
             #endregion
 
 
@@ -449,68 +489,102 @@ namespace VIZCore3D.NET.PMI
         }
         #endregion
 
-        #region Event - InitializeVIZCore3DEvent
+        #region Function - VIZCore3D.NET : Add Event Handler
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            // 모델 열기 완료 후, 이벤트
-            vizcore3d.Model.OnModelOpenedEvent += Model_OnModelOpenedEvent;
-        } 
+        }
         #endregion
 
-        private void Model_OnModelOpenedEvent(object sender, EventArgs e)
+        private void ConnectDevice()
         {
-            ShowItems();
-        }
+            if (vizcore3d.Model.IsOpen() == false) return;
+            
+            controller.OnKeyDownEvent += Controller_OnKeyDownEvent;
+            controller.OnObjectSelectEvent += Controller_OnObjectSelectEvent;
 
-        private void btnShowAll_Click(object sender, EventArgs e)
-        {
-            vizcore3d.PMI.Show(true);
-        }
+            bool result = controller.Connect(vizcore3d);
 
-        private void btnHideAll_Click(object sender, EventArgs e)
-        {
-            vizcore3d.PMI.Show(false);
-        }
-
-        private void ShowItems()
-        {
-            List<VIZCore3D.NET.Data.PMI> items = vizcore3d.PMI.Items;
-
-            lvList.BeginUpdate();
-            lvList.Items.Clear();
-            for (int i = 0; i < items.Count; i++)
+            if (result == false)
             {
-                VIZCore3D.NET.Data.PMI item = items[i];
-
-                ListViewItem lvi = new ListViewItem(new string[] { item.ID, item.Name, item.EntityType, item.EntitySubType });
-                lvi.Tag = item;
-                lvList.Items.Add(lvi);
+                MessageBox.Show("Joypad Connection Failure", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            lvList.EndUpdate();
+
+            btnDisconnect.Enabled = result;
+            btnConnect.Enabled = !result;
+
+            vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_01, string.Format("Gravity : {0}", vizcore3d.Walkthrough.UseAvatarGravity == true ? "ON" : "OFF"), 5, 5, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Black);
+            vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_02, string.Format("Collision : {0}", vizcore3d.Walkthrough.UseAvatarCollision == true ? "ON" : "OFF"), 5, 20, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Black);
+            vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_03, string.Format("Bow : {0}", vizcore3d.Walkthrough.UseAvatarBowWalk == true ? "ON" : "OFF"), 5, 35, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Black);
+
+            vizcore3d.View.Navigation = Data.NavigationModes.WALK;
+            vizcore3d.Walkthrough.Avatar = true;
         }
 
-        private void btnGetItems_Click(object sender, EventArgs e)
+        private void Controller_OnKeyDownEvent(object sender, EventArgs e)
         {
-            ShowItems();
+            this.Invoke(new EventHandler(delegate
+            {
+                vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_01, string.Format("Gravity : {0}", vizcore3d.Walkthrough.UseAvatarGravity == true ? "ON" : "OFF"), 5, 5, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Black);
+                vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_02, string.Format("Collision : {0}", vizcore3d.Walkthrough.UseAvatarCollision == true ? "ON" : "OFF"), 5, 20, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Black);
+                vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_03, string.Format("Bow : {0}", vizcore3d.Walkthrough.UseAvatarBowWalk == true ? "ON" : "OFF"), 5, 35, VIZCore3D.NET.Data.FontSize.Size_14_Bold, Color.Black);
+            }));
         }
 
-        private void lvList_DoubleClick(object sender, EventArgs e)
+        private void Controller_OnObjectSelectEvent(object sender, EventArgs e)
         {
-            if (lvList.SelectedItems.Count == 0) return;
+            this.Invoke(new EventHandler(delegate
+            {
+                Size size = vizcore3d.View.Size;
 
-            ListViewItem lvi = lvList.SelectedItems[0];
-            if (lvi == null) return;
+                float x, y, z;
+                bool selected = vizcore3d.View.SelectByScreenPosition(size.Width / 2, size.Height / 2, out x, out y, out z);
 
-            if (lvi.Tag == null) return;
+                MessageBox.Show(selected.ToString());
 
-            vizcore3d.PMI.Show(false);
+                if (selected == false) return;
+            }));
+        }
 
-            VIZCore3D.NET.Data.PMI item = (VIZCore3D.NET.Data.PMI)lvi.Tag;
+        private void DisconnectDevice()
+        {
+            vizcore3d.View.Message.Hide(Data.MessageId.ID_01);
+            vizcore3d.View.Message.Hide(Data.MessageId.ID_02);
+            vizcore3d.View.Message.Hide(Data.MessageId.ID_03);
 
-            vizcore3d.PMI.Focus(item.ID);
+            controller.Disconnected();
+
+            btnConnect.Enabled = true;
+            btnDisconnect.Enabled = false;
+
+            controller.OnKeyDownEvent -= Controller_OnKeyDownEvent;
+
+            vizcore3d.Walkthrough.Avatar = false;
+            vizcore3d.View.Navigation = Data.NavigationModes.ROTATE;
+            vizcore3d.View.ResetView();
+        }
+
+        private void menuBarDeviceConnect_Click(object sender, EventArgs e)
+        {
+            ConnectDevice();
+        }
+
+        private void menuBarDeviceDisconnect_Click(object sender, EventArgs e)
+        {
+            DisconnectDevice();
+        }
+
+        private void btnConnect_Click(object sender, EventArgs e)
+        {
+            ConnectDevice();
+        }
+
+        private void btnDisconnect_Click(object sender, EventArgs e)
+        {
+            DisconnectDevice();
         }
     }
 }

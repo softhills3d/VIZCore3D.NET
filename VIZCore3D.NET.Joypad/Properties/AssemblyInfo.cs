@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // 어셈블리에 대한 일반 정보는 다음 특성 집합을 통해 
 // 제어됩니다. 어셈블리와 관련된 정보를 수정하려면
 // 이러한 특성 값을 변경하세요.
-[assembly: AssemblyTitle("VIZCore3D.NET.JigSimulation")]
+[assembly: AssemblyTitle("VIZCore3D.NET.Joypad")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SOFTHILLS Co., Ltd.")]
-[assembly: AssemblyProduct("VIZCore3D.NET.JigSimulation")]
-[assembly: AssemblyCopyright("© 2020 SOFTHILLS Co., Ltd. All rights reserved.")]
+[assembly: AssemblyProduct("VIZCore3D.NET.Joypad")]
+[assembly: AssemblyCopyright("© 2021 SOFTHILLS Co., Ltd. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 이 프로젝트가 COM에 노출되는 경우 다음 GUID는 typelib의 ID를 나타냅니다.
-[assembly: Guid("ce2708d8-8bb8-48c0-93bd-466a7cfcfb0e")]
+[assembly: Guid("124d004f-9697-47e5-9ba1-077cd0936822")]
 
 // 어셈블리의 버전 정보는 다음 네 가지 값으로 구성됩니다.
 //
