@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtRate = new System.Windows.Forms.TextBox();
+            this.btnDisassembleBySphere = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cbGroupLevel = new System.Windows.Forms.ComboBox();
             this.btnClearGroup = new System.Windows.Forms.Button();
@@ -51,17 +54,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDistance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnDisassembleBySphere = new System.Windows.Forms.Button();
-            this.txtRate = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -81,6 +81,37 @@
             this.splitContainer1.Size = new System.Drawing.Size(1334, 689);
             this.splitContainer1.SplitterDistance = 385;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.txtRate);
+            this.groupBox5.Controls.Add(this.btnDisassembleBySphere);
+            this.groupBox5.Location = new System.Drawing.Point(12, 416);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(359, 76);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Disassembly V2";
+            // 
+            // txtRate
+            // 
+            this.txtRate.Location = new System.Drawing.Point(41, 35);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.Size = new System.Drawing.Size(100, 21);
+            this.txtRate.TabIndex = 7;
+            this.txtRate.Text = "0.5";
+            // 
+            // btnDisassembleBySphere
+            // 
+            this.btnDisassembleBySphere.Location = new System.Drawing.Point(147, 35);
+            this.btnDisassembleBySphere.Name = "btnDisassembleBySphere";
+            this.btnDisassembleBySphere.Size = new System.Drawing.Size(103, 23);
+            this.btnDisassembleBySphere.TabIndex = 6;
+            this.btnDisassembleBySphere.Text = "Disassemble";
+            this.btnDisassembleBySphere.UseVisualStyleBackColor = true;
+            this.btnDisassembleBySphere.Click += new System.EventHandler(this.btnDisassembleBySphere_Click);
             // 
             // groupBox4
             // 
@@ -284,6 +315,7 @@
             this.ckSelectedObject.TabIndex = 4;
             this.ckSelectedObject.Text = "Selected Object";
             this.ckSelectedObject.UseVisualStyleBackColor = true;
+            this.ckSelectedObject.CheckedChanged += new System.EventHandler(this.ckSelectedObject_CheckedChanged);
             // 
             // txtSideGap
             // 
@@ -319,37 +351,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Distance";
             // 
-            // groupBox5
-            // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.txtRate);
-            this.groupBox5.Controls.Add(this.btnDisassembleBySphere);
-            this.groupBox5.Location = new System.Drawing.Point(12, 416);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(359, 76);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Disassembly V2";
-            // 
-            // btnDisassembleBySphere
-            // 
-            this.btnDisassembleBySphere.Location = new System.Drawing.Point(147, 35);
-            this.btnDisassembleBySphere.Name = "btnDisassembleBySphere";
-            this.btnDisassembleBySphere.Size = new System.Drawing.Size(103, 23);
-            this.btnDisassembleBySphere.TabIndex = 6;
-            this.btnDisassembleBySphere.Text = "Disassemble";
-            this.btnDisassembleBySphere.UseVisualStyleBackColor = true;
-            this.btnDisassembleBySphere.Click += new System.EventHandler(this.btnDisassembleBySphere_Click);
-            // 
-            // txtRate
-            // 
-            this.txtRate.Location = new System.Drawing.Point(41, 35);
-            this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(100, 21);
-            this.txtRate.TabIndex = 7;
-            this.txtRate.Text = "0.5";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -364,14 +365,14 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }

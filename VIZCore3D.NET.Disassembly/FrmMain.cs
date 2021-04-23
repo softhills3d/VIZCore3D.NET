@@ -593,5 +593,13 @@ namespace VIZCore3D.NET.Disassembly
 
             vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(rate);
         }
+
+        private void ckSelectedObject_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Disassembly.Target 
+                = ckSelectedObject.Checked == false 
+                ? Manager.DisassemblyManager.TargetKind.ALL 
+                : Manager.DisassemblyManager.TargetKind.SELECTED;
+        }
     }
 }
