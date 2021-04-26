@@ -591,7 +591,7 @@ namespace VIZCore3D.NET.Disassembly
 
             float rate = Convert.ToSingle(txtRate.Text);
 
-            vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(rate);
+            vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(rbGroup.Checked == true ? true : false, rate);
         }
 
         private void ckSelectedObject_CheckedChanged(object sender, EventArgs e)

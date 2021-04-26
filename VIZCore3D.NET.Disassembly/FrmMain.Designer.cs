@@ -54,6 +54,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDistance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.rbGroup = new System.Windows.Forms.RadioButton();
+            this.rbSelected = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -86,6 +88,8 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.rbSelected);
+            this.groupBox5.Controls.Add(this.rbGroup);
             this.groupBox5.Controls.Add(this.txtRate);
             this.groupBox5.Controls.Add(this.btnDisassembleBySphere);
             this.groupBox5.Location = new System.Drawing.Point(12, 416);
@@ -99,13 +103,13 @@
             // 
             this.txtRate.Location = new System.Drawing.Point(41, 35);
             this.txtRate.Name = "txtRate";
-            this.txtRate.Size = new System.Drawing.Size(100, 21);
+            this.txtRate.Size = new System.Drawing.Size(63, 21);
             this.txtRate.TabIndex = 7;
             this.txtRate.Text = "0.5";
             // 
             // btnDisassembleBySphere
             // 
-            this.btnDisassembleBySphere.Location = new System.Drawing.Point(147, 35);
+            this.btnDisassembleBySphere.Location = new System.Drawing.Point(119, 33);
             this.btnDisassembleBySphere.Name = "btnDisassembleBySphere";
             this.btnDisassembleBySphere.Size = new System.Drawing.Size(103, 23);
             this.btnDisassembleBySphere.TabIndex = 6;
@@ -351,6 +355,28 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Distance";
             // 
+            // rbGroup
+            // 
+            this.rbGroup.AutoSize = true;
+            this.rbGroup.Checked = true;
+            this.rbGroup.Location = new System.Drawing.Point(252, 24);
+            this.rbGroup.Name = "rbGroup";
+            this.rbGroup.Size = new System.Drawing.Size(57, 16);
+            this.rbGroup.TabIndex = 8;
+            this.rbGroup.TabStop = true;
+            this.rbGroup.Text = "Group";
+            this.rbGroup.UseVisualStyleBackColor = true;
+            // 
+            // rbSelected
+            // 
+            this.rbSelected.AutoSize = true;
+            this.rbSelected.Location = new System.Drawing.Point(252, 47);
+            this.rbSelected.Name = "rbSelected";
+            this.rbSelected.Size = new System.Drawing.Size(72, 16);
+            this.rbSelected.TabIndex = 9;
+            this.rbSelected.Text = "Selected";
+            this.rbSelected.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -404,6 +430,8 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Button btnDisassembleBySphere;
+        private System.Windows.Forms.RadioButton rbSelected;
+        private System.Windows.Forms.RadioButton rbGroup;
     }
 }
 
