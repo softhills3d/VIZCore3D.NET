@@ -540,10 +540,15 @@ namespace VIZCore3D.NET.Joypad
             {
                 Size size = vizcore3d.View.Size;
 
-                float x, y, z;
-                bool selected = vizcore3d.View.SelectByScreenPosition(size.Width / 2, size.Height / 2, out x, out y, out z);
+                int nodeIndex = vizcore3d.Object3D.HitTest(size.Width / 2, size.Height / 2);
 
-                if (selected == false) return;
+                if (nodeIndex == -1) return;
+
+                vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
+
+                vizcore3d.Object3D.Select(new List<int>() { nodeIndex }, true);
+
+                vizcore3d.Object3D.UDA.ShowDataToUDADialog(nodeIndex);
             }));
         }
 
