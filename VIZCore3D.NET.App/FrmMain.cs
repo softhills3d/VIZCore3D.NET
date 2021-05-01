@@ -19,16 +19,30 @@ namespace VIZCore3D.NET.App
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        public FrmMain()
+        public FrmMain(string[] args)
         {
             InitializeComponent();
 
             // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
+            // Background
+            int background_mode = 0;
+            if (args != null && args.Length == 2)
+            {
+                if (args[0].ToUpper() == "BACKGROUND")
+                    background_mode = Convert.ToInt32(args[1]);
+            }
+
             // Construction
             string backgroudImagePath = System.IO.Path.Combine(Application.StartupPath, "background.jpg");
-            if (System.IO.File.Exists(backgroudImagePath) == true)
+            if (background_mode != 0)
+            {
+                // 30 : HHI
+                // 31 : HSHI
+                vizcore3d = new VIZCore3DControl((NET.BackgroundImage)background_mode);
+            }
+            else if(System.IO.File.Exists(backgroudImagePath) == true)
             {
                 Image background = Image.FromFile(backgroudImagePath);
                 vizcore3d = new VIZCore3D.NET.VIZCore3DControl(background, VIZCore3D.NET.Data.ImageMode.CENTER, Color.Gray);
