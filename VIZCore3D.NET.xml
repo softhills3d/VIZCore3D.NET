@@ -369,6 +369,11 @@
             이 메서드의 내용을 코드 편집기로 수정하지 마세요.
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Controls.PrintControl.NamespaceDoc">
+            <summary>
+            SOFTHILLS <c>VIZCore3D.NET.Controls.Print</c> Control.
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Controls.StructureBrowserControl">
             <summary>
             Structure Browser Control Class
