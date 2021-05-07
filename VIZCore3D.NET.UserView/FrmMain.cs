@@ -446,16 +446,18 @@ namespace VIZCore3D.NET.UserView
             // 모델 열기 시, 3D 화면 Rendering 재시작
             // ================================================================
             vizcore3d.EndUpdate();
-        } 
+        }
         #endregion
 
+        #region Function - VIZCore3D.NET : Event
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            
-        }
+
+        } 
+        #endregion
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
