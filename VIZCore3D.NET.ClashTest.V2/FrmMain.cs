@@ -449,6 +449,7 @@ namespace VIZCore3D.NET.ClashTest.V2
         }
         #endregion
 
+        #region Function - VIZCore3D.NET : Event
         /// <summary>
         /// 이벤트 등록
         /// </summary>
@@ -458,7 +459,8 @@ namespace VIZCore3D.NET.ClashTest.V2
 
             vizcore3d.Clash.OnClashProgressEvent += Clash_OnClashProgressEvent;
             vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
-        }
+        } 
+        #endregion
 
         private void Object3D_OnObject3DSelected(object sender, VIZCore3D.NET.Event.EventManager.Object3DSelectedEventArgs e)
         {
