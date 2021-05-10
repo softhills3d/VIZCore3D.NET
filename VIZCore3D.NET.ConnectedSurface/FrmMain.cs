@@ -486,7 +486,7 @@ namespace VIZCore3D.NET.ConnectedSurface
             if (String.IsNullOrEmpty(txtPart2.Text) == true) return;
 
             VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem item = vizcore3d.GeometryUtility.GetConnectedSurfaceNormalVector(Convert.ToInt32(txtPart1.Text), Convert.ToInt32(txtPart2.Text));
-            AddResult(item);
+            AddResult(item, true, false);
 
             txtPart1.Text = String.Empty;
             txtPart2.Text = String.Empty;
@@ -498,7 +498,7 @@ namespace VIZCore3D.NET.ConnectedSurface
             txtPart2.Text = String.Empty;
         }
 
-        private void AddResult(VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem item)
+        private void AddResult(VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem item, bool note, bool nv)
         {
             VIZCore3D.NET.Data.Node node1 = vizcore3d.Object3D.FromIndex(item.Index1);
             VIZCore3D.NET.Data.Node node2 = vizcore3d.Object3D.FromIndex(item.Index2);
@@ -506,7 +506,8 @@ namespace VIZCore3D.NET.ConnectedSurface
             ListViewItem lvi = new ListViewItem(
                 new string[] 
                 {
-                    node1.Index.ToString()
+                    Convert.ToString(lvResult.Items.Count + 1)
+                    , node1.Index.ToString()
                     , node2.Index.ToString()
                     , node1.NodeName
                     , node2.NodeName
@@ -520,14 +521,34 @@ namespace VIZCore3D.NET.ConnectedSurface
 
             lvResult.Items.Add(lvi);
 
-            VIZCore3D.NET.Data.MultiColorText text = new Data.MultiColorText();
-            text.AddLine(string.Format("NODE #1 : {0}", node1.NodeName), Color.Black);
-            text.AddLine(string.Format("NODE #2 : {0}", node2.NodeName), Color.Blue);
-            text.AddLine(string.Format("N/V : {0}", item.Normal.ToString()), Color.Red);
+            if (note == true)
+            {
+                VIZCore3D.NET.Data.MultiColorText text = new Data.MultiColorText();
+                text.AddLine(string.Format("NODE #1 : {0}", node1.NodeName), Color.Black);
+                text.AddLine(string.Format("NODE #2 : {0}", node2.NodeName), Color.Blue);
+                text.AddLine(string.Format("N/V : {0}", item.Normal.ToString()), Color.Red);
 
-            VIZCore3D.NET.Data.Vertex3D pos = new VIZCore3D.NET.Data.Vertex3D(item.Projection1.X + 500, item.Projection1.Y + 500, item.Projection1.Z + 3500);
+                VIZCore3D.NET.Data.Vertex3D pos = new VIZCore3D.NET.Data.Vertex3D(item.Projection1.X + 500, item.Projection1.Y + 500, item.Projection1.Z + 3500);
 
-            vizcore3d.Review.Note.AddNoteSurface(text, pos, item.Projection1);
+                vizcore3d.Review.Note.AddNoteSurface(text, pos, item.Projection1);
+            }
+
+            if(nv == true)
+            {
+                if (Convert.ToInt32(item.Normal.X) != 0 || Convert.ToInt32(item.Normal.Y) != 0 || Convert.ToInt32(item.Normal.Z) != 0) return;
+
+                vizcore3d.ShapeDrawing.AddVertex(
+                    new List<VIZCore3D.NET.Data.Vertex3D>()
+                    {
+                        item.TestPosition
+                    }
+                    , 0
+                    , Color.Blue
+                    , 10
+                    , 10
+                    , true
+                    );
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -535,6 +556,110 @@ namespace VIZCore3D.NET.ConnectedSurface
             lvResult.Items.Clear();
 
             vizcore3d.Review.Note.Clear();
+        }
+
+        private List<SampleItem> GetSampleData()
+        {
+            List<SampleItem> items = new List<SampleItem>();
+
+            items.Add(new SampleItem("11,052.00", "	672.00", "5,183.00", "E32C-SS1A-J1(E32C-1-1P)", "E23P-UA-P3(E23P-1-5P)"));
+            items.Add(new SampleItem("11,056.00", "-714.00", "5,172.00", "E32C-SS1M-J1(E32C-1-1S)", "E23S-UA-P3(E23P-1-5S)"));
+            items.Add(new SampleItem("11,952.00", "-900.00", "5,177.00", "E32C-SS1M-J1(E32C-1-1S)", "E23S-UA-P3(E23P-1-5S)"));
+            items.Add(new SampleItem("13,353.00", "-1,181.00", "5,195.00", "E32C-SS1M-J1(E32C-1-1S)", "E23S-UA-P3(E23P-1-5S)"));
+            items.Add(new SampleItem("16,550.00", "-2,027.00", "5,171.00", "E32C-SS1M-J3(E32C-1-5S)", "E23S-UA-P4(E23P-1-7S)"));
+            items.Add(new SampleItem("19,754.00", "-3,199.00", "5,170.00", "E32C-SS1M-J5(E32C-1-9S)", "E23S-UA-P5(E23P-1-9S)"));
+            items.Add(new SampleItem("22,948.00", "-4,930.00", "5,174.00", "E32C-SS1M-J7(E32C-1-13S)", "E22S-UA-P3(E22P-1-5S)"));
+            items.Add(new SampleItem("25,347.00", "-6,633.00", "5,178.00", "E32C-SS1M-J9(E32C-1-17S)", "E22S-UA-P4(E22P-1-7S)"));
+            items.Add(new SampleItem("27,761.00", "-8,453.00", "5,172.00", "E31S-SS2-J2(E31P-2-1S)", "E22S-UA-P4(E22P-1-7S)"));
+            items.Add(new SampleItem("30,154.00", "-9,950.00", "5,166.00", "E31S-SS2-J2(E31P-2-1S)", "E21S-UA-P4(E21P-1-7S)"));
+            items.Add(new SampleItem("32,558.00", "-11,002.00", "5,164.00", "E31S-SS1-J1(E31P-1-1S)", "E21S-UA-P5(E21P-1-9S)"));
+            items.Add(new SampleItem("35,754.00", "-11,970.00", "5,172.00", "E31S-SS1-J1(E31P-1-1S)", "E21S-UA-P5(E21P-1-9S)"));
+            items.Add(new SampleItem("40,555.00", "-12,909.00", "5,250.00", "E31S-SS1-J3(E31P-1-5S)", "E24S-SS-J3(E24P-1-5S)"));
+            items.Add(new SampleItem("41,549.00", "-13,067.00", "5,292.00", "E31S-SS1-J3(E31P-1-5S)", "E24S-SS-J3(E24P-1-5S)"));
+            items.Add(new SampleItem("41,548.00", "13,068.00", "5,292.00", "E31P-SS1-J3(E31P-1-5P)", "E24P-SS-J3(E24P-1-5P)"));
+            items.Add(new SampleItem("40,550.00", "12,914.00", "5,247.00", "E31P-SS1-J3(E31P-1-5P)", "E24P-SS-J3(E24P-1-5P)"));
+            items.Add(new SampleItem("35,747.00", "11,967.00", "5,175.00", "E31P-SS1-J1(E31P-1-1P)", "E21P-UA-P5(E21P-1-9P)"));
+            items.Add(new SampleItem("32,550.00", "10,996.00", "5,167.00", "E31P-SS1-J1(E31P-1-1P)", "E21P-UA-P5(E21P-1-9P)"));
+            items.Add(new SampleItem("30,152.00", "9,946.00", "5,177.00", "E31P-SS2-J2(E31P-2-1P)", "E21P-UA-P4(E21P-1-7P)"));
+            items.Add(new SampleItem("27,754.00", "8,455.00", "5,179.00", "E31P-SS2-J2(E31P-2-1P)", "E22P-UA-P4(E22P-1-7P)"));
+            items.Add(new SampleItem("25,346.00", "6,635.00", "5,174.00", "E32C-SS1A-J9(E32C-1-17P)", "E22P-UA-P4(E22P-1-7P)"));
+            items.Add(new SampleItem("22,945.00", "4,932.00", "5,171.00", "E32C-SS1A-J7(E32C-1-13P)", "E22P-UA-P3(E22P-1-5P)"));
+            items.Add(new SampleItem("19,750.00", "3,202.00", "5,165.00", "E32C-SS1A-J5(E32C-1-9P)", "E23P-UA-P5(E23P-1-9P)"));
+            items.Add(new SampleItem("16,549.00", "2,023.00", "5,174.00", "E32C-SS1A-J3(E32C-1-5P)", "E23P-UA-P4(E23P-1-7P)"));
+            items.Add(new SampleItem("11,948.00", "870.00", "5,180.00", "E32C-SS1A-J1(E32C-1-1P)", "E23P-UA-P3(E23P-1-5P)"));
+
+            return items;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PART);
+            Dictionary<string, int> map = new Dictionary<string, int>();
+            foreach (VIZCore3D.NET.Data.Node item in nodes)
+            {
+                if (map.ContainsKey(item.NodeName) == false)
+                    map.Add(item.NodeName, item.Index);
+            }
+
+            List<SampleItem> items = GetSampleData();
+            
+            vizcore3d.BeginUpdate();
+            foreach (SampleItem item in items)
+            {
+                if (map.ContainsKey(item.Name1) == false) continue;
+                if (map.ContainsKey(item.Name2) == false) continue;
+
+                item.Index1 = map[item.Name1];
+                item.Index2 = map[item.Name2];
+
+                VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem nv 
+                    = vizcore3d.GeometryUtility.GetConnectedSurfaceNormalVector(
+                        item.Index1
+                        , item.Index2
+                        , new Data.Vertex3D(item.X, item.Y, item.Z)
+                        );
+
+                AddResult(nv, true, true);
+            }
+            vizcore3d.EndUpdate();
+        }
+
+        private void lvResult_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvResult.SelectedItems.Count == 0) return;
+            if (lvResult.SelectedItems[0].Tag == null) return;
+
+            ListViewItem lvi = lvResult.SelectedItems[0];
+            VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem nv = (VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem)lvi.Tag;
+
+            vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3d.Object3D.Select(new List<int>() { nv.Index1, nv.Index2 }, true, true);
+        }
+    }
+
+    public class SampleItem
+    {
+        public float X { get; set; }
+        public float Y { get; set; }
+        public float Z { get; set; }
+
+        public string Name1 { get; set; }
+        public string Name2 { get; set; }
+
+        public int Index1 { get; set; }
+        public int Index2 { get; set; }
+
+        public SampleItem(string x, string y, string z, string name1, string name2)
+        {
+            X = Convert.ToSingle(x.Trim());
+            Y = Convert.ToSingle(y.Trim());
+            Z = Convert.ToSingle(z.Trim());
+
+            Name1 = name1.Trim();
+            Name2 = name2.Trim();
+
+            Index1 = -1;
+            Index2 = -1;
         }
     }
 }
