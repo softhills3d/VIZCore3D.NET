@@ -2607,6 +2607,46 @@
             </summary>
             <returns>간섭검사 결과 코드에 대한 문자열 표현</returns>
         </member>
+        <member name="T:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem">
+            <summary>
+            Connected Surface Normal Vector Item Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.Index1">
+            <summary>
+            Node Index 1 (Part)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.Index2">
+            <summary>
+            Node Index 2 (Part)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.UseTestPosition">
+            <summary>
+            Use Test Position
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.TestPosition">
+            <summary>
+            Test Position (Vertex)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.Normal">
+            <summary>
+            Surface Normal Vector
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.Projection1">
+            <summary>
+            Projection Vertex 1
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem.Projection2">
+            <summary>
+            Projection Vertex 2
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.EdgeLoops">
             <summary>
             Edge Loops Class
@@ -7122,6 +7162,11 @@
         <member name="P:VIZCore3D.NET.Data.NoteStyle.TextVisible">
             <summary>
             텍스트 조회 여부 : 표면노트만 지원
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NoteStyle.HorizontalAlignment">
+            <summary>
+            텍스트 수평 정렬
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.NoteStyle.SymbolBackgroundColor">
@@ -20012,6 +20057,23 @@
             <param name="format">각도 형식</param>
             <returns>회전된 좌표</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetConnectedSurfaceNormalVector(System.Int32,System.Int32)">
+            <summary>
+            두 부재 인접면의 법선벡터 반환
+            </summary>
+            <param name="index1">부재 인덱스 1</param>
+            <param name="index2">부재 인덱스 2</param>
+            <returns>두 부재 인접면의 법선벡터</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetConnectedSurfaceNormalVector(System.Int32,System.Int32,VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            두 부재 인접면의 법선벡터 반환
+            </summary>
+            <param name="index1">부재 인덱스 1</param>
+            <param name="index2">부재 인덱스 2</param>
+            <param name="v">참조점(검사 위치)</param>
+            <returns>두 부재 인접면의 법선벡터</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
             Group Manager Class
@@ -32331,6 +32393,26 @@
             외곽선으로 연결
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.NoteManager.NoteTextHorizontalAlignment">
+            <summary>
+            Note Text Horizontal Alignment
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.NoteManager.NoteTextHorizontalAlignment.Left">
+            <summary>
+            Left
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.NoteManager.NoteTextHorizontalAlignment.Center">
+            <summary>
+            Center
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.NoteManager.NoteTextHorizontalAlignment.Right">
+            <summary>
+            Right
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.NoteManager.Items">
             <summary>
             노트 아이템 목록
@@ -32395,6 +32477,11 @@
         <member name="P:VIZCore3D.NET.Manager.NoteManager.TextBoxLineColor">
             <summary>
             텍스트 상자 외곽 라인 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.NoteManager.HorizontalAlignment">
+            <summary>
+            텍스트 수평 정렬
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.NoteManager.SymbolBackgroundColor">
