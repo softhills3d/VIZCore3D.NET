@@ -6136,6 +6136,11 @@
             측정 텍스트
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureItem.Description">
+            <summary>
+            측정 설명
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.MeasureItem.Visible">
             <summary>
             보이기/숨기기 상태
@@ -7036,6 +7041,11 @@
         <member name="P:VIZCore3D.NET.Data.NoteItem.Title">
             <summary>
             Title
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NoteItem.Description">
+            <summary>
+            Description
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.NoteItem.Visible">
@@ -8013,6 +8023,11 @@
         <member name="P:VIZCore3D.NET.Data.ReviewItem.Selected">
             <summary>
             Selected Item
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ReviewItem.Description">
+            <summary>
+            Description
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.ReviewItem.Position">
@@ -35506,6 +35521,7 @@
             <summary>
             리뷰 파일 불러오기 다이얼로그
             </summary>
+            <returns>Dialog Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ReviewManager.Save(System.String,System.String)">
             <summary>
@@ -41412,6 +41428,13 @@
             Set Camera Data
             </summary>
             <param name="camera">Camera Data</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetCameraData(VIZCore3D.NET.Data.CameraData,System.Boolean)">
+            <summary>
+            Set Camera Data
+            </summary>
+            <param name="camera">Camera Data</param>
+            <param name="animation">Animation</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection)">
             <summary>
