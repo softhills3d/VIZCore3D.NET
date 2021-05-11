@@ -533,7 +533,7 @@ namespace VIZCore3D.NET.UserViewCustom
             vizcore3d.Review.Measure.Clear();
 
             VIZCore3D.NET.Data.CameraData camera = (VIZCore3D.NET.Data.CameraData)lvi.Tag;
-            vizcore3d.View.SetCameraData(camera);
+            vizcore3d.View.SetCameraData(camera, ckAnimation.Checked);
 
             string cvr = lvi.SubItems[4].Text;
             if (String.IsNullOrEmpty(cvr) == true) return;

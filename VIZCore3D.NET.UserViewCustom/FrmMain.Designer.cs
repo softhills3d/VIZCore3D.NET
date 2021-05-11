@@ -30,10 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnSaveCamera = new System.Windows.Forms.Button();
-            this.ckNote = new System.Windows.Forms.CheckBox();
-            this.ckMeasure = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvItems = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -41,11 +37,16 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckMeasure = new System.Windows.Forms.CheckBox();
+            this.ckNote = new System.Windows.Forms.CheckBox();
+            this.btnSaveCamera = new System.Windows.Forms.Button();
+            this.ckAnimation = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -62,50 +63,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(1044, 609);
             this.splitContainer1.SplitterDistance = 348;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.ckMeasure);
-            this.groupBox1.Controls.Add(this.ckNote);
-            this.groupBox1.Controls.Add(this.btnSaveCamera);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 85);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Camera";
-            // 
-            // btnSaveCamera
-            // 
-            this.btnSaveCamera.Location = new System.Drawing.Point(28, 34);
-            this.btnSaveCamera.Name = "btnSaveCamera";
-            this.btnSaveCamera.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveCamera.TabIndex = 0;
-            this.btnSaveCamera.Text = "Save";
-            this.btnSaveCamera.UseVisualStyleBackColor = true;
-            this.btnSaveCamera.Click += new System.EventHandler(this.btnSaveCamera_Click);
-            // 
-            // ckNote
-            // 
-            this.ckNote.AutoSize = true;
-            this.ckNote.Location = new System.Drawing.Point(148, 38);
-            this.ckNote.Name = "ckNote";
-            this.ckNote.Size = new System.Drawing.Size(50, 16);
-            this.ckNote.TabIndex = 1;
-            this.ckNote.Text = "Note";
-            this.ckNote.UseVisualStyleBackColor = true;
-            // 
-            // ckMeasure
-            // 
-            this.ckMeasure.AutoSize = true;
-            this.ckMeasure.Location = new System.Drawing.Point(216, 38);
-            this.ckMeasure.Name = "ckMeasure";
-            this.ckMeasure.Size = new System.Drawing.Size(74, 16);
-            this.ckMeasure.TabIndex = 2;
-            this.ckMeasure.Text = "Measure";
-            this.ckMeasure.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -162,6 +119,61 @@
             // 
             this.columnHeader5.Text = "CVR";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.ckAnimation);
+            this.groupBox1.Controls.Add(this.ckMeasure);
+            this.groupBox1.Controls.Add(this.ckNote);
+            this.groupBox1.Controls.Add(this.btnSaveCamera);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(321, 85);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Camera";
+            // 
+            // ckMeasure
+            // 
+            this.ckMeasure.AutoSize = true;
+            this.ckMeasure.Location = new System.Drawing.Point(134, 51);
+            this.ckMeasure.Name = "ckMeasure";
+            this.ckMeasure.Size = new System.Drawing.Size(74, 16);
+            this.ckMeasure.TabIndex = 2;
+            this.ckMeasure.Text = "Measure";
+            this.ckMeasure.UseVisualStyleBackColor = true;
+            // 
+            // ckNote
+            // 
+            this.ckNote.AutoSize = true;
+            this.ckNote.Location = new System.Drawing.Point(134, 29);
+            this.ckNote.Name = "ckNote";
+            this.ckNote.Size = new System.Drawing.Size(50, 16);
+            this.ckNote.TabIndex = 1;
+            this.ckNote.Text = "Note";
+            this.ckNote.UseVisualStyleBackColor = true;
+            // 
+            // btnSaveCamera
+            // 
+            this.btnSaveCamera.Location = new System.Drawing.Point(28, 34);
+            this.btnSaveCamera.Name = "btnSaveCamera";
+            this.btnSaveCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveCamera.TabIndex = 0;
+            this.btnSaveCamera.Text = "Save";
+            this.btnSaveCamera.UseVisualStyleBackColor = true;
+            this.btnSaveCamera.Click += new System.EventHandler(this.btnSaveCamera_Click);
+            // 
+            // ckAnimation
+            // 
+            this.ckAnimation.AutoSize = true;
+            this.ckAnimation.Location = new System.Drawing.Point(214, 51);
+            this.ckAnimation.Name = "ckAnimation";
+            this.ckAnimation.Size = new System.Drawing.Size(80, 16);
+            this.ckAnimation.TabIndex = 3;
+            this.ckAnimation.Text = "Animation";
+            this.ckAnimation.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -175,9 +187,9 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -196,6 +208,7 @@
         private System.Windows.Forms.CheckBox ckMeasure;
         private System.Windows.Forms.CheckBox ckNote;
         private System.Windows.Forms.Button btnSaveCamera;
+        private System.Windows.Forms.CheckBox ckAnimation;
     }
 }
 

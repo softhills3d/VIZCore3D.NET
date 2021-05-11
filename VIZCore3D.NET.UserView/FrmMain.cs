@@ -439,7 +439,7 @@ namespace VIZCore3D.NET.UserView
             // ================================================================
             // 설정 - 상태바
             // ================================================================
-            vizcore3d.Statusbar.Visible = false;
+            vizcore3d.Statusbar.Visible = true;
 
 
             // ================================================================
@@ -455,16 +455,48 @@ namespace VIZCore3D.NET.UserView
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-
-        } 
+            vizcore3d.Model.OnModelOpenedEvent += Model_OnModelOpenedEvent;
+            vizcore3d.Model.OnModelClosedEvent += Model_OnModelClosedEvent;
+        }
         #endregion
+
+        private void Model_OnModelOpenedEvent(object sender, EventArgs e)
+        {
+            InitControl();
+
+            List<VIZCore3D.NET.Data.ReviewItem> items = vizcore3d.Review.UserView.GetList(false);
+            foreach (VIZCore3D.NET.Data.ReviewItem item in items)
+            {
+                TreeNode snapshot = new TreeNode(item.Title, 2, 2);
+
+                // Add Root
+                tvUserView.Nodes.Add(snapshot);
+
+                // Set Tag
+                snapshot.Tag = item;
+            }
+        }
+
+        private void Model_OnModelClosedEvent(object sender, EventArgs e)
+        {
+            InitControl();
+        }
+
+        private void InitControl()
+        {
+            tvUserView.Nodes.Clear();
+            pbImage.Image = null;
+        }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
             // Add
-            int id = vizcore3d.Review.UserView.Add(string.Format("Snapshot #{0}", tvUserView.GetNodeCount(true)), "description");
+            int id = vizcore3d.Review.UserView.Add(
+                string.Format("Snapshot #{0}", tvUserView.GetNodeCount(true))
+                , string.Format("description #{0}", tvUserView.GetNodeCount(true))
+                );
 
             if (id < 1) return;
 
@@ -632,6 +664,8 @@ namespace VIZCore3D.NET.UserView
             VIZCore3D.NET.Data.ReviewItem review = (VIZCore3D.NET.Data.ReviewItem)tvUserView.SelectedNode.Tag;
             if (review.Kind == Manager.ReviewManager.ReviewKind.RK_FOLDER) return;
 
+            vizcore3d.Statusbar.Items[0].Text = review.Description;
+
             // Show Image
             System.Drawing.Image img = vizcore3d.Review.GetReviewImage(review.ID);
             if(img != null)
@@ -680,6 +714,8 @@ namespace VIZCore3D.NET.UserView
                 string model = vizcore3d.Review.GetModelPathInReviewFile(file);
                 if (String.IsNullOrEmpty(model) == false && System.IO.File.Exists(model) == true)
                     vizcore3d.Model.Open(model);
+                else
+                    return;
             }
 
             // Open Review
@@ -703,9 +739,10 @@ namespace VIZCore3D.NET.UserView
         private void btnImport_Click(object sender, EventArgs e)
         {
             //vizcore3d.Review.Import("...", true);
-            vizcore3d.Review.ImportFileDialog();
-
-            RefreshTree();
+            bool result = vizcore3d.Review.ImportFileDialog();
+            
+            if(result == true)
+                RefreshTree();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -768,6 +805,13 @@ namespace VIZCore3D.NET.UserView
                     RefreshNode(item, node, items);
                 }
             }
+        }
+
+        private void btnCount_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.ReviewItem> items = vizcore3d.Review.UserView.GetList(false);
+
+            MessageBox.Show(string.Format("Count : {0}", items.Count), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
