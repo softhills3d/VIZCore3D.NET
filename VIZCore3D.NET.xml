@@ -23770,6 +23770,59 @@
             </summary>
             <returns>Result</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.GetCount(System.String)">
+            <summary>
+            지정된 파일의 Metadata 항목 개수를 반환
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <returns>지정된 파일의 Metadata 항목 개수</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.Exist(System.String,System.Int32)">
+            <summary>
+            지정된 파일에 ID에 해당하는 메타데이터 정보 유무
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <param name="id">메타데이터 아이디(ID)</param>
+            <returns>지정된 아이디(ID)의 메타데이터 유무</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.Exist(System.String,System.String)">
+            <summary>
+            지정된 파일에 이름에 해당하는 메타데이터 유무
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <param name="name">메타데이터 이름</param>
+            <returns>이름에 해당하는 메타데이터 유무</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.GetData(System.String,System.Int32)">
+            <summary>
+            지정된 VIZ 파일에 아이디(ID)에 해당하는 메타데이터 바이너리 정보 반환
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <param name="id">메타데이터 아이디(ID)</param>
+            <returns>VIZ 파일에 아이디(ID)에 해당하는 메타데이터 바이너리 정보 반환</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.GetName(System.String,System.Int32)">
+            <summary>
+            지정된 VIZ 파일에 아이디(ID)에 해당하는 메타데이터의 이름 반환
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <param name="id">메타데이터 아이디(ID)</param>
+            <returns>메타데이터의 이름</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.GetIDs(System.String)">
+            <summary>
+            지정된 VIZ 파일에 포함된 메타데이터 아이디(ID) 목록 반환
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <returns>메타데이터 아이디(ID) 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.GetIdNameMap(System.String)">
+            <summary>
+            Get ID/Name Map
+            </summary>
+            <param name="path">VIZ 파일 경로 (경로 + 파일)</param>
+            <returns>Map - Key: ID, Value: Name</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.MiniViewManager">
             <summary>
             MiniView Manager
