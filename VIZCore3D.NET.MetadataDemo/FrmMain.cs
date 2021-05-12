@@ -473,9 +473,20 @@ namespace VIZCore3D.NET.MetadataDemo
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            if (vizcore3d.Model.IsOpen() == false) return;
+            int count = 0;
 
-            int count = vizcore3d.Metadata.Count;
+            if (ckFile.Checked == false)
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+
+                count = vizcore3d.Metadata.Count;
+            }
+            else
+            {
+                if (String.IsNullOrEmpty(txtPath.Text) == true) return;
+
+                count = vizcore3d.Metadata.GetCount(txtPath.Text);
+            }
 
             if (count <= 0)
             {
@@ -488,7 +499,10 @@ namespace VIZCore3D.NET.MetadataDemo
 
         private void RefreshMetadata()
         {
-            Dictionary<int, string> items = vizcore3d.Metadata.GetIdNameMap();
+            Dictionary<int, string> items 
+                = ckFile.Checked == false 
+                ? vizcore3d.Metadata.GetIdNameMap() 
+                : vizcore3d.Metadata.GetIdNameMap(txtPath.Text);
 
             lvMetadata.BeginUpdate();
             lvMetadata.Items.Clear();
@@ -569,13 +583,34 @@ namespace VIZCore3D.NET.MetadataDemo
             string id = lvi.SubItems[0].Text;
             string name = lvi.SubItems[1].Text;
 
-            byte[] buffer = vizcore3d.Metadata.GetData(Convert.ToInt32(id));
+            byte[] buffer 
+                = ckFile.Checked == false 
+                ? vizcore3d.Metadata.GetData(Convert.ToInt32(id)) 
+                : vizcore3d.Metadata.GetData(ckFile.Text, Convert.ToInt32(id));
+
             if (buffer == null || buffer.Length == 0) return;
 
             pbImage.Image = ByteArrayToImage(buffer);
         }
 
-        
+
+        // ================================================
+        // Utility
+        // ================================================
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "VIZ (*.viz)|*.viz";
+            if (dlg.ShowDialog() != DialogResult.OK)
+            {
+                ckFile.Checked = false;
+            }
+
+            txtPath.Text = dlg.FileName;
+
+            btnRefresh.PerformClick();
+        }
+
 
         // ================================================
         // Utility
