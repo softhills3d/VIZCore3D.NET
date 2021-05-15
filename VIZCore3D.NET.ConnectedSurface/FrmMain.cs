@@ -617,6 +617,7 @@ namespace VIZCore3D.NET.ConnectedSurface
                         item.Index1
                         , item.Index2
                         , new Data.Vertex3D(item.X, item.Y, item.Z)
+                        , 10 /* Face Distance Tolerance */
                         );
 
                 AddResult(nv, true, true);
