@@ -8192,58 +8192,6 @@
             </code> 
             </example>
         </member>
-        <member name="T:VIZCore3D.NET.Data.SectionPlane">
-            <summary>
-            Section Plane
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.ID">
-            <summary>
-            ID
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.Title">
-            <summary>
-            Title
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.Visible">
-            <summary>
-            Visible
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.Selected">
-            <summary>
-            Selected
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.Clipping">
-            <summary>
-            Cliping 유형
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.Center">
-            <summary>
-            Center
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.SectionPlane.Normal">
-            <summary>
-            Normal Vector
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Data.SectionPlane.#ctor">
-            <summary>
-            Construction
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Data.SectionPlane.#ctor(VIZCore3DNETInterop.VIZCore3D,System.String)">
-            <summary>
-            Construction
-            </summary>
-            <param name="vizcore">VIZCore</param>
-            <param name="rawData">Raw Data</param>
-        </member>
         <member name="T:VIZCore3D.NET.Data.SectionComment">
             <summary>
             Section Comment Class
@@ -8325,6 +8273,114 @@
             </summary>
             <param name="format">문자열 형식</param>
             <returns>지정된 포맷 형식의 날짜 문자열</returns>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.SectionPlane">
+            <summary>
+            Section Plane
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.SectionID">
+            <summary>
+            Section ID
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.ID">
+            <summary>
+            Plane ID (Sub ID)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.Title">
+            <summary>
+            Title
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.Visible">
+            <summary>
+            Visible
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.Selected">
+            <summary>
+            Selected
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.Clipping">
+            <summary>
+            Cliping 유형
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.Center">
+            <summary>
+            Center
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.Normal">
+            <summary>
+            Normal Vector
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlane.EdgeCount">
+            <summary>
+            Edge Count
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.SectionPlane.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.SectionPlane.#ctor(VIZCore3DNETInterop.VIZCore3D,System.Int32,System.String)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore</param>
+            <param name="sectionId">Section ID</param>
+            <param name="rawData">Raw Data</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.SectionPlaneEdge">
+            <summary>
+            Section Plane Edge
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.ID">
+            <summary>
+            Section ID
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.SubID">
+            <summary>
+            Sub ID (Plane ID)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.Index">
+            <summary>
+            Edge Index
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.Count">
+            <summary>
+            Edge Count
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.Postion1">
+            <summary>
+            Position #1
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.Postion2">
+            <summary>
+            Position #2
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionPlaneEdge.Color">
+            <summary>
+            Color
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.SectionPlaneEdgeCollection">
+            <summary>
+            Section Plane Edge Collection Class
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.SelectionBox">
             <summary>
@@ -18554,6 +18610,9 @@
             <summary>
             Base Manager
             </summary>
+            <summary>
+            Base Manager
+            </summary>
         </member>
         <member name="P:VIZCore3D.NET.Interop.VIZCoreBase.VIZCore">
             <summary>
@@ -20087,6 +20146,16 @@
             <param name="index1">부재 인덱스 1</param>
             <param name="index2">부재 인덱스 2</param>
             <param name="v">참조점(검사 위치)</param>
+            <returns>두 부재 인접면의 법선벡터</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetConnectedSurfaceNormalVector(System.Int32,System.Int32,VIZCore3D.NET.Data.Vertex3D,System.Single)">
+            <summary>
+            두 부재 인접면의 법선벡터 반환
+            </summary>
+            <param name="index1">부재 인덱스 1</param>
+            <param name="index2">부재 인덱스 2</param>
+            <param name="v">참조점(검사 위치)</param>
+            <param name="faceDistanceTolerance">인전면과 참조점 사이의 거리</param>
             <returns>두 부재 인접면의 법선벡터</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
@@ -37609,6 +37678,67 @@
             <param name="id">단면 아이디(ID)</param>
             <param name="subid">단면 세부 아이디(ID)</param>
             <returns>단면 노말(Normal) 방향</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetClippedEdge(System.Int32,System.Int32)">
+            <summary>
+            단면 클리핑된 단면선 Edge 목록 반환
+            </summary>
+            <param name="id"></param>
+            <param name="subid"></param>
+            <returns></returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            
+                if (section == null) return;
+            
+                if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
+                {
+                    VIZCore3D.NET.Data.SectionPlaneEdgeCollection items
+                        = vizcore3d.Section.GetClippedEdge(section.ID, -1);
+            
+                    foreach (VIZCore3D.NET.Data.SectionPlaneEdge edge in items)
+                    {
+                        System.Diagnostics.Trace.WriteLine(
+                            string.Format(
+                                "P1:{0}, P2:{1}, C:{2}"
+                                , edge.Postion1.ToString()
+                                , edge.Postion2.ToString()
+                                , edge.Color.ToArgb().ToString()
+                                )
+                                );
+                    }
+                }
+                else if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        VIZCore3D.NET.Data.SectionPlaneEdgeCollection items
+                            = vizcore3d.Section.GetClippedEdge(section.ID, i);
+            
+                        foreach (VIZCore3D.NET.Data.SectionPlaneEdge edge in items)
+                        {
+                            System.Diagnostics.Trace.WriteLine(
+                                string.Format(
+                                    "P1:{0}, P2:{1}, C:{2}"
+                                    , edge.Postion1.ToString()
+                                    , edge.Postion2.ToString()
+                                    , edge.Color.ToArgb().ToString()
+                                    )
+                                    );
+                        }
+                    }
+                }
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.SecurityManager">
             <summary>
