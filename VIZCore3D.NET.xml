@@ -5569,6 +5569,31 @@
             CUSTOM 3D MODE
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.LogKind">
+            <summary>
+            Log Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.LogKind.NONE">
+            <summary>
+            NONE
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.LogKind.BASIC">
+            <summary>
+            BASIC
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.LogKind.DETAIL">
+            <summary>
+            DETAIL
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.LogKind.INFORMATION">
+            <summary>
+            INFORMATION
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Facet">
             <summary>
             Facet Class
@@ -31998,6 +32023,32 @@
             <param name="input">Input VIZ File</param>
             <param name="output">Output VIZW File</param>
             <param name="showFileInExplorer">Show File In Explorer</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWide3D(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32,VIZCore3D.NET.Data.MergeStructureModes,System.Int32,System.Int32,System.Int32,VIZCore3D.NET.Data.LogKind)">
+            <summary>
+            VIZWide3D 모델 내보내기
+            </summary>
+            <param name="input">Input VIZ Path</param>
+            <param name="viz">Output VIZ Path</param>
+            <param name="vizw">Output VIZW Path</param>
+            <param name="onlyVIZW">Export Only VIZW</param>
+            <param name="edge">Generate Edge</param>
+            <param name="thumbnail">Generate Thumbnail</param>
+            <param name="vizVersion">VIZ Version : V.303</param>
+            <param name="writeOption">Write Option</param>
+            <param name="normalCylinderCount">Normal Cylinder Count : 12 ~ 36</param>
+            <param name="smallCylinderCount">Small Cylinder Count : 6 ~ 36</param>
+            <param name="dgnQuality">DGN Quality</param>
+            <param name="log">Log</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWide3D(System.String,System.String)">
+            <summary>
+            VIZWide3D 모델 내보내기
+            </summary>
+            <param name="input">Input VIZ Path</param>
+            <param name="output">Output VIZW Path</param>
             <returns>Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ClearAttribute(System.String,System.String,System.Boolean)">
