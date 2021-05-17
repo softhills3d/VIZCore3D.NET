@@ -281,7 +281,7 @@ namespace VIZCore3D.NET.ConnectedSurface
             // 글자 굵게
             vizcore3d.Review.Note.FontBold = true;
             // 지시선(라인) 색상
-            vizcore3d.Review.Note.LineColor = Color.White;
+            vizcore3d.Review.Note.LineColor = Color.Black;
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 2;
             // 지시선 중앙 연결
@@ -503,10 +503,12 @@ namespace VIZCore3D.NET.ConnectedSurface
             VIZCore3D.NET.Data.Node node1 = vizcore3d.Object3D.FromIndex(item.Index1);
             VIZCore3D.NET.Data.Node node2 = vizcore3d.Object3D.FromIndex(item.Index2);
 
+            string no = Convert.ToString(lvResult.Items.Count + 1);
+
             ListViewItem lvi = new ListViewItem(
-                new string[] 
+                new string[]
                 {
-                    Convert.ToString(lvResult.Items.Count + 1)
+                    no
                     , node1.Index.ToString()
                     , node2.Index.ToString()
                     , node1.NodeName
@@ -519,11 +521,15 @@ namespace VIZCore3D.NET.ConnectedSurface
 
             lvi.Tag = item;
 
+            if (item.Normal.Z > 0)
+                lvi.BackColor = Color.Yellow;
+
             lvResult.Items.Add(lvi);
 
             if (note == true)
             {
                 VIZCore3D.NET.Data.MultiColorText text = new Data.MultiColorText();
+                text.AddLine(string.Format("NO. : {0}", no), Color.Purple);
                 text.AddLine(string.Format("NODE #1 : {0}", node1.NodeName), Color.Black);
                 text.AddLine(string.Format("NODE #2 : {0}", node2.NodeName), Color.Blue);
                 text.AddLine(string.Format("N/V : {0}", item.Normal.ToString()), Color.Red);
