@@ -466,7 +466,20 @@ namespace VIZCore3D.NET.SectionClippedEdge
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Model.OnModelClosedEvent += Model_OnModelClosedEvent;
+            vizcore3d.View.OnCameraStateChangedEvent += View_OnCameraStateChangedEvent;
             vizcore3d.Section.OnSectionEvent += Section_OnSectionEvent;
+        }
+        #endregion
+
+        private void Model_OnModelClosedEvent(object sender, EventArgs e)
+        {
+            DrawingCtrl.ClearData();
+        }
+
+        private void View_OnCameraStateChangedEvent(object sender, EventArgs e)
+        {
+            DrawLine();
         }
 
         private void Section_OnSectionEvent(object sender, Event.EventManager.SectionEventArgs e)
@@ -476,8 +489,10 @@ namespace VIZCore3D.NET.SectionClippedEdge
                 case Manager.SectionManager.EventTypes.ADD:
                     break;
                 case Manager.SectionManager.EventTypes.DELETE:
+                    DrawingCtrl.ClearData();
                     break;
                 case Manager.SectionManager.EventTypes.CLEAR:
+                    DrawingCtrl.ClearData();
                     break;
                 case Manager.SectionManager.EventTypes.SELECT:
                     break;
@@ -491,35 +506,69 @@ namespace VIZCore3D.NET.SectionClippedEdge
                     break;
             }
         }
-        #endregion
+        
 
         private void FrmMain_Resize(object sender, EventArgs e)
         {
             splitContainer1.SplitterDistance = this.Width / 2;
         }
 
+
         private void DrawLine()
         {
-            VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
-
-            VIZCore3D.NET.Data.SectionPlaneEdgeCollection spec = vizcore3d.Section.GetClippedEdge(section.ID, -1);
-
-            List<List<PointF>> lines = new List<List<PointF>>();
-
-            foreach (VIZCore3D.NET.Data.SectionPlaneEdge item in spec)
+            if (vizcore3d.Section == null || vizcore3d.Section.SelectedItem == null)
             {
-                List<PointF> line = new List<PointF>();
-
-                VIZCore3D.NET.Data.Vertex3D point1 = vizcore3d.View.WorldToScreen(item.Postion1, true);
-                line.Add(new PointF(point1.X, point1.Y));
-
-                VIZCore3D.NET.Data.Vertex3D point2 = vizcore3d.View.WorldToScreen(item.Postion2, true);
-                line.Add(new PointF(point2.X, point2.Y));
-
-                lines.Add(line);
+                DrawingCtrl.ClearData();
+                return;
             }
 
-            DrawingCtrl.SetData(lines);
+            VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+
+            if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
+            {
+                VIZCore3D.NET.Data.SectionPlaneEdgeCollection spec = vizcore3d.Section.GetClippedEdge(section.ID, -1);
+
+                List<List<PointF>> lines = new List<List<PointF>>();
+
+                foreach (VIZCore3D.NET.Data.SectionPlaneEdge item in spec)
+                {
+                    List<PointF> line = new List<PointF>();
+
+                    VIZCore3D.NET.Data.Vertex3D point1 = vizcore3d.View.WorldToScreen(item.Postion1, true);
+                    line.Add(new PointF(point1.X, point1.Y));
+
+                    VIZCore3D.NET.Data.Vertex3D point2 = vizcore3d.View.WorldToScreen(item.Postion2, true);
+                    line.Add(new PointF(point2.X, point2.Y));
+
+                    lines.Add(line);
+                }
+
+                DrawingCtrl.SetData(lines);
+            }
+            else if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
+            {
+                List<List<PointF>> lines = new List<List<PointF>>();
+
+                for (int i = 0; i < 6; i++)
+                {
+                    VIZCore3D.NET.Data.SectionPlaneEdgeCollection spec = vizcore3d.Section.GetClippedEdge(section.ID, i);
+
+                    foreach (VIZCore3D.NET.Data.SectionPlaneEdge item in spec)
+                    {
+                        List<PointF> line = new List<PointF>();
+
+                        VIZCore3D.NET.Data.Vertex3D point1 = vizcore3d.View.WorldToScreen(item.Postion1, true);
+                        line.Add(new PointF(point1.X, point1.Y));
+
+                        VIZCore3D.NET.Data.Vertex3D point2 = vizcore3d.View.WorldToScreen(item.Postion2, true);
+                        line.Add(new PointF(point2.X, point2.Y));
+
+                        lines.Add(line);
+                    }
+                }
+
+                DrawingCtrl.SetData(lines);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -531,9 +580,16 @@ namespace VIZCore3D.NET.SectionClippedEdge
                 vizcore3d.Section.Clear();
             }
 
-            VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.X);
-            vizcore3d.Section.Clipping = Manager.SectionManager.ClippingTypes.ONE_WAY_CLIPPING;
-            vizcore3d.View.MoveCamera(Data.CameraDirection.X_MINUS);
+            if (rbSection.Checked == true)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.X);
+                vizcore3d.Section.Clipping = Manager.SectionManager.ClippingTypes.ONE_WAY_CLIPPING;
+                vizcore3d.View.MoveCamera(Data.CameraDirection.X_MINUS);
+            }
+            else if(rbSectionBox.Checked == true)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.AddBox(false, 0);
+            }
 
             DrawLine();
         }

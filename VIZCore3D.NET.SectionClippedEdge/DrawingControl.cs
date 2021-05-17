@@ -25,9 +25,22 @@ namespace VIZCore3D.NET.SectionClippedEdge
             Invalidate();
         }
 
+        public void ClearData()
+        {
+            Lines = null;
+
+            Invalidate();
+        }
+
         private void DrawingControl_Paint(object sender, PaintEventArgs e)
         {
-            if (Lines == null) return;
+            if (Lines == null)
+            {
+                e.Graphics.FillRectangle(Brushes.Black, new Rectangle(0, 0, this.Width, this.Height));
+                return;
+            }
+
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             using (Pen pen = new Pen(Color.White, 1))
             {
