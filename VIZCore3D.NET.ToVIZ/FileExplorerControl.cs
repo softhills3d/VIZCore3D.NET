@@ -138,6 +138,8 @@ namespace VIZCore3D.NET.ToVIZ
                     item.EnsureVisible();
                     lvFiles.Refresh();
                 }));
+
+                Application.DoEvents();
             }
         }
     }
