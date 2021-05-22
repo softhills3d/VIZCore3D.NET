@@ -37,6 +37,10 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rbSection = new System.Windows.Forms.RadioButton();
             this.rbSectionBox = new System.Windows.Forms.RadioButton();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.ckMulti = new System.Windows.Forms.CheckBox();
+            this.txtOffset = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -78,6 +82,10 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.txtOffset);
+            this.groupBox1.Controls.Add(this.ckMulti);
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.rbSectionBox);
             this.groupBox1.Controls.Add(this.rbSection);
             this.groupBox1.Controls.Add(this.btnRefresh);
@@ -91,7 +99,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(293, 37);
+            this.btnRefresh.Location = new System.Drawing.Point(293, 23);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 1;
@@ -101,7 +109,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(30, 37);
+            this.btnAdd.Location = new System.Drawing.Point(30, 23);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 0;
@@ -125,22 +133,61 @@
             // 
             this.rbSection.AutoSize = true;
             this.rbSection.Checked = true;
-            this.rbSection.Location = new System.Drawing.Point(111, 40);
+            this.rbSection.Location = new System.Drawing.Point(111, 26);
             this.rbSection.Name = "rbSection";
             this.rbSection.Size = new System.Drawing.Size(65, 16);
             this.rbSection.TabIndex = 2;
             this.rbSection.Text = "Section";
             this.rbSection.UseVisualStyleBackColor = true;
+            this.rbSection.CheckedChanged += new System.EventHandler(this.rbSection_CheckedChanged);
             // 
             // rbSectionBox
             // 
             this.rbSectionBox.AutoSize = true;
-            this.rbSectionBox.Location = new System.Drawing.Point(188, 40);
+            this.rbSectionBox.Location = new System.Drawing.Point(188, 26);
             this.rbSectionBox.Name = "rbSectionBox";
             this.rbSectionBox.Size = new System.Drawing.Size(87, 16);
             this.rbSectionBox.TabIndex = 3;
             this.rbSectionBox.Text = "SectionBox";
             this.rbSectionBox.UseVisualStyleBackColor = true;
+            this.rbSectionBox.CheckedChanged += new System.EventHandler(this.rbSectionBox_CheckedChanged);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(384, 23);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.TabIndex = 4;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // ckMulti
+            // 
+            this.ckMulti.AutoSize = true;
+            this.ckMulti.Location = new System.Drawing.Point(111, 62);
+            this.ckMulti.Name = "ckMulti";
+            this.ckMulti.Size = new System.Drawing.Size(51, 16);
+            this.ckMulti.TabIndex = 5;
+            this.ckMulti.Text = "Multi";
+            this.ckMulti.UseVisualStyleBackColor = true;
+            // 
+            // txtOffset
+            // 
+            this.txtOffset.Location = new System.Drawing.Point(238, 59);
+            this.txtOffset.Name = "txtOffset";
+            this.txtOffset.Size = new System.Drawing.Size(100, 21);
+            this.txtOffset.TabIndex = 6;
+            this.txtOffset.Text = "3000";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(186, 63);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 12);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Offset";
             // 
             // FrmMain
             // 
@@ -173,6 +220,10 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.RadioButton rbSectionBox;
         private System.Windows.Forms.RadioButton rbSection;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.CheckBox ckMulti;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtOffset;
     }
 }
 
