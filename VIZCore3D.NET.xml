@@ -5594,6 +5594,982 @@
             INFORMATION
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.ToolbarItems">
+            <summary>
+            Toolbar Items
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CLOSE">
+            <summary>
+            새 모델 (닫기)
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_NEW">
+            <summary>
+            빈 모델
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_OPEN">
+            <summary>
+            모델 열기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_ADD">
+            <summary>
+            모델 추가
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_OPEN_FRAME">
+            <summary>
+            좌표계 열기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_OPEN_GENERIC">
+            <summary>
+            GENERIC 파일 열기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SAVE_VIZ">
+            <summary>
+            저장
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SAVEAS_VIZ">
+            <summary>
+            다른이름으로 저장
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EXPORT">
+            <summary>
+            내보내기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EXPORT_STRUCTURE">
+            <summary>
+            구조 내보내기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MERGERULES_ADD">
+            <summary>
+            병합 규칙 추가
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MERGERULES_OPEN">
+            <summary>
+            병합 규칙 열기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MERGERULES_CLEAR">
+            <summary>
+            병합 규칙 삭제
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EXPORT_VIZX">
+            <summary>
+            VIZx 형식 내보내기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MODELTREE">
+            <summary>
+            모델 트리 보이기/숨기기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_PROJECTION_PERSPECTIVE">
+            <summary>
+            Projection Perspective
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_PROJECTION_ORTHOGRAPHIC">
+            <summary>
+            Projection Orthographic
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_NAVIGATION_PAN">
+            <summary>
+            Navigation : Pan
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_NAVIGATION_ROTATE">
+            <summary>
+            Navigation : Rotate
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_NAVIGATION_ORBIT">
+            <summary>
+            Navigation : Orbit
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_NAVIGATION_WALK">
+            <summary>
+            Navigation : Walk
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_NAVIGATION_FLY">
+            <summary>
+            Navigation : Fly
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_AVATAR_VISIBLE">
+            <summary>
+            Avatar Visible
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_AVATAR_POSITION">
+            <summary>
+            Avatar Position
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_WIRE">
+            <summary>
+            Rendering : Wire
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_FLAT">
+            <summary>
+            Rendering : Flat
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_SMOOTH">
+            <summary>
+            Rendering : Smooth
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_EDGE">
+            <summary>
+            Rendering : Edge
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_SMOOTHEDGE">
+            <summary>
+            Rendering : Smooth Edge
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_HIDDENLINEREMOVAL">
+            <summary>
+            Rendering : Hidden Line Removal
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_RENDERING_DASH_LINE">
+            <summary>
+            Rendering : Dash Line
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_PHONGSHADING">
+            <summary>
+            Shade Effect : Phong
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_PBR">
+            <summary>
+            Shade Effect : PBR
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_SILHOUETTEEDGE">
+            <summary>
+            Shade Effect : Silhouette Edge
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_REALTIMESHADOW">
+            <summary>
+            Shade Effect : Phong
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_FLOORSHADOW">
+            <summary>
+            Shade Effect : Floor Shadow
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_SHADING">
+            <summary>
+            Shade Effect : Shading
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_ENVIRONMENTLIGHT">
+            <summary>
+            Shade Effect : Environment Light
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_PLANEREFLECTION">
+            <summary>
+            Shade Effect : Plane Reflection
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_ANTIALIASING">
+            <summary>
+            Shade Effect : Anti-Aliasing
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EFFECT_SETTING">
+            <summary>
+            Shade Effect : Setting
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_XRAY">
+            <summary>
+            X-RAY
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SELECTION_BOX">
+            <summary>
+            Selection : Box
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SELECTION_BOX_MULTI">
+            <summary>
+            Selection : Box (Multi)
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SELECTION_ALL">
+            <summary>
+            Selection : All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SELECTION_CLEAR">
+            <summary>
+            Selection : Clear
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SELECTION_INVERT">
+            <summary>
+            Selection : Invert
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VISIBLE_HIDE_SELECTED">
+            <summary>
+            Hide Selected
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VISIBLE_HIDE_UNSELECTED">
+            <summary>
+            Hide Unselected
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VISIBLE_SHOW_ALL">
+            <summary>
+            Show All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VISIBLE_HIDE_ALL">
+            <summary>
+            Hide All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MINIVIEW">
+            <summary>
+            Mini View
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VIEW_RESET">
+            <summary>
+            Reset View
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VIEW_FIT">
+            <summary>
+            Fit Screen
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VIEW_MOVECENTER">
+            <summary>
+            Move Center
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VIEW_FLY">
+            <summary>
+            Fly To Object
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_VIEW_BOXZOOM">
+            <summary>
+            Box Zoom
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_ISOPLUS">
+            <summary>
+            Move Camera : ISO+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_ISOMINUS">
+            <summary>
+            Move Camera : ISO-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_XPLUS">
+            <summary>
+            Move Camera : X+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_XMINUS">
+            <summary>
+            Move Camera : X-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_YPLUS">
+            <summary>
+            Move Camera : Y+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_YMINUS">
+            <summary>
+            Move Camera : Y-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_ZPLUS">
+            <summary>
+            Move Camera : Z+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_ZMINUS">
+            <summary>
+            Move Camera : Z-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_XPLUS_ANGLE">
+            <summary>
+            Rotate Camera : X+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_XMINUS_ANGLE">
+            <summary>
+            Rotate Camera : X-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_YPLUS_ANGLE">
+            <summary>
+            Rotate Camera : Y+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_YMINUS_ANGLE">
+            <summary>
+            Rotate Camera : Y-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_ZPLUS_ANGLE">
+            <summary>
+            Rotate Camera : Z+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_ZMINUS_ANGLE">
+            <summary>
+            Rotate Camera : Z-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_AXIS_PLUS">
+            <summary>
+            Rotate Camera : Axis+
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CAMERA_AXIS_MINUS">
+            <summary>
+            Rotate Camera : Axis-
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_COLOR_CHANGE">
+            <summary>
+            Change Color
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_COLOR_RESTORE">
+            <summary>
+            Restore Color - Selected Item
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_COLOR_RESTORE_ALL">
+            <summary>
+            Restore Color - All Item
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_ALPHA_CHANGE">
+            <summary>
+            Change Alpha
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_ALPHA_RESTORE">
+            <summary>
+            Restore Alpha - Selected Item
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_ALPHA_RESTORE_ALL">
+            <summary>
+            Restore Alpha - All Item
+            </summary>
+        </member>
+        <!-- "F:VIZCore3D.NET.Data.ToolbarItems.MAIN_COLOR_ALPHA_RESTORE_ALL" 멤버에 대해 잘못된 형식의 XML 주석은 무시됩니다. -->
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_HANDLE">
+            <summary>
+            Handle
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_DEFAULT">
+            <summary>
+            Handle Mode : Default
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_AXIS">
+            <summary>
+            Handle Mode : Axis
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_PLANE">
+            <summary>
+            Handle Mode : Plane
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_ROTATE">
+            <summary>
+            Handle Mode : Rotate
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_ROTATE">
+            <summary>
+            Rotate Dialog
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_MOVE">
+            <summary>
+            Move Dialog
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_RESTORE">
+            <summary>
+            Restore Transform
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_RESTORE_ALL">
+            <summary>
+            Restore All Transform
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FIND_NODE">
+            <summary>
+            Find Node
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FIND_OUTSIDE">
+            <summary>
+            Find Outside
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FIND_SPACE">
+            <summary>
+            Find Space
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SCREENITEM_FRAME">
+            <summary>
+            Screen Item : Frame
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SCREENITEM_VIEWTOOLBAR">
+            <summary>
+            Screen Item : View Toolbar
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SCREENITEM_AXIS">
+            <summary>
+            Screen Item : Axis
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_IMAGE_CLIPBOARD">
+            <summary>
+            Image To Clipboard
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_PRINT">
+            <summary>
+            Print
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_WINDOW_GEOMETRY_PROPERTY">
+            <summary>
+            Window : Geometry Property
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_WINDOW_UDA">
+            <summary>
+            Window : UDA
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_WINDOW_UDA_TREE">
+            <summary>
+            Window : UDA Tree
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SETTING">
+            <summary>
+            Setting Dialog
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MODEL_INFORMATION">
+            <summary>
+            Model Information
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FRAME_OPEN">
+            <summary>
+            Open Frame File
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ADD_PLANE">
+            <summary>
+            PLANE
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ADD_BOX">
+            <summary>
+            BOX
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ADD_INBOX3">
+            <summary>
+            INBOX 3
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ADD_INBOX6">
+            <summary>
+            INBOX 6
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_CLIPPING_ONEWAY">
+            <summary>
+            CLIPPING : ONEWAY
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_CLIPPING_BIDIRECTIONAL">
+            <summary>
+            CLIPPING : BIDIRECTIONAL
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_CLIPPING_CHANGE">
+            <summary>
+            CLIPPING : CHANGE DIRECTION
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ADD_PLANE_PART">
+            <summary>
+            ADD PLANE - PART
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ADD_BOX_PART">
+            <summary>
+            ADD BOX - PART
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_DELETE">
+            <summary>
+            Delete Section
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_CLEAR">
+            <summary>
+            Clear Section
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_HANDLE_ROTATE">
+            <summary>
+            Handle : Rotate
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_HANDLE_SCALE">
+            <summary>
+            Handle : Scale
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_X">
+            <summary>
+            Align : X-Axis
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_Y">
+            <summary>
+            Align : Y-Axis
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_Z">
+            <summary>
+            Align : Z-Axis
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_HORIZONTAL">
+            <summary>
+            Align : HORIZONTAL
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_VERTICAL">
+            <summary>
+            Align : VERTICAL
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_CROSS">
+            <summary>
+            Align : CROSS
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_BETWEEN_TWO_POINTS">
+            <summary>
+            Align : BETWEEN_TWO_POINTS
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_THREE_POINTS">
+            <summary>
+            Align : THREE_POINTS
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_SURFACE">
+            <summary>
+            Align : SURFACE
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_TWO_POINTS">
+            <summary>
+            Align : TWO_POINTS
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_FRAME">
+            <summary>
+            Align : FRAME
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_ALIGN_SELECT_POINT">
+            <summary>
+            Align : SELECT_POINT
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_VISIBLE_LINE">
+            <summary>
+            Visible : Line
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.SECTION_VISIBLE_PLANE">
+            <summary>
+            Visible : Plane
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_ADD_NOTE_SURFACE">
+            <summary>
+            Add Surface Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_ADD_NOTE_2">
+            <summary>
+            Add 2D Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_ADD_NOTE_3">
+            <summary>
+            Add 3D Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_BEGIN">
+            <summary>
+            Draw Mode : Begin
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_DELETE">
+            <summary>
+            Draw Mode : Delete Item
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_END">
+            <summary>
+            Draw Mode : End
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_TEXT">
+            <summary>
+            Draw Markup : Text
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_PEN">
+            <summary>
+            Draw Markup : Pen
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_LINE">
+            <summary>
+            Draw Markup : Line
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_SQUARE">
+            <summary>
+            Draw Markup : Square
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_CIRCLE">
+            <summary>
+            Draw Markup : Circle
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_CLOUD">
+            <summary>
+            Draw Markup : Cloud
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_ARROW">
+            <summary>
+            Draw Markup : Arrow
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_FREECURVE">
+            <summary>
+            Draw Markup : Free Curve
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_SHOW_ALL">
+            <summary>
+            Draw Markup : Show All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_HIDE_ALL">
+            <summary>
+            Draw Markup : Hide All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DRAWMODE_STYLE">
+            <summary>
+            Draw Markup : Setting Style
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_DELETE">
+            <summary>
+            Delete Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_CLEAR">
+            <summary>
+            Clear Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_SHOW_ALL">
+            <summary>
+            Note - Show All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_HIDE_ALL">
+            <summary>
+            Note - Hide All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_SURFACE_SHOW_ALL">
+            <summary>
+            Note - Show All Surface Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_SURFACE_HIDE_ALL">
+            <summary>
+            Note - Hide All Surface Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_3D_SHOW_ALL">
+            <summary>
+            Note - Show All 3D Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_3D_HIDE_ALL">
+            <summary>
+            Note - Hide All 3D Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_2D_SHOW_ALL">
+            <summary>
+            Note - Show All 2D Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.NOTE_2D_HIDE_ALL">
+            <summary>
+            Note - Hide All 2D Note
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_BASIC_POSITION">
+            <summary>
+            Add Basic Position
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_BASIC_DISTANCE">
+            <summary>
+            Add Basic Distance
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_BASIC_ANGLE">
+            <summary>
+            Add Basic Angle
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD">
+            <summary>
+            Add Measure
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE">
+            <summary>
+            Add Distance
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_POINTS">
+            <summary>
+            Add Point To MultiPoint
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_CUSTOMLINEAXIS">
+            <summary>
+            Add Distance Point To Point By Custom Line Axis
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_PARALLELPLANE">
+            <summary>
+            Add Distance Parallel Plane
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_MINIMUM">
+            <summary>
+            Add Distance Minimum
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_BOP">
+            <summary>
+            Add Distance BOP
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONXYZ">
+            <summary>
+            Add Distance Axial Direction XYZ
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONX">
+            <summary>
+            Add Distance Axial Direction X
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONY">
+            <summary>
+            Add Distance Axial Direction Y
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONZ">
+            <summary>
+            Add Distance Axial Direction Z
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS">
+            <summary>
+            Add Distance Continuous
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS_AXIALDIRECTIONX">
+            <summary>
+            Add Distance Continuous Axial Direction X
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS_AXIALDIRECTIONY">
+            <summary>
+            Add Distance Continuous Axial Direction Y
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS_AXIALDIRECTIONZ">
+            <summary>
+            Add Distance Continuous Axial Direction Z
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_AREA">
+            <summary>
+            Add Area
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_ANGLE">
+            <summary>
+            Add Angle
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_INTERSECTION_LINE_PLANE">
+            <summary>
+            Add Intersection Of Line And Plane
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_INTERSECTION_CYLINDER_CYLINDER">
+            <summary>
+            Add Intersection Of Cylinder And Cylinder
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_BOUNDBOX">
+            <summary>
+            Add BoundBox
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_BOUNDBOX_PLANE">
+            <summary>
+            Add BoundBox By Plane
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_CANCEL">
+            <summary>
+            Cancel Step
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_SHOW_ALL">
+            <summary>
+            Show All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_HIDE_ALL">
+            <summary>
+            Hide All
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_DELETE">
+            <summary>
+            Delete Selected Item
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_CLEAR">
+            <summary>
+            Clear
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_BOX">
+            <summary>
+            PRIMITIVE BOX
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_PYRAMID">
+            <summary>
+            PRIMITIVE PYRAMID
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_CYLINDER">
+            <summary>
+            PRIMITIVE CYLINDER
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_SLOPE_BOTTOM_CYLINDER">
+            <summary>
+            PRIMITIVE SLOPE BOTTOM CYLINDER
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_CONE">
+            <summary>
+            PRIMITIVE CONE
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_CIRCULAR_TORUS">
+            <summary>
+            PRIMITIVE CIRCULAR TORUS
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_RECTANGULAR_TORUS">
+            <summary>
+            PRIMITIVE RECTANGULAR TORUS
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_SPHERE">
+            <summary>
+            PRIMITIVE SPHERE
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.PRIMITIVE_SPHEROID">
+            <summary>
+            PRIMITIVE SPHEROID
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Facet">
             <summary>
             Facet Class
@@ -13251,6 +14227,33 @@
         <member name="T:VIZCore3D.NET.Event.NamespaceDoc">
             <summary>
             VIZCore3D.NET <c>Event</c>
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.ToolbarItemClickedEventHandler">
+            <summary>
+            Object3D Removed Node Event
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Argument</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.ToolbarItemClickedEventArgs">
+            <summary>
+            Toolbar Removed EventArgs
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.ToolbarItemClickedEventArgs.Item">
+            <summary>
+            Toolbar Item
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.ToolbarItemClickedEventArgs.Cancel">
+            <summary>
+            Cancel toolbar click state
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.ToolbarItemClickedEventArgs.#ctor(VIZCore3D.NET.Data.ToolbarItems)">
+            <summary>
+            Construction
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Extension.Generic.GenericAttributeControl">
@@ -32025,32 +33028,6 @@
             <param name="showFileInExplorer">Show File In Explorer</param>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWide3D(System.String,System.String,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32,VIZCore3D.NET.Data.MergeStructureModes,System.Int32,System.Int32,System.Int32,VIZCore3D.NET.Data.LogKind)">
-            <summary>
-            VIZWide3D 모델 내보내기
-            </summary>
-            <param name="input">Input VIZ Path</param>
-            <param name="viz">Output VIZ Path</param>
-            <param name="vizw">Output VIZW Path</param>
-            <param name="onlyVIZW">Export Only VIZW</param>
-            <param name="edge">Generate Edge</param>
-            <param name="thumbnail">Generate Thumbnail</param>
-            <param name="vizVersion">VIZ Version : V.303</param>
-            <param name="writeOption">Write Option</param>
-            <param name="normalCylinderCount">Normal Cylinder Count : 12 ~ 36</param>
-            <param name="smallCylinderCount">Small Cylinder Count : 6 ~ 36</param>
-            <param name="dgnQuality">DGN Quality</param>
-            <param name="log">Log</param>
-            <returns>Result</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWide3D(System.String,System.String)">
-            <summary>
-            VIZWide3D 모델 내보내기
-            </summary>
-            <param name="input">Input VIZ Path</param>
-            <param name="output">Output VIZW Path</param>
-            <returns>Result</returns>
-        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ClearAttribute(System.String,System.String,System.Boolean)">
             <summary>
             경량 3D 파일 (VIZ)의 속성 정보를 제거
@@ -37542,7 +38519,23 @@
             <param name="y">중심점 Y</param>
             <param name="z">중심점 Z</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.SetCenter(System.Int32,System.Int32,VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            단면(상자) Plane 중심점 설정
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subId">단면 Plane 아이디(ID) : 단면(-1), 단면상자(0 ~ 5), 인박스단면(0 ~ 2)</param>
+            <param name="position">중심점</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetCenterPosition(System.Int32,System.Int32)">
+            <summary>
+            단면(상자) Plane 중심점 반환
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subId">단면 Plane 아이디(ID) : 단면(-1), 단면상자(0 ~ 5), 인박스단면(0 ~ 2)</param>
+            <returns>Center Position</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetCenter(System.Int32,System.Int32)">
             <summary>
             단면(상자) Plane 중심점 반환
             </summary>
@@ -48246,6 +49239,39 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="E:VIZCore3D.NET.VIZCore3DControl.OnToolbarItemClicked">
+            <summary>
+            Toolbar Item Clicked Event
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                // Add Event
+                vizcore3d.OnToolbarItemClicked += VIZCore3D_OnToolbarItemClicked;
+            }
+            
+            private void VIZCore3D_OnToolbarItemClicked(object sender, Event.ToolbarItemClickedEventArgs e)
+            {
+                if(e.Item == VIZCore3D.NET.Data.ToolbarItems.MAIN_SAVE_VIZ 
+                    || e.Item == VIZCore3D.NET.Data.ToolbarItems.MAIN_SAVEAS_VIZ)
+                {
+                    // Disable Menu :: Save
+                    e.Cancel = true;
+                }
+                else
+                {
+                    e.Cancel = false;
+                }
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.Shortcuts">
             <summary>
