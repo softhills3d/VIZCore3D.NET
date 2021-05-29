@@ -485,7 +485,12 @@ namespace VIZCore3D.NET.ConnectedSurface
             if (String.IsNullOrEmpty(txtPart1.Text) == true) return;
             if (String.IsNullOrEmpty(txtPart2.Text) == true) return;
 
-            VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem item = vizcore3d.GeometryUtility.GetConnectedSurfaceNormalVector(Convert.ToInt32(txtPart1.Text), Convert.ToInt32(txtPart2.Text));
+            VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem item 
+                = vizcore3d.GeometryUtility.GetConnectedSurfaceNormalVector(
+                    Convert.ToInt32(txtPart1.Text)
+                    , Convert.ToInt32(txtPart2.Text)
+                    );
+
             AddResult(item, true, false);
 
             txtPart1.Text = String.Empty;
@@ -513,6 +518,7 @@ namespace VIZCore3D.NET.ConnectedSurface
                     , node2.Index.ToString()
                     , node1.NodeName
                     , node2.NodeName
+                    , item.UseTestPosition == true ? item.TestPosition.ToString() : ""
                     , item.Normal.ToString()
                     , item.Projection1.ToString()
                     , item.Projection2.ToString()
@@ -520,9 +526,6 @@ namespace VIZCore3D.NET.ConnectedSurface
                 );
 
             lvi.Tag = item;
-
-            if (item.Normal.Z > 0)
-                lvi.BackColor = Color.Yellow;
 
             lvResult.Items.Add(lvi);
 
@@ -534,14 +537,21 @@ namespace VIZCore3D.NET.ConnectedSurface
                 text.AddLine(string.Format("NODE #2 : {0}", node2.NodeName), Color.Blue);
                 text.AddLine(string.Format("N/V : {0}", item.Normal.ToString()), Color.Red);
 
-                VIZCore3D.NET.Data.Vertex3D pos = new VIZCore3D.NET.Data.Vertex3D(item.Projection1.X + 500, item.Projection1.Y + 500, item.Projection1.Z + 3500);
+                VIZCore3D.NET.Data.Vertex3D pos 
+                    = new VIZCore3D.NET.Data.Vertex3D(
+                        item.Projection1.X + 500
+                        , item.Projection1.Y + 500
+                        , item.Projection1.Z + 3500
+                        );
 
                 vizcore3d.Review.Note.AddNoteSurface(text, pos, item.Projection1);
             }
 
             if(nv == true)
             {
-                if (Convert.ToInt32(item.Normal.X) != 0 || Convert.ToInt32(item.Normal.Y) != 0 || Convert.ToInt32(item.Normal.Z) != 0) return;
+                if (Convert.ToInt32(item.Normal.X) != 0 
+                    || Convert.ToInt32(item.Normal.Y) != 0 
+                    || Convert.ToInt32(item.Normal.Z) != 0) return;
 
                 vizcore3d.ShapeDrawing.AddVertex(
                     new List<VIZCore3D.NET.Data.Vertex3D>()

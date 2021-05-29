@@ -34,6 +34,7 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.lvResult = new System.Windows.Forms.ListView();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -49,7 +50,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ckEnable = new System.Windows.Forms.CheckBox();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -69,7 +70,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1159, 647);
-            this.splitContainer1.SplitterDistance = 386;
+            this.splitContainer1.SplitterDistance = 669;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox2
@@ -82,7 +83,7 @@
             this.groupBox2.Controls.Add(this.lvResult);
             this.groupBox2.Location = new System.Drawing.Point(12, 155);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(361, 480);
+            this.groupBox2.Size = new System.Drawing.Size(644, 480);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Result";
@@ -100,7 +101,7 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(270, 20);
+            this.btnClear.Location = new System.Drawing.Point(553, 20);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 1;
@@ -119,6 +120,7 @@
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4,
+            this.columnHeader9,
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
@@ -127,11 +129,15 @@
             this.lvResult.HideSelection = false;
             this.lvResult.Location = new System.Drawing.Point(6, 69);
             this.lvResult.Name = "lvResult";
-            this.lvResult.Size = new System.Drawing.Size(349, 405);
+            this.lvResult.Size = new System.Drawing.Size(632, 405);
             this.lvResult.TabIndex = 0;
             this.lvResult.UseCompatibleStateImageBehavior = false;
             this.lvResult.View = System.Windows.Forms.View.Details;
             this.lvResult.DoubleClick += new System.EventHandler(this.lvResult_DoubleClick);
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "No";
             // 
             // columnHeader1
             // 
@@ -139,11 +145,11 @@
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Name #1";
+            this.columnHeader2.Text = "Index #2";
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Index #2";
+            this.columnHeader3.Text = "Name #1";
             // 
             // columnHeader4
             // 
@@ -174,7 +180,7 @@
             this.groupBox1.Controls.Add(this.ckEnable);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(361, 137);
+            this.groupBox1.Size = new System.Drawing.Size(644, 137);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Objects";
@@ -182,7 +188,7 @@
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReset.Location = new System.Drawing.Point(270, 96);
+            this.btnReset.Location = new System.Drawing.Point(553, 96);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 6;
@@ -193,7 +199,7 @@
             // btnGetNormalVector
             // 
             this.btnGetNormalVector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetNormalVector.Location = new System.Drawing.Point(172, 96);
+            this.btnGetNormalVector.Location = new System.Drawing.Point(455, 96);
             this.btnGetNormalVector.Name = "btnGetNormalVector";
             this.btnGetNormalVector.Size = new System.Drawing.Size(75, 23);
             this.btnGetNormalVector.TabIndex = 5;
@@ -243,9 +249,9 @@
             this.ckEnable.Text = "Enable";
             this.ckEnable.UseVisualStyleBackColor = true;
             // 
-            // columnHeader8
+            // columnHeader9
             // 
-            this.columnHeader8.Text = "No";
+            this.columnHeader9.Text = "TEST";
             // 
             // FrmMain
             // 
@@ -290,6 +296,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.ColumnHeader columnHeader8;
+        private System.Windows.Forms.ColumnHeader columnHeader9;
     }
 }
 

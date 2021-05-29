@@ -718,7 +718,7 @@ namespace VIZCore3D.NET.Animation.Block
                 );
 
             // 기본 리소스 (SEA Material) 복사
-            int material = vizcore3d.Object3D.Material.Copy(Data.ResourceMaterials.SEA);
+            int material = vizcore3d.Object3D.Material.Copy(VIZCore3D.NET.Data.ResourceMaterials.SEA);
             Color color = Color.FromArgb(127, 255, 255, 255);
 
             // 리소스 색상 변경

@@ -5594,6 +5594,26 @@
             INFORMATION
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.MovingOptions">
+            <summary>
+            개체 이동 방식
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.MovingOptions.PointToPoint">
+            <summary>
+            Point to Point
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.MovingOptions.LineToLine">
+            <summary>
+            Line To Line
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.MovingOptions.SurfaceToSurface">
+            <summary>
+            Surface To Surface
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -5667,6 +5687,16 @@
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EXPORT_VIZX">
             <summary>
             VIZx 형식 내보내기
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_CONVERSION">
+            <summary>
+            BATCH : Convert to VIZ
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_SIMPLIFY_MODEL">
+            <summary>
+            BATCH : Simplify 3D Model (VIZ)
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MODELTREE">
@@ -5994,7 +6024,11 @@
             Restore Alpha - All Item
             </summary>
         </member>
-        <!-- "F:VIZCore3D.NET.Data.ToolbarItems.MAIN_COLOR_ALPHA_RESTORE_ALL" 멤버에 대해 잘못된 형식의 XML 주석은 무시됩니다. -->
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_COLOR_ALPHA_RESTORE_ALL">
+            <summary>
+            Restore All Color And Alpha
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_HANDLE">
             <summary>
             Handle
@@ -6038,6 +6072,26 @@
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_RESTORE_ALL">
             <summary>
             Restore All Transform
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_MOVE_TARGET_POINT">
+            <summary>
+            Move To Target : Point
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_MOVE_TARGET_LINE">
+            <summary>
+            Move To Target : Line
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_MOVE_TARGET_SURFACE">
+            <summary>
+            Move To Target : Surface
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_DISASSEMBLY">
+            <summary>
+            Disassembly
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FIND_NODE">
@@ -11127,6 +11181,33 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Dialogs.ConvertVIZDialog">
+            <summary>
+            Convert To VIZ Dialog Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ConvertVIZDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.ConvertVIZDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ConvertVIZDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ConvertVIZDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Dialogs.DgnDeviationDialog">
             <summary>
             DGN Quality Dialog
@@ -11160,6 +11241,33 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.DgnDeviationDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog">
+            <summary>
+            Disassemble the Assembly Dialog Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.#ctor(VIZCore3D.NET.Manager.DisassemblyManager)">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -12042,6 +12150,33 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.SimplifyModelDialog">
+            <summary>
+            Simplify 3D Model Dialog Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SimplifyModelDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.SimplifyModelDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SimplifyModelDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SimplifyModelDialog.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -20628,11 +20763,12 @@
             핸들 활성화/비활성화
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.Object3DManager)">
             <summary>
             Construction
             </summary>
             <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="object3d">Object3D Manager</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.Disassemble">
             <summary>
@@ -20744,6 +20880,71 @@
             </summary>
             <param name="useGroup">그룹 사용 : True(Group), False(Selected)</param>
             <param name="rate">거리 비율 (0.5)</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                AddGroup(0);
+            
+                DisassemblyByRate(0.5f);
+            }
+            
+            private void AddGroup(int groupKind)
+            {
+                int index = groupKind;
+            
+                List<VIZCore3D.NET.Data.Node> items = null;
+            
+                if (index == 0) // Children of Root
+                {
+                    items = vizcore3d.Object3D.GetChildObject3d(
+                                0                                                       /* Root Node Index */
+                                , VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY     /* Sub Node */
+                                );
+            
+            
+                }
+                else if (index == 1) // Part (Leaf Node)
+                {
+                    items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PART);
+                }
+                else if (index == 2) // Leaf Assembly
+                {
+                    items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.LEAF_ASSEMBLY);
+                }
+                else if (index == 3) // Parent of Leaf Assembly
+                {
+                    items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PARENT_LEAF_ASSEMBLY);
+                }
+            
+                if (items == null) return;
+            
+                for (int i = 0; i < items.Count; i++)
+                {
+                    bool result = vizcore3d.Object3D.Disassembly.AddGroup(
+                        i                   /* ID : 0 ~ */
+                        , items[i].Index    /* NODE INDEX */
+                        , true              /* Recursive */
+                        );
+                }
+            }
+            
+            private void DisassemblyByRate(float rate)
+            {
+                vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(true, rate);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.ShowDisassembleAssemblyDialog">
+            <summary>
+            Show Disassemble Assembly Dialog
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.DrawingMarkupManager">
             <summary>
@@ -33028,6 +33229,86 @@
             <param name="showFileInExplorer">Show File In Explorer</param>
             <returns>Result</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,VIZCore3D.NET.Data.LogKind)">
+            <summary>
+            VIZWide3D 모델(*.VIZW) 변환
+            </summary>
+            <param name="input">Input VIZ Path</param>
+            <param name="output">Output VIZW Path</param>
+            <param name="log">Log</param>
+            <returns>Result</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                // Different path : INPUT, OUTPUT
+                string input = "C:\\MODEL\\PIPE-100.viz";
+                string output = "C:\\MODEL\\PIPE-100\\PIPE-100.vizw";
+            
+                bool result = vizcore3d.Model.ConvertToVIZW(
+                    input       /* INPUT VIZ File */
+                    , output    /* OUTPUT VIZ File */
+                    , VIZCore3D.NET.Data.LogKind.DETAIL
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String)">
+            <summary>
+            VIZWide3D 모델(*.VIZW) 변환
+            </summary>
+            <param name="input">Input VIZ Path</param>
+            <param name="output">Output VIZW Path</param>
+            <returns>Result</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                // Different path : INPUT, OUTPUT
+                string input = "C:\\MODEL\\PIPE-100.viz";
+                string output = "C:\\MODEL\\PIPE-100\\PIPE-100.vizw";
+            
+                bool result = vizcore3d.Model.ConvertToVIZW(
+                    input       /* INPUT VIZ File */
+                    , output    /* OUTPUT VIZW File */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String)">
+            <summary>
+            VIZWide3D 모델(*.VIZW) 변환
+            </summary>
+            <param name="input">Input VIZ Path</param>
+            <returns>Result</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string path = "C:\\MODEL\\PIPE-100.viz";
+            
+                bool result = vizcore3d.Model.ConvertToVIZW(path);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ClearAttribute(System.String,System.String,System.Boolean)">
             <summary>
             경량 3D 파일 (VIZ)의 속성 정보를 제거
@@ -33351,6 +33632,16 @@
             Get File(VIZ) Metadata
             </summary>
             <returns>Metadata</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ShowConversionDialog">
+            <summary>
+            Show Conversion Dialog
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ShowSimplifyModelDialog">
+            <summary>
+            Show Simplify 3D Model Dialog
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.FireProgressEvent(VIZCore3D.NET.Data.ModelProgressModes,System.Int32)">
             <summary>
@@ -38727,9 +39018,9 @@
             <summary>
             단면 클리핑된 단면선 Edge 목록 반환
             </summary>
-            <param name="id"></param>
-            <param name="subid"></param>
-            <returns></returns>
+            <param name="id">ID</param>
+            <param name="subid">SubID</param>
+            <returns>Edge List Collection</returns>
             <example>
             <code language="cs">
             <![CDATA[
@@ -40567,6 +40858,26 @@
             </summary>
             <param name="node">노드</param>
             <returns>이동 및 회전 메트릭스</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveToTarget(VIZCore3D.NET.Data.MovingOptions)">
+            <summary>
+            선택된 개체를 이동
+            </summary>
+            <param name="option">이동 옵션</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveToTarget(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},VIZCore3D.NET.Data.MovingOptions)">
+            <summary>
+            지정된 노드를 이동
+            </summary>
+            <param name="node">노드 목록</param>
+            <param name="option">이동 옵션</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveToTarget(System.Collections.Generic.List{System.Int32},VIZCore3D.NET.Data.MovingOptions)">
+            <summary>
+            지정된 인덱스의 개체를 이동
+            </summary>
+            <param name="index">인덱스 목록</param>
+            <param name="option">이동 옵션</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.UDAManager">
             <summary>
@@ -49080,11 +49391,6 @@
             ]]>
             </code> 
             </example>
-        </member>
-        <member name="P:VIZCore3D.NET.VIZCore3DControl.TransparentPanel">
-            <summary>
-            Transparent Panel
-            </summary>
         </member>
         <member name="E:VIZCore3D.NET.VIZCore3DControl.OnInitializedVIZCore3D">
             <summary>
