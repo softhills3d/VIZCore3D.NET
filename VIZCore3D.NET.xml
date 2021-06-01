@@ -10163,11 +10163,11 @@
         </member>
         <member name="M:VIZCore3D.NET.Data.Vector3D.PointToPoint(VIZCore3D.NET.Data.Vector3D,System.Single)">
             <summary>
-            현재위치에서 v1 위치의 방향으로 입력된 거리만큼 떨어진 좌표추출
+            현재위치에서 v1(vector) 위치의 방향으로 입력된 거리만큼 떨어진 좌표추출
             </summary>
             <param name="vector">위치</param>
             <param name="length">현재위치에서 떨어진 거리</param>
-            <returns>현재위치에서 v1 위치의 방향으로 입력된 거리만큼 떨어진 좌표</returns>
+            <returns>현재위치에서 v1(vector) 위치의 방향으로 입력된 거리만큼 떨어진 좌표</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Vector3D.TriangleNormal(VIZCore3D.NET.Data.Vector3D,VIZCore3D.NET.Data.Vector3D,VIZCore3D.NET.Data.Vector3D)">
             <summary>
@@ -10920,6 +10920,13 @@
             </summary>
             <param name="info">Model Information</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AboutDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.AboutDialog.components">
             <summary>
             Required designer variable.
@@ -11407,6 +11414,13 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.GeometryDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.GeometryDialog.components">
             <summary>
             Required designer variable.
@@ -11620,6 +11634,13 @@
             </summary>
             <param name="image">Screen Image</param>
             <param name="model">Model Name</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PrintPreviewDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.PrintPreviewDialog.components">
             <summary>
@@ -11852,6 +11873,13 @@
             </summary>
             <param name="view">ViewManager</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RenderingEffectDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.RenderingEffectDialog.components">
             <summary>
             Required designer variable.
@@ -11896,6 +11924,13 @@
             초기 설정값 업데이트
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RenderingEffectDialogV2.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.RenderingEffectDialogV2.components">
             <summary>
             Required designer variable.
@@ -11922,6 +11957,13 @@
             <summary>
             Construction
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RevFileAnalyzerDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.RevFileAnalyzerDialog.components">
             <summary>
@@ -12009,6 +12051,13 @@
             생성자
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchNodeDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.SearchNodeDialog.components">
             <summary>
             Required designer variable.
@@ -12040,6 +12089,13 @@
             <summary>
             Construction
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchSpaceDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.SearchSpaceDialog.components">
             <summary>
@@ -12287,6 +12343,13 @@
             Update Data
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDADialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.UDADialog.components">
             <summary>
             Required designer variable.
@@ -12313,6 +12376,13 @@
             <summary>
             Construction
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDATreeDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.UDATreeDialog.components">
             <summary>
@@ -12407,6 +12477,13 @@
             <summary>
             Construction
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UserViewDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.UserViewDialog.components">
             <summary>
@@ -22171,7 +22248,7 @@
             
                 VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                 matrix.Identity();
-                //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                 //matrix.SetTranslate(1000, 0, 0, false);
             
                 int bodyId = vizcore3d.MeshEdit.CreateBodyPrimitivePyramid(
@@ -22249,7 +22326,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     m.Identity();
-                    //m.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //m.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //m.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitivePyramid(
@@ -22304,7 +22381,7 @@
             
                 VIZCore3D.NET.Data.Matrix3D m = new VIZCore3D.NET.Data.Matrix3D();
                 m.Identity();
-                //m.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                //m.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                 //m.SetTranslate(1000, 0, 0, false);
                 
                 vizcore3d.BeginUpdate();
@@ -22492,7 +22569,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.CreateBodyPrimitiveRectangularTorus(
@@ -22581,7 +22658,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveRectangularTorus(
@@ -22663,7 +22740,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.CreateBodyPrimitiveCircularTorus(
@@ -22747,7 +22824,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveCircularTorus(
@@ -22819,7 +22896,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.CreateBodyPrimitiveDish(
@@ -22895,7 +22972,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveDish(
@@ -22966,7 +23043,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.CreateBodyWithPrimitiveSphericalCap(
@@ -23043,7 +23120,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveSphericalCap(
@@ -23101,7 +23178,7 @@
             
                 VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                 matrix.Identity();
-                //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                 //matrix.SetTranslate(1000, 0, 0, false);
             
                 vizcore3d.BeginUpdate();
@@ -23181,7 +23258,7 @@
             
                 VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                 matrix.Identity();
-                //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                 //matrix.SetTranslate(1000, 0, 0, false);
             
                 vizcore3d.BeginUpdate();
@@ -23276,7 +23353,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveBox(
@@ -23295,7 +23372,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     matrix.SetTranslate(1000, 2000, 3000);
             
                     vizcore3d.MeshEdit.AddPrimitiveCone(
@@ -23373,7 +23450,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveBox(
@@ -23395,7 +23472,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     matrix.SetTranslate(1000, 2000, 3000);
             
                     vizcore3d.MeshEdit.AddPrimitiveCone(
@@ -23453,7 +23530,7 @@
             
                 VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                 matrix.Identity();
-                //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                 //matrix.SetTranslate(1000, 0, 0, false);
             
                 vizcore3d.BeginUpdate();
@@ -23529,7 +23606,7 @@
             
                 VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                 matrix.Identity();
-                //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                 //matrix.SetTranslate(1000, 0, 0, false);
             
                 vizcore3d.BeginUpdate();
@@ -23693,7 +23770,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveBox(
@@ -23712,7 +23789,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     matrix.SetTranslate(1000, 2000, 3000);
             
                     vizcore3d.MeshEdit.AddPrimitiveCylinder(
@@ -23787,7 +23864,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveBox(
@@ -23806,7 +23883,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 2000, 3000);
             
                     vizcore3d.MeshEdit.AddPrimitiveCylinder(
@@ -23881,7 +23958,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveBox(
@@ -23959,7 +24036,7 @@
                 {
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.CreateBodyPrimitiveSphere(
@@ -24026,7 +24103,7 @@
                 {
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 0, 0, false);
             
                     vizcore3d.MeshEdit.AddPrimitiveSphere(
@@ -27836,6 +27913,166 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.DrawRectangle(System.Drawing.Point,System.Drawing.Point,System.Int32,System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
+            <summary>
+            Draw Rectangle (Only Z+)
+            </summary>
+            <param name="min">Min. Point</param>
+            <param name="max">Max. Point</param>
+            <param name="height">Height</param>
+            <param name="groupId">Group Id</param>
+            <param name="color">라인 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Point p1 = new System.Drawing.Point(53674, -151674);
+                System.Drawing.Point p2 = new System.Drawing.Point(610765, -292509);
+            
+                int shapeId = vizcore3d.ShapeDrawing.DrawRectangle(
+                    p1              /* Min. Point  */
+                    , p2            /* Max. Point */
+                    , 91127         /* Height : Z Axis. */
+                    , 1             /* Group Id */
+                    , Color.Red     /* Line Color */
+                    , 5             /* Thickness */
+                    , true          /* Visible */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.DrawCapsule(System.Drawing.Point,System.Drawing.Point,System.Drawing.Point,System.Drawing.Point,System.Int32,System.Int32,System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
+            <summary>
+            Draw Capsule (Only Z+)
+            </summary>
+            <param name="p11">Point 1-1</param>
+            <param name="p12">Point 1-2</param>     
+            <param name="p21">Point 2-1</param>
+            <param name="p22">Point 2-2</param>  
+            <param name="height">Height</param>
+            <param name="sideCount">Side Count : 6 ~ 36</param>
+            <param name="groupId">Group Id</param>
+            <param name="color">라인 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Point p11 = new System.Drawing.Point(89479, -135720);
+                System.Drawing.Point p12 = new System.Drawing.Point(595973, -135720);
+            
+                System.Drawing.Point p21 = new System.Drawing.Point(89479, -286193);
+                System.Drawing.Point p22 = new System.Drawing.Point(595973, -286193);
+            
+                int shapeId = vizcore3d.ShapeDrawing.DrawCapsule(
+                    p11                 /* Line #1 Start Point */
+                    , p12               /* Line #1 End Point */
+                    , p21               /* Line #2 Start Point */
+                    , p22               /* Line #2 End Point */
+                    , 91127             /* Height : Z Axis */
+                    , 12                /* Side Count : 6 ~ 36 */
+                    , 1                 /* Group Id */
+                    , Color.Purple      /* Line Color */
+                    , 5                 /* Thickness */
+                    , true              /* Visible */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.DrawCapsule(System.Drawing.Point,System.Drawing.Point,System.Int32,System.Int32,System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
+            <summary>
+            Draw Capsule (Only Z+)
+            </summary>
+            <param name="p1">Min. Point</param>
+            <param name="p2">Max. Point</param>     
+            <param name="height">Height</param>
+            <param name="sideCount">Side Count : 6 ~ 36</param>
+            <param name="groupId">Group Id</param>
+            <param name="color">라인 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Point p1 = new System.Drawing.Point(89479, -135720);
+                System.Drawing.Point p2 = new System.Drawing.Point(595973, -286193);
+            
+                int shapeId = vizcore3d.ShapeDrawing.DrawCapsule(
+                    p1                  /* Min. Point */
+                    , p2                /* Max. Point */
+                    , 91127             /* Height : Z Axis */
+                    , 12                /* Side Count : 12 ~ 36 */
+                    , 1                 /* Group Id */
+                    , Color.Purple      /* Line Color */
+                    , 5                 /* Thickness */
+                    , true              /* Visible */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.DrawCircle(System.Drawing.Point,System.Int32,System.Int32,System.Int32,System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
+            <summary>
+            Draw Circle (Only Z+)
+            </summary>
+            <param name="center">Center Point</param>
+            <param name="height">Height</param>
+            <param name="radius">Radius</param>
+            <param name="sideCount">Side Count : 12 ~ 36</param>
+            <param name="groupId">Group Id</param>
+            <param name="color">라인 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Point center = new System.Drawing.Point(562299, -209947);
+            
+                int shapeId = vizcore3d.ShapeDrawing.DrawCircle(
+                    center          /* Center Point */
+                    , 91127         /* Height */
+                    , 46685         /* Radius */
+                    , 36            /* Side Count : 12 ~ 36 */
+                    , 1             /* Group Id */
+                    , Color.Purple  /* Line Color */
+                    , 5             /* Thickness */
+                    , true          /* Visible */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddCube(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
             <summary>
             추가
@@ -27859,7 +28096,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddCylinder(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
             <summary>
-            추가
+            Cylinder 추가
             </summary>
             <param name="vertex">Vertex List Collection</param>
             <param name="groupId">Group Id</param>
@@ -39858,7 +40095,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     //matrix.SetTranslate(1000, 2000, 3000);
             
                     vizcore3d.MeshEdit.AddPrimitiveBox(
@@ -39877,7 +40114,7 @@
             
                     VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
                     matrix.Identity();
-                    //matrix.SetRotateX(vizcore3d.View.DegreeToRadian(45.0f));
+                    //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
                     matrix.SetTranslate(1000, 2000, 3000);
             
                     vizcore3d.MeshEdit.AddPrimitiveCone(
