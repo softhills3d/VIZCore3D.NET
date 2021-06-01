@@ -236,6 +236,9 @@ namespace VIZCore3D.NET.ChildView
 
             // 회전 축
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
+
+            // 실루엣 에지
+            vizcore3d.View.SilhouetteEdge = true;
             #endregion
 
 
