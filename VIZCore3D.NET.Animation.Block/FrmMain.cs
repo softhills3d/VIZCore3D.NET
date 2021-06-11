@@ -42,7 +42,7 @@ namespace VIZCore3D.NET.Animation.Block
             {
                 string name = System.Environment.MachineName.ToUpper();
 
-                if (name == "GJKIM-DELL" || name == "GJKIM-PC") return true;
+                if (name == "GJKIM-ADELL" || name == "GJKIM-PC") return true;
                 else return false;
             }
         }
@@ -515,7 +515,7 @@ namespace VIZCore3D.NET.Animation.Block
             }
             else
             {
-                string path = @"C:\Users\Gjkim\Desktop\MODELS\H6501_REV_FIXED\FIXED_V3_SIMPLEFIED_V2";
+                string path = @"E:\MODELS\H6501_REV_FIXED\FIXED_V3_SIMPLEFIED_V2";
                 string[] file = System.IO.Directory.GetFiles(path, "*.viz");
                 vizcore3d.Model.Add(file);
             }
