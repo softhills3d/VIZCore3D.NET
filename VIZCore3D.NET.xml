@@ -431,6 +431,20 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Controls.UDAControl.GetRowData(System.String)">
+            <summary>
+            Get Row Data
+            </summary>
+            <param name="str">Joined String</param>
+            <returns>Array(String)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Controls.UDAControl.GetColumnData(System.String)">
+            <summary>
+            Get Column Data
+            </summary>
+            <param name="str">Joined String</param>
+            <returns>Array(String)</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Controls.UDAControl.UpdateData">
             <summary>
             Update Data
@@ -2010,6 +2024,89 @@
             <param name="boundbox">BoundBox3D</param>
             <param name="precision_calculation">정밀 계산 여부. True : Float 데이터 기준 계산, False : Int 데이터 기준 계산</param>
             <returns>Is Equals</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Contains(VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            BoundBox 영역에 포함 여부
+            </summary>
+            <param name="v">Vertex</param>
+            <returns>BoundBox 영역에 Vertex 가 완전히 포함된 경우 True, 그렇지 않으면 False를 반환</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                VIZCore3D.NET.Data.BoundBox3D box = 
+                    new VIZCore3D.NET.Data.BoundBox3D(
+                        -100.0f     /* Min. X */
+                        , -100.0f   /* Min. Y */
+                        , -100.0f   /* Min. Z */
+                        , 100.0f    /* Max. X */
+                        , 100.0f    /* Max. Y */
+                        , 100.0f    /* Max. Z */
+                        );
+            
+                VIZCore3D.NET.Data.Vertex3D v = 
+                    new VIZCore3D.NET.Data.Vertex3D(10.0f, 10.0f, 10.0f);
+            
+                if(box.Contains(v) == true)
+                {
+                    System.Diagnostics.Debug.WriteLine("V is included.");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("V is not included.");
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Contains(VIZCore3D.NET.Data.Vertex3D,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            BoundBox 영역에 포함 여부
+            </summary>
+            <param name="v">Vertex</param>
+            <param name="xAxis">X Axis. 검사 여부</param>
+            <param name="yAxis">Y Axis. 검사 여부</param>
+            <param name="zAxis">Z Axis. 검사 여부</param>
+            <returns>BoundBox 영역에 Vertex 가 완전히 포함된 경우 True, 그렇지 않으면 False를 반환</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                VIZCore3D.NET.Data.BoundBox3D box = 
+                    new VIZCore3D.NET.Data.BoundBox3D(
+                        -100.0f     /* Min. X */
+                        , -100.0f   /* Min. Y */
+                        , -100.0f   /* Min. Z */
+                        , 100.0f    /* Max. X */
+                        , 100.0f    /* Max. Y */
+                        , 100.0f    /* Max. Z */
+                        );
+            
+                VIZCore3D.NET.Data.Vertex3D v = 
+                    new VIZCore3D.NET.Data.Vertex3D(10.0f, 10.0f, 500.0f);
+            
+                if(box.Contains(v, true, true, false) == true)
+                {
+                    System.Diagnostics.Debug.WriteLine("V is included.");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("V is not included.");
+                }
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Data.BoundBoxParameter">
             <summary>
@@ -11258,7 +11355,7 @@
             Disassemble the Assembly Dialog Class
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.#ctor(VIZCore3D.NET.Manager.DisassemblyManager)">
+        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.#ctor(VIZCore3D.NET.Manager.DisassemblyManager,System.Collections.Generic.List{System.String})">
             <summary>
             Construction
             </summary>
@@ -12362,6 +12459,28 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.UDADialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.UDAItemDialog">
+            <summary>
+            UDA Item Dialog Class
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.UDAItemDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDAItemDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDAItemDialog.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -20805,6 +20924,11 @@
             선택 모델
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.DisassemblyManager.DisassemblyGroupFilterMode">
+            <summary>
+            분해 다이얼로그에서 그룹 종류
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.DisassemblyManager.EnableAnimation">
             <summary>
             Enable Animation
@@ -20950,6 +21074,16 @@
             ]]>
             </code>
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.AddGroup(System.Int32,System.String,System.String,System.Boolean)">
+            <summary>
+            Add Group
+            </summary>
+            <param name="groupId">그룹 아이디(ID). 0 ~ </param>
+            <param name="key">UDA - KEY</param>
+            <param name="vals">UDA - VALUES</param>
+            <param name="recursive">하위 노드 자동 그룹 지정</param>
+            <returns>추가 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.DisassembleBySphereCenterDistanceRate(System.Boolean,System.Single)">
             <summary>
@@ -27500,18 +27634,6 @@
             </summary>
             <param name="vizcore">VIZCore3D.NET.Interop</param>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.UseDepthTest(System.Boolean)">
-            <summary>
-            Depth Test 사용유무 설정
-            </summary>
-            <param name="use">사용/사용안함</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.IsUseDepthTest">
-            <summary>
-            Depth Test 사용유무 반환
-            </summary>
-            <returns>상태</returns>
-        </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.Delete(System.Int32)">
             <summary>
             ID로 해당 항목 삭제
@@ -29616,13 +29738,17 @@
         </member>
         <member name="P:VIZCore3D.NET.Manager.FrameManager.Resizable">
             <summary>
-            크기 변경
+            크기 변경.
+            ShowCustomSize 활성화 후, 해당 속성을 True로 설정하면 크기를 변경 할 수 있음.
             </summary>
+            <seealso cref="P:VIZCore3D.NET.Manager.FrameManager.ShowCustomSize"/>
         </member>
         <member name="P:VIZCore3D.NET.Manager.FrameManager.ShowCustomSize">
             <summary>
-            커스텀 사이즈로 표시
+            커스텀 사이즈로 표시.
+            사이즈 변경을 하려면, Resizable = True를 설정하면, 크기를 변경 할 수 있는 핸들이 활성화 됨.
             </summary>
+            <seealso cref="P:VIZCore3D.NET.Manager.FrameManager.Resizable"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.FrameManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
@@ -35834,6 +35960,76 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetSelectedIndexInSelectedOrder">
+            <summary>
+            선택된 순서대로 개체 목록 반환
+            </summary>
+            <returns>개체 인덱스 목록</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
+            }
+            
+            private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
+            {
+                if (e.Node.Count == 0) return;
+            
+                List<int> orderedIndex = vizcore3d.Object3D.GetSelectedIndexInSelectedOrder();
+                List<VIZCore3D.NET.Data.Node> orderedNode = vizcore3d.Object3D.GetSelectedNodeInSelectedOrder();
+            
+                for (int i = 0; i < orderedIndex.Count; i++)
+                {
+                    System.Diagnostics.Debug.WriteLine(orderedIndex[i]);
+            
+                    // Or
+                    System.Diagnostics.Debug.WriteLine(orderedNode[i].NodeName);
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetSelectedNodeInSelectedOrder">
+            <summary>
+            선택된 순서대로 개체 목록 반환
+            </summary>
+            <returns>개체 목록</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
+            }
+            
+            private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
+            {
+                if (e.Node.Count == 0) return;
+            
+                List<int> orderedIndex = vizcore3d.Object3D.GetSelectedIndexInSelectedOrder();
+                List<VIZCore3D.NET.Data.Node> orderedNode = vizcore3d.Object3D.GetSelectedNodeInSelectedOrder();
+            
+                for (int i = 0; i < orderedIndex.Count; i++)
+                {
+                    System.Diagnostics.Debug.WriteLine(orderedIndex[i]);
+            
+                    // Or
+                    System.Diagnostics.Debug.WriteLine(orderedNode[i].NodeName);
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromIndex(System.Int32,System.Boolean)">
             <summary>
             Get Object (By Index)
@@ -39675,6 +39871,16 @@
             단면 좌표간격으로 이동
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameCustomSize">
+            <summary>
+            커스텀 사이즈
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameResizable">
+            <summary>
+            커스텀 사이즈 변경 모드
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.SectionShowSectionLine">
             <summary>
             단면선 표시
@@ -39743,6 +39949,11 @@
         <member name="P:VIZCore3D.NET.Manager.SettingManager.LogDataOption">
             <summary>
             데이터 로그 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.DebugDataVisible">
+            <summary>
+            디버그 뷰
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ShortcutManager">
@@ -40174,7 +40385,7 @@
             <summary>
             노드 생성
             </summary>
-            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="parentNodeIndex">부모 노드 인덱스</param>
             <param name="kind">생성 노드의 유형</param>
             <param name="name">생성할 노드의 이름</param>
             <returns>생성된 노드</returns>
@@ -40211,7 +40422,7 @@
             <summary>
             노드 생성
             </summary>
-            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="parentNodeIndex">부모 노드 인덱스</param>
             <param name="name">노드 이름</param>
             <param name="file">노드에 연결할 VIZ 파일 경로</param>
             <returns>생성된 노드</returns>
@@ -40220,7 +40431,7 @@
             <summary>
             노드 생성
             </summary>
-            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="parentNodeIndex">부모 노드 인덱스</param>
             <param name="name">노드 이름</param>
             <param name="file">노드에 연결할 VIZ 파일 경로</param>
             <param name="node">노드에 연결할 VIZ 파일의 노드 경로</param>
@@ -40228,9 +40439,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateBody(System.Int32,System.String)">
             <summary>
-            Body 노드 생성
+            Body 노드 생성 (Body Node Id 반환)
             </summary>
-            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="parentNodeIndex">부모 노드 인덱스</param>
             <param name="name">생성할 노드의 이름</param>
             <returns>생성된 노드 아이디</returns>
             <example>
@@ -40257,6 +40468,44 @@
                     MessageBox.Show("NG", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show(string.Format("Body ID : {0}", id), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateBody(System.Int32,System.String,System.Int32@)">
+            <summary>
+            Body 노드 생성 (Body Node Id 반환)
+            </summary>
+            <param name="parentNodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="bodyIndex">바디 노드 인덱스 (Body Node Index)</param>
+            <returns>생성된 바디 아이디 (Body Node ID)</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.Structure.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.Structure.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());        
+            
+                int bodyIndex = -1;
+                int bodyId = vizcore3d.Structure.CreateBody(part.Index, bodyName, out bodyIndex);
+            
+                if (bodyId == -1)
+                    MessageBox.Show("NG", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(string.Format("Body ID : {0}", bodyId), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             ]]>
             </code> 
@@ -41183,6 +41432,15 @@
             지정된 개체의 속성정보 반환
             </summary>
             <param name="index">노드 인덱스</param>
+            <param name="bottomUp">지정된 개체에 속성이 없는 경우, 상향식 검색(속성 포함 부모노드 탐색)</param>
+            <returns>속성 정보</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.UDAManager.FromIndex(System.Int32,System.Int32@,System.Boolean)">
+            <summary>
+            지정된 개체의 속성정보 반환
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="udaIndex">UDA 대상 노드 인덱스</param>
             <param name="bottomUp">지정된 개체에 속성이 없는 경우, 상향식 검색(속성 포함 부모노드 탐색)</param>
             <returns>속성 정보</returns>
         </member>
@@ -48260,6 +48518,39 @@
             <param name="radian">Angle (Radian)</param>
             <returns>Radian To Degree</returns>
         </member>
+        <member name="T:VIZCore3D.NET.Utility.TypeConversionHelper">
+            <summary>
+            Type Conversion Helper Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.TypeConversionHelper.ByteToObject(System.Byte[])">
+            <summary>
+            Byte To Object
+            </summary>
+            <param name="buffer">Input Byte</param>
+            <returns>Object</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.TypeConversionHelper.ObjectToByte(System.Object)">
+            <summary>
+            Object To Byte
+            </summary>
+            <param name="obj">Object</param>
+            <returns>Byte</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.TypeConversionHelper.ObjectToBase64(System.Object)">
+            <summary>
+            Object To Base64 String
+            </summary>
+            <param name="obj">Object</param>
+            <returns>Base64 String</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.TypeConversionHelper.Base64ToObject(System.String)">
+            <summary>
+            Base64 To Object
+            </summary>
+            <param name="str">Base64 String</param>
+            <returns>Object</returns>
+        </member>
         <member name="T:VIZCore3D.NET.VIZCore3DControl">
             <summary>
             VIZCore3D.NET Main Control
@@ -48452,6 +48743,65 @@
             <summary>
             Toolbar - Main
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void MoveToolbarItem()
+            {
+                // Main Toolbar Item Count
+                int maxIndex = vizcore3d.ToolbarMain.Items.Count;
+            
+                // Add Separator Control
+                vizcore3d.ToolbarMain.Items.Add(new ToolStripSeparator());
+                maxIndex++;
+            
+                // Note Toolbar Item Count
+                int count = vizcore3d.ToolbarNote.Items.Count;
+            
+                // Insert Item
+                for (int i = count; i > 0; i--)
+                {
+                    // Insert : Moved Item
+                    vizcore3d.ToolbarMain.Items.Insert(
+                        maxIndex // Index to be inserted
+                        , vizcore3d.ToolbarNote.Items[i - 1] // Item Index
+                        );
+                }
+            
+                // Hide Toolbar : Empty Item
+                vizcore3d.ToolbarNote.Visible = false;
+            }
+            
+            private void AddNewItem()
+            {
+                // Add Separator Control
+                vizcore3d.ToolbarMain.Items.Add(new ToolStripSeparator());
+            
+                ToolStripItem item = new ToolStripMenuItem();
+            
+                //Name that will apear on the menu
+                item.Text = "New Button";
+            
+                //Put in the Name property whatever neccessery to retrive your data on click event
+                item.Name = "btnNewItem";
+            
+                //On-Click event
+                item.Click += Item_Click;
+            
+                //Add the submenu to the parent menu
+                vizcore3d.ToolbarMain.Items.Add(item);
+            }
+            
+            private void Item_Click(object sender, EventArgs e)
+            {
+                MessageBox.Show("Clicked.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ToolbarNote">
             <summary>
@@ -49811,6 +50161,24 @@
                 {
                     e.Cancel = false;
                 }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.ShowSettingDialog">
+            <summary>
+            설정 다이얼로그 조회
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.ShowSettingDialog();
             }
             ]]>
             </code> 
