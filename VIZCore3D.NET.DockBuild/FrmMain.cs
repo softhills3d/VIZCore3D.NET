@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace VIZCore3D.NET.DockBuild
 {
-    public partial class FrmMain : Form
+    public partial class FrmMain : Form 
     {
         // ================================================
         // Attribute & Property
