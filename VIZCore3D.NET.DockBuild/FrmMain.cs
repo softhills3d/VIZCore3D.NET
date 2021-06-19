@@ -699,6 +699,7 @@ namespace VIZCore3D.NET.DockBuild
         private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
             if (e.Node.Count == 0) return;
+            if (ckAnalysisItem.Checked == false) return;
 
             string nodeName = e.Node[0].NodeName;
             if (nodeName.Contains("SUPPORTER_PART") == false) return;
@@ -762,7 +763,9 @@ namespace VIZCore3D.NET.DockBuild
             COLLISION_MAP.Add(new Point(x, y), new List<VIZCore3D.NET.Data.Vertex3D>() { v, collision.CollisionPoint });
 
             List<int> lineIds = vizcore3d.ShapeDrawing.AddDashLine(lines, COLLISION_LINE_GROUP_ID, Color.Blue, 2, true, 100.0f);
-            int measureId = vizcore3d.Review.Measure.AddCustomAxisDistance(VIZCore3D.NET.Data.Axis.Z, v, collision.CollisionPoint);
+
+            if(ckAnalysisMeasure.Checked == true)
+                vizcore3d.Review.Measure.AddCustomAxisDistance(VIZCore3D.NET.Data.Axis.Z, v, collision.CollisionPoint);
 
             vizcore3d.EndUpdate();
         }
@@ -1490,6 +1493,104 @@ namespace VIZCore3D.NET.DockBuild
             tbSection.Value = 0;
             tbSection.Enabled = false;
             tbSection.ValueChanged += TbSection_ValueChanged;
+        }
+
+        private void btnAnalysisModel_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "SUPPORTER_VARIABLE_ITEM" }, false, true, false, false, true, false);
+            if (nodes.Count != 0) return;
+
+            float xLength = Convert.ToSingle(txtSuppTopX.Text);
+            float yLength = Convert.ToSingle(txtSuppTopY.Text);
+            float offset = Convert.ToSingle(txtSuppHeight.Text);
+
+            vizcore3d.BeginUpdate();
+
+            VIZCore3D.NET.Data.Node vAssy = vizcore3d.Structure.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, "SUPPORTER_VARIABLE_ITEM");
+
+            foreach (KeyValuePair<Point, List<VIZCore3D.NET.Data.Vertex3D>> item in COLLISION_MAP)
+            {
+                List<VIZCore3D.NET.Data.Vertex3DItemCollection> collisionLines = new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+                VIZCore3D.NET.Data.Vertex3DItemCollection collisionLine = new VIZCore3D.NET.Data.Vertex3DItemCollection();
+                collisionLine.Add(item.Value[0]);
+                collisionLine.Add(item.Value[1]);
+                collisionLines.Add(collisionLine);
+
+                VIZCore3D.NET.Data.Node vPart = vizcore3d.Structure.CreateNode(vAssy.Index, VIZCore3D.NET.Data.NodeKind.PART, string.Format("SUPPORTER_VARIABLE_NO_{0}_{1}", item.Key.X, item.Key.Y));
+                int bodyId = vizcore3d.Structure.CreateBody(vPart.Index, "BODY");
+                int bodyIndex = vizcore3d.Structure.GetBodyIndex(bodyId);
+
+                List<float> length = new List<float>();
+                length.Add(xLength);
+                length.Add(yLength);
+                length.Add(item.Value[1].Z - item.Value[0].Z - offset);
+
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.SetTranslate(item.Value[0].X, item.Value[0].Y, item.Value[0].Z + offset + length[2] / 2);
+
+                vizcore3d.MeshEdit.AddPrimitiveBox(bodyIndex, length, matrix, Color.Yellow, false);
+            }
+
+            vizcore3d.Structure.RebuildData();
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void btnAnalysisModelClear_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.Find.QuickSearch(new List<string>() { "SUPPORTER_VARIABLE_ITEM" }, false, true, false, false, true, false);
+            if (nodes.Count == 0) return;
+
+            vizcore3d.Object3D.Delete(nodes);
+        }
+
+        private void btnAnalysisMeasureClear_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Review.Measure.Clear();
+        }
+
+        private void btnAnalysisMeasureXaxis_Click(object sender, EventArgs e)
+        {
+            Dictionary<int, List<VIZCore3D.NET.Data.Vertex3D>> xAxisMap = new Dictionary<int, List<VIZCore3D.NET.Data.Vertex3D>>();
+            List<VIZCore3D.NET.Data.Vertex3D> items = new List<VIZCore3D.NET.Data.Vertex3D>();
+
+            foreach (KeyValuePair<Point, List<VIZCore3D.NET.Data.Vertex3D>> item in COLLISION_MAP)
+            {
+                if (xAxisMap.ContainsKey(item.Key.X) == true) continue;
+                xAxisMap.Add(item.Key.X, item.Value);
+                items.Add(item.Value[0]);
+            }
+
+            vizcore3d.Review.Measure.AddCustomLinkedDistanceAxis(VIZCore3D.NET.Data.Axis.X, items);
+        }
+
+        private void btnAnalysisModelShow_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = GetVesselModel();
+            vizcore3d.Object3D.Show(VIZCore3D.NET.Data.Object3DKind.ALL, true);
+        }
+
+        private void btnAnalysisModelHide_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = GetVesselModel();
+            vizcore3d.Object3D.Show(nodes, false);
+        }
+
+        private List<VIZCore3D.NET.Data.Node> GetVesselModel()
+        {
+            string name = "DDH.V4";
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.Find.QuickSearch(name, true);
+            if (nodes.Count == 0) return new List<VIZCore3D.NET.Data.Node>();
+
+            List<VIZCore3D.NET.Data.Node> children = nodes[0].GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+            List<VIZCore3D.NET.Data.Node> filter = new List<VIZCore3D.NET.Data.Node>();
+            foreach (VIZCore3D.NET.Data.Node item in children)
+            {
+                if (item.NodeName == "DOCK_ASSY") continue;
+                filter.Add(item);
+            }
+
+            return filter;
         }
     }
 }

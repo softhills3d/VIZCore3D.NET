@@ -85,6 +85,7 @@
             this.txtSuppTopY = new VIZCore3D.NET.Controls.WatermarkTextBox();
             this.txtSuppOffsetX = new VIZCore3D.NET.Controls.WatermarkTextBox();
             this.tpSection = new System.Windows.Forms.TabPage();
+            this.btnSectionClear = new System.Windows.Forms.Button();
             this.ckSectionLine = new System.Windows.Forms.CheckBox();
             this.ckSectionPlane = new System.Windows.Forms.CheckBox();
             this.btnSectionAdd = new System.Windows.Forms.Button();
@@ -92,7 +93,15 @@
             this.btnOpenModel = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tbSection = new System.Windows.Forms.TrackBar();
-            this.btnSectionClear = new System.Windows.Forms.Button();
+            this.tpAnalysis = new System.Windows.Forms.TabPage();
+            this.ckAnalysisItem = new System.Windows.Forms.CheckBox();
+            this.ckAnalysisMeasure = new System.Windows.Forms.CheckBox();
+            this.btnAnalysisModel = new System.Windows.Forms.Button();
+            this.btnAnalysisModelClear = new System.Windows.Forms.Button();
+            this.btnAnalysisMeasureClear = new System.Windows.Forms.Button();
+            this.btnAnalysisMeasureXaxis = new System.Windows.Forms.Button();
+            this.btnAnalysisModelShow = new System.Windows.Forms.Button();
+            this.btnAnalysisModelHide = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -111,6 +120,7 @@
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbSection)).BeginInit();
+            this.tpAnalysis.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -153,6 +163,7 @@
             this.tcMain.Controls.Add(this.tpSpace);
             this.tcMain.Controls.Add(this.tpSupport);
             this.tcMain.Controls.Add(this.tpSection);
+            this.tcMain.Controls.Add(this.tpAnalysis);
             this.tcMain.Location = new System.Drawing.Point(12, 79);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
@@ -829,6 +840,16 @@
             this.tpSection.Text = "SECTION";
             this.tpSection.UseVisualStyleBackColor = true;
             // 
+            // btnSectionClear
+            // 
+            this.btnSectionClear.Location = new System.Drawing.Point(114, 97);
+            this.btnSectionClear.Name = "btnSectionClear";
+            this.btnSectionClear.Size = new System.Drawing.Size(75, 23);
+            this.btnSectionClear.TabIndex = 3;
+            this.btnSectionClear.Text = "Clear";
+            this.btnSectionClear.UseVisualStyleBackColor = true;
+            this.btnSectionClear.Click += new System.EventHandler(this.btnSectionClear_Click);
+            // 
             // ckSectionLine
             // 
             this.ckSectionLine.AutoSize = true;
@@ -911,15 +932,105 @@
             this.tbSection.Size = new System.Drawing.Size(645, 53);
             this.tbSection.TabIndex = 0;
             // 
-            // btnSectionClear
+            // tpAnalysis
             // 
-            this.btnSectionClear.Location = new System.Drawing.Point(114, 97);
-            this.btnSectionClear.Name = "btnSectionClear";
-            this.btnSectionClear.Size = new System.Drawing.Size(75, 23);
-            this.btnSectionClear.TabIndex = 3;
-            this.btnSectionClear.Text = "Clear";
-            this.btnSectionClear.UseVisualStyleBackColor = true;
-            this.btnSectionClear.Click += new System.EventHandler(this.btnSectionClear_Click);
+            this.tpAnalysis.Controls.Add(this.btnAnalysisModelHide);
+            this.tpAnalysis.Controls.Add(this.btnAnalysisModelShow);
+            this.tpAnalysis.Controls.Add(this.btnAnalysisMeasureXaxis);
+            this.tpAnalysis.Controls.Add(this.btnAnalysisMeasureClear);
+            this.tpAnalysis.Controls.Add(this.btnAnalysisModelClear);
+            this.tpAnalysis.Controls.Add(this.btnAnalysisModel);
+            this.tpAnalysis.Controls.Add(this.ckAnalysisMeasure);
+            this.tpAnalysis.Controls.Add(this.ckAnalysisItem);
+            this.tpAnalysis.Location = new System.Drawing.Point(4, 22);
+            this.tpAnalysis.Name = "tpAnalysis";
+            this.tpAnalysis.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAnalysis.Size = new System.Drawing.Size(403, 303);
+            this.tpAnalysis.TabIndex = 5;
+            this.tpAnalysis.Text = "Analysis";
+            this.tpAnalysis.UseVisualStyleBackColor = true;
+            // 
+            // ckAnalysisItem
+            // 
+            this.ckAnalysisItem.AutoSize = true;
+            this.ckAnalysisItem.Location = new System.Drawing.Point(20, 26);
+            this.ckAnalysisItem.Name = "ckAnalysisItem";
+            this.ckAnalysisItem.Size = new System.Drawing.Size(240, 16);
+            this.ckAnalysisItem.TabIndex = 0;
+            this.ckAnalysisItem.Text = "Analyze the Selected Item (Supporter)";
+            this.ckAnalysisItem.UseVisualStyleBackColor = true;
+            // 
+            // ckAnalysisMeasure
+            // 
+            this.ckAnalysisMeasure.AutoSize = true;
+            this.ckAnalysisMeasure.Checked = true;
+            this.ckAnalysisMeasure.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckAnalysisMeasure.Location = new System.Drawing.Point(20, 58);
+            this.ckAnalysisMeasure.Name = "ckAnalysisMeasure";
+            this.ckAnalysisMeasure.Size = new System.Drawing.Size(100, 16);
+            this.ckAnalysisMeasure.TabIndex = 1;
+            this.ckAnalysisMeasure.Text = "Add Measure";
+            this.ckAnalysisMeasure.UseVisualStyleBackColor = true;
+            // 
+            // btnAnalysisModel
+            // 
+            this.btnAnalysisModel.Location = new System.Drawing.Point(20, 98);
+            this.btnAnalysisModel.Name = "btnAnalysisModel";
+            this.btnAnalysisModel.Size = new System.Drawing.Size(147, 23);
+            this.btnAnalysisModel.TabIndex = 2;
+            this.btnAnalysisModel.Text = "Generate 3D Model";
+            this.btnAnalysisModel.UseVisualStyleBackColor = true;
+            this.btnAnalysisModel.Click += new System.EventHandler(this.btnAnalysisModel_Click);
+            // 
+            // btnAnalysisModelClear
+            // 
+            this.btnAnalysisModelClear.Location = new System.Drawing.Point(173, 98);
+            this.btnAnalysisModelClear.Name = "btnAnalysisModelClear";
+            this.btnAnalysisModelClear.Size = new System.Drawing.Size(99, 23);
+            this.btnAnalysisModelClear.TabIndex = 3;
+            this.btnAnalysisModelClear.Text = "Clear Model";
+            this.btnAnalysisModelClear.UseVisualStyleBackColor = true;
+            this.btnAnalysisModelClear.Click += new System.EventHandler(this.btnAnalysisModelClear_Click);
+            // 
+            // btnAnalysisMeasureClear
+            // 
+            this.btnAnalysisMeasureClear.Location = new System.Drawing.Point(173, 140);
+            this.btnAnalysisMeasureClear.Name = "btnAnalysisMeasureClear";
+            this.btnAnalysisMeasureClear.Size = new System.Drawing.Size(99, 23);
+            this.btnAnalysisMeasureClear.TabIndex = 4;
+            this.btnAnalysisMeasureClear.Text = "Clear Measure";
+            this.btnAnalysisMeasureClear.UseVisualStyleBackColor = true;
+            this.btnAnalysisMeasureClear.Click += new System.EventHandler(this.btnAnalysisMeasureClear_Click);
+            // 
+            // btnAnalysisMeasureXaxis
+            // 
+            this.btnAnalysisMeasureXaxis.Location = new System.Drawing.Point(20, 140);
+            this.btnAnalysisMeasureXaxis.Name = "btnAnalysisMeasureXaxis";
+            this.btnAnalysisMeasureXaxis.Size = new System.Drawing.Size(147, 23);
+            this.btnAnalysisMeasureXaxis.TabIndex = 5;
+            this.btnAnalysisMeasureXaxis.Text = "Add Measure X Axis.\r\n";
+            this.btnAnalysisMeasureXaxis.UseVisualStyleBackColor = true;
+            this.btnAnalysisMeasureXaxis.Click += new System.EventHandler(this.btnAnalysisMeasureXaxis_Click);
+            // 
+            // btnAnalysisModelShow
+            // 
+            this.btnAnalysisModelShow.Location = new System.Drawing.Point(21, 180);
+            this.btnAnalysisModelShow.Name = "btnAnalysisModelShow";
+            this.btnAnalysisModelShow.Size = new System.Drawing.Size(99, 23);
+            this.btnAnalysisModelShow.TabIndex = 6;
+            this.btnAnalysisModelShow.Text = "Show Vessel";
+            this.btnAnalysisModelShow.UseVisualStyleBackColor = true;
+            this.btnAnalysisModelShow.Click += new System.EventHandler(this.btnAnalysisModelShow_Click);
+            // 
+            // btnAnalysisModelHide
+            // 
+            this.btnAnalysisModelHide.Location = new System.Drawing.Point(21, 219);
+            this.btnAnalysisModelHide.Name = "btnAnalysisModelHide";
+            this.btnAnalysisModelHide.Size = new System.Drawing.Size(99, 23);
+            this.btnAnalysisModelHide.TabIndex = 7;
+            this.btnAnalysisModelHide.Text = "Hide Vessel";
+            this.btnAnalysisModelHide.UseVisualStyleBackColor = true;
+            this.btnAnalysisModelHide.Click += new System.EventHandler(this.btnAnalysisModelHide_Click);
             // 
             // FrmMain
             // 
@@ -958,6 +1069,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tbSection)).EndInit();
+            this.tpAnalysis.ResumeLayout(false);
+            this.tpAnalysis.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1028,6 +1141,15 @@
         private System.Windows.Forms.CheckBox ckSectionLine;
         private System.Windows.Forms.CheckBox ckSectionPlane;
         private System.Windows.Forms.Button btnSectionClear;
+        private System.Windows.Forms.TabPage tpAnalysis;
+        private System.Windows.Forms.CheckBox ckAnalysisMeasure;
+        private System.Windows.Forms.CheckBox ckAnalysisItem;
+        private System.Windows.Forms.Button btnAnalysisModel;
+        private System.Windows.Forms.Button btnAnalysisModelClear;
+        private System.Windows.Forms.Button btnAnalysisMeasureClear;
+        private System.Windows.Forms.Button btnAnalysisMeasureXaxis;
+        private System.Windows.Forms.Button btnAnalysisModelHide;
+        private System.Windows.Forms.Button btnAnalysisModelShow;
     }
 }
 
