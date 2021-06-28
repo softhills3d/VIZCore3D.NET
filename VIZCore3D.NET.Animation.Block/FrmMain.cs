@@ -559,7 +559,7 @@ namespace VIZCore3D.NET.Animation.Block
             }
             else
             {
-                string path = @"C:\Users\Gjkim\Desktop\MODELS\MISC\CRANE_ASSEMBLY_5";
+                string path = @"E:\MODELS\MISC\CRANE_ASSEMBLY_5";
                 string[] file = System.IO.Directory.GetFiles(path, "*.viz");
                 vizcore3d.Model.Add(file);
             }
