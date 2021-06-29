@@ -7628,6 +7628,11 @@
             Length BoundBox
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.ModelStatus.Center">
+            <summary>
+            Center
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.ModelStatus.FileVersion">
             <summary>
             VIZ File Version
@@ -8772,6 +8777,12 @@
             <summary>
             Construction
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.PolyhedralContour.Add(VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            Add Vertex, Normal
+            </summary>
+            <param name="vertex">Vertex</param>
         </member>
         <member name="M:VIZCore3D.NET.Data.PolyhedralContour.Add(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vector3D)">
             <summary>
@@ -12814,12 +12825,25 @@
             애니메이션 재생 시간
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs.Tag">
+            <summary>
+            애니메이션 태그
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs.#ctor(System.Int32,System.Single)">
             <summary>
             Construction
             </summary>
             <param name="id">애니메이션 아이디</param>
             <param name="time">재생 시간</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs.#ctor(System.Int32,System.Single,System.String)">
+            <summary>
+            Construction
+            </summary>
+            <param name="id">애니메이션 아이디</param>
+            <param name="time">재생 시간</param>
+            <param name="tag">애니메이션 태그</param>
         </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.AnimationPlaybackEventArgs">
             <summary>
@@ -20451,6 +20475,15 @@
             <param name="keyID">Key ID</param>
             <returns>Animation</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.AddKey(System.Single,VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType,System.String)">
+            <summary>
+            Animation Key 추가
+            </summary>
+            <param name="time">시간</param>
+            <param name="type">Key Type</param>
+            <param name="tag">Tag</param>
+            <returns>추가된 Animation Key</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.AddKey(System.Single,VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType)">
             <summary>
             Animation Key 추가
@@ -22321,6 +22354,57 @@
                 normals.Add(new Data.Vector3D(0.0, 0.0, 1.0));
             
                 int id = vizcore3d.MeshEdit.CreateBodyWithMesh(part.Index, bodyName, coords, normals, Color.Orange);
+            
+                if (id == -1)
+                    MessageBox.Show("NG", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show(string.Format("Body ID : {0}", id), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyWithMesh(System.Int32,System.String,System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Drawing.Color)">
+            <summary>
+            Body 노드 및 Mesh 생성
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="vertex">Coords (8EA)</param>
+            <param name="color">Color</param>
+            <returns>생성된 노드 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.MeshEdit.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.MeshEdit.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());
+            
+                List<VIZCore3D.NET.Data.Vertex3D> coords = new List<VIZCore3D.NET.Data.Vertex3D>();
+                List<VIZCore3D.NET.Data.Vector3D> normals = new List<VIZCore3D.NET.Data.Vector3D>();
+            
+                coords.Add(new Data.Vertex3D(0.0, 0.0, 0.0));
+                coords.Add(new Data.Vertex3D(0.0, 1000.0, 0.0));
+                coords.Add(new Data.Vertex3D(1000.0, 1000.0, 0.0));
+                coords.Add(new Data.Vertex3D(1000.0, 0.0, 0.0));
+            
+                coords.Add(new Data.Vertex3D(0.0, 0.0, 1000.0));
+                coords.Add(new Data.Vertex3D(0.0, 1000.0, 1000.0));
+                coords.Add(new Data.Vertex3D(1000.0, 1000.0, 1000.0));
+                coords.Add(new Data.Vertex3D(1000.0, 0.0, 1000.0));
+            
+                int id = vizcore3d.MeshEdit.CreateBodyWithMesh(part.Index, bodyName, coords, Color.Yellow);
             
                 if (id == -1)
                     MessageBox.Show("NG", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -24298,10 +24382,10 @@
             
                     {
                         VIZCore3D.NET.Data.PolyhedralContour contour = new VIZCore3D.NET.Data.PolyhedralContour();
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.48354, -5395.02732, 2245.06749), new VIZCore3D.NET.Data.Vertex3D(-0.81781, -0.40693, 0.40693));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5395.88545, 2245.88546), new VIZCore3D.NET.Data.Vertex3D(-0.81781, -0.40693, 0.40693));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5387.40017, 2254.37074), new VIZCore3D.NET.Data.Vertex3D(-0.81781, -0.40693, 0.40693));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.75403, -5386.82035, 2253.81806), new VIZCore3D.NET.Data.Vertex3D(-0.81781, -0.40693, 0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.48354, -5395.02732, 2245.06749), new VIZCore3D.NET.Data.Vector3D(-0.81781, -0.40693, 0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5395.88545, 2245.88546), new VIZCore3D.NET.Data.Vector3D(-0.81781, -0.40693, 0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5387.40017, 2254.37074), new VIZCore3D.NET.Data.Vector3D(-0.81781, -0.40693, 0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.75403, -5386.82035, 2253.81806), new VIZCore3D.NET.Data.Vector3D(-0.81781, -0.40693, 0.40693));
             
                         VIZCore3D.NET.Data.PolyhedralFace face = new VIZCore3D.NET.Data.PolyhedralFace(contour);
                         polyhedral.Face.Add(face);
@@ -24309,10 +24393,10 @@
             
                     {
                         VIZCore3D.NET.Data.PolyhedralContour contour = new VIZCore3D.NET.Data.PolyhedralContour();
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.11946, -5208.50230, 2075.50000), new VIZCore3D.NET.Data.Vertex3D(0.81781, 0.40693, -0.40693));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5209.08212, 2076.05269), new VIZCore3D.NET.Data.Vertex3D(0.81781, 0.40693, -0.40693));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5217.56740, 2067.56741), new VIZCore3D.NET.Data.Vertex3D(0.81781, 0.40693, -0.40693));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34231.84897, -5216.70927, 2066.74943), new VIZCore3D.NET.Data.Vertex3D(0.81781, 0.40693, -0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.11946, -5208.50230, 2075.50000), new VIZCore3D.NET.Data.Vector3D(0.81781, 0.40693, -0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5209.08212, 2076.05269), new VIZCore3D.NET.Data.Vector3D(0.81781, 0.40693, -0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5217.56740, 2067.56741), new VIZCore3D.NET.Data.Vector3D(0.81781, 0.40693, -0.40693));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34231.84897, -5216.70927, 2066.74943), new VIZCore3D.NET.Data.Vector3D(0.81781, 0.40693, -0.40693));
             
                         VIZCore3D.NET.Data.PolyhedralFace face = new VIZCore3D.NET.Data.PolyhedralFace(contour);
                         polyhedral.Face.Add(face);
@@ -24320,10 +24404,10 @@
             
                     {
                         VIZCore3D.NET.Data.PolyhedralContour contour = new VIZCore3D.NET.Data.PolyhedralContour();
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.75403, -5386.82035, 2253.81806), new VIZCore3D.NET.Data.Vertex3D(-0.57505, 0.60553, -0.55014));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.11946, -5208.50230, 2075.50000), new VIZCore3D.NET.Data.Vertex3D(-0.57505, 0.60553, -0.55014));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34231.84897, -5216.70927, 2066.74943), new VIZCore3D.NET.Data.Vertex3D(-0.57505, 0.60553, -0.55014));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.48354, -5395.02732, 2245.06749), new VIZCore3D.NET.Data.Vertex3D(-0.57505, 0.60553, -0.55014));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.75403, -5386.82035, 2253.81806), new VIZCore3D.NET.Data.Vector3D(-0.57505, 0.60553, -0.55014));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.11946, -5208.50230, 2075.50000), new VIZCore3D.NET.Data.Vector3D(-0.57505, 0.60553, -0.55014));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34231.84897, -5216.70927, 2066.74943), new VIZCore3D.NET.Data.Vector3D(-0.57505, 0.60553, -0.55014));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.48354, -5395.02732, 2245.06749), new VIZCore3D.NET.Data.Vector3D(-0.57505, 0.60553, -0.55014));
             
                         VIZCore3D.NET.Data.PolyhedralFace face = new VIZCore3D.NET.Data.PolyhedralFace(contour);
                         polyhedral.Face.Add(face);
@@ -24331,10 +24415,10 @@
             
                     {
                         VIZCore3D.NET.Data.PolyhedralContour contour = new VIZCore3D.NET.Data.PolyhedralContour();
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.48354, -5395.02732, 2245.06749), new VIZCore3D.NET.Data.Vertex3D(-0.02254, -0.68391, -0.72921));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34231.84897, -5216.70927, 2066.74943), new VIZCore3D.NET.Data.Vertex3D(-0.02254, -0.68391, -0.72921));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5217.56740, 2067.56741), new VIZCore3D.NET.Data.Vertex3D(0.00000, -0.70711, -0.70711));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5395.88545, 2245.88546), new VIZCore3D.NET.Data.Vertex3D(0.00000, -0.70711, -0.70711));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.48354, -5395.02732, 2245.06749), new VIZCore3D.NET.Data.Vector3D(-0.02254, -0.68391, -0.72921));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34231.84897, -5216.70927, 2066.74943), new VIZCore3D.NET.Data.Vector3D(-0.02254, -0.68391, -0.72921));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5217.56740, 2067.56741), new VIZCore3D.NET.Data.Vector3D(0.00000, -0.70711, -0.70711));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5395.88545, 2245.88546), new VIZCore3D.NET.Data.Vector3D(0.00000, -0.70711, -0.70711));
             
                         VIZCore3D.NET.Data.PolyhedralFace face = new VIZCore3D.NET.Data.PolyhedralFace(contour);
                         polyhedral.Face.Add(face);
@@ -24342,10 +24426,10 @@
             
                     {
                         VIZCore3D.NET.Data.PolyhedralContour contour = new VIZCore3D.NET.Data.PolyhedralContour();
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5395.88545, 2245.88546), new VIZCore3D.NET.Data.Vertex3D(0.57549, -0.57828, 0.57828));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5217.56740, 2067.56741), new VIZCore3D.NET.Data.Vertex3D(0.57549, -0.57828, 0.57828));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5209.08212, 2076.05269), new VIZCore3D.NET.Data.Vertex3D(0.57549, -0.57828, 0.57828));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5387.40017, 2254.37074), new VIZCore3D.NET.Data.Vertex3D(0.57549, -0.57828, 0.57828));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5395.88545, 2245.88546), new VIZCore3D.NET.Data.Vector3D(0.57549, -0.57828, 0.57828));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5217.56740, 2067.56741), new VIZCore3D.NET.Data.Vector3D(0.57549, -0.57828, 0.57828));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5209.08212, 2076.05269), new VIZCore3D.NET.Data.Vector3D(0.57549, -0.57828, 0.57828));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5387.40017, 2254.37074), new VIZCore3D.NET.Data.Vector3D(0.57549, -0.57828, 0.57828));
             
                         VIZCore3D.NET.Data.PolyhedralFace face = new VIZCore3D.NET.Data.PolyhedralFace(contour);
                         polyhedral.Face.Add(face);
@@ -24353,10 +24437,10 @@
             
                     {
                         VIZCore3D.NET.Data.PolyhedralContour contour = new VIZCore3D.NET.Data.PolyhedralContour();
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5387.40017, 2254.37074), new VIZCore3D.NET.Data.Vertex3D(0.00000, 0.70711, 0.70711));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5209.08212, 2076.05269), new VIZCore3D.NET.Data.Vertex3D(0.00000, 0.70711, 0.70711));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.11946, -5208.50230, 2075.50000), new VIZCore3D.NET.Data.Vertex3D(0.02254, 0.68391, 0.72921));
-                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.75403, -5386.82035, 2253.81806), new VIZCore3D.NET.Data.Vertex3D(0.02254, 0.68391, 0.72921));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33874.31755, -5387.40017, 2254.37074), new VIZCore3D.NET.Data.Vector3D(0.00000, 0.70711, 0.70711));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.68297, -5209.08212, 2076.05269), new VIZCore3D.NET.Data.Vector3D(0.00000, 0.70711, 0.70711));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(34232.11946, -5208.50230, 2075.50000), new VIZCore3D.NET.Data.Vector3D(0.02254, 0.68391, 0.72921));
+                        contour.Add(new VIZCore3D.NET.Data.Vertex3D(33873.75403, -5386.82035, 2253.81806), new VIZCore3D.NET.Data.Vector3D(0.02254, 0.68391, 0.72921));
             
                         VIZCore3D.NET.Data.PolyhedralFace face = new VIZCore3D.NET.Data.PolyhedralFace(contour);
                         polyhedral.Face.Add(face);
@@ -28229,7 +28313,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddVertex(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Int32,System.Drawing.Color,System.Single,System.Single,System.Boolean)">
             <summary>
-            추가
+            Vertex 추가
             </summary>
             <param name="vertex">Vertex List Collection</param>
             <param name="groupId">Group Id</param>
@@ -28238,6 +28322,14 @@
             <param name="size">크기</param>
             <param name="visible">보이기/숨기기 상태</param>
             <returns>생성된 형상의 ID</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddVertex(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Single,System.Single)">
+            <summary>
+            Vertex 추가
+            </summary>
+            <param name="vertex">Vertex List Collection</param>
+            <param name="radius">굵기</param>
+            <param name="size">크기</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddSphere(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
             <summary>
@@ -33592,12 +33684,13 @@
             <param name="showFileInExplorer">Show File In Explorer</param>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,VIZCore3D.NET.Data.LogKind)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,System.Int32,VIZCore3D.NET.Data.LogKind)">
             <summary>
             VIZWide3D 모델(*.VIZW) 변환
             </summary>
             <param name="input">Input VIZ Path</param>
             <param name="output">Output VIZW Path</param>
+            <param name="triangleMeshCount">Triangle Mesh Count - Default : 1,000,000</param>
             <param name="log">Log</param>
             <returns>Result</returns>
             <example>
@@ -33611,11 +33704,13 @@
                 // Different path : INPUT, OUTPUT
                 string input = "C:\\MODEL\\PIPE-100.viz";
                 string output = "C:\\MODEL\\PIPE-100\\PIPE-100.vizw";
+                int triangleMeshCount = 1000000;
             
                 bool result = vizcore3d.Model.ConvertToVIZW(
-                    input       /* INPUT VIZ File */
-                    , output    /* OUTPUT VIZ File */
-                    , VIZCore3D.NET.Data.LogKind.DETAIL
+                    input                                   /* INPUT VIZ File */
+                    , output                                /* OUTPUT VIZ File */
+                    , triangleMeshCount                     /* TRIANGLE MESH COUNT - DEFAULT : 1,000,000 */
+                    , VIZCore3D.NET.Data.LogKind.DETAIL     /* LOG */
                     );
             }
             ]]>
@@ -47384,6 +47479,216 @@
             <summary>
             Image Byte Buffer
             </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper">
+            <summary>
+            Color Brewer Palettes Helper
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind">
+            <summary>
+            Color Brewer Palettes Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuGn">
+            <summary>
+            Sequential BuGn
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuPu">
+            <summary>
+            Sequential BuPu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_GnBu">
+            <summary>
+            Sequential GnBu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_OrRd">
+            <summary>
+            Sequential OrRd
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_PuBu">
+            <summary>
+            Sequential PuBu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_PuBuGn">
+            <summary>
+            Sequential PuBuGn
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_PuRd">
+            <summary>
+            Sequential PuRd
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_RdPu">
+            <summary>
+            Sequential RdPu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_YlGn">
+            <summary>
+            Sequential YlGn
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_YlGnBu">
+            <summary>
+            Sequential YlGnBu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_YlOrBr">
+            <summary>
+            Sequential YlOrBr
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_YlOrRd">
+            <summary>
+            Sequential YlOrRd
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_Blues">
+            <summary>
+            Sequential Blues
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_Greens">
+            <summary>
+            Sequential Greens
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_Greys">
+            <summary>
+            Sequential Greys
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_Oranges">
+            <summary>
+            Sequential Oranges
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_Purples">
+            <summary>
+            Sequential Purples
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_Reds">
+            <summary>
+            Sequential Reds
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_BrBG">
+            <summary>
+            Divergent BrBG
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_PiYG">
+            <summary>
+            Divergent PiYG
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_PRGn">
+            <summary>
+            Divergent PRGn
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_PuOr">
+            <summary>
+            Divergent PuOr
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_RdBu">
+            <summary>
+            Divergent RdBu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_RdGy">
+            <summary>
+            Divergent RdGy
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_RdYlBu">
+            <summary>
+            Divergent RdYlBu
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_RdYlGn">
+            <summary>
+            Divergent RdYlGn
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Divergent_Spectral">
+            <summary>
+            Divergent Spectral
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Qualitative_Paired">
+            <summary>
+            Qualitative Paired
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Qualitative_Set3">
+            <summary>
+            Qualitative Set3
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind,System.Int32)">
+            <summary>
+            Set Brewer Palette
+            </summary>
+            <param name="kind">Palette</param>
+            <param name="alpha">Alpha (0 ~ 255) : 0(투명), 255(불투명)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind)">
+            <summary>
+            Set Brewer Palette
+            </summary>
+            <param name="kind">Palette</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.GetColors(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind,System.Int32)">
+            <summary>
+            Get Brewer Palette Color
+            </summary>
+            <param name="kind">Palette</param>
+            <param name="alpha">Alpha (0 ~ 255) : 0(투명), 255(불투명)</param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.GetColors(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind)">
+            <summary>
+            Get Brewer Palette Color
+            </summary>
+            <param name="kind">Palette</param>
+            <returns>Color List</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.GetPaletteColor(System.Int32)">
+            <summary>
+            Get Palette Color
+            </summary>
+            <param name="index">Palette Index</param>
+            <returns>Color</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.SetRange(System.Int32,System.Int32)">
+            <summary>
+            Set Color Range Value
+            </summary>
+            <param name="min">Min. Value</param>
+            <param name="max">Max. Value</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.GetRangeColor(System.Int32)">
+            <summary>
+            Get Range Value
+            </summary>
+            <param name="value">Current Value</param>
+            <returns>Range Color</returns>
+            <seealso cref="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.SetRange(System.Int32,System.Int32)"/>
         </member>
         <member name="T:VIZCore3D.NET.Utility.ColorHelper">
             <summary>
