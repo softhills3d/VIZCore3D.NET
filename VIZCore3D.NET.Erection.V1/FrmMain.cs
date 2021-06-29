@@ -473,7 +473,8 @@ namespace VIZCore3D.NET.Erection.V1
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
-            
+            vizcore3d.Animation.OnAnimationPlaybackFinishedEvent += Animation_OnAnimationPlaybackFinishedEvent;
+            vizcore3d.Animation.OnAnimationPlaybackPositionChangedEvent += Animation_OnAnimationPlaybackPositionChangedEvent;
         }
         #endregion
 
@@ -571,7 +572,7 @@ namespace VIZCore3D.NET.Erection.V1
 
                 vizcore3d.Model.Open(viz1);
 
-                // 외형 검색
+                // 간소화 형상 생성
                 vizcore3d.Model.ExportSimplifiedModel(viz1, viz3, false, false, 0, 0, 0, 0, 0, 0, false, 0, Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH, false);
 
                 lvi.SubItems[5].Text = "Y";
@@ -936,6 +937,9 @@ namespace VIZCore3D.NET.Erection.V1
             ExistDockModel(true);
         }
 
+        // ================================================
+        // Function - Animation
+        // ================================================
         private void btnAnimationGenerate_Click(object sender, EventArgs e)
         {
             Time = 0.0f;
@@ -965,7 +969,7 @@ namespace VIZCore3D.NET.Erection.V1
                 node.Move(new VIZCore3D.NET.Data.Vector3D(0, 0, 20000), true);
                 vizcore3d.Object3D.Show(new List<VIZCore3D.NET.Data.Node>() { node }, false);
             }
-            AddKey(true, false, TimeInterval);
+            AddKey(true, false, TimeInterval, String.Empty);
 
             for (int i = 0; i < lvItems.Items.Count; i++)
             {
@@ -974,10 +978,11 @@ namespace VIZCore3D.NET.Erection.V1
 
                 VIZCore3D.NET.Data.Node node = nodeMap[name];
                 vizcore3d.Object3D.Show(new List<VIZCore3D.NET.Data.Node>() { node }, true);
-                AddKey(true, false, TimeInterval * 0.3f);
+                AddKey(true, false, TimeInterval * 0.3f, name);
 
                 node.Move(new VIZCore3D.NET.Data.Vector3D(0, 0, -20000), false);
-                AddKey(true, false, TimeInterval * 0.7f);
+                AddKey(true, false, TimeInterval * 0.7f, name);
+                //AddKey(true, false, TimeInterval * 5.0f, name);
             }
             
             vizcore3d.EndUpdate();
@@ -988,7 +993,7 @@ namespace VIZCore3D.NET.Erection.V1
         /// <summary>
         /// 애니메이션 키 추가
         /// </summary>
-        public void AddKey(bool modelKey, bool cameraKey, float internval)
+        public void AddKey(bool modelKey, bool cameraKey, float internval, string tag)
         {
             Time += internval;
 
@@ -996,11 +1001,14 @@ namespace VIZCore3D.NET.Erection.V1
                 vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.CAMERA);
 
             if (modelKey)
-                vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.MODEL);
+                vizcore3d.Animation.AddKey(Time, VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType.MODEL, tag);
         }
 
         private void btnAnimationPlay_Click(object sender, EventArgs e)
         {
+            vizcore3d.View.Message.TextSize = VIZCore3D.NET.Data.FontSize.Size_24_Bold;
+            vizcore3d.View.Message.Color = Color.Red;
+
             vizcore3d.Animation.PlayingTime = Time;
 
             vizcore3d.View.RealtimeShadow = true;
@@ -1008,7 +1016,7 @@ namespace VIZCore3D.NET.Erection.V1
             vizcore3d.View.AntiAliasing = true;
             vizcore3d.View.SilhouetteEdge = true;
 
-            if (vizcore3d.View.Projection == Data.Projections.Orthographic)
+            if (vizcore3d.View.Projection == VIZCore3D.NET.Data.Projections.Orthographic)
                 vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;  /* 원근 뷰 설정 */
 
             vizcore3d.Animation.Play(false, 0);
@@ -1017,6 +1025,21 @@ namespace VIZCore3D.NET.Erection.V1
         private void btnAnimationPause_Click(object sender, EventArgs e)
         {
             vizcore3d.Animation.Pause();
+        }
+
+        private void Animation_OnAnimationPlaybackPositionChangedEvent(object sender, VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs e)
+        {
+            if(String.IsNullOrEmpty(e.Tag) == false)
+                vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} - {2} sec.", e.ID, e.Tag, e.Time), 10, 10);
+            else
+                vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} sec.", e.ID, e.Time), 10, 10);
+        }
+
+        private void Animation_OnAnimationPlaybackFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.AnimationPlaybackEventArgs e)
+        {
+            MessageBox.Show(string.Format("Animation Finished - {0}", e.ID), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            vizcore3d.View.Message.Hide(VIZCore3D.NET.Data.MessageId.ID_01);
         }
     }
 }
