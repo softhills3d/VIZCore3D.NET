@@ -484,6 +484,8 @@ namespace VIZCore3D.NET.ClashTest
             {
                 ShowResultList();
             }));
+
+            this.Activate();
         }
 
         private void ShowResultList()

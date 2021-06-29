@@ -495,6 +495,8 @@ namespace VIZCore3D.NET.ClashTest.V2
                     ShowResultList(result);
                 }));
             }
+
+            this.Activate();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
