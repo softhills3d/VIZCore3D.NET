@@ -128,6 +128,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.SectionClippe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.UserViewCustom", "VIZCore3D.NET.UserViewCustom\VIZCore3D.NET.UserViewCustom.csproj", "{764EC483-D182-432C-B13F-6FC2A62D2B2E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MoveWithMouse", "VIZCore3D.NET.MoveWithMouse\VIZCore3D.NET.MoveWithMouse.csproj", "{D69D22A1-B986-416E-9EC0-5D872536746B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -374,6 +376,10 @@ Global
 		{764EC483-D182-432C-B13F-6FC2A62D2B2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{764EC483-D182-432C-B13F-6FC2A62D2B2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{764EC483-D182-432C-B13F-6FC2A62D2B2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D69D22A1-B986-416E-9EC0-5D872536746B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69D22A1-B986-416E-9EC0-5D872536746B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69D22A1-B986-416E-9EC0-5D872536746B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69D22A1-B986-416E-9EC0-5D872536746B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
