@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 어셈블리에 대한 일반 정보는 다음 특성 집합을 통해 
 // 제어됩니다. 어셈블리와 관련된 정보를 수정하려면
 // 이러한 특성 값을 변경하세요.
-[assembly: AssemblyTitle("VIZCore3D.NET.App")]
+[assembly: AssemblyTitle("VIZCore3D.NET.Arguments")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SOFTHILLS Co., Ltd.")]
-[assembly: AssemblyProduct("VIZCore3D.NET.App")]
+[assembly: AssemblyProduct("VIZCore3D.NET.Arguments")]
 [assembly: AssemblyCopyright("© 2021 SOFTHILLS Co., Ltd. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 이 프로젝트가 COM에 노출되는 경우 다음 GUID는 typelib의 ID를 나타냅니다.
-[assembly: Guid("f7a27c84-ff0b-4359-8308-9e30b5b58b86")]
+[assembly: Guid("ababaa67-190e-4f97-baa8-70a716864b4c")]
 
 // 어셈블리의 버전 정보는 다음 네 가지 값으로 구성됩니다.
 //
