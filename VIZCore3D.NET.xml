@@ -2526,6 +2526,12 @@
             <param name="startPosition">이동 그룹의 시작 위치</param>
             <param name="interval">이동 간격</param>
         </member>
+        <member name="M:VIZCore3D.NET.Data.ClashTest.GetTranslationVertex">
+            <summary>
+            Get Translation Vertex Items
+            </summary>
+            <returns>Translation Vertex Items</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ClashTestPathItem">
             <summary>
             Clash Test Path Item Class
@@ -2572,6 +2578,12 @@
             위치 문자열 반환
             </summary>
             <returns>위치 문자열</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.ClashTestPathItem.ToVertex3D">
+            <summary>
+            To Vertex3D
+            </summary>
+            <returns>Vertex3D</returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.ClashTestResultItem">
             <summary>
@@ -6251,6 +6263,11 @@
             Disassembly
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_TRANSFORM_MATRIX">
+            <summary>
+            Transform Matrix Dialog
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FIND_NODE">
             <summary>
             Find Node
@@ -7211,6 +7228,13 @@
             <summary>
             To String
             </summary>
+            <returns>String</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Matrix3D.ToStirng(System.String)">
+            <summary>
+            To String
+            </summary>
+            <param name="splitterChar">Splitter Char.</param>
             <returns>String</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.ToArray">
@@ -11633,6 +11657,33 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Dialogs.MatrixDialog">
+            <summary>
+            Matrix Dialog Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MatrixDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.MatrixDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MatrixDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MatrixDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Dialogs.MeasureStyleDialog">
             <summary>
             Measure Style Dialog Class
@@ -12897,7 +12948,7 @@
             <param name="id">애니메이션 아이디</param>
             <param name="time">재생 시간</param>
         </member>
-        <member name="M:VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs.#ctor(System.Int32,System.Single,System.String)">
+        <member name="M:VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs.#ctor(System.Int32,System.Single,System.Object)">
             <summary>
             Construction
             </summary>
@@ -20380,6 +20431,31 @@
             <param name="includeNodePath">검색 결과에 노드 경로(패스) 정보 포함 여부</param>
             <returns>검색 결과 노드 목록</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.QuickSearch_V1(System.Boolean,System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Collections.Generic.List{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            빠른 검색
+            </summary>
+            <param name="isNew">True : 신규 검색 / False : 결과내 재검색</param>
+            <param name="resultData">이전 검색 결과 : NULL IS 신규 검색, NOT NULL IS 결과내 검색</param>
+            <param name="keyword">검색어 (노드이름)</param>
+            <param name="joinCondition">검색어 결합조건. True : AND, False : OR</param>
+            <param name="assemblyOnly">대상 노드 구분. True : 어셈블리 노드만 검색, False : 전체 노드 검색</param>
+            <param name="visibleOnly">조회 노드 구분. True : 보이는 노드만 검색, False : 전체 노드 검색</param>
+            <param name="selectedNodeOnly">선택 노드 구분. True : 선택 노드 이하 검색, False : 전체 노드 검색</param>
+            <param name="fullMatch">검색어 일치 여부. True : 검색어 전체 일치(Equal), False : 검색어 부분 일치(Contains)</param>
+            <param name="includeNodePath">검색 결과에 노드 경로(패스) 정보 포함 여부</param>
+            <returns>검색 결과 노드 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.FindNode(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            지정된 키워드의 조건에 맞는 노드 인덱스 및 이름을 반환
+            </summary>
+            <param name="keyword">검색어</param>
+            <param name="fullMatch">일치 여부</param>
+            <param name="assyOnly">어셈블리만 검색 여부</param>
+            <param name="selectedOnly">선택된 노드만 검색 여부</param>
+            <returns>결과(노드 이름, 노드 인덱스)</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.SizeSuffix(System.Int64,System.Int32)">
             <summary>
             File Size String
@@ -20535,7 +20611,7 @@
             <param name="keyID">Key ID</param>
             <returns>Animation</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.AnimationManager.AddKey(System.Single,VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType,System.String)">
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.AddKey(System.Single,VIZCore3D.NET.Manager.AnimationManager.AnimationKeyType,System.Object)">
             <summary>
             Animation Key 추가
             </summary>
@@ -36977,6 +37053,33 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.Show(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Show/Hide Objects By Keyword
+            </summary>
+            <param name="keyword">Keyword : OBST or INSU ...</param>
+            <param name="fullMatch">Full Match - True(Full Match) / False(Contains)</param>
+            <param name="visible">True(Show) / False(Hide)</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                // Hide OBST - Keyword : .... (OBST) 
+                vizcore3d.Object3D.Show("(OBST)", false, false);
+            
+                // Hide INSU - Keyword : .... (INSU)
+                vizcore3d.Object3D.Show("(INSU)", false, false);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ReviewManager">
             <summary>
             UserView Manager
@@ -40119,6 +40222,8 @@
         <member name="P:VIZCore3D.NET.Manager.ShortcutManager.Enable">
             <summary>
             단축키 활성화 여부
+            : 단축키가 동작하지 않습니다.
+            : 단축키 초기화를 수행 할 수 없습니다.
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ShortcutManager.ShortcutList">
@@ -40223,7 +40328,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShortcutManager.Disable">
             <summary>
-            모든 단축키 비활성화
+            모든 단축키 비활성화 - 읽기전용(수정불가) 단축키를 제외하고 할당된 키 조합이 삭제 됩니다.
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShortcutManager.Disable(VIZCore3D.NET.Data.ShortcutFunctions)">
@@ -41307,6 +41412,16 @@
             <param name="zeroBase">모델 초기 상태에서 회전 : True - 초기 상태에서 회전, False - 현재 상태에서 회전</param>
             <param name="eachObject">개체 각각 회전 여부 : True - 각각 회전 / False - 지정된 개체 전체 중심에서 회전</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.Rotate(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single,VIZCore3D.NET.Data.AngleFormat)">
+            <summary>
+            지정된 두 점으로 생성된 축을 기준으로 회전
+            </summary>
+            <param name="node">회전 대상 노드</param>
+            <param name="v1">첫번째 위치</param>
+            <param name="v2">두번째 위치</param>
+            <param name="angle">회전 각도</param>
+            <param name="format">각도 형식</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveTo(System.Int32[],System.Single,System.Single,System.Single)">
             <summary>
             지정된 개체를 해당 위치로 이동
@@ -41519,6 +41634,11 @@
             </summary>
             <param name="index">인덱스 목록</param>
             <param name="option">이동 옵션</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.ShowMatrixDialog">
+            <summary>
+            Show Matrix Dialog
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.UDAManager">
             <summary>
@@ -45207,6 +45327,12 @@
             <summary>
             아바타 지정된 위치로 이동
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.SetDistanceBetweenAvatarAndCamera(System.Single)">
+            <summary>
+            아바타와 카메라 사이의 거리 설정
+            </summary>
+            <param name="distance">거리</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.Move(System.Single,System.Single)">
             <summary>
