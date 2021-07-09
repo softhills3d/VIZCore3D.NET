@@ -1029,8 +1029,8 @@ namespace VIZCore3D.NET.Erection.V1
 
         private void Animation_OnAnimationPlaybackPositionChangedEvent(object sender, VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs e)
         {
-            if(String.IsNullOrEmpty(e.Tag) == false)
-                vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} - {2} sec.", e.ID, e.Tag, e.Time), 10, 10);
+            if(e.Tag != null)
+                vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} - {2} sec.", e.ID, (string)e.Tag, e.Time), 10, 10);
             else
                 vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} sec.", e.ID, e.Time), 10, 10);
         }
