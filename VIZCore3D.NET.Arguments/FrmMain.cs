@@ -214,6 +214,9 @@ namespace VIZCore3D.NET.Arguments
 
             // 회전 축
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
+
+            vizcore3d.View.MarineAxis.Visible = false;
+            vizcore3d.View.ViewToolbar = false;
             #endregion
 
 
