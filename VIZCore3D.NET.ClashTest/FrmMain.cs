@@ -695,7 +695,7 @@ namespace VIZCore3D.NET.ClashTest
         }
 
         private void btnNew_Click(object sender, EventArgs e)
-        {
+        {   
             clash = new Data.ClashTest();
         }
 
@@ -768,6 +768,39 @@ namespace VIZCore3D.NET.ClashTest
             System.Diagnostics.Trace.WriteLine(
                 vizcore3d.Clash.IsBusy == true ? "CLASH : BUSY" : "CLASH : NONE"
                 );
+        }
+
+        private void btnOpenStream_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "VIZ (*.viz)|*.viz";
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            vizcore3d.Model.OpenStream(
+                System.IO.Path.GetFileNameWithoutExtension(dlg.FileName).ToUpper()
+                , System.IO.File.ReadAllBytes(dlg.FileName)
+                );
+        }
+
+        private void btnAddStream_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Multiselect = true;
+            dlg.Filter = "VIZ (*.viz)|*.viz";
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+            foreach (string item in dlg.FileNames)
+            {
+                stream.Add(
+                    new VIZCore3D.NET.Data.StreamData(
+                        System.IO.File.ReadAllBytes(item)
+                        , System.IO.Path.GetFileNameWithoutExtension(item).ToUpper()
+                        )
+                    );
+            }
+
+            vizcore3d.Model.AddStream(stream);
         }
     }
 }

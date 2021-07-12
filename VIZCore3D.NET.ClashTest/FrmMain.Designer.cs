@@ -92,6 +92,9 @@
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnOpenStream = new System.Windows.Forms.Button();
+            this.btnAddStream = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -105,6 +108,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbResult.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -135,6 +139,7 @@
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox6);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer2.Panel1.Controls.Add(this.groupBox4);
@@ -338,9 +343,9 @@
             this.groupBox2.Controls.Add(this.ckVisibleOnly);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.cbTestKind);
-            this.groupBox2.Location = new System.Drawing.Point(12, 118);
+            this.groupBox2.Location = new System.Drawing.Point(12, 163);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(367, 189);
+            this.groupBox2.Size = new System.Drawing.Size(367, 144);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
@@ -359,7 +364,7 @@
             "8",
             "9",
             "10"});
-            this.cbBottomLevel.Location = new System.Drawing.Point(128, 149);
+            this.cbBottomLevel.Location = new System.Drawing.Point(128, 113);
             this.cbBottomLevel.Name = "cbBottomLevel";
             this.cbBottomLevel.Size = new System.Drawing.Size(95, 20);
             this.cbBottomLevel.TabIndex = 8;
@@ -368,7 +373,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 152);
+            this.label2.Location = new System.Drawing.Point(16, 116);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(93, 12);
             this.label2.TabIndex = 7;
@@ -376,7 +381,7 @@
             // 
             // txtPenetrationTolerance
             // 
-            this.txtPenetrationTolerance.Location = new System.Drawing.Point(128, 111);
+            this.txtPenetrationTolerance.Location = new System.Drawing.Point(128, 87);
             this.txtPenetrationTolerance.Name = "txtPenetrationTolerance";
             this.txtPenetrationTolerance.Size = new System.Drawing.Size(100, 21);
             this.txtPenetrationTolerance.TabIndex = 6;
@@ -384,7 +389,7 @@
             // 
             // txtRangeValue
             // 
-            this.txtRangeValue.Location = new System.Drawing.Point(128, 76);
+            this.txtRangeValue.Location = new System.Drawing.Point(128, 61);
             this.txtRangeValue.Name = "txtRangeValue";
             this.txtRangeValue.Size = new System.Drawing.Size(100, 21);
             this.txtRangeValue.TabIndex = 5;
@@ -395,7 +400,7 @@
             this.ckUsePenetrationTolerance.AutoSize = true;
             this.ckUsePenetrationTolerance.Checked = true;
             this.ckUsePenetrationTolerance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckUsePenetrationTolerance.Location = new System.Drawing.Point(18, 113);
+            this.ckUsePenetrationTolerance.Location = new System.Drawing.Point(18, 89);
             this.ckUsePenetrationTolerance.Name = "ckUsePenetrationTolerance";
             this.ckUsePenetrationTolerance.Size = new System.Drawing.Size(96, 16);
             this.ckUsePenetrationTolerance.TabIndex = 4;
@@ -405,7 +410,7 @@
             // ckUseRangeValue
             // 
             this.ckUseRangeValue.AutoSize = true;
-            this.ckUseRangeValue.Location = new System.Drawing.Point(18, 81);
+            this.ckUseRangeValue.Location = new System.Drawing.Point(18, 66);
             this.ckUseRangeValue.Name = "ckUseRangeValue";
             this.ckUseRangeValue.Size = new System.Drawing.Size(96, 16);
             this.ckUseRangeValue.TabIndex = 3;
@@ -455,16 +460,16 @@
             this.groupBox1.Controls.Add(this.btnDeleteResult);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnAdd);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 77);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(367, 100);
+            this.groupBox1.Size = new System.Drawing.Size(367, 80);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clash";
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(208, 60);
+            this.btnNew.Location = new System.Drawing.Point(208, 46);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(89, 23);
             this.btnNew.TabIndex = 6;
@@ -474,7 +479,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(208, 31);
+            this.btnClear.Location = new System.Drawing.Point(208, 17);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(89, 23);
             this.btnClear.TabIndex = 5;
@@ -484,7 +489,7 @@
             // 
             // btnPerformTest
             // 
-            this.btnPerformTest.Location = new System.Drawing.Point(113, 60);
+            this.btnPerformTest.Location = new System.Drawing.Point(113, 46);
             this.btnPerformTest.Name = "btnPerformTest";
             this.btnPerformTest.Size = new System.Drawing.Size(89, 23);
             this.btnPerformTest.TabIndex = 3;
@@ -494,7 +499,7 @@
             // 
             // btnDeleteResult
             // 
-            this.btnDeleteResult.Location = new System.Drawing.Point(18, 60);
+            this.btnDeleteResult.Location = new System.Drawing.Point(18, 46);
             this.btnDeleteResult.Name = "btnDeleteResult";
             this.btnDeleteResult.Size = new System.Drawing.Size(89, 23);
             this.btnDeleteResult.TabIndex = 2;
@@ -504,7 +509,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(113, 31);
+            this.btnDelete.Location = new System.Drawing.Point(113, 17);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(89, 23);
             this.btnDelete.TabIndex = 1;
@@ -514,7 +519,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(18, 31);
+            this.btnAdd.Location = new System.Drawing.Point(18, 17);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(89, 23);
             this.btnAdd.TabIndex = 0;
@@ -679,6 +684,39 @@
             this.timerStatus.Interval = 1000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnAddStream);
+            this.groupBox3.Controls.Add(this.btnOpenStream);
+            this.groupBox3.Location = new System.Drawing.Point(12, 13);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(367, 58);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Model";
+            // 
+            // btnOpenStream
+            // 
+            this.btnOpenStream.Location = new System.Drawing.Point(18, 20);
+            this.btnOpenStream.Name = "btnOpenStream";
+            this.btnOpenStream.Size = new System.Drawing.Size(89, 23);
+            this.btnOpenStream.TabIndex = 0;
+            this.btnOpenStream.Text = "Open Stream";
+            this.btnOpenStream.UseVisualStyleBackColor = true;
+            this.btnOpenStream.Click += new System.EventHandler(this.btnOpenStream_Click);
+            // 
+            // btnAddStream
+            // 
+            this.btnAddStream.Location = new System.Drawing.Point(113, 20);
+            this.btnAddStream.Name = "btnAddStream";
+            this.btnAddStream.Size = new System.Drawing.Size(89, 23);
+            this.btnAddStream.TabIndex = 1;
+            this.btnAddStream.Text = "Add Stream";
+            this.btnAddStream.UseVisualStyleBackColor = true;
+            this.btnAddStream.Click += new System.EventHandler(this.btnAddStream_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -705,6 +743,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.gbResult.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -773,6 +812,9 @@
         private System.Windows.Forms.Button btnRefreshList;
         private System.Windows.Forms.CheckBox ckPenetration;
         private System.Windows.Forms.Timer timerStatus;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnAddStream;
+        private System.Windows.Forms.Button btnOpenStream;
     }
 }
 
