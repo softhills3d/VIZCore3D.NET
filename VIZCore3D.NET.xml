@@ -5838,6 +5838,11 @@
             구조 내보내기
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_EXPORT_OUTSIDE">
+            <summary>
+            외형 내보내기
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MERGERULES_ADD">
             <summary>
             병합 규칙 추가
@@ -7511,6 +7516,21 @@
         <member name="P:VIZCore3D.NET.Data.MeasureStyle.ArrowColor">
             <summary>
             [전체 옵션만 지원] 화살표색
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureStyle.OsnapColor">
+            <summary>
+            [전체 옵션만 지원] 오스냅 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureStyle.OsnapPreselectColor">
+            <summary>
+            [전체 옵션만 지원] 오스냅 프리셀렉트 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureStyle.OsnapPreselectEdgeColor">
+            <summary>
+            [전체 옵션만 지원] 오스냅 프리셀렉트 모서리 색상
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.MeasureStyle.ArrowSize">
@@ -29774,6 +29794,11 @@
             데이터 코어 로그 옵션
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.DebugManager.ClashCoreLogOption">
+            <summary>
+            간섭검사 코어 로그 옵션
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.DebugManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -33298,6 +33323,11 @@
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportStructureDialog">
             <summary>
             Export Structure Dialog
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportOutsideDialog(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            Export Outside Dialog
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNode(System.Int32,System.String)">
@@ -40207,6 +40237,11 @@
         <member name="P:VIZCore3D.NET.Manager.SettingManager.LogDataOption">
             <summary>
             데이터 로그 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.LogClashOption">
+            <summary>
+            간섭검사 로그 옵션
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.DebugDataVisible">
