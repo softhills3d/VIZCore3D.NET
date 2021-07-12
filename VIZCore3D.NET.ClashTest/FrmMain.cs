@@ -763,6 +763,8 @@ namespace VIZCore3D.NET.ClashTest
 
         private void timerStatus_Tick(object sender, EventArgs e)
         {
+            if (vizcore3d.Clash.IsBusy == false) return;
+
             System.Diagnostics.Trace.WriteLine(
                 vizcore3d.Clash.IsBusy == true ? "CLASH : BUSY" : "CLASH : NONE"
                 );
