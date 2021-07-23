@@ -8198,6 +8198,12 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Node.TrasformByRawMatrix(VIZCore3D.NET.Data.Matrix3D)">
+            <summary>
+            이동 및 회전 : GeometryUtility.GetMatrixToMoveTo2PointParallelTo2Point
+            </summary>
+            <param name="matrix">matrix</param>
+        </member>
         <member name="M:VIZCore3D.NET.Data.Node.ResetTransform">
             <summary>
             이동 및 회전 초기화
@@ -11579,6 +11585,40 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.ExportStructureDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog">
+            <summary>
+            Export Top View Image Dialog Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -21786,6 +21826,57 @@
             <param name="v">참조점(검사 위치)</param>
             <param name="faceDistanceTolerance">인전면과 참조점 사이의 거리</param>
             <returns>두 부재 인접면의 법선벡터</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetMatrixToMoveTo2PointParallelTo2Point(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single)">
+            <summary>
+            입력된 2 점과 대상 2점을 오프셋 만큼 떨어진 평행한 대상 2점이 될 수 있도록 이동/회전 Matrix 계산
+            </summary>
+            <param name="iv1">이동점 1</param>
+            <param name="iv2">이동점 2</param>
+            <param name="iv3">고정점 1</param>
+            <param name="iv4">고정점 2</param>
+            <param name="offset">오프셋</param>
+            <returns>이동/회전 Matrix</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                // 고정 라인
+                VIZCore3D.NET.Data.Vertex3D v1 
+                    = new VIZCore3D.NET.Data.Vertex3D(500, 500, 500);
+                VIZCore3D.NET.Data.Vertex3D v2 
+                    = new VIZCore3D.NET.Data.Vertex3D(500, -500, 500);
+            
+                // 이동되어야 할 라인
+                VIZCore3D.NET.Data.Vertex3D v3 
+                    = new VIZCore3D.NET.Data.Vertex3D(-24.85, 254.20, 500);
+                VIZCore3D.NET.Data.Vertex3D v4 
+                    = new VIZCore3D.NET.Data.Vertex3D(-450, -650, 500);
+            
+                // 이동&회전 매트릭스 계산
+                VIZCore3D.NET.Data.Matrix3D matrix 
+                    = vizcore3d.GeometryUtility.GetMatrixToMoveTo2PointParallelTo2Point(
+                        v3          /* 이동될 라인 시작점 */
+                        , v4        /* 이동될 라인 끝점 */
+                        , v1        /* 기준선 라인 시작점 */
+                        , v2        /* 기준선 라인 끝점 */
+                        , 1000.0f   /* 오프셋 */
+                        );
+            
+                // 이동될 라인을 포함한 부재 검색
+                List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.Find.QuickSearch("BOX2", true);
+                if (nodes.Count == 0) return;
+            
+                // 부재 이동 및 회전
+                nodes[0].TrasformByRawMatrix(matrix);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
@@ -37110,6 +37201,38 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetBoundBox(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Boolean)">
+            <summary>
+            지정된 노드의 BoundBox 반환
+            </summary>
+            <param name="node">노드</param>
+            <param name="visibleOnly">보이는 모델만</param>
+            <returns>BoundBox</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetBoundBox(System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            지정된 인덱스의 BoundBox 반환
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="visibleOnly">보이는 모델만</param>
+            <returns>BoundBox</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetCenter(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Boolean)">
+            <summary>
+            지정된 노드의 중심점 반환
+            </summary>
+            <param name="node">노드</param>
+            <param name="visibleOnly">보이는 모델만</param>
+            <returns>중심점</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetCenter(System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            지정된 인덱스의 중심점 반환
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="visibleOnly">보이는 모델만</param>
+            <returns>중심점</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ReviewManager">
             <summary>
             UserView Manager
@@ -39379,6 +39502,43 @@
             <param name="partSection">PartSection</param>
             <param name="margine">Margine</param>
             <returns>Section</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<VIZCore3D.NET.Data.Node> nodes
+                    = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+                if (nodes.Count == 0) return;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Object3D.GetBoundBox(nodes);
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.AddBox(false);
+                vizcore3d.Section.SetBoxSize(section.ID, boundBox);
+            
+                vizcore3d.View.FitToView(boundBox.GetCenter());
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<VIZCore3D.NET.Data.Node> nodes
+                    = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+                if (nodes.Count == 0) return;
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.AddBox(true);
+            
+                vizcore3d.View.FitToView(section.BoundBox.GetCenter());
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.AddInBox(System.Boolean)">
             <summary>
@@ -39520,6 +39680,13 @@
             <param name="id">단면상자 아이디(ID)</param>
             <param name="min">최소점</param>
             <param name="max">최대점</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.SetBoxSize(System.Int32,VIZCore3D.NET.Data.BoundBox3D)">
+            <summary>
+            단면상자 크기 변경
+            </summary>
+            <param name="id">단면상자 아이디(ID)</param>
+            <param name="boundBox">단면상자 BoundBox</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.SetCenterPosition(System.Int32,System.Int32,System.Single,System.Single,System.Single)">
             <summary>
@@ -43600,23 +43767,71 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.FitToView">
             <summary>
-            화면에 맞춤
+            조회중인 모델을 현재 화면에 맞춤
             </summary>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Single,System.Single)"/>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Boolean,System.Boolean,System.Single,System.Single)"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(VIZCore3D.NET.Data.Vertex3D)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.FitToView(VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            조회중인 모델을 현재 화면에 맞추고, 지정된 좌표를 모델 회전중심으로 지정
+            </summary>
+            <param name="pivot">회전 중심 설정</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Single,System.Single)"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Boolean,System.Boolean,System.Single,System.Single)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<VIZCore3D.NET.Data.Node> nodes
+                    = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+                if (nodes.Count == 0) return;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Object3D.GetBoundBox(nodes);
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.AddBox(false);
+                vizcore3d.Section.SetBoxSize(section.ID, boundBox);
+            
+                vizcore3d.View.FitToView(boundBox.GetCenter());
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<VIZCore3D.NET.Data.Node> nodes
+                    = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+                if (nodes.Count == 0) return;
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.AddBox(true);
+            
+                vizcore3d.View.FitToView(section.BoundBox.GetCenter());
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Single,System.Single)">
             <summary>
-            화면에 맞춤
+            조회중인 모델을 공백을 설정하여 화면에 맞춤
             </summary>
             <param name="margin">여유값. 기본(0.2)</param>
             <param name="screenMargin">화면 여유값. 기본(0)</param>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView"/>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Boolean,System.Boolean,System.Single,System.Single)"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(VIZCore3D.NET.Data.Vertex3D)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Boolean,System.Boolean,System.Single,System.Single)">
             <summary>
-            화면에 맞춤
+            조회중인 모델을 공백을 설정하여 화면에 맞춤
             </summary>
             <param name="render"></param>
             <param name="resetMouseState"></param>
@@ -43624,6 +43839,7 @@
             <param name="screenMargin">화면 여유값. 기본(0)</param>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView"/>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Single,System.Single)"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView(VIZCore3D.NET.Data.Vertex3D)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.MoveCenterToObject3d">
             <summary>
@@ -44614,6 +44830,11 @@
             Get Mouse Input Preset
             </summary>
             <returns>Current Mouse Input Preset</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.ShowExportTopViewImageDialog">
+            <summary>
+            [BETA] Show Export Top View Image Dialog
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>
