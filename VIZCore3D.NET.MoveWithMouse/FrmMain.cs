@@ -532,5 +532,39 @@ namespace VIZCore3D.NET.MoveWithMouse
 
             vizcore3d.View.MouseBasedObjectMove.EnableMode(ckEnable.Checked, Manager.MouseBasedObjectMoveManager.MovingOptions.MOVE);
         }
+
+        private void btnCenter_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromIndex(0).GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+            if (nodes.Count == 0) return;
+            List<VIZCore3D.NET.Data.Vertex3D> center = new List<VIZCore3D.NET.Data.Vertex3D>();
+            foreach (VIZCore3D.NET.Data.Node item in nodes)
+            {
+                if (item.ChildCount == 0) continue;
+
+                VIZCore3D.NET.Data.BoundBox3D boundBox = item.GetBoundBoxAABB();
+                center.Add(boundBox.GetCenter());
+            }
+
+            if (center.Count > 0)
+                vizcore3d.ShapeDrawing.AddVertex(center, 0, Color.Red, 3, 3, true);
+
+            List<VIZCore3D.NET.Data.Vertex3DItemCollection> vitems = new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+            for (int i = 0; i < center.Count; i++)
+            {
+                VIZCore3D.NET.Data.Vertex3DItemCollection vcoll = new VIZCore3D.NET.Data.Vertex3DItemCollection();
+
+                if(i + 1 <center.Count -1)
+                {
+                    vcoll.Add(center[i + 0]);
+                    vcoll.Add(center[i + 1]);
+
+                    vitems.Add(vcoll);
+                }
+            }
+
+            if (vitems.Count > 0)
+                vizcore3d.ShapeDrawing.AddLine(vitems, 1, Color.Red, 10, true);
+        }
     }
 }
