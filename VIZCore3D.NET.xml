@@ -4685,6 +4685,11 @@
             CUSTOM
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.ShapeDrawingType.ARROW">
+            <summary>
+            Arrow
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ModulePlatform">
             <summary>
             모듈 플랫폼
@@ -21829,7 +21834,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetMatrixToMoveTo2PointParallelTo2Point(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single)">
             <summary>
-            입력된 2 점과 대상 2점을 오프셋 만큼 떨어진 평행한 대상 2점이 될 수 있도록 이동/회전 Matrix 계산
+            대상 2점과 기준선 2 점을 오프셋 만큼 떨어진 평행한 대상 2점이 될 수 있도록 이동/회전 Matrix 계산
             </summary>
             <param name="iv1">이동점 1</param>
             <param name="iv2">이동점 2</param>
@@ -21845,25 +21850,25 @@
             
             private void Example()
             {
-                // 고정 라인
-                VIZCore3D.NET.Data.Vertex3D v1 
-                    = new VIZCore3D.NET.Data.Vertex3D(500, 500, 500);
-                VIZCore3D.NET.Data.Vertex3D v2 
-                    = new VIZCore3D.NET.Data.Vertex3D(500, -500, 500);
-            
                 // 이동되어야 할 라인
-                VIZCore3D.NET.Data.Vertex3D v3 
+                VIZCore3D.NET.Data.Vertex3D v1 
                     = new VIZCore3D.NET.Data.Vertex3D(-24.85, 254.20, 500);
-                VIZCore3D.NET.Data.Vertex3D v4 
+                VIZCore3D.NET.Data.Vertex3D v2 
                     = new VIZCore3D.NET.Data.Vertex3D(-450, -650, 500);
+                    
+                // 고정 라인
+                VIZCore3D.NET.Data.Vertex3D v3 
+                    = new VIZCore3D.NET.Data.Vertex3D(500, 500, 500);
+                VIZCore3D.NET.Data.Vertex3D v4 
+                    = new VIZCore3D.NET.Data.Vertex3D(500, -500, 500);
             
                 // 이동&회전 매트릭스 계산
                 VIZCore3D.NET.Data.Matrix3D matrix 
                     = vizcore3d.GeometryUtility.GetMatrixToMoveTo2PointParallelTo2Point(
-                        v3          /* 이동될 라인 시작점 */
-                        , v4        /* 이동될 라인 끝점 */
-                        , v1        /* 기준선 라인 시작점 */
-                        , v2        /* 기준선 라인 끝점 */
+                        v1          /* 이동될 라인 시작점 */
+                        , v2        /* 이동될 라인 끝점 */
+                        , v3        /* 기준선 라인 시작점 */
+                        , v4        /* 기준선 라인 끝점 */
                         , 1000.0f   /* 오프셋 */
                         );
             
@@ -28196,6 +28201,20 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddLine(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Single,System.Single,System.Drawing.Color,System.Single,System.Boolean)">
+            <summary>
+            실선 추가
+            </summary>
+            <param name="vertex">Vertex List Collection</param>
+            <param name="groupId">Group Id</param>
+            <param name="startOffset">시작점 Offset</param>
+            <param name="endOffset">끝점 Offset</param>
+            <param name="color">라인 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
+            <returns></returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddDashLine(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Drawing.Color,System.Single,System.Boolean,System.Single)">
             <summary>
             점선 추가
@@ -28365,6 +28384,208 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddDashLine(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Single,System.Single,System.Drawing.Color,System.Single,System.Boolean,System.Single)">
+            <summary>
+            점선 추가
+            </summary>
+            <param name="vertex">Vertex List Collection</param>
+            <param name="groupId">Group Id</param>
+            <param name="startOffset">시작점 Offset</param>
+            <param name="endOffset">끝점 Offset</param>
+            <param name="color">라인 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <param name="length">점선 길이</param>
+            <returns>등록된 개체 ID</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddArrow(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Drawing.Color,System.Drawing.Color,System.Single,System.Single,System.Boolean)">
+            <summary>
+            화살표 추가
+            </summary>
+            <param name="vertex">Vertex List Collection</param>
+            <param name="groupId">Group Id</param>
+            <param name="color">라인 색상</param>
+            <param name="arrowColor">화살표 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="arrowSize">화살표 크기</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                int groupId = 1;
+                float thickness = 1.0f;
+                float arrowSize = 3.0f;
+                
+                vizcore3d.BeginUpdate();
+            
+                int shapeId = vizcore3d.ShapeDrawing.AddArrow(
+                        GetVertexList()
+                        , groupId
+                        , System.Drawing.Color.White
+                        , System.Drawing.Color.Red
+                        , thickness
+                        , arrowSize
+                        , true
+                        );
+                        
+                vizcore3d.EndUpdate();
+            }
+            
+            private List<VIZCore3D.NET.Data.Vertex3DItemCollection> GetVertexList()
+            {
+                List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex =
+                    new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+            
+                VIZCore3D.NET.Data.BoundBox3D boundbox =
+                    vizcore3d.Object3D.GeometryProperty.FromSelectedObject3D(false).GetBoundBox();
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MinY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MinX, boundbox.MaxY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MinZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MaxY, boundbox.MaxZ));
+            
+                    vertex.Add(item);
+                }
+            
+                {
+                    VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                        new VIZCore3D.NET.Data.Vertex3DItemCollection();
+            
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MaxZ));
+                    item.Add(new VIZCore3D.NET.Data.Vertex3D(boundbox.MaxX, boundbox.MinY, boundbox.MinZ));
+            
+                    vertex.Add(item);
+                }
+            
+                return vertex;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.AddArrow(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3DItemCollection},System.Int32,System.Single,System.Single,System.Drawing.Color,System.Drawing.Color,System.Single,System.Single,System.Boolean)">
+            <summary>
+            화살표 추가
+            </summary>
+            <param name="vertex">Vertex List Collection</param>
+            <param name="groupId">Group Id</param>
+            <param name="startOffset">시작점 Offset</param>
+            <param name="endOffset">끝점 Offset</param>
+            <param name="color">라인 색상</param>        
+            <param name="arrowColor">화살표 색상</param>
+            <param name="thickness">라인 두께</param>
+            <param name="arrowSize">화살표 크기</param>
+            <param name="visible">보이기/숨기기 상태</param>
+            <returns>등록된 개체 ID</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.DrawRectangle(System.Drawing.Point,System.Drawing.Point,System.Int32,System.Int32,System.Drawing.Color,System.Single,System.Boolean)">
             <summary>
