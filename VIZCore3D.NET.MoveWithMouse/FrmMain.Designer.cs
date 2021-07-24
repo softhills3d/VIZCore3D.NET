@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnLineCenter = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ckDraftView = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -37,15 +39,14 @@
             this.btnDisassemble = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckEnable = new System.Windows.Forms.CheckBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnCenter = new System.Windows.Forms.Button();
+            this.btnArrowCenter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,6 +65,29 @@
             this.splitContainer1.Size = new System.Drawing.Size(1211, 663);
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnArrowCenter);
+            this.groupBox4.Controls.Add(this.btnLineCenter);
+            this.groupBox4.Location = new System.Drawing.Point(12, 220);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(241, 116);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Line";
+            // 
+            // btnLineCenter
+            // 
+            this.btnLineCenter.Location = new System.Drawing.Point(24, 20);
+            this.btnLineCenter.Name = "btnLineCenter";
+            this.btnLineCenter.Size = new System.Drawing.Size(176, 23);
+            this.btnLineCenter.TabIndex = 0;
+            this.btnLineCenter.Text = "Line (Center To Center)";
+            this.btnLineCenter.UseVisualStyleBackColor = true;
+            this.btnLineCenter.Click += new System.EventHandler(this.btnLineCenter_Click);
             // 
             // groupBox3
             // 
@@ -143,27 +167,15 @@
             this.ckEnable.UseVisualStyleBackColor = true;
             this.ckEnable.CheckedChanged += new System.EventHandler(this.ckEnable_CheckedChanged);
             // 
-            // groupBox4
+            // btnArrowCenter
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnCenter);
-            this.groupBox4.Location = new System.Drawing.Point(12, 220);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(241, 81);
-            this.groupBox4.TabIndex = 3;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Line";
-            // 
-            // btnCenter
-            // 
-            this.btnCenter.Location = new System.Drawing.Point(24, 20);
-            this.btnCenter.Name = "btnCenter";
-            this.btnCenter.Size = new System.Drawing.Size(75, 23);
-            this.btnCenter.TabIndex = 0;
-            this.btnCenter.Text = "Center";
-            this.btnCenter.UseVisualStyleBackColor = true;
-            this.btnCenter.Click += new System.EventHandler(this.btnCenter_Click);
+            this.btnArrowCenter.Location = new System.Drawing.Point(24, 68);
+            this.btnArrowCenter.Name = "btnArrowCenter";
+            this.btnArrowCenter.Size = new System.Drawing.Size(176, 23);
+            this.btnArrowCenter.TabIndex = 1;
+            this.btnArrowCenter.Text = "Arrow (Center To Center)";
+            this.btnArrowCenter.UseVisualStyleBackColor = true;
+            this.btnArrowCenter.Click += new System.EventHandler(this.btnArrowCenter_Click);
             // 
             // FrmMain
             // 
@@ -178,12 +190,12 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -199,7 +211,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox ckDraftView;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button btnCenter;
+        private System.Windows.Forms.Button btnLineCenter;
+        private System.Windows.Forms.Button btnArrowCenter;
     }
 }
 
