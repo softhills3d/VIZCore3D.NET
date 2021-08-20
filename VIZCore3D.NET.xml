@@ -772,6 +772,11 @@
             Custom Background Image
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.MouseControl">
+            <summary>
+            Mouse Control
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Controls.ViewControl.#ctor(VIZCore3D.NET.VIZCore3DControl,VIZCore3D.NET.BackgroundImage)">
             <summary>
             Construction
@@ -2745,7 +2750,17 @@
             간섭 부재 A 노드 경로
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.ClashTestResultItem.NodePathArrayA">
+            <summary>
+            간섭 부재 A 노드 경로
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.ClashTestResultItem.NodePathB">
+            <summary>
+            간섭 부재 B 노드 경로
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ClashTestResultItem.NodePathArrayB">
             <summary>
             간섭 부재 B 노드 경로
             </summary>
@@ -7174,9 +7189,9 @@
             <summary>
             Set Translate
             </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="z"></param>
+            <param name="x">X</param>
+            <param name="y">Y</param>
+            <param name="z">Z</param>
             <param name="reset">Initialize Matrix</param>
         </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.SetTranslate(System.Collections.Generic.List{System.Single},System.Boolean)">
@@ -8063,6 +8078,12 @@
             노드 경로(Node Path) 설정
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Node.GetNodePathArray">
+            <summary>
+            노드 경로 어레이 반환
+            </summary>
+            <returns>노드 경로</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Data.Node.GetParentName">
             <summary>
             상위 노드 이름을 반환
@@ -8082,11 +8103,12 @@
             </summary>
             <returns>노드 구조 목록</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Data.Node.Rename(System.String)">
+        <member name="M:VIZCore3D.NET.Data.Node.Rename(System.String,System.Boolean)">
             <summary>
             노드(개체) 이름 변경
             </summary>
             <param name="name">변경할 노드 이름</param>
+            <param name="rebuildTree">트리 새로고침 여부</param>
         </member>
         <member name="M:VIZCore3D.NET.Data.Node.CopyNodeNameToClipboard">
             <summary>
@@ -10819,7 +10841,7 @@
             <summary>
             두점 사이의 각
             </summary>
-            <param name="v"></param>
+            <param name="v">Angle</param>
             <returns>Rad</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Vertex3D.AddValue(VIZCore3D.NET.Data.Axis,System.Single)">
@@ -11070,6 +11092,11 @@
         <member name="T:VIZCore3D.NET.MouseControls">
             <summary>
             Mouse Controls
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.MouseControls.NONE">
+            <summary>
+            NONE
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.MouseControls.Wheel">
@@ -21785,6 +21812,7 @@
             지정된 노드에 포함된 Circle 정보 반환
             </summary>
             <param name="index">노드 인덱스(INDEX)</param>
+            <returns>Circle Data List</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.RotatePoint(System.Drawing.Point,System.Drawing.Point,System.Double)">
             <summary>
@@ -32815,6 +32843,11 @@
             Export Filter
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ModelManager.EnableBody">
+            <summary>
+            Body 노드 사용 유무
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.License">
             <summary>
             License Manager
@@ -33088,7 +33121,7 @@
             </summary>
             <param name="name">문자열</param>
             <param name="option">비교대상</param>
-            <returns></returns>
+            <returns>Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.List_Add(System.String)">
             <summary>
@@ -33641,6 +33674,7 @@
             <summary>
             Export Outside Dialog
             </summary>
+            <param name="nodes">Outside Nodes</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNode(System.Int32,System.String)">
             <summary>
@@ -36731,12 +36765,13 @@
             <param name="index">Node Index</param>
             <returns>Sibling Node Index</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetMeshCount(System.Int32)">
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetMeshCount(System.Int32,System.Boolean)">
             <summary>
-            Part Node의 Mesh Count 반환
+            Node 의 Mesh Count 반환
             </summary>
-            <param name="index">파트 노드 인덱스</param>
-            <returns>Mesh Count. 파트 노드의 인덱스가 아닌 경우, -1 반환</returns>
+            <param name="index">노드 인덱스</param>
+            <param name="ignoreNodeKind">노드 유형 무시 여부 : True(노드 유형 상관없이 결과 반환. 어셈블리의 경우, 하위 모든 Mesh Count 반환), False(EnableBody = True : Body 노드만 Mesh Count 반환 / EnableBody = False : Part 노드만 Mesh Count 반환)</param>
+            <returns>Mesh Count</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetNodeIdByNodePath(System.String)">
             <summary>
@@ -36988,6 +37023,14 @@
             </summary>
             <param name="index">노드 인덱스</param>
             <param name="name">변경할 노드 이름</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.Rename(System.Int32,System.String,System.Boolean)">
+            <summary>
+            개체 이름 변경
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="name">변경할 노드 이름</param>
+            <param name="rebuildTree">트리 새로고침 여부</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.RemoveNodeWithoutBody(System.Boolean)">
             <summary>
@@ -40257,6 +40300,11 @@
             노드 이름 앞 '/' 제거 여부
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableBody">
+            <summary>
+            Body 형식 노드 조회
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableHardwareAcceleration">
             <summary>
             Enable Hardware Acceleration
@@ -41064,6 +41112,14 @@
             <param name="index">노드 인덱스</param>
             <param name="name">변경할 노드 이름</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.Rename(System.Int32,System.String,System.Boolean)">
+            <summary>
+            개체 이름 변경
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="name">변경할 노드 이름</param>
+            <param name="rebuildTree">트리 새로고침 여부</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateNode(System.Int32,VIZCore3D.NET.Data.NodeKind,System.String)">
             <summary>
             노드 생성
@@ -41750,9 +41806,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.TransformManager.GetRotatedAngle">
             <summary>
-            
+            Get Rotated Angle
             </summary>
-            <returns></returns>
+            <returns>Angle</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.TransformManager.GetRotatedAngle(System.Collections.Generic.List{System.Int32})">
             <summary>
@@ -41844,6 +41900,81 @@
             <param name="v2">두번째 위치</param>
             <param name="angle">회전 각도</param>
             <param name="format">각도 형식</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private System.Timers.Timer timerScrew;
+            
+            private void Example()
+            {
+                timerScrew = new System.Timers.Timer();
+                timerScrew.Interval = 100;
+                timerScrew.Elapsed += TimerScrew_Elapsed;
+            
+                AnimationScrew(true);
+            }
+            
+            private List<VIZCore3D.NET.Data.Node> NODES_SCREW1 { get; set; }
+            private List<VIZCore3D.NET.Data.Node> NODES_SCREW2 { get; set; }
+            private float Screw_Rotate_Angle = 0;
+            
+            private void AnimationScrew(bool enable)
+            {
+                if (enable == true)
+                {
+                    NODES_SCREW1 = vizcore3d.Object3D.Find.QuickSearch("SHIP_SCREW#1", true);
+                    NODES_SCREW2 = vizcore3d.Object3D.Find.QuickSearch("SHIP_SCREW#2", true);
+            
+                    timerScrew.Enabled = true;
+                }
+                else
+                {
+                    timerScrew.Enabled = false;
+                }
+            }
+            
+            private void TimerScrew_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+            {
+                timerScrew.Enabled = false;
+            
+                this.Invoke(new EventHandler(delegate
+                {
+                    RotateScrew();
+                }));
+            
+                timerScrew.Enabled = true;
+            }
+            
+            private void RotateScrew()
+            {
+                vizcore3d.BeginUpdate();
+            
+                vizcore3d.Object3D.Transform.Rotate(
+                    NODES_SCREW1
+                    , new VIZCore3D.NET.Data.Vertex3D(-40144.21, 2159.66, -15277.70)
+                    , new VIZCore3D.NET.Data.Vertex3D(-38685.59, 2170.91, -15204.43)
+                    , Screw_Rotate_Angle % 360
+                    , VIZCore3D.NET.Data.AngleFormat.DEGREE
+                    );
+            
+                vizcore3d.Object3D.Transform.Rotate(
+                    NODES_SCREW2
+                    , new VIZCore3D.NET.Data.Vertex3D(-40110.58, -2575.70, -15209.66)
+                    , new VIZCore3D.NET.Data.Vertex3D(-38651.92, -2564.30, -15135.98)
+                    , Screw_Rotate_Angle % 360
+                    , VIZCore3D.NET.Data.AngleFormat.DEGREE
+                    );
+            
+                Screw_Rotate_Angle += 30;
+            
+                vizcore3d.EndUpdate();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveTo(System.Int32[],System.Single,System.Single,System.Single)">
             <summary>
@@ -42764,7 +42895,7 @@
             <summary>
             Vertex Color Mode 색상 반환
             </summary>
-            <param name="index">node index</param>
+            <param name="index">Node index</param>
             <returns>Color List</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.SetColor(System.Collections.Generic.List{System.Drawing.Color})">
@@ -42796,7 +42927,7 @@
             <summary>
             Vertex Color Mode 색상초기화
             </summary>
-            <param name="index">node Index</param>
+            <param name="index">Node Index</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ViewManager">
             <summary>
@@ -43685,6 +43816,21 @@
             SkyBox 활성화/비활성화
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableOcean">
+            <summary>
+            Ocean 활성화/비활성화
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.OceanHeightAuto">
+            <summary>
+            Ocean 자동 높이 활성화/비활성화
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.OceanHeight">
+            <summary>
+            Ocean 높이
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.AmbientColor">
             <summary>
             음영 색상
@@ -44042,7 +44188,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Single,System.Single)">
             <summary>
-            조회중인 모델을 공백을 설정하여 화면에 맞춤
+            조회중인 모델의 공백을 설정하여 화면에 맞춤
             </summary>
             <param name="margin">여유값. 기본(0.2)</param>
             <param name="screenMargin">화면 여유값. 기본(0)</param>
@@ -44052,10 +44198,10 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.FitToView(System.Boolean,System.Boolean,System.Single,System.Single)">
             <summary>
-            조회중인 모델을 공백을 설정하여 화면에 맞춤
+            조회중인 모델의 공백을 설정하여 화면에 맞춤
             </summary>
-            <param name="render"></param>
-            <param name="resetMouseState"></param>
+            <param name="render">화면 새로고침</param>
+            <param name="resetMouseState">마우스 상태 초기화</param>
             <param name="margin">여유값. 기본(0.2)</param>
             <param name="screenMargin">화면 여유값. 기본(0)</param>
             <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.FitToView"/>
@@ -44107,6 +44253,40 @@
             <param name="y1">Screen Y1</param>
             <param name="x2">Screen X2</param>
             <param name="y2">Screen Y2</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.BoxZoom(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                vizcore3d.View.BoxZoom(
+                    boundBox.GetVertexMin()
+                    , boundBox.GetVertexMax()
+                    );
+            }
+            
+            private void Example2()
+            {
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                VIZCore3D.NET.Data.Vertex3D min = vizcore3d.View.WorldToScreen(boundBox.GetVertexMin(), true);
+                VIZCore3D.NET.Data.Vertex3D max = vizcore3d.View.WorldToScreen(boundBox.GetVertexMax(), true);
+            
+                vizcore3d.View.BoxZoom(
+                    Convert.ToInt32(min.X)
+                    , Convert.ToInt32(min.Y)
+                    , Convert.ToInt32(max.X)
+                    , Convert.ToInt32(max.Y)
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.BoxZoom(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
@@ -44114,6 +44294,40 @@
             </summary>
             <param name="v1">Vertex1</param>
             <param name="v2">Vertex2</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.ViewManager.BoxZoom(System.Int32,System.Int32,System.Int32,System.Int32)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                vizcore3d.View.BoxZoom(
+                    boundBox.GetVertexMin()
+                    , boundBox.GetVertexMax()
+                    );
+            }
+            
+            private void Example2()
+            {
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                VIZCore3D.NET.Data.Vertex3D min = vizcore3d.View.WorldToScreen(boundBox.GetVertexMin(), true);
+                VIZCore3D.NET.Data.Vertex3D max = vizcore3d.View.WorldToScreen(boundBox.GetVertexMax(), true);
+            
+                vizcore3d.View.BoxZoom(
+                    Convert.ToInt32(min.X)
+                    , Convert.ToInt32(min.Y)
+                    , Convert.ToInt32(max.X)
+                    , Convert.ToInt32(max.Y)
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.ZoomIn">
             <summary>
@@ -46139,6 +46353,14 @@
             : VIZCore3D.NET 구동에 필요한 Library를 초기화 합니다. 옵션에 따라 색상 테이블 (rev2bst.config.rev) 을 덮어쓰기 하지 않을 수 있습니다.
             </summary>
             <param name="exceptColorTable">Except Color Table (rev2bst.config.rev)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.ModuleInitializer.Run(System.Boolean,System.Boolean)">
+            <summary>
+            Run
+            : VIZCore3D.NET 구동에 필요한 Library를 초기화 합니다. 옵션에 따라 색상 테이블 (rev2bst.config.rev) 을 덮어쓰기 하지 않을 수 있습니다.
+            </summary>
+            <param name="overwrite">Overwrite Library</param>
+            <param name="overwriteColorTable">Overwrite Color Table (rev2bst.config.rev)</param>
         </member>
         <member name="T:VIZCore3D.NET.NamespaceDoc">
             <summary>
@@ -48372,7 +48594,7 @@
             </summary>
             <param name="kind">Palette</param>
             <param name="alpha">Alpha (0 ~ 255) : 0(투명), 255(불투명)</param>
-            <returns></returns>
+            <returns>Color List</returns>
         </member>
         <member name="M:VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.GetColors(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind)">
             <summary>
@@ -49860,6 +50082,36 @@
             <summary>
             Statusbar
             </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.MouseControl">
+            <summary>
+            Mouse Control
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                // Add Mouse Operation
+                vizcore3d.MouseControl = vizcore3d.MouseControl | VIZCore3D.NET.MouseControls.Move;
+                vizcore3d.MouseControl = vizcore3d.MouseControl | VIZCore3D.NET.MouseControls.Wheel;
+            
+                // Remove Mouse Operation
+                vizcore3d.MouseControl = vizcore3d.MouseControl & ~VIZCore3D.NET.MouseControls.Move;
+                vizcore3d.MouseControl = vizcore3d.MouseControl & ~VIZCore3D.NET.MouseControls.Wheel;
+                
+                // Has Flag
+                if (vizcore3d.MouseControl.HasFlag(VIZCore3D.NET.MouseControls.Move) == true)
+                    vizcore3d.MouseControl = vizcore3d.MouseControl & ~VIZCore3D.NET.MouseControls.Move;
+                else
+                    vizcore3d.MouseControl = vizcore3d.MouseControl | VIZCore3D.NET.MouseControls.Move;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.#ctor">
             <summary>
