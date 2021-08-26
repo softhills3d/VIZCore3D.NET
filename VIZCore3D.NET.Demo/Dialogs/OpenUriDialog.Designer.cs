@@ -91,7 +91,7 @@
             this.txtUri.Name = "txtUri";
             this.txtUri.Size = new System.Drawing.Size(605, 32);
             this.txtUri.TabIndex = 0;
-            this.txtUri.Text = "http://www.softhills.net/model/toycar.viz";
+            this.txtUri.Text = "https://www.softhills.net/model/toycar.viz";
             // 
             // btnOK
             // 

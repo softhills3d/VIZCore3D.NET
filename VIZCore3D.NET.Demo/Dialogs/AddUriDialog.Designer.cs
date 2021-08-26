@@ -101,7 +101,7 @@
             this.txtUri1.Name = "txtUri1";
             this.txtUri1.Size = new System.Drawing.Size(334, 21);
             this.txtUri1.TabIndex = 3;
-            this.txtUri1.Text = "http://www.softhills.net/model/toycar_body.viz";
+            this.txtUri1.Text = "https://www.softhills.net/model/toycar_body.viz";
             // 
             // txtUri2
             // 
@@ -111,7 +111,7 @@
             this.txtUri2.Name = "txtUri2";
             this.txtUri2.Size = new System.Drawing.Size(334, 21);
             this.txtUri2.TabIndex = 5;
-            this.txtUri2.Text = "http://www.softhills.net/model/toycar_axle_front.viz";
+            this.txtUri2.Text = "https://www.softhills.net/model/toycar_axle_front.viz";
             // 
             // txtName2
             // 
@@ -129,7 +129,7 @@
             this.txtUri3.Name = "txtUri3";
             this.txtUri3.Size = new System.Drawing.Size(334, 21);
             this.txtUri3.TabIndex = 7;
-            this.txtUri3.Text = "http://www.softhills.net/model/toycar_axle_back.viz";
+            this.txtUri3.Text = "https://www.softhills.net/model/toycar_axle_back.viz";
             // 
             // txtName3
             // 
@@ -147,7 +147,7 @@
             this.txtUri4.Name = "txtUri4";
             this.txtUri4.Size = new System.Drawing.Size(334, 21);
             this.txtUri4.TabIndex = 9;
-            this.txtUri4.Text = "http://www.softhills.net/model/toycar_wheel.viz";
+            this.txtUri4.Text = "https://www.softhills.net/model/toycar_wheel.viz";
             // 
             // txtName4
             // 

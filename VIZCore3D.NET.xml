@@ -34758,6 +34758,16 @@
             </summary>
             <returns>Node</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelTreeManager.Refresh">
+            <summary>
+            Refresh Model Tree Control
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelTreeManager.Rebuild">
+            <summary>
+            Rebuild Model Tree
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelTreeManager.VIZCore_OnModelTreeScrollUpdateEvent(System.Object,VIZCore3DNETInterop.ModelTreeScrollUpdateArgs)">
             <summary>
             모델트리 스크롤 위치변경 Event
@@ -42902,7 +42912,7 @@
             <summary>
             Vertex Color Mode 색상 설정
             </summary>
-            <param name="Colors">Colors</param>
+            <param name="Colors">Colors</param>        
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.VertexColorData})">
             <summary>
@@ -42910,6 +42920,38 @@
             </summary>
             <param name="index">Node Index</param>
             <param name="vertexColorData">Color List</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.Node> nodes 
+                    = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+                if (nodes.Count == 0) return;
+            
+                if (nodes[0].Kind != Data.NodeKind.PART) return;
+            
+                List<VIZCore3D.NET.Data.VertexColorData> vertexColor 
+                    = vizcore3d.View.VertexColor.GetColor(nodes[0].Index);
+            
+                VIZCore3D.NET.Utility.ColorBrewerPalettesHelper palettes 
+                    = new VIZCore3D.NET.Utility.ColorBrewerPalettesHelper();
+                palettes.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuPu);
+            
+                for (int i = 0; i < vertexColor.Count; i++)
+                {
+                    vertexColor[i].color = palettes.GetPaletteColor(i);
+                }
+            
+                vizcore3d.View.VertexColor.SetColor(nodes[0].Index, vertexColor);
+                vizcore3d.View.VertexColor.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{System.Drawing.Color})">
             <summary>
@@ -42917,6 +42959,39 @@
             </summary>
             <param name="index">Node Index</param>
             <param name="colors">Color List</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.Node> nodes 
+                    = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+                    
+                if (nodes.Count == 0) return;
+            
+                if (nodes[0].Kind != Data.NodeKind.PART) return;
+            
+                int vertexCount = vizcore3d.View.VertexColor.GetColor(nodes[0].Index).Count;
+                List<System.Drawing.Color> vertexColor = new List<Color>();
+            
+                VIZCore3D.NET.Utility.ColorBrewerPalettesHelper palettes 
+                    = new VIZCore3D.NET.Utility.ColorBrewerPalettesHelper();
+                palettes.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuPu);
+            
+                for (int i = 0; i < vertexCount; i++)
+                {
+                    vertexColor.Add(palettes.GetPaletteColor(i));
+                }
+            
+                vizcore3d.View.VertexColor.SetColor(nodes[0].Index, vertexColor);
+                vizcore3d.View.VertexColor.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.Clear">
             <summary>
@@ -44543,7 +44618,7 @@
             {
                 vizcore3d.View.BeginBackgroundRenderingMode(width, height);
             
-                vizcore3d.View.RotateCamera(Data.AxisDirection.Z_PLUS, 90);
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, 90);
             
                 System.Drawing.Image resizedImg = vizcore3d.View.GetBackgroundRenderingImage();
             
@@ -44602,7 +44677,7 @@
             {
                 vizcore3d.View.BeginBackgroundRenderingMode(width, height);
             
-                vizcore3d.View.RotateCamera(Data.AxisDirection.Z_PLUS, 90);
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, 90);
             
                 System.Drawing.Image resizedImg = vizcore3d.View.GetBackgroundRenderingImage();
             
@@ -44710,7 +44785,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
@@ -44718,31 +44793,31 @@
                 int height = 600;
             
                 // 메모리 기반 렌더링 모드 시작
-                vizcore.View.BeginBackgroundRenderingMode(width, height);
+                vizcore3d.View.BeginBackgroundRenderingMode(width, height);
             
                 // 화면에 가시화하지 않고, 메모리 상태에서 렌더링 및 화면 이미지 반환
-                vizcore.View.MoveCamera(Data.CameraDirection.ISO_PLUS);
-                System.Drawing.Image img1 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.ISO_MINUS);
-                System.Drawing.Image img2 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_PLUS);
+                System.Drawing.Image img1 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_MINUS);
+                System.Drawing.Image img2 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.X_PLUS);
-                System.Drawing.Image img3 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.X_MINUS);
-                System.Drawing.Image img4 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_PLUS);
+                System.Drawing.Image img3 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_MINUS);
+                System.Drawing.Image img4 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Y_PLUS);
-                System.Drawing.Image img5 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.Y_MINUS);
-                System.Drawing.Image img6 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_PLUS);
+                System.Drawing.Image img5 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_MINUS);
+                System.Drawing.Image img6 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_PLUS);
-                System.Drawing.Image img7 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_MINUS);
-                System.Drawing.Image img8 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_PLUS);
+                System.Drawing.Image img7 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_MINUS);
+                System.Drawing.Image img8 = vizcore3d.View.GetBackgroundRenderingImage();
             
                 // 메모리 기반 렌더링 모드 종료
-                vizcore.View.EndBackgroundRenderingMode();
+                vizcore3d.View.EndBackgroundRenderingMode();
             }
             ]]>
             </code>
@@ -44758,7 +44833,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
@@ -44766,31 +44841,31 @@
                 int height = 600;
             
                 // 메모리 기반 렌더링 모드 시작
-                vizcore.View.BeginBackgroundRenderingMode(width, height);
+                vizcore3d.View.BeginBackgroundRenderingMode(width, height);
             
                 // 화면에 가시화하지 않고, 메모리 상태에서 렌더링 및 화면 이미지 반환
-                vizcore.View.MoveCamera(Data.CameraDirection.ISO_PLUS);
-                System.Drawing.Image img1 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.ISO_MINUS);
-                System.Drawing.Image img2 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_PLUS);
+                System.Drawing.Image img1 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_MINUS);
+                System.Drawing.Image img2 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.X_PLUS);
-                System.Drawing.Image img3 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.X_MINUS);
-                System.Drawing.Image img4 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_PLUS);
+                System.Drawing.Image img3 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_MINUS);
+                System.Drawing.Image img4 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Y_PLUS);
-                System.Drawing.Image img5 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.Y_MINUS);
-                System.Drawing.Image img6 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_PLUS);
+                System.Drawing.Image img5 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_MINUS);
+                System.Drawing.Image img6 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_PLUS);
-                System.Drawing.Image img7 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_MINUS);
-                System.Drawing.Image img8 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_PLUS);
+                System.Drawing.Image img7 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_MINUS);
+                System.Drawing.Image img8 = vizcore3d.View.GetBackgroundRenderingImage();
             
                 // 메모리 기반 렌더링 모드 종료
-                vizcore.View.EndBackgroundRenderingMode();
+                vizcore3d.View.EndBackgroundRenderingMode();
             }
             ]]>
             </code>
@@ -44807,7 +44882,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
@@ -44815,31 +44890,31 @@
                 int height = 600;
             
                 // 메모리 기반 렌더링 모드 시작
-                vizcore.View.BeginBackgroundRenderingMode(width, height);
+                vizcore3d.View.BeginBackgroundRenderingMode(width, height);
             
                 // 화면에 가시화하지 않고, 메모리 상태에서 렌더링 및 화면 이미지 반환
-                vizcore.View.MoveCamera(Data.CameraDirection.ISO_PLUS);
-                System.Drawing.Image img1 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.ISO_MINUS);
-                System.Drawing.Image img2 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_PLUS);
+                System.Drawing.Image img1 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_MINUS);
+                System.Drawing.Image img2 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.X_PLUS);
-                System.Drawing.Image img3 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.X_MINUS);
-                System.Drawing.Image img4 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_PLUS);
+                System.Drawing.Image img3 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_MINUS);
+                System.Drawing.Image img4 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Y_PLUS);
-                System.Drawing.Image img5 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.Y_MINUS);
-                System.Drawing.Image img6 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_PLUS);
+                System.Drawing.Image img5 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_MINUS);
+                System.Drawing.Image img6 = vizcore3d.View.GetBackgroundRenderingImage();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_PLUS);
-                System.Drawing.Image img7 = vizcore.View.GetBackgroundRenderingImage();
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_MINUS);
-                System.Drawing.Image img8 = vizcore.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_PLUS);
+                System.Drawing.Image img7 = vizcore3d.View.GetBackgroundRenderingImage();
+                vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_MINUS);
+                System.Drawing.Image img8 = vizcore3d.View.GetBackgroundRenderingImage();
             
                 // 메모리 기반 렌더링 모드 종료
-                vizcore.View.EndBackgroundRenderingMode();
+                vizcore3d.View.EndBackgroundRenderingMode();
             }
             
             private void Example2()
@@ -44848,17 +44923,17 @@
                 int height = 600;
             
                 // 메모리 기반 렌더링 모드 시작
-                vizcore.View.BeginBackgroundRenderingMode(width, height);
+                vizcore3d.View.BeginBackgroundRenderingMode(width, height);
                 
                 // 메모리 기반 렌더링 모드 현재 상태등록
                 vizcore3d.BeginUpdate();
                 vizcore3d.EndUpdate();
             
                 // 메모리 상태에서 렌더링 및 화면 이미지 반환
-                System.Drawing.Image img = vizcore.View.GetBackgroundRenderingImage();
+                System.Drawing.Image img = vizcore3d.View.GetBackgroundRenderingImage();
             
                 // 메모리 기반 렌더링 모드 종료
-                vizcore.View.EndBackgroundRenderingMode();
+                vizcore3d.View.EndBackgroundRenderingMode();
             }
             ]]>
             </code>
