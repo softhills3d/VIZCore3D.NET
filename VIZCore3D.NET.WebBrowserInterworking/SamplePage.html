@@ -1,0 +1,43 @@
+﻿<html>
+<head>
+    <title>Sample Page</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td>Function</td>
+            <td>Show MessageBox : <input type="text" id="txtMessage" name="txtMessage" value="message" /><input type="button" id="btnMessageBox" value="Call" onclick="showMessageBox();" /></td>
+        </tr>
+        <tr>
+            <td>Function (Model)</td>
+            <td><input type="button" id="btnOpenModel" value="Open Model" onclick="openModel('toycar.viz');" />&nbsp;<input type="button" id="btnCloseModel" value="Close Model" onclick="closeModel();" /></td>
+        </tr>
+        <tr>
+            <td>Event</td>
+            <td>OnObject3DSelected : <input type="text" id="txtEvent" name="txtEvent" value="" /></td>
+        </tr>
+    </table>
+    <script>
+        function showMessageBox() {
+            var str = document.all['txtMessage'].value;
+            window.external.showMessageBox(str);
+        }
+
+        function openModel(viz) {
+            window.external.openModel(viz);
+        }
+
+        function closeModel() {
+            window.external.closeModel();
+        }
+
+        function onObject3DSelected(nodeIndex, nodeName) {
+            document.all['txtEvent'].value = nodeIndex + " : " + nodeName;
+        }
+
+        function clearEventTextBox() {
+            document.all['txtEvent'].value = "";
+        }
+    </script>
+</body>
+</html>
