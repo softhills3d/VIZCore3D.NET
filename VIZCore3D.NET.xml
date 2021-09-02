@@ -7913,6 +7913,36 @@
             <param name="vizcore">VIZCore</param>
             <param name="raw">초기화 데이터</param>
         </member>
+        <member name="T:VIZCore3D.NET.Data.NewNodeItem">
+            <summary>
+            New Node Item Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NewNodeItem.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NewNodeItem.Parent">
+            <summary>
+            Parent
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NewNodeItem.Kind">
+            <summary>
+            Kind
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NewNodeItem.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.NewNodeItem.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Node">
             <summary>
             Node
@@ -10035,7 +10065,7 @@
             <summary>
             Construction
             </summary>
-            <param name="uri">Model Uri - http://www.softhills.net/model/toycar.viz</param>
+            <param name="uri">Model Uri - https://www.softhills.net/model/toycar.viz</param>
             <param name="model">Model Name</param>
         </member>
         <member name="T:VIZCore3D.NET.Data.TextDrawingItem">
@@ -22441,6 +22471,90 @@
             <param name="normals">Normals</param>
             <param name="color">Color</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.ChangeBodyMesh(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Collections.Generic.List{VIZCore3D.NET.Data.Vector3D},System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            Body 노드 리스트의 Mesh 를 교체
+            </summary>
+            <param name="bodyIndex">바디 노드 인덱스 리스트</param>
+            <param name="coords">Coords</param>
+            <param name="normals">Normals</param>
+            <param name="color">Color</param>
+            <param name="coordListNum">Coord. Count List</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<int> bodies = new List<int>();
+                List<int> coordListNum = new List<int>();
+                List<VIZCore3D.NET.Data.Vertex3D> v = new List<VIZCore3D.NET.Data.Vertex3D>();
+                List<VIZCore3D.NET.Data.Vector3D> n = new List<VIZCore3D.NET.Data.Vector3D>();
+                List<float> color = new List<float>();
+            
+                // 면 #1
+                bodies.Add(2296);     // Body Index
+                coordListNum.Add(18); // Vertex Float 총 개수
+            
+                // Vertex 좌표 => Triangle Mesh 를 기반
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(80180.00, 10600.00, 35572.12));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(71890.00, 10600.00, 35572.12));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(72324.89, 7170.00, 35645.86));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(72324.89, 7170.00, 35645.86));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(80180.00, 7170.00, 35645.86));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(80180.00, 10600.00, 35572.12));
+            
+                // Normal 좌표
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+            
+                // 면의 색상 설정
+                color.Add(1.000f); // R
+                color.Add(1.000f); // G
+                color.Add(0.000f); // B
+                color.Add(1);      // A 
+            
+                // 면 #2
+                bodies.Add(2293);     // Body Index
+                coordListNum.Add(18); // Vertex Float 총 개수
+            
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(80180.00, 7170.00, 35645.86));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(72324.89, 7170.00, 35645.86));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(71890.00, 3740.00, 35719.60));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(71890.00, 3740.00, 35719.60));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(80180.00, 3740.00, 35719.60));
+                v.Add(new VIZCore3D.NET.Data.Vertex3D(80180.00, 7170.00, 35645.86));
+            
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+                n.Add(new VIZCore3D.NET.Data.Vector3D(0.00, 0.00, -1.00));
+            
+                color.Add(0.043f); // R
+                color.Add(0.043f); // G
+                color.Add(0.043f); // B
+                color.Add(1);      // A
+            
+                vizcore3d.MeshEdit.ChangeBodyMesh(
+                    bodies          /* BODY INDEX LIST */
+                    , v             /* VERTEX LIST */
+                    , n             /* NORMAL LIST */
+                    , color         /* COLOR */
+                    , coordListNum  /* VERTEX COUNT LIST */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.MoveNodeToNode(System.Int32,System.Int32)">
             <summary>
             노드 이동
@@ -22454,6 +22568,63 @@
             </summary>
             <param name="sourceNodeIndex">이동할 노드의 인덱스</param>
             <param name="destNodeIndex">이동할 노드의 새로운 부모 노드 인덱스</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.GetMaxId">
+            <summary>
+            현재 모델의 사용 가능한 MAX ID 값
+            </summary>
+            <returns>모델의 MAX ID</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})">
+            <summary>
+            복수개의 노드 생성
+            </summary>
+            <param name="id">생성할 노드 아이디</param>
+            <param name="parentId">생성할 노드의 부모 아이디</param>
+            <param name="kind">노드의 유형</param>
+            <param name="name">노드 이름</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.GetMaxId"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})">
+            <summary>
+            복수개의 노드 생성
+            </summary>
+            <param name="items">생성할 노드 정보</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.GetMaxId"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                int id = vizcore3d.MeshEdit.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem item = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    item.Parent = parent;
+                    item.ID = ++id;
+                    item.Kind = Data.NodeKind.PART;
+                    item.Name = string.Format("NAME_{0}", item.ID);
+            
+                    items.Add(item);
+                }
+            
+                vizcore3d.MeshEdit.CreateNodes(items);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNode(System.Int32,VIZCore3D.NET.Data.NodeKind,System.String)">
             <summary>
@@ -30412,7 +30583,7 @@
             <summary>
             Frame(SHIP GRID) URI 열기
             </summary>
-            <param name="uri">Frame(SHIP GRID) 파일 URI : http://www.softhills.net/model/frame.dmp</param>
+            <param name="uri">Frame(SHIP GRID) 파일 URI : https://www.softhills.net/model/frame.dmp</param>
             <returns>True : Sucess, False : Fail</returns>
             <example>
             <code language="cs">
@@ -33259,7 +33430,7 @@
             <summary>
             Open Uri
             </summary>
-            <param name="uri">Model Uri : http://www.softhills.net/model/toycar.viz</param>
+            <param name="uri">Model Uri : https://www.softhills.net/model/toycar.viz</param>
             <returns>True : Sucess / False : Fail</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.ModelManager.Open(System.String)"/>
             <seealso cref="M:VIZCore3D.NET.Manager.ModelManager.OpenUri(System.String,System.String)"/>
@@ -33273,7 +33444,7 @@
             
             private void Example()
             {
-                string uri = "http://www.softhills.net/model/toycar.viz";
+                string uri = "https://www.softhills.net/model/toycar.viz";
             
                 vizcore3d.Model.OpenUri(uri);
             }
@@ -33286,7 +33457,7 @@
             Open Uri
             </summary>
             <param name="name">Model Name</param>
-            <param name="uri">Model Uri : http://www.softhills.net/Download.aspx?id=100</param>
+            <param name="uri">Model Uri : https://www.softhills.net/Download.aspx?id=100</param>
             <returns>True : Sucess / False : Fail</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.ModelManager.Open(System.String)"/>
             <seealso cref="M:VIZCore3D.NET.Manager.ModelManager.OpenUri(System.String)"/>
@@ -33301,7 +33472,7 @@
             private void Example()
             {
                 string model = "TOYCAR";
-                string uri = "http://www.softhills.net/Download.aspx?id=100";
+                string uri = "https://www.softhills.net/Download.aspx?id=100";
             
                 vizcore3d.Model.OpenUri(
                     model
@@ -41255,6 +41426,63 @@
                     MessageBox.Show("NG", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show(string.Format("Body ID : {0}", bodyId), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.GetMaxId">
+            <summary>
+            현재 모델의 사용 가능한 MAX ID 값
+            </summary>
+            <returns>모델의 MAX ID</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})">
+            <summary>
+            복수개의 노드 생성
+            </summary>
+            <param name="id">생성할 노드 아이디</param>
+            <param name="parentId">생성할 노드의 부모 아이디</param>
+            <param name="kind">노드의 유형</param>
+            <param name="name">노드 이름</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.GetMaxId"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})">
+            <summary>
+            복수개의 노드 생성
+            </summary>
+            <param name="items">생성할 노드 정보</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.GetMaxId"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                int id = vizcore3d.Structure.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem item = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    item.Parent = parent;
+                    item.ID = ++id;
+                    item.Kind = Data.NodeKind.PART;
+                    item.Name = string.Format("NAME_{0}", item.ID);
+            
+                    items.Add(item);
+                }
+            
+                vizcore3d.Structure.CreateNodes(items);
             }
             ]]>
             </code> 
