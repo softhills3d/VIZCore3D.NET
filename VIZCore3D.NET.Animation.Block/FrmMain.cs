@@ -1153,7 +1153,7 @@ namespace VIZCore3D.NET.Animation.Block
 
         private void btnSky_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.EnableSkyBox = true;
+            vizcore3d.View.Sky.Enable = true;
         }
     }
 }

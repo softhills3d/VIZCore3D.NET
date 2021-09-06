@@ -27040,6 +27040,104 @@
             <param name="systemType">System Type : 0(TRIBON), 1(AVEVA MARINE : Default)</param>
             <returns>Result</returns>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.OceanManager">
+            <summary>
+            Ocean Manager Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.OceanManager.Enable">
+            <summary>
+            Ocean 활성화/비활성화
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void ExampleAuto()
+            {
+                vizcore3d.View.Ocean.Enable = true;
+                vizcore3d.View.Ocean.AutoHeight = true;
+            }
+            
+            private void Example()
+            {
+                vizcore3d.View.Ocean.Enable = true;
+                vizcore3d.View.Ocean.AutoHeight = false;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                vizcore3d.View.Ocean.Height = boundBox.MinZ + 10000.0f;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.OceanManager.AutoHeight">
+            <summary>
+            Ocean 자동 높이 활성화/비활성화
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void ExampleAuto()
+            {
+                vizcore3d.View.Ocean.Enable = true;
+                vizcore3d.View.Ocean.AutoHeight = true;
+            }
+            
+            private void Example()
+            {
+                vizcore3d.View.Ocean.Enable = true;
+                vizcore3d.View.Ocean.AutoHeight = false;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                vizcore3d.View.Ocean.Height = boundBox.MinZ + 10000.0f;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.OceanManager.Height">
+            <summary>
+            Ocean 높이
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void ExampleAuto()
+            {
+                vizcore3d.View.Ocean.Enable = true;
+                vizcore3d.View.Ocean.AutoHeight = true;
+            }
+            
+            private void Example()
+            {
+                vizcore3d.View.Ocean.Enable = true;
+                vizcore3d.View.Ocean.AutoHeight = false;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                vizcore3d.View.Ocean.Height = boundBox.MinZ + 10000.0f;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.OceanManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.PanoramaManager">
             <summary>
             [MANAGER] Panorama Manager
@@ -36129,6 +36227,21 @@
             </summary>
             <returns>True : 클립보드 복사 / False : 선택된 노트 항목 없음</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.EditNoteTextDialog(VIZCore3D.NET.Data.NoteItem)">
+            <summary>
+            노트 텍스트 수정
+            </summary>
+            <param name="item">노트 아이템</param>
+            <returns>수정 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.EditNoteText(System.Int32,System.String)">
+            <summary>
+            노트 텍스트 수정
+            </summary>
+            <param name="noteId">노트 아이디</param>
+            <param name="text">기존 노트 텍스트</param>
+            <returns>수정 결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.Object3DManager">
             <summary>
             Object3D Manager
@@ -41047,6 +41160,22 @@
             </summary>
             <param name="vizcore">VIZCore3D.NET.Interop</param>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.SkyManager">
+            <summary>
+            Sky Manager Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SkyManager.Enable">
+            <summary>
+            SkyBox 활성화/비활성화
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SkyManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.SearchTarget">
             <summary>
             검색 대상
@@ -41266,6 +41395,24 @@
             <param name="sourceNodeIndex">이동할 노드의 인덱스</param>
             <param name="destNodeIndex">이동할 노드의 새로운 부모 노드 인덱스</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind})">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="id">이동할 노드 아이디</param>
+            <param name="parentId">노드의 부모 아이디</param>
+            <param name="kind">노드 유형</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="id">이동할 노드 아이디</param>
+            <param name="parentId">노드의 부모 아이디</param>
+            <param name="kind">노드 유형</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind})"/>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.GetBodyIndex(System.Int32)">
             <summary>
             Body ID to Body Index
@@ -41463,7 +41610,7 @@
             // VIZCore3D.NET Control
             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
-            private void Example()
+            private void Example1()
             {
                 int id = vizcore3d.Structure.GetMaxId();
                 int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
@@ -41480,6 +41627,56 @@
                     item.Name = string.Format("NAME_{0}", item.ID);
             
                     items.Add(item);
+                }
+            
+                vizcore3d.Structure.CreateNodes(items);
+            }
+            
+            private void Example2()
+            {
+                int id = vizcore3d.Structure.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem assy = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    int assyId = ++id;
+            
+                    assy.Parent = parent;
+                    assy.ID = assyId;
+                    assy.Kind = Data.NodeKind.ASSEMBLY;
+                    assy.Name = string.Format("NAME_ASSY_{0}", assy.ID);
+            
+                    items.Add(assy);
+            
+                    {
+                        VIZCore3D.NET.Data.NewNodeItem part = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                        int partId = ++id;
+            
+                        part.Parent = assyId;
+                        part.ID = partId;
+                        part.Kind = Data.NodeKind.PART;
+                        part.Name = string.Format("NAME_PART_{0}", part.ID);
+            
+                        items.Add(part);
+            
+                        {
+                            VIZCore3D.NET.Data.NewNodeItem body = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                            int bodyId = ++id;
+            
+                            body.Parent = partId;
+                            body.ID = bodyId;
+                            body.Kind = Data.NodeKind.BODY;
+                            body.Name = string.Format("NAME_BODY_{0}", body.ID);
+            
+                            items.Add(body);
+                        }
+                    }
                 }
             
                 vizcore3d.Structure.CreateNodes(items);
@@ -43973,6 +44170,16 @@
             Pre-Select Option
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.Ocean">
+            <summary>
+            Ocean View 관리
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.Sky">
+            <summary>
+            Sky View 관리
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.Navigation">
             <summary>
             Navigation Mode - Pan, Rotate, Orbit, Walk, Fly
@@ -44113,26 +44320,6 @@
             ]]>
             </code> 
             </example>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableSkyBox">
-            <summary>
-            SkyBox 활성화/비활성화
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableOcean">
-            <summary>
-            Ocean 활성화/비활성화
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.ViewManager.OceanHeightAuto">
-            <summary>
-            Ocean 자동 높이 활성화/비활성화
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.ViewManager.OceanHeight">
-            <summary>
-            Ocean 높이
-            </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.AmbientColor">
             <summary>
