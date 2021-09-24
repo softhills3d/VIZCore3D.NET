@@ -1553,7 +1553,7 @@ namespace VIZCore3D.NET.DockInOut
 
 
         // ================================================
-        // Function - FLOODING
+        // Function - OUTPATH
         // ================================================
         private void btnOutPathAuto_Click(object sender, EventArgs e)
         {

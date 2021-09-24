@@ -3494,6 +3494,21 @@
             Unknown
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.LeafNodeKind">
+            <summary>
+            Leaf Node Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.LeafNodeKind.PART">
+            <summary>
+            PART
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.LeafNodeKind.BODY">
+            <summary>
+            BODY
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ExternalLinkKind">
             <summary>
             VIZ External Link Kind
@@ -22571,7 +22586,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.GetMaxId">
             <summary>
-            현재 모델의 사용 가능한 MAX ID 값
+            현재 모델의 사용 가능한 MAX Node ID 값
             </summary>
             <returns>모델의 MAX ID</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
@@ -28250,6 +28265,103 @@
             <summary>
             Show Print Preview Dialog
             </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.ScreenAxisRotationManager">
+            <summary>
+            Screen Axis Rotation Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ScreenAxisRotationManager.AngleLarge">
+            <summary>
+            화면 기준 회전 각도
+            </summary>     
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.View.ScreenAxisRotation.LockZAxis = false;
+                vizcore3d.View.ScreenAxisRotation.AngleLarge = 90.0f;
+                vizcore3d.View.ScreenAxisRotation.AngleSmall = 10.0f;
+                vizcore3d.View.ScreenAxisRotation.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ScreenAxisRotationManager.AngleSmall">
+            <summary>
+            화면 기준 정밀 회전 각도
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.View.ScreenAxisRotation.LockZAxis = false;
+                vizcore3d.View.ScreenAxisRotation.AngleLarge = 90.0f;
+                vizcore3d.View.ScreenAxisRotation.AngleSmall = 10.0f;
+                vizcore3d.View.ScreenAxisRotation.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ScreenAxisRotationManager.Enable">
+            <summary>
+            키보드 (방향키)를 통한 화면 기준회전 활성화
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.View.ScreenAxisRotation.LockZAxis = false;
+                vizcore3d.View.ScreenAxisRotation.AngleLarge = 90.0f;
+                vizcore3d.View.ScreenAxisRotation.AngleSmall = 10.0f;
+                vizcore3d.View.ScreenAxisRotation.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ScreenAxisRotationManager.LockZAxis">
+            <summary>
+            Z축 고정
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ScreenAxisRotationManager.OnArrowKeyDown(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            키보드 기반 화면 기준 회전
+            </summary>
+            <param name="keyCode">Key Code</param>
+            <param name="ctrl">Ctrl Key</param>
+            <param name="shift">Shift Key</param>
+            <param name="alt">Alt Key</param>
+            <param name="node">Selected Node</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ScreenAxisRotationManager.RotateCameraByScreenAxis(System.Single,System.Single,System.Single)">
+            <summary>
+            뷰 화면 축 기준 회전
+            </summary>
+            <param name="degreeX">X축 각도</param>
+            <param name="degreeY">Y축 각도</param>
+            <param name="degreeZ">Z축 각도</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ShapeDrawingManager">
             <summary>
@@ -34465,12 +34577,13 @@
             <param name="showFileInExplorer">Show File In Explorer</param>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,System.Int32,VIZCore3D.NET.Data.LogKind)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,System.Boolean,System.Int32,VIZCore3D.NET.Data.LogKind)">
             <summary>
             VIZWide3D 모델(*.VIZW) 변환
             </summary>
             <param name="input">Input VIZ Path</param>
             <param name="output">Output VIZW Path</param>
+            <param name="viz">Generate VIZ File</param>
             <param name="triangleMeshCount">Triangle Mesh Count - Default : 1,000,000</param>
             <param name="log">Log</param>
             <returns>Result</returns>
@@ -34490,6 +34603,7 @@
                 bool result = vizcore3d.Model.ConvertToVIZW(
                     input                                   /* INPUT VIZ File */
                     , output                                /* OUTPUT VIZ File */
+                    , false                                 /* GENERATE VIZ File */
                     , triangleMeshCount                     /* TRIANGLE MESH COUNT - DEFAULT : 1,000,000 */
                     , VIZCore3D.NET.Data.LogKind.DETAIL     /* LOG */
                     );
@@ -36307,34 +36421,6 @@
             개체 삭제 가능 여부 - 기본값 True
             </summary>
         </member>
-        <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnSelectedObject3D">
-            <summary>
-            개체 선택 이벤트
-            </summary>
-            <example>
-            <code language="cs">
-            <![CDATA[
-            // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
-            
-            private void Example()
-            {
-                vizcore3d.Object3D.OnSelectedObject3D += Object3D_OnSelectedObject3D;
-            }
-            
-            private void Object3D_OnSelectedObject3D(object sender, Event.EventManager.SelectedObject3DEventArgs e)
-            {
-                if (e.Node.Count == 0) return;
-            
-                foreach (VIZCore3D.NET.Data.Node item in e.Node)
-                {
-                    // Some code here...
-                }
-            }
-            ]]>
-            </code> 
-            </example>
-        </member>
         <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnObject3DSelected">
             <summary>
             개체 선택 이벤트
@@ -36643,6 +36729,28 @@
             <param name="x">X 좌표</param>
             <param name="y">Y 좌표</param>
             <returns>선택된 개체 Index. 선택된 개체가 없는 경우 -1 반환.</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.Select(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            뷰 화면 좌표 영역에 해당하는 개체 선택 
+            </summary>
+            <param name="x1">X 좌표1</param>
+            <param name="y1">Y 좌표1</param>
+            <param name="x2">X 좌표2</param>
+            <param name="y2">Y 좌표2</param>
+            <param name="bInclude">영역에 걸쳐진 모델 제외 여부(true: 제외, false: 포함)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
+            <summary>
+            뷰 화면 좌표 영역에 해당하는 개체 반환
+            </summary>
+            <param name="x1">X 좌표1</param>
+            <param name="y1">Y 좌표1</param>
+            <param name="x2">X 좌표2</param>
+            <param name="y2">Y 좌표2</param>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <returns>개체 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.HitTest(System.Int32,System.Int32)">
             <summary>
@@ -37412,6 +37520,108 @@
             선택된 노드 복사
             </summary>
             <param name="alert">사용자 확인 메시지 출력 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.CopyNodes(System.Boolean)">
+            <summary>
+            선택된 노드 복사
+            </summary>
+            <param name="alert">사용자 확인 메시지 출력 여부</param>
+            <returns>복사된 노드 인덱스 - KEY : Selected Node Index, VALUE : New Node Index</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                Dictionary<int, int> items = vizcore3d.Object3D.CopyNodes();
+            
+                if (items.Count == 0)
+                {
+                    MessageBox.Show("Node is null.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            
+                foreach (KeyValuePair<int, int> item in items)
+                {
+                    VIZCore3D.NET.Data.Node source = vizcore3d.Object3D.FromIndex(item.Key);
+                    VIZCore3D.NET.Data.Node target = vizcore3d.Object3D.FromIndex(item.Value);
+            
+                    MessageBox.Show(
+                        string.Format(
+                            "{0} - {1}, {2} / {3}"
+                        , item.Key
+                        , item.Value
+                        , source.NodeName
+                        , target.NodeName
+                        )
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.CopyNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Boolean)">
+            <summary>
+            지정된 노드 복사
+            </summary>
+            <param name="node">노드 목록</param>
+            <param name="alert">사용자 확인 메시지 출력 여부</param>
+            <returns>복사된 노드 인덱스 - KEY : Source Node Index, VALUE : New Node Index</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.Node> selectedItems =
+                    vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+            
+                Dictionary<int, int> items = vizcore3d.Object3D.CopyNodes(selectedItems);
+            
+                if (items.Count == 0)
+                {
+                    MessageBox.Show("Node is null.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            
+                foreach (KeyValuePair<int, int> item in items)
+                {
+                    VIZCore3D.NET.Data.Node source = vizcore3d.Object3D.FromIndex(item.Key);
+                    VIZCore3D.NET.Data.Node target = vizcore3d.Object3D.FromIndex(item.Value);
+            
+                    MessageBox.Show(
+                        string.Format(
+                            "{0} - {1}, {2} / {3}"
+                        , item.Key
+                        , item.Value
+                        , source.NodeName
+                        , target.NodeName
+                        )
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.CopyNodes(System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            지정된 노드 복사
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="alert">사용자 확인 메시지 출력 여부</param>
+            <returns>복사된 노드 인덱스 - KEY : Selected Node Index, VALUE : New Node Index</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetNodeKind(System.Int32)">
             <summary>
@@ -40679,6 +40889,21 @@
             회전 축
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.ScreenRotationAngleLarge">
+            <summary>
+            화면 기준 회전 각도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.ScreenRotationAngleSmall">
+            <summary>
+            화면 기준 회전 각도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableRotateByKeyboard">
+            <summary>
+            키보드 방향키를 통한 화면 기준 회전 기능 활성화
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.FixedZAxis">
             <summary>
             Z축 고정
@@ -41413,6 +41638,67 @@
             <param name="kind">노드 유형</param>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind})"/>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CopyNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            지정된 노드 복사
+            </summary>
+            <param name="node">노드 목록</param>
+            <returns>복사된 노드 인덱스 - KEY : Source Node Index, VALUE : New Node Index</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.Node> selectedItems =
+                    vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+            
+                Dictionary<int, int> items = vizcore3d.Structure.CopyNodes(selectedItems);
+            
+                if (items.Count == 0)
+                {
+                    MessageBox.Show("Node is null.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            
+                foreach (KeyValuePair<int, int> item in items)
+                {
+                    VIZCore3D.NET.Data.Node source = vizcore3d.Object3D.FromIndex(item.Key);
+                    VIZCore3D.NET.Data.Node target = vizcore3d.Object3D.FromIndex(item.Value);
+            
+                    MessageBox.Show(
+                        string.Format(
+                            "{0} - {1}, {2} / {3}"
+                        , item.Key
+                        , item.Value
+                        , source.NodeName
+                        , target.NodeName
+                        )
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CopyNodes(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            지정된 노드 복사
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <returns>복사된 노드 인덱스 - KEY : Source Node Index, VALUE : New Node Index</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CopyNodes">
+            <summary>
+            선택된 노드 복사
+            </summary>
+            <returns>복사된 노드 인덱스 - KEY : Selected Node Index, VALUE : New Node Index</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.GetBodyIndex(System.Int32)">
             <summary>
             Body ID to Body Index
@@ -41580,7 +41866,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.GetMaxId">
             <summary>
-            현재 모델의 사용 가능한 MAX ID 값
+            현재 모델의 사용 가능한 MAX Node ID 값
             </summary>
             <returns>모델의 MAX ID</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
@@ -44180,6 +44466,11 @@
             Sky View 관리
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.ScreenAxisRotation">
+            <summary>
+            화면 축 기준 회전 관리
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.Navigation">
             <summary>
             Navigation Mode - Pan, Rotate, Orbit, Walk, Fly
@@ -44993,6 +45284,14 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.RotateCameraByScreenAxis(System.Single,System.Single,System.Single)">
+            <summary>
+            뷰 화면 축 기준 회전
+            </summary>
+            <param name="degreeX">X축 각도</param>
+            <param name="degreeY">Y축 각도</param>
+            <param name="degreeZ">Z축 각도</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.DegreesToRadians(System.Single)">
             <summary>
             Degree To Radian
@@ -45760,6 +46059,28 @@
             <summary>
             [BETA] Show Export Top View Image Dialog
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
+            <summary>
+            뷰 화면 좌표 영역에 해당하는 개체 반환
+            </summary>
+            <param name="x1">X 좌표1</param>
+            <param name="y1">Y 좌표1</param>
+            <param name="x2">X 좌표2</param>
+            <param name="y2">Y 좌표2</param>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <returns>개체 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.OnArrowKeyDown(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            키보드 기반 화면 기준 회전
+            </summary>
+            <param name="keyCode">Key Code</param>
+            <param name="ctrl">Ctrl Key</param>
+            <param name="shift">Shift Key</param>
+            <param name="alt">Alt Key</param>
+            <param name="node">Selected Node</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>

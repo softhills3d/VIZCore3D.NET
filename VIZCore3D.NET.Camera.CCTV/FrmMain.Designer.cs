@@ -42,14 +42,14 @@
             this.btnRight = new System.Windows.Forms.Button();
             this.btnLeft = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckAntiAliasing = new System.Windows.Forms.CheckBox();
+            this.ckEnvironmentLight = new System.Windows.Forms.CheckBox();
+            this.ckShadingEffect = new System.Windows.Forms.CheckBox();
+            this.ckRealtimeShadow = new System.Windows.Forms.CheckBox();
+            this.ckSilhouetteEdge = new System.Windows.Forms.CheckBox();
             this.lbFOV = new System.Windows.Forms.Label();
             this.tbFOV = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
-            this.ckSilhouetteEdge = new System.Windows.Forms.CheckBox();
-            this.ckRealtimeShadow = new System.Windows.Forms.CheckBox();
-            this.ckShadingEffect = new System.Windows.Forms.CheckBox();
-            this.ckEnvironmentLight = new System.Windows.Forms.CheckBox();
-            this.ckAntiAliasing = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -206,6 +206,61 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Option";
             // 
+            // ckAntiAliasing
+            // 
+            this.ckAntiAliasing.AutoSize = true;
+            this.ckAntiAliasing.Location = new System.Drawing.Point(109, 115);
+            this.ckAntiAliasing.Name = "ckAntiAliasing";
+            this.ckAntiAliasing.Size = new System.Drawing.Size(96, 16);
+            this.ckAntiAliasing.TabIndex = 7;
+            this.ckAntiAliasing.Text = "Anti-Aliasing";
+            this.ckAntiAliasing.UseVisualStyleBackColor = true;
+            this.ckAntiAliasing.CheckedChanged += new System.EventHandler(this.ckAntiAliasing_CheckedChanged);
+            // 
+            // ckEnvironmentLight
+            // 
+            this.ckEnvironmentLight.AutoSize = true;
+            this.ckEnvironmentLight.Location = new System.Drawing.Point(25, 115);
+            this.ckEnvironmentLight.Name = "ckEnvironmentLight";
+            this.ckEnvironmentLight.Size = new System.Drawing.Size(72, 16);
+            this.ckEnvironmentLight.TabIndex = 6;
+            this.ckEnvironmentLight.Text = "환경조명";
+            this.ckEnvironmentLight.UseVisualStyleBackColor = true;
+            this.ckEnvironmentLight.CheckedChanged += new System.EventHandler(this.ckEnvironmentLight_CheckedChanged);
+            // 
+            // ckShadingEffect
+            // 
+            this.ckShadingEffect.AutoSize = true;
+            this.ckShadingEffect.Location = new System.Drawing.Point(188, 81);
+            this.ckShadingEffect.Name = "ckShadingEffect";
+            this.ckShadingEffect.Size = new System.Drawing.Size(48, 16);
+            this.ckShadingEffect.TabIndex = 5;
+            this.ckShadingEffect.Text = "음영";
+            this.ckShadingEffect.UseVisualStyleBackColor = true;
+            this.ckShadingEffect.CheckedChanged += new System.EventHandler(this.ckShadingEffect_CheckedChanged);
+            // 
+            // ckRealtimeShadow
+            // 
+            this.ckRealtimeShadow.AutoSize = true;
+            this.ckRealtimeShadow.Location = new System.Drawing.Point(109, 81);
+            this.ckRealtimeShadow.Name = "ckRealtimeShadow";
+            this.ckRealtimeShadow.Size = new System.Drawing.Size(60, 16);
+            this.ckRealtimeShadow.TabIndex = 4;
+            this.ckRealtimeShadow.Text = "그림자";
+            this.ckRealtimeShadow.UseVisualStyleBackColor = true;
+            this.ckRealtimeShadow.CheckedChanged += new System.EventHandler(this.ckRealtimeShadow_CheckedChanged);
+            // 
+            // ckSilhouetteEdge
+            // 
+            this.ckSilhouetteEdge.AutoSize = true;
+            this.ckSilhouetteEdge.Location = new System.Drawing.Point(25, 81);
+            this.ckSilhouetteEdge.Name = "ckSilhouetteEdge";
+            this.ckSilhouetteEdge.Size = new System.Drawing.Size(48, 16);
+            this.ckSilhouetteEdge.TabIndex = 3;
+            this.ckSilhouetteEdge.Text = "윤곽";
+            this.ckSilhouetteEdge.UseVisualStyleBackColor = true;
+            this.ckSilhouetteEdge.CheckedChanged += new System.EventHandler(this.ckSilhouetteEdge_CheckedChanged);
+            // 
             // lbFOV
             // 
             this.lbFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -237,61 +292,6 @@
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "FOV";
-            // 
-            // ckSilhouetteEdge
-            // 
-            this.ckSilhouetteEdge.AutoSize = true;
-            this.ckSilhouetteEdge.Location = new System.Drawing.Point(25, 81);
-            this.ckSilhouetteEdge.Name = "ckSilhouetteEdge";
-            this.ckSilhouetteEdge.Size = new System.Drawing.Size(48, 16);
-            this.ckSilhouetteEdge.TabIndex = 3;
-            this.ckSilhouetteEdge.Text = "윤곽";
-            this.ckSilhouetteEdge.UseVisualStyleBackColor = true;
-            this.ckSilhouetteEdge.CheckedChanged += new System.EventHandler(this.ckSilhouetteEdge_CheckedChanged);
-            // 
-            // ckRealtimeShadow
-            // 
-            this.ckRealtimeShadow.AutoSize = true;
-            this.ckRealtimeShadow.Location = new System.Drawing.Point(109, 81);
-            this.ckRealtimeShadow.Name = "ckRealtimeShadow";
-            this.ckRealtimeShadow.Size = new System.Drawing.Size(60, 16);
-            this.ckRealtimeShadow.TabIndex = 4;
-            this.ckRealtimeShadow.Text = "그림자";
-            this.ckRealtimeShadow.UseVisualStyleBackColor = true;
-            this.ckRealtimeShadow.CheckedChanged += new System.EventHandler(this.ckRealtimeShadow_CheckedChanged);
-            // 
-            // ckShadingEffect
-            // 
-            this.ckShadingEffect.AutoSize = true;
-            this.ckShadingEffect.Location = new System.Drawing.Point(188, 81);
-            this.ckShadingEffect.Name = "ckShadingEffect";
-            this.ckShadingEffect.Size = new System.Drawing.Size(48, 16);
-            this.ckShadingEffect.TabIndex = 5;
-            this.ckShadingEffect.Text = "음영";
-            this.ckShadingEffect.UseVisualStyleBackColor = true;
-            this.ckShadingEffect.CheckedChanged += new System.EventHandler(this.ckShadingEffect_CheckedChanged);
-            // 
-            // ckEnvironmentLight
-            // 
-            this.ckEnvironmentLight.AutoSize = true;
-            this.ckEnvironmentLight.Location = new System.Drawing.Point(25, 115);
-            this.ckEnvironmentLight.Name = "ckEnvironmentLight";
-            this.ckEnvironmentLight.Size = new System.Drawing.Size(72, 16);
-            this.ckEnvironmentLight.TabIndex = 6;
-            this.ckEnvironmentLight.Text = "환경조명";
-            this.ckEnvironmentLight.UseVisualStyleBackColor = true;
-            this.ckEnvironmentLight.CheckedChanged += new System.EventHandler(this.ckEnvironmentLight_CheckedChanged);
-            // 
-            // ckAntiAliasing
-            // 
-            this.ckAntiAliasing.AutoSize = true;
-            this.ckAntiAliasing.Location = new System.Drawing.Point(109, 115);
-            this.ckAntiAliasing.Name = "ckAntiAliasing";
-            this.ckAntiAliasing.Size = new System.Drawing.Size(96, 16);
-            this.ckAntiAliasing.TabIndex = 7;
-            this.ckAntiAliasing.Text = "Anti-Aliasing";
-            this.ckAntiAliasing.UseVisualStyleBackColor = true;
-            this.ckAntiAliasing.CheckedChanged += new System.EventHandler(this.ckAntiAliasing_CheckedChanged);
             // 
             // FrmMain
             // 
