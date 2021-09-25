@@ -5818,6 +5818,21 @@
             Surface To Surface
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.ZAxisRotationKind">
+            <summary>
+            Z축 회전 유형
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ZAxisRotationKind.Screen">
+            <summary>
+            화면 기준
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ZAxisRotationKind.Axis">
+            <summary>
+            축 기준
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -7935,12 +7950,12 @@
         </member>
         <member name="P:VIZCore3D.NET.Data.NewNodeItem.ID">
             <summary>
-            ID
+            Node ID
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.NewNodeItem.Parent">
+        <member name="P:VIZCore3D.NET.Data.NewNodeItem.ParentId">
             <summary>
-            Parent
+            Parent ID
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.NewNodeItem.Kind">
@@ -12673,6 +12688,38 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.SurfaceNoteDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog">
+            <summary>
+            Triangle Mesh Count Dialog
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.TriangleMeshCount">
+            <summary>
+            Triangle Mesh Count
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -28286,6 +28333,7 @@
                 if (vizcore3d.Model.IsOpen() == false) return;
             
                 vizcore3d.View.ScreenAxisRotation.LockZAxis = false;
+                vizcore3d.View.ScreenAxisRotation.BasedZAxis = VIZCore3D.NET.Data.ZAxisRotationKind.Axis;
                 vizcore3d.View.ScreenAxisRotation.AngleLarge = 90.0f;
                 vizcore3d.View.ScreenAxisRotation.AngleSmall = 10.0f;
                 vizcore3d.View.ScreenAxisRotation.Enable = true;
@@ -28309,6 +28357,7 @@
                 if (vizcore3d.Model.IsOpen() == false) return;
             
                 vizcore3d.View.ScreenAxisRotation.LockZAxis = false;
+                vizcore3d.View.ScreenAxisRotation.BasedZAxis = VIZCore3D.NET.Data.ZAxisRotationKind.Axis;
                 vizcore3d.View.ScreenAxisRotation.AngleLarge = 90.0f;
                 vizcore3d.View.ScreenAxisRotation.AngleSmall = 10.0f;
                 vizcore3d.View.ScreenAxisRotation.Enable = true;
@@ -28332,6 +28381,7 @@
                 if (vizcore3d.Model.IsOpen() == false) return;
             
                 vizcore3d.View.ScreenAxisRotation.LockZAxis = false;
+                vizcore3d.View.ScreenAxisRotation.BasedZAxis = VIZCore3D.NET.Data.ZAxisRotationKind.Axis;
                 vizcore3d.View.ScreenAxisRotation.AngleLarge = 90.0f;
                 vizcore3d.View.ScreenAxisRotation.AngleSmall = 10.0f;
                 vizcore3d.View.ScreenAxisRotation.Enable = true;
@@ -28343,6 +28393,11 @@
         <member name="P:VIZCore3D.NET.Manager.ScreenAxisRotationManager.LockZAxis">
             <summary>
             Z축 고정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ScreenAxisRotationManager.BasedZAxis">
+            <summary>
+            Z축 회전 기준
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ScreenAxisRotationManager.OnArrowKeyDown(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
@@ -40904,6 +40959,11 @@
             키보드 방향키를 통한 화면 기준 회전 기능 활성화
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.ScreenRotationBasedZAxis">
+            <summary>
+            키보드 방향키를 통한 화면 기준 회전 시, Z축 회전 기준
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.FixedZAxis">
             <summary>
             Z축 고정
@@ -41638,6 +41698,36 @@
             <param name="kind">노드 유형</param>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind})"/>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Int32)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="index">이동할 노드 인덱스</param>
+            <param name="kind">노드 유형</param>
+            <param name="parentIndex">새로운 부모 노드의 인덱스</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Int32)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="index">이동할 노드 인덱스</param>
+            <param name="kind">노드 유형</param>
+            <param name="parentIndex">새로운 부모 노드의 인덱스</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},VIZCore3D.NET.Data.Node)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="source">이동할 노드</param>
+            <param name="target">새로운 부모 노드</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Int32)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="source">이동할 노드</param>
+            <param name="targetIndex">새로운 부모 노드 인덱스</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.CopyNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
             <summary>
             지정된 노드 복사
@@ -41907,7 +41997,7 @@
                 {
                     VIZCore3D.NET.Data.NewNodeItem item = new VIZCore3D.NET.Data.NewNodeItem();
             
-                    item.Parent = parent;
+                    item.ParentId = parent;
                     item.ID = ++id;
                     item.Kind = Data.NodeKind.PART;
                     item.Name = string.Format("NAME_{0}", item.ID);
@@ -41931,7 +42021,7 @@
             
                     int assyId = ++id;
             
-                    assy.Parent = parent;
+                    assy.ParentId = parent;
                     assy.ID = assyId;
                     assy.Kind = Data.NodeKind.ASSEMBLY;
                     assy.Name = string.Format("NAME_ASSY_{0}", assy.ID);
@@ -41943,7 +42033,7 @@
             
                         int partId = ++id;
             
-                        part.Parent = assyId;
+                        part.ParentId = assyId;
                         part.ID = partId;
                         part.Kind = Data.NodeKind.PART;
                         part.Name = string.Format("NAME_PART_{0}", part.ID);
@@ -41955,7 +42045,7 @@
             
                             int bodyId = ++id;
             
-                            body.Parent = partId;
+                            body.ParentId = partId;
                             body.ID = bodyId;
                             body.Kind = Data.NodeKind.BODY;
                             body.Name = string.Format("NAME_BODY_{0}", body.ID);

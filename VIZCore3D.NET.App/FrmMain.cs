@@ -140,6 +140,7 @@ namespace VIZCore3D.NET.App
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
+            InitializeVIZCore3DToolbar();
         }
         #endregion
 
@@ -450,13 +451,13 @@ namespace VIZCore3D.NET.App
             // ================================================================
             #region 설정 - 툴바
             vizcore3d.ToolbarMain.Visible = true;
-            vizcore3d.ToolbarNote.Visible = false;
-            vizcore3d.ToolbarMeasure.Visible = false;
-            vizcore3d.ToolbarSection.Visible = false;
+            vizcore3d.ToolbarNote.Visible = true;
+            vizcore3d.ToolbarMeasure.Visible = true;
+            vizcore3d.ToolbarSection.Visible = true;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
             vizcore3d.ToolbarSimulation.Visible = false;
-            vizcore3d.ToolbarPrimitive.Visible = false;
+            vizcore3d.ToolbarPrimitive.Visible = true;
             #endregion
 
 
@@ -479,6 +480,86 @@ namespace VIZCore3D.NET.App
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+        }
+        #endregion
+
+        #region Function - VIZCore3D.NET : Customize Toolbar
+        private void InitializeVIZCore3DToolbar()
+        {
+            {
+                // Main Toolbar Item Count
+                int maxIndex = vizcore3d.ToolbarMain.Items.Count;
+
+                // Add Separator Control
+                vizcore3d.ToolbarMain.Items.Add(new ToolStripSeparator());
+                maxIndex++;
+
+                // Note Toolbar Item Count
+                int count = vizcore3d.ToolbarNote.Items.Count;
+
+                // Insert Item
+                for (int i = count; i > 0; i--)
+                {
+                    // Insert : Moved Item
+                    vizcore3d.ToolbarMain.Items.Insert(
+                        maxIndex // Index to be inserted
+                        , vizcore3d.ToolbarNote.Items[i - 1] // Item Index
+                        );
+                }
+
+                // Hide Toolbar : Empty Item
+                vizcore3d.ToolbarNote.Visible = false;
+            }
+
+            {
+                // Section Toolbar Item Count
+                int maxIndex = vizcore3d.ToolbarSection.Items.Count;
+
+                // Add Separator Control
+                vizcore3d.ToolbarSection.Items.Add(new ToolStripSeparator());
+                maxIndex++;
+
+                // Measure Toolbar Item Count
+                int count = vizcore3d.ToolbarMeasure.Items.Count;
+
+                // Insert Item
+                for (int i = count; i > 0; i--)
+                {
+                    // Insert : Moved Item
+                    vizcore3d.ToolbarSection.Items.Insert(
+                        maxIndex // Index to be inserted
+                        , vizcore3d.ToolbarMeasure.Items[i - 1] // Item Index
+                        );
+                }
+
+                // Hide Toolbar : Empty Item
+                vizcore3d.ToolbarMeasure.Visible = false;
+            }
+
+            {
+                // Section Toolbar Item Count
+                int maxIndex = vizcore3d.ToolbarSection.Items.Count;
+
+                // Add Separator Control
+                vizcore3d.ToolbarSection.Items.Add(new ToolStripSeparator());
+                maxIndex++;
+
+                // Primitive Toolbar Item Count
+                int count = vizcore3d.ToolbarPrimitive.Items.Count;
+
+                // Insert Item
+                for (int i = count; i > 0; i--)
+                {
+                    // Insert : Moved Item
+                    vizcore3d.ToolbarSection.Items.Insert(
+                        maxIndex // Index to be inserted
+                        , vizcore3d.ToolbarPrimitive.Items[i - 1] // Item Index
+                        );
+                }
+
+                // Hide Toolbar : Empty Item
+                vizcore3d.ToolbarPrimitive.Visible = false;
+            }
         }
         #endregion
     }
