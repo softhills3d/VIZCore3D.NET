@@ -473,6 +473,39 @@ namespace VIZCore3D.NET.SpaceSearch
             this.Cursor = Cursors.Default;
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Model.SpaceSearch.Clear();
+
+            lbCount.Text = string.Format("Count : {0} EA", vizcore3d.Model.SpaceSearch.ModelCount);
+
+            VIZCore3D.NET.Data.BoundBox3D ModelBoundBox = vizcore3d.Model.SpaceSearch.GetModelBoundBox();
+
+            lbMinX.Text = "0";
+            lbMinY.Text = "0";
+            lbMinZ.Text = "0";
+
+            lbMaxX.Text = "0";
+            lbMaxY.Text = "0";
+            lbMaxZ.Text = "0";
+
+            txtCenterX.Text = "0";
+            txtCenterY.Text = "0";
+            txtCenterZ.Text = "0";
+
+            this.tbX.Scroll -= new System.EventHandler(this.tbX_Scroll);
+            this.tbY.Scroll -= new System.EventHandler(this.tbY_Scroll);
+            this.tbZ.Scroll -= new System.EventHandler(this.tbZ_Scroll);
+
+            tbX.Minimum = tbY.Minimum = tbZ.Minimum = 0;
+            tbX.Maximum = tbY.Maximum = tbZ.Maximum = 100;
+            tbX.Value = tbY.Value = tbZ.Value = 50;
+
+            this.tbX.Scroll += new System.EventHandler(this.tbX_Scroll);
+            this.tbY.Scroll += new System.EventHandler(this.tbY_Scroll);
+            this.tbZ.Scroll += new System.EventHandler(this.tbZ_Scroll);
+        }
+
         private void CalcBoundBox()
         {
             lbCount.Text = string.Format("Count : {0} EA", vizcore3d.Model.SpaceSearch.ModelCount);
@@ -622,6 +655,8 @@ namespace VIZCore3D.NET.SpaceSearch
                 }
             }
         }
+
+        
 
         //private string CreateVIZXML()
         //{

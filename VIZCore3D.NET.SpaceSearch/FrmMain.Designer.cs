@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.rbNodeUnit = new System.Windows.Forms.RadioButton();
+            this.rbFileUnit = new System.Windows.Forms.RadioButton();
             this.btnViewModel = new System.Windows.Forms.Button();
             this.lvResult = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -73,8 +75,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lbCount = new System.Windows.Forms.Label();
             this.btnSelectFiles = new System.Windows.Forms.Button();
-            this.rbFileUnit = new System.Windows.Forms.RadioButton();
-            this.rbNodeUnit = new System.Windows.Forms.RadioButton();
+            this.btnClear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -123,6 +124,28 @@
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Result";
+            // 
+            // rbNodeUnit
+            // 
+            this.rbNodeUnit.AutoSize = true;
+            this.rbNodeUnit.Location = new System.Drawing.Point(327, 24);
+            this.rbNodeUnit.Name = "rbNodeUnit";
+            this.rbNodeUnit.Size = new System.Drawing.Size(57, 16);
+            this.rbNodeUnit.TabIndex = 5;
+            this.rbNodeUnit.Text = "NODE";
+            this.rbNodeUnit.UseVisualStyleBackColor = true;
+            // 
+            // rbFileUnit
+            // 
+            this.rbFileUnit.AutoSize = true;
+            this.rbFileUnit.Checked = true;
+            this.rbFileUnit.Location = new System.Drawing.Point(262, 24);
+            this.rbFileUnit.Name = "rbFileUnit";
+            this.rbFileUnit.Size = new System.Drawing.Size(48, 16);
+            this.rbFileUnit.TabIndex = 4;
+            this.rbFileUnit.TabStop = true;
+            this.rbFileUnit.Text = "FILE";
+            this.rbFileUnit.UseVisualStyleBackColor = true;
             // 
             // btnViewModel
             // 
@@ -275,7 +298,7 @@
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.12698F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.87302F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 94F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
             this.tableLayoutPanel2.Controls.Add(this.label9, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.txtCenterY, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.txtCenterX, 1, 1);
@@ -311,14 +334,14 @@
             // 
             this.txtCenterY.Location = new System.Drawing.Point(45, 89);
             this.txtCenterY.Name = "txtCenterY";
-            this.txtCenterY.Size = new System.Drawing.Size(77, 21);
+            this.txtCenterY.Size = new System.Drawing.Size(76, 21);
             this.txtCenterY.TabIndex = 4;
             // 
             // txtCenterX
             // 
             this.txtCenterX.Location = new System.Drawing.Point(45, 37);
             this.txtCenterX.Name = "txtCenterX";
-            this.txtCenterX.Size = new System.Drawing.Size(77, 21);
+            this.txtCenterX.Size = new System.Drawing.Size(76, 21);
             this.txtCenterX.TabIndex = 3;
             // 
             // label6
@@ -351,7 +374,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(128, 0);
+            this.label12.Location = new System.Drawing.Point(127, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(75, 12);
             this.label12.TabIndex = 8;
@@ -359,7 +382,7 @@
             // 
             // txtLengthX
             // 
-            this.txtLengthX.Location = new System.Drawing.Point(128, 37);
+            this.txtLengthX.Location = new System.Drawing.Point(127, 37);
             this.txtLengthX.Name = "txtLengthX";
             this.txtLengthX.Size = new System.Drawing.Size(84, 21);
             this.txtLengthX.TabIndex = 9;
@@ -367,7 +390,7 @@
             // 
             // txtLengthY
             // 
-            this.txtLengthY.Location = new System.Drawing.Point(128, 89);
+            this.txtLengthY.Location = new System.Drawing.Point(127, 89);
             this.txtLengthY.Name = "txtLengthY";
             this.txtLengthY.Size = new System.Drawing.Size(84, 21);
             this.txtLengthY.TabIndex = 10;
@@ -375,7 +398,7 @@
             // 
             // txtLengthZ
             // 
-            this.txtLengthZ.Location = new System.Drawing.Point(128, 141);
+            this.txtLengthZ.Location = new System.Drawing.Point(127, 141);
             this.txtLengthZ.Name = "txtLengthZ";
             this.txtLengthZ.Size = new System.Drawing.Size(84, 21);
             this.txtLengthZ.TabIndex = 11;
@@ -385,7 +408,7 @@
             // 
             this.txtCenterZ.Location = new System.Drawing.Point(45, 141);
             this.txtCenterZ.Name = "txtCenterZ";
-            this.txtCenterZ.Size = new System.Drawing.Size(77, 21);
+            this.txtCenterZ.Size = new System.Drawing.Size(76, 21);
             this.txtCenterZ.TabIndex = 5;
             // 
             // label11
@@ -401,6 +424,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Controls.Add(this.lbCount);
             this.groupBox1.Controls.Add(this.btnSelectFiles);
@@ -561,7 +585,7 @@
             // btnSelectFiles
             // 
             this.btnSelectFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelectFiles.Location = new System.Drawing.Point(396, 28);
+            this.btnSelectFiles.Location = new System.Drawing.Point(308, 28);
             this.btnSelectFiles.Name = "btnSelectFiles";
             this.btnSelectFiles.Size = new System.Drawing.Size(82, 23);
             this.btnSelectFiles.TabIndex = 0;
@@ -569,27 +593,16 @@
             this.btnSelectFiles.UseVisualStyleBackColor = true;
             this.btnSelectFiles.Click += new System.EventHandler(this.btnSelectFiles_Click);
             // 
-            // rbFileUnit
+            // btnClear
             // 
-            this.rbFileUnit.AutoSize = true;
-            this.rbFileUnit.Checked = true;
-            this.rbFileUnit.Location = new System.Drawing.Point(262, 24);
-            this.rbFileUnit.Name = "rbFileUnit";
-            this.rbFileUnit.Size = new System.Drawing.Size(48, 16);
-            this.rbFileUnit.TabIndex = 4;
-            this.rbFileUnit.TabStop = true;
-            this.rbFileUnit.Text = "FILE";
-            this.rbFileUnit.UseVisualStyleBackColor = true;
-            // 
-            // rbNodeUnit
-            // 
-            this.rbNodeUnit.AutoSize = true;
-            this.rbNodeUnit.Location = new System.Drawing.Point(327, 24);
-            this.rbNodeUnit.Name = "rbNodeUnit";
-            this.rbNodeUnit.Size = new System.Drawing.Size(57, 16);
-            this.rbNodeUnit.TabIndex = 5;
-            this.rbNodeUnit.Text = "NODE";
-            this.rbNodeUnit.UseVisualStyleBackColor = true;
+            this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClear.Location = new System.Drawing.Point(396, 28);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(82, 23);
+            this.btnClear.TabIndex = 3;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // FrmMain
             // 
@@ -671,6 +684,7 @@
         private System.Windows.Forms.Button btnViewModel;
         private System.Windows.Forms.RadioButton rbNodeUnit;
         private System.Windows.Forms.RadioButton rbFileUnit;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 
