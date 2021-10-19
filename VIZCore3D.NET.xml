@@ -3629,6 +3629,11 @@
             ALL (Include Body)
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.Object3dFilter.VISIBLE_BODY">
+            <summary>
+            보이는 바디 노드
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ZoomModes">
             <summary>
             Zoom Mode
@@ -35104,6 +35109,12 @@
             ModelTree ContextMenu
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ModelTreeManager.Developer">
+            <summary>
+            개발자 모드 사용
+            모델트리 텍스트 변경 : NodeIndex (NodeID) - NodeName
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelTreeManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -41262,6 +41273,11 @@
         <member name="P:VIZCore3D.NET.Manager.SettingManager.DebugDataVisible">
             <summary>
             디버그 뷰
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.ModelTreeDeveloper">
+            <summary>
+            모델 트리 개발자 모드 활성화
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ShortcutManager">

@@ -38,6 +38,10 @@
             this.panelPath = new System.Windows.Forms.Panel();
             this.tbZoom = new System.Windows.Forms.TrackBar();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtCorrectionFactorY = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCorrectionFactorX = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtMatrix = new System.Windows.Forms.TextBox();
             this.txtNodeBoundBox = new System.Windows.Forms.TextBox();
             this.txtVertexBoundBox = new System.Windows.Forms.TextBox();
@@ -49,10 +53,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCorrectionFactorX = new System.Windows.Forms.TextBox();
-            this.txtCorrectionFactorY = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtMinX = new System.Windows.Forms.TextBox();
+            this.txtMaxX = new System.Windows.Forms.TextBox();
+            this.txtMinY = new System.Windows.Forms.TextBox();
+            this.txtMaxY = new System.Windows.Forms.TextBox();
             this.tabPage4.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -60,6 +70,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbZoom)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage4
@@ -186,6 +198,42 @@
             this.tabPage1.Text = "일반";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // txtCorrectionFactorY
+            // 
+            this.txtCorrectionFactorY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCorrectionFactorY.Location = new System.Drawing.Point(157, 235);
+            this.txtCorrectionFactorY.Name = "txtCorrectionFactorY";
+            this.txtCorrectionFactorY.Size = new System.Drawing.Size(313, 21);
+            this.txtCorrectionFactorY.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 238);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(114, 12);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Correction Factor Y";
+            // 
+            // txtCorrectionFactorX
+            // 
+            this.txtCorrectionFactorX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCorrectionFactorX.Location = new System.Drawing.Point(157, 208);
+            this.txtCorrectionFactorX.Name = "txtCorrectionFactorX";
+            this.txtCorrectionFactorX.Size = new System.Drawing.Size(313, 21);
+            this.txtCorrectionFactorX.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(19, 211);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 12);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Correction Factor X";
+            // 
             // txtMatrix
             // 
             this.txtMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -281,6 +329,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -290,41 +339,105 @@
             this.tabControl1.Size = new System.Drawing.Size(497, 408);
             this.tabControl1.TabIndex = 0;
             // 
-            // label6
+            // tabPage6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(19, 211);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 12);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Correction Factor X";
+            this.tabPage6.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(489, 382);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "2D Data";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // txtCorrectionFactorX
+            // tableLayoutPanel1
             // 
-            this.txtCorrectionFactorX.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCorrectionFactorX.Location = new System.Drawing.Point(157, 208);
-            this.txtCorrectionFactorX.Name = "txtCorrectionFactorX";
-            this.txtCorrectionFactorX.Size = new System.Drawing.Size(313, 21);
-            this.txtCorrectionFactorX.TabIndex = 11;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.Controls.Add(this.label8, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label10, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinX, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxX, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinY, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxY, 2, 2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 17);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(454, 100);
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // txtCorrectionFactorY
+            // label8
             // 
-            this.txtCorrectionFactorY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCorrectionFactorY.Location = new System.Drawing.Point(157, 235);
-            this.txtCorrectionFactorY.Name = "txtCorrectionFactorY";
-            this.txtCorrectionFactorY.Size = new System.Drawing.Size(313, 21);
-            this.txtCorrectionFactorY.TabIndex = 13;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(139, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 12);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Min.";
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 238);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(114, 12);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Correction Factor Y";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(297, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(34, 12);
+            this.label9.TabIndex = 1;
+            this.label9.Text = "Max.";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(13, 12);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "X";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(3, 65);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(13, 12);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "Y";
+            // 
+            // txtMinX
+            // 
+            this.txtMinX.Location = new System.Drawing.Point(139, 33);
+            this.txtMinX.Name = "txtMinX";
+            this.txtMinX.Size = new System.Drawing.Size(100, 21);
+            this.txtMinX.TabIndex = 4;
+            // 
+            // txtMaxX
+            // 
+            this.txtMaxX.Location = new System.Drawing.Point(297, 33);
+            this.txtMaxX.Name = "txtMaxX";
+            this.txtMaxX.Size = new System.Drawing.Size(100, 21);
+            this.txtMaxX.TabIndex = 5;
+            // 
+            // txtMinY
+            // 
+            this.txtMinY.Location = new System.Drawing.Point(139, 68);
+            this.txtMinY.Name = "txtMinY";
+            this.txtMinY.Size = new System.Drawing.Size(100, 21);
+            this.txtMinY.TabIndex = 6;
+            // 
+            // txtMaxY
+            // 
+            this.txtMaxY.Location = new System.Drawing.Point(297, 68);
+            this.txtMaxY.Name = "txtMaxY";
+            this.txtMaxY.Size = new System.Drawing.Size(100, 21);
+            this.txtMaxY.TabIndex = 7;
             // 
             // ResultControl
             // 
@@ -345,6 +458,9 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -376,5 +492,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCorrectionFactorX;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtMinX;
+        private System.Windows.Forms.TextBox txtMaxX;
+        private System.Windows.Forms.TextBox txtMinY;
+        private System.Windows.Forms.TextBox txtMaxY;
     }
 }

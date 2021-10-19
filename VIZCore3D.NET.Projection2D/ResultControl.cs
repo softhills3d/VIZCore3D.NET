@@ -67,6 +67,39 @@ namespace VIZCore3D.NET.Projection2D
             if(enableCustomMargine == true)
                 projection.MovePoints(CustomTranslation.X, CustomTranslation.Y, true);
 
+            int minX = 0;
+            int minY = 0;
+            int maxX = 0;
+            int maxY = 0;
+
+            List<System.Drawing.Point> pointList = projection.GetPointList();
+            for (int i = 0; i < pointList.Count; i++)
+            {
+                System.Drawing.Point current = pointList[i];
+
+                if(i != 0)
+                {
+                    minX = Math.Min(minX, current.X);
+                    minY = Math.Min(minY, current.Y);
+
+                    maxX = Math.Max(maxX, current.X);
+                    maxY = Math.Max(maxY, current.Y);
+                }
+                else
+                {
+                    minX = current.X;
+                    minY = current.Y;
+
+                    maxX = current.X;
+                    maxY = current.Y;
+                }
+            }
+
+            txtMinX.Text = minX.ToString();
+            txtMinY.Text = minY.ToString();
+            txtMaxX.Text = maxX.ToString();
+            txtMaxY.Text = maxY.ToString();
+
             P2D_Viewer.DrawPathGeometry(projection.PathGeometryString);
         }
 
