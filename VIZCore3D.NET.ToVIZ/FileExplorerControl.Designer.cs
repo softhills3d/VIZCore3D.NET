@@ -58,6 +58,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbVersion = new System.Windows.Forms.ComboBox();
             this.ckIncludeEdge = new System.Windows.Forms.CheckBox();
+            this.ckProgressBar = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -374,6 +375,7 @@
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ckProgressBar);
             this.groupBox6.Controls.Add(this.cbVersion);
             this.groupBox6.Controls.Add(this.ckIncludeEdge);
             this.groupBox6.Location = new System.Drawing.Point(4, 265);
@@ -392,7 +394,7 @@
             "V.208",
             "V.303",
             "V.304"});
-            this.cbVersion.Location = new System.Drawing.Point(239, 16);
+            this.cbVersion.Location = new System.Drawing.Point(184, 16);
             this.cbVersion.Name = "cbVersion";
             this.cbVersion.Size = new System.Drawing.Size(121, 20);
             this.cbVersion.TabIndex = 1;
@@ -409,6 +411,16 @@
             this.ckIncludeEdge.TabIndex = 0;
             this.ckIncludeEdge.Text = "Include Edge Data";
             this.ckIncludeEdge.UseVisualStyleBackColor = true;
+            // 
+            // ckProgressBar
+            // 
+            this.ckProgressBar.AutoSize = true;
+            this.ckProgressBar.Location = new System.Drawing.Point(343, 18);
+            this.ckProgressBar.Name = "ckProgressBar";
+            this.ckProgressBar.Size = new System.Drawing.Size(98, 16);
+            this.ckProgressBar.TabIndex = 2;
+            this.ckProgressBar.Text = "Progress Bar";
+            this.ckProgressBar.UseVisualStyleBackColor = true;
             // 
             // FileExplorerControl
             // 
@@ -471,5 +483,6 @@
         private System.Windows.Forms.CheckBox ckIncludeEdge;
         private System.Windows.Forms.ComboBox cbVersion;
         private System.Windows.Forms.ComboBox cbSimplifiedUnit;
+        private System.Windows.Forms.CheckBox ckProgressBar;
     }
 }

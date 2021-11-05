@@ -393,6 +393,8 @@
             // ckVisible
             // 
             this.ckVisible.AutoSize = true;
+            this.ckVisible.Checked = true;
+            this.ckVisible.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckVisible.Location = new System.Drawing.Point(35, 31);
             this.ckVisible.Name = "ckVisible";
             this.ckVisible.Size = new System.Drawing.Size(62, 16);

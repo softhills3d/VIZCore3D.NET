@@ -49,21 +49,21 @@ namespace VIZCore3D.NET.ToVIZ
             fileExplorer.OnToVIZEvent += FileExplorer_OnToVIZEvent;
         }
 
-        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit);
+        delegate bool DToVIZ(string input, string output, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool loadEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit, bool progressBar);
         private bool FileExplorer_OnToVIZEvent(object sender, ToVIZEventArgs e)
         {
             if(this.InvokeRequired == true)
             {
                 DToVIZ call = new DToVIZ(ToVIZ);
-                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit });
+                return (bool)this.Invoke(call, new object[] { e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit, e.EnableProgressBar });
             }
             else
             {
-                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit);
+                return ToVIZ(e.Source, e.Output, e.Mode, e.MergeMode, e.IncludeEdge, e.Version, e.SimplifiedUnit, e.EnableProgressBar);
             }
         }
 
-        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit)
+        private bool ToVIZ(string source, string target, ToVIZMode mode, VIZCore3D.NET.Data.MergeStructureModes saveOption, bool includeEdge, VIZCore3D.NET.Manager.ModelManager.FileVersion ver, VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit simplifiedUnit, bool progressBar)
         {
             // 저장 위치 설정
             string path = System.IO.Path.GetDirectoryName(source);
@@ -80,6 +80,9 @@ namespace VIZCore3D.NET.ToVIZ
 
             if (System.IO.Path.GetFileNameWithoutExtension(source).ToUpper() == ".DGN")
                 vizcore3d.Model.SetDgnDeviationDialog();
+
+            // 프로그레스바
+            vizcore3d.EnableProgressForm = progressBar;
 
             // 모델 열고, 저장
             if (mode == ToVIZMode.EXPORT)

@@ -20429,6 +20429,22 @@
             <param name="imageIn">Image</param>
             <returns>Array(Byte)</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.ImageToBase64(System.Drawing.Image)">
+            <summary>
+            Image 객체를 Base64 문자열로 반환
+            </summary>
+            <param name="image">Image 객체</param>
+            <returns>Base64 문자열</returns>
+            <seealso cref="M:VIZCore3D.NET.Interop.VIZCoreBase.Base64ToImage(System.String)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.Base64ToImage(System.String)">
+            <summary>
+            Base64 문자열을 Image 객체로 반환
+            </summary>
+            <param name="base64String">Base64 문자열</param>
+            <returns>Image 객체</returns>
+            <seealso cref="M:VIZCore3D.NET.Interop.VIZCoreBase.ImageToBase64(System.Drawing.Image)"/>
+        </member>
         <member name="P:VIZCore3D.NET.Interop.VIZCoreBase.OBJECT3D_MATERIAL_Get">
             <summary>
             Material ID List
@@ -22411,6 +22427,13 @@
             </summary>
             <param name="sourceNodeIndex">Source Node Index</param>
             <param name="targetNodeIndex">Target node Index</param>
+            <returns>병합된 노드 아이디</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.MergeShape(System.Int32)">
+            <summary>
+            노드를 하나의 Body 단위로 병합
+            </summary>
+            <param name="nodeIndex">Source Node Index</param>
             <returns>병합된 노드 아이디</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.MergeShape(VIZCore3D.NET.Data.Node,VIZCore3D.NET.Data.Node)">
@@ -31431,6 +31454,11 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.FrameManager.ReDraw">
+            <summary>
+            다시 그리기
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.GeometryPropertyManager">
             <summary>
             Geometry Property Manager
@@ -33055,6 +33083,13 @@
             <param name="displayText">True : 현재 화면에 보이는 내용 복사 / False : 측정값만 복사</param>
             <returns>True : 클립보드 복사 / False : 선택된 측정 항목 없음</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.ExportJson(System.String)">
+            <summary>
+            Json 형식으로 내보내기
+            </summary>
+            <param name="path">Json 파일 경로</param>
+            <returns>내보내기 결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.MessageManager">
             <summary>
             Message Manager
@@ -34364,6 +34399,12 @@
             VIZW (Web) 파일 형식으로 내보내기
             </summary>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.vizw</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportObjDialog">
+            <summary>
+            OBJ 파일 형식으로 내보내기
+            </summary>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportObj(System.String)">
@@ -36422,6 +36463,13 @@
             <param name="text">기존 노트 텍스트</param>
             <returns>수정 결과</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.ExportJson(System.String)">
+            <summary>
+            Json 형식으로 내보내기
+            </summary>
+            <param name="path">Json 파일 경로</param>
+            <returns>내보내기 결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.Object3DManager">
             <summary>
             Object3D Manager
@@ -38015,6 +38063,7 @@
             <param name="keyword">Keyword : OBST or INSU ...</param>
             <param name="fullMatch">Full Match - True(Full Match) / False(Contains)</param>
             <param name="visible">True(Show) / False(Hide)</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.Object3DManager.LockObjects(System.String,System.Boolean,System.Boolean)"/>
             <example>
             <code language="cs">
             <![CDATA[
@@ -38030,6 +38079,34 @@
             
                 // Hide INSU - Keyword : .... (INSU)
                 vizcore3d.Object3D.Show("(INSU)", false, false);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.LockObjects(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Lock And Hide Objects By Keyword
+            </summary>
+            <param name="keyword">Keyword : OBST or INSU ...</param>
+            <param name="fullMatch">Full Match - True(Full Match) / False(Contains)</param>
+            <param name="status">True(Lock And Hide) / False(Unlock And Show)</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.Object3DManager.Show(System.String,System.Boolean,System.Boolean)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                // Hide OBST - Keyword : .... (OBST) 
+                vizcore3d.Object3D.LockObjects("(OBST)", false, true);
+            
+                // Hide INSU - Keyword : .... (INSU)
+                vizcore3d.Object3D.LockObjects("(INSU)", false, true);
             }
             ]]>
             </code> 
@@ -43397,6 +43474,17 @@
             <param name="key">속성 키</param>
             <param name="recursive">재귀적으로 삭제 여부</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.UDAManager.Remove(System.String)">
+            <summary>
+            개체의 속성을 제거
+            </summary>
+            <param name="key">속성 키</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.UDAManager.Clear">
+            <summary>
+            속성을 제거
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.UDAManager.GetValues(System.String)">
             <summary>
             속성(KEY)에 해당하는 Value 목록(유형)
@@ -43677,6 +43765,13 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.UserViewManager.ExportJson(System.String)">
+            <summary>
+            Json 형식으로 내보내기
+            </summary>
+            <param name="path">Json 파일 경로</param>
+            <returns>내보내기 결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VertexColorManager">
             <summary>

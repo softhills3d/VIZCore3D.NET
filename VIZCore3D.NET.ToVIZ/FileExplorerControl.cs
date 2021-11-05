@@ -128,6 +128,8 @@ namespace VIZCore3D.NET.ToVIZ
                 else if (nSimplifiedUnit == 1)
                     args.SimplifiedUnit = Manager.ModelManager.SimplifiedUnit.TRIANGLE_SET_MESH;
 
+                args.EnableProgressBar = ckProgressBar.Checked;
+
                 this.Cursor = Cursors.WaitCursor;
                 bool result = OnToVIZEvent(this, args);
                 this.Cursor = Cursors.Default;
@@ -155,5 +157,6 @@ namespace VIZCore3D.NET.ToVIZ
         public bool IncludeEdge { get; set; }
         public VIZCore3D.NET.Manager.ModelManager.FileVersion Version { get; set; }
         public VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit SimplifiedUnit { get; set; }
+        public bool EnableProgressBar { get; set; }
     }
 }
