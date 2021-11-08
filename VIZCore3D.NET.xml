@@ -1783,6 +1783,26 @@
             <param name="index">삽입할 정점 인덱스(Index)</param>
             <param name="repeatMode">반복 생성 모드</param>
         </member>
+        <member name="T:VIZCore3D.NET.Data.BodyVertexData">
+            <summary>
+            BodyVertex Data Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.BodyVertexData.Vertex">
+            <summary>
+            Vertex
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.BodyVertexData.Normal">
+            <summary>
+            Normal
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.BodyVertexData.#ctor(VIZCore3DNETInterop.VIZCore3D,System.String)">
+            <summary>
+            Construction
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.BoundBox3D">
             <summary>
             Bound Box Class
@@ -8422,6 +8442,11 @@
             Positions
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.NoteItem.Positions2D">
+            <summary>
+            Positions 2D
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.NoteItem.CameraMatrix">
             <summary>
             Camera Matrix
@@ -11057,7 +11082,7 @@
         </member>
         <member name="T:VIZCore3D.NET.Data.VertexColorData">
             <summary>
-            Camera Data Class
+            VertexColor Data Class
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.VertexColorData.Vertex">
@@ -22644,6 +22669,95 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.GetBodyVertices(System.Int32)">
+             <summary>
+             Body 노드의 정점 정보 반환
+             </summary>
+             <param name="bodyIndex">Body Index</param>
+             <returns>Vertex Data</returns>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                 vizcore3d.BeginUpdate();
+                 List<int> bodies = new List<int>();
+                 bodies.Add(1234);    
+             
+                 for( int j = 0; j < bodies.Count; j++)
+                 {
+                     int bodyIndex = bodies[j];
+                     //Get Vertices Info
+                     List<Data.BodyVertexData> vertexData = vizcore3d.MeshEdit.GetBodyVertices(bodyIndex);
+                     
+                     // Vertex Position Move
+                     for(int i = 0; i < vertexData.Count; i++)
+                     {
+                         vertexData[i].Vertex.X += 1000;
+                     }
+            
+                     vizcore3d.MeshEdit.SetBodyVertices(
+                         bodyIndex /* body index */
+                         , vertexData /* Vertex Info */
+                         , false);  /* RebuildData */
+                 }
+            
+                 vizcore3d.Structure.RebuildData();
+                 vizcore3d.EndUpdate();
+             }
+             ]]>
+             </code> 
+             </example>
+             <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.SetBodyVertices(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.BodyVertexData},System.Boolean)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.SetBodyVertices(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.BodyVertexData},System.Boolean)">
+             <summary>
+             Body 노드의 정점 정보 변경
+             </summary>
+             <param name="bodyIndex">Body Index</param>
+             <param name="vertexData">Vertex Data</param>
+             <param name="rebuildData">데이터 재구성 여부</param>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                 vizcore3d.BeginUpdate();
+                 List<int> bodies = new List<int>();
+                 bodies.Add(1234);    
+             
+                 for( int j = 0; j < bodies.Count; j++)
+                 {
+                     int bodyIndex = bodies[j];
+                     //Get Vertices Info
+                     List<Data.BodyVertexData> safeData = vizcore3d.MeshEdit.GetBodyVertices(bodyIndex);
+                     
+                     // Vertex Postition Move
+                     for(int i = 0; i < safeData.Count; i++)
+                     {
+                         safeData[i].Vertex.X += 1000;
+                     }
+            
+                     vizcore3d.MeshEdit.SetBodyVertices(
+                         bodyIndex /* body index */
+                         , safeData /* Vertex Info */
+                         , false);  /* RebuildData */
+                 }
+            
+                 vizcore3d.Structure.RebuildData();
+                 vizcore3d.EndUpdate();
+             }
+             ]]>
+             </code> 
+             </example>
+             <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.GetBodyVertices(System.Int32)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.MoveNodeToNode(System.Int32,System.Int32)">
             <summary>
@@ -43819,6 +43933,7 @@
             </summary>
             <param name="index">Node index</param>
             <returns>Color List</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.VertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.VertexColorData})"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.SetColor(System.Collections.Generic.List{System.Drawing.Color})">
             <summary>
@@ -43864,6 +43979,7 @@
             ]]>
             </code> 
             </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.VertexColorManager.GetColor(System.Int32)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{System.Drawing.Color})">
             <summary>

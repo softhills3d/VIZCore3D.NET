@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnArrowCenter = new System.Windows.Forms.Button();
             this.btnLineCenter = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ckDraftView = new System.Windows.Forms.CheckBox();
@@ -39,7 +40,7 @@
             this.btnDisassemble = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckEnable = new System.Windows.Forms.CheckBox();
-            this.btnArrowCenter = new System.Windows.Forms.Button();
+            this.ckEnableLine = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -70,18 +71,29 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.ckEnableLine);
             this.groupBox4.Controls.Add(this.btnArrowCenter);
             this.groupBox4.Controls.Add(this.btnLineCenter);
             this.groupBox4.Location = new System.Drawing.Point(12, 220);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(241, 116);
+            this.groupBox4.Size = new System.Drawing.Size(241, 154);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Line";
             // 
+            // btnArrowCenter
+            // 
+            this.btnArrowCenter.Location = new System.Drawing.Point(24, 112);
+            this.btnArrowCenter.Name = "btnArrowCenter";
+            this.btnArrowCenter.Size = new System.Drawing.Size(176, 23);
+            this.btnArrowCenter.TabIndex = 1;
+            this.btnArrowCenter.Text = "Arrow (Center To Center)";
+            this.btnArrowCenter.UseVisualStyleBackColor = true;
+            this.btnArrowCenter.Click += new System.EventHandler(this.btnArrowCenter_Click);
+            // 
             // btnLineCenter
             // 
-            this.btnLineCenter.Location = new System.Drawing.Point(24, 20);
+            this.btnLineCenter.Location = new System.Drawing.Point(24, 64);
             this.btnLineCenter.Name = "btnLineCenter";
             this.btnLineCenter.Size = new System.Drawing.Size(176, 23);
             this.btnLineCenter.TabIndex = 0;
@@ -167,15 +179,15 @@
             this.ckEnable.UseVisualStyleBackColor = true;
             this.ckEnable.CheckedChanged += new System.EventHandler(this.ckEnable_CheckedChanged);
             // 
-            // btnArrowCenter
+            // ckEnableLine
             // 
-            this.btnArrowCenter.Location = new System.Drawing.Point(24, 68);
-            this.btnArrowCenter.Name = "btnArrowCenter";
-            this.btnArrowCenter.Size = new System.Drawing.Size(176, 23);
-            this.btnArrowCenter.TabIndex = 1;
-            this.btnArrowCenter.Text = "Arrow (Center To Center)";
-            this.btnArrowCenter.UseVisualStyleBackColor = true;
-            this.btnArrowCenter.Click += new System.EventHandler(this.btnArrowCenter_Click);
+            this.ckEnableLine.AutoSize = true;
+            this.ckEnableLine.Location = new System.Drawing.Point(24, 30);
+            this.ckEnableLine.Name = "ckEnableLine";
+            this.ckEnableLine.Size = new System.Drawing.Size(63, 16);
+            this.ckEnableLine.TabIndex = 2;
+            this.ckEnableLine.Text = "Enable";
+            this.ckEnableLine.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -191,6 +203,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -213,6 +226,7 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnLineCenter;
         private System.Windows.Forms.Button btnArrowCenter;
+        private System.Windows.Forms.CheckBox ckEnableLine;
     }
 }
 

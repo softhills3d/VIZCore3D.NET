@@ -581,6 +581,8 @@ namespace VIZCore3D.NET.MoveWithMouse
         {
             vizcore3d.ShapeDrawing.Clear();
 
+            if (ckEnableLine.Checked == false) return;
+
             List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromIndex(0).GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
             if (nodes.Count == 0) return;
 
