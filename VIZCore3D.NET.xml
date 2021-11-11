@@ -51086,11 +51086,33 @@
             </code> 
             </example>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.ModelTreeVisible">
+            <summary>
+            모델 트리 보이기/숨기기
+            </summary>
+            <seealso cref="P:VIZCore3D.NET.VIZCore3DControl.ModelTreeWidth"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.ModelTreeVisible == true)
+                    vizcore3d.ModelTreeVisible = false;
+                else
+                    vizcore3d.ModelTreeVisible = true;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ModelTreeWidth">
             <summary>
             모델 트리 가로 길이
             </summary>
-            <seealso cref="P:VIZCore3D.NET.VIZCore3DControl.ShowModelTree"/>
+            <seealso cref="P:VIZCore3D.NET.VIZCore3DControl.ModelTreeVisible"/>
             <example>
             <code language="cs">
             <![CDATA[
