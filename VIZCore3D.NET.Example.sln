@@ -132,6 +132,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MoveWithMouse
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.WebBrowserInterworking", "VIZCore3D.NET.WebBrowserInterworking\VIZCore3D.NET.WebBrowserInterworking.csproj", "{20D49983-22F4-460B-B159-C901DB48182D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Arguments", "VIZCore3D.NET.Arguments\VIZCore3D.NET.Arguments.csproj", "{ABABAA67-190E-4F97-BAA8-70A716864B4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.CircleGeo", "VIZCore3D.NET.CircleGeo\VIZCore3D.NET.CircleGeo.csproj", "{5ECEB4C4-DCC8-4E5B-AA00-D5D5E08CC3A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.DockInOut", "VIZCore3D.NET.DockInOut\VIZCore3D.NET.DockInOut.csproj", "{4BAE4E00-BDD8-4A1B-8C57-8C4150B29EB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.NodeCreation", "VIZCore3D.NET.NodeCreation\VIZCore3D.NET.NodeCreation.csproj", "{16F54FFB-EDA0-436D-95D7-71A7D98AB471}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -386,6 +394,22 @@ Global
 		{20D49983-22F4-460B-B159-C901DB48182D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20D49983-22F4-460B-B159-C901DB48182D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20D49983-22F4-460B-B159-C901DB48182D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABABAA67-190E-4F97-BAA8-70A716864B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABABAA67-190E-4F97-BAA8-70A716864B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABABAA67-190E-4F97-BAA8-70A716864B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABABAA67-190E-4F97-BAA8-70A716864B4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5ECEB4C4-DCC8-4E5B-AA00-D5D5E08CC3A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ECEB4C4-DCC8-4E5B-AA00-D5D5E08CC3A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ECEB4C4-DCC8-4E5B-AA00-D5D5E08CC3A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ECEB4C4-DCC8-4E5B-AA00-D5D5E08CC3A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAE4E00-BDD8-4A1B-8C57-8C4150B29EB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAE4E00-BDD8-4A1B-8C57-8C4150B29EB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAE4E00-BDD8-4A1B-8C57-8C4150B29EB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAE4E00-BDD8-4A1B-8C57-8C4150B29EB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
