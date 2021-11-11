@@ -570,6 +570,8 @@ namespace VIZCore3D.NET.Erection.V1
                 string viz1 = string.Format("{0}\\{1}\\{1}.viz", txtPath.Text, name);
                 string viz3 = string.Format("{0}\\{1}\\{1}_SIMPLIFIED.viz", txtPath.Text, name);
 
+                if (System.IO.File.Exists(viz3) == true) continue;
+
                 vizcore3d.Model.Open(viz1);
 
                 // 간소화 형상 생성
