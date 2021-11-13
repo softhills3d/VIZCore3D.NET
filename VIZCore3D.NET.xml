@@ -2371,6 +2371,11 @@
             (내부)간섭검사 수행 상태
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.ClashTest.TestStatus.NONE">
+            <summary>
+            미지정
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Data.ClashTest.TestStatus.WAIT">
             <summary>
             대기 / 등록
