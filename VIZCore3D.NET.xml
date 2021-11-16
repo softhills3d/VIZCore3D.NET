@@ -21648,20 +21648,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
                 if (items.Count == 0) return;
             
-                vizcore.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
+                vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
             
-                vizcore.GeometryUtility.ShowOsnap(
+                vizcore3d.GeometryUtility.ShowOsnap(
                     items[0].Index  /* Node Index */
                     , false         /* Item : Surface */
                     , true          /* Item : Vertex */
@@ -21857,20 +21857,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
                 if (items.Count == 0) return;
             
-                vizcore.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
+                vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
             
-                vizcore.GeometryUtility.ShowOsnap(
+                vizcore3d.GeometryUtility.ShowOsnap(
                     items[0].Index  /* Node Index */
                     , false         /* Item : Surface */
                     , true          /* Item : Vertex */
@@ -21914,13 +21914,13 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {   
-                vizcore.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
+                vizcore3d.GeometryUtility.OnOsnapPickingItem += GeometryUtility_OnOsnapPickingItem;
             
-                vizcore.GeometryUtility.ShowOsnap(
+                vizcore3d.GeometryUtility.ShowOsnap(
                     , false         /* Item : Surface */
                     , true          /* Item : Vertex */
                     , true          /* Item : Line */
@@ -27668,14 +27668,14 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Color Index : rev2bst.config.rev 파일 참고
             
                 VIZCore3D.NET.Manager.PrimitiveObject root =
-                    vizcore.Primitive.AddNode("Root", 4 /* Yellow Color*/);
+                    vizcore3d.Primitive.AddNode("Root", 4 /* Yellow Color*/);
             
                 VIZCore3D.NET.Manager.PrimitiveObject child1 =
                     root.AddNode("CHILD1", 7 /* Blue Color */);
@@ -27729,7 +27729,7 @@
                 }
             
                 // Open Model
-                vizcore.Primitive.OpenModel("Primitive", false);
+                vizcore3d.Primitive.OpenModel("Primitive", false);
             }
             ]]>
             </code>
@@ -27771,14 +27771,14 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Color Index : rev2bst.config.rev 파일 참고
             
                 VIZCore3D.NET.Manager.PrimitiveObject root =
-                    vizcore.Primitive.AddNode("Root", 4 /* Yellow Color*/);
+                    vizcore3d.Primitive.AddNode("Root", 4 /* Yellow Color*/);
             
                 VIZCore3D.NET.Manager.PrimitiveObject child1 =
                     root.AddNode("CHILD1", 7 /* Blue Color */);
@@ -27832,7 +27832,7 @@
                 }
             
                 // Open Model
-                vizcore.Primitive.OpenModel("Primitive", false);
+                vizcore3d.Primitive.OpenModel("Primitive", false);
             }
             ]]>
             </code>
@@ -29643,7 +29643,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             private VIZCore3D.NET.Data.ClashTest clash;
             
             private void Example()
@@ -29662,34 +29662,34 @@
                 clash.BottomLevel = 2;
             
                 List<VIZCore3D.NET.Data.Node> groupA =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "EQUIPMENT" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupA = groupA;
             
                 List<VIZCore3D.NET.Data.Node> groupB =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "HULL" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupB = groupB;
             
                 if (clash.ID == -1)
                 {
-                    bool result = vizcore.Clash.Add(clash);
+                    bool result = vizcore3d.Clash.Add(clash);
             
                     MessageBox.Show(
                         string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID)
@@ -29700,13 +29700,13 @@
                 }
                 else
                 {
-                    vizcore.Clash.Update(clash);
+                    vizcore3d.Clash.Update(clash);
                 }
             
-                vizcore.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
+                vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
             
                 // 간섭검사 수행
-                vizcore.Clash.PerformInterferenceCheck(clash.ID);
+                vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
             }
             
             private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
@@ -29725,7 +29725,7 @@
             
                 if (clash.TestKind != VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
                 {
-                    items = vizcore.Clash.GetResultItem(
+                    items = vizcore3d.Clash.GetResultItem(
                         clash
                         , resultDataKind == true
                         ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
@@ -29734,8 +29734,8 @@
                 }
                 else
                 {
-                    //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
-                    items = vizcore.Clash.GetResultAllSubItem(
+                    //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART);
+                    items = vizcore3d.Clash.GetResultAllSubItem(
                         clash
                         , resultDataKind == true
                         ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
@@ -29781,7 +29781,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
@@ -29802,34 +29802,34 @@
                 clash.BottomLevel = 2;
             
                 List<VIZCore3D.NET.Data.Node> groupA =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "EQUIPMENT" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupA = groupA;
             
                 List<VIZCore3D.NET.Data.Node> groupB =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "HULL" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupB = groupB;
             
                 if (clash.ID == -1)
                 {
-                    bool result = vizcore.Clash.Add(clash);
+                    bool result = vizcore3d.Clash.Add(clash);
             
                     MessageBox.Show(
                         string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID)
@@ -29840,7 +29840,7 @@
                 }
                 else
                 {
-                    vizcore.Clash.Update(clash);
+                    vizcore3d.Clash.Update(clash);
                 }
             }
             ]]>
@@ -29857,7 +29857,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
@@ -29875,40 +29875,40 @@
                 clash.BottomLevel = 2;
             
                 List<VIZCore3D.NET.Data.Node> groupA =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "EQUIPMENT" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupA = groupA;
             
                 List<VIZCore3D.NET.Data.Node> groupB =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "HULL" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupB = groupB;
             
                 if (clash.ID == -1)
                 {
-                    bool result = vizcore.Clash.Add(clash);
+                    bool result = vizcore3d.Clash.Add(clash);
             
                     MessageBox.Show(string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, result == true ? MessageBoxIcon.Information : MessageBoxIcon.Error);
                 }
                 else
                 {
-                    vizcore.Clash.Update(clash);
+                    vizcore3d.Clash.Update(clash);
                 }
             }
             ]]>
@@ -29956,7 +29956,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             private VIZCore3D.NET.Data.ClashTest clash;
             
             private void Example()
@@ -29975,34 +29975,34 @@
                 clash.BottomLevel = 2;
             
                 List<VIZCore3D.NET.Data.Node> groupA =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "EQUIPMENT" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupA = groupA;
             
                 List<VIZCore3D.NET.Data.Node> groupB =
-                    vizcore.Object3D.Find.QuickSearch(
+                    vizcore3d.Object3D.Find.QuickSearch(
                         new List<string>() { "HULL" }
-                    , false
-                    , true
-                    , false
-                    , false
-                    , true
-                    , false
-                    );
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
             
                 clash.GroupB = groupB;
             
                 if (clash.ID == -1)
                 {
-                    bool result = vizcore.Clash.Add(clash);
+                    bool result = vizcore3d.Clash.Add(clash);
             
                     MessageBox.Show(
                         string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID)
@@ -30013,13 +30013,13 @@
                 }
                 else
                 {
-                    vizcore.Clash.Update(clash);
+                    vizcore3d.Clash.Update(clash);
                 }
             
-                vizcore.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
+                vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
             
                 // 간섭검사 수행
-                bool result = vizcore.Clash.PerformInterferenceCheck(clash.ID);
+                bool result = vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
             }
             
             private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
@@ -30038,7 +30038,7 @@
             
                 if (clash.TestKind != VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
                 {
-                    items = vizcore.Clash.GetResultItem(
+                    items = vizcore3d.Clash.GetResultItem(
                         clash
                         , resultDataKind == true
                         ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
@@ -30047,8 +30047,8 @@
                 }
                 else
                 {
-                    //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
-                    items = vizcore.Clash.GetResultAllSubItem(
+                    //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART);
+                    items = vizcore3d.Clash.GetResultAllSubItem(
                         clash
                         , resultDataKind == true
                         ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
@@ -34082,20 +34082,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.StreamData> items = GetModelData();
             
-                vizcore.Model.BeginStream();
+                vizcore3d.Model.BeginStream();
             
                 foreach (VIZCore3D.NET.Data.StreamData item in items)
                 {
-                    vizcore.Model.AddStream(item);
+                    vizcore3d.Model.AddStream(item);
                 }
             
-                vizcore.Model.EndStream();
+                vizcore3d.Model.EndStream();
             }
             ]]>
             </code>
@@ -34112,20 +34112,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.StreamData> items = GetModelData();
             
-                vizcore.Model.BeginStream();
+                vizcore3d.Model.BeginStream();
             
                 foreach (VIZCore3D.NET.Data.StreamData item in items)
                 {
-                    vizcore.Model.AddStream(item);
+                    vizcore3d.Model.AddStream(item);
                 }
             
-                vizcore.Model.EndStream();
+                vizcore3d.Model.EndStream();
             }
             ]]>
             </code>
@@ -34141,20 +34141,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.StreamData> items = GetModelData();
             
-                vizcore.Model.BeginStream();
+                vizcore3d.Model.BeginStream();
             
                 foreach (VIZCore3D.NET.Data.StreamData item in items)
                 {
-                    vizcore.Model.AddStream(item);
+                    vizcore3d.Model.AddStream(item);
                 }
             
-                vizcore.Model.EndStream();
+                vizcore3d.Model.EndStream();
             }
             ]]>
             </code>
@@ -34282,12 +34282,12 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
@@ -34295,7 +34295,7 @@
             
                 string output = "C:\\Model\\Node.viz";
             
-                bool result = vizcore.Model.ExportNode(
+                bool result = vizcore3d.Model.ExportNode(
                     items[0].Index      /* Node Index */
                     , output            /* Path */
                     );
@@ -34319,18 +34319,18 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
                 if (items.Count == 0) return;
             
-                bool result = vizcore.Model.ExportNodeDialog(items[0].Index);
+                bool result = vizcore3d.Model.ExportNodeDialog(items[0].Index);
             
                 if(result == false)
                 {
@@ -34351,18 +34351,18 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
                 if (items.Count == 0) return;
             
-                bool result = vizcore.Model.ExportNodeDialog(items[0]);
+                bool result = vizcore3d.Model.ExportNodeDialog(items[0]);
             
                 if(result == false)
                 {
@@ -34383,13 +34383,13 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 string output = "C:\\Model\\Export.viz";
             
-                bool result = vizcore.Model.ExportVIZ(output);
+                bool result = vizcore3d.Model.ExportVIZ(output);
             
                 if(result == false)
                 {
@@ -34433,13 +34433,13 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 string output = "C:\\Model\\Export.viz";
             
-                bool result = vizcore.Model.ExportVIZ(
+                bool result = vizcore3d.Model.ExportVIZ(
                     output
                     , Data.ModelExportFilter.VISIBLE_ONLY
                     );
@@ -34467,12 +34467,12 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.VISIBLE_PART
                         );
             
@@ -34480,7 +34480,7 @@
             
                 string output = "C:\\Model\\Export.viz";
             
-                bool result = vizcore.Model.ExportVIZ(output, items);
+                bool result = vizcore3d.Model.ExportVIZ(output, items);
             
                 if(result == false)
                 {
@@ -34989,13 +34989,13 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 string file = "C:\\Model\\BLOCK.viz";
             
-                vizcore.Model.Open(file);
+                vizcore3d.Model.Open(file);
             
                 // ===============================
                 //            Matrix
@@ -35011,11 +35011,11 @@
                 matrix[8] = 0.0f;   matrix[9] = 0.0f;   matrix[10] = 1.0f;  matrix[11] = 0.0f;
                 matrix[12] = 0.0f;  matrix[13] = 0.0f;  matrix[14] = 0.0f;  matrix[15] = 1.0f;
             
-                vizcore.Model.SetModelMatrix(matrix);
+                vizcore3d.Model.SetModelMatrix(matrix);
             
-                vizcore.View.ResetView();
+                vizcore3d.View.ResetView();
             
-                vizcore.View.MoveCamera(Data.CameraDirection.Z_PLUS);
+                vizcore3d.View.MoveCamera(Data.CameraDirection.Z_PLUS);
             }
             ]]>
             </code>
@@ -36996,12 +36996,12 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Event 선언
-                vizcore.View.OnViewDragDrop += View_OnViewDragDrop;
+                vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
             }
             
             private void View_OnViewDragDrop(object sender, Event.EventManager.ViewDragDropEventArgs e)
@@ -37010,10 +37010,10 @@
                 int y = e.Y;
             
                 // 해당 위치 개체 조회
-                int index = vizcore.Object3D.HitTest(x, y);
+                int index = vizcore3d.Object3D.HitTest(x, y);
                 if(index != -1)
                 {
-                    VIZCore3D.NET.Data.Node node = vizcore.Object3D.FromIndex(index);
+                    VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(index);
                 }
             }
             ]]>
@@ -38646,14 +38646,14 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             /// <summary>
             /// 이벤트 등록
             /// </summary>
             private void InitializeVIZCore3DEvent()
             {
-                vizcore.Review.OnReviewChangedEvent += Review_OnReviewChangedEvent;
+                vizcore3d.Review.OnReviewChangedEvent += Review_OnReviewChangedEvent;
             }
             
             private void Review_OnReviewChangedEvent(object sender, Event.EventManager.ReviewEventArgs e)
@@ -38666,22 +38666,22 @@
                         log = string.Format("[{0}] 모두 선택해제", (int)e.EventKind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.SELECT_REVIEW:
-                        log = string.Format("[{0}] 리뷰 선택 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore.Review.GetItem(e.ReviewID).Kind);
+                        log = string.Format("[{0}] 리뷰 선택 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.SELECT_REVIEW_ADD:
-                        log = string.Format("[{0}] 리뷰 선택 (추가) : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore.Review.GetItem(e.ReviewID).Kind);
+                        log = string.Format("[{0}] 리뷰 선택 (추가) : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.CHANGED_REVIEW_DATA:
-                        log = string.Format("[{0}] 리뷰 정보 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore.Review.GetItem(e.ReviewID).Kind);
+                        log = string.Format("[{0}] 리뷰 정보 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.ADDED_SURFACE_NOTE:
-                        log = string.Format("[{0}] 표면노트 추가 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore.Review.GetItem(e.ReviewID).Kind);
+                        log = string.Format("[{0}] 표면노트 추가 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.CANCELED_ADD:
                         log = string.Format("[{0}] 추가 동작 취소", (int)e.EventKind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.CHANGED_ARROW_POSITION:
-                        log = string.Format("[{0}] 지시선 위치 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore.Review.GetItem(e.ReviewID).Kind);
+                        log = string.Format("[{0}] 지시선 위치 변경 : {1} / {2}", (int)e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
                         break;
                     case Manager.ReviewManager.ReviewEventKind.REVIEW_MOVED:
                        log = string.Format("[{0}] 이동된 리뷰 : {1} / {2}", (int) e.EventKind, e.ReviewID, vizcore3d.Review.GetItem(e.ReviewID).Kind);
@@ -39822,17 +39822,17 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 int boxId = 1; /* Selection Box ID */
             
-                vizcore.SelectionBox.Select(boxId); /* Select */
-                vizcore.SelectionBox.Focus(boxId);  /* Focus */
+                vizcore3d.SelectionBox.Select(boxId); /* Select */
+                vizcore3d.SelectionBox.Focus(boxId);  /* Focus */
             
                 // Control Resize Controller
-                vizcore.SelectionBox.EnableController(
+                vizcore3d.SelectionBox.EnableController(
                     true    /* X Axis. */ 
                     , true  /* Y Axis. */
                     , false /* Z Axis. */
@@ -39840,7 +39840,7 @@
             
                 // Get Status
                 VIZCore3D.NET.Data.SelectionBoxController status
-                    = vizcore.SelectionBox.GetControllerStatus();
+                    = vizcore3d.SelectionBox.GetControllerStatus();
             
                 bool x = status.XAxis;
                 bool y = status.YAxis;
@@ -39859,17 +39859,17 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 int boxId = 1; /* Selection Box ID */
             
-                vizcore.SelectionBox.Select(boxId); /* Select */
-                vizcore.SelectionBox.Focus(boxId);  /* Focus */
+                vizcore3d.SelectionBox.Select(boxId); /* Select */
+                vizcore3d.SelectionBox.Focus(boxId);  /* Focus */
             
                 // Control Resize Controller
-                vizcore.SelectionBox.EnableController(
+                vizcore3d.SelectionBox.EnableController(
                     true    /* X Axis. */ 
                     , true  /* Y Axis. */
                     , false /* Z Axis. */
@@ -39877,7 +39877,7 @@
             
                 // Get Status
                 VIZCore3D.NET.Data.SelectionBoxController status
-                    = vizcore.SelectionBox.GetControllerStatus();
+                    = vizcore3d.SelectionBox.GetControllerStatus();
             
                 bool x = status.XAxis;
                 bool y = status.YAxis;
@@ -39898,12 +39898,12 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Event 선언
-                vizcore.View.OnViewDragDrop += View_OnViewDragDrop;
+                vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
             }
             
             private void View_OnViewDragDrop(object sender, Event.EventManager.ViewDragDropEventArgs e)
@@ -39912,10 +39912,10 @@
                 int y = e.Y;
             
                 // 해당 위치 선택상자(SelectionBox) 조회
-                int id = vizcore.SelectionBox.HitTest(x, y);
+                int id = vizcore3d.SelectionBox.HitTest(x, y);
                 if(id != -1)
                 {
-                    VIZCore3D.NET.Data.SelectionBox box = vizcore.SelectionBox.GetItem(id);
+                    VIZCore3D.NET.Data.SelectionBox box = vizcore3d.SelectionBox.GetItem(id);
                 }
             }
             ]]>
@@ -43396,13 +43396,14 @@
             <param name="intput_VIZ">원본 VIZ 파일 (경로 + 파일이름)</param>
             <param name="output_VIZ">출력 VIZ 파일 (경로 + 파일이름)</param>
             <param name="uda">속성</param>
+            <returns>결과</returns>
             <example>
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
-            private void Example()
+            private void ExampleV1()
             {
                 if (vizcore3d.Model.IsOpen() == false) return;
             
@@ -43424,7 +43425,7 @@
                     if (node.Index == 0) continue;
             
                     VIZCore3D.NET.Data.UserDefineAttributeItem uda =
-                        new Data.UserDefineAttributeItem();
+                        new VIZCore3D.NET.Data.UserDefineAttributeItem();
             
                     uda.NodeId.Add(node.ID);
             
@@ -43531,6 +43532,41 @@
                     );
             
                 MessageBox.Show(sb.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+            private void ExampleV2()
+            {
+                string input = "C:\\MODEL\\BLOCK.viz";
+                string output = "C:\\MODEL\\BLOCK_ATTRIBUTE.viz";
+            
+                VIZCore3D.NET.Data.UserDefineAttributeCollection uda = 
+                    new VIZCore3D.NET.Data.UserDefineAttributeCollection();
+            
+                // Get Structure
+                VIZCore3D.NET.ShdCore.StructureManager stru = 
+                    new ShdCore.StructureManager(input);
+                List<VIZCore3D.NET.ShdCore.ModelTreeNode> nodes = stru.Roots;
+            
+                foreach (VIZCore3D.NET.ShdCore.ModelTreeNode node in nodes)
+                {
+                    // Filtering
+                    if (node.NodeType != VIZCore3D.NET.ShdCore.ModelTreeNodeKind.ASSEMBLY) continue;
+            
+                    // Target ID
+                    long id = node.EntityId;
+            
+                    // NEW Attribute
+                    VIZCore3D.NET.Data.UserDefineAttributeItem item = new VIZCore3D.NET.Data.UserDefineAttributeItem();
+                    item.NodeId.Add(Convert.ToInt32(id));
+            
+                    item.Property.Add("NAME", node.NodeName);
+                    item.Property.Add("KIND", node.NodeType.ToString());
+            
+                    uda.Items.Add(item);
+                }
+            
+                // Import Attribute
+                vizcore3d.Object3D.UDA.Add(input, output, uda);
             }
             ]]>
             </code> 
@@ -44122,12 +44158,12 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Event 선언
-                vizcore.View.OnViewDragDrop += View_OnViewDragDrop;
+                vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
             }
             
             private void View_OnViewDragDrop(object sender, Event.EventManager.ViewDragDropEventArgs e)
@@ -44136,17 +44172,17 @@
                 int y = e.Y;
             
                 // 해당 위치 개체 조회
-                int index = vizcore.View.HitTest(x, y);
+                int index = vizcore3d.View.HitTest(x, y);
                 if(index != -1)
                 {
-                    VIZCore3D.NET.Data.Node node = vizcore.Object3D.FromIndex(index);
+                    VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(index);
                 }
             
                 // 해당 위치 선택상자(SelectionBox) 조회
-                int id = vizcore.SelectionBox.HitTest(x, y);
+                int id = vizcore3d.SelectionBox.HitTest(x, y);
                 if(id != -1)
                 {
-                    VIZCore3D.NET.Data.SelectionBox box = vizcore.SelectionBox.GetItem(id);
+                    VIZCore3D.NET.Data.SelectionBox box = vizcore3d.SelectionBox.GetItem(id);
                 }
                 
                 // Drag Item
@@ -46031,12 +46067,12 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Event 선언
-                vizcore.View.OnViewDragDrop += View_OnViewDragDrop;
+                vizcore3d.View.OnViewDragDrop += View_OnViewDragDrop;
             }
             
             private void View_OnViewDragDrop(object sender, Event.EventManager.ViewDragDropEventArgs e)
@@ -46045,10 +46081,10 @@
                 int y = e.Y;
             
                 // 해당 위치 개체 조회
-                int index = vizcore.View.HitTest(x, y);
+                int index = vizcore3d.View.HitTest(x, y);
                 if(index != -1)
                 {
-                    VIZCore3D.NET.Data.Node node = vizcore.Object3D.FromIndex(index);
+                    VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(index);
                 }
             }
             ]]>
@@ -46066,11 +46102,11 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example(int screenX, int screenY)
             {
-                System.Drawing.Point pt = vizcore.View.PointToClient(screenX, screenY);
+                System.Drawing.Point pt = vizcore3d.View.PointToClient(screenX, screenY);
             }
             ]]>
             </code>
@@ -46086,11 +46122,11 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example(System.Drawing.Point point)
             {
-                System.Drawing.Point pt = vizcore.View.PointToClient(point);
+                System.Drawing.Point pt = vizcore3d.View.PointToClient(point);
             }
             ]]>
             </code>
@@ -46539,7 +46575,7 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
@@ -46576,7 +46612,7 @@
             
                 vizxml.ExportVIZXML("C:\\Model\\Export.vizxml");
             
-                vizcore.Model.Open("C:\\Model\\Export.vizxml");
+                vizcore3d.Model.Open("C:\\Model\\Export.vizxml");
             }
             ]]>
             </code>
@@ -51492,28 +51528,28 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
                 if (items.Count == 0) return;
             
                 // 부재의 표면점 조회
-                Data.Vertex3D surfacePt = vizcore.Object3D.GetSurfaceVertexClosestToModelCenter(
+                VIZCore3D.NET.Data.Vertex3D surfacePt = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(
                     new List<int>() { items[0].Index });
             
                 // 화면 갱신 차단
-                vizcore.BeginUpdate();
+                vizcore3d.BeginUpdate();
             
                 for (int i = 0; i < int.MaxValue; i++)
                 {
                     // 노트 생성
-                    vizcore.Review.Note.AddNoteSurface(
+                    vizcore3d.Review.Note.AddNoteSurface(
                         string.Format("Note No. {0}", i + 1)
                         , new VIZCore3D.NET.Data.Vertex3D(
                             surfacePt.X + 2000.0f
@@ -51525,7 +51561,7 @@
                 }
             
                 // 화면 갱신 차단 해제
-                vizcore.EndUpdate();
+                vizcore3d.EndUpdate();
             }
             ]]>
             </code>
@@ -51540,28 +51576,28 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 List<VIZCore3D.NET.Data.Node> items =
-                    vizcore.Object3D.FromFilter(
+                    vizcore3d.Object3D.FromFilter(
                         VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
                         );
             
                 if (items.Count == 0) return;
             
                 // 부재의 표면점 조회
-                Data.Vertex3D surfacePt = vizcore.Object3D.GetSurfaceVertexClosestToModelCenter(
+                VIZCore3D.NET.Data.Vertex3D surfacePt = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(
                     new List<int>() { items[0].Index });
             
                 // 화면 갱신 차단
-                vizcore.BeginUpdate();
+                vizcore3d.BeginUpdate();
             
                 for (int i = 0; i < int.MaxValue; i++)
                 {
                     // 노트 생성
-                    vizcore.Review.Note.AddNoteSurface(
+                    vizcore3d.Review.Note.AddNoteSurface(
                         string.Format("Note No. {0}", i + 1)
                         , new VIZCore3D.NET.Data.Vertex3D(
                             surfacePt.X + 2000.0f
@@ -51573,7 +51609,7 @@
                 }
             
                 // 화면 갱신 차단 해제
-                vizcore.EndUpdate();
+                vizcore3d.EndUpdate();
             }
             ]]>
             </code>
@@ -51834,20 +51870,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableWaitForm;
+                bool status = vizcore3d.EnableWaitForm;
             
                 // Disable Wait Form
-                vizcore.EnableWaitForm = false;
+                vizcore3d.EnableWaitForm = false;
             
                 // Show Custom Wait Form(Dialog)
-                vizcore.ShowWaitForm();
+                vizcore3d.ShowWaitForm();
             
-                vizcore.UpdateWaitForm("Please Wait...", "Processing...");
+                vizcore3d.UpdateWaitForm("Please Wait...", "Processing...");
             
                 for (int i = 0; i < 100; i++)
                 {
@@ -51855,10 +51891,10 @@
                 }
             
                 // Hide Custom Wait Form(Dialog)
-                vizcore.CloseWaitForm();
+                vizcore3d.CloseWaitForm();
             
                 // Restore Status
-                vizcore.EnableWaitForm = status;
+                vizcore3d.EnableWaitForm = status;
             }
             ]]>
             </code>
@@ -51874,18 +51910,18 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableWaitForm;
+                bool status = vizcore3d.EnableWaitForm;
             
                 // Disable Wait Form
-                vizcore.EnableWaitForm = false;
+                vizcore3d.EnableWaitForm = false;
             
                 // Show Custom Wait Form(Dialog)
-                vizcore.ShowWaitForm("Please Wait...", "Processing...");
+                vizcore3d.ShowWaitForm("Please Wait...", "Processing...");
             
                 for (int i = 0; i < 100; i++)
                 {
@@ -51893,10 +51929,10 @@
                 }
             
                 // Hide Custom Wait Form(Dialog)
-                vizcore.CloseWaitForm();
+                vizcore3d.CloseWaitForm();
             
                 // Restore Status
-                vizcore.EnableWaitForm = status;
+                vizcore3d.EnableWaitForm = status;
             }
             ]]>
             </code>
@@ -51929,20 +51965,20 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableWaitForm;
+                bool status = vizcore3d.EnableWaitForm;
             
                 // Disable Wait Form
-                vizcore.EnableWaitForm = false;
+                vizcore3d.EnableWaitForm = false;
             
                 // Show Custom Wait Form(Dialog)
-                vizcore.ShowWaitForm();
+                vizcore3d.ShowWaitForm();
             
-                vizcore.UpdateWaitForm("Please Wait...", "Processing...");
+                vizcore3d.UpdateWaitForm("Please Wait...", "Processing...");
             
                 for (int i = 0; i < 100; i++)
                 {
@@ -51950,10 +51986,10 @@
                 }
             
                 // Hide Custom Wait Form(Dialog)
-                vizcore.CloseWaitForm();
+                vizcore3d.CloseWaitForm();
             
                 // Restore Status
-                vizcore.EnableWaitForm = status;
+                vizcore3d.EnableWaitForm = status;
             }
             ]]>
             </code>
@@ -51967,35 +52003,35 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm();
+                vizcore3d.ShowProgressForm();
             
-                vizcore.UpdateProgressForm("Please Wait...", "Progress = 0 %");
+                vizcore3d.UpdateProgressForm("Please Wait...", "Progress = 0 %");
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(
+                    vizcore3d.UpdateProgressFormValue(
                         i
                         , string.Format("Progress = {0} %", i)
                         );
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52011,33 +52047,33 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm("Please Wait...", "Progress = 0 %");
+                vizcore3d.ShowProgressForm("Please Wait...", "Progress = 0 %");
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(
+                    vizcore3d.UpdateProgressFormValue(
                         i
                         , string.Format("Progress = {0} %", i)
                         );
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52064,30 +52100,30 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm("Please Wait...", "Processing...");
+                vizcore3d.ShowProgressForm("Please Wait...", "Processing...");
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(i);
+                    vizcore3d.UpdateProgressFormValue(i);
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52103,33 +52139,33 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm("Please Wait...", "Progress = 0 %");
+                vizcore3d.ShowProgressForm("Please Wait...", "Progress = 0 %");
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(
+                    vizcore3d.UpdateProgressFormValue(
                         i
                         , string.Format("Progress = {0} %", i)
                         );
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52160,35 +52196,35 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm();
+                vizcore3d.ShowProgressForm();
             
-                vizcore.UpdateProgressForm("Please Wait...", "Progress = 0 %");
+                vizcore3d.UpdateProgressForm("Please Wait...", "Progress = 0 %");
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(
+                    vizcore3d.UpdateProgressFormValue(
                         i
                         , string.Format("Progress = {0} %", i)
                         );
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52205,35 +52241,35 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm();
+                vizcore3d.ShowProgressForm();
             
-                vizcore.UpdateProgressForm("Please Wait...", "Progress = 0 %", 0);
+                vizcore3d.UpdateProgressForm("Please Wait...", "Progress = 0 %", 0);
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(
+                    vizcore3d.UpdateProgressFormValue(
                         i
                         , string.Format("Progress = {0} %", i)
                         );
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52247,33 +52283,33 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
-                vizcore.ShowProgressForm("Please Wait...", "Progress = 0 %");
+                vizcore3d.ShowProgressForm("Please Wait...", "Progress = 0 %");
             
                 for (int i = 0; i < 100; i++)
                 {
                     // Some code here...
-                    vizcore.UpdateProgressFormValue(
+                    vizcore3d.UpdateProgressFormValue(
                         i
                         , string.Format("Progress = {0} %", i)
                         );
                 }
             
                 // Hide Custom Progress Form(Dialog)
-                vizcore.CloseProgressForm();
+                vizcore3d.CloseProgressForm();
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
@@ -52622,15 +52658,15 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableWaitForm;
+                bool status = vizcore3d.EnableWaitForm;
             
                 // Disable Wait Form
-                vizcore.EnableWaitForm = false;
+                vizcore3d.EnableWaitForm = false;
             
                 // Show Custom Wait Form(Dialog)
             
@@ -52642,7 +52678,7 @@
                 // Hide Custom Wait Form(Dialog)
             
                 // Restore Status
-                vizcore.EnableWaitForm = status;
+                vizcore3d.EnableWaitForm = status;
             }
             ]]>
             </code>
@@ -52656,15 +52692,15 @@
             <code language="cs">
             <![CDATA[
             // VIZCore3D.NET Control
-            private VIZCore3D.NET.VIZCore3DControl vizcore;
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
             
             private void Example()
             {
                 // Backup Status
-                bool status = vizcore.EnableProgressForm;
+                bool status = vizcore3d.EnableProgressForm;
             
                 // Disable Progress Form
-                vizcore.EnableProgressForm = false;
+                vizcore3d.EnableProgressForm = false;
             
                 // Show Custom Progress Form(Dialog)
             
@@ -52676,7 +52712,7 @@
                 // Hide Custom Progress Form(Dialog)
             
                 // Restore Status
-                vizcore.EnableProgressForm = status;
+                vizcore3d.EnableProgressForm = status;
             }
             ]]>
             </code>
