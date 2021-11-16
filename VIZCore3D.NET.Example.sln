@@ -140,6 +140,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.DockInOut", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.NodeCreation", "VIZCore3D.NET.NodeCreation\VIZCore3D.NET.NodeCreation.csproj", "{16F54FFB-EDA0-436D-95D7-71A7D98AB471}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ClashTest.V3", "VIZCore3D.NET.ClashTest.V3\VIZCore3D.NET.ClashTest.V3.csproj", "{81A5B80D-C6D7-44A7-8169-D071F53DB661}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -410,6 +412,10 @@ Global
 		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16F54FFB-EDA0-436D-95D7-71A7D98AB471}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A5B80D-C6D7-44A7-8169-D071F53DB661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A5B80D-C6D7-44A7-8169-D071F53DB661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A5B80D-C6D7-44A7-8169-D071F53DB661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A5B80D-C6D7-44A7-8169-D071F53DB661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
