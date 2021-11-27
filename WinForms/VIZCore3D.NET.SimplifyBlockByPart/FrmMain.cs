@@ -594,6 +594,7 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
             vizcore3d.Model.ExportNodes(Path, Output_Path, exportNode);
             */
 
+            // Case #2
             vizcore3d.Model.ExportParts(Path, Output_Path);
 
             sw.Stop();
