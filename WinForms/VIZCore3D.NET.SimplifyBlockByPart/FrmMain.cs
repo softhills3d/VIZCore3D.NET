@@ -575,6 +575,11 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+            sw.Start();
+
+            // Case #1
+            /*
             VIZCore3D.NET.ShdCore.StructureManager structure = new VIZCore3D.NET.ShdCore.StructureManager(Path);
             List<VIZCore3D.NET.ShdCore.ModelTreeNode> nodes = structure.GetStructureNodeList();
 
@@ -587,8 +592,13 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
             }
 
             vizcore3d.Model.ExportNodes(Path, Output_Path, exportNode);
+            */
 
-            MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            vizcore3d.Model.ExportParts(Path, Output_Path);
+
+            sw.Stop();
+
+            MessageBox.Show(string.Format("Complted. - {0:#,0} ms.", sw.ElapsedMilliseconds), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnSimplifyPart_Click(object sender, EventArgs e)

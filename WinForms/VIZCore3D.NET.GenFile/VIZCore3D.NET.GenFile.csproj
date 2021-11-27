@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="VIZCore3D.NET, Version=1.6.20.820, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\VIZCore3D.NET.dll</HintPath>
+      <HintPath>..\..\VIZCore3D.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

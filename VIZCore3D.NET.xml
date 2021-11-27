@@ -35260,6 +35260,13 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportParts(System.String,System.String)">
+            <summary>
+            지정된 모델의 모든 Part(부재)를 파일로 내보내기
+            </summary>
+            <param name="input">입력 파일 (*.viz)</param>
+            <param name="outputDir">출력 경로</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ShowConversionDialog">
             <summary>
             Show Conversion Dialog

@@ -52,7 +52,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="VIZCore3D.NET">
-      <HintPath>..\VIZCore3D.NET.dll</HintPath>
+      <HintPath>..\..\VIZCore3D.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
