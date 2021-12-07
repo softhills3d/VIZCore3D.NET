@@ -5863,36 +5863,6 @@
             축 기준
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
-            <summary>
-            Tessellation Quality Level Kind
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
-            <summary>
-            Extra Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
-            <summary>
-            Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
-            <summary>
-            Medium
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
-            <summary>
-            High
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
-            <summary>
-            Extra High
-            </summary>
-        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -10284,6 +10254,39 @@
             Construction
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.TriangleIndex">
+            <summary>
+            Triangle Index Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.TriangleIndex.Index0">
+            <summary>
+            Index 0
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.TriangleIndex.Index1">
+            <summary>
+            Index 1
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.TriangleIndex.Index2">
+            <summary>
+            Index 2
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.TriangleIndex.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.TriangleIndex.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Construction
+            </summary>
+            <param name="index0">Index 0</param>
+            <param name="index1">Index 1</param>
+            <param name="index2">Index 2</param>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Vector3D">
             <summary>
             Vector3D Class
@@ -10744,6 +10747,13 @@
             Construction
             </summary>
             <param name="v">Vertex</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Vertex3D.#ctor(System.String,System.String)">
+            <summary>
+            생성자
+            </summary>
+            <param name="str">정점 문자열</param>
+            <param name="separator">문자열 구분자. 예) ','</param>
         </member>
         <member name="M:VIZCore3D.NET.Data.Vertex3D.#ctor(System.String)">
             <summary>
@@ -19487,6 +19497,14 @@
             <param name="name">Node Name</param>
             <returns>Added Node</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Importer.RevFileAnalyzer.FixLongName(System.String,System.String)">
+            <summary>
+            긴 이름의 노드 이름 문제 수정
+            </summary>
+            <param name="input">입력 파일 - EX) C:\Model\File.rev</param>
+            <param name="output">출력 파일 - EX) C:\Model\FileNew.rev</param>
+            <returns>결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Importer.RevFileNode">
             <summary>
             Rev File Node Class
@@ -22865,6 +22883,47 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem},System.Boolean)">
+            <summary>
+            복수개의 노드 생성
+            </summary>
+            <param name="items">생성할 노드 정보</param>
+            <param name="rebuildData">데이터 재구성</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.GetMaxId"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                int id = vizcore3d.MeshEdit.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem item = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    item.Parent = parent;
+                    item.ID = ++id;
+                    item.Kind = Data.NodeKind.PART;
+                    item.Name = string.Format("NAME_{0}", item.ID);
+            
+                    items.Add(item);
+                }
+            
+                vizcore3d.MeshEdit.CreateNodes(items, false);
+                
+                vizcore3d.Structure.RebuildData();
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateNode(System.Int32,VIZCore3D.NET.Data.NodeKind,System.String)">
             <summary>
             노드 생성
@@ -23060,7 +23119,7 @@
             </summary>
             <param name="nodeIndex">부모 노드 인덱스</param>
             <param name="name">생성할 노드의 이름</param>
-            <param name="vertex">Coords (8EA)</param>
+            <param name="vertex">Coords (8EA / Multiple Of 3)</param>
             <param name="color">Color</param>
             <returns>생성된 노드 아이디</returns>
             <example>
@@ -23100,6 +23159,273 @@
                     MessageBox.Show("NG", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
                     MessageBox.Show(string.Format("Body ID : {0}", id), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyWithIndexedTriangleSet(System.Int32,System.String,System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Collections.Generic.List{VIZCore3D.NET.Data.TriangleIndex},System.Drawing.Color)">
+            <summary>
+            Body 노드 및 Mesh 생성
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="vertex">정점 목록</param>
+            <param name="triangleIndex">정점 인덱스</param>
+            <param name="color">색상</param>
+            <returns>생성된 노드 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.Vertex3D> vertex = new List<VIZCore3D.NET.Data.Vertex3D>();
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10038.2,625.271,78.4744", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10747.5,756.496,61.8669", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10760.3,1173.48,95.4053", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10053.5,1041.09,120.353", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10776.2,1589.36,139.724", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10739.2,338.476,43.4698", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11458.6,894.856,54.662", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11468.3,1310.5,77.7027", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11481.7,1725.16,113.435", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10026.7,208.265,49.24", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10071.5,1455.76,171.596", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10794.8,2004.11,192.801", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11497.9,2138.79,158.744", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11454.8,478.525,51.4998", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12172.1,1042.43,61.3912", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12177.6,1453.5,70.0816", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12187.9,1863.81,95.5308", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12201.5,2273.19,131.999", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10091.8,1869.28,230.621", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10814.7,2404.83,251.046", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11515.5,2527.9,209.065", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12216.3,2650.99,173.324", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12174.3,631.647,78.2015", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12889.2,1200.86,87.6251", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12888.9,1603.23,77.2856", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12895.1,2005.58,88.8058", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12905.4,2407.21,114.339", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12917.4,2774.57,146.338", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10113.9,2281.79,295.9", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10836.2,2804.71,314.347", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11534.8,2916.1,265.425", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12233,3027.94,221.182", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12931.4,3141.18,185.339", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12898.1,800.474,127.375", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13609.5,1371.06,137.372", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13602.9,1760.09,105.93", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13603.6,2150.42,99.1407", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13609.6,2540.63,110.399", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13618.1,2899.07,130.799", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13629.1,3256.87,159.586", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10137.2,2693.52,365.472", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10858.7,3203.92,381.421", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11555.5,3303.53,326.428", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12251.3,3404.1,274.378", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12947.1,3507.09,229.887", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13641.9,3614.06,194.596", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13625.7,986.4,201.333", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14331.3,1551.23,208.892", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14318.2,1922.86,155.707", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14313,2297.56,129.368", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14313.9,2673.22,123.582", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14318.6,3024.71,131.266", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14326,3375.83,148.117", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14335.7,3726.45,172.714", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10161.6,3104.58,438.571", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10882.1,3602.59,451.315", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("11577,3690.42,390.45", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12270.9,3779.56,331.923", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("12964.2,3872.33,279.206", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("13656.4,3970.58,235.326", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14347.3,4076.5,203.753", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("14354.7,1186.9,296.893", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15052.5,1737.13,297.751", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15033.4,2088.98,224.861", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15022.4,2445.77,179.06", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15017.8,2804.85,155.099", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15018.1,3151.52,148.05", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15021.7,3498.23,152.145", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15028.1,3844.67,165.523", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15036.4,4190.74,185.632", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15081.4,1394.58,403.978", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15770.2,1922.95,393.072", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15746.5,2255.1,304.961", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15730.5,2593.56,242.862", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15720.9,2935.57,202.418", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15716.5,3279.3,179.318", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15716.1,3623.71,169.899", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15718.7,3968.26,170.533", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("10186.5,3515.33,513.253", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15723.8,4312.66,179.583", ","));
+                vertex.Add(new VIZCore3D.NET.Data.Vertex3D("15802.6,1600.73,510.322", ","));
+                
+                List<VIZCore3D.NET.Data.TriangleIndex> triangleIndex = new List<VIZCore3D.NET.Data.TriangleIndex>();
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(0, 1, 2));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(3, 2, 4));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(1, 5, 6));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(1, 2, 7));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(1, 6, 7));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(2, 4, 8));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(2, 7, 8));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(9, 0, 1));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(0, 3, 2));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(9, 1, 5));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(10, 4, 11));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(4, 11, 12));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(4, 8, 12));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(6, 13, 14));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(6, 7, 15));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(6, 14, 15));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(7, 8, 16));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(7, 15, 16));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(8, 12, 17));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(8, 16, 17));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(3, 10, 4));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(5, 6, 13));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(18, 11, 19));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(11, 19, 20));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(11, 12, 20));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(12, 20, 21));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(12, 17, 21));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(14, 22, 23));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(14, 15, 24));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(14, 23, 24));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(15, 16, 25));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(15, 24, 25));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(16, 17, 26));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(16, 25, 26));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(17, 21, 27));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(17, 26, 27));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(10, 18, 11));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(13, 14, 22));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(28, 19, 29));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(19, 29, 30));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(19, 20, 30));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(20, 30, 31));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(20, 21, 31));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(21, 31, 32));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(21, 27, 32));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(23, 33, 34));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(23, 24, 35));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(23, 34, 35));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(24, 25, 36));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(24, 35, 36));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(25, 26, 37));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(25, 36, 37));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(26, 27, 38));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(26, 37, 38));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(27, 32, 39));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(27, 38, 39));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(18, 28, 19));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(22, 23, 33));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(40, 29, 41));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(29, 41, 42));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(29, 30, 42));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(30, 42, 43));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(30, 31, 43));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(31, 43, 44));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(31, 32, 44));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(32, 44, 45));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(32, 39, 45));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(34, 46, 47));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(34, 35, 48));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(34, 47, 48));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(35, 36, 49));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(35, 48, 49));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(36, 37, 50));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(36, 49, 50));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(37, 38, 51));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(37, 50, 51));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(38, 39, 52));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(38, 51, 52));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(39, 45, 53));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(39, 52, 53));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(28, 40, 29));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(33, 34, 46));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(54, 41, 55));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(41, 42, 56));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(42, 43, 57));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(43, 44, 58));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(44, 45, 59));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(45, 53, 60));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(47, 61, 62));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(47, 48, 63));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(47, 62, 63));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(48, 49, 64));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(48, 63, 64));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(49, 50, 65));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(49, 64, 65));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(50, 51, 66));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(50, 65, 66));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(51, 52, 67));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(51, 66, 67));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(52, 53, 68));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(52, 67, 68));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(53, 68, 69));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(40, 54, 41));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(41, 55, 56));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(42, 56, 57));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(43, 57, 58));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(44, 58, 59));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(45, 59, 60));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(46, 47, 61));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(53, 60, 69));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(62, 70, 71));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(62, 63, 72));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(63, 64, 73));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(64, 65, 74));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(65, 66, 75));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(66, 67, 76));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(67, 68, 77));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(54, 78, 55));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(61, 62, 70));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(68, 69, 79));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(62, 71, 72));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(63, 72, 73));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(64, 73, 74));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(65, 74, 75));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(66, 75, 76));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(67, 76, 77));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(68, 77, 79));
+                triangleIndex.Add(new VIZCore3D.NET.Data.TriangleIndex(70, 71, 80));            
+                
+                vizcore3d.BeginUpdate();
+                
+                int rootIndex = vizcore3d.Model.NewEmptyModel("MODEL");
+                
+                string assemblyName = "ASSEMBLY";
+                VIZCore3D.NET.Data.Node assemblyNode =
+                    vizcore3d.Structure.CreateNode(
+                        rootIndex                               /* Parent Node Index */
+                        , VIZCore3D.NET.Data.NodeKind.ASSEMBLY  /* Node Kind */
+                        , assemblyName                          /* Node Name */
+                        );
+                
+                string partName = "PART";
+                VIZCore3D.NET.Data.Node partNode =
+                    vizcore3d.Structure.CreateNode(
+                        assemblyNode.Index                      /* Parent Node Index */
+                        , VIZCore3D.NET.Data.NodeKind.PART      /* Node Kind */
+                        , partName                              /* Node Name */
+                        );
+                
+                vizcore3d.MeshEdit.CreateBodyWithIndexedTriangleSet(
+                    partNode.Index
+                    , "BODY"
+                    , vertex
+                    , triangleIndex
+                    , Color.Yellow
+                    );
+                
+                vizcore3d.EndUpdate();
+                
+                vizcore3d.View.ResetView();
             }
             ]]>
             </code> 
@@ -24125,6 +24451,86 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCone(System.Int32,System.String,System.Collections.Generic.List{System.Single},System.Single,VIZCore3D.NET.Data.Matrix3D,System.Drawing.Color,System.Boolean,System.Int32,System.Single,System.Int32)">
+            <summary>
+            Body 노드 생성 - Primitive Cone (Cone, Sloped Cylinder, Snout)
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="radius">Radius : [0] - Top Radius, [1] - Bottom Radius</param>
+            <param name="height">Height</param>
+            <param name="matrix">Matrix</param>
+            <param name="color">Color</param>
+            <param name="rebuildData">Rebuild Data</param>
+            <param name="sideCount">Side Count : 12 (6~36)</param>
+            <param name="unitScale">Unit Scale : 1.0f</param>
+            <param name="systemType">System Type : 0(TRIBON), 1(AVEVA MARINE : Default)</param>
+            <returns>생성된 노드(BODY) 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.MeshEdit.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.MeshEdit.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());
+            
+                /* Radius : Top[0], Bottom[1] */
+                List<float> radius = new List<float>() { 1000.0f, 1000.0f };
+            
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.Identity();
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
+                //matrix.SetTranslate(1000, 0, 0, false);
+            
+                vizcore3d.BeginUpdate();
+            
+                int id = vizcore3d.MeshEdit.CreateBodyPrimitiveCone(
+                    part.Index          /* Parent (Part) Node Index */
+                    , bodyName          /* Name */
+                    , radius            /* Radius : Top[0], Bottom[1] */
+                    , 1000.0f           /* Height */
+                    , matrix            /* Matrix */
+                    , Color.Orange      /* Color */
+                    , false             /* Rebuild Data */
+                    );
+                    
+                vizcore3d.Structure.RebuildData();
+            
+                vizcore3d.EndUpdate();
+            
+                if (id == -1)
+                {
+                    MessageBox.Show(
+                        "NG"
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error
+                        );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        string.Format("Body ID : {0}", id)
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCone(System.Int32,System.String,System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Single,VIZCore3D.NET.Data.Matrix3D,System.Drawing.Color,System.Int32,System.Single,System.Int32)">
             <summary>
             Body 노드 생성 - Primitive Cone (Cone, Sloped Cylinder, Snout)
@@ -24180,6 +24586,91 @@
                     , matrix            /* Matrix */
                     , Color.Orange      /* Color */
                     );
+            
+                vizcore3d.EndUpdate();
+            
+                if (id == -1)
+                {
+                    MessageBox.Show(
+                        "NG"
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error
+                        );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        string.Format("Body ID : {0}", id)
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCone(System.Int32,System.String,System.Collections.Generic.List{System.Single},System.Collections.Generic.List{System.Single},System.Single,VIZCore3D.NET.Data.Matrix3D,System.Drawing.Color,System.Boolean,System.Int32,System.Single,System.Int32)">
+            <summary>
+            Body 노드 생성 - Primitive Cone (Cone, Sloped Cylinder, Snout)
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="radius">Radius : [0] - Top Radius, [1] - Bottom Radius</param>
+            <param name="offset">Offset : [0] - X Offset, [1] - Y Offset</param>
+            <param name="height">Height</param>
+            <param name="matrix">Matrix</param>
+            <param name="color">Color</param>
+            <param name="rebuildData">Rebuild Data</param>
+            <param name="sideCount">Side Count : 12 (6~36)</param>
+            <param name="unitScale">Unit Scale : 1.0f</param>
+            <param name="systemType">System Type : 0(TRIBON), 1(AVEVA MARINE : Default)</param>
+            <returns>생성된 노드(BODY) 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.MeshEdit.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.MeshEdit.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());
+            
+                /* Radius : Top[0], Bottom[1] */
+                List<float> radius = new List<float>() { 1000.0f, 1000.0f };
+                
+                /* Offset : X Offset[0], Y Offset[1] */
+                List<float> offset = new List<float>() { 100.0f, 100.0f };
+            
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.Identity();
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
+                //matrix.SetTranslate(1000, 0, 0, false);
+            
+                vizcore3d.BeginUpdate();
+            
+                int id = vizcore3d.MeshEdit.CreateBodyPrimitiveCone(
+                    part.Index          /* Parent (Part) Node Index */
+                    , bodyName          /* Name */
+                    , radius            /* Radius : Top[0], Bottom[1] */
+                    , offset            /* Offset : X[0], Y[1] */
+                    , 1000.0f           /* Height */
+                    , matrix            /* Matrix */
+                    , Color.Orange      /* Color */
+                    , false             /* Rebuild Data */
+                    );
+                    
+                vizcore3d.Structure.RebuildData();
             
                 vizcore3d.EndUpdate();
             
@@ -24477,6 +24968,84 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCylinder(System.Int32,System.String,System.Single,System.Single,VIZCore3D.NET.Data.Matrix3D,System.Drawing.Color,System.Boolean,System.Int32)">
+            <summary>
+            Body 노드 생성 - Primitive Cylinder
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="radius">Radius</param>
+            <param name="height">Height</param>
+            <param name="matrix">Matrix</param>
+            <param name="color">Color</param>
+            <param name="rebuildData">Rebuild Data</param>
+            <param name="sideCount">Side Count : 12 (6~36)</param>
+            <returns>생성된 노드(BODY) 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.MeshEdit.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.MeshEdit.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());
+            
+                float radius = 1000.0f; // Radius
+                float height = 1000.0f; // Height
+            
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.Identity();
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
+                //matrix.SetTranslate(1000, 0, 0, false);
+            
+                vizcore3d.BeginUpdate();
+            
+                int id = vizcore3d.MeshEdit.CreateBodyPrimitiveCylinder(
+                    part.Index          /* Parent (Part) Node Index */
+                    , bodyName          /* Name */
+                    , radius            /* Radius */
+                    , height            /* Height */
+                    , matrix            /* Matrix */
+                    , Color.Orange      /* Color */
+                    , false             /* Rebuild Data */
+                    );
+                    
+                vizcore3d.Structure.RebuildData();
+            
+                vizcore3d.EndUpdate();
+            
+                if (id == -1)
+                {
+                    MessageBox.Show(
+                        "NG"
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error
+                        );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        string.Format("Body ID : {0}", id)
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCylinder(System.Int32,System.String,System.Single,System.Single,System.Single,System.Single,VIZCore3D.NET.Data.Matrix3D,System.Drawing.Color,System.Int32)">
             <summary>
             Body 노드 생성 - Primitive Cylinder
@@ -24555,6 +25124,88 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCylinder(System.Int32,System.String,System.Single,System.Single,System.Single,System.Single,VIZCore3D.NET.Data.Matrix3D,System.Drawing.Color,System.Boolean,System.Int32)">
+            <summary>
+            Body 노드 생성 - Primitive Cylinder
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="radius">Radius</param>
+            <param name="height">Height</param>
+            <param name="bottomShear">Bottom Shear (Degree) - X방향</param>
+            <param name="topShear">Top Shear (Degree) - X방향</param>
+            <param name="matrix">Matrix</param>
+            <param name="color">Color</param>
+            <param name="rebuildData">Rebuild Data</param>
+            <param name="sideCount">Side Count : 12 (6~36)</param>
+            <returns>생성된 노드(BODY) 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.MeshEdit.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.MeshEdit.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());
+            
+                float radius = 1000.0f; // Radius
+                float height = 1000.0f; // Height
+            
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.Identity();
+                //matrix.SetRotateX(vizcore3d.View.DegreesToRadians(45.0f));
+                //matrix.SetTranslate(1000, 0, 0, false);
+            
+                vizcore3d.BeginUpdate();
+            
+                int id = vizcore3d.MeshEdit.CreateBodyPrimitiveCylinder(
+                    part.Index          /* Parent (Part) Node Index */
+                    , bodyName          /* Name */
+                    , radius            /* Radius */
+                    , height            /* Height */
+                    , 15                /* BottomShear */
+                    , 15                /* TopShear */
+                    , matrix            /* Matrix */
+                    , Color.Orange      /* Color */
+                    , false             /* Rebuild Data */
+                    );
+                    
+                vizcore3d.Structure.RebuildData();
+            
+                vizcore3d.EndUpdate();
+            
+                if (id == -1)
+                {
+                    MessageBox.Show(
+                        "NG"
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error
+                        );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        string.Format("Body ID : {0}", id)
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCylinder(System.Int32,System.String,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single,System.Drawing.Color,System.Int32)">
             <summary>
             Body 노드 생성 - Primitive Cylinder
@@ -24599,6 +25250,80 @@
                     , radius            /* Radius */
                     , Color.Orange      /* Color */
                     );
+            
+                vizcore3d.EndUpdate();
+            
+                if (id == -1)
+                {
+                    MessageBox.Show(
+                        "NG"
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Error
+                        );
+                }
+                else
+                {
+                    MessageBox.Show(
+                        string.Format("Body ID : {0}", id)
+                        , "VIZCore3D.NET"
+                        , MessageBoxButtons.OK
+                        , MessageBoxIcon.Information
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateBodyPrimitiveCylinder(System.Int32,System.String,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single,System.Drawing.Color,System.Boolean,System.Int32)">
+            <summary>
+            Body 노드 생성 - Primitive Cylinder
+            </summary>
+            <param name="nodeIndex">부모 노드 인덱스</param>
+            <param name="name">생성할 노드의 이름</param>
+            <param name="start">시작 위치</param>
+            <param name="end">종료 위치</param>
+            <param name="radius">Radius</param>
+            <param name="color">Color</param>
+            <param name="rebuildData">데이터 재구성</param>
+            <param name="sideCount">Side Count : 12 (6~36)</param>
+            <returns>생성된 노드(BODY) 아이디</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string assemblyName = string.Format("Assembly #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node assembly = vizcore3d.MeshEdit.CreateNode(0, VIZCore3D.NET.Data.NodeKind.ASSEMBLY, assemblyName);
+                if (assembly == null) return;
+            
+                string partName = string.Format("Part #{0}", vizcore3d.Object3D.GetNodeCount());
+                VIZCore3D.NET.Data.Node part = vizcore3d.MeshEdit.CreateNode(assembly.Index, VIZCore3D.NET.Data.NodeKind.PART, partName);
+                if (part == null) return;
+            
+                string bodyName = string.Format("Body #{0}", vizcore3d.Object3D.GetNodeCount());
+            
+                VIZCore3D.NET.Data.Vertex3D start = new VIZCore3D.NET.Data.Vertex3D(1000.0f, 1000.0f, 1000.0f);
+                VIZCore3D.NET.Data.Vertex3D end = new VIZCore3D.NET.Data.Vertex3D(0.0f, 0.0f, 0.0f);
+                float radius = 500.0f;
+            
+                vizcore3d.BeginUpdate();
+            
+                int id = vizcore3d.MeshEdit.CreateBodyPrimitiveCylinder(
+                    part.Index          /* Parent (Part) Node Index */
+                    , bodyName          /* Name */
+                    , start             /* Start Point */
+                    , end               /* End Point */
+                    , radius            /* Radius */
+                    , Color.Orange      /* Color */
+                    , false             /* Rebuild Data */
+                    );
+                    
+                vizcore3d.Structure.RebuildData();
             
                 vizcore3d.EndUpdate();
             
@@ -33553,11 +34278,6 @@
             Default : 6.
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
-            <summary>
-            Tessellation Quality
-            </summary>
-        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -34590,29 +35310,6 @@
             </summary>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.obj</param>
             <param name="node">내보낼 노드 목록</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 내보내기
-            </summary>
-            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 저장
-            </summary>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
-            <summary>
-            GLTF 파일 형식으로 내보내기
-            </summary>
-            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
-            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
@@ -42020,6 +42717,16 @@
             <param name="kind">노드 유형</param>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})"/>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Boolean)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="id">이동할 노드 아이디</param>
+            <param name="parentId">노드의 부모 아이디</param>
+            <param name="kind">노드 유형</param>
+            <param name="rebuildData">데이터 재구성</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})"/>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
             <summary>
             노드 이동
@@ -42027,6 +42734,16 @@
             <param name="id">이동할 노드 아이디</param>
             <param name="parentId">노드의 부모 아이디</param>
             <param name="kind">노드 유형</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="id">이동할 노드 아이디</param>
+            <param name="parentId">노드의 부모 아이디</param>
+            <param name="kind">노드 유형</param>
+            <param name="rebuildData">데이터 재구성</param>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind})"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Int32)">
@@ -42037,6 +42754,15 @@
             <param name="kind">노드 유형</param>
             <param name="parentIndex">새로운 부모 노드의 인덱스</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Int32,System.Boolean)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="index">이동할 노드 인덱스</param>
+            <param name="kind">노드 유형</param>
+            <param name="parentIndex">새로운 부모 노드의 인덱스</param>
+            <param name="rebuildData">데이터 재구성</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Int32)">
             <summary>
             노드 이동
@@ -42045,6 +42771,15 @@
             <param name="kind">노드 유형</param>
             <param name="parentIndex">새로운 부모 노드의 인덱스</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Int32,System.Boolean)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="index">이동할 노드 인덱스</param>
+            <param name="kind">노드 유형</param>
+            <param name="parentIndex">새로운 부모 노드의 인덱스</param>
+            <param name="rebuildData">데이터 재구성</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},VIZCore3D.NET.Data.Node)">
             <summary>
             노드 이동
@@ -42052,12 +42787,28 @@
             <param name="source">이동할 노드</param>
             <param name="target">새로운 부모 노드</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},VIZCore3D.NET.Data.Node,System.Boolean)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="source">이동할 노드</param>
+            <param name="target">새로운 부모 노드</param>
+            <param name="rebuildData">데이터 재구성</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Int32)">
             <summary>
             노드 이동
             </summary>
             <param name="source">이동할 노드</param>
             <param name="targetIndex">새로운 부모 노드 인덱스</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.MoveNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Int32,System.Boolean)">
+            <summary>
+            노드 이동
+            </summary>
+            <param name="source">이동할 노드</param>
+            <param name="targetIndex">새로운 부모 노드 인덱스</param>
+            <param name="rebuildData">데이터 재구성</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.CopyNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
             <summary>
@@ -42387,6 +43138,97 @@
                 }
             
                 vizcore3d.Structure.CreateNodes(items);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem},System.Boolean)">
+            <summary>
+            복수개의 노드 생성
+            </summary>
+            <param name="items">생성할 노드 정보</param>
+            <param name="rebuildData">데이터 재구성</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.GetMaxId"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                int id = vizcore3d.Structure.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem item = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    item.ParentId = parent;
+                    item.ID = ++id;
+                    item.Kind = Data.NodeKind.PART;
+                    item.Name = string.Format("NAME_{0}", item.ID);
+            
+                    items.Add(item);
+                }
+            
+                vizcore3d.Structure.CreateNodes(items);
+            }
+            
+            private void Example2()
+            {
+                int id = vizcore3d.Structure.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem assy = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    int assyId = ++id;
+            
+                    assy.ParentId = parent;
+                    assy.ID = assyId;
+                    assy.Kind = Data.NodeKind.ASSEMBLY;
+                    assy.Name = string.Format("NAME_ASSY_{0}", assy.ID);
+            
+                    items.Add(assy);
+            
+                    {
+                        VIZCore3D.NET.Data.NewNodeItem part = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                        int partId = ++id;
+            
+                        part.ParentId = assyId;
+                        part.ID = partId;
+                        part.Kind = Data.NodeKind.PART;
+                        part.Name = string.Format("NAME_PART_{0}", part.ID);
+            
+                        items.Add(part);
+            
+                        {
+                            VIZCore3D.NET.Data.NewNodeItem body = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                            int bodyId = ++id;
+            
+                            body.ParentId = partId;
+                            body.ID = bodyId;
+                            body.Kind = Data.NodeKind.BODY;
+                            body.Name = string.Format("NAME_BODY_{0}", body.ID);
+            
+                            items.Add(body);
+                        }
+                    }
+                }
+            
+                vizcore3d.Structure.CreateNodes(items, false);
+                
+                vizcore3d.Structure.RebuildData();
             }
             ]]>
             </code> 
