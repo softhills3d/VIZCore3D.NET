@@ -562,7 +562,12 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
 
             txtInput.Text = dlg.FileName;
 
-            Path = txtInput.Text;
+            SetFileInfo(dlg.FileName);
+        }
+
+        private void SetFileInfo(string path)
+        {
+            Path = path;
             Dir = System.IO.Path.GetDirectoryName(Path);
             FileName = System.IO.Path.GetFileNameWithoutExtension(Path);
             Output_Path = System.IO.Path.Combine(Dir, string.Format("{0}-PART", FileName));
@@ -606,9 +611,16 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
         {
             if (System.IO.Directory.Exists(Output_Path) == false) return;
 
-            VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit unit = 
-                rbTriangle.Checked == true ? 
-                VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH : 
+            SimplifyParts();
+
+            MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void SimplifyParts()
+        {
+            VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit unit =
+                rbTriangle.Checked == true ?
+                VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH :
                 VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_SET_MESH;
 
             vizcore3d.EnableWaitForm = false;
@@ -634,11 +646,16 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
                     , unit
                     );
             }
+        }
+
+        private void btnGenerateTree_Click(object sender, EventArgs e)
+        {
+            GenerateModelTree();
 
             MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnGenerateTree_Click(object sender, EventArgs e)
+        private void GenerateModelTree()
         {
             VIZCore3D.NET.ShdCore.StructureManager structure = new VIZCore3D.NET.ShdCore.StructureManager(Path);
             List<VIZCore3D.NET.ShdCore.ModelTreeNode> nodes = structure.GetStructureNodeList();
@@ -685,11 +702,16 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
 
             vizcore3d.Structure.CreateNodes(items);
             vizcore3d.Structure.RebuildData();
+        }
+
+        private void btnLinkModel_Click(object sender, EventArgs e)
+        {
+            LinkModel();
 
             MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnLinkModel_Click(object sender, EventArgs e)
+        private void LinkModel()
         {
             List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL);
 
@@ -711,27 +733,112 @@ namespace VIZCore3D.NET.SimplifyBlockByPart
             vizcore3d.Structure.RebuildData();
 
             vizcore3d.EndUpdate();
-
-            MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnShowParts_Click(object sender, EventArgs e)
         {
-            List<VIZCore3D.NET.Data.Node> parts = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.PART);
-            vizcore3d.Object3D.Show(parts, true);
+            ShowParts();
 
             MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void ShowParts()
+        {
+            List<VIZCore3D.NET.Data.Node> parts = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.PART);
+            vizcore3d.Object3D.Show(parts, true);
+        }
+
         private void btnExportModel_Click(object sender, EventArgs e)
+        {
+            ExportModel();
+
+            MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ExportModel()
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
             string output = string.Format("{0}\\{1}_SIMPLIFY.viz", System.IO.Path.GetDirectoryName(Path), System.IO.Path.GetFileNameWithoutExtension(Path));
 
             vizcore3d.Model.SaveAsVIZ(output);
+        }
 
-            MessageBox.Show("Complted.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        private void btnSelectFolder_Click(object sender, EventArgs e)
+        {
+            string folder = txtFolderPath.Text;
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (String.IsNullOrEmpty(folder) == false && System.IO.Directory.Exists(folder) == false)
+            {
+                dlg.SelectedPath = folder;
+            }
+
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+            txtFolderPath.Text = dlg.SelectedPath;
+
+            string selectedPath = dlg.SelectedPath;
+
+            string[] files = System.IO.Directory.GetFiles(selectedPath, "*.viz", System.IO.SearchOption.AllDirectories);
+
+            lvFiles.BeginUpdate();
+            lvFiles.Items.Clear();
+            foreach (string file in files)
+            {
+                string filePath = System.IO.Path.GetDirectoryName(file);
+                string fileName = System.IO.Path.GetFileName(file);
+
+                ListViewItem lvi = new ListViewItem(new string[] { fileName, filePath, "" });
+                lvi.Tag = file;
+
+                lvFiles.Items.Add(lvi);
+            }
+            lvFiles.EndUpdate();
+        }
+
+        private void btnExecuteMulti_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lvFiles.Items.Count; i++)
+            {
+                ListViewItem lvi = lvFiles.Items[i];
+
+                if (lvi.Tag == null) continue;
+
+                string filePath = (string)lvi.Tag;
+                string status = lvi.SubItems[2].ToString();
+                if (status == "OK") continue;
+
+                lvFiles.Invoke(new EventHandler(delegate
+                {
+                    lvi.SubItems[2].Text = "RUN";
+                    lvi.EnsureVisible();
+                    lvFiles.Refresh();
+                }));
+
+                SetFileInfo(filePath);
+
+                vizcore3d.Model.ExportParts(Path, Output_Path);
+
+                SimplifyParts();
+
+                GenerateModelTree();
+
+                LinkModel();
+
+                ShowParts();
+
+                ExportModel();
+
+                lvFiles.Invoke(new EventHandler(delegate
+                {
+                    lvi.SubItems[2].Text = "OK";
+                    lvi.EnsureVisible();
+                    lvFiles.Refresh();
+                }));
+
+                vizcore3d.Model.Close();
+
+                Application.DoEvents();
+            }
         }
     }
 }
