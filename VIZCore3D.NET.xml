@@ -33995,6 +33995,16 @@
             <param name="x">위치 X</param>
             <param name="y">위치 Y</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MessageManager.Show(VIZCore3D.NET.Data.MessageId,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            메시지 조회
+            </summary>
+            <param name="id">메시지 아이디</param>
+            <param name="text">텍스트</param>
+            <param name="x">위치 X</param>
+            <param name="y">위치 Y</param>
+            <param name="shadow">음영</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MessageManager.Show(VIZCore3D.NET.Data.MessageId,System.String,System.Int32,System.Int32,VIZCore3D.NET.Data.FontSize,System.Drawing.Color)">
             <summary>
             메시지 조회
@@ -34005,6 +34015,18 @@
             <param name="y">위치 Y</param>
             <param name="size">텍스트 크기</param>
             <param name="color">텍스트 색상</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MessageManager.Show(VIZCore3D.NET.Data.MessageId,System.String,System.Int32,System.Int32,VIZCore3D.NET.Data.FontSize,System.Drawing.Color,System.Boolean)">
+            <summary>
+            메시지 조회
+            </summary>
+            <param name="id">메시지 아이디</param>
+            <param name="text">텍스트</param>
+            <param name="x">위치 X</param>
+            <param name="y">위치 Y</param>
+            <param name="size">텍스트 크기</param>
+            <param name="color">텍스트 색상</param>
+            <param name="shadow">음영</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MessageManager.Hide(VIZCore3D.NET.Data.MessageId)">
             <summary>
@@ -41987,6 +42009,11 @@
             키보드 방향키를 통한 화면 기준 회전 시, Z축 회전 기준
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableBoxSelectionFrontObjectOnly">
+            <summary>
+            영역 선택 시, 맨 앞의 (카메라에서 가까운) 개체 만 선택
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.FixedZAxis">
             <summary>
             Z축 고정
@@ -46034,6 +46061,11 @@
             </summary>
             <seealso cref="P:VIZCore3D.NET.Manager.ViewManager.WireBoxRenderMode"/>
             <seealso cref="P:VIZCore3D.NET.Manager.ViewManager.WireBoxRenderModeLineWidth"/>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableBoxSelectionFrontObjectOnly">
+            <summary>
+            영역 선택 시, 맨 앞의 (카메라에서 가까운) 개체 만 선택
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
