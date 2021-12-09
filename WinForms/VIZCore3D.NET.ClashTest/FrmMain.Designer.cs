@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAddStream = new System.Windows.Forms.Button();
+            this.btnOpenStream = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.ckPenetration = new System.Windows.Forms.CheckBox();
             this.btnRefreshList = new System.Windows.Forms.Button();
@@ -92,9 +95,10 @@
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnOpenStream = new System.Windows.Forms.Button();
-            this.btnAddStream = new System.Windows.Forms.Button();
+            this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ckConnectedSurfaceNormalVector = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -102,13 +106,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbResult.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -149,10 +153,44 @@
             this.splitContainer2.SplitterDistance = 391;
             this.splitContainer2.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnAddStream);
+            this.groupBox3.Controls.Add(this.btnOpenStream);
+            this.groupBox3.Location = new System.Drawing.Point(12, 13);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(367, 58);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Model";
+            // 
+            // btnAddStream
+            // 
+            this.btnAddStream.Location = new System.Drawing.Point(113, 20);
+            this.btnAddStream.Name = "btnAddStream";
+            this.btnAddStream.Size = new System.Drawing.Size(89, 23);
+            this.btnAddStream.TabIndex = 1;
+            this.btnAddStream.Text = "Add Stream";
+            this.btnAddStream.UseVisualStyleBackColor = true;
+            this.btnAddStream.Click += new System.EventHandler(this.btnAddStream_Click);
+            // 
+            // btnOpenStream
+            // 
+            this.btnOpenStream.Location = new System.Drawing.Point(18, 20);
+            this.btnOpenStream.Name = "btnOpenStream";
+            this.btnOpenStream.Size = new System.Drawing.Size(89, 23);
+            this.btnOpenStream.TabIndex = 0;
+            this.btnOpenStream.Text = "Open Stream";
+            this.btnOpenStream.UseVisualStyleBackColor = true;
+            this.btnOpenStream.Click += new System.EventHandler(this.btnOpenStream_Click);
+            // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ckConnectedSurfaceNormalVector);
             this.groupBox6.Controls.Add(this.ckPenetration);
             this.groupBox6.Controls.Add(this.btnRefreshList);
             this.groupBox6.Controls.Add(this.ckResultAssembly);
@@ -563,7 +601,10 @@
             this.columnHeader17,
             this.columnHeader18,
             this.columnHeader19,
-            this.columnHeader20});
+            this.columnHeader20,
+            this.columnHeader24,
+            this.columnHeader25,
+            this.columnHeader26});
             this.lvResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvResult.FullRowSelect = true;
             this.lvResult.GridLines = true;
@@ -684,38 +725,27 @@
             this.timerStatus.Interval = 1000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
-            // groupBox3
+            // columnHeader24
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnAddStream);
-            this.groupBox3.Controls.Add(this.btnOpenStream);
-            this.groupBox3.Location = new System.Drawing.Point(12, 13);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 58);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Model";
+            this.columnHeader24.Text = "Normal";
             // 
-            // btnOpenStream
+            // columnHeader25
             // 
-            this.btnOpenStream.Location = new System.Drawing.Point(18, 20);
-            this.btnOpenStream.Name = "btnOpenStream";
-            this.btnOpenStream.Size = new System.Drawing.Size(89, 23);
-            this.btnOpenStream.TabIndex = 0;
-            this.btnOpenStream.Text = "Open Stream";
-            this.btnOpenStream.UseVisualStyleBackColor = true;
-            this.btnOpenStream.Click += new System.EventHandler(this.btnOpenStream_Click);
+            this.columnHeader25.Text = "Projection A";
             // 
-            // btnAddStream
+            // columnHeader26
             // 
-            this.btnAddStream.Location = new System.Drawing.Point(113, 20);
-            this.btnAddStream.Name = "btnAddStream";
-            this.btnAddStream.Size = new System.Drawing.Size(89, 23);
-            this.btnAddStream.TabIndex = 1;
-            this.btnAddStream.Text = "Add Stream";
-            this.btnAddStream.UseVisualStyleBackColor = true;
-            this.btnAddStream.Click += new System.EventHandler(this.btnAddStream_Click);
+            this.columnHeader26.Text = "Projection B";
+            // 
+            // ckConnectedSurfaceNormalVector
+            // 
+            this.ckConnectedSurfaceNormalVector.AutoSize = true;
+            this.ckConnectedSurfaceNormalVector.Location = new System.Drawing.Point(159, 63);
+            this.ckConnectedSurfaceNormalVector.Name = "ckConnectedSurfaceNormalVector";
+            this.ckConnectedSurfaceNormalVector.Size = new System.Drawing.Size(112, 16);
+            this.ckConnectedSurfaceNormalVector.TabIndex = 3;
+            this.ckConnectedSurfaceNormalVector.Text = "인접면 법선벡터";
+            this.ckConnectedSurfaceNormalVector.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -734,6 +764,7 @@
             this.splitContainer2.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -743,7 +774,6 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.gbResult.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -815,6 +845,10 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnAddStream;
         private System.Windows.Forms.Button btnOpenStream;
+        private System.Windows.Forms.ColumnHeader columnHeader24;
+        private System.Windows.Forms.ColumnHeader columnHeader25;
+        private System.Windows.Forms.ColumnHeader columnHeader26;
+        private System.Windows.Forms.CheckBox ckConnectedSurfaceNormalVector;
     }
 }
 

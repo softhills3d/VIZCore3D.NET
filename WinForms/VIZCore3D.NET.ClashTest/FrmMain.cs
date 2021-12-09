@@ -518,9 +518,31 @@ namespace VIZCore3D.NET.ClashTest
                     );
             }
 
+            // 인접면 법선벡터 구하기
+            bool checkConnectedSurfaceNormalVector = ckConnectedSurfaceNormalVector.Checked;
+
             for (int i = 0; i < items.Count; i++)
             {
                 VIZCore3D.NET.Data.ClashTestResultItem item = items[i];
+
+                string normal = String.Empty;
+                string projection1 = String.Empty;
+                string projection2 = String.Empty;
+
+                if(checkConnectedSurfaceNormalVector == true)
+                {
+                    VIZCore3D.NET.Data.ConnectedSurfaceNormalVectorItem normalVector =
+                        vizcore3d.GeometryUtility.GetConnectedSurfaceNormalVector(
+                            item.NodeIndexA
+                            , item.NodeIndexB
+                            , item.HotPoint
+                            , 10.0f
+                            );
+
+                    normal = normalVector.Normal.ToString();
+                    projection1 = normalVector.Projection1.ToString();
+                    projection2 = normalVector.Projection2.ToString();
+                }
 
                 ListViewItem lvi = new ListViewItem(
                     new string[]
@@ -548,6 +570,9 @@ namespace VIZCore3D.NET.ClashTest
                             , item.ParentNodeNameB
                             , item.NodePathA
                             , item.NodePathB
+                            , normal
+                            , projection1
+                            , projection2
                         }
                     );
                 lvi.Tag = item;
