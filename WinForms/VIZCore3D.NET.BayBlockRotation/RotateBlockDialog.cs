@@ -602,9 +602,9 @@ namespace VIZCore3D.NET.BayBlockRotation
             int y = Convert.ToInt32(vector.Y); // Y축 회전 각도
             int z = Convert.ToInt32(vector.Z); // Z축 회전 각도
 
-            x = Math.Abs(x % 360);
-            y = Math.Abs(y % 360);
-            z = Math.Abs(z % 360);
+            x = Math.Abs((360 + x)) % 360;
+            y = Math.Abs((360 + y)) % 360;
+            z = Math.Abs((360 + z)) % 360;
 
             tbX.Value = x;
             tbY.Value = y;

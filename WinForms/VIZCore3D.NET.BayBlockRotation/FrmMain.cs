@@ -569,6 +569,9 @@ namespace VIZCore3D.NET.BayBlockRotation
             vizcore3d.View.KeyboardBasedTransform.DetailAngle = 10.0f;
             vizcore3d.View.KeyboardBasedTransform.Distance = 1000.0f;
             vizcore3d.View.KeyboardBasedTransform.DetailDistance = 100.0f;
+
+
+            vizcore3d.Walkthrough.LockZAxis = false;
         }
         #endregion
 
@@ -1294,7 +1297,7 @@ namespace VIZCore3D.NET.BayBlockRotation
                 vizcore3d.Walkthrough.LockZAxisAngleRange = false;
 
                 // Mouse Input Preset
-                vizcore3d.View.SetMouseInputPreset(VIZCore3D.NET.Data.MouseInputPreset.CUSTOM_2D_MODE);
+                //vizcore3d.View.SetMouseInputPreset(VIZCore3D.NET.Data.MouseInputPreset.CUSTOM_2D_MODE);
             }
             else
             {
@@ -1314,7 +1317,7 @@ namespace VIZCore3D.NET.BayBlockRotation
                 vizcore3d.Walkthrough.LockZAxisAngleRange = true;
 
                 // Mouse Input Preset
-                vizcore3d.View.SetMouseInputPreset(VIZCore3D.NET.Data.MouseInputPreset.CUSTOM_3D_MODE);
+                //vizcore3d.View.SetMouseInputPreset(VIZCore3D.NET.Data.MouseInputPreset.CUSTOM_3D_MODE);
             }
         }
 
