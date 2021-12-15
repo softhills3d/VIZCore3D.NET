@@ -8467,6 +8467,29 @@
             노트 위치 정보
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.NoteItem.ScreenPosition">
+            <summary>
+            노트 텍스트 화면 좌표
+            </summary>
+            <seealso cref="P:VIZCore3D.NET.Data.NoteItem.Position"/>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NoteItem.ScreenDisplaySize">
+            <summary>
+            노트 화면 표시 사이즈
+            </summary>
+            <seealso cref="M:VIZCore3D.NET.Data.NoteItem.UpdateScreenDisplaySize"/>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.NoteItem.OverlappingItems">
+            <summary>
+            화면 겹침 발생한 노트 아이디 목록
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.NoteItem.UpdateScreenDisplaySize">
+            <summary>
+            화면 표시 크기 정보 갱신
+            </summary>
+            <returns>화면 표시 크기</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Data.NoteItem.UpdateText(System.String)">
             <summary>
             노트 텍스트 변경
@@ -22102,6 +22125,33 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetShortestDistanceByPartToPart(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Single@)">
+            <summary>
+            지정된 노드간의 최단거리
+            </summary>
+            <param name="node1">노드 1</param>
+            <param name="node2">노드 2</param>
+            <param name="distance">최단 거리</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetShortestDistanceByPartToPart(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Single@)">
+            <summary>
+            지정된 노드 인덱스의 최단거리
+            </summary>
+            <param name="index1">노드 인덱스 1</param>
+            <param name="index2">노드 인덱스 2</param>
+            <param name="distance">최단 거리</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetShortestDistanceByPartToPart(System.Int32[],System.Int32[],System.Single@)">
+            <summary>
+            지정된 노드 인덱스의 최단거리
+            </summary>
+            <param name="index1">노드 인덱스 1</param>
+            <param name="index2">노드 인덱스 2</param>
+            <param name="distance">최단 거리</param>
+            <returns>결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
             Group Manager Class
@@ -22766,6 +22816,24 @@
              </code> 
              </example>
              <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.SetBodyVertices(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.BodyVertexData},System.Boolean)"/>
+             <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.GetNodeVertices(System.Int32)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.GetNodeVertices(System.Int32)">
+            <summary>
+            노드의 정점 정보 반환
+            </summary>
+            <param name="index">Node Index</param>
+            <returns>Vertex Data</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.GetBodyVertices(System.Int32)"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.MeshEditManager.SetBodyVertices(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.BodyVertexData},System.Boolean)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.GetScreenCoordinatesInVertex(System.Int32,System.Boolean)">
+            <summary>
+            노드 정점 데이터의 화면 좌표 반환
+            </summary>
+            <param name="index">노드 인덱스</param>
+            <param name="camera">카메라 정보 사용 - True(카메라 기준 좌표), False(카메라 정보 사용 안함)</param>
+            <returns>화면 좌표 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.SetBodyVertices(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.BodyVertexData},System.Boolean)">
              <summary>
@@ -37426,6 +37494,155 @@
             </summary>
             <param name="path">Json 파일 경로</param>
             <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.UpdateScreenDisplaySize">
+            <summary>
+            전체 화면 표시 크기 갱신
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.FindOverlappingItems(System.Boolean)">
+            <summary>
+            겹쳐진 노트 검색
+            </summary>
+            <param name="updateData">가시화 정보 갱신</param>
+            <returns>겹쳐진 노트 검색 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Review.Note.Items.Count == 0) return;
+            
+                // 겹쳐진 노트 항목 검색
+                bool result = vizcore3d.Review.Note.FindOverlappingItems(true);
+            
+                // 겹쳐진 노트 항목이 없음
+                if (result == false)
+                {
+                    foreach (VIZCore3D.NET.Data.NoteItem item in vizcore3d.Review.Note.Items)
+                    {
+                        VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle(item.ID);
+                        style.BackgroundColor = Color.Yellow;
+                        vizcore3d.Review.Note.SetStyle(item.ID, style);
+                    }
+            
+                    return;
+                }
+            
+                vizcore3d.BeginUpdate();
+            
+                foreach (VIZCore3D.NET.Data.NoteItem item in vizcore3d.Review.Note.Items)
+                {
+                    VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle(item.ID);
+            
+                    // 현재 노트와 겹쳐진 노트가 없음
+                    if (item.OverlappingItems.Count == 0)
+                    {
+                        style.BackgroundColor = Color.Yellow;
+                    }
+                    // 현재 노트와 겹쳐진 노트가 있음
+                    else
+                    {
+                        // 겹쳐진 노트의 아이디가 현재보다 클 경우, 
+                        // 나중에 생성된 노트이고,
+                        // 현재 노트보다 위에 그려짐.
+                        if (item.ID < item.OverlappingItems[0])
+                        {
+                            style.BackgroundColor = Color.Red;
+                        }
+                        else
+                        {
+                            style.BackgroundColor = Color.White;
+                        }
+                    }
+            
+                    vizcore3d.Review.Note.SetStyle(item.ID, style);
+                }
+            
+                vizcore3d.EndUpdate();
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.FindOverlappingItems(System.Boolean,System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32})">
+            <summary>
+            겹쳐진 노트 검색
+            </summary>
+            <param name="updateData">가시화 정보 갱신</param>
+            <param name="includedNote">검사 포함 노트 아이디 목록. NULL 일 경우, 전체 노트를 포함하여 검색. NULL이 아닐 경우, 지정된 노트만 포함 검사</param>
+            <param name="excludedNote">검사 제외 노트 아디디 목록. NULL 일 경우, 전체 노트를 포함하여 검색. NULL이 아닐 경우, 지정된 노트만 제외 검사</param>
+            <returns>겹쳐진 노트 검색 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Review.Note.Items.Count == 0) return;
+                
+                List<int> excludedNote = new List<int>();
+                excludedNote.Add(4);
+                excludedNote.Add(5);
+            
+                // 겹쳐진 노트 항목 검색
+                bool result = vizcore3d.Review.Note.FindOverlappingItems(true, null, excludedNote);
+            
+                // 겹쳐진 노트 항목이 없음
+                if (result == false)
+                {
+                    foreach (VIZCore3D.NET.Data.NoteItem item in vizcore3d.Review.Note.Items)
+                    {
+                        VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle(item.ID);
+                        style.BackgroundColor = Color.Yellow;
+                        vizcore3d.Review.Note.SetStyle(item.ID, style);
+                    }
+            
+                    return;
+                }
+            
+                vizcore3d.BeginUpdate();
+            
+                foreach (VIZCore3D.NET.Data.NoteItem item in vizcore3d.Review.Note.Items)
+                {
+                    VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle(item.ID);
+            
+                    // 현재 노트와 겹쳐진 노트가 없음
+                    if (item.OverlappingItems.Count == 0)
+                    {
+                        style.BackgroundColor = Color.Yellow;
+                    }
+                    // 현재 노트와 겹쳐진 노트가 있음
+                    else
+                    {
+                        // 겹쳐진 노트의 아이디가 현재보다 클 경우, 
+                        // 나중에 생성된 노트이고,
+                        // 현재 노트보다 위에 그려짐.
+                        if (item.ID < item.OverlappingItems[0])
+                        {
+                            style.BackgroundColor = Color.Red;
+                        }
+                        else
+                        {
+                            style.BackgroundColor = Color.White;
+                        }
+                    }
+            
+                    vizcore3d.Review.Note.SetStyle(item.ID, style);
+                }
+            
+                vizcore3d.EndUpdate();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.Object3DManager">
             <summary>
