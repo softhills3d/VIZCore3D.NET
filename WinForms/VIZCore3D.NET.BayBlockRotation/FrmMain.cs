@@ -816,6 +816,35 @@ namespace VIZCore3D.NET.BayBlockRotation
 
                         // 마우스가 이동한 거리만큼 리뷰의 위치를 재설정
                         //note.UpdatePosition(position[0], position[0].Position + new VIZCore3D.NET.Data.Vertex3D(BlockMovingDistance.X, BlockMovingDistance.Y, BlockMovingDistance.Z));
+
+
+                        // 충돌 검사
+                        List<int> nodeIndex = vizcore3d.View.MouseBasedObjectMove.GetGroupNode(e.GroupsId[i]);
+                        VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Object3D.GetBoundBox(nodeIndex);
+                        List<VIZCore3D.NET.Data.Node> zoneNode = vizcore3d.Object3D.FromZone(boundBox, VIZCore3D.NET.Data.BoundBoxSearchOption.IncludingPart);
+                        Dictionary<int, int> zoneMap = new Dictionary<int, int>();
+                        foreach (VIZCore3D.NET.Data.Node item in zoneNode)
+                        {
+                            int parentIndex = item.ParentIndex;
+                            if (zoneMap.ContainsKey(parentIndex) == false)
+                                zoneMap.Add(parentIndex, parentIndex);
+                        }
+
+                        foreach (int item in nodeIndex)
+                        {
+                            if (zoneMap.ContainsKey(item) == true)
+                                zoneMap.Remove(item);
+                        }
+
+                        if (zoneMap.Count == 0) continue;
+
+                        float distance = 0;
+                        bool result = vizcore3d.GeometryUtility.GetShortestDistanceByPartToPart(new int[] { nodeIndex[0] }, new int[] { zoneMap.Keys.ToList()[0] }, out distance);
+
+                        if (result == false) continue;
+                        if (distance > 0) continue;
+
+                        // 밀어내기(?)
                     }
                 }
                 #endregion
@@ -939,8 +968,6 @@ namespace VIZCore3D.NET.BayBlockRotation
             // BLOCK 이동 거리 누적
             BlockMovingDistance = BlockMovingDistance + e.Distance;
         }
-
-       
 
         private void View_OnViewContextMenuOpeningEvent(object sender, VIZCore3D.NET.Event.EventManager.ViewContextMenuEventArgs e)
         {

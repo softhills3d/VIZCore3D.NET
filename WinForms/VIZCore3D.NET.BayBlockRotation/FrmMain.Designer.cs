@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnCreateBay = new System.Windows.Forms.Button();
             this.btnLoadBlock = new System.Windows.Forms.Button();
+            this.btnCreateBay = new System.Windows.Forms.Button();
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuBlock = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -72,16 +72,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bay";
             // 
-            // btnCreateBay
-            // 
-            this.btnCreateBay.Location = new System.Drawing.Point(26, 20);
-            this.btnCreateBay.Name = "btnCreateBay";
-            this.btnCreateBay.Size = new System.Drawing.Size(75, 23);
-            this.btnCreateBay.TabIndex = 0;
-            this.btnCreateBay.Text = "Create";
-            this.btnCreateBay.UseVisualStyleBackColor = true;
-            this.btnCreateBay.Click += new System.EventHandler(this.btnCreateBay_Click);
-            // 
             // btnLoadBlock
             // 
             this.btnLoadBlock.Location = new System.Drawing.Point(117, 20);
@@ -92,6 +82,16 @@
             this.btnLoadBlock.UseVisualStyleBackColor = true;
             this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
             // 
+            // btnCreateBay
+            // 
+            this.btnCreateBay.Location = new System.Drawing.Point(26, 20);
+            this.btnCreateBay.Name = "btnCreateBay";
+            this.btnCreateBay.Size = new System.Drawing.Size(75, 23);
+            this.btnCreateBay.TabIndex = 0;
+            this.btnCreateBay.Text = "Create";
+            this.btnCreateBay.UseVisualStyleBackColor = true;
+            this.btnCreateBay.Click += new System.EventHandler(this.btnCreateBay_Click);
+            // 
             // contextMenu
             // 
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -99,23 +99,23 @@
             this.toolStripSeparator1,
             this.menuRotateBlock});
             this.contextMenu.Name = "contextMenu";
-            this.contextMenu.Size = new System.Drawing.Size(181, 76);
+            this.contextMenu.Size = new System.Drawing.Size(142, 54);
             // 
             // menuBlock
             // 
             this.menuBlock.Name = "menuBlock";
-            this.menuBlock.Size = new System.Drawing.Size(180, 22);
+            this.menuBlock.Size = new System.Drawing.Size(141, 22);
             this.menuBlock.Text = "BLOCK";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // menuRotateBlock
             // 
             this.menuRotateBlock.Name = "menuRotateBlock";
-            this.menuRotateBlock.Size = new System.Drawing.Size(180, 22);
+            this.menuRotateBlock.Size = new System.Drawing.Size(141, 22);
             this.menuRotateBlock.Text = "Rotate Block";
             this.menuRotateBlock.Click += new System.EventHandler(this.menuRotateBlock_Click);
             // 
