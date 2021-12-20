@@ -520,39 +520,35 @@ namespace VIZCore3D.NET.BayBlockRotation
 
         private void RotateModel()
         {
-            vizcore3d.BeginUpdate();
-
-            InitTransform();
-
-            int x = tbX.Value - XOffset;
-            int y = tbY.Value - YOffset;
-            int z = tbZ.Value - ZOffset;
-
-            XOffset = tbX.Value;
-            YOffset = tbY.Value;
-            ZOffset = tbZ.Value;
-
-            txtX.Invoke(new EventHandler(delegate
+            this.Invoke(new EventHandler(delegate
             {
+                vizcore3d.BeginUpdate();
+
+                //InitTransform();
+
+                int x = tbX.Value;
+                int y = tbY.Value;
+                int z = tbZ.Value;
+
+                XOffset = tbX.Value;
+                YOffset = tbY.Value;
+                ZOffset = tbZ.Value;
+
                 txtX.Text = tbX.Value.ToString();
-            }));
-
-            txtY.Invoke(new EventHandler(delegate
-            {
                 txtY.Text = tbY.Value.ToString();
-            }));
-
-            txtZ.Invoke(new EventHandler(delegate
-            {
                 txtZ.Text = tbZ.Value.ToString();
+
+                //vizcore3d.Object3D.Transform.Rotate(new List<int>() { 0 }, x, y, z, false);
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection.TOP);
+
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.X_PLUS, x);
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Y_PLUS, y);
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, z);
+
+                vizcore3d.EndUpdate();
             }));
 
-            //vizcore3d.Object3D.Transform.Rotate(new List<int>() { 0 }, x, y, z, false);
-            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.X_PLUS, x);
-            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Y_PLUS, y);
-            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, z);
-
-            vizcore3d.EndUpdate();
+            return;
         }
 
         private void tbX_Scroll(object sender, EventArgs e)
@@ -637,6 +633,17 @@ namespace VIZCore3D.NET.BayBlockRotation
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+            {
+                VIZCore3D.NET.Data.CameraData camera = vizcore3d.View.GetCameraData();
+
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D(camera.Matrix);
+                VIZCore3D.NET.Data.Vector3D vector = matrix.GetRotation();
+
+                tbX.Value = (360 + Convert.ToInt32(vector.X)) % 360;
+                tbY.Value = (360 + Convert.ToInt32(vector.Y)) % 360;
+                tbZ.Value = (360 + Convert.ToInt32(vector.Z)) % 360;
+            }
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
