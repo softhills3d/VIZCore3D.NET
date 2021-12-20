@@ -11,14 +11,14 @@ namespace VIZCore3D.NET.ProjectionGrid
 {
     public partial class GridPanelControl : UserControl
     {
-        private List<System.Drawing.PointF> Points { get; set; }
+        private List<List<System.Drawing.PointF>> Points { get; set; }
 
         public GridPanelControl()
         {
             InitializeComponent();
         }
 
-        public void SetData(List<System.Drawing.PointF> points)
+        public void SetData(List<List<System.Drawing.PointF>> points)
         {
             Points = points;
 
@@ -61,13 +61,33 @@ namespace VIZCore3D.NET.ProjectionGrid
             if (Points != null && Points.Count != 0)
             {
                 Pen p = new Pen(Brushes.Red, 0.1f);
+                SolidBrush blueBrush = new SolidBrush(Color.Blue);
+
                 for (int i = 0; i < Points.Count; i++)
                 {
-                    System.Drawing.PointF p1 = Points[i];
-                    System.Drawing.PointF p2 = new PointF(p1.X + 2.0f, p1.Y + 2.0f);
-                    e.Graphics.DrawLine(p, p1, p2);
+                    List<System.Drawing.PointF> bodyPoint = Points[i];
+
+                    for (int j = 0; j < bodyPoint.Count; j++)
+                    {
+                        if (j + 2 >= bodyPoint.Count) continue;
+
+                        PointF[] pt =
+                        {
+                            bodyPoint[j + 0],
+                            bodyPoint[j + 1],
+                            bodyPoint[j + 2]
+                        };
+
+                        e.Graphics.DrawPolygon(p, pt);
+                        //e.Graphics.FillPolygon(blueBrush, pt);
+
+                        j += 2;
+                    }
+
+                    //e.Graphics.DrawPolygon(p, bodyPoint.ToArray());
                 }
                 p.Dispose();
+                blueBrush.Dispose();
             }
         }
     }

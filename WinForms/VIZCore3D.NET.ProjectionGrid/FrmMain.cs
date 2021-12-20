@@ -554,9 +554,16 @@ namespace VIZCore3D.NET.ProjectionGrid
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
-            List<System.Drawing.PointF> point = vizcore3d.MeshEdit.GetScreenCoordinatesInVertex(0, true);
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ALL_INCLUDE_BODY);
+            List<List<System.Drawing.PointF>> points = new List<List<PointF>>();
+            foreach (VIZCore3D.NET.Data.Node node in nodes)
+            {
+                if (node.Kind != VIZCore3D.NET.Data.NodeKind.BODY) continue;
+                List<System.Drawing.PointF> point = vizcore3d.MeshEdit.GetScreenCoordinatesInVertex(node.Index, true);
+                points.Add(point);
+            }
 
-            gridPanel.SetData(point);
+            gridPanel.SetData(points);
         }
     }
 }
