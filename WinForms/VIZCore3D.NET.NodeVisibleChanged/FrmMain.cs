@@ -458,6 +458,7 @@ namespace VIZCore3D.NET.NodeVisibleChanged
         private void InitializeVIZCore3DEvent()
         {
             vizcore3d.ModelTree.OnModelTreeNodeVisibleChangedEvent += ModelTree_OnModelTreeNodeVisibleChangedEvent;
+            vizcore3d.Object3D.OnObject3DVisibleChangedEvent += Object3D_OnObject3DVisibleChangedEvent;
         }
         #endregion
 
@@ -562,6 +563,34 @@ namespace VIZCore3D.NET.NodeVisibleChanged
                         "ModelTree"
                         , id[i].ToString()
                         , index[i].ToString()
+                        , visible == true ? "True" : "False"
+                    }
+                    );
+
+                lvList.Items.Add(lvi);
+            }
+
+            lvList.EndUpdate();
+        }
+
+        private void Object3D_OnObject3DVisibleChangedEvent(object sender, Event.EventManager.Object3DVisibleChangedEventArgs e)
+        {
+            lvList.BeginUpdate();
+            lvList.Items.Clear();
+
+            List<VIZCore3D.NET.Data.Node> nodes = e.Node;
+            bool visible = e.Visible;
+
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                VIZCore3D.NET.Data.Node node = nodes[i];
+
+                ListViewItem lvi = new ListViewItem(
+                    new string[]
+                    {
+                        "View"
+                        , node.ID.ToString()
+                        , node.Index.ToString()
                         , visible == true ? "True" : "False"
                     }
                     );
