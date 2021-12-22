@@ -543,7 +543,7 @@ namespace VIZCore3D.NET.BayBlockRotation
             vizcore3d.View.OnViewMouseDoubleClickEvent += View_OnViewMouseDoubleClickEvent;
 
             // Object Removed Event
-            vizcore3d.Object3D.OnObject3DRemoved += Object3D_OnObject3DRemoved;
+            vizcore3d.Object3D.OnObject3DRemovedEvent += Object3D_OnObject3DRemovedEvent;
         }
         #endregion
 
@@ -1085,7 +1085,7 @@ namespace VIZCore3D.NET.BayBlockRotation
             System.Diagnostics.Debug.WriteLine(string.Format("NODE: {0} / Location: {1},{2}", e.NodeIndex, e.Location.X, e.Location.Y));
         }
 
-        private void Object3D_OnObject3DRemoved(object sender, VIZCore3D.NET.Event.EventManager.Object3DRemovedEventArgs e)
+        private void Object3D_OnObject3DRemovedEvent(object sender, VIZCore3D.NET.Event.EventManager.Object3DRemovedEventArgs e)
         {
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.ASSEMBLY);
 
