@@ -14102,6 +14102,35 @@
             <param name="node">Node List</param>
             <param name="allowDeleteObjects">삭제 허용 여부</param>
         </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Object3DVisibleChangedEventHandler">
+            <summary>
+            Objeect3D Visible Changed Event Handler Class
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Argument</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Object3DVisibleChangedEventArgs">
+            <summary>
+            Object3D Visible Changed Event Args. Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Object3DVisibleChangedEventArgs.Node">
+            <summary>
+            Node List
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Object3DVisibleChangedEventArgs.Visible">
+            <summary>
+            보이기 / 숨기기 상태
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Object3DVisibleChangedEventArgs.#ctor(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Boolean)">
+            <summary>
+            Construction
+            </summary>
+            <param name="node">Node List</param>
+            <param name="visible">Visible</param>
+        </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.ProgressFormEventHandler">
             <summary>
             Progress Form Event
@@ -20609,6 +20638,18 @@
             </summary>
             <param name="index">노드 인덱스</param>
             <returns>상위 노드 인덱스</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.OBJECT3D_HasSelectedObjects">
+            <summary>
+            선택된 개체 유무
+            </summary>
+            <returns>선택된 개체 유무</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.OBJECT3D_GetSelectedObjectsVisibleStatus">
+            <summary>
+            선택된 개체의 보이기/숨기기 상태 반환
+            </summary>
+            <returns>선택된 개체의 보이기/숨기기 상태</returns>
         </member>
         <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.OBJECT3D_GetNodeName(System.Int32)">
             <summary>
@@ -37761,9 +37802,14 @@
             Object3D Manager
             </summary>
         </member>
-        <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnObject3DRemoved">
+        <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnObject3DRemovedEvent">
             <summary>
             노드 삭제 이벤트
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnObject3DVisibleChangedEvent">
+            <summary>
+            개체 보이기/숨기기 상태 변경 이벤트
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.Object3DManager.Color">
@@ -38047,6 +38093,18 @@
             <summary>
             VIZXML 최상위 노드 보이기
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.HasSelectedObjects">
+            <summary>
+            선택된 개체 유무 반환
+            </summary>
+            <returns>선택된 개체 유무</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetSelectedObjectVisibleStatus">
+            <summary>
+            선택된 개체의 보이기/숨기기 상태 반환
+            </summary>
+            <returns>선택된 개체의 보이기/숨기기 상태</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.Select(VIZCore3D.NET.Data.Object3dSelectionModes)">
             <summary>
