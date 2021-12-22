@@ -543,7 +543,7 @@ namespace VIZCore3D.NET.BayBlockRotation
             vizcore3d.View.OnViewMouseDoubleClickEvent += View_OnViewMouseDoubleClickEvent;
 
             // Object Removed Event
-            vizcore3d.Object3D.OnObject3DRemovedEvent += Object3D_OnObject3DRemovedEvent;
+            vizcore3d.Object3D.OnObject3DRemoved += Object3D_OnObject3DRemovedEvent;
         }
         #endregion
 
