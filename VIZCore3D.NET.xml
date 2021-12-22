@@ -13842,9 +13842,16 @@
             <param name="sender">Sender</param>
             <param name="e">Event Argument</param>
         </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.ModelTreeNodeVisibleChangedEventHandler">
+            <summary>
+            ModelTree Node Visible Changed Event Handler
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Argument</param>
+        </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.ModelTreeMouseEventArgs">
             <summary>
-            Class
+            Model Tree Mouse Event Args. Class
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Event.EventManager.ModelTreeMouseEventArgs.MouseArgs">
@@ -13862,6 +13869,26 @@
             Construction
             </summary>
             <param name="args">mouseEventArgs</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.ModelTreeNodeVisibleChangedEventArgs">
+            <summary>
+            Model Tree Mouse Node Visible Changed Event Args. Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.ModelTreeNodeVisibleChangedEventArgs.NodeIndex">
+            <summary>
+            Node Index List
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.ModelTreeNodeVisibleChangedEventArgs.NodeId">
+            <summary>
+            Node Id List
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.ModelTreeNodeVisibleChangedEventArgs.Visible">
+            <summary>
+            Visible
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.MouseBaseObjectMouseDownEventHandler">
             <summary>
@@ -22151,6 +22178,86 @@
             <param name="index2">노드 인덱스 2</param>
             <param name="distance">최단 거리</param>
             <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetEdgeDistance(VIZCore3D.NET.Data.Vector3D,VIZCore3D.NET.Data.Vector3D,System.Single)">
+            <summary>
+            연결된 NodeEdge 거리 반환
+            </summary>
+            <param name="v1">좌표 1</param>
+            <param name="v2">좌표 2</param>
+            <param name="offset">Edge 검색범위</param>
+            <returns>거리 (실패시 -1)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetEdgeDistance(VIZCore3D.NET.Data.Vector3D,VIZCore3D.NET.Data.Vector3D,System.Collections.Generic.List{VIZCore3D.NET.Data.Vector3D}@,System.Single)">
+             <summary>
+             연결된 NodeEdge 거리 반환
+             </summary>
+             <param name="v1">좌표 1</param>
+             <param name="v2">좌표 2</param>       
+             <param name="vertices">좌표 반환</param>
+             <param name="offset">Edge 검색범위</param>
+             <returns>거리 (실패시 -1)</returns>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                 List<Data.Vector3D> list = new List<Data.Vector3D>();
+                 Data.Vector3D v1 = new Data.Vector3D(37298.61f, 12596.3f, 816.87f);
+                 Data.Vector3D v2 = new Data.Vector3D(37299.97f, 10213.29f, -21.00f);
+            
+                 float fDistance = vizcore3d.GeometryUtility.GetEdgeDistance(v1, v2, out list, 10.0f);
+                 if(fDistance < 0) 
+                 {
+                     //처리 실패
+                 }
+             }
+             ]]>
+             </code> 
+             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetPreselectEdgeDistance(VIZCore3D.NET.Data.Vector3D,VIZCore3D.NET.Data.Vector3D,System.Single)">
+            <summary>
+            연결된 Node PreselectEdge 거리 반환
+            </summary>
+            <param name="v1">좌표 1</param>
+            <param name="v2">좌표 2</param>
+            <param name="offset">Edge 검색범위</param>
+            <returns>거리 (실패시 -1)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetPreselectEdgeDistance(VIZCore3D.NET.Data.Vector3D,VIZCore3D.NET.Data.Vector3D,System.Collections.Generic.List{VIZCore3D.NET.Data.Vector3D}@,System.Single)">
+             <summary>
+             연결된 Node PreselectEdge 거리 반환
+             </summary>
+             <param name="v1">좌표 1</param>
+             <param name="v2">좌표 2</param>       
+             <param name="vertices">좌표 반환</param>
+             <param name="offset">Edge 검색범위</param>
+             <returns>거리 (실패시 -1)</returns>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                 List<Data.Vector3D> list = new List<Data.Vector3D>();
+                 Data.Vector3D v1 = new Data.Vector3D(37298.61f, 12596.3f, 816.87f);
+                 Data.Vector3D v2 = new Data.Vector3D(37299.97f, 10213.29f, -21.00f);
+            
+                 float fDistance = vizcore3d.GeometryUtility.GetPreselectEdgeDistance(v1, v2, out list, 10.0f);
+                 if(fDistance < 0) 
+                 {
+                     //처리 실패
+                 }
+             }
+             ]]>
+             </code> 
+             </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
@@ -36147,6 +36254,11 @@
         <member name="E:VIZCore3D.NET.Manager.ModelTreeManager.OnModelTreeMouseUpEvent">
             <summary>
             Model Tree Mouse Up Event
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.ModelTreeManager.OnModelTreeNodeVisibleChangedEvent">
+            <summary>
+            Model Tree Node Visible Changed Event
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ModelTreeManager.Handle">
