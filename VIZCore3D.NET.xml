@@ -14727,11 +14727,17 @@
             Alt
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Event.EventManager.VIZCoreKeyDownEventArgs.#ctor(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean)">
+        <member name="P:VIZCore3D.NET.Event.EventManager.VIZCoreKeyDownEventArgs.KeyValue">
+            <summary>
+            Key Value
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.VIZCoreKeyDownEventArgs.#ctor(System.Windows.Forms.Keys,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             Construction
             </summary>
             <param name="keyCode">Key Code</param>
+            <param name="keyValue">Key Value</param>
             <param name="ctrl">Ctrl is pressed.</param>
             <param name="shift">Shift is pressed.</param>
             <param name="alt">Alt is pressed.</param>
@@ -37802,7 +37808,7 @@
             Object3D Manager
             </summary>
         </member>
-        <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnObject3DRemovedEvent">
+        <member name="E:VIZCore3D.NET.Manager.Object3DManager.OnObject3DRemoved">
             <summary>
             노드 삭제 이벤트
             </summary>
@@ -47839,6 +47845,45 @@
             <param name="alt">Alt Key</param>
             <param name="node">Selected Node</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetCustomMouseWheel(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            사용자 정의형 마우스 휠 이벤트 설정
+            </summary>
+            <param name="delta">마우스 휠의 회전 수를 나타내는 부호 있는 숫자에 WHEEL_DELTA 상수를 곱한 값</param>
+            <param name="x">픽셀 단위로 나타낸 마우스의 x좌표</param>
+            <param name="y">픽셀 단위로 나타낸 마우스의 y좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetCustomMouseDown(System.Windows.Forms.MouseButtons,System.Int32,System.Int32)">
+            <summary>
+            사용자 정의형 마우스 버튼 다운 이벤트 설정
+            </summary>
+            <param name="button">마우스 버튼 열거형</param>
+            <param name="x">픽셀 단위로 나타낸 마우스의 x좌표</param>
+            <param name="y">픽셀 단위로 나타낸 마우스의 y좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetCustomMouseDoubleClick(System.Windows.Forms.MouseButtons,System.Int32,System.Int32)">
+            <summary>
+            사용자 정의형 마우스 더블클릭 이벤트 설정
+            </summary>
+            <param name="button">마우스 버튼 열거형</param>
+            <param name="x">픽셀 단위로 나타낸 마우스의 x좌표</param>
+            <param name="y">픽셀 단위로 나타낸 마우스의 y좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetCustomMouseUp(System.Windows.Forms.MouseButtons,System.Int32,System.Int32)">
+            <summary>
+            사용자 정의형 마우스 버튼 업 이벤트 설정
+            </summary>
+            <param name="button">마우스 버튼 열거형</param>
+            <param name="x">픽셀 단위로 나타낸 마우스의 x좌표</param>
+            <param name="y">픽셀 단위로 나타낸 마우스의 y좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetCustomMouseMove(System.Int32,System.Int32)">
+            <summary>
+            사용자 정의형 마우스 버튼 이동 이벤트 설정
+            </summary>
+            <param name="x">픽셀 단위로 나타낸 마우스의 x좌표</param>
+            <param name="y">픽셀 단위로 나타낸 마우스의 y좌표</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>
             VIZXML NODE KIND
@@ -53978,6 +54023,12 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetCustomKeyDown(System.Int32)">
+            <summary>
+            사용자 정의형 키 다운 키값 설정
+            </summary>
+            <param name="keyValue">키보드 값</param>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.Section_OnSectionEvent(System.Object,VIZCore3D.NET.Event.EventManager.SectionEventArgs)">
             <summary>
