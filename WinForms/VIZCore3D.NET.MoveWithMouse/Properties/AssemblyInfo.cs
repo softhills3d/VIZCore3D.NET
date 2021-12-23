@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SOFTHILLS Co., Ltd.")]
 [assembly: AssemblyProduct("VIZCore3D.NET.MoveWithMouse")]
-[assembly: AssemblyCopyright("© 2019-2021 SOFTHILLS Co., Ltd. All rights reserved.")]
+[assembly: AssemblyCopyright("© 2020 SOFTHILLS Co., Ltd. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
