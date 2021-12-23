@@ -41,7 +41,7 @@ namespace VIZCore3D.NET.MultiViewSync
                 vizcore3dMain = new VIZCore3D.NET.VIZCore3DControl();
 
                 vizcore3dMain.Dock = DockStyle.Fill;
-                splitContainer2.Panel1.Controls.Add(vizcore3dMain);
+                splitContainer1.Panel1.Controls.Add(vizcore3dMain);
 
                 // Event
                 vizcore3dMain.OnInitializedVIZCore3D += VIZCore3DMain_OnInitializedVIZCore3D;
@@ -52,7 +52,7 @@ namespace VIZCore3D.NET.MultiViewSync
                 vizcore3dSub1 = new VIZCore3D.NET.VIZCore3DControl();
 
                 vizcore3dSub1.Dock = DockStyle.Fill;
-                splitContainer3.Panel1.Controls.Add(vizcore3dSub1);
+                splitContainer2.Panel1.Controls.Add(vizcore3dSub1);
 
                 // Event
                 vizcore3dSub1.OnInitializedVIZCore3D += VIZCore3DSub1_OnInitializedVIZCore3D;
@@ -63,7 +63,7 @@ namespace VIZCore3D.NET.MultiViewSync
                 vizcore3dSub2 = new VIZCore3D.NET.VIZCore3DControl();
 
                 vizcore3dSub2.Dock = DockStyle.Fill;
-                splitContainer3.Panel2.Controls.Add(vizcore3dSub2);
+                splitContainer2.Panel2.Controls.Add(vizcore3dSub2);
 
                 // Event
                 vizcore3dSub2.OnInitializedVIZCore3D += VIZCore3DSub2_OnInitializedVIZCore3D;
@@ -549,7 +549,9 @@ namespace VIZCore3D.NET.MultiViewSync
 
             vizcore3d.ToolbarNote.Visible = false;
             vizcore3d.ToolbarMeasure.Visible = false;
-            vizcore3d.ToolbarSection.Visible = false;
+            vizcore3d.ToolbarSection.Visible = true;
+            if (viewId == 1 || viewId == 2) vizcore3d.ToolbarSection.Visible = false;
+
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
             vizcore3d.ToolbarSimulation.Visible = false;
@@ -612,15 +614,32 @@ namespace VIZCore3D.NET.MultiViewSync
         {
             if (viewId == 0)
             {
+                // Mouse Wheel
                 vizcore3dMain.View.OnViewDefaultMouseWheelEvent += View_OnViewDefaultMouseWheelEvent;
+
+                // Mouse Down
                 vizcore3dMain.View.OnViewDefaultMouseDownEvent += View_OnViewDefaultMouseDownEvent;
+
+                // Mouse Double Click
                 vizcore3dMain.View.OnViewDefaultMouseDoubleClickEvent += View_OnViewDefaultMouseDoubleClickEvent;
+
+                // Mouse Up
                 vizcore3dMain.View.OnViewDefaultMouseUpEvent += View_OnViewDefaultMouseUpEvent;
+
+                // Mouse Move
                 vizcore3dMain.View.OnViewDefaultMouseMoveEvent += View_OnViewDefaultMouseMoveEvent;
 
+                // Key Down
                 vizcore3dMain.OnVIZCore3DKeyDown += VIZCore3DMain_OnVIZCore3DKeyDown;
 
+                // View Toolbar - View Changed
                 vizcore3dMain.View.OnViewToolbarViewChangedEvent += View_OnViewToolbarViewChangedEvent;
+
+                // Toolbar Item Clicked
+                vizcore3dMain.OnToolbarItemClicked += VIZCore3DMain_OnToolbarItemClicked;
+
+                vizcore3dMain.Section.OnSectionEvent += Section_OnSectionEvent;
+                vizcore3dMain.Section.OnSectionHandleEvent += Section_OnSectionHandleEvent;
             }
             else if (viewId == 1)
             {
@@ -637,7 +656,7 @@ namespace VIZCore3D.NET.MultiViewSync
         // ================================================
         // Function - Sync View
         // ================================================
-        private void View_SubViewUpdate()
+        private void UpdateSubView()
         {
             vizcore3dSub1.BeginUpdate();
             vizcore3dSub2.BeginUpdate();
@@ -655,7 +674,7 @@ namespace VIZCore3D.NET.MultiViewSync
         // ================================================
         private void View_OnViewDefaultMouseWheelEvent(object sender, MouseEventArgs e)
         {
-            View_SubViewUpdate();
+            UpdateSubView();
         }
 
         private void View_OnViewDefaultMouseDownEvent(object sender, MouseEventArgs e)
@@ -665,7 +684,7 @@ namespace VIZCore3D.NET.MultiViewSync
 
         private void View_OnViewDefaultMouseDoubleClickEvent(object sender, MouseEventArgs e)
         {
-            View_SubViewUpdate();
+            UpdateSubView();
         }
 
         private void View_OnViewDefaultMouseUpEvent(object sender, MouseEventArgs e)
@@ -676,15 +695,15 @@ namespace VIZCore3D.NET.MultiViewSync
         {
             if (e.Button == MouseButtons.Left)
             {
-                View_SubViewUpdate();
+                UpdateSubView();
             }
             if (e.Button == MouseButtons.Right)
             {
-                View_SubViewUpdate();
+                UpdateSubView();
             }
             if (e.Button == MouseButtons.Middle)
             {
-                View_SubViewUpdate();
+                UpdateSubView();
             }
         }
 
@@ -700,22 +719,536 @@ namespace VIZCore3D.NET.MultiViewSync
             vizcore3dSub2.View.MoveCamera(e.CameraDirection);
         }
 
-
-        // ================================================
-        // Event
-        // ================================================
-        private void btnOpen_Click(object sender, EventArgs e)
+        private void VIZCore3DMain_OnToolbarItemClicked(object sender, Event.ToolbarItemClickedEventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "VIZ (*.viz)|*.viz";
-            if (dlg.ShowDialog() != DialogResult.OK) return;
+            switch (e.Item)
+            {
+                case Data.ToolbarItems.MAIN_CLOSE:
+                    {
+                        e.Cancel = true;
 
-            string name = System.IO.Path.GetFileNameWithoutExtension(dlg.FileName).ToUpper();
-            byte[] buffer = System.IO.File.ReadAllBytes(dlg.FileName);
+                        vizcore3dMain.Model.Close();
+                        vizcore3dSub1.Model.Close();
+                        vizcore3dSub2.Model.Close();
+                    }
+                    break;
+                case Data.ToolbarItems.MAIN_NEW:
+                    break;
+                case Data.ToolbarItems.MAIN_OPEN:
+                    {
+                        e.Cancel = true;
 
-            vizcore3dMain.Model.OpenStream(name, buffer);
-            vizcore3dSub1.Model.OpenStream(name, buffer);
-            vizcore3dSub2.Model.OpenStream(name, buffer);
+                        OpenFileDialog dlg = new OpenFileDialog();
+                        dlg.Filter = "VIZ (*.viz)|*.viz";
+                        if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                        string path = dlg.FileName;
+                        VIZCore3D.NET.Data.StreamData stream = new VIZCore3D.NET.Data.StreamData(path);
+
+                        vizcore3dMain.Model.OpenStream(stream);
+                        vizcore3dSub1.Model.OpenStream(stream);
+                        vizcore3dSub2.Model.OpenStream(stream);
+                    }
+                    break;
+                case Data.ToolbarItems.MAIN_ADD:
+                    {
+                        e.Cancel = true;
+
+                        OpenFileDialog dlg = new OpenFileDialog();
+                        dlg.Filter = "VIZ (*.viz)|*.viz";
+                        dlg.Multiselect = true;
+                        if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                        List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+
+                        foreach (string item in dlg.FileNames)
+                        {
+                            stream.Add(new VIZCore3D.NET.Data.StreamData(item));
+                        }
+
+                        vizcore3dMain.Model.AddStream(stream);
+                        vizcore3dSub1.Model.AddStream(stream);
+                        vizcore3dSub2.Model.AddStream(stream);
+                    }
+                    break;
+                case Data.ToolbarItems.MAIN_OPEN_FRAME:
+                    break;
+                case Data.ToolbarItems.MAIN_OPEN_GENERIC:
+                    break;
+                case Data.ToolbarItems.MAIN_SAVE_VIZ:
+                    break;
+                case Data.ToolbarItems.MAIN_SAVEAS_VIZ:
+                    break;
+                case Data.ToolbarItems.MAIN_EXPORT:
+                    break;
+                case Data.ToolbarItems.MAIN_EXPORT_STRUCTURE:
+                    break;
+                case Data.ToolbarItems.MAIN_EXPORT_OUTSIDE:
+                    break;
+                case Data.ToolbarItems.MAIN_MERGERULES_ADD:
+                    break;
+                case Data.ToolbarItems.MAIN_MERGERULES_OPEN:
+                    break;
+                case Data.ToolbarItems.MAIN_MERGERULES_CLEAR:
+                    break;
+                case Data.ToolbarItems.MAIN_EXPORT_VIZX:
+                    break;
+                case Data.ToolbarItems.MAIN_CONVERSION:
+                    break;
+                case Data.ToolbarItems.MAIN_SIMPLIFY_MODEL:
+                    break;
+                case Data.ToolbarItems.MAIN_MODELTREE:
+                    break;
+                case Data.ToolbarItems.MAIN_PROJECTION_PERSPECTIVE:
+                    break;
+                case Data.ToolbarItems.MAIN_PROJECTION_ORTHOGRAPHIC:
+                    break;
+                case Data.ToolbarItems.MAIN_NAVIGATION_PAN:
+                    break;
+                case Data.ToolbarItems.MAIN_NAVIGATION_ROTATE:
+                    break;
+                case Data.ToolbarItems.MAIN_NAVIGATION_ORBIT:
+                    break;
+                case Data.ToolbarItems.MAIN_NAVIGATION_WALK:
+                    break;
+                case Data.ToolbarItems.MAIN_NAVIGATION_FLY:
+                    break;
+                case Data.ToolbarItems.MAIN_AVATAR_VISIBLE:
+                    break;
+                case Data.ToolbarItems.MAIN_AVATAR_POSITION:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_WIRE:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_FLAT:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_SMOOTH:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_EDGE:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_SMOOTHEDGE:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_HIDDENLINEREMOVAL:
+                    break;
+                case Data.ToolbarItems.MAIN_RENDERING_DASH_LINE:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_PHONGSHADING:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_PBR:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_SILHOUETTEEDGE:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_REALTIMESHADOW:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_FLOORSHADOW:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_SHADING:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_ENVIRONMENTLIGHT:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_PLANEREFLECTION:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_ANTIALIASING:
+                    break;
+                case Data.ToolbarItems.MAIN_EFFECT_SETTING:
+                    break;
+                case Data.ToolbarItems.MAIN_XRAY:
+                    break;
+                case Data.ToolbarItems.MAIN_SELECTION_BOX:
+                    break;
+                case Data.ToolbarItems.MAIN_SELECTION_BOX_MULTI:
+                    break;
+                case Data.ToolbarItems.MAIN_SELECTION_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_SELECTION_CLEAR:
+                    break;
+                case Data.ToolbarItems.MAIN_SELECTION_INVERT:
+                    break;
+                case Data.ToolbarItems.MAIN_VISIBLE_HIDE_SELECTED:
+                    break;
+                case Data.ToolbarItems.MAIN_VISIBLE_HIDE_UNSELECTED:
+                    break;
+                case Data.ToolbarItems.MAIN_VISIBLE_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_VISIBLE_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_MINIVIEW:
+                    break;
+                case Data.ToolbarItems.MAIN_VIEW_RESET:
+                    break;
+                case Data.ToolbarItems.MAIN_VIEW_FIT:
+                    break;
+                case Data.ToolbarItems.MAIN_VIEW_MOVECENTER:
+                    break;
+                case Data.ToolbarItems.MAIN_VIEW_FLY:
+                    break;
+                case Data.ToolbarItems.MAIN_VIEW_BOXZOOM:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_ISOPLUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_ISOMINUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_XPLUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_XMINUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_YPLUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_YMINUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_ZPLUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_ZMINUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_XPLUS_ANGLE:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_XMINUS_ANGLE:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_YPLUS_ANGLE:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_YMINUS_ANGLE:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_ZPLUS_ANGLE:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_ZMINUS_ANGLE:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_AXIS_PLUS:
+                    break;
+                case Data.ToolbarItems.MAIN_CAMERA_AXIS_MINUS:
+                    break;
+                case Data.ToolbarItems.MAIN_COLOR_CHANGE:
+                    break;
+                case Data.ToolbarItems.MAIN_COLOR_RESTORE:
+                    break;
+                case Data.ToolbarItems.MAIN_COLOR_RESTORE_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_ALPHA_CHANGE:
+                    break;
+                case Data.ToolbarItems.MAIN_ALPHA_RESTORE:
+                    break;
+                case Data.ToolbarItems.MAIN_ALPHA_RESTORE_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_COLOR_ALPHA_RESTORE_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_HANDLE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_DEFAULT:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_AXIS:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_PLANE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_HANDLE_ROTATE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_ROTATE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_MOVE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_RESTORE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_RESTORE_ALL:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_MOVE_TARGET_POINT:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_MOVE_TARGET_LINE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_MOVE_TARGET_SURFACE:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_DISASSEMBLY:
+                    break;
+                case Data.ToolbarItems.MAIN_TRANSFORM_MATRIX:
+                    break;
+                case Data.ToolbarItems.MAIN_FIND_NODE:
+                    break;
+                case Data.ToolbarItems.MAIN_FIND_OUTSIDE:
+                    break;
+                case Data.ToolbarItems.MAIN_FIND_SPACE:
+                    break;
+                case Data.ToolbarItems.MAIN_SCREENITEM_FRAME:
+                    break;
+                case Data.ToolbarItems.MAIN_SCREENITEM_VIEWTOOLBAR:
+                    break;
+                case Data.ToolbarItems.MAIN_SCREENITEM_AXIS:
+                    break;
+                case Data.ToolbarItems.MAIN_IMAGE_CLIPBOARD:
+                    break;
+                case Data.ToolbarItems.MAIN_PRINT:
+                    break;
+                case Data.ToolbarItems.MAIN_WINDOW_GEOMETRY_PROPERTY:
+                    break;
+                case Data.ToolbarItems.MAIN_WINDOW_UDA:
+                    break;
+                case Data.ToolbarItems.MAIN_WINDOW_UDA_TREE:
+                    break;
+                case Data.ToolbarItems.MAIN_SETTING:
+                    break;
+                case Data.ToolbarItems.MAIN_MODEL_INFORMATION:
+                    break;
+                case Data.ToolbarItems.MAIN_FRAME_OPEN:
+                    break;
+                case Data.ToolbarItems.SECTION_ADD_PLANE:
+                    break;
+                case Data.ToolbarItems.SECTION_ADD_BOX:
+                    {
+                        e.Cancel = true;
+
+                        vizcore3dMain.Section.AddBox(false);
+                        vizcore3dSub1.Section.AddBox(false);
+                        vizcore3dSub2.Section.AddBox(false);
+                    }
+                    break;
+                case Data.ToolbarItems.SECTION_ADD_INBOX3:
+                    break;
+                case Data.ToolbarItems.SECTION_ADD_INBOX6:
+                    break;
+                case Data.ToolbarItems.SECTION_CLIPPING_ONEWAY:
+                    break;
+                case Data.ToolbarItems.SECTION_CLIPPING_BIDIRECTIONAL:
+                    break;
+                case Data.ToolbarItems.SECTION_CLIPPING_CHANGE:
+                    break;
+                case Data.ToolbarItems.SECTION_ADD_PLANE_PART:
+                    break;
+                case Data.ToolbarItems.SECTION_ADD_BOX_PART:
+                    break;
+                case Data.ToolbarItems.SECTION_DELETE:
+                    break;
+                case Data.ToolbarItems.SECTION_CLEAR:
+                    break;
+                case Data.ToolbarItems.SECTION_HANDLE_ROTATE:
+                    break;
+                case Data.ToolbarItems.SECTION_HANDLE_SCALE:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_X:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_Y:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_Z:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_HORIZONTAL:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_VERTICAL:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_CROSS:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_BETWEEN_TWO_POINTS:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_THREE_POINTS:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_SURFACE:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_TWO_POINTS:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_FRAME:
+                    break;
+                case Data.ToolbarItems.SECTION_ALIGN_SELECT_POINT:
+                    break;
+                case Data.ToolbarItems.SECTION_VISIBLE_LINE:
+                    {
+                        e.Cancel = true;
+
+                        vizcore3dMain.Section.ShowSectionLine = !vizcore3dMain.Section.ShowSectionLine;
+
+                        vizcore3dSub1.Section.ShowSectionLine = vizcore3dMain.Section.ShowSectionLine;
+                        vizcore3dSub2.Section.ShowSectionLine = vizcore3dMain.Section.ShowSectionLine;
+                    }
+                    break;
+                case Data.ToolbarItems.SECTION_VISIBLE_PLANE:
+                    {
+                        e.Cancel = true;
+
+                        vizcore3dMain.Section.ShowSectionPlane = !vizcore3dMain.Section.ShowSectionPlane;
+
+                        vizcore3dSub1.Section.ShowSectionPlane = vizcore3dMain.Section.ShowSectionPlane;
+                        vizcore3dSub2.Section.ShowSectionPlane = vizcore3dMain.Section.ShowSectionPlane;
+                    }
+                    break;
+                case Data.ToolbarItems.NOTE_ADD_NOTE_SURFACE:
+                    break;
+                case Data.ToolbarItems.NOTE_ADD_NOTE_2:
+                    break;
+                case Data.ToolbarItems.NOTE_ADD_NOTE_3:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_BEGIN:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_DELETE:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_END:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_TEXT:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_PEN:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_LINE:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_SQUARE:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_CIRCLE:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_CLOUD:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_ARROW:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_FREECURVE:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_DRAWMODE_STYLE:
+                    break;
+                case Data.ToolbarItems.NOTE_DELETE:
+                    break;
+                case Data.ToolbarItems.NOTE_CLEAR:
+                    break;
+                case Data.ToolbarItems.NOTE_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_SURFACE_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_SURFACE_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_3D_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_3D_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_2D_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.NOTE_2D_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_BASIC_POSITION:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_BASIC_DISTANCE:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_BASIC_ANGLE:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_POINTS:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_CUSTOMLINEAXIS:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_PARALLELPLANE:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_MINIMUM:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_BOP:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONXYZ:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONX:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONY:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONZ:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS_AXIALDIRECTIONX:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS_AXIALDIRECTIONY:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_DISTANCE_CONTINUOUS_AXIALDIRECTIONZ:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_AREA:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_ANGLE:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_INTERSECTION_LINE_PLANE:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_INTERSECTION_CYLINDER_CYLINDER:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_BOUNDBOX:
+                    break;
+                case Data.ToolbarItems.MEASURE_ADD_BOUNDBOX_PLANE:
+                    break;
+                case Data.ToolbarItems.MEASURE_CANCEL:
+                    break;
+                case Data.ToolbarItems.MEASURE_SHOW_ALL:
+                    break;
+                case Data.ToolbarItems.MEASURE_HIDE_ALL:
+                    break;
+                case Data.ToolbarItems.MEASURE_DELETE:
+                    break;
+                case Data.ToolbarItems.MEASURE_CLEAR:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_BOX:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_PYRAMID:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_CYLINDER:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_SLOPE_BOTTOM_CYLINDER:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_CONE:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_CIRCULAR_TORUS:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_RECTANGULAR_TORUS:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_SPHERE:
+                    break;
+                case Data.ToolbarItems.PRIMITIVE_SPHEROID:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Section_OnSectionEvent(object sender, Event.EventManager.SectionEventArgs e)
+        {
+            switch (e.EventType)
+            {
+                case Manager.SectionManager.EventTypes.ADD:
+                    break;
+                case Manager.SectionManager.EventTypes.DELETE:
+                    {
+                        vizcore3dSub1.Section.Delete(e.Section.ID);
+                        vizcore3dSub2.Section.Delete(e.Section.ID);
+                    }
+                    break;
+                case Manager.SectionManager.EventTypes.CLEAR:
+                    {
+                        vizcore3dSub1.Section.Clear();
+                        vizcore3dSub2.Section.Clear();
+                    }
+                    break;
+                case Manager.SectionManager.EventTypes.SELECT:
+                    break;
+                case Manager.SectionManager.EventTypes.TRANSFORM:
+                    {
+                        VIZCore3D.NET.Data.BoundBox3D box = vizcore3dMain.Section.SelectedItem.BoundBox;
+
+                        vizcore3dSub1.Section.SetBoxSize(e.Section.ID, box);
+                        vizcore3dSub2.Section.SetBoxSize(e.Section.ID, box);
+                    }
+                    break;
+                case Manager.SectionManager.EventTypes.RESIZED:
+                    {
+                        VIZCore3D.NET.Data.BoundBox3D box = vizcore3dMain.Section.SelectedItem.BoundBox;
+
+                        vizcore3dSub1.Section.SetBoxSize(e.Section.ID, box);
+                        vizcore3dSub2.Section.SetBoxSize(e.Section.ID, box);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void Section_OnSectionHandleEvent(object sender, Event.EventManager.SectionHandleEventArgs e)
+        {
+            switch (e.EventType)
+            {
+                case Manager.SectionManager.HandleEventTypes.ENABLE:
+                    break;
+                case Manager.SectionManager.HandleEventTypes.DISABLE:
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
