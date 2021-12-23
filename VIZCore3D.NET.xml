@@ -10156,6 +10156,12 @@
             <param name="uri">Model Uri - https://www.softhills.net/model/toycar.viz</param>
             <param name="model">Model Name</param>
         </member>
+        <member name="M:VIZCore3D.NET.Data.StreamData.#ctor(System.String)">
+            <summary>
+            Construction
+            </summary>
+            <param name="path">VIZ File Path</param>
+        </member>
         <member name="T:VIZCore3D.NET.Data.TextDrawingItem">
             <summary>
             Text Drawing Item
@@ -34905,6 +34911,13 @@
             ]]>
             </code>
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.OpenStream(VIZCore3D.NET.Data.StreamData)">
+            <summary>
+            Open Stream
+            </summary>
+            <param name="stream">Stream Data Object</param>
+            <returns>True : Sucess / False : Fail</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.OpenStream(System.String,System.Byte[])">
             <summary>
