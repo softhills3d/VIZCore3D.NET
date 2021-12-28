@@ -470,16 +470,20 @@ namespace VIZCore3D.NET.CameraControl
 
         private void btnBackupCamera_Click(object sender, EventArgs e)
         {
-            VIZCore3D.NET.Data.CameraData camera = vizcore3d.View.GetCameraData();
-
-            AddCameraItem(camera);
+            CameraItem item = new CameraItem();
+            item.Camera = vizcore3d.View.GetCameraData();
+            item.Snapshot = vizcore3d.View.CaptureImage();
+            
+            AddCameraItem(item);
         }
 
-        private void AddCameraItem(VIZCore3D.NET.Data.CameraData camera)
+        private void AddCameraItem(CameraItem camera)
         {
-            ListViewItem lvi = new ListViewItem(new string[] { camera.Zoom.ToString(), string.Join(",", camera.Matrix) });
+            ListViewItem lvi = new ListViewItem(new string[] { camera.Camera.Zoom.ToString(), string.Join(",", camera.Camera.Matrix) });
             lvi.Tag = camera;
             lvCamera.Items.Add(lvi);
+
+            pbSnapshot.Image = camera.Snapshot;
         }
 
         private void lvCamera_DoubleClick(object sender, EventArgs e)
@@ -488,9 +492,14 @@ namespace VIZCore3D.NET.CameraControl
             ListViewItem lvi = lvCamera.SelectedItems[0];
             if (lvi.Tag == null) return;
 
-            VIZCore3D.NET.Data.CameraData camera = (VIZCore3D.NET.Data.CameraData)lvi.Tag;
+            CameraItem camera = (CameraItem)lvi.Tag;
 
-            vizcore3d.View.SetCameraData(camera);
+            vizcore3d.View.SetCameraData(camera.Camera);
+            pbSnapshot.Image = camera.Snapshot;
+
+            if (ckFitToView.Checked == true)
+                vizcore3d.View.FitToView();
+
             vizcore3d.EndUpdate();
         }
     }
