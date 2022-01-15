@@ -631,6 +631,7 @@ namespace VIZCore3D.NET.MultiViewSync
 
                 // Key Down
                 vizcore3dMain.OnVIZCore3DKeyDown += VIZCore3DMain_OnVIZCore3DKeyDown;
+                vizcore3dMain.OnVIZCore3DKeyUp += VIZCore3DMain_OnVIZCore3DKeyUp;
 
                 // View Toolbar - View Changed
                 vizcore3dMain.View.OnViewToolbarViewChangedEvent += View_OnViewToolbarViewChangedEvent;
@@ -638,8 +639,19 @@ namespace VIZCore3D.NET.MultiViewSync
                 // Toolbar Item Clicked
                 vizcore3dMain.OnToolbarItemClicked += VIZCore3DMain_OnToolbarItemClicked;
 
+                // Section
                 vizcore3dMain.Section.OnSectionEvent += Section_OnSectionEvent;
                 vizcore3dMain.Section.OnSectionHandleEvent += Section_OnSectionHandleEvent;
+
+                // Visible
+                vizcore3dMain.ModelTree.OnModelTreeNodeVisibleChangedEvent += ModelTree_OnModelTreeNodeVisibleChangedEvent;
+                vizcore3dMain.Object3D.OnObject3DVisibleChangedEvent += Object3D_OnObject3DVisibleChangedEvent;
+
+                // View Changed
+                vizcore3dMain.View.OnCameraStateChangedEvent += View_OnCameraStateChangedEvent;
+
+                // Selection
+                vizcore3dMain.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
             }
             else if (viewId == 1)
             {
@@ -713,10 +725,46 @@ namespace VIZCore3D.NET.MultiViewSync
             //vizcore3dSub2.SetCustomKeyDown(e.KeyValue);
         }
 
+        private void VIZCore3DMain_OnVIZCore3DKeyUp(object sender, Event.EventManager.VIZCoreKeyUpEventArgs e)
+        {
+            
+        }
+
         private void View_OnViewToolbarViewChangedEvent(object sender, Event.EventManager.ViewToolbarViewChangedEventArgs e)
         {
             vizcore3dSub1.View.MoveCamera(e.CameraDirection);
             vizcore3dSub2.View.MoveCamera(e.CameraDirection);
+        }
+
+        private void ModelTree_OnModelTreeNodeVisibleChangedEvent(object sender, Event.EventManager.ModelTreeNodeVisibleChangedEventArgs e)
+        {
+            vizcore3dSub1.Object3D.Show(e.NodeIndex, e.Visible);
+            vizcore3dSub2.Object3D.Show(e.NodeIndex, e.Visible);
+        }
+
+        private void Object3D_OnObject3DVisibleChangedEvent(object sender, Event.EventManager.Object3DVisibleChangedEventArgs e)
+        {
+            vizcore3dSub1.Object3D.Show(e.Node, e.Visible);
+            vizcore3dSub2.Object3D.Show(e.Node, e.Visible);
+        }
+
+        private void View_OnCameraStateChangedEvent(object sender, EventArgs e)
+        {
+            UpdateSubView();
+        }
+
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
+        {
+            if (e.Node.Count == 0)
+            {
+                vizcore3dSub1.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
+                vizcore3dSub2.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
+            }
+            else
+            {
+                vizcore3dSub1.Object3D.Select(e.Node, true);
+                vizcore3dSub2.Object3D.Select(e.Node, true);
+            }
         }
 
         private void VIZCore3DMain_OnToolbarItemClicked(object sender, Event.ToolbarItemClickedEventArgs e)
