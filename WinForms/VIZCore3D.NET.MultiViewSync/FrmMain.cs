@@ -738,14 +738,24 @@ namespace VIZCore3D.NET.MultiViewSync
 
         private void ModelTree_OnModelTreeNodeVisibleChangedEvent(object sender, Event.EventManager.ModelTreeNodeVisibleChangedEventArgs e)
         {
+            vizcore3dSub1.BeginUpdate();
             vizcore3dSub1.Object3D.Show(e.NodeIndex, e.Visible);
+            vizcore3dSub1.EndUpdate();
+
+            vizcore3dSub2.BeginUpdate();
             vizcore3dSub2.Object3D.Show(e.NodeIndex, e.Visible);
+            vizcore3dSub2.EndUpdate();
         }
 
         private void Object3D_OnObject3DVisibleChangedEvent(object sender, Event.EventManager.Object3DVisibleChangedEventArgs e)
         {
+            vizcore3dSub1.BeginUpdate();
             vizcore3dSub1.Object3D.Show(e.Node, e.Visible);
+            vizcore3dSub1.EndUpdate();
+
+            vizcore3dSub2.BeginUpdate();
             vizcore3dSub2.Object3D.Show(e.Node, e.Visible);
+            vizcore3dSub2.EndUpdate();
         }
 
         private void View_OnCameraStateChangedEvent(object sender, EventArgs e)
@@ -755,16 +765,13 @@ namespace VIZCore3D.NET.MultiViewSync
 
         private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
-            if (e.Node.Count == 0)
-            {
-                vizcore3dSub1.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
-                vizcore3dSub2.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
-            }
-            else
-            {
-                vizcore3dSub1.Object3D.Select(e.Node, true);
-                vizcore3dSub2.Object3D.Select(e.Node, true);
-            }
+            vizcore3dSub1.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3dSub2.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
+
+            if (e.Node.Count == 0) return;
+
+            vizcore3dSub1.Object3D.Select(e.Node, true);
+            vizcore3dSub2.Object3D.Select(e.Node, true);
         }
 
         private void VIZCore3DMain_OnToolbarItemClicked(object sender, Event.ToolbarItemClickedEventArgs e)
