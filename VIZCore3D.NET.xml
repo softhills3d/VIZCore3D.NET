@@ -38606,14 +38606,14 @@
                 List<VIZCore3D.NET.Data.Node> children =
                     vizcore3d.Object3D.GetChildObject3d(
                         nodeIndex
-                        , Data.Object3DChildOption.CHILD_ONLY
+                        , VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY
                         );
             
                 // 지정된 노드 하위 전체 목록
                 List<VIZCore3D.NET.Data.Node> all_children =
                     vizcore3d.Object3D.GetChildObject3d(
                         nodeIndex
-                        , Data.Object3DChildOption.ALL_CHILDREN
+                        , VIZCore3D.NET.Data.Object3DChildOption.ALL_CHILDREN
                         );
             }
             ]]>
