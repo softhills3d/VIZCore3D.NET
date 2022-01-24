@@ -659,7 +659,7 @@ namespace VIZCore3D.NET.Capture3D
                 , 0
                 , viewSize.Width
                 , viewSize.Height
-                , true
+                , false
                 , VIZCore3D.NET.Data.LeafNodeKind.PART
                 );
 
@@ -674,6 +674,14 @@ namespace VIZCore3D.NET.Capture3D
                 );
 
             if (result_export == false) return;
+
+            string path_vizw = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(name), System.IO.Path.GetFileNameWithoutExtension(name));
+            if (System.IO.Directory.Exists(path_vizw) == false)
+                System.IO.Directory.CreateDirectory(path_vizw);
+
+            bool result_vizw = vizcore3d.Model.ConvertToVIZW(name);
+            //bool result_vizw = vizcore3d.Model.ConvertToVIZW(name, path_vizw, false);
+            //bool result_vizw = vizcore3d.Model.ConvertToVIZW(name, "D:\\SH_GitHub\\VIZCore3D.NET\\bin\\Release\\Export",  false);
 
             ListViewItem lvi = new ListViewItem(new string[] { string.Join(",", camera.Matrix), camera.Zoom.ToString(), name });
             lvi.Tag = camera;
