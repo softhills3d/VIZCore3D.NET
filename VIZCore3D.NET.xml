@@ -143,49 +143,6 @@
             이 메서드의 내용을 코드 편집기로 수정하지 마세요.
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Controls.GlassyPanel">
-            <summary>
-            Glassy Panel
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Controls.GlassyPanel.Opacity">
-            <summary>
-            Opacity
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Controls.GlassyPanel.CreateParams">
-            <summary>
-            CreateParams
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Controls.GlassyPanel.#ctor">
-            <summary>
-            Contruction
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Controls.GlassyPanel.OnPaint(System.Windows.Forms.PaintEventArgs)">
-            <summary>
-            OnPaint
-            </summary>
-            <param name="e">Paint Event Args</param>
-        </member>
-        <member name="F:VIZCore3D.NET.Controls.GlassyPanel.components">
-            <summary> 
-            필수 디자이너 변수입니다.
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Controls.GlassyPanel.Dispose(System.Boolean)">
-            <summary> 
-            사용 중인 모든 리소스를 정리합니다.
-            </summary>
-            <param name="disposing">관리되는 리소스를 삭제해야 하면 true이고, 그렇지 않으면 false입니다.</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Controls.GlassyPanel.InitializeComponent">
-            <summary> 
-            디자이너 지원에 필요한 메서드입니다. 
-            이 메서드의 내용을 코드 편집기로 수정하지 마세요.
-            </summary>
-        </member>
         <member name="T:VIZCore3D.NET.Controls.LicenseServerInformationControl">
             <summary>
             License Server Information Control
@@ -8515,6 +8472,24 @@
             노트 텍스트 변경
             </summary>
             <param name="title">노트 텍스트</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.NoteItem> notes = vizcore3d.Review.Note.GetSelectedItems();
+                if (notes.Count == 0) return;
+            
+                notes[0].UpdateText("New Note Text!!");
+            }
+            ]]>
+            </code> 
+            </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.NoteManager.EditNoteText(System.Int32,System.String)"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.NoteManager.EditNoteTextDialog(VIZCore3D.NET.Data.NoteItem)"/>
         </member>
         <member name="M:VIZCore3D.NET.Data.NoteItem.UpdatePosition(VIZCore3D.NET.Data.ReviewPosition,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
@@ -10799,10 +10774,24 @@
         </member>
         <member name="M:VIZCore3D.NET.Data.Vertex3D.#ctor(System.String,System.String)">
             <summary>
-            생성자
+            Construction
             </summary>
             <param name="str">정점 문자열</param>
             <param name="separator">문자열 구분자. 예) ','</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string str = "100,200,300";
+                VIZCore3D.NET.Data.Vertex3D v = new VIZCore3D.NET.Data.Vertex3D(str, ",");
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Data.Vertex3D.#ctor(System.String)">
             <summary>
@@ -14130,7 +14119,7 @@
         </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.Object3DVisibleChangedEventHandler">
             <summary>
-            Objeect3D Visible Changed Event Handler Class
+            Object3D Visible Changed Event Handler Class
             </summary>
             <param name="sender">Sender</param>
             <param name="e">Event Argument</param>
@@ -22975,7 +22964,7 @@
                  {
                      int bodyIndex = bodies[j];
                      //Get Vertices Info
-                     List<Data.BodyVertexData> vertexData = vizcore3d.MeshEdit.GetBodyVertices(bodyIndex);
+                     List<VIZCore3D.NET.Data.BodyVertexData> vertexData = vizcore3d.MeshEdit.GetBodyVertices(bodyIndex);
                      
                      // Vertex Position Move
                      for(int i = 0; i < vertexData.Count; i++)
@@ -23038,7 +23027,7 @@
                  {
                      int bodyIndex = bodies[j];
                      //Get Vertices Info
-                     List<Data.BodyVertexData> safeData = vizcore3d.MeshEdit.GetBodyVertices(bodyIndex);
+                     List<VIZCore3D.NET.Data.BodyVertexData> safeData = vizcore3d.MeshEdit.GetBodyVertices(bodyIndex);
                      
                      // Vertex Postition Move
                      for(int i = 0; i < safeData.Count; i++)
@@ -34227,9 +34216,9 @@
             <summary>
             투영면적 결과 Label 유형별 보이기/숨기기 설정
             </summary>
-            <param name="projectedArea"></param>
-            <param name="innerArea"></param>
-            <param name="outerArea"></param>
+            <param name="projectedArea">투영 면적</param>
+            <param name="innerArea">내부 면적</param>
+            <param name="outerArea">외부 면적(투영 면적 + 내부 면적)</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedAreaLabelVisibleStatus(System.Int32)">
             <summary>
@@ -35583,6 +35572,21 @@
             OBJ 파일 형식으로 내보내기
             </summary>
             <returns>내보내기 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.Model.ExportObjDialog();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportObj(System.String)">
             <summary>
@@ -36334,6 +36338,19 @@
             <summary>
             Show Simplify 3D Model Dialog
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.Model.ShowSimplifyModelDialog();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.FireProgressEvent(VIZCore3D.NET.Data.ModelProgressModes,System.Int32)">
             <summary>
@@ -37697,6 +37714,24 @@
             </summary>
             <param name="item">노트 아이템</param>
             <returns>수정 결과</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.NoteManager.EditNoteText(System.Int32,System.String)"/>
+            <seealso cref="M:VIZCore3D.NET.Data.NoteItem.UpdateText(System.String)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<Data.NoteItem> notes = vizcore3d.Review.Note.GetSelectedItems();
+                if (notes.Count == 0) return;
+            
+                bool result = vizcore3d.Review.Note.EditNoteTextDialog(notes[0]);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.EditNoteText(System.Int32,System.String)">
             <summary>
@@ -37705,6 +37740,8 @@
             <param name="noteId">노트 아이디</param>
             <param name="text">기존 노트 텍스트</param>
             <returns>수정 결과</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.NoteManager.EditNoteTextDialog(VIZCore3D.NET.Data.NoteItem)"/>
+            <seealso cref="M:VIZCore3D.NET.Data.NoteItem.UpdateText(System.String)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.ExportJson(System.String)">
             <summary>
@@ -37717,6 +37754,33 @@
             <summary>
             전체 화면 표시 크기 갱신
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.ShowStyleDialog(System.Collections.Generic.List{VIZCore3D.NET.Data.NoteItem})">
+            <summary>
+            노트 스타일 설정 다이얼로그 조회
+            </summary>
+            <param name="items">대상 노트 목록</param>
+            <returns>사용자 입력 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<VIZCore3D.NET.Data.NoteItem> items = vizcore3d.Review.Note.GetSelectedItems();
+                if (items.Count == 0) return;
+            
+                DialogResult dr = vizcore3d.Review.Note.ShowStyleDialog(items);
+            
+                if (dr != DialogResult.OK) return;
+            
+                // Changed Note Style..
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.FindOverlappingItems(System.Boolean)">
             <summary>
@@ -38261,7 +38325,28 @@
             <param name="y1">Y 좌표1</param>
             <param name="x2">X 좌표2</param>
             <param name="y2">Y 좌표2</param>
-            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="fullContainsOnly">영역에 포함된 모델 유형 : True(포함된 모델만 선택), False(걸친 모델도 포함하여 선택)</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Size size = vizcore3d.View.Size;
+            
+                vizcore3d.Object3D.Select(
+                    0               /* X1 */
+                    , 0             /* Y1 */
+                    , size.Width    /* X2 */
+                    , size.Height   /* Y2 */
+                    , true          /* Full Contain */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
             <summary>
@@ -38274,6 +38359,29 @@
             <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
             <param name="nodeKind">반환 노드 유형</param>
             <returns>개체 목록</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Size size = vizcore3d.View.Size;
+            
+                List<VIZCore3D.NET.Data.Node> nodes 
+                    = vizcore3d.Object3D.FromScreen(
+                        0               /* X1 */
+                        , 0             /* Y1 */
+                        , size.Width    /* X2 */
+                        , size.Height   /* Y2 */
+                        , true          /* Full Contain */
+                        , VIZCore3D.NET.Data.LeafNodeKind.PART
+                        );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.HitTest(System.Int32,System.Int32)">
             <summary>
@@ -43522,6 +43630,86 @@
             <returns>모델의 MAX ID</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})"/>
             <seealso cref="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{VIZCore3D.NET.Data.NewNodeItem})"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                int id = vizcore3d.Structure.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem item = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    item.ParentId = parent;
+                    item.ID = ++id;
+                    item.Kind = Data.NodeKind.PART;
+                    item.Name = string.Format("NAME_{0}", item.ID);
+            
+                    items.Add(item);
+                }
+            
+                vizcore3d.Structure.CreateNodes(items);
+            }
+            
+            private void Example2()
+            {
+                int id = vizcore3d.Structure.GetMaxId();
+                int parent = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP)[0].ID;
+            
+                List<VIZCore3D.NET.Data.NewNodeItem> items = new List<VIZCore3D.NET.Data.NewNodeItem>();
+            
+                for (int i = 0; i < 100; i++)
+                {
+                    VIZCore3D.NET.Data.NewNodeItem assy = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                    int assyId = ++id;
+            
+                    assy.ParentId = parent;
+                    assy.ID = assyId;
+                    assy.Kind = Data.NodeKind.ASSEMBLY;
+                    assy.Name = string.Format("NAME_ASSY_{0}", assy.ID);
+            
+                    items.Add(assy);
+            
+                    {
+                        VIZCore3D.NET.Data.NewNodeItem part = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                        int partId = ++id;
+            
+                        part.ParentId = assyId;
+                        part.ID = partId;
+                        part.Kind = Data.NodeKind.PART;
+                        part.Name = string.Format("NAME_PART_{0}", part.ID);
+            
+                        items.Add(part);
+            
+                        {
+                            VIZCore3D.NET.Data.NewNodeItem body = new VIZCore3D.NET.Data.NewNodeItem();
+            
+                            int bodyId = ++id;
+            
+                            body.ParentId = partId;
+                            body.ID = bodyId;
+                            body.Kind = Data.NodeKind.BODY;
+                            body.Name = string.Format("NAME_BODY_{0}", body.ID);
+            
+                            items.Add(body);
+                        }
+                    }
+                }
+            
+                vizcore3d.Structure.CreateNodes(items);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.CreateNodes(System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{System.Int32},System.Collections.Generic.List{VIZCore3D.NET.Data.NodeKind},System.Collections.Generic.List{System.String})">
             <summary>
@@ -45093,11 +45281,49 @@
             개체의 속성을 제거
             </summary>
             <param name="key">속성 키</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.UDAManager.Clear"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<string> keys = vizcore3d.Object3D.UDA.Keys;
+            
+                if (keys.Contains("OWNER") == false) return;
+            
+                vizcore3d.Object3D.UDA.Remove("OWNER");
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.UDAManager.Clear">
             <summary>
             속성을 제거
             </summary>
+            <seealso cref="M:VIZCore3D.NET.Manager.UDAManager.Remove(System.String)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<string> keys = vizcore3d.Object3D.UDA.Keys;
+            
+                if (keys.Count == 0) return;
+            
+                vizcore3d.Object3D.UDA.Clear();
+            
+                vizcore3d.Model.SaveAsVIZ("C:\\Export\\Model.viz");
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.UDAManager.GetValues(System.String)">
             <summary>
@@ -45503,7 +45729,7 @@
                 if (nodes[0].Kind != Data.NodeKind.PART) return;
             
                 int vertexCount = vizcore3d.View.VertexColor.GetColor(nodes[0].Index).Count;
-                List<System.Drawing.Color> vertexColor = new List<Color>();
+                List<System.Drawing.Color> vertexColor = new List<System.Drawing.Color>();
             
                 VIZCore3D.NET.Utility.ColorBrewerPalettesHelper palettes 
                     = new VIZCore3D.NET.Utility.ColorBrewerPalettesHelper();
