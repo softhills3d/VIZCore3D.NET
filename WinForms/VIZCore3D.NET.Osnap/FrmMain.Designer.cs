@@ -45,6 +45,7 @@
             this.ckLine = new System.Windows.Forms.CheckBox();
             this.ckVertex = new System.Windows.Forms.CheckBox();
             this.ckSurface = new System.Windows.Forms.CheckBox();
+            this.ckAddNote = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -132,6 +133,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.ckAddNote);
             this.groupBox1.Controls.Add(this.btnShowOsnap);
             this.groupBox1.Location = new System.Drawing.Point(12, 118);
             this.groupBox1.Name = "groupBox1";
@@ -142,7 +144,7 @@
             // 
             // btnShowOsnap
             // 
-            this.btnShowOsnap.Location = new System.Drawing.Point(117, 23);
+            this.btnShowOsnap.Location = new System.Drawing.Point(22, 24);
             this.btnShowOsnap.Name = "btnShowOsnap";
             this.btnShowOsnap.Size = new System.Drawing.Size(147, 31);
             this.btnShowOsnap.TabIndex = 0;
@@ -213,6 +215,16 @@
             this.ckSurface.Text = "Surface";
             this.ckSurface.UseVisualStyleBackColor = true;
             // 
+            // ckAddNote
+            // 
+            this.ckAddNote.AutoSize = true;
+            this.ckAddNote.Location = new System.Drawing.Point(180, 32);
+            this.ckAddNote.Name = "ckAddNote";
+            this.ckAddNote.Size = new System.Drawing.Size(76, 16);
+            this.ckAddNote.TabIndex = 4;
+            this.ckAddNote.Text = "Add Note";
+            this.ckAddNote.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -228,6 +240,7 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.Osnap.ResumeLayout(false);
             this.Osnap.PerformLayout();
             this.ResumeLayout(false);
@@ -252,6 +265,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.CheckBox ckAddNote;
     }
 }
 

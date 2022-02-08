@@ -484,6 +484,9 @@ namespace VIZCore3D.NET.Osnap
             lvOsnap.Items.Add(lvi);
 
             lvOsnap.EndUpdate();
+
+            if(ckAddNote.Checked == true)
+                vizcore3d.Review.Note.AddNoteSurface(e.Point.ToString(), e.Point);
         }
 
         private void btnShowOsnap_Click(object sender, EventArgs e)
