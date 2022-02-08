@@ -12525,6 +12525,33 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog">
+            <summary>
+            Search Node Built-in Dialog Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Dialogs.SearchNodeDialog">
             <summary>
             검색 다이얼로그
