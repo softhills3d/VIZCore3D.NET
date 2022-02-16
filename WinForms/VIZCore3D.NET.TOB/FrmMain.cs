@@ -19,6 +19,11 @@ namespace VIZCore3D.NET.TOB
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        /// <summary>
+        /// Demo Mode
+        /// </summary>
+        public bool DemoMode { get; set; }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -33,6 +38,9 @@ namespace VIZCore3D.NET.TOB
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
+
+            // Demo Mode
+            DemoMode = System.Environment.MachineName.ToUpper() == "GJKIM-ADELL" ? true : false;
         }
 
         // ================================================
@@ -210,6 +218,27 @@ namespace VIZCore3D.NET.TOB
 
             // 회전 축
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
+
+            // 윤곽
+            vizcore3d.View.SilhouetteEdge = true;
+
+            // 그림자
+            vizcore3d.View.RealtimeShadow = true;
+
+            // 음영
+            vizcore3d.View.ShadingEffect = true;
+
+            // 환경조명
+            vizcore3d.View.EnvironmentLight = true;
+
+            // Anti-Aliasing
+            vizcore3d.View.AntiAliasing = true;
+
+            // 바닥 그림자
+            vizcore3d.View.FloorShadow = true;
+
+            // 면 반사
+            vizcore3d.View.PlaneReflection = false;
             #endregion
 
 
@@ -538,5 +567,30 @@ namespace VIZCore3D.NET.TOB
             }
         }
         #endregion
+
+
+        // ================================================
+        // Example - Event
+        // ================================================
+        private void btnLoadGoliath_Click(object sender, EventArgs e)
+        {
+            if (DemoMode == true)
+                vizcore3d.Model.Add(new string[] { "E:\\MODELS\\SHOWCASE\\TOB\\GOLIATH_CRANE.V6.viz" });
+            else
+                vizcore3d.Model.AddFileDialog();
+        }
+
+        private void btnLoadBlock_Click(object sender, EventArgs e)
+        {
+            if (DemoMode == true)
+                vizcore3d.Model.Add(new string[] { "E:\\MODELS\\SHOWCASE\\TOB\\BLOCK3.viz" });
+            else
+                vizcore3d.Model.AddFileDialog();
+        }
+
+        private void btnAlignCenterBlock_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
