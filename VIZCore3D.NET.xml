@@ -32004,6 +32004,32 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.FrameManager.ExportXml(System.String)">
+            <summary>
+            Export Xml
+            </summary>
+            <param name="path">Xml File Path</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.FrameManager.ExportJson(System.String)">
+            <summary>
+            Export JSON (JavaScript Object Notation)
+            </summary>
+            <param name="path">JSON File Path</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.FrameManager.ExportXmlDialog">
+            <summary>
+            Export Xml Dialog
+            </summary>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.FrameManager.ExportJsonDialog">
+            <summary>
+            Export JSON (JavaScript Object Notation) Dialog
+            </summary>
+            <returns>Result</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.FrameManager.OpenFileDialog">
             <summary>
             Show Open File Dialog
@@ -34223,9 +34249,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.ExportJson(System.String)">
             <summary>
-            Json 형식으로 내보내기
+            JSON (JavaScript Object Notation) 형식으로 내보내기
             </summary>
-            <param name="path">Json 파일 경로</param>
+            <param name="path">JSON 파일 경로</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddProjectedArea(VIZCore3D.NET.Data.Planes)">
@@ -37772,9 +37798,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.ExportJson(System.String)">
             <summary>
-            Json 형식으로 내보내기
+            JSON (JavaScript Object Notation) 형식으로 내보내기
             </summary>
-            <param name="path">Json 파일 경로</param>
+            <param name="path">JSON 파일 경로</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.UpdateScreenDisplaySize">
@@ -45635,9 +45661,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.UserViewManager.ExportJson(System.String)">
             <summary>
-            Json 형식으로 내보내기
+            JSON (JavaScript Object Notation) 형식으로 내보내기
             </summary>
-            <param name="path">Json 파일 경로</param>
+            <param name="path">JSON 파일 경로</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VertexColorManager">
