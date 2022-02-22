@@ -504,7 +504,7 @@ namespace VIZCore3D.NET.ClashTest.V3
             }
             else
             {
-                txtPath.Text = "E:\\MODELS\\HMD.269106\\269106";
+                txtPath.Text = "E:\\MODELS\\SHOWCASE\\ERECTION.CLASH";
             }
         }
 

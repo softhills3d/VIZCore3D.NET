@@ -188,9 +188,9 @@
             // 
             this.btnOutside.Location = new System.Drawing.Point(87, 28);
             this.btnOutside.Name = "btnOutside";
-            this.btnOutside.Size = new System.Drawing.Size(75, 23);
+            this.btnOutside.Size = new System.Drawing.Size(90, 23);
             this.btnOutside.TabIndex = 2;
-            this.btnOutside.Text = "Outside";
+            this.btnOutside.Text = "Gen. Outside";
             this.btnOutside.UseVisualStyleBackColor = true;
             this.btnOutside.Click += new System.EventHandler(this.btnOutside_Click);
             // 

@@ -779,10 +779,18 @@ namespace VIZCore3D.NET.TOB
                     VIZCore3D.NET.Data.Vertex3D finish = propRoller1.CenterPoint;
                     VIZCore3D.NET.Data.Vertex3D offset = start.PointToPoint(finish, 200);
 
+                    System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                    sw.Start();
+
                     VIZCore3D.NET.Data.NearestObjectByAxisPoint object1 
                         = vizcore3d.GeometryUtility.GetNearestObject(offset, finish);
 
-                    if(object1.Index > 0 && ROLLER.ContainsKey(object1.Index) == false)
+                    sw.Stop();
+
+                    System.Diagnostics.Debug.WriteLine(string.Format("TOB #1 : {0} ms", sw.ElapsedMilliseconds.ToString()));
+                    System.Diagnostics.Trace.WriteLine(string.Format("TOB #1 : {0} ms", sw.ElapsedMilliseconds.ToString()));
+
+                    if (object1.Index > 0 && ROLLER.ContainsKey(object1.Index) == false)
                     {
                         if (CollisionObjects.ContainsKey(object1.Index) == false)
                             CollisionObjects.Add(object1.Index, object1.Index);
@@ -795,8 +803,16 @@ namespace VIZCore3D.NET.TOB
                     VIZCore3D.NET.Data.Vertex3D finish = propRoller2.CenterPoint;
                     VIZCore3D.NET.Data.Vertex3D offset = start.PointToPoint(finish, 200);
 
+                    System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                    sw.Start();
+
                     VIZCore3D.NET.Data.NearestObjectByAxisPoint object2
                         = vizcore3d.GeometryUtility.GetNearestObject(offset, finish);
+
+                    sw.Stop();
+
+                    System.Diagnostics.Debug.WriteLine(string.Format("TOB #2 : {0} ms", sw.ElapsedMilliseconds.ToString()));
+                    System.Diagnostics.Trace.WriteLine(string.Format("TOB #2 : {0} ms", sw.ElapsedMilliseconds.ToString()));
 
                     if (object2.Index > 0 && ROLLER.ContainsKey(object2.Index) == false)
                     {

@@ -489,7 +489,7 @@ namespace VIZCore3D.NET.Erection.V1
             }
             else
             {
-                txtPath.Text = "E:\\MODELS\\HMD.269106\\269106";
+                txtPath.Text = "E:\\MODELS\\SHOWCASE\\ERECTION.CLASH";
             }
         }
 
