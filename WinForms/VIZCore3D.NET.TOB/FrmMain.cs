@@ -24,6 +24,23 @@ namespace VIZCore3D.NET.TOB
         /// </summary>
         public bool DemoMode { get; set; }
 
+        public List<VIZCore3D.NET.Data.Node> BLOCK_NODES { get; set; }
+        public List<VIZCore3D.NET.Data.Node> LOADER_NODES { get; set; }
+
+        public Dictionary<int, VIZCore3D.NET.Data.Node> LUG1 { get; set; }
+        public Dictionary<int, VIZCore3D.NET.Data.Node> LUG2 { get; set; }
+
+        public Dictionary<int, int> ROLLER { get; set; }
+        public Dictionary<int, VIZCore3D.NET.Data.Node> ROLLER1 { get; set; }
+        public Dictionary<int, VIZCore3D.NET.Data.Node> ROLLER2 { get; set; }
+        public Dictionary<int, VIZCore3D.NET.Data.Node> ROLLER3 { get; set; }
+        public Dictionary<int, VIZCore3D.NET.Data.Node> ROLLER4 { get; set; }
+        
+
+        public Dictionary<int, int> CollisionObjects { get; set; }
+
+        public bool AnimationOnly { get; set; }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -575,7 +592,7 @@ namespace VIZCore3D.NET.TOB
         private void btnLoadGoliath_Click(object sender, EventArgs e)
         {
             if (DemoMode == true)
-                vizcore3d.Model.Add(new string[] { "E:\\MODELS\\SHOWCASE\\TOB\\GOLIATH_CRANE.V6.viz" });
+                vizcore3d.Model.Add(new string[] { "E:\\MODELS\\SHOWCASE\\TOB\\GOLIATH_CRANE.V7.viz" });
             else
                 vizcore3d.Model.AddFileDialog();
         }
@@ -588,9 +605,236 @@ namespace VIZCore3D.NET.TOB
                 vizcore3d.Model.AddFileDialog();
         }
 
+        private List<VIZCore3D.NET.Data.Node> GetNode(string name)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes =
+                vizcore3d.Object3D.Find.QuickSearch(
+                    new List<string>() { name } /* Keyword */
+                    , false                     /* Join Condition */
+                    , true                      /* Assembly Only */
+                    , true                      /* Visible Only */
+                    , false                     /* Selected Node Only */
+                    , true                      /* Full Match */
+                    , false                     /* Include Node Path */
+                    );
+
+            return nodes;
+        }
+
+        private void AddRollerCache(int index)
+        {
+            if (ROLLER.ContainsKey(index) == false)
+                ROLLER.Add(index, index);
+        }
+
+        private void FindItems()
+        {
+            List<VIZCore3D.NET.Data.Node> lug1 = GetNode("LUG01");
+            List<VIZCore3D.NET.Data.Node> lug2 = GetNode("LUG02");
+
+            List<VIZCore3D.NET.Data.Node> lug1Children = lug1[0].GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+            LUG1 = new Dictionary<int, Data.Node>();
+            for (int i = 0; i < lug1Children.Count; i++)
+            {
+                if (LUG1.ContainsKey(i + 1) == false)
+                    LUG1.Add(i + 1, lug1Children[i]);
+            }
+
+            List<VIZCore3D.NET.Data.Node> lug2Children = lug2[0].GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+            LUG2 = new Dictionary<int, Data.Node>();
+            for (int i = 0; i < lug2Children.Count; i++)
+            {
+                if (LUG2.ContainsKey(i + 1) == false)
+                    LUG2.Add(i + 1, lug2Children[i]);
+            }
+
+            ROLLER = new Dictionary<int, int>();
+            ROLLER1 = new Dictionary<int, Data.Node>();
+            ROLLER2 = new Dictionary<int, Data.Node>();
+            ROLLER3 = new Dictionary<int, Data.Node>();
+            ROLLER4 = new Dictionary<int, Data.Node>();
+            Dictionary<string, VIZCore3D.NET.Data.Node> names = vizcore3d.Object3D.GetNodeNameMap(false);
+
+            for (int i = 0; i < 7; i++)
+            {
+                string nameStr1 = string.Format("LOADER-01-01-{0:D2}", i + 1);
+                if (names.ContainsKey(nameStr1) == true)
+                {
+                    ROLLER1.Add(i + 1, names[nameStr1]);
+                    AddRollerCache(names[nameStr1].Index);
+                }
+
+                string nameStr2 = string.Format("LOADER-01-02-{0:D2}", i + 1);
+                if (names.ContainsKey(nameStr2) == true)
+                {
+                    ROLLER2.Add(i + 1, names[nameStr2]);
+                    AddRollerCache(names[nameStr2].Index);
+                }
+
+                string nameStr3 = string.Format("LOADER-02-01-{0:D2}", i + 1);
+                if (names.ContainsKey(nameStr3) == true)
+                {
+                    ROLLER3.Add(i + 1, names[nameStr3]);
+                    AddRollerCache(names[nameStr3].Index);
+                }
+
+                string nameStr4 = string.Format("LOADER-02-02-{0:D2}", i + 1);
+                if (names.ContainsKey(nameStr4) == true)
+                {
+                    ROLLER4.Add(i + 1, names[nameStr4]);
+                    AddRollerCache(names[nameStr4].Index);
+                }
+            }
+        }
+
         private void btnAlignCenterBlock_Click(object sender, EventArgs e)
         {
+            LOADER_NODES = GetNode("LOADER");
+            BLOCK_NODES = GetNode("BLOCK3");
 
+            FindItems();
+
+            // 블록 작업베이스 회전
+            vizcore3d.Object3D.Transform.Rotate(BLOCK_NODES, 90, 0, 0, true, false);
+
+            // 가운데 정렬
+            VIZCore3D.NET.Data.BoundBox3D loader_bbox
+                = vizcore3d.Object3D.GeometryProperty.FromNode(LOADER_NODES).GetBoundBox();
+
+            VIZCore3D.NET.Data.BoundBox3D block_bbox
+                = vizcore3d.Object3D.GeometryProperty.FromNode(BLOCK_NODES).GetBoundBox();
+
+            vizcore3d.Object3D.Transform.MoveTo(
+                BLOCK_NODES
+                , loader_bbox.CenterX
+                , loader_bbox.CenterY
+                , block_bbox.CenterZ
+                );
+        }
+
+        private void backgroundWorkerTurnOver_DoWork(object sender, DoWorkEventArgs e)
+        {
+            ThreadParameter threadParam = (ThreadParameter)e.Argument;
+            int count = threadParam.Angle;
+            int waitTime = threadParam.AnimationOnly == true ? 100 : 10;
+
+            for (int i = 0; i < count; i++)
+            {
+                backgroundWorkerTurnOver.ReportProgress(i);
+
+                System.Threading.Thread.Sleep(waitTime);
+            }
+        }
+
+        private void backgroundWorkerTurnOver_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            int step = e.ProgressPercentage;
+
+            vizcore3d.BeginUpdate();
+            vizcore3d.Object3D.Transform.Rotate(BLOCK_NODES, -1, 0, 0, false, false);
+
+            // LUG1 - ROLLER1
+            // LUG2 - ROLLER4
+            vizcore3d.ShapeDrawing.Clear();
+            vizcore3d.ShapeDrawing.DepthTest = true;
+
+            for (int i = 0; i < 7; i++)
+            {
+                VIZCore3D.NET.Data.Node lug1 = LUG1[i + 1];
+                VIZCore3D.NET.Data.Object3DProperty propLug1 = vizcore3d.Object3D.GeometryProperty.FromNode(lug1);
+
+                VIZCore3D.NET.Data.Node roller1 = ROLLER1[i + 1];
+                VIZCore3D.NET.Data.Object3DProperty propRoller1 = vizcore3d.Object3D.GeometryProperty.FromNode(roller1);
+
+
+                VIZCore3D.NET.Data.Node lug2 = LUG2[i + 1];
+                VIZCore3D.NET.Data.Object3DProperty propLug2 = vizcore3d.Object3D.GeometryProperty.FromNode(lug2);
+
+                VIZCore3D.NET.Data.Node roller2 = ROLLER4[i + 1];
+                VIZCore3D.NET.Data.Object3DProperty propRoller2 = vizcore3d.Object3D.GeometryProperty.FromNode(roller2);
+
+                {
+                    List<VIZCore3D.NET.Data.Vertex3DItemCollection> item1 = new List<Data.Vertex3DItemCollection>();
+                    VIZCore3D.NET.Data.Vertex3DItemCollection coll1 = new Data.Vertex3DItemCollection();
+                    coll1.Add(propLug1.CenterPoint);
+                    coll1.Add(propRoller1.CenterPoint);
+                    item1.Add(coll1);
+                    vizcore3d.ShapeDrawing.AddLine(item1, i, Color.Black, 1, true);
+                    //vizcore3d.ShapeDrawing.AddCylinder(item1, i, Color.Black, 10, true);
+                }
+
+                {
+                    List<VIZCore3D.NET.Data.Vertex3DItemCollection> item2 = new List<Data.Vertex3DItemCollection>();
+                    VIZCore3D.NET.Data.Vertex3DItemCollection coll2 = new Data.Vertex3DItemCollection();
+                    coll2.Add(propLug2.CenterPoint);
+                    coll2.Add(propRoller2.CenterPoint);
+                    item2.Add(coll2);
+                    vizcore3d.ShapeDrawing.AddLine(item2, i + 7, Color.Black, 1, true);
+                    //vizcore3d.ShapeDrawing.AddCylinder(item2, i + 7, Color.Black, 10, true);
+                }
+
+                if(AnimationOnly == false)
+                {
+                    VIZCore3D.NET.Data.Vertex3D start = propLug1.CenterPoint;
+                    VIZCore3D.NET.Data.Vertex3D finish = propRoller1.CenterPoint;
+                    VIZCore3D.NET.Data.Vertex3D offset = start.PointToPoint(finish, 200);
+
+                    VIZCore3D.NET.Data.NearestObjectByAxisPoint object1 
+                        = vizcore3d.GeometryUtility.GetNearestObject(offset, finish);
+
+                    if(object1.Index > 0 && ROLLER.ContainsKey(object1.Index) == false)
+                    {
+                        if (CollisionObjects.ContainsKey(object1.Index) == false)
+                            CollisionObjects.Add(object1.Index, object1.Index);
+                    }
+                }
+
+                if (AnimationOnly == false)
+                {
+                    VIZCore3D.NET.Data.Vertex3D start = propLug2.CenterPoint;
+                    VIZCore3D.NET.Data.Vertex3D finish = propRoller2.CenterPoint;
+                    VIZCore3D.NET.Data.Vertex3D offset = start.PointToPoint(finish, 200);
+
+                    VIZCore3D.NET.Data.NearestObjectByAxisPoint object2
+                        = vizcore3d.GeometryUtility.GetNearestObject(offset, finish);
+
+                    if (object2.Index > 0 && ROLLER.ContainsKey(object2.Index) == false)
+                    {
+                        if (CollisionObjects.ContainsKey(object2.Index) == false)
+                            CollisionObjects.Add(object2.Index, object2.Index);
+                    }
+                }
+            }
+
+            vizcore3d.EndUpdate();
+
+            Application.DoEvents();
+        }
+
+        private void backgroundWorkerTurnOver_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (AnimationOnly == false)
+            {
+                if (CollisionObjects.Keys.Count > 0)
+                    vizcore3d.Object3D.Color.SetColor(CollisionObjects.Keys.ToList(), Color.Red);
+                else
+                    MessageBox.Show("Collision Objects is nothing.");
+            }
+        }
+
+        private void btnTurnOverRun_Click(object sender, EventArgs e)
+        {
+            int angle = Convert.ToInt32(txtTurnOverAngle.Text);
+
+            ThreadParameter threadParam = new ThreadParameter();
+            threadParam.Angle = angle;
+            threadParam.AnimationOnly = AnimationOnly;
+
+            CollisionObjects = new Dictionary<int, int>();
+
+            AnimationOnly = ckAnimationOnly.Checked;
+
+            backgroundWorkerTurnOver.RunWorkerAsync(threadParam);
         }
     }
 }
