@@ -474,7 +474,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void Model_OnModelOpenedEvent(object sender, EventArgs e)
         {
-            vizcore3d.View.Navigation = Data.NavigationModes.ROTATE;
+            vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.ROTATE;
 
             if (tabControl1.SelectedIndex == 0)
             {
@@ -544,13 +544,13 @@ namespace VIZCore3D.NET.AssembleHull
 
                 EnableRenderingEffect(true);
 
-                vizcore3d.View.Navigation = Data.NavigationModes.PAN;
+                vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.PAN;
 
                 vizcore3d.Review.DrawingMarkup.ShowAllItem(true);
 
                 vizcore3d.View.ResetView();
 
-                vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+                vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection.DECK);
 
                 vizcore3d.EndUpdate();
             }
@@ -558,7 +558,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadASP_Click(object sender, EventArgs e)
         {
-            string path = @"D:\SAMPLE\E42P.vizxml";
+            string path = @"E:\MODELS\SHOWCASE\AssembleHull\E42P.vizxml";
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
@@ -568,7 +568,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnDeckBase_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection.DECK);
         }
 
         private void btnDisassembly_Click(object sender, EventArgs e)
@@ -628,7 +628,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadASPGhost_Click(object sender, EventArgs e)
         {
-            string path = @"D:\SAMPLE\E42P-COLOR.vizxml";
+            string path = @"E:\MODELS\SHOWCASE\AssembleHull\E42P-COLOR.vizxml";
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
@@ -638,7 +638,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnDeckBaseGhost_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection.DECK);
         }
 
         private void btnDisassemblyGhost_Click(object sender, EventArgs e)
@@ -680,7 +680,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadAnimation_Click(object sender, EventArgs e)
         {
-            string path = @"D:\SAMPLE\ANIMATION_2.viz";
+            string path = @"E:\MODELS\SHOWCASE\AssembleHull\ANIMATION_2.viz";
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
@@ -691,7 +691,7 @@ namespace VIZCore3D.NET.AssembleHull
         
         private void btnDeck_Click(object sender, EventArgs e)
         {
-            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.DECK);
+            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection.DECK);
         }
 
         private void btnAddCustomMenu_Click(object sender, EventArgs e)
@@ -704,14 +704,14 @@ namespace VIZCore3D.NET.AssembleHull
 
             menu.Items.Add(miniView);
 
-            vizcore3d.View.SetContextMenu(Data.ViewContextMenuKind.NODE_SINGLE, menu);
+            vizcore3d.View.SetContextMenu(VIZCore3D.NET.Data.ViewContextMenuKind.NODE_SINGLE, menu);
 
             vizcore3d.View.MiniView.SetMiniViewContainer((Control)panelView);
         }
 
         private void MiniView_Click(object sender, EventArgs e)
         {
-            List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.SELECTED_TOP);
+            List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             if (node.Count != 1) return;            
 
             vizcore3d.View.MiniView.SetObject3D(node);
