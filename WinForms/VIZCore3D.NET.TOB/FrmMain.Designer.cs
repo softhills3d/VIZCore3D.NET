@@ -30,20 +30,27 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnHighlightColor = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ckPerformance = new System.Windows.Forms.CheckBox();
+            this.ckAnimationOnly = new System.Windows.Forms.CheckBox();
             this.txtTurnOverAngle = new System.Windows.Forms.TextBox();
             this.cbTurnOverAxis = new System.Windows.Forms.ComboBox();
             this.btnTurnOverRun = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAlignCenterBlock = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnLoadBlock = new System.Windows.Forms.Button();
+            this.btnLoadBlock2 = new System.Windows.Forms.Button();
+            this.btnLoadBlock1 = new System.Windows.Forms.Button();
             this.btnLoadGoliath = new System.Windows.Forms.Button();
             this.backgroundWorkerTurnOver = new System.ComponentModel.BackgroundWorker();
-            this.ckAnimationOnly = new System.Windows.Forms.CheckBox();
+            this.ckStopTurnOver = new System.Windows.Forms.CheckBox();
+            this.ckDisplayAngle = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -58,6 +65,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
@@ -65,20 +73,67 @@
             this.splitContainer1.SplitterDistance = 266;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnHighlightColor);
+            this.groupBox4.Location = new System.Drawing.Point(12, 140);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(244, 58);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Highlight";
+            // 
+            // btnHighlightColor
+            // 
+            this.btnHighlightColor.Location = new System.Drawing.Point(22, 20);
+            this.btnHighlightColor.Name = "btnHighlightColor";
+            this.btnHighlightColor.Size = new System.Drawing.Size(75, 23);
+            this.btnHighlightColor.TabIndex = 2;
+            this.btnHighlightColor.Text = "Color";
+            this.btnHighlightColor.UseVisualStyleBackColor = true;
+            this.btnHighlightColor.Click += new System.EventHandler(this.btnHighlightColor_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.ckDisplayAngle);
+            this.groupBox3.Controls.Add(this.ckStopTurnOver);
+            this.groupBox3.Controls.Add(this.ckPerformance);
             this.groupBox3.Controls.Add(this.ckAnimationOnly);
             this.groupBox3.Controls.Add(this.txtTurnOverAngle);
             this.groupBox3.Controls.Add(this.cbTurnOverAxis);
             this.groupBox3.Controls.Add(this.btnTurnOverRun);
-            this.groupBox3.Location = new System.Drawing.Point(12, 140);
+            this.groupBox3.Location = new System.Drawing.Point(12, 204);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(244, 122);
+            this.groupBox3.Size = new System.Drawing.Size(244, 177);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Turn Over";
+            // 
+            // ckPerformance
+            // 
+            this.ckPerformance.AutoSize = true;
+            this.ckPerformance.Location = new System.Drawing.Point(22, 146);
+            this.ckPerformance.Name = "ckPerformance";
+            this.ckPerformance.Size = new System.Drawing.Size(121, 16);
+            this.ckPerformance.TabIndex = 6;
+            this.ckPerformance.Text = "Performance Log";
+            this.ckPerformance.UseVisualStyleBackColor = true;
+            // 
+            // ckAnimationOnly
+            // 
+            this.ckAnimationOnly.AutoSize = true;
+            this.ckAnimationOnly.Checked = true;
+            this.ckAnimationOnly.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckAnimationOnly.Location = new System.Drawing.Point(22, 70);
+            this.ckAnimationOnly.Name = "ckAnimationOnly";
+            this.ckAnimationOnly.Size = new System.Drawing.Size(110, 16);
+            this.ckAnimationOnly.TabIndex = 5;
+            this.ckAnimationOnly.Text = "Animation Only";
+            this.ckAnimationOnly.UseVisualStyleBackColor = true;
             // 
             // txtTurnOverAngle
             // 
@@ -137,7 +192,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnLoadBlock);
+            this.groupBox1.Controls.Add(this.btnLoadBlock2);
+            this.groupBox1.Controls.Add(this.btnLoadBlock1);
             this.groupBox1.Controls.Add(this.btnLoadGoliath);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -146,15 +202,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Models";
             // 
-            // btnLoadBlock
+            // btnLoadBlock2
             // 
-            this.btnLoadBlock.Location = new System.Drawing.Point(103, 20);
-            this.btnLoadBlock.Name = "btnLoadBlock";
-            this.btnLoadBlock.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadBlock.TabIndex = 1;
-            this.btnLoadBlock.Text = "BLOCK";
-            this.btnLoadBlock.UseVisualStyleBackColor = true;
-            this.btnLoadBlock.Click += new System.EventHandler(this.btnLoadBlock_Click);
+            this.btnLoadBlock2.Location = new System.Drawing.Point(163, 20);
+            this.btnLoadBlock2.Name = "btnLoadBlock2";
+            this.btnLoadBlock2.Size = new System.Drawing.Size(54, 23);
+            this.btnLoadBlock2.TabIndex = 2;
+            this.btnLoadBlock2.Text = "BLK #2";
+            this.btnLoadBlock2.UseVisualStyleBackColor = true;
+            this.btnLoadBlock2.Click += new System.EventHandler(this.btnLoadBlock2_Click);
+            // 
+            // btnLoadBlock1
+            // 
+            this.btnLoadBlock1.Location = new System.Drawing.Point(103, 20);
+            this.btnLoadBlock1.Name = "btnLoadBlock1";
+            this.btnLoadBlock1.Size = new System.Drawing.Size(54, 23);
+            this.btnLoadBlock1.TabIndex = 1;
+            this.btnLoadBlock1.Text = "BLK #1";
+            this.btnLoadBlock1.UseVisualStyleBackColor = true;
+            this.btnLoadBlock1.Click += new System.EventHandler(this.btnLoadBlock1_Click);
             // 
             // btnLoadGoliath
             // 
@@ -169,19 +235,30 @@
             // backgroundWorkerTurnOver
             // 
             this.backgroundWorkerTurnOver.WorkerReportsProgress = true;
+            this.backgroundWorkerTurnOver.WorkerSupportsCancellation = true;
             this.backgroundWorkerTurnOver.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTurnOver_DoWork);
             this.backgroundWorkerTurnOver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerTurnOver_ProgressChanged);
             this.backgroundWorkerTurnOver.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerTurnOver_RunWorkerCompleted);
             // 
-            // ckAnimationOnly
+            // ckStopTurnOver
             // 
-            this.ckAnimationOnly.AutoSize = true;
-            this.ckAnimationOnly.Location = new System.Drawing.Point(22, 70);
-            this.ckAnimationOnly.Name = "ckAnimationOnly";
-            this.ckAnimationOnly.Size = new System.Drawing.Size(110, 16);
-            this.ckAnimationOnly.TabIndex = 5;
-            this.ckAnimationOnly.Text = "Animation Only";
-            this.ckAnimationOnly.UseVisualStyleBackColor = true;
+            this.ckStopTurnOver.AutoSize = true;
+            this.ckStopTurnOver.Location = new System.Drawing.Point(22, 95);
+            this.ckStopTurnOver.Name = "ckStopTurnOver";
+            this.ckStopTurnOver.Size = new System.Drawing.Size(116, 16);
+            this.ckStopTurnOver.TabIndex = 7;
+            this.ckStopTurnOver.Text = "Stop. If Collision";
+            this.ckStopTurnOver.UseVisualStyleBackColor = true;
+            // 
+            // ckDisplayAngle
+            // 
+            this.ckDisplayAngle.AutoSize = true;
+            this.ckDisplayAngle.Location = new System.Drawing.Point(22, 121);
+            this.ckDisplayAngle.Name = "ckDisplayAngle";
+            this.ckDisplayAngle.Size = new System.Drawing.Size(102, 16);
+            this.ckDisplayAngle.TabIndex = 8;
+            this.ckDisplayAngle.Text = "Display Angle";
+            this.ckDisplayAngle.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -196,6 +273,7 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -208,7 +286,7 @@
 
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnLoadBlock;
+        private System.Windows.Forms.Button btnLoadBlock1;
         private System.Windows.Forms.Button btnLoadGoliath;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnAlignCenterBlock;
@@ -218,6 +296,12 @@
         private System.Windows.Forms.Button btnTurnOverRun;
         private System.ComponentModel.BackgroundWorker backgroundWorkerTurnOver;
         private System.Windows.Forms.CheckBox ckAnimationOnly;
+        private System.Windows.Forms.Button btnLoadBlock2;
+        private System.Windows.Forms.CheckBox ckPerformance;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnHighlightColor;
+        private System.Windows.Forms.CheckBox ckStopTurnOver;
+        private System.Windows.Forms.CheckBox ckDisplayAngle;
     }
 }
 

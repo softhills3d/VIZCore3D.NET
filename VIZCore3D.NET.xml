@@ -53411,6 +53411,11 @@
             </code>
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.Update">
+            <summary>
+            Update
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.ShowPrintDialog">
             <summary>
             Show Print Dialog
