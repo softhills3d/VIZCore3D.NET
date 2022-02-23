@@ -33,6 +33,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnHighlightColor = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ckDisplayAngle = new System.Windows.Forms.CheckBox();
+            this.ckStopTurnOver = new System.Windows.Forms.CheckBox();
             this.ckPerformance = new System.Windows.Forms.CheckBox();
             this.ckAnimationOnly = new System.Windows.Forms.CheckBox();
             this.txtTurnOverAngle = new System.Windows.Forms.TextBox();
@@ -45,8 +47,8 @@
             this.btnLoadBlock1 = new System.Windows.Forms.Button();
             this.btnLoadGoliath = new System.Windows.Forms.Button();
             this.backgroundWorkerTurnOver = new System.ComponentModel.BackgroundWorker();
-            this.ckStopTurnOver = new System.Windows.Forms.CheckBox();
-            this.ckDisplayAngle = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnReportDialog = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -54,6 +56,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -65,6 +68,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -112,6 +116,26 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Turn Over";
+            // 
+            // ckDisplayAngle
+            // 
+            this.ckDisplayAngle.AutoSize = true;
+            this.ckDisplayAngle.Location = new System.Drawing.Point(22, 121);
+            this.ckDisplayAngle.Name = "ckDisplayAngle";
+            this.ckDisplayAngle.Size = new System.Drawing.Size(102, 16);
+            this.ckDisplayAngle.TabIndex = 8;
+            this.ckDisplayAngle.Text = "Display Angle";
+            this.ckDisplayAngle.UseVisualStyleBackColor = true;
+            // 
+            // ckStopTurnOver
+            // 
+            this.ckStopTurnOver.AutoSize = true;
+            this.ckStopTurnOver.Location = new System.Drawing.Point(22, 95);
+            this.ckStopTurnOver.Name = "ckStopTurnOver";
+            this.ckStopTurnOver.Size = new System.Drawing.Size(116, 16);
+            this.ckStopTurnOver.TabIndex = 7;
+            this.ckStopTurnOver.Text = "Stop. If Collision";
+            this.ckStopTurnOver.UseVisualStyleBackColor = true;
             // 
             // ckPerformance
             // 
@@ -240,25 +264,27 @@
             this.backgroundWorkerTurnOver.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerTurnOver_ProgressChanged);
             this.backgroundWorkerTurnOver.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerTurnOver_RunWorkerCompleted);
             // 
-            // ckStopTurnOver
+            // groupBox5
             // 
-            this.ckStopTurnOver.AutoSize = true;
-            this.ckStopTurnOver.Location = new System.Drawing.Point(22, 95);
-            this.ckStopTurnOver.Name = "ckStopTurnOver";
-            this.ckStopTurnOver.Size = new System.Drawing.Size(116, 16);
-            this.ckStopTurnOver.TabIndex = 7;
-            this.ckStopTurnOver.Text = "Stop. If Collision";
-            this.ckStopTurnOver.UseVisualStyleBackColor = true;
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnReportDialog);
+            this.groupBox5.Location = new System.Drawing.Point(12, 387);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(244, 58);
+            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Report";
             // 
-            // ckDisplayAngle
+            // btnReportDialog
             // 
-            this.ckDisplayAngle.AutoSize = true;
-            this.ckDisplayAngle.Location = new System.Drawing.Point(22, 121);
-            this.ckDisplayAngle.Name = "ckDisplayAngle";
-            this.ckDisplayAngle.Size = new System.Drawing.Size(102, 16);
-            this.ckDisplayAngle.TabIndex = 8;
-            this.ckDisplayAngle.Text = "Display Angle";
-            this.ckDisplayAngle.UseVisualStyleBackColor = true;
+            this.btnReportDialog.Location = new System.Drawing.Point(22, 20);
+            this.btnReportDialog.Name = "btnReportDialog";
+            this.btnReportDialog.Size = new System.Drawing.Size(75, 23);
+            this.btnReportDialog.TabIndex = 2;
+            this.btnReportDialog.Text = "Dialog";
+            this.btnReportDialog.UseVisualStyleBackColor = true;
+            this.btnReportDialog.Click += new System.EventHandler(this.btnReportDialog_Click);
             // 
             // FrmMain
             // 
@@ -278,6 +304,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -302,6 +329,8 @@
         private System.Windows.Forms.Button btnHighlightColor;
         private System.Windows.Forms.CheckBox ckStopTurnOver;
         private System.Windows.Forms.CheckBox ckDisplayAngle;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnReportDialog;
     }
 }
 

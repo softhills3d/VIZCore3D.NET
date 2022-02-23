@@ -37,7 +37,7 @@ namespace VIZCore3D.NET.TOB
         public Dictionary<int, VIZCore3D.NET.Data.Node> ROLLER4 { get; set; }
         
 
-        public Dictionary<int, int> CollisionObjects { get; set; }
+        public Dictionary<int, CollisionItem> CollisionObjects { get; set; }
 
         public bool AnimationOnly { get; set; }
         public bool EnablePerformanceLog { get; set; }
@@ -419,11 +419,12 @@ namespace VIZCore3D.NET.TOB
             #region 설정 - 측정 스타일
             VIZCore3D.NET.Data.MeasureStyle style = vizcore3d.Review.Measure.GetStyle();
             style.LineColor = Color.Yellow;
-            style.ArrowColor = Color.Orange;
+            style.ArrowColor = Color.Pink;
             style.BackgroundTransparent = true;
             style.FontColor = Color.Red;
             style.Prefix = false;
-            style.AlignDistanceTextMargine = 20;
+            style.AlignDistanceTextMargine = 100;
+            style.AlignDistanceTextPosition = 1;
             vizcore3d.Review.Measure.SetStyle(style);
             #endregion
 
@@ -844,13 +845,16 @@ namespace VIZCore3D.NET.TOB
                     //vizcore3d.ShapeDrawing.AddCylinder(item2, i + 7, Color.Black, 10, true);
                 }
 
-                bool find1 = AddCollisionData(propLug1.CenterPoint, propRoller1.CenterPoint, "TOB #1");
-                bool find2 = AddCollisionData(propLug2.CenterPoint, propRoller2.CenterPoint, "TOB #2");
+                CollisionItem collision1 = new CollisionItem();
+                CollisionItem collision2 = new CollisionItem();
+
+                bool find1 = AddCollisionData(step, lug1.NodeName, roller1.NodeName, propLug1.CenterPoint, propRoller1.CenterPoint, "TOB #1", out collision1);
+                bool find2 = AddCollisionData(step, lug2.NodeName, roller2.NodeName, propLug2.CenterPoint, propRoller2.CenterPoint, "TOB #2", out collision2);
 
                 if (find1 == true || find2 == true) find = true;
 
-                AddAngle(lug1, propLug1.CenterPoint, propRoller1.CenterPoint);
-                AddAngle(lug2, propLug2.CenterPoint, propRoller2.CenterPoint);
+                AddAngle(lug1, propLug1.CenterPoint, propRoller1.CenterPoint, find1 == true ? collision1 : null);
+                AddAngle(lug2, propLug2.CenterPoint, propRoller2.CenterPoint, find2 == true ? collision2 : null);
             }
 
             vizcore3d.EndUpdate();
@@ -860,8 +864,10 @@ namespace VIZCore3D.NET.TOB
             Application.DoEvents();
         }
 
-        private bool AddCollisionData(VIZCore3D.NET.Data.Vertex3D lug, VIZCore3D.NET.Data.Vertex3D roller, string tag)
+        private bool AddCollisionData(int step, string lugName, string rollerName, VIZCore3D.NET.Data.Vertex3D lug, VIZCore3D.NET.Data.Vertex3D roller, string tag, out CollisionItem collisionItem)
         {
+            collisionItem = new CollisionItem();
+
             if (AnimationOnly == true) return false;
 
             VIZCore3D.NET.Data.Vertex3D start = lug;
@@ -893,10 +899,12 @@ namespace VIZCore3D.NET.TOB
                         string nodePath = vizcore3d.Object3D.GetNodePath(item.Index);
                         if (nodePath.Contains("BLK") == true)
                         {
-                            CollisionObjects.Add(item.Index, item.Index);
+                            collisionItem.Set(item, lugName, rollerName, nodePath);
+
+                            CollisionObjects.Add(item.Index, collisionItem);
                             find = true;
 
-                            System.Diagnostics.Trace.WriteLine("[TOB] Collision Block");
+                            //System.Diagnostics.Trace.WriteLine("[TOB] Collision Block");
                         }
                     }
                 }
@@ -905,23 +913,53 @@ namespace VIZCore3D.NET.TOB
             return find;
         }
 
-        private void AddAngle(VIZCore3D.NET.Data.Node lug, VIZCore3D.NET.Data.Vertex3D center, VIZCore3D.NET.Data.Vertex3D roller)
+        private List<VIZCore3D.NET.Data.Vertex3D> GetCircleCenterPoint(VIZCore3D.NET.Data.Vertex3D center, List<VIZCore3D.NET.Data.CircleData> circles)
+        {
+            List<VIZCore3D.NET.Data.Vertex3D> items = new List<VIZCore3D.NET.Data.Vertex3D>();
+
+            foreach (VIZCore3D.NET.Data.CircleData item in circles)
+            {
+                float distance = center.Distance(item.Center);
+
+                if (distance > 50)
+                {
+                    VIZCore3D.NET.Data.Vertex3D normal = item.Center.GetNormalized(center);
+                    VIZCore3D.NET.Data.Vertex3D v1 = center.PointToVector(normal, 100);
+                    VIZCore3D.NET.Data.Vertex3D v2 = center.PointToVector(normal, -100);
+
+                    items.Add(v1);
+                    items.Add(v2);
+
+                    break;
+                }
+            }
+
+            return items.ToList();
+        }
+
+        private void AddAngle(VIZCore3D.NET.Data.Node lug, VIZCore3D.NET.Data.Vertex3D center, VIZCore3D.NET.Data.Vertex3D roller, CollisionItem collisionItem)
         {
             if (DisplayAngle == false) return;
 
             List<VIZCore3D.NET.Data.CircleData> circles = vizcore3d.GeometryUtility.GetCircleData(lug.Index);
+            List<VIZCore3D.NET.Data.Vertex3D> circleCenter = GetCircleCenterPoint(center, circles);
+            if (circleCenter.Count < 2) return;
 
-            if (circles.Count < 2) return;
+            VIZCore3D.NET.Data.Vertex3D v1 = circleCenter[0];
+            VIZCore3D.NET.Data.Vertex3D v2 = circleCenter[1];
 
-            VIZCore3D.NET.Data.Vertex3D v1 = circles[0].Center;
-            VIZCore3D.NET.Data.Vertex3D v2 = circles[1].Center;
+            VIZCore3D.NET.Data.Vertex3D vLug1 = center.PointToPoint(v1, 500);
+            VIZCore3D.NET.Data.Vertex3D vLug2 = center.PointToPoint(v2, 500);
+            VIZCore3D.NET.Data.Vertex3D vRoller = center.PointToPoint(roller, 500);
 
-            VIZCore3D.NET.Data.Vertex3D vLug1 = center.PointToPoint(v1, 1000);
-            VIZCore3D.NET.Data.Vertex3D vLug2 = center.PointToPoint(v2, 1000);
-            VIZCore3D.NET.Data.Vertex3D vRoller = center.PointToPoint(roller, 1000);
+            int mid1 = vizcore3d.Review.Measure.AddCustom3PointAngle(center, vRoller, vLug1);
+            int mid2 = vizcore3d.Review.Measure.AddCustom3PointAngle(center, vRoller, vLug2);
 
-            vizcore3d.Review.Measure.AddCustom3PointAngle(center, vRoller, vLug1);
-            vizcore3d.Review.Measure.AddCustom3PointAngle(center, vRoller, vLug2);
+            if (collisionItem != null)
+            {
+                collisionItem.Angle1 = vizcore3d.Review.Measure.GetItem(mid1).Title;
+                collisionItem.Angle2 = vizcore3d.Review.Measure.GetItem(mid2).Title;
+            }
         }
 
         private void backgroundWorkerTurnOver_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -950,7 +988,7 @@ namespace VIZCore3D.NET.TOB
             threadParam.Angle = angle;
             threadParam.AnimationOnly = AnimationOnly;
 
-            CollisionObjects = new Dictionary<int, int>();
+            CollisionObjects = new Dictionary<int, CollisionItem>();
 
             AnimationOnly = ckAnimationOnly.Checked;
             StopTurnOver = ckStopTurnOver.Checked;
@@ -960,6 +998,12 @@ namespace VIZCore3D.NET.TOB
             backgroundWorkerTurnOver.WorkerSupportsCancellation = true;
 
             backgroundWorkerTurnOver.RunWorkerAsync(threadParam);
+        }
+
+        private void btnReportDialog_Click(object sender, EventArgs e)
+        {
+            FrmReportDialog dlg = new FrmReportDialog(CollisionObjects.Values.ToList());
+            dlg.ShowDialog();
         }
     }
 }
