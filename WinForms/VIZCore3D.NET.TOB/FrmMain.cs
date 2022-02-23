@@ -905,8 +905,6 @@ namespace VIZCore3D.NET.TOB
 
                             CollisionObjects.Add(item.Index, collisionItem);
                             find = true;
-
-                            //System.Diagnostics.Trace.WriteLine("[TOB] Collision Block");
                         }
                     }
                 }
