@@ -605,6 +605,8 @@ namespace VIZCore3D.NET.TOB
         // ================================================
         private void btnLoadGoliath_Click(object sender, EventArgs e)
         {
+            vizcore3d.Model.Close();
+
             if (DemoMode == true)
             {
                 vizcore3d.Model.AddStream(
