@@ -10893,6 +10893,13 @@
             </summary>
             <returns>Vertex</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Vertex3D.GetNormalized(VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            현재 정점과 입력된 정점(v)의 Normal Vector 반환
+            </summary>
+            <param name="v">정점</param>
+            <returns>현재 정점과 입력된 정점(v)의 Normal Vector</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Data.Vertex3D.Dot(VIZCore3D.NET.Data.Vertex3D)">
             <summary>
             Dot
@@ -10953,6 +10960,14 @@
             <param name="v1">위치</param>
             <param name="length">현재위치에서 떨어진 거리</param>
             <returns>현재위치에서 v1 위치의 방향으로 입력된 거리만큼 떨어진 좌표</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Vertex3D.PointToPoint(VIZCore3D.NET.Data.Vector3D,System.Single)">
+            <summary>
+            현재위치에서 v1 방향으로 입력된 거리만큼 떨어진 좌표추출
+            </summary>
+            <param name="v1">벡터</param>
+            <param name="length">거리</param>
+            <returns>현재위치에서 v1 방향으로 입력된 거리만큼 떨어진 좌표</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Vertex3D.TriangleNormal(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
