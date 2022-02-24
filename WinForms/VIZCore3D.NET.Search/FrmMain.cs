@@ -453,14 +453,16 @@ namespace VIZCore3D.NET.Search
         }
         #endregion
 
+        #region Function - VIZCore3D.NET : Add Event Handler
         /// <summary>
         /// 이벤트 등록
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
         }
+        #endregion
 
-        
+
 
         private void btnSearch1_Click(object sender, EventArgs e)
         {
