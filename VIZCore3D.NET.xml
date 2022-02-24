@@ -26613,6 +26613,16 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateSurfaceFromPoint(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.String)">
+            <summary>
+            Corner, Edge, Inner 정점을 이용하여 Surface 데이터를 생성하고 STL 파일을 생성
+            </summary>
+            <param name="corner">Corner Vertex</param>
+            <param name="edge">Edge Vertex</param>
+            <param name="inner">Inner Vertex</param>
+            <param name="output">STL FILE PATH</param>
+            <returns>결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.MetadataManager">
             <summary>
             Metadata Manager
