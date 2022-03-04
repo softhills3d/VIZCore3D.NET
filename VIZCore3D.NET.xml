@@ -13617,6 +13617,27 @@
             <param name="vPos2"></param>
             <param name="vNormal"></param>
         </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.EdgePolylineItemsEventHandler">
+            <summary>
+            Hi-Curve EdgePolyline Items Event
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.EdgePolylineItemsEventArgs">
+            <summary>
+            Hi-Curve EdgePolyline Items Event Args
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.EdgePolylineItemsEventArgs.VertexList">
+            <summary>
+            Vertex List
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.EdgePolylineItemsEventArgs.#ctor(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D})">
+            <summary>
+            Hi-Curve EdgePolyline VertexLists 
+            </summary>
+            <param name="VertexList"></param>
+        </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.MeasureEventHandler">
             <summary>
             Measure Event
@@ -21884,6 +21905,11 @@
             </code>
             </example>
         </member>
+        <member name="E:VIZCore3D.NET.Manager.GeometryUtilityManager.OnEdgePolylineMove">
+            <summary>
+            Hi-Curve EdgePolylineMove
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -22362,6 +22388,16 @@
              ]]>
              </code> 
              </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.EdgePolylineMove">
+            <summary>
+            Hi-Curve EdgePolylineMove 외부에서 실제 기능 실행
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.FireEdgePolylineMoveEvent(System.String)">
+            <summary>
+            Hi-Curve EdgePolylineMove Evenet 외부에서 기능 실행 후 Callback 값
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
@@ -26621,6 +26657,14 @@
             <param name="edge">Edge Vertex</param>
             <param name="inner">Inner Vertex</param>
             <param name="output">STL FILE PATH</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.CreateSurfaceFromPoint(System.String,System.String)">
+            <summary>
+            측정된 포인트 정보 파일로 Surface 생성
+            </summary>
+            <param name="inputPath">측정된 포인트 파일</param>
+            <param name="output">생성된 Surface 파일</param>
             <returns>결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MetadataManager">
