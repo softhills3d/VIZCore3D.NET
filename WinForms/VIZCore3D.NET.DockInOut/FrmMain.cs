@@ -71,7 +71,7 @@ namespace VIZCore3D.NET.DockInOut
             }
             else
             {
-                vizcore3d = new VIZCore3D.NET.VIZCore3DControl(NET.BackgroundImage.VIZZARD);
+                vizcore3d = new VIZCore3D.NET.VIZCore3DControl(VIZCore3D.NET.BackgroundImage.VIZZARD);
             }
 
             vizcore3d.Dock = DockStyle.Fill;
