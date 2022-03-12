@@ -946,7 +946,7 @@ namespace VIZCore3D.NET.Erection.V1
         {
             Time = 0.0f;
 
-            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromIndex(0).GetChildObject3d(Data.Object3DChildOption.CHILD_ONLY);
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromIndex(0).GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
             Dictionary<string, VIZCore3D.NET.Data.Node> nodeMap = new Dictionary<string, VIZCore3D.NET.Data.Node>();
             foreach (VIZCore3D.NET.Data.Node item in nodes)
             {
@@ -1032,9 +1032,9 @@ namespace VIZCore3D.NET.Erection.V1
         private void Animation_OnAnimationPlaybackPositionChangedEvent(object sender, VIZCore3D.NET.Event.EventManager.AnimationPlaybackPositionEventArgs e)
         {
             if(e.Tag != null && String.IsNullOrEmpty((string)e.Tag) == false)
-                vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} - {2} sec.", e.ID, (string)e.Tag, e.Time), 10, 10);
+                vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_01, string.Format("[{0}] {1} - {2} sec.", e.ID, (string)e.Tag, e.Time), 10, 10);
             else
-                vizcore3d.View.Message.Show(Data.MessageId.ID_01, string.Format("[{0}] {1} sec.", e.ID, e.Time), 10, 10);
+                vizcore3d.View.Message.Show(VIZCore3D.NET.Data.MessageId.ID_01, string.Format("[{0}] {1} sec.", e.ID, e.Time), 10, 10);
         }
 
         private void Animation_OnAnimationPlaybackFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.AnimationPlaybackEventArgs e)
