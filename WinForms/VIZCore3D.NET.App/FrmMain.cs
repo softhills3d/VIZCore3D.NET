@@ -40,7 +40,7 @@ namespace VIZCore3D.NET.App
             {
                 // 30 : HHI
                 // 31 : HSHI
-                vizcore3d = new VIZCore3DControl((NET.BackgroundImage)background_mode);
+                vizcore3d = new VIZCore3DControl((VIZCore3D.NET.BackgroundImage)background_mode);
             }
             else if (System.IO.File.Exists(backgroudImagePath) == true)
             {
