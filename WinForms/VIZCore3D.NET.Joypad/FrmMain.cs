@@ -63,7 +63,7 @@ namespace VIZCore3D.NET.Joypad
                 if (background_mode == 0)
                     vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
                 else
-                    vizcore3d = new VIZCore3D.NET.VIZCore3DControl((NET.BackgroundImage)background_mode);
+                    vizcore3d = new VIZCore3D.NET.VIZCore3DControl((VIZCore3D.NET.BackgroundImage)background_mode);
             }
 
             vizcore3d.Dock = DockStyle.Fill;
