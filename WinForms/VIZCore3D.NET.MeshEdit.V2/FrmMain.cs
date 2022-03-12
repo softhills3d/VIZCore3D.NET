@@ -693,7 +693,5 @@ namespace VIZCore3D.NET.MeshEdit.V2
 
             vizcore3d.EndUpdate();
         }
-
-        
     }
 }
