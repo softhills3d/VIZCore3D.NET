@@ -2767,6 +2767,11 @@
             이동 간섭 검사 위치
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Data.ClashTestResultItem.#ctor">
+            <summary>
+            생성자
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.ClashTestResultItem.GetResultKindString">
             <summary>
             간섭검사 결과 유형 문자열 반환
@@ -5840,36 +5845,6 @@
             축 기준
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
-            <summary>
-            Tessellation Quality Level Kind
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
-            <summary>
-            Extra Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
-            <summary>
-            Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
-            <summary>
-            Medium
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
-            <summary>
-            High
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
-            <summary>
-            Extra High
-            </summary>
-        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -7122,14 +7097,6 @@
             <param name="m43">Matrix 4.3</param>
             <param name="m44">Matrix 4.4</param>
         </member>
-        <member name="M:VIZCore3D.NET.Data.Matrix3D.op_Multiply(VIZCore3D.NET.Data.Matrix3D,VIZCore3D.NET.Data.Vertex3D)">
-            <summary>
-            Multiply
-            </summary>
-            <param name="matrix">Matrix</param>
-            <param name="vertex">Vertex</param>
-            <returns>Vertex</returns>
-        </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.op_Multiply(VIZCore3D.NET.Data.Matrix3D,VIZCore3D.NET.Data.Vector3D)">
             <summary>
             Multiply
@@ -7251,6 +7218,14 @@
             <param name="vYAxis">Y Axis.</param>
             <param name="vZAxis">Z Axis.</param>
             <param name="reset">Initialize Matrix</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Matrix3D.AddTranslate(System.Single,System.Single,System.Single)">
+            <summary>
+            Add Translate
+            </summary>
+            <param name="x">X</param>
+            <param name="y">Y</param>
+            <param name="z">Z</param>
         </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.SetTranslate(System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
@@ -8140,6 +8115,11 @@
             <param name="vizcore">VIZCore</param>
             <param name="index">Node Index</param>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Node.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.Node.FillData">
             <summary>
             노드 데이터 채우기
@@ -8361,7 +8341,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Data.Node.GetBoundBoxAABB">
             <summary>
-            Get AABB BoundBox
+            Get AABB BoundBox (Axis-Aligned Bounding Box)
             </summary>
             <returns>AABB BoundBox</returns>
         </member>
@@ -22429,6 +22409,14 @@
             Hi-Curve EdgePolylineMove Evenet 외부에서 기능 실행 후 Callback 값
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetSurfaceVertexList(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            시작점과 끝점을 받아 정점리스트를 반환 해준다.
+            </summary>
+            <param name="startPos">시작점</param>
+            <param name="endPos">끝점</param>
+            <returns>정점 리스트</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
             Group Manager Class
@@ -32792,14 +32780,14 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.GetBoundBoxAABB(System.Collections.Generic.List{System.Int32})">
             <summary>
-            Get AABB BoundBox
+            Get AABB BoundBox (Axis-Aligned Bounding Box)
             </summary>
             <param name="index">노드 인덱스</param>
             <returns>AABB BoundBox</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.GetBoundBoxAABB(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
             <summary>
-            Get AABB BoundBox
+            Get AABB BoundBox (Axis-Aligned Bounding Box)
             </summary>
             <param name="node">노드</param>
             <returns>AABB BoundBox</returns>
@@ -34715,11 +34703,6 @@
             Default : 6.
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
-            <summary>
-            Tessellation Quality
-            </summary>
-        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -35774,29 +35757,6 @@
             </summary>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.obj</param>
             <param name="node">내보낼 노드 목록</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 내보내기
-            </summary>
-            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 저장
-            </summary>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
-            <summary>
-            GLTF 파일 형식으로 내보내기
-            </summary>
-            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
-            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
