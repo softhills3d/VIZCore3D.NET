@@ -84,6 +84,7 @@
             this.webView.Location = new System.Drawing.Point(3, 17);
             this.webView.MinimumSize = new System.Drawing.Size(20, 20);
             this.webView.Name = "webView";
+            this.webView.ScrollBarsEnabled = false;
             this.webView.Size = new System.Drawing.Size(567, 614);
             this.webView.TabIndex = 0;
             // 
