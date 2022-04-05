@@ -23,6 +23,9 @@ namespace VIZCore3D.NET.CustomAxisRotation
         {
             InitializeComponent();
 
+            // Initialize VIZCore3D.NET
+            VIZCore3D.NET.ModuleInitializer.Run();
+
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
             splitContainer1.Panel2.Controls.Add(vizcore3d);
