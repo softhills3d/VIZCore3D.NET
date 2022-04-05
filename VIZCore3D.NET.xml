@@ -369,6 +369,14 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:VIZCore3D.NET.Controls.ModelTreeControl.tsMultiExportNode_Click(System.Object,System.EventArgs)">
+            <summary>
+            모델트리 ContextMenu
+            tj
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="F:VIZCore3D.NET.Controls.ModelTreeControl.components">
             <summary> 
             필수 디자이너 변수입니다.
@@ -22409,10 +22417,11 @@
             Hi-Curve EdgePolylineMove Evenet 외부에서 기능 실행 후 Callback 값
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetSurfaceVertexList(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetSurfaceVertexList(System.Int32,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
             시작점과 끝점을 받아 정점리스트를 반환 해준다.
             </summary>
+            <param name="nodeID">노드ID</param>
             <param name="startPos">시작점</param>
             <param name="endPos">끝점</param>
             <returns>정점 리스트</returns>
@@ -35559,6 +35568,34 @@
             ]]>
             </code>
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNodesDialog(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            지정된 노드 내보내기
+            </summary>
+            <param name="nodes">노드 목록</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNodes">
+            <summary>
+            선택된 노드 내보내기
+            </summary>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNodes(System.String)">
+            <summary>
+            선택된 노드 내보내기
+            </summary>
+            <param name="path">내보내기 경로</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNodes(System.String,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            지정된 노드 내보내기
+            </summary>
+            <param name="path">내보내기 경로</param>
+            <param name="nodes">노드 목록</param>
+            <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZ(System.String)">
             <summary>
@@ -49471,6 +49508,11 @@
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Properties.Resources.AddItem_16x16">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.Apply_16x16">
             <summary>
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
             </summary>
