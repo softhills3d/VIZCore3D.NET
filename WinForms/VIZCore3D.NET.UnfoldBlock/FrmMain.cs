@@ -457,6 +457,7 @@ namespace VIZCore3D.NET.UnfoldBlock
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
         }
         #endregion
 
@@ -556,9 +557,186 @@ namespace VIZCore3D.NET.UnfoldBlock
             vizcore3d.Model.Add(files);
         }
 
+        public Dictionary<string, VIZCore3D.NET.Data.Node> Blocks { get; set; }
+
         private void btnUnfold_Click(object sender, EventArgs e)
         {
+            // F71, F72, F73, H11, H12, H13, H14, H15, H16
 
+            // A41, A42, E41, E42, E43, F41, F42, S41, S42, S43
+            // A31, A32, E31, E32, E33, F12, F31, S31, S32, S33
+            // A21, A22, A23, E21, E23, F21, S21, S22, S23
+            // A11, B11, B12, B13, E11, E12, E13, E14, F11
+
+            // H22, H23, H24, M11
+            // H31, H32, H33, H34
+            // H41, H42, H43, H44
+            // H51, M12
+
+            Blocks = new Dictionary<string, VIZCore3D.NET.Data.Node>();
+
+            List<VIZCore3D.NET.Data.Node> children = vizcore3d.Object3D.FromIndex(0)
+                .GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+
+            foreach (VIZCore3D.NET.Data.Node item in children)
+            {
+                if (Blocks.ContainsKey(item.NodeName) == false)
+                    Blocks.Add(item.NodeName, item);
+            }
+
+            float lengthY = vizcore3d.Model.BoundBox.LengthY;
+
+            vizcore3d.BeginUpdate();
+
+            // F71, F72, F73, H11, H12, H13, H14, H15, H16
+            MoveAxisY("F71", lengthY, 0);
+            MoveAxisY("F72", lengthY, 0);
+            MoveAxisY("F73", lengthY, 0);
+            MoveAxisY("H11", lengthY, 0);
+            MoveAxisY("H12", lengthY, 0);
+            MoveAxisY("H13", lengthY, 0);
+            MoveAxisY("H14", lengthY, 0);
+            MoveAxisY("H15", lengthY, 0);
+            MoveAxisY("H16", lengthY, 0);
+
+            // A41, A42, E41, E42, E43, F41, F42, S41, S42, S43
+            MoveAxisY("A41", lengthY, -1);
+            MoveAxisY("A42", lengthY, -1);
+            MoveAxisY("E41", lengthY, -1);
+            MoveAxisY("E42", lengthY, -1);
+            MoveAxisY("E43", lengthY, -1);
+            MoveAxisY("F41", lengthY, -1);
+            MoveAxisY("F42", lengthY, -1);
+            MoveAxisY("S41", lengthY, -1);
+            MoveAxisY("S42", lengthY, -1);
+            MoveAxisY("S43", lengthY, -1);
+
+            // A31, A32, E31, E32, E33, F12, F31, S31, S32, S33
+            MoveAxisY("A31", lengthY, -2);
+            MoveAxisY("A32", lengthY, -2);
+            MoveAxisY("E31", lengthY, -2);
+            MoveAxisY("E32", lengthY, -2);
+            MoveAxisY("E33", lengthY, -2);
+            MoveAxisY("F12", lengthY, -2);
+            MoveAxisY("F31", lengthY, -2);
+            MoveAxisY("S31", lengthY, -2);
+            MoveAxisY("S32", lengthY, -2);
+            MoveAxisY("S33", lengthY, -2);
+
+            // A21, A22, A23, E21, E23, F21, S21, S22, S23
+            MoveAxisY("A21", lengthY, -3);
+            MoveAxisY("A22", lengthY, -3);
+            MoveAxisY("A23", lengthY, -3);
+            MoveAxisY("E21", lengthY, -3);
+            MoveAxisY("E23", lengthY, -3);
+            MoveAxisY("F21", lengthY, -3);
+            MoveAxisY("S21", lengthY, -3);
+            MoveAxisY("S22", lengthY, -3);
+            MoveAxisY("S23", lengthY, -3);
+
+            // A11, B11, B12, B13, E11, E12, E13, E14, F11
+            MoveAxisY("A11", lengthY, -4);
+            MoveAxisY("B11", lengthY, -4);
+            MoveAxisY("B12", lengthY, -4);
+            MoveAxisY("B13", lengthY, -4);
+            MoveAxisY("E11", lengthY, -4);
+            MoveAxisY("E12", lengthY, -4);
+            MoveAxisY("E13", lengthY, -4);
+            MoveAxisY("E14", lengthY, -4);
+            MoveAxisY("F11", lengthY, -4);
+
+            // H22, H23, H24, M11
+            MoveAxisY("H22", lengthY, 1);
+            MoveAxisY("H23", lengthY, 1);
+            MoveAxisY("H24", lengthY, 1);
+            MoveAxisY("M11", lengthY, 1);
+
+            // H31, H32, H33, H34
+            MoveAxisY("H31", lengthY, 2);
+            MoveAxisY("H32", lengthY, 2);
+            MoveAxisY("H33", lengthY, 2);
+            MoveAxisY("H34", lengthY, 2);
+
+            // H41, H42, H43, H44
+            MoveAxisY("H41", lengthY, 3);
+            MoveAxisY("H42", lengthY, 3);
+            MoveAxisY("H43", lengthY, 3);
+            MoveAxisY("H44", lengthY, 3);
+
+            // H51, M12
+            MoveAxisY("H51", lengthY, 4);
+            MoveAxisY("M12", lengthY, 4);
+
+            List<string> keys = Blocks.Keys.ToList();
+            for (int i = 0; i < keys.Count; i++)
+            {
+                bool result = vizcore3d.Object3D.Disassembly.AddGroup(
+                    i                           /* ID : 0 ~ */
+                    , Blocks[keys[i]].Index     /* NODE INDEX */
+                    , true                      /* Recursive */
+                    );
+            }
+
+            vizcore3d.View.EnableAnimation = false;
+            vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(true, 0.8f);
+
+            vizcore3d.EndUpdate();
+
+            vizcore3d.View.ResetView();
+        }
+
+        private void MoveAxisY(string block, float length, int ratio)
+        {
+            if (Blocks.ContainsKey(block) == false) return;
+
+            VIZCore3D.NET.Data.Node node = Blocks[block];
+
+            VIZCore3D.NET.Data.Object3DProperty prop =
+                vizcore3d.Object3D.GeometryProperty.FromNode(node);
+
+            float minZ = prop.GetBoundBox().MinZ;
+
+            vizcore3d.Object3D.Transform.Move(new List<VIZCore3D.NET.Data.Node>() { node }, 0.0f, length * ratio, -minZ);
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            vizcore3d.BeginUpdate();
+            vizcore3d.Object3D.Transform.RestoreTransformAll();
+            vizcore3d.View.ResetView();
+            vizcore3d.EndUpdate();
+        }
+
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
+
+            vizcore3d.BeginUpdate();
+
+            List<string> keys = Blocks.Keys.ToList();
+            for (int i = 0; i < keys.Count; i++)
+            {
+                VIZCore3D.NET.Data.Node node = Blocks[keys[i]];
+
+                VIZCore3D.NET.Data.Object3DProperty prop =
+                    vizcore3d.Object3D.GeometryProperty.FromIndex(node.Index);
+
+                vizcore3d.Review.Note.AddNote3D(node.NodeName, prop.CenterPoint);
+            }
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void btnClearNote_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Review.Note.Clear();
+        }
+
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
+        {
+            if (e.Node.Count == 0) return;
+
+            MessageBox.Show(e.Node[0].NodeName, "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
