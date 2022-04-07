@@ -945,5 +945,25 @@ namespace VIZCore3D.NET.SelectionBox
         {
             DoDragDrop(e.Item, DragDropEffects.Copy);
         }
+
+        private void btnExportGrid_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            List<VIZCore3D.NET.Data.SelectionBox> items = vizcore3d.SelectionBox.Items;
+
+            if (items.Count == 0) return;
+
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            foreach (VIZCore3D.NET.Data.SelectionBox item in items)
+            {
+                string path = string.Format("{0}\\{1}.viz", dlg.SelectedPath, item.ID);
+                vizcore3d.Model.ExportGrid(path, item.BoundBox);
+            }
+
+            System.Diagnostics.Process.Start(dlg.SelectedPath);
+        }
     }
 }
