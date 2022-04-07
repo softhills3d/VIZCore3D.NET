@@ -1951,42 +1951,6 @@
             </summary>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Add(System.Single[])">
-            <summary>
-            Add Vertex
-            </summary>
-            <param name="v">Vertex List</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Add(System.Single[],System.Single[])">
-            <summary>
-            Add Min./Max.
-            </summary>
-            <param name="min">Min.</param>
-            <param name="max">Max.</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Add(System.Single,System.Single,System.Single)">
-            <summary>
-            Add Vertex
-            </summary>
-            <param name="x">X</param>
-            <param name="y">Y</param>
-            <param name="z">Z</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Add(VIZCore3D.NET.Data.BoundBox3D)">
-            <summary>
-            Add Bound Box
-            </summary>
-            <param name="box">Bound Box</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Add(VIZCore3D.NET.Data.Vertex3D,System.Single,System.Single,System.Single)">
-            <summary>
-            한 점과 축별 길이로 BoundBox 생성
-            </summary>
-            <param name="center">중심점</param>
-            <param name="xLength">X축 길이</param>
-            <param name="yLength">Y축 길이</param>
-            <param name="zLength">Z축 길이</param>
-        </member>
         <member name="M:VIZCore3D.NET.Data.BoundBox3D.Set(System.Single[])">
             <summary>
             Set Vertex
@@ -2157,6 +2121,18 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.ToArray">
+            <summary>
+            To Array
+            </summary>
+            <returns>Array</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.ToList">
+            <summary>
+            To List
+            </summary>
+            <returns>List</returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.BoundBoxParameter">
             <summary>
@@ -36528,6 +36504,35 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single[])">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="boundBox">내보내기 영역</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="minX">내보내기 영역 - Min. X</param>
+            <param name="minY">내보내기 영역 - Min. Y</param>
+            <param name="minZ">내보내기 영역 - Min. Z</param>
+            <param name="maxX">내보내기 영역 - Max. X</param>
+            <param name="maxY">내보내기 영역 - Max. Y</param>
+            <param name="maxZ">내보내기 영역 - Max. Z</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D)">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="boundBox">내보내기 영역</param>
+            <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.FireProgressEvent(VIZCore3D.NET.Data.ModelProgressModes,System.Int32)">
             <summary>
