@@ -648,7 +648,7 @@ namespace VIZCore3D.NET.MeasureFrame
 
                 vizcore3d.ShapeDrawing.AddDashLine(xBaseLine, 0, Color.Red, 5.0f, true, 100.0f);
 
-                vizcore3d.TextDrawing.Add(vX2, new Data.Vector3D(1, 0, 0), new Data.Vector3D(0, 1, 0), 100, 100, Color.Black, string.Format("(X){0}", xFrameStr));
+                vizcore3d.TextDrawing.Add(vX2, new VIZCore3D.NET.Data.Vector3D(1, 0, 0), new VIZCore3D.NET.Data.Vector3D(0, 1, 0), 100, 100, Color.Black, string.Format("(X){0}", xFrameStr));
 
                 // Middle Point
                 VIZCore3D.NET.Data.Vertex3D vmX1 = v.PointToPoint(vX, 1000.0f);
@@ -662,7 +662,7 @@ namespace VIZCore3D.NET.MeasureFrame
 
                 VIZCore3D.NET.Data.Vertex3D mX = vmX2.PointToPoint(vmX1, (vmX1.X - vmX2.X) / 2);
                 mX.Y += 100.0f;
-                vizcore3d.TextDrawing.Add(mX, new Data.Vector3D(1, 0, 0), new Data.Vector3D(0, 1, 0), 70, 50, Color.Black, string.Format("{0}", Math.Abs(vmX1.X - vmX2.X)));
+                vizcore3d.TextDrawing.Add(mX, new VIZCore3D.NET.Data.Vector3D(1, 0, 0), new VIZCore3D.NET.Data.Vector3D(0, 1, 0), 70, 50, Color.Black, string.Format("{0}", Math.Abs(vmX1.X - vmX2.X)));
 
                 vmZ1 = v.PointToPoint(vX, 800.0f);
             }
@@ -686,7 +686,7 @@ namespace VIZCore3D.NET.MeasureFrame
 
                 vizcore3d.ShapeDrawing.AddDashLine(yBaseLine, 1, Color.Black, 5.0f, true, 100.0f);
 
-                vizcore3d.TextDrawing.Add(vY2, new Data.Vector3D(0, -1, 0), new Data.Vector3D(1, 0, 0), 100, 100, Color.Black, string.Format("(Y){0}", yFrameStr));
+                vizcore3d.TextDrawing.Add(vY2, new VIZCore3D.NET.Data.Vector3D(0, -1, 0), new VIZCore3D.NET.Data.Vector3D(1, 0, 0), 100, 100, Color.Black, string.Format("(Y){0}", yFrameStr));
 
                 // Middle Point
                 VIZCore3D.NET.Data.Vertex3D vmY1 = v.PointToPoint(vY, 1000.0f);
@@ -700,7 +700,7 @@ namespace VIZCore3D.NET.MeasureFrame
 
                 VIZCore3D.NET.Data.Vertex3D mY = vmY2.PointToPoint(vmY1, (vmY2.Y - vmY1.Y) / 2);
                 mY.X += 100.0f;
-                vizcore3d.TextDrawing.Add(mY, new Data.Vector3D(0, -1, 0), new Data.Vector3D(1, 0, 0), 70, 50, Color.Black, string.Format("{0}", Math.Abs(vmY1.Y - vmY2.Y)));
+                vizcore3d.TextDrawing.Add(mY, new VIZCore3D.NET.Data.Vector3D(0, -1, 0), new VIZCore3D.NET.Data.Vector3D(1, 0, 0), 70, 50, Color.Black, string.Format("{0}", Math.Abs(vmY1.Y - vmY2.Y)));
             }
 
             // Z-Base
@@ -718,7 +718,7 @@ namespace VIZCore3D.NET.MeasureFrame
 
                 vizcore3d.ShapeDrawing.AddDashLine(zBaseLine, 2, Color.Blue, 5.0f, true, 100.0f);
 
-                vizcore3d.TextDrawing.Add(vZ, new Data.Vector3D(0, 0, -1), new Data.Vector3D(1, 0, 0), 100, 100, Color.Black, string.Format("(Z){0}", zFrameStr));
+                vizcore3d.TextDrawing.Add(vZ, new VIZCore3D.NET.Data.Vector3D(0, 0, -1), new VIZCore3D.NET.Data.Vector3D(1, 0, 0), 100, 100, Color.Black, string.Format("(Z){0}", zFrameStr));
 
                 // Middle Point
                 VIZCore3D.NET.Data.Vertex3D vmZ2 = vZ0.PointToPoint(vZ, 800.0f);
@@ -731,7 +731,7 @@ namespace VIZCore3D.NET.MeasureFrame
 
                 VIZCore3D.NET.Data.Vertex3D mZ = vmZ2.PointToPoint(vmZ1, (vmZ2.Z - vmZ1.Z) / 2);
                 mZ.Y -= 100.0f;
-                vizcore3d.TextDrawing.Add(mZ, new Data.Vector3D(0, 0, -1), new Data.Vector3D(1, 0, 0), 70, 50, Color.Black, string.Format("{0}", Math.Abs(vmZ1.Z - vmZ2.Z)));
+                vizcore3d.TextDrawing.Add(mZ, new VIZCore3D.NET.Data.Vector3D(0, 0, -1), new VIZCore3D.NET.Data.Vector3D(1, 0, 0), 70, 50, Color.Black, string.Format("{0}", Math.Abs(vmZ1.Z - vmZ2.Z)));
             }
 
             vizcore3d.EndUpdate();
