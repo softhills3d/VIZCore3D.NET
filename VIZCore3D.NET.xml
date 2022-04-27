@@ -36505,15 +36505,16 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single[])">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single[],System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
             </summary>
             <param name="path">내보내기 파일</param>
             <param name="boundBox">내보내기 영역</param>
+            <param name="removeStructure">구조 제거 여부</param>
             <returns>결과</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
             </summary>
@@ -36524,14 +36525,16 @@
             <param name="maxX">내보내기 영역 - Max. X</param>
             <param name="maxY">내보내기 영역 - Max. Y</param>
             <param name="maxZ">내보내기 영역 - Max. Z</param>
+            <param name="removeStructure">구조 제거 여부</param>
             <returns>결과</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
             </summary>
             <param name="path">내보내기 파일</param>
             <param name="boundBox">내보내기 영역</param>
+            <param name="removeStructure">구조 제거 여부</param>
             <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.FireProgressEvent(VIZCore3D.NET.Data.ModelProgressModes,System.Int32)">
