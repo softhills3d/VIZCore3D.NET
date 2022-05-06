@@ -15848,18 +15848,6 @@
             </summary>
             <returns>Generic Attribute Control</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.AddVertexItem(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Int32,System.Drawing.Color,System.Single,System.Single,System.Boolean)">
-            <summary>
-            추가
-            </summary>
-            <param name="vertex">Vertex List Collection</param>
-            <param name="groupId">Group Id</param>
-            <param name="color">라인 색상</param>
-            <param name="radius">굵기</param>
-            <param name="size">크기</param>
-            <param name="visible">보이기/숨기기 상태</param>
-            <returns>생성된 형상의 ID</returns>
-        </member>
         <member name="T:VIZCore3D.NET.Extension.Generic.GenericDrawingControl">
             TODO: GraphicPath 활용
             <summary>
