@@ -271,7 +271,7 @@ namespace VIZCore3D.NET.GenFile
             // 배경색
             vizcore3d.Review.Note.BackgroundColor = Color.Yellow;
             // 배경 투명
-            vizcore3d.Review.Note.BackgroudTransparent = false;
+            vizcore3d.Review.Note.BackgroudTransparent = true;
             // 글자색
             vizcore3d.Review.Note.FontColor = Color.Black;
             // 글자 크기
@@ -303,6 +303,10 @@ namespace VIZCore3D.NET.GenFile
             vizcore3d.Review.Note.SymbolFontBold = false;
             #endregion
 
+            // ================================================================
+            // 설정 - ShapeDrawing
+            // ================================================================
+            //vizcore3d.ShapeDrawing.DepthTest = true;
 
             // ================================================================
             // 설정 - 측정
