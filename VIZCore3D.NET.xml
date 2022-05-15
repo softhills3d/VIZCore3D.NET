@@ -7102,13 +7102,6 @@
             Identity
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateX(System.Double,System.Boolean)">
-            <summary>
-            Set Rotate X
-            </summary>
-            <param name="angle">Angle</param>
-            <param name="reset">Initialize Matrix</param>
-        </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotate(System.Double,System.Double,System.Double,VIZCore3D.NET.Data.AngleFormat)">
             <summary>
             Set Rotate
@@ -7140,12 +7133,15 @@
             <param name="format">Angle Format</param>
             <param name="reset">Initialize Matrix</param>
         </member>
-        <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateY(System.Double,System.Boolean)">
+        <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateX(VIZCore3D.NET.Data.Vertex3D,System.Double,VIZCore3D.NET.Data.AngleFormat,System.Boolean)">
             <summary>
-            Set Rotate Y
+            정점 X축 회전
             </summary>
-            <param name="angle">Angle</param>
-            <param name="reset">Initialize Matrix</param>
+            <param name="v">정점</param>
+            <param name="angle">회전</param>
+            <param name="format">단위</param>
+            <param name="reset">초기화</param>
+            <returns>X축 회전된 정점</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateY(System.Double,VIZCore3D.NET.Data.AngleFormat,System.Boolean)">
             <summary>
@@ -7155,12 +7151,15 @@
             <param name="format">Angle Format</param>
             <param name="reset">Initialize Matrix</param>
         </member>
-        <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateZ(System.Double,System.Boolean)">
+        <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateY(VIZCore3D.NET.Data.Vertex3D,System.Double,VIZCore3D.NET.Data.AngleFormat,System.Boolean)">
             <summary>
-            Set Rotate Z
+            정점 Y축 회전
             </summary>
-            <param name="angle">Angle</param>
-            <param name="reset">Initialize Matrix</param>
+            <param name="v">정점</param>
+            <param name="angle">회전</param>
+            <param name="format">단위</param>
+            <param name="reset">초기화</param>
+            <returns>Y축 회전된 정점</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateZ(System.Double,VIZCore3D.NET.Data.AngleFormat,System.Boolean)">
             <summary>
@@ -7169,6 +7168,16 @@
             <param name="angle">Angle</param>
             <param name="format">Angle Format</param>
             <param name="reset">Initialize Matrix</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Matrix3D.SetRotateZ(VIZCore3D.NET.Data.Vertex3D,System.Double,VIZCore3D.NET.Data.AngleFormat,System.Boolean)">
+            <summary>
+            정점 Z축 회전
+            </summary>
+            <param name="v">정점</param>
+            <param name="angle">회전</param>
+            <param name="format">단위</param>
+            <param name="reset">초기화</param>
+            <returns>Z축 회전된 정점</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.Matrix3D.SetMatrixRotateAxis(VIZCore3D.NET.Data.Vertex3D,System.Double)">
             <summary>
