@@ -526,16 +526,16 @@ namespace VIZCore3D.NET.Camera.CCTV
                 switch (CameraDir)
                 {
                     case CameraDirection.UP:
-                        vizcore3d.View.RotateCameraByAxis(Data.BaseAxis.LOCAL, Data.Axis.X, Data.Directions.PLUS, degree);
+                        vizcore3d.View.RotateCameraByAxis(VIZCore3D.NET.Data.BaseAxis.LOCAL, VIZCore3D.NET.Data.Axis.X, VIZCore3D.NET.Data.Directions.PLUS, degree);
                         break;
                     case CameraDirection.DOWN:
-                        vizcore3d.View.RotateCameraByAxis(Data.BaseAxis.LOCAL, Data.Axis.X, Data.Directions.MINUS, degree);
+                        vizcore3d.View.RotateCameraByAxis(VIZCore3D.NET.Data.BaseAxis.LOCAL, VIZCore3D.NET.Data.Axis.X, VIZCore3D.NET.Data.Directions.MINUS, degree);
                         break;
                     case CameraDirection.LEFT:
-                        vizcore3d.View.RotateCameraByAxis(Data.BaseAxis.WORLD, Data.Axis.Z, Data.Directions.PLUS, degree);
+                        vizcore3d.View.RotateCameraByAxis(VIZCore3D.NET.Data.BaseAxis.WORLD, VIZCore3D.NET.Data.Axis.Z, VIZCore3D.NET.Data.Directions.PLUS, degree);
                         break;
                     case CameraDirection.RIGHT:
-                        vizcore3d.View.RotateCameraByAxis(Data.BaseAxis.WORLD, Data.Axis.Z, Data.Directions.MINUS, degree);
+                        vizcore3d.View.RotateCameraByAxis(VIZCore3D.NET.Data.BaseAxis.WORLD, VIZCore3D.NET.Data.Axis.Z, VIZCore3D.NET.Data.Directions.MINUS, degree);
                         break;
                     default:
                         break;
