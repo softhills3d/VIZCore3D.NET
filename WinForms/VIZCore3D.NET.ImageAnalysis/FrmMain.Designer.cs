@@ -30,34 +30,34 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnOpen = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtHeight = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rbDistance10 = new System.Windows.Forms.RadioButton();
-            this.rbDistance13 = new System.Windows.Forms.RadioButton();
-            this.rbDistance16 = new System.Windows.Forms.RadioButton();
-            this.rbDistance19 = new System.Windows.Forms.RadioButton();
-            this.rbDistance25 = new System.Windows.Forms.RadioButton();
+            this.btnApply = new System.Windows.Forms.Button();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbTransform = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.rbAngle30 = new System.Windows.Forms.RadioButton();
             this.rbAngle33 = new System.Windows.Forms.RadioButton();
             this.rbAngle35 = new System.Windows.Forms.RadioButton();
             this.rbAngle38 = new System.Windows.Forms.RadioButton();
             this.rbAngle42 = new System.Windows.Forms.RadioButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.cbTransform = new System.Windows.Forms.ComboBox();
-            this.btnApply = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rbDistance25 = new System.Windows.Forms.RadioButton();
+            this.rbDistance19 = new System.Windows.Forms.RadioButton();
+            this.rbDistance16 = new System.Windows.Forms.RadioButton();
+            this.rbDistance13 = new System.Windows.Forms.RadioButton();
+            this.rbDistance10 = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtHeight = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpen = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -79,125 +79,37 @@
             this.splitContainer1.SplitterDistance = 307;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox1
+            // btnApply
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnApply.Location = new System.Drawing.Point(223, 344);
+            this.btnApply.Name = "btnApply";
+            this.btnApply.Size = new System.Drawing.Size(75, 23);
+            this.btnApply.TabIndex = 11;
+            this.btnApply.Text = "Apply";
+            this.btnApply.UseVisualStyleBackColor = true;
+            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.btnOpen);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(286, 63);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Model";
+            this.groupBox5.Controls.Add(this.cbTransform);
+            this.groupBox5.Location = new System.Drawing.Point(12, 276);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(286, 62);
+            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Transform";
             // 
-            // btnOpen
+            // cbTransform
             // 
-            this.btnOpen.Location = new System.Drawing.Point(21, 22);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(46, 23);
-            this.btnOpen.TabIndex = 0;
-            this.btnOpen.Text = "Open";
-            this.btnOpen.UseVisualStyleBackColor = true;
-            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.txtHeight);
-            this.groupBox2.Location = new System.Drawing.Point(12, 81);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(286, 53);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Height";
-            // 
-            // txtHeight
-            // 
-            this.txtHeight.Location = new System.Drawing.Point(21, 20);
-            this.txtHeight.Name = "txtHeight";
-            this.txtHeight.Size = new System.Drawing.Size(41, 21);
-            this.txtHeight.TabIndex = 1;
-            this.txtHeight.Text = "14";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(16, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "m";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.rbDistance25);
-            this.groupBox3.Controls.Add(this.rbDistance19);
-            this.groupBox3.Controls.Add(this.rbDistance16);
-            this.groupBox3.Controls.Add(this.rbDistance13);
-            this.groupBox3.Controls.Add(this.rbDistance10);
-            this.groupBox3.Location = new System.Drawing.Point(12, 140);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(286, 62);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Distance";
-            // 
-            // rbDistance10
-            // 
-            this.rbDistance10.AutoSize = true;
-            this.rbDistance10.Checked = true;
-            this.rbDistance10.Location = new System.Drawing.Point(21, 30);
-            this.rbDistance10.Name = "rbDistance10";
-            this.rbDistance10.Size = new System.Drawing.Size(46, 16);
-            this.rbDistance10.TabIndex = 4;
-            this.rbDistance10.TabStop = true;
-            this.rbDistance10.Text = "10m";
-            this.rbDistance10.UseVisualStyleBackColor = true;
-            // 
-            // rbDistance13
-            // 
-            this.rbDistance13.AutoSize = true;
-            this.rbDistance13.Location = new System.Drawing.Point(73, 30);
-            this.rbDistance13.Name = "rbDistance13";
-            this.rbDistance13.Size = new System.Drawing.Size(46, 16);
-            this.rbDistance13.TabIndex = 5;
-            this.rbDistance13.Text = "13m";
-            this.rbDistance13.UseVisualStyleBackColor = true;
-            // 
-            // rbDistance16
-            // 
-            this.rbDistance16.AutoSize = true;
-            this.rbDistance16.Location = new System.Drawing.Point(125, 30);
-            this.rbDistance16.Name = "rbDistance16";
-            this.rbDistance16.Size = new System.Drawing.Size(46, 16);
-            this.rbDistance16.TabIndex = 6;
-            this.rbDistance16.Text = "16m";
-            this.rbDistance16.UseVisualStyleBackColor = true;
-            // 
-            // rbDistance19
-            // 
-            this.rbDistance19.AutoSize = true;
-            this.rbDistance19.Location = new System.Drawing.Point(177, 30);
-            this.rbDistance19.Name = "rbDistance19";
-            this.rbDistance19.Size = new System.Drawing.Size(46, 16);
-            this.rbDistance19.TabIndex = 7;
-            this.rbDistance19.Text = "19m";
-            this.rbDistance19.UseVisualStyleBackColor = true;
-            // 
-            // rbDistance25
-            // 
-            this.rbDistance25.AutoSize = true;
-            this.rbDistance25.Location = new System.Drawing.Point(229, 30);
-            this.rbDistance25.Name = "rbDistance25";
-            this.rbDistance25.Size = new System.Drawing.Size(46, 16);
-            this.rbDistance25.TabIndex = 8;
-            this.rbDistance25.Text = "25m";
-            this.rbDistance25.UseVisualStyleBackColor = true;
+            this.cbTransform.FormattingEnabled = true;
+            this.cbTransform.Location = new System.Drawing.Point(21, 24);
+            this.cbTransform.Name = "cbTransform";
+            this.cbTransform.Size = new System.Drawing.Size(121, 20);
+            this.cbTransform.TabIndex = 0;
+            this.cbTransform.Text = "0";
             // 
             // groupBox4
             // 
@@ -267,37 +179,125 @@
             this.rbAngle42.Text = "42.6";
             this.rbAngle42.UseVisualStyleBackColor = true;
             // 
-            // groupBox5
+            // groupBox3
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.cbTransform);
-            this.groupBox5.Location = new System.Drawing.Point(12, 276);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(286, 62);
-            this.groupBox5.TabIndex = 10;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Transform";
+            this.groupBox3.Controls.Add(this.rbDistance25);
+            this.groupBox3.Controls.Add(this.rbDistance19);
+            this.groupBox3.Controls.Add(this.rbDistance16);
+            this.groupBox3.Controls.Add(this.rbDistance13);
+            this.groupBox3.Controls.Add(this.rbDistance10);
+            this.groupBox3.Location = new System.Drawing.Point(12, 140);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(286, 62);
+            this.groupBox3.TabIndex = 5;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Distance";
             // 
-            // cbTransform
+            // rbDistance25
             // 
-            this.cbTransform.FormattingEnabled = true;
-            this.cbTransform.Location = new System.Drawing.Point(21, 24);
-            this.cbTransform.Name = "cbTransform";
-            this.cbTransform.Size = new System.Drawing.Size(121, 20);
-            this.cbTransform.TabIndex = 0;
-            this.cbTransform.Text = "0";
+            this.rbDistance25.AutoSize = true;
+            this.rbDistance25.Location = new System.Drawing.Point(229, 30);
+            this.rbDistance25.Name = "rbDistance25";
+            this.rbDistance25.Size = new System.Drawing.Size(46, 16);
+            this.rbDistance25.TabIndex = 8;
+            this.rbDistance25.Text = "25m";
+            this.rbDistance25.UseVisualStyleBackColor = true;
             // 
-            // btnApply
+            // rbDistance19
             // 
-            this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(223, 344);
-            this.btnApply.Name = "btnApply";
-            this.btnApply.Size = new System.Drawing.Size(75, 23);
-            this.btnApply.TabIndex = 11;
-            this.btnApply.Text = "Apply";
-            this.btnApply.UseVisualStyleBackColor = true;
-            this.btnApply.Click += new System.EventHandler(this.btnApply_Click);
+            this.rbDistance19.AutoSize = true;
+            this.rbDistance19.Location = new System.Drawing.Point(177, 30);
+            this.rbDistance19.Name = "rbDistance19";
+            this.rbDistance19.Size = new System.Drawing.Size(46, 16);
+            this.rbDistance19.TabIndex = 7;
+            this.rbDistance19.Text = "19m";
+            this.rbDistance19.UseVisualStyleBackColor = true;
+            // 
+            // rbDistance16
+            // 
+            this.rbDistance16.AutoSize = true;
+            this.rbDistance16.Location = new System.Drawing.Point(125, 30);
+            this.rbDistance16.Name = "rbDistance16";
+            this.rbDistance16.Size = new System.Drawing.Size(46, 16);
+            this.rbDistance16.TabIndex = 6;
+            this.rbDistance16.Text = "16m";
+            this.rbDistance16.UseVisualStyleBackColor = true;
+            // 
+            // rbDistance13
+            // 
+            this.rbDistance13.AutoSize = true;
+            this.rbDistance13.Location = new System.Drawing.Point(73, 30);
+            this.rbDistance13.Name = "rbDistance13";
+            this.rbDistance13.Size = new System.Drawing.Size(46, 16);
+            this.rbDistance13.TabIndex = 5;
+            this.rbDistance13.Text = "13m";
+            this.rbDistance13.UseVisualStyleBackColor = true;
+            // 
+            // rbDistance10
+            // 
+            this.rbDistance10.AutoSize = true;
+            this.rbDistance10.Checked = true;
+            this.rbDistance10.Location = new System.Drawing.Point(21, 30);
+            this.rbDistance10.Name = "rbDistance10";
+            this.rbDistance10.Size = new System.Drawing.Size(46, 16);
+            this.rbDistance10.TabIndex = 4;
+            this.rbDistance10.TabStop = true;
+            this.rbDistance10.Text = "10m";
+            this.rbDistance10.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.txtHeight);
+            this.groupBox2.Location = new System.Drawing.Point(12, 81);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(286, 53);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Height";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(68, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(16, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "m";
+            // 
+            // txtHeight
+            // 
+            this.txtHeight.Location = new System.Drawing.Point(21, 20);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(41, 21);
+            this.txtHeight.TabIndex = 1;
+            this.txtHeight.Text = "14";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnOpen);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(286, 63);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Model";
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Location = new System.Drawing.Point(21, 22);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(46, 23);
+            this.btnOpen.TabIndex = 0;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // FrmMain
             // 
@@ -312,14 +312,14 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
