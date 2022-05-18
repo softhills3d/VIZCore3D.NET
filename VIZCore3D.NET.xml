@@ -5829,6 +5829,36 @@
             축 기준
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
+            <summary>
+            Tessellation Quality Level Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
+            <summary>
+            Extra Low
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
+            <summary>
+            Low
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
+            <summary>
+            Medium
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
+            <summary>
+            High
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
+            <summary>
+            Extra High
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -15808,6 +15838,11 @@
             Generic Files
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.Count">
+            <summary>
+            Generic Item Count
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -15823,6 +15858,21 @@
             <summary>
             Open Generic File Dialog
             </summary>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.OpenFile(System.String)">
+            <summary>
+            Open Generic File
+            </summary>
+            <param name="path">path</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.OpenFiles(System.String[])">
+            <summary>
+            Open Files
+            </summary>
+            <param name="files">File Path Array</param>
+            <returns>Result</returns>
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.FileControl">
             <summary>
@@ -15856,6 +15906,58 @@
             Get Generic Attribute Control
             </summary>
             <returns>Generic Attribute Control</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetStringDataCount(System.Int32)">
+            <summary>
+            String Data Count
+            </summary>
+            <param name="index">File Index</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetStringDataCount(System.String)">
+            <summary>
+            String Data Count
+            </summary>
+            <param name="name">File Name</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetMarkingDataCount(System.Int32)">
+            <summary>
+            Marking Data Count
+            </summary>
+            <param name="index">File Index</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetMarkingDataCount(System.String)">
+            <summary>
+            Marking Data Count
+            </summary>
+            <param name="name">File Name</param>
+            <returns>Result</returns>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.StringDataNotes">
+            <summary>
+            Generic String Data Note ID List
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowStringData(System.Boolean)">
+            <summary>
+            Show String Data By 3D Note
+            </summary>
+            <param name="visible">Show / Hide</param>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.MarkingDataLines">
+            <summary>
+            Generic Marking Data Line ID List
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowMarkingData(System.Boolean,System.Nullable{System.Drawing.Color},System.Single)">
+            <summary>
+            Show Marking Data By ShapeDrawing (Line)
+            </summary>
+            <param name="visible">Show / Hide</param>
+            <param name="color">Line Color</param>
+            <param name="thickness">Thickness</param>
         </member>
         <member name="T:VIZCore3D.NET.Extension.Generic.GenericDrawingControl">
             TODO: GraphicPath 활용
@@ -34685,6 +34787,11 @@
             Default : 6.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
+            <summary>
+            Tessellation Quality
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -35767,6 +35874,29 @@
             </summary>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.obj</param>
             <param name="node">내보낼 노드 목록</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
+            <summary>
+            FBX 파일 형식으로 내보내기
+            </summary>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
+            <param name="ascii">True : ASCII, False : Binary</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
+            <summary>
+            FBX 파일 형식으로 저장
+            </summary>
+            <param name="ascii">True : ASCII, False : Binary</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
+            <summary>
+            GLTF 파일 형식으로 내보내기
+            </summary>
+            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
+            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
