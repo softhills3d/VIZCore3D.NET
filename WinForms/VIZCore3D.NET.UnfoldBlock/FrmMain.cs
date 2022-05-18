@@ -680,6 +680,8 @@ namespace VIZCore3D.NET.UnfoldBlock
             vizcore3d.View.EnableAnimation = false;
             vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(true, 0.8f);
 
+            //AddNote();
+
             vizcore3d.EndUpdate();
 
             vizcore3d.View.ResetView();
@@ -709,9 +711,16 @@ namespace VIZCore3D.NET.UnfoldBlock
 
         private void btnAddNote_Click(object sender, EventArgs e)
         {
-            VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
-
             vizcore3d.BeginUpdate();
+
+            AddNote();
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void AddNote()
+        {
+            VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
 
             List<string> keys = Blocks.Keys.ToList();
             for (int i = 0; i < keys.Count; i++)
@@ -723,8 +732,6 @@ namespace VIZCore3D.NET.UnfoldBlock
 
                 vizcore3d.Review.Note.AddNote3D(node.NodeName, prop.CenterPoint);
             }
-
-            vizcore3d.EndUpdate();
         }
 
         private void btnClearNote_Click(object sender, EventArgs e)
