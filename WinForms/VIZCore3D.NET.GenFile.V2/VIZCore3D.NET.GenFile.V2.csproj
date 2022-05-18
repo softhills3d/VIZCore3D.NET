@@ -45,9 +45,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="VIZCore3D.NET, Version=2.6.22.308, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="VIZCore3D.NET, Version=2.6.22.504, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\SH_SVN\SH_Product\VIZCore3D.NET_V2\VIZCore3D.NET\bin\Debug\VIZCore3D.NET.dll</HintPath>
+      <HintPath>..\..\VIZCore3D.NET.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
