@@ -15929,6 +15929,13 @@
             <param name="color">Line Color</param>
             <param name="thickness">Thickness</param>
         </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetUnhandledKeyword(System.Int32)">
+            <summary>
+            Get Unhandled Keyword 
+            </summary>
+            <param name="index">File Index</param>
+            <returns>Unhandled Keyword List</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Extension.Generic.GenericDrawingControl">
             TODO: GraphicPath 활용
             <summary>
@@ -17824,6 +17831,21 @@
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.FUNCTIONAL_DESCR_TEXT">
             <summary>
             FUNCTIONAL_DESCR_TEXT
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.PANEL_SYM">
+            <summary>
+            PANEL_SYM
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.COMPONENT_SYM">
+            <summary>
+            COMPONENT_SYM
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.PANEL_SYM_NO">
+            <summary>
+            PANEL_SYM_NO
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.TransformationData">
@@ -47512,6 +47534,12 @@
             </summary>
             <param name="camera">Camera Data</param>
             <param name="animation">Animation</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.GetCameraEyePosition">
+            <summary>
+            원근 카메라 위치 반환
+            </summary>
+            <returns>원본 카메라 위치</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.RotateCamera(VIZCore3D.NET.Data.ShipbuildingCameraDirection)">
             <summary>
