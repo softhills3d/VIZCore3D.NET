@@ -9608,6 +9608,14 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Section.ExportVIZ(System.String,System.Boolean)">
+            <summary>
+            단면상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="path">경로</param>
+            <param name="removeStructure">구조 제거 여부</param>
+            <returns>결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Data.SectionComment">
             <summary>
             Section Comment Class
@@ -9883,6 +9891,14 @@
             <param name="option">모델 포함 옵션</param>
             <param name="includeNodePath">노드 경로(패스) 포함 여부</param>
             <returns>개체 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.SelectionBox.ExportVIZ(System.String,System.Boolean)">
+            <summary>
+            선택상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="path">경로</param>
+            <param name="removeStructure">구조 제거 여부</param>
+            <returns>결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.SelectionBoxController">
             <summary>
@@ -41193,12 +41209,6 @@
             </code>
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.List">
-            <summary>
-            선택상자 목록 반환
-            </summary>
-            <returns>선택상자 목록</returns>
-        </member>
         <member name="P:VIZCore3D.NET.Manager.SelectionBoxManager.Items">
             <summary>
             선택상자 목록
@@ -41603,6 +41613,24 @@
             <param name="color">색상</param>
             <param name="transparency">투명도(%) : 0 ~ 100</param>
             <returns>투명도가 적용된 색상</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(VIZCore3D.NET.Data.SelectionBox,System.String,System.Boolean)">
+            <summary>
+            선택상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="selectionBox">선택상자</param>
+            <param name="path">경로</param>
+            <param name="removeStructure">구조 제거 여부</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
+            <summary>
+            선택상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="id">선택상자 아이디</param>
+            <param name="path">경로</param>
+            <param name="removeStructure">구조 제거 여부</param>
+            <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.Ungroup">
             <summary>
@@ -42666,6 +42694,24 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.ExportVIZ(VIZCore3D.NET.Data.Section,System.String,System.Boolean)">
+            <summary>
+            단면상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="section">단면상자</param>
+            <param name="path">경로</param>
+            <param name="removeStructure">구조 제거 여부</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
+            <summary>
+            단면상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="id">단면상자 아이디</param>
+            <param name="path">경로</param>
+            <param name="removeStructure">구조 제거 여부</param>
+            <returns>결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.SecurityManager">
             <summary>
