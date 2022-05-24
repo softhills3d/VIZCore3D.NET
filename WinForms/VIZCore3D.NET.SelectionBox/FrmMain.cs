@@ -965,5 +965,20 @@ namespace VIZCore3D.NET.SelectionBox
 
             System.Diagnostics.Process.Start(dlg.SelectedPath);
         }
+
+        private void btnExportVIZ_Click(object sender, EventArgs e)
+        {
+            if (lvList.SelectedItems.Count == 0) return;
+
+            ListViewItem lvi = lvList.SelectedItems[0];
+
+            int id = Convert.ToInt32(lvi.SubItems[0].Text);
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = vizcore3d.Model.SaveFilterVIZ;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            vizcore3d.SelectionBox.ExportVIZ(id, dlg.FileName, false);
+        }
     }
 }

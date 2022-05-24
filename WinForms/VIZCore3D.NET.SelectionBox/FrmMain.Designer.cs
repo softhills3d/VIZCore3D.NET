@@ -86,6 +86,7 @@
             this.btnShowAll = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExportGrid = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.txtCountZ = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -101,7 +102,7 @@
             this.dgView = new System.Windows.Forms.DataGridView();
             this.contextMenuSelectionBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cxSelectionBoxDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExportGrid = new System.Windows.Forms.Button();
+            this.btnExportVIZ = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -510,6 +511,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnExportVIZ);
             this.groupBox2.Controls.Add(this.tabSelectionBox);
             this.groupBox2.Controls.Add(this.btnHideLabel);
             this.groupBox2.Controls.Add(this.btnShowLabel);
@@ -530,10 +532,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabSelectionBox.Controls.Add(this.tpItems);
             this.tabSelectionBox.Controls.Add(this.tpDrag);
-            this.tabSelectionBox.Location = new System.Drawing.Point(7, 49);
+            this.tabSelectionBox.Location = new System.Drawing.Point(7, 93);
             this.tabSelectionBox.Name = "tabSelectionBox";
             this.tabSelectionBox.SelectedIndex = 0;
-            this.tabSelectionBox.Size = new System.Drawing.Size(419, 351);
+            this.tabSelectionBox.Size = new System.Drawing.Size(419, 307);
             this.tabSelectionBox.TabIndex = 6;
             // 
             // tpItems
@@ -542,7 +544,7 @@
             this.tpItems.Location = new System.Drawing.Point(4, 22);
             this.tpItems.Name = "tpItems";
             this.tpItems.Padding = new System.Windows.Forms.Padding(3);
-            this.tpItems.Size = new System.Drawing.Size(411, 325);
+            this.tpItems.Size = new System.Drawing.Size(411, 281);
             this.tpItems.TabIndex = 0;
             this.tpItems.Text = "Items";
             this.tpItems.UseVisualStyleBackColor = true;
@@ -561,7 +563,7 @@
             this.lvList.HideSelection = false;
             this.lvList.Location = new System.Drawing.Point(3, 3);
             this.lvList.Name = "lvList";
-            this.lvList.Size = new System.Drawing.Size(405, 319);
+            this.lvList.Size = new System.Drawing.Size(405, 275);
             this.lvList.TabIndex = 0;
             this.lvList.UseCompatibleStateImageBehavior = false;
             this.lvList.View = System.Windows.Forms.View.Details;
@@ -629,9 +631,9 @@
             // 
             // btnHideLabel
             // 
-            this.btnHideLabel.Location = new System.Drawing.Point(317, 20);
+            this.btnHideLabel.Location = new System.Drawing.Point(108, 49);
             this.btnHideLabel.Name = "btnHideLabel";
-            this.btnHideLabel.Size = new System.Drawing.Size(75, 23);
+            this.btnHideLabel.Size = new System.Drawing.Size(80, 23);
             this.btnHideLabel.TabIndex = 5;
             this.btnHideLabel.Text = "Hide Label";
             this.btnHideLabel.UseVisualStyleBackColor = true;
@@ -639,7 +641,7 @@
             // 
             // btnShowLabel
             // 
-            this.btnShowLabel.Location = new System.Drawing.Point(231, 20);
+            this.btnShowLabel.Location = new System.Drawing.Point(108, 20);
             this.btnShowLabel.Name = "btnShowLabel";
             this.btnShowLabel.Size = new System.Drawing.Size(80, 23);
             this.btnShowLabel.TabIndex = 4;
@@ -649,7 +651,7 @@
             // 
             // btnHideAll
             // 
-            this.btnHideAll.Location = new System.Drawing.Point(153, 20);
+            this.btnHideAll.Location = new System.Drawing.Point(11, 49);
             this.btnHideAll.Name = "btnHideAll";
             this.btnHideAll.Size = new System.Drawing.Size(75, 23);
             this.btnHideAll.TabIndex = 3;
@@ -659,7 +661,7 @@
             // 
             // btnShowAll
             // 
-            this.btnShowAll.Location = new System.Drawing.Point(72, 20);
+            this.btnShowAll.Location = new System.Drawing.Point(11, 20);
             this.btnShowAll.Name = "btnShowAll";
             this.btnShowAll.Size = new System.Drawing.Size(75, 23);
             this.btnShowAll.TabIndex = 2;
@@ -669,7 +671,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(16, 20);
+            this.btnClear.Location = new System.Drawing.Point(196, 20);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(52, 23);
             this.btnClear.TabIndex = 1;
@@ -695,6 +697,17 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "자동 분할";
+            // 
+            // btnExportGrid
+            // 
+            this.btnExportGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportGrid.Location = new System.Drawing.Point(351, 27);
+            this.btnExportGrid.Name = "btnExportGrid";
+            this.btnExportGrid.Size = new System.Drawing.Size(75, 23);
+            this.btnExportGrid.TabIndex = 7;
+            this.btnExportGrid.Text = "Grid";
+            this.btnExportGrid.UseVisualStyleBackColor = true;
+            this.btnExportGrid.Click += new System.EventHandler(this.btnExportGrid_Click);
             // 
             // btnCreate
             // 
@@ -845,16 +858,15 @@
             this.cxSelectionBoxDelete.Text = "(커스텀) 삭제";
             this.cxSelectionBoxDelete.Click += new System.EventHandler(this.cxSelectionBoxDelete_Click);
             // 
-            // btnExportGrid
+            // btnExportVIZ
             // 
-            this.btnExportGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportGrid.Location = new System.Drawing.Point(351, 27);
-            this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(75, 23);
-            this.btnExportGrid.TabIndex = 7;
-            this.btnExportGrid.Text = "Grid";
-            this.btnExportGrid.UseVisualStyleBackColor = true;
-            this.btnExportGrid.Click += new System.EventHandler(this.btnExportGrid_Click);
+            this.btnExportVIZ.Location = new System.Drawing.Point(259, 20);
+            this.btnExportVIZ.Name = "btnExportVIZ";
+            this.btnExportVIZ.Size = new System.Drawing.Size(81, 23);
+            this.btnExportVIZ.TabIndex = 7;
+            this.btnExportVIZ.Text = "Export VIZ";
+            this.btnExportVIZ.UseVisualStyleBackColor = true;
+            this.btnExportVIZ.Click += new System.EventHandler(this.btnExportVIZ_Click);
             // 
             // FrmMain
             // 
@@ -964,6 +976,7 @@
         private System.Windows.Forms.ListView lvDragItem;
         private System.Windows.Forms.ColumnHeader chDragItem;
         private System.Windows.Forms.Button btnExportGrid;
+        private System.Windows.Forms.Button btnExportVIZ;
     }
 }
 
