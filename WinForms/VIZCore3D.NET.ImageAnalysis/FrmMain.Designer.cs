@@ -50,6 +50,13 @@
             this.txtHeight = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtCameraPosition = new System.Windows.Forms.TextBox();
+            this.btnCameraPosition = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnModelCenter = new System.Windows.Forms.Button();
+            this.txtModelCenter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -58,6 +65,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,6 +77,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox6);
             this.splitContainer1.Panel1.Controls.Add(this.btnApply);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
@@ -82,7 +91,7 @@
             // btnApply
             // 
             this.btnApply.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnApply.Location = new System.Drawing.Point(223, 344);
+            this.btnApply.Location = new System.Drawing.Point(223, 473);
             this.btnApply.Name = "btnApply";
             this.btnApply.Size = new System.Drawing.Size(75, 23);
             this.btnApply.TabIndex = 11;
@@ -95,7 +104,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox5.Controls.Add(this.cbTransform);
-            this.groupBox5.Location = new System.Drawing.Point(12, 276);
+            this.groupBox5.Location = new System.Drawing.Point(12, 405);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(286, 62);
             this.groupBox5.TabIndex = 10;
@@ -120,7 +129,7 @@
             this.groupBox4.Controls.Add(this.rbAngle35);
             this.groupBox4.Controls.Add(this.rbAngle38);
             this.groupBox4.Controls.Add(this.rbAngle42);
-            this.groupBox4.Location = new System.Drawing.Point(12, 208);
+            this.groupBox4.Location = new System.Drawing.Point(12, 337);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(286, 62);
             this.groupBox4.TabIndex = 9;
@@ -188,7 +197,7 @@
             this.groupBox3.Controls.Add(this.rbDistance16);
             this.groupBox3.Controls.Add(this.rbDistance13);
             this.groupBox3.Controls.Add(this.rbDistance10);
-            this.groupBox3.Location = new System.Drawing.Point(12, 140);
+            this.groupBox3.Location = new System.Drawing.Point(12, 269);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(286, 62);
             this.groupBox3.TabIndex = 5;
@@ -253,7 +262,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.txtHeight);
-            this.groupBox2.Location = new System.Drawing.Point(12, 81);
+            this.groupBox2.Location = new System.Drawing.Point(12, 210);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(286, 53);
             this.groupBox2.TabIndex = 1;
@@ -299,6 +308,83 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.btnModelCenter);
+            this.groupBox6.Controls.Add(this.txtModelCenter);
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.btnCameraPosition);
+            this.groupBox6.Controls.Add(this.txtCameraPosition);
+            this.groupBox6.Location = new System.Drawing.Point(12, 81);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(286, 123);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Position";
+            // 
+            // txtCameraPosition
+            // 
+            this.txtCameraPosition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCameraPosition.Location = new System.Drawing.Point(21, 42);
+            this.txtCameraPosition.Name = "txtCameraPosition";
+            this.txtCameraPosition.ReadOnly = true;
+            this.txtCameraPosition.Size = new System.Drawing.Size(178, 21);
+            this.txtCameraPosition.TabIndex = 1;
+            // 
+            // btnCameraPosition
+            // 
+            this.btnCameraPosition.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCameraPosition.Location = new System.Drawing.Point(205, 42);
+            this.btnCameraPosition.Name = "btnCameraPosition";
+            this.btnCameraPosition.Size = new System.Drawing.Size(75, 23);
+            this.btnCameraPosition.TabIndex = 12;
+            this.btnCameraPosition.Text = "Get";
+            this.btnCameraPosition.UseVisualStyleBackColor = true;
+            this.btnCameraPosition.Click += new System.EventHandler(this.btnCameraPosition_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 12);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Camera";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 71);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 12);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Model Center";
+            // 
+            // btnModelCenter
+            // 
+            this.btnModelCenter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnModelCenter.Location = new System.Drawing.Point(205, 86);
+            this.btnModelCenter.Name = "btnModelCenter";
+            this.btnModelCenter.Size = new System.Drawing.Size(75, 23);
+            this.btnModelCenter.TabIndex = 15;
+            this.btnModelCenter.Text = "Get";
+            this.btnModelCenter.UseVisualStyleBackColor = true;
+            this.btnModelCenter.Click += new System.EventHandler(this.btnModelCenter_Click);
+            // 
+            // txtModelCenter
+            // 
+            this.txtModelCenter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtModelCenter.Location = new System.Drawing.Point(21, 86);
+            this.txtModelCenter.Name = "txtModelCenter";
+            this.txtModelCenter.ReadOnly = true;
+            this.txtModelCenter.Size = new System.Drawing.Size(178, 21);
+            this.txtModelCenter.TabIndex = 14;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -320,6 +406,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -347,6 +435,13 @@
         private System.Windows.Forms.RadioButton rbDistance10;
         private System.Windows.Forms.ComboBox cbTransform;
         private System.Windows.Forms.Button btnApply;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnCameraPosition;
+        private System.Windows.Forms.TextBox txtCameraPosition;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnModelCenter;
+        private System.Windows.Forms.TextBox txtModelCenter;
+        private System.Windows.Forms.Label label1;
     }
 }
 
