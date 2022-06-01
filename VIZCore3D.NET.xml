@@ -36087,7 +36087,7 @@
             </summary>
             <param name="input">CAD/VIZ 파일</param>
             <param name="output">VIZ 파일</param>
-            <param name="remainAssemblyStructure">Assembly Structure 유지 여부. 권장값 : False</param>
+            <param name="keepStructure">Assembly Structure 유지 여부. 권장값 : False</param>
             <param name="limitBoundBox">BoundBox 크기 제한 여부</param>
             <param name="minX">BoundBox Min. X</param>
             <param name="minY">BoundBox Min. Y</param>
@@ -36618,7 +36618,7 @@
             </summary>
             <param name="path">내보내기 파일</param>
             <param name="boundBox">내보내기 영역</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)">
