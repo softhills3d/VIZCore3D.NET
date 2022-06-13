@@ -1209,7 +1209,7 @@
             PrintDocumentControl
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint)">
+        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.PrintControl.PageOrientation)">
             <summary>
             Initializes a new instance of the <see cref="T:VIZCore3D.NET.PrintControl.PrintDocumentControl"/> class.
             </summary>
@@ -1218,6 +1218,7 @@
             <param name="footer">Footer</param>
             <param name="dateText">Date Text</param>
             <param name="pageNumberText">Page Number Text</param>
+            <param name="orientation">Page Orientation</param>
         </member>
         <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.SetPreviewToolStrip">
             <summary>
@@ -1256,7 +1257,7 @@
             Print Document Form Class
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentForm.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint)">
+        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentForm.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.PrintControl.PageOrientation)">
             <summary>
             Initializes a new instance of the <see cref="T:VIZCore3D.NET.PrintControl.PrintDocumentForm"/> class.
             </summary>
@@ -1265,6 +1266,7 @@
             <param name="footer">Footer</param>
             <param name="footerLeft">Footer  - Left</param>
             <param name="footerRight">Footer - Right</param>
+            <param name="orientation">Page Orientation</param>
         </member>
         <member name="F:VIZCore3D.NET.PrintControl.PrintDocumentForm.components">
             <summary>
@@ -5827,6 +5829,26 @@
         <member name="F:VIZCore3D.NET.Data.ZAxisRotationKind.Axis">
             <summary>
             축 기준
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.ClashResultSymbols">
+            <summary>
+            간섭검사 결과 심벌 유형
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ClashResultSymbols.Circle">
+            <summary>
+            원. 근접 표시
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ClashResultSymbols.Square">
+            <summary>
+            사각형. 접촉 표시
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ClashResultSymbols.Triangle">
+            <summary>
+            삼각형. 침투 표시
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
@@ -29646,6 +29668,11 @@
             Page Number Text
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.PrintManager.Orientation">
+            <summary>
+            Page Orientation 
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.PrintManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Controls.ViewControl)">
             <summary>
             Construction
@@ -31321,6 +31348,34 @@
             <param name="clashTest">간섭검사 항목</param>
             <param name="option">간섭검사 결과 그룹화 옵션</param>
             <returns>이동 간섭검사 전체 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.ClearResultSymbol">
+            <summary>
+            간섭검사 결과 심벌 조회 초기화
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.ShowResultSymbol(System.Int32,System.Int32,System.Collections.Generic.List{System.Int32},System.Single,System.Boolean,System.Nullable{System.Drawing.Color},System.Boolean)">
+            <summary>
+            간섭검사 결과 심벌 조회
+            </summary>
+            <param name="id">검사 아이디</param>
+            <param name="subId">이동검사 아이디</param>
+            <param name="result">결과 아이디</param>
+            <param name="radius">반지름</param>
+            <param name="fixedSize">크기 고정 : True (크기고정), False(화면비율에 따른 크기 변경)</param>
+            <param name="symbolColor">심벌 색상</param>
+            <param name="visibleNumber">심벌 번호 조회</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.ShowResultSymbol(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Collections.Generic.List{VIZCore3D.NET.Data.ClashResultSymbols},System.Single,System.Boolean,System.Nullable{System.Drawing.Color},System.Boolean)">
+            <summary>
+            간섭검사 결과 심벌 조회
+            </summary>
+            <param name="v">Hot Point</param>
+            <param name="symbol">심벌 유형</param>
+            <param name="radius">반지름</param>
+            <param name="fixedSize">크기 고정 : True (크기고정), False(화면비율에 따른 크기 변경)</param>
+            <param name="symbolColor">심벌 색상</param>
+            <param name="visibleNumber">심벌 번호 조회</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ColorManager">
             <summary>
