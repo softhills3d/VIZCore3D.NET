@@ -44710,6 +44710,16 @@
             </code> 
             </example>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.TransformManager.HandleMoveOffset">
+            <summary>
+            핸들 이동 오프셋 : Handle 모드에서 Shift 키가 눌려진 상태에서 이동되는 값
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.TransformManager.HandleRotationOffset">
+            <summary>
+            핸들 회전 오프셋 : Handle 모드에서 Shift 키가 눌려진 상태에서 회전되는 값(각도)
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.TransformManager.TranslationInterval">
             <summary>
             이동 다이얼로그 : 이동 간격. 기본값 - 100mm
