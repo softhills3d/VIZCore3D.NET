@@ -2291,6 +2291,11 @@
             중심점
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.CircleData.Normal">
+            <summary>
+            중심점 방향
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.CircleData.#ctor(VIZCore3DNETInterop.VIZCore3D,System.String)">
             <summary>
             Construction
