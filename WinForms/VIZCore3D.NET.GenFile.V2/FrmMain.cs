@@ -556,12 +556,12 @@ namespace VIZCore3D.NET.GenFile.V2
         private void btnOpenGen_Click(object sender, EventArgs e)
         {
             // Case 1 : Open File Dialog
-            //vizcore3d.GenericData.OpenFileDialog();
+            vizcore3d.GenericData.OpenFileDialog();
 
 
             // Case 2 : Single File
-            string path = "C:\\GENERIC\\BOW-142-2ND_1-6SP.gen";
-            vizcore3d.GenericData.OpenFile(path);
+            //string path = "C:\\GENERIC\\BOW-142-2ND_1-6SP.gen";
+            //vizcore3d.GenericData.OpenFile(path);
 
 
             // Case 3 : Multi File
@@ -571,6 +571,23 @@ namespace VIZCore3D.NET.GenFile.V2
             string path3 = "C:\\GENERIC\\BOW-142-2ND_1-8SP.gen";
             vizcore3d.GenericData.OpenFiles(new string[] { path1, path2, path3 });
             */
+
+            /*
+            string path1 = "C:\\Users\\Gjkim\\Desktop\\CUSTOMER\\HHI.SS\\GENERIC-3\\AFT-117-FR186_2_F1S.gen";
+            string path2 = "C:\\Users\\Gjkim\\Desktop\\CUSTOMER\\HHI.SS\\GENERIC-3\\AFT-117-FR186_2-1S.gen";
+            vizcore3d.GenericData.OpenFiles(new string[] { path1, path2 });
+            */
+
+            int count = vizcore3d.GenericData.Count;
+            for (int i = 0; i < count; i++)
+            {
+                List<string> unhandledKeyword = vizcore3d.GenericData.GetUnhandledKeyword(i);
+
+                foreach (string item in unhandledKeyword)
+                {
+                    //MessageBox.Show(item);
+                }
+            }
         }
 
         private void btnCloseGen_Click(object sender, EventArgs e)
