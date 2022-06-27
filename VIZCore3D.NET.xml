@@ -9640,7 +9640,7 @@
             단면상자 영역의 모델을 VIZ 파일로 내보내기
             </summary>
             <param name="path">경로</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 포함 여부</param>
             <returns>결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.SectionComment">
@@ -9924,7 +9924,7 @@
             선택상자 영역의 모델을 VIZ 파일로 내보내기
             </summary>
             <param name="path">경로</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 포함 여부</param>
             <returns>결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.SelectionBoxController">
@@ -36692,7 +36692,7 @@
             <param name="maxX">내보내기 영역 - Max. X</param>
             <param name="maxY">내보내기 영역 - Max. Y</param>
             <param name="maxZ">내보내기 영역 - Max. Z</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
@@ -36701,7 +36701,7 @@
             </summary>
             <param name="path">내보내기 파일</param>
             <param name="boundBox">내보내기 영역</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.FireProgressEvent(VIZCore3D.NET.Data.ModelProgressModes,System.Int32)">
@@ -41680,7 +41680,7 @@
             </summary>
             <param name="selectionBox">선택상자</param>
             <param name="path">경로</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
@@ -41689,7 +41689,7 @@
             </summary>
             <param name="id">선택상자 아이디</param>
             <param name="path">경로</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.Ungroup">
