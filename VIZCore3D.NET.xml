@@ -9642,6 +9642,58 @@
             <param name="path">경로</param>
             <param name="keepStructure">구조 포함 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\Section.viz" /* Path */
+                    , true                  /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item.ID                     /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Data.SectionComment">
             <summary>
@@ -9926,6 +9978,55 @@
             <param name="path">경로</param>
             <param name="keepStructure">구조 포함 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\SelectionBox.viz"    /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item.ID                         /* SelectionBox */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Data.SelectionBoxController">
             <summary>
@@ -22529,7 +22630,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetSurfaceVertexList(System.Int32,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
-            시작점과 끝점을 받아 정점리스트를 반환 해준다.
+            시작점과 끝점을 받아 정점리스트를 반환
             </summary>
             <param name="nodeID">노드ID</param>
             <param name="startPos">시작점</param>
@@ -31358,6 +31459,44 @@
             <summary>
             간섭검사 결과 심벌 조회 초기화
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Clash.Items.Count == 0) return;
+            
+                List<VIZCore3D.NET.Data.Vertex3D> hotPoint = new List<VIZCore3D.NET.Data.Vertex3D>();
+                hotPoint.Add(new Data.Vertex3D(0, 0, 0));
+                hotPoint.Add(new Data.Vertex3D(100, 100, 100));
+                hotPoint.Add(new Data.Vertex3D(200, 200, 200));
+            
+                List<VIZCore3D.NET.Data.ClashResultSymbols> symbols = new List<VIZCore3D.NET.Data.ClashResultSymbols>();
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Circle);    // 근접
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Square);    // 접촉
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Triangle);  // 침투
+            
+                vizcore3d.Clash.ShowResultSymbol(
+                    hotPoint                        /* Position - Clash Points */
+                    , symbols                       /* Symbol Kind */ 
+                    , 10                            /* Radius */
+                    , true                          /* Fixed Size */
+                    , System.Drawing.Color.Yellow   /* Color */
+                    , true                          /* Number Text Visible */
+                    );
+            }
+            
+            private void Example2()
+            {
+                vizcore3d.Clash.ClearResultSymbol();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.ShowResultSymbol(System.Int32,System.Int32,System.Collections.Generic.List{System.Int32},System.Single,System.Boolean,System.Nullable{System.Drawing.Color},System.Boolean)">
             <summary>
@@ -31370,6 +31509,35 @@
             <param name="fixedSize">크기 고정 : True (크기고정), False(화면비율에 따른 크기 변경)</param>
             <param name="symbolColor">심벌 색상</param>
             <param name="visibleNumber">심벌 번호 조회</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1(VIZCore3D.NET.Data.ClashTest test, VIZCore3D.NET.Data.ClashTestResultItem item)
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Clash.Items.Count == 0) return;
+            
+                vizcore3d.Clash.ShowResultSymbol(
+                    test.ID                         /* Clash Test ID */
+                    , -1                            /* Clash Test Sub ID */
+                    , new List<int>() { item.ID }   /* Result Item ID */
+                    , 10                            /* Radius */
+                    , true                          /* Fixed Size */
+                    , System.Drawing.Color.Yellow   /* Color */
+                    , false                         /* Symbol Number Visible */
+                    );
+            }
+            
+            private void Example2()
+            {
+                vizcore3d.Clash.ClearResultSymbol();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.ShowResultSymbol(System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Collections.Generic.List{VIZCore3D.NET.Data.ClashResultSymbols},System.Single,System.Boolean,System.Nullable{System.Drawing.Color},System.Boolean)">
             <summary>
@@ -31381,6 +31549,44 @@
             <param name="fixedSize">크기 고정 : True (크기고정), False(화면비율에 따른 크기 변경)</param>
             <param name="symbolColor">심벌 색상</param>
             <param name="visibleNumber">심벌 번호 조회</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Clash.Items.Count == 0) return;
+            
+                List<VIZCore3D.NET.Data.Vertex3D> hotPoint = new List<VIZCore3D.NET.Data.Vertex3D>();
+                hotPoint.Add(new Data.Vertex3D(0, 0, 0));
+                hotPoint.Add(new Data.Vertex3D(100, 100, 100));
+                hotPoint.Add(new Data.Vertex3D(200, 200, 200));
+            
+                List<VIZCore3D.NET.Data.ClashResultSymbols> symbols = new List<VIZCore3D.NET.Data.ClashResultSymbols>();
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Circle);    // 근접
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Square);    // 접촉
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Triangle);  // 침투
+            
+                vizcore3d.Clash.ShowResultSymbol(
+                    hotPoint                        /* Position - Clash Points */
+                    , symbols                       /* Symbol Kind */ 
+                    , 10                            /* Radius */
+                    , true                          /* Fixed Size */
+                    , System.Drawing.Color.Yellow   /* Color */
+                    , true                          /* Number Text Visible */
+                    );
+            }
+            
+            private void Example2()
+            {
+                vizcore3d.Clash.ClearResultSymbol();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ColorManager">
             <summary>
@@ -35718,6 +35924,28 @@
             </summary>
             <param name="nodes">노드 목록</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<VIZCore3D.NET.Data.Node> nodes =
+                    vizcore3d.Object3D.FromDepth(1, false);
+            
+                if (nodes.Count == 0) return;
+            
+                vizcore3d.Model.ExportNodesDialog(nodes);
+            
+                MessageBox.Show("Export Completed.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportNodes">
             <summary>
@@ -35739,6 +35967,28 @@
             <param name="path">내보내기 경로</param>
             <param name="nodes">노드 목록</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<VIZCore3D.NET.Data.Node> nodes =
+                    vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+            
+                if (nodes.Count == 0) return;
+            
+                vizcore3d.Model.ExportNodes("C:\\Temp", nodes);
+            
+                MessageBox.Show("Export Completed.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZ(System.String)">
             <summary>
@@ -36680,6 +36930,35 @@
             <param name="boundBox">내보내기 영역</param>
             <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                float[] boundBox = new float[]
+                {
+                    0.0f
+                    , 0.0f
+                    , 0.0f
+                    , 100.0f
+                    , 100.0f
+                    , 100.0f
+                };
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , boundBox              /* BoundBox */
+                    , false                 /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
@@ -36694,6 +36973,30 @@
             <param name="maxZ">내보내기 영역 - Max. Z</param>
             <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , 0.0f                  /* BoundBox - Min.X */
+                    , 0.0f                  /* BoundBox - Min.Y */
+                    , 0.0f                  /* BoundBox - Min.Z */
+                    , 100.0f                /* BoundBox - Max.X */
+                    , 100.0f                /* BoundBox - Max.Y */
+                    , 100.0f                /* BoundBox - Max.Z */
+                    , false                 /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
             <summary>
@@ -36703,6 +37006,36 @@
             <param name="boundBox">내보내기 영역</param>
             <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox =
+                    new VIZCore3D.NET.Data.BoundBox3D();
+            
+                boundBox.MinX = 0.0f;
+                boundBox.MinY = 0.0f;
+                boundBox.MinZ = 0.0f;
+            
+                boundBox.MaxX = 100.0f;
+                boundBox.MaxY = 100.0f;
+                boundBox.MaxZ = 100.0f;
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , boundBox              /* BoundBox */
+                    , false                 /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.FireProgressEvent(VIZCore3D.NET.Data.ModelProgressModes,System.Int32)">
             <summary>
@@ -41682,6 +42015,55 @@
             <param name="path">경로</param>
             <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\SelectionBox.viz"    /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item.ID                         /* SelectionBox */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
             <summary>
@@ -41691,6 +42073,55 @@
             <param name="path">경로</param>
             <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\SelectionBox.viz"    /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item.ID                         /* SelectionBox */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.Ungroup">
             <summary>
@@ -42761,8 +43192,60 @@
             </summary>
             <param name="section">단면상자</param>
             <param name="path">경로</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\Section.viz" /* Path */
+                    , true                  /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item.ID                     /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
             <summary>
@@ -42770,8 +43253,60 @@
             </summary>
             <param name="id">단면상자 아이디</param>
             <param name="path">경로</param>
-            <param name="removeStructure">구조 제거 여부</param>
+            <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\Section.viz" /* Path */
+                    , true                  /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item.ID                     /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.SecurityManager">
             <summary>
