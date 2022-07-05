@@ -3487,6 +3487,11 @@
             Body
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.NodeKind.BODYSET">
+            <summary>
+            Body Set
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Data.NodeKind.UNKNOWN">
             <summary>
             Unknown
@@ -49101,6 +49106,16 @@
             </summary>
             <param name="x">픽셀 단위로 나타낸 마우스의 x좌표</param>
             <param name="y">픽셀 단위로 나타낸 마우스의 y좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.SetPerspectiveCamera(VIZCore3D.NET.Data.Vertex3D,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            원근 카메라 설정
+            </summary>
+            <param name="center">중심점(원점)</param>
+            <param name="distance">거리</param>
+            <param name="height">높이 (중심점에서 높이)</param>
+            <param name="angle">각도</param>
+            <param name="rotateModel">모델 회전 각도</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>
