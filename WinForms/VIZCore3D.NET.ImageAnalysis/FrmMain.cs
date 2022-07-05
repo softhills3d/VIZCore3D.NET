@@ -33,9 +33,6 @@ namespace VIZCore3D.NET.ImageAnalysis
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-            // Init. Transform
-            InitUITransformItems();
         }
 
         // ================================================
@@ -120,6 +117,8 @@ namespace VIZCore3D.NET.ImageAnalysis
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
             //InitializeVIZCore3DToolbar();
+
+            InitAngle();
         }
         #endregion
 
@@ -546,15 +545,14 @@ namespace VIZCore3D.NET.ImageAnalysis
         // ================================================
         // Function
         // ================================================
-        private void InitUITransformItems()
+        private void InitAngle()
         {
-            cbTransform.BeginUpdate();
             cbTransform.Items.Clear();
             for (int i = 0; i < 15; i++)
             {
-                cbTransform.Items.Add(i * 24);
+                int angle = i * 24;
+                cbTransform.Items.Add(angle);
             }
-            cbTransform.EndUpdate();
         }
 
         private void btnOpen_Click(object sender, EventArgs e)
@@ -566,7 +564,7 @@ namespace VIZCore3D.NET.ImageAnalysis
 
             if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
             {
-                string path = "E:\\MODELS\\H1195\\1195TM-HULL-E40.viz";
+                string path = "E:\\MODELS\\X.ETC\\H3118\\3118_HULL\\3118-E312P.viz";
                 result = vizcore3d.Model.Open(path);
             }
             else
@@ -575,8 +573,6 @@ namespace VIZCore3D.NET.ImageAnalysis
             }
 
             if (result == false) return;
-
-            //InitModelTransform();
         }
 
         private void btnCameraPosition_Click(object sender, EventArgs e)
@@ -592,40 +588,10 @@ namespace VIZCore3D.NET.ImageAnalysis
             txtModelCenter.Text = boundingBox.GetCenter().ToString();
         }
 
-        private void InitModelTransform()
-        {
-            vizcore3d.BeginUpdate();
-
-            //vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Orthographic;
-            vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;
-            vizcore3d.Object3D.Transform.RestoreTransformAll();
-
-            // Transform Model
-            /*
-            VIZCore3D.NET.Data.BoundBox3D boundingBox =
-                vizcore3d.Model.BoundBox;
-
-            VIZCore3D.NET.Data.Vertex3D v = new VIZCore3D.NET.Data.Vertex3D();
-            v.X = 0;
-            v.Y = 0;
-            v.Z = boundingBox.LengthZ * 0.5f;
-
-            vizcore3d.Object3D.Transform.MoveTo(new List<int>() { 0 }, v);
-            */
-
-            vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_PLUS);
-            vizcore3d.View.FitToView();
-
-            vizcore3d.EndUpdate();
-        }
-
         private void btnApply_Click(object sender, EventArgs e)
         {
-            InitModelTransform();
-
             vizcore3d.View.EnableAnimation = false;
-            //vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;
-            //vizcore3d.View.FitToView();
+            vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;
             vizcore3d.View.FOV = 74.0f; // 45 ~ 74
 
             float height = Convert.ToSingle(txtHeight.Text) * 1000.0f;
@@ -656,61 +622,23 @@ namespace VIZCore3D.NET.ImageAnalysis
 
             int transform = Convert.ToInt32(cbTransform.Text);
 
-            /*
-            // Camera Position
-            VIZCore3D.NET.Data.Vertex3D v = new VIZCore3D.NET.Data.Vertex3D(0, distance, height);
 
-            // Move Camera
-            vizcore3d.View.MoveCamera(v, 0.0f, false);
+            VIZCore3D.NET.Data.BoundBox3D boundingBox =
+                vizcore3d.Model.BoundBox;
 
-            // Rotate Camera
-            vizcore3d.View.RotateCameraByAxis(
-                VIZCore3D.NET.Data.BaseAxis.WORLD
-                , VIZCore3D.NET.Data.Axis.X
-                , VIZCore3D.NET.Data.Directions.PLUS
-                , angle);
-
-            // Rotate Model
-            vizcore3d.Object3D.Transform.Rotate(new List<int>() { 0 }, 0, 0, transform, true, false);
-            */
-
-            // Camera Position
-            VIZCore3D.NET.Data.Vector3D camera = vizcore3d.View.GetCameraEyePosition();
-
-            // Model Center
-            VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
-
-            VIZCore3D.NET.Data.Vertex3D position = new VIZCore3D.NET.Data.Vertex3D(
-                camera.X
-                , camera.Y - distance
-                , camera.Z - (boundBox.LengthZ * 0.5f) - height 
-                //, boundBox.MinZ - height
+            VIZCore3D.NET.Data.Vertex3D center = new VIZCore3D.NET.Data.Vertex3D(
+                boundingBox.CenterX
+                , boundingBox.CenterY
+                , boundingBox.MinZ
                 );
 
-            vizcore3d.Object3D.Transform.MoveTo(
-                new List<int>() { 0 }
-                , position
+            vizcore3d.View.SetPerspectiveCamera(
+                center
+                , distance
+                , height
+                , angle
+                , Convert.ToSingle(transform)
                 );
-
-            // Rotate Camera
-            /*
-            vizcore3d.View.RotateCameraByAxis(
-                VIZCore3D.NET.Data.BaseAxis.LOCAL
-                , VIZCore3D.NET.Data.Axis.X
-                , VIZCore3D.NET.Data.Directions.MINUS
-                , angle);
-            */
-
-            //vizcore3d.View.RotateCameraByAxis(
-            //    VIZCore3D.NET.Data.BaseAxis.WORLD
-            //    , VIZCore3D.NET.Data.Axis.X
-            //    , VIZCore3D.NET.Data.Directions.PLUS
-            //    , angle);
-
-            //vizcore3d.View.RotateCameraByScreenAxis(-angle, 0, 0);
-
-            // Rotate Model
-            vizcore3d.Object3D.Transform.Rotate(new List<int>() { 0 }, 0, 0, -transform, true, false);
         }
     }
 }
