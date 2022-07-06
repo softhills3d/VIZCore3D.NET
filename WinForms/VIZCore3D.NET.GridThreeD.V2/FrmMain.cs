@@ -608,22 +608,37 @@ namespace VIZCore3D.NET.GridThreeD.V2
                 RotateBlock();
             }));
 
-            timerAnimation.Enabled = true;
+            if (Block_Rotate_Angle == -180)
+            {
+                timerAnimation.Enabled = false;
+
+                vizcore3d.Object3D.Transform.Move(
+                    new List<VIZCore3D.NET.Data.Node>() { Block }
+                    , new VIZCore3D.NET.Data.Vector3D(0, 0 , -5000)
+                    , false
+                    );
+            }
+            else
+            {
+                timerAnimation.Enabled = true;
+            }
         }
 
         private void RotateBlock()
         {
+            Block_Rotate_Angle -= 5;
+
+            if (Block_Rotate_Angle == -185) return;
+
             vizcore3d.BeginUpdate();
 
             vizcore3d.Object3D.Transform.Rotate(
                 new List<VIZCore3D.NET.Data.Node>() { Block }
                 , RotateV1
                 , RotateV2
-                , Block_Rotate_Angle % 180
+                , Block_Rotate_Angle
                 , VIZCore3D.NET.Data.AngleFormat.DEGREE
                 );
-
-            Block_Rotate_Angle -= 5;
 
             vizcore3d.EndUpdate();
         }

@@ -547,7 +547,11 @@ namespace VIZCore3D.NET.UnfoldBlock
         // ================================================
         private void btnLoadModel_Click(object sender, EventArgs e)
         {
-            string path = "E:\\MODELS\\X.ETC\\PHULL_SIMPLIFIED";
+            // Case 1
+            //string path = "E:\\MODELS\\X.ETC\\PHULL_SIMPLIFIED";
+
+            // Case 2
+            string path = "E:\\MODELS\\SHOWCASE\\SHIP\\GRID";
 
             if (System.IO.Directory.Exists(path) == false) return;
 
@@ -560,6 +564,12 @@ namespace VIZCore3D.NET.UnfoldBlock
         public Dictionary<string, VIZCore3D.NET.Data.Node> Blocks { get; set; }
 
         private void btnUnfold_Click(object sender, EventArgs e)
+        {
+            //Unfold_Case1();
+            Unfold_Case2();
+        }
+
+        private void Unfold_Case1()
         {
             // F71, F72, F73, H11, H12, H13, H14, H15, H16
 
@@ -681,6 +691,64 @@ namespace VIZCore3D.NET.UnfoldBlock
             vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(true, 0.8f);
 
             //AddNote();
+
+            vizcore3d.EndUpdate();
+
+            vizcore3d.View.ResetView();
+        }
+
+        private void Unfold_Case2()
+        {
+            Blocks = new Dictionary<string, VIZCore3D.NET.Data.Node>();
+
+            List<VIZCore3D.NET.Data.Node> children = vizcore3d.Object3D.FromIndex(0)
+                .GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+
+            foreach (VIZCore3D.NET.Data.Node item in children)
+            {
+                if (Blocks.ContainsKey(item.NodeName) == false)
+                    Blocks.Add(item.NodeName, item);
+            }
+
+            float lengthY = vizcore3d.Model.BoundBox.LengthY;
+
+            vizcore3d.BeginUpdate();
+
+            for (int i = 1; i < 6; i++)
+            {
+                List<string> mBlock = new List<string>();
+                foreach (KeyValuePair<string, VIZCore3D.NET.Data.Node> item in Blocks)
+                {
+                    string[] vals = item.Key.Split(new char[] { '-' });
+                    if (vals[2] != i.ToString()) continue;
+
+                    mBlock.Add(item.Key);
+                }
+
+                if (mBlock.Count == 0) continue;
+
+                foreach (string item in mBlock)
+                {
+                    int offset = 0;
+                    if (i < 3) offset = -i;
+                    else if (i > 3) offset = i - 3;
+
+                    MoveAxisY(item, lengthY, offset);
+                }
+            }
+
+            List<string> keys = Blocks.Keys.ToList();
+            for (int i = 0; i < keys.Count; i++)
+            {
+                bool result = vizcore3d.Object3D.Disassembly.AddGroup(
+                    i                           /* ID : 0 ~ */
+                    , Blocks[keys[i]].Index     /* NODE INDEX */
+                    , true                      /* Recursive */
+                    );
+            }
+
+            vizcore3d.View.EnableAnimation = false;
+            vizcore3d.Object3D.Disassembly.DisassembleBySphereCenterDistanceRate(true, 0.8f);
 
             vizcore3d.EndUpdate();
 

@@ -31,16 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnOpenModel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRun = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpenModel = new System.Windows.Forms.Button();
             this.timerAnimation = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -57,6 +57,28 @@
             this.splitContainer1.Size = new System.Drawing.Size(1114, 619);
             this.splitContainer1.SplitterDistance = 300;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnRun);
+            this.groupBox2.Location = new System.Drawing.Point(12, 94);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(279, 76);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Rotation";
+            // 
+            // btnRun
+            // 
+            this.btnRun.Location = new System.Drawing.Point(18, 32);
+            this.btnRun.Name = "btnRun";
+            this.btnRun.Size = new System.Drawing.Size(75, 23);
+            this.btnRun.TabIndex = 0;
+            this.btnRun.Text = "Run";
+            this.btnRun.UseVisualStyleBackColor = true;
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // groupBox1
             // 
@@ -80,28 +102,6 @@
             this.btnOpenModel.UseVisualStyleBackColor = true;
             this.btnOpenModel.Click += new System.EventHandler(this.btnOpenModel_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnRun);
-            this.groupBox2.Location = new System.Drawing.Point(12, 94);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(279, 76);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Disassembly";
-            // 
-            // btnRun
-            // 
-            this.btnRun.Location = new System.Drawing.Point(18, 32);
-            this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(75, 23);
-            this.btnRun.TabIndex = 0;
-            this.btnRun.Text = "Run";
-            this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
-            // 
             // timerAnimation
             // 
             this.timerAnimation.Interval = 10;
@@ -120,8 +120,8 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

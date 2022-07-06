@@ -640,5 +640,22 @@ namespace VIZCore3D.NET.ImageAnalysis
                 , Convert.ToSingle(transform)
                 );
         }
+
+        private void InitEnv()
+        {
+            // 배경색상 변경
+            vizcore3d.View.BackgroundColor1 = Color.Black;
+            vizcore3d.View.BackgroundColor2 = Color.Black;
+            vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
+
+            // 축 좌표계 숨기기
+            vizcore3d.View.MarineAxis.Visible = false;
+
+            // 뷰 툴바 숨기기
+            vizcore3d.View.ViewToolbar = false;
+
+            // 모델 색상 변경
+            vizcore3d.Object3D.Color.SetColor(new List<int>() { 0 }, Color.Gray); // 전체 모델
+        }
     }
 }
