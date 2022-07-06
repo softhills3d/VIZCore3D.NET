@@ -564,7 +564,7 @@ namespace VIZCore3D.NET.ImageAnalysis
 
             if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
             {
-                string path = "E:\\MODELS\\X.ETC\\H3118\\3118_HULL\\3118-E312P.viz";
+                string path = "C:\\Temp\\HULL.viz";
                 result = vizcore3d.Model.Open(path);
             }
             else
