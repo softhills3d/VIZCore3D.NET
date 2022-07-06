@@ -236,6 +236,22 @@ namespace VIZCore3D.NET.App
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
             #endregion
 
+            #region 렌더링 효과
+            vizcore3d.View.PhongShading = true;                                 // Phong Shading
+            vizcore3d.View.SilhouetteEdge = true;                               // 윤곽
+            vizcore3d.View.RealtimeShadow = false;                              // 실시간 그림자
+            vizcore3d.View.ShadingEffect = false;                               // 음영
+            vizcore3d.View.EnvironmentLight = false;                            // 환경조명
+            vizcore3d.View.AntiAliasing = false;                                // Anti-Aliasing
+            vizcore3d.View.FloorShadow = false;                                 // 바닥 그림자
+            vizcore3d.View.PlaneReflection = false;                             // 면 반사
+
+            vizcore3d.View.Shininess = 30;                                      // 광원세기 - 0 ~ 100
+            vizcore3d.View.SilhouetteEdgeColor = Color.FromArgb(127, 0, 0, 0);  // 윤곽 색상 및 투명도 - Black, 50%
+            vizcore3d.View.AmbientColor = Color.DarkGray;                       // 음영 색상
+            vizcore3d.View.DiffuseLightColor = Color.FromArgb(255, 255, 232);   // 기본 빛 색상
+            #endregion
+
 
             // ================================================================
             // 설정 - 탐색
