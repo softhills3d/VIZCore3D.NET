@@ -597,14 +597,25 @@ namespace VIZCore3D.NET.GenFile.V2
 
         private void btnStringDataCount_Click(object sender, EventArgs e)
         {
-            int count = vizcore3d.GenericData.GetStringDataCount(0);
+            int count = vizcore3d.GenericData.GetStringDataCount();
             MessageBox.Show(count.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnMarkingDataCount_Click(object sender, EventArgs e)
         {
-            int count = vizcore3d.GenericData.GetMarkingDataCount(0);
+            int count = vizcore3d.GenericData.GetMarkingDataCount();
             MessageBox.Show(count.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnLeftEndDataCount_Click(object sender, EventArgs e)
+        {
+            int count = vizcore3d.GenericData.GetLeftEndDataCount();
+            MessageBox.Show(count.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void ckDepthTest_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.ShapeDrawing.DepthTest = ckDepthTest.Checked;
         }
 
         private void btnShowMarking_Click(object sender, EventArgs e)
@@ -644,6 +655,17 @@ namespace VIZCore3D.NET.GenFile.V2
         private void btnHideString_Click(object sender, EventArgs e)
         {
             vizcore3d.GenericData.ShowStringData(false);
+        }
+        
+
+        private void btnShowLeftEnd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHideLeftEnd_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
