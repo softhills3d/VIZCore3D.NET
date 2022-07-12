@@ -16089,22 +16089,42 @@
             <param name="name">File Name</param>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftEndDataCount">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftRightEndDataCount">
             <summary>
-            Left-End Data Count
+            Left-End / Right-End Data Count
             </summary>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftEndDataCount(System.Int32)">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftRightEndDataCount(System.Int32)">
             <summary>
-            Left-End Data Count
+            Left-End / Right-End Data Count
             </summary>
             <param name="index">File Index</param>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftEndDataCount(System.String)">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftRightEndDataCount(System.String)">
             <summary>
-            Left-End Data Count
+            Left-End / Right-End Data Count
+            </summary>
+            <param name="name">File Name</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetBevelSymbolDataCount">
+            <summary>
+            Bevel Symbol Data Count
+            </summary>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetBevelSymbolDataCount(System.Int32)">
+            <summary>
+            Bevel Symbol Data Count
+            </summary>
+            <param name="index">File Index</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetBevelSymbolDataCount(System.String)">
+            <summary>
+            Bevel Symbol Data Count
             </summary>
             <param name="name">File Name</param>
             <returns>Result</returns>
@@ -16132,6 +16152,30 @@
             <param name="visible">Show / Hide</param>
             <param name="color">Line Color</param>
             <param name="thickness">Thickness</param>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.BevelSymbolDataLines">
+            <summary>
+            Generic Bevel Symbol Data Line ID List
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowBevelSymbolData(System.Boolean,System.Nullable{System.Drawing.Color},System.Single)">
+            <summary>
+            Show Bevel Symbol Data By ShapeDrawing (Line)
+            </summary>
+            <param name="visible">Show / Hide</param>
+            <param name="color">Line Color</param>
+            <param name="thickness">Thickness</param>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.LeftEndDataNotes">
+            <summary>
+            Left-End Data Note ID List
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowLeftRightEndData(System.Boolean)">
+            <summary>
+            Show Left-End / Right-End Data By 3D Note
+            </summary>
+            <param name="visible">Show / Hide</param>
         </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetUnhandledKeyword(System.Int32)">
             <summary>

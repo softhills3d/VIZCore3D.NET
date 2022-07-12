@@ -33,20 +33,23 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ckDepthTest = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnHideLeftRightEnd = new System.Windows.Forms.Button();
+            this.btnShowLeftRightEnd = new System.Windows.Forms.Button();
             this.btnHideString = new System.Windows.Forms.Button();
             this.btnHideMarking = new System.Windows.Forms.Button();
             this.btnShowString = new System.Windows.Forms.Button();
             this.btnShowMarking = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnLeftRightEndDataCount = new System.Windows.Forms.Button();
             this.btnMarkingDataCount = new System.Windows.Forms.Button();
             this.btnStringDataCount = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCloseGen = new System.Windows.Forms.Button();
             this.btnOpenGen = new System.Windows.Forms.Button();
             this.btnOpenVIZ = new System.Windows.Forms.Button();
-            this.btnLeftEndDataCount = new System.Windows.Forms.Button();
-            this.btnHideLeftEnd = new System.Windows.Forms.Button();
-            this.btnShowLeftEnd = new System.Windows.Forms.Button();
+            this.btnBevelSymbolDataCount = new System.Windows.Forms.Button();
+            this.btnHideBevelSymbol = new System.Windows.Forms.Button();
+            this.btnShowBevelSymbol = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -78,7 +81,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.ckDepthTest);
-            this.groupBox4.Location = new System.Drawing.Point(12, 285);
+            this.groupBox4.Location = new System.Drawing.Point(12, 390);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(373, 64);
             this.groupBox4.TabIndex = 3;
@@ -100,18 +103,40 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnHideLeftEnd);
-            this.groupBox3.Controls.Add(this.btnShowLeftEnd);
+            this.groupBox3.Controls.Add(this.btnHideBevelSymbol);
+            this.groupBox3.Controls.Add(this.btnShowBevelSymbol);
+            this.groupBox3.Controls.Add(this.btnHideLeftRightEnd);
+            this.groupBox3.Controls.Add(this.btnShowLeftRightEnd);
             this.groupBox3.Controls.Add(this.btnHideString);
             this.groupBox3.Controls.Add(this.btnHideMarking);
             this.groupBox3.Controls.Add(this.btnShowString);
             this.groupBox3.Controls.Add(this.btnShowMarking);
-            this.groupBox3.Location = new System.Drawing.Point(12, 180);
+            this.groupBox3.Location = new System.Drawing.Point(12, 204);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(373, 99);
+            this.groupBox3.Size = new System.Drawing.Size(373, 180);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Show Marking && String";
+            // 
+            // btnHideLeftRightEnd
+            // 
+            this.btnHideLeftRightEnd.Location = new System.Drawing.Point(232, 61);
+            this.btnHideLeftRightEnd.Name = "btnHideLeftRightEnd";
+            this.btnHideLeftRightEnd.Size = new System.Drawing.Size(96, 23);
+            this.btnHideLeftRightEnd.TabIndex = 5;
+            this.btnHideLeftRightEnd.Text = "Hide End";
+            this.btnHideLeftRightEnd.UseVisualStyleBackColor = true;
+            this.btnHideLeftRightEnd.Click += new System.EventHandler(this.btnHideLeftRightEnd_Click);
+            // 
+            // btnShowLeftRightEnd
+            // 
+            this.btnShowLeftRightEnd.Location = new System.Drawing.Point(232, 32);
+            this.btnShowLeftRightEnd.Name = "btnShowLeftRightEnd";
+            this.btnShowLeftRightEnd.Size = new System.Drawing.Size(96, 23);
+            this.btnShowLeftRightEnd.TabIndex = 4;
+            this.btnShowLeftRightEnd.Text = "Show End";
+            this.btnShowLeftRightEnd.UseVisualStyleBackColor = true;
+            this.btnShowLeftRightEnd.Click += new System.EventHandler(this.btnShowLeftRightEnd_Click);
             // 
             // btnHideString
             // 
@@ -157,15 +182,26 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnLeftEndDataCount);
+            this.groupBox2.Controls.Add(this.btnBevelSymbolDataCount);
+            this.groupBox2.Controls.Add(this.btnLeftRightEndDataCount);
             this.groupBox2.Controls.Add(this.btnMarkingDataCount);
             this.groupBox2.Controls.Add(this.btnStringDataCount);
             this.groupBox2.Location = new System.Drawing.Point(12, 96);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 78);
+            this.groupBox2.Size = new System.Drawing.Size(373, 102);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Count";
+            // 
+            // btnLeftRightEndDataCount
+            // 
+            this.btnLeftRightEndDataCount.Location = new System.Drawing.Point(232, 32);
+            this.btnLeftRightEndDataCount.Name = "btnLeftRightEndDataCount";
+            this.btnLeftRightEndDataCount.Size = new System.Drawing.Size(96, 23);
+            this.btnLeftRightEndDataCount.TabIndex = 2;
+            this.btnLeftRightEndDataCount.Text = "End Data";
+            this.btnLeftRightEndDataCount.UseVisualStyleBackColor = true;
+            this.btnLeftRightEndDataCount.Click += new System.EventHandler(this.btnLeftRightEndDataCount_Click);
             // 
             // btnMarkingDataCount
             // 
@@ -231,35 +267,35 @@
             this.btnOpenVIZ.UseVisualStyleBackColor = true;
             this.btnOpenVIZ.Click += new System.EventHandler(this.btnOpenVIZ_Click);
             // 
-            // btnLeftEndDataCount
+            // btnBevelSymbolDataCount
             // 
-            this.btnLeftEndDataCount.Location = new System.Drawing.Point(232, 32);
-            this.btnLeftEndDataCount.Name = "btnLeftEndDataCount";
-            this.btnLeftEndDataCount.Size = new System.Drawing.Size(96, 23);
-            this.btnLeftEndDataCount.TabIndex = 2;
-            this.btnLeftEndDataCount.Text = "Left-End Data";
-            this.btnLeftEndDataCount.UseVisualStyleBackColor = true;
-            this.btnLeftEndDataCount.Click += new System.EventHandler(this.btnLeftEndDataCount_Click);
+            this.btnBevelSymbolDataCount.Location = new System.Drawing.Point(28, 61);
+            this.btnBevelSymbolDataCount.Name = "btnBevelSymbolDataCount";
+            this.btnBevelSymbolDataCount.Size = new System.Drawing.Size(96, 23);
+            this.btnBevelSymbolDataCount.TabIndex = 3;
+            this.btnBevelSymbolDataCount.Text = "Bevel Symbol Data";
+            this.btnBevelSymbolDataCount.UseVisualStyleBackColor = true;
+            this.btnBevelSymbolDataCount.Click += new System.EventHandler(this.btnBevelSymbolDataCount_Click);
             // 
-            // btnHideLeftEnd
+            // btnHideBevelSymbol
             // 
-            this.btnHideLeftEnd.Location = new System.Drawing.Point(232, 61);
-            this.btnHideLeftEnd.Name = "btnHideLeftEnd";
-            this.btnHideLeftEnd.Size = new System.Drawing.Size(96, 23);
-            this.btnHideLeftEnd.TabIndex = 5;
-            this.btnHideLeftEnd.Text = "Hide LeftEnd";
-            this.btnHideLeftEnd.UseVisualStyleBackColor = true;
-            this.btnHideLeftEnd.Click += new System.EventHandler(this.btnHideLeftEnd_Click);
+            this.btnHideBevelSymbol.Location = new System.Drawing.Point(28, 139);
+            this.btnHideBevelSymbol.Name = "btnHideBevelSymbol";
+            this.btnHideBevelSymbol.Size = new System.Drawing.Size(140, 23);
+            this.btnHideBevelSymbol.TabIndex = 7;
+            this.btnHideBevelSymbol.Text = "Hide Marking";
+            this.btnHideBevelSymbol.UseVisualStyleBackColor = true;
+            this.btnHideBevelSymbol.Click += new System.EventHandler(this.btnHideBevelSymbol_Click);
             // 
-            // btnShowLeftEnd
+            // btnShowBevelSymbol
             // 
-            this.btnShowLeftEnd.Location = new System.Drawing.Point(232, 32);
-            this.btnShowLeftEnd.Name = "btnShowLeftEnd";
-            this.btnShowLeftEnd.Size = new System.Drawing.Size(96, 23);
-            this.btnShowLeftEnd.TabIndex = 4;
-            this.btnShowLeftEnd.Text = "Show LeftEnd";
-            this.btnShowLeftEnd.UseVisualStyleBackColor = true;
-            this.btnShowLeftEnd.Click += new System.EventHandler(this.btnShowLeftEnd_Click);
+            this.btnShowBevelSymbol.Location = new System.Drawing.Point(28, 110);
+            this.btnShowBevelSymbol.Name = "btnShowBevelSymbol";
+            this.btnShowBevelSymbol.Size = new System.Drawing.Size(140, 23);
+            this.btnShowBevelSymbol.TabIndex = 6;
+            this.btnShowBevelSymbol.Text = "Show Bevel Symbol";
+            this.btnShowBevelSymbol.UseVisualStyleBackColor = true;
+            this.btnShowBevelSymbol.Click += new System.EventHandler(this.btnShowBevelSymbol_Click);
             // 
             // FrmMain
             // 
@@ -300,9 +336,12 @@
         private System.Windows.Forms.Button btnCloseGen;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox ckDepthTest;
-        private System.Windows.Forms.Button btnLeftEndDataCount;
-        private System.Windows.Forms.Button btnHideLeftEnd;
-        private System.Windows.Forms.Button btnShowLeftEnd;
+        private System.Windows.Forms.Button btnLeftRightEndDataCount;
+        private System.Windows.Forms.Button btnHideLeftRightEnd;
+        private System.Windows.Forms.Button btnShowLeftRightEnd;
+        private System.Windows.Forms.Button btnBevelSymbolDataCount;
+        private System.Windows.Forms.Button btnHideBevelSymbol;
+        private System.Windows.Forms.Button btnShowBevelSymbol;
     }
 }
 

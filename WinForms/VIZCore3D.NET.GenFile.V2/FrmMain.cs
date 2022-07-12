@@ -607,9 +607,15 @@ namespace VIZCore3D.NET.GenFile.V2
             MessageBox.Show(count.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btnLeftEndDataCount_Click(object sender, EventArgs e)
+        private void btnBevelSymbolDataCount_Click(object sender, EventArgs e)
         {
-            int count = vizcore3d.GenericData.GetLeftEndDataCount();
+            int count = vizcore3d.GenericData.GetBevelSymbolDataCount();
+            MessageBox.Show(count.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnLeftRightEndDataCount_Click(object sender, EventArgs e)
+        {
+            int count = vizcore3d.GenericData.GetLeftRightEndDataCount();
             MessageBox.Show(count.ToString(), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -630,6 +636,20 @@ namespace VIZCore3D.NET.GenFile.V2
         private void btnHideMarking_Click(object sender, EventArgs e)
         {
             vizcore3d.GenericData.ShowMarkingData(false);
+        }
+
+        private void btnShowBevelSymbol_Click(object sender, EventArgs e)
+        {
+            // Case 1
+            //vizcore3d.GenericData.ShowBevelSymbolData(true);
+
+            // Case 2
+            vizcore3d.GenericData.ShowBevelSymbolData(true, Color.Yellow, 2.0f);
+        }
+
+        private void btnHideBevelSymbol_Click(object sender, EventArgs e)
+        {
+            vizcore3d.GenericData.ShowBevelSymbolData(false);
         }
 
         private void btnShowString_Click(object sender, EventArgs e)
@@ -656,16 +676,30 @@ namespace VIZCore3D.NET.GenFile.V2
         {
             vizcore3d.GenericData.ShowStringData(false);
         }
-        
 
-        private void btnShowLeftEnd_Click(object sender, EventArgs e)
+        private void btnShowLeftRightEnd_Click(object sender, EventArgs e)
         {
+            VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
+            style.BackgroundColor = Color.Yellow;
+            style.BackgroudTransparent = true;
+            style.FontColor = Color.Blue;
+            style.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE16;
+            style.FontBold = true;
+            style.LineColor = Color.White;
+            style.LineWidth = 2;
+            style.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
+            style.ArrowColor = Color.Red;
+            style.ArrowWidth = 10;
+            style.TextBoxLineColor = Color.Black;
 
+            vizcore3d.Review.Note.SetStyle(style);
+
+            vizcore3d.GenericData.ShowLeftRightEndData(true);
         }
 
-        private void btnHideLeftEnd_Click(object sender, EventArgs e)
+        private void btnHideLeftRightEnd_Click(object sender, EventArgs e)
         {
-
+            vizcore3d.GenericData.ShowLeftRightEndData(false);
         }
     }
 }
