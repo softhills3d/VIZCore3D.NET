@@ -14494,6 +14494,29 @@
             </summary>
             <param name="reviewId">리뷰 아이디</param>
         </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.ReviewDeletedEventHandler">
+            <summary>
+            Review Deleted Event
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Argument</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.ReviewDeletedEventArgs">
+            <summary>
+            Review Deleted Event Args
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.ReviewDeletedEventArgs.ReviewID">
+            <summary>
+            리뷰 아이디
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.ReviewDeletedEventArgs.#ctor(System.Int32)">
+            <summary>
+            Construction
+            </summary>
+            <param name="reviewId">리뷰 아이디</param>
+        </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.TextDrawingItemClickedEventHandler">
             <summary>
             커스텀 드로잉(텍스트) 선택 이벤트 핸들러
@@ -16026,6 +16049,12 @@
             </summary>
             <returns>Generic Attribute Control</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetStringDataCount">
+            <summary>
+            String Data Count
+            </summary>
+            <returns>Result</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetStringDataCount(System.Int32)">
             <summary>
             String Data Count
@@ -16040,6 +16069,12 @@
             <param name="name">File Name</param>
             <returns>Result</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetMarkingDataCount">
+            <summary>
+            Marking Data Count
+            </summary>
+            <returns>Result</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetMarkingDataCount(System.Int32)">
             <summary>
             Marking Data Count
@@ -16050,6 +16085,26 @@
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetMarkingDataCount(System.String)">
             <summary>
             Marking Data Count
+            </summary>
+            <param name="name">File Name</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftEndDataCount">
+            <summary>
+            Left-End Data Count
+            </summary>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftEndDataCount(System.Int32)">
+            <summary>
+            Left-End Data Count
+            </summary>
+            <param name="index">File Index</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetLeftEndDataCount(System.String)">
+            <summary>
+            Left-End Data Count
             </summary>
             <param name="name">File Name</param>
             <returns>Result</returns>
@@ -39038,6 +39093,33 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromScreen(System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
+            <summary>
+            뷰 화면에 해당하는 개체 반환
+            </summary>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <returns>개체 목록</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Size size = vizcore3d.View.Size;
+            
+                List<VIZCore3D.NET.Data.Node> nodes 
+                    = vizcore3d.Object3D.FromScreen(
+                        true          /* Full Contain */
+                        , VIZCore3D.NET.Data.LeafNodeKind.PART
+                        );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
             <summary>
             뷰 화면 좌표 영역에 해당하는 개체 반환
@@ -39067,6 +39149,76 @@
                         , size.Height   /* Y2 */
                         , true          /* Full Contain */
                         , VIZCore3D.NET.Data.LeafNodeKind.PART
+                        );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromScreen(System.Boolean,VIZCore3D.NET.Data.LeafNodeKind,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            뷰 화면 영역에 해당하는 개체 반환
+            </summary>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <param name="containInternalObjects">내부 모델 포함 여부</param>
+            <param name="internalObjectsFilter">내부 모델 검색 키워드</param>
+            <returns>개체 목록</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Size size = vizcore3d.View.Size;
+            
+                List<VIZCore3D.NET.Data.Node> nodes 
+                    = vizcore3d.Object3D.FromScreen(
+                        true                            /* Full Contain */
+                        , VIZCore3D.NET.Data.LeafNodeKind.PART
+                        , true                          /* Contain Internal Objects */
+                        , new List<string>() { "INSU" } /* Internal Objects Keyword */
+                        );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            뷰 화면 좌표 영역에 해당하는 개체 반환
+            </summary>
+            <param name="x1">X 좌표1</param>
+            <param name="y1">Y 좌표1</param>
+            <param name="x2">X 좌표2</param>
+            <param name="y2">Y 좌표2</param>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <param name="containInternalObjects">내부 모델 포함 여부</param>
+            <param name="internalObjectsFilter">내부 모델 검색 키워드</param>
+            <returns>개체 목록</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                System.Drawing.Size size = vizcore3d.View.Size;
+            
+                List<VIZCore3D.NET.Data.Node> nodes 
+                    = vizcore3d.Object3D.FromScreen(
+                        0                               /* X1 */
+                        , 0                             /* Y1 */
+                        , size.Width                    /* X2 */
+                        , size.Height                   /* Y2 */
+                        , true                          /* Full Contain */
+                        , VIZCore3D.NET.Data.LeafNodeKind.PART
+                        , true                          /* Contain Internal Objects */
+                        , new List<string>() { "INSU" } /* Internal Objects Keyword */
                         );
             }
             ]]>
@@ -40812,6 +40964,11 @@
              ]]>
              </code>
              </example>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.ReviewManager.OnReviewDeletedEvent">
+            <summary>
+            Review Deleted Event
+            </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ReviewManager.EnableSelection">
             <summary>
@@ -49046,6 +49203,14 @@
             [BETA] Show Export Top View Image Dialog
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.FromScreen(System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
+            <summary>
+            뷰 화면 영역에 해당하는 개체 반환
+            </summary>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <returns>개체 목록</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind)">
             <summary>
             뷰 화면 좌표 영역에 해당하는 개체 반환
@@ -49056,6 +49221,30 @@
             <param name="y2">Y 좌표2</param>
             <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
             <param name="nodeKind">반환 노드 유형</param>
+            <returns>개체 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.FromScreen(System.Boolean,VIZCore3D.NET.Data.LeafNodeKind,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            뷰 화면 영역에 해당하는 개체 반환
+            </summary>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <param name="containInternalObjects">내부 모델 포함 여부</param>
+            <param name="internalObjectsFilter">내부 모델 검색 키워드</param>
+            <returns>개체 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.FromScreen(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,VIZCore3D.NET.Data.LeafNodeKind,System.Boolean,System.Collections.Generic.List{System.String})">
+            <summary>
+            뷰 화면 좌표 영역에 해당하는 개체 반환
+            </summary>
+            <param name="x1">X 좌표1</param>
+            <param name="y1">Y 좌표1</param>
+            <param name="x2">X 좌표2</param>
+            <param name="y2">Y 좌표2</param>
+            <param name="fullContainsOnly">영역에 포함된 모델만 반환 : True(포함된 모델만 검색), False(걸친 모델도 포함)</param>
+            <param name="nodeKind">반환 노드 유형</param>
+            <param name="containInternalObjects">내부 모델 포함 여부</param>
+            <param name="internalObjectsFilter">내부 모델 검색 키워드</param>
             <returns>개체 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.OnArrowKeyDown(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
@@ -49114,7 +49303,7 @@
             <param name="center">중심점(원점)</param>
             <param name="distance">거리</param>
             <param name="height">높이 (중심점에서 높이)</param>
-            <param name="angle">각도</param>
+            <param name="angle">카메라 각도</param>
             <param name="rotateModel">모델 회전 각도</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
@@ -49130,6 +49319,11 @@
         <member name="F:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND.Part">
             <summary>
             Part
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND.Body">
+            <summary>
+            Body
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXMLManager">
@@ -49475,6 +49669,11 @@
             연결된 VIZ 파일 내부의 NODE PATH
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.VIZXMLNode.NODE_ID">
+            <summary>
+            연결된 VIZ 파일 내부의 NODE ID
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.VIZXMLNode.HideAndLock">
             <summary>
             모델을 숨김 상태로 변경 시 잠금
@@ -49625,6 +49824,14 @@
             <param name="viz_file">VIZ 파일 경로 및 이름</param>
             <param name="node_path">NODE PATH</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            생성자
+            </summary>
+            <param name="name">노드 이름</param>
+            <param name="viz_file">VIZ 파일 경로 및 이름</param>
+            <param name="node_id">NODE ID</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.String,VIZCore3D.NET.Manager.VIZXML_MODEL_KIND)">
             <summary>
             생성자
@@ -49632,6 +49839,15 @@
             <param name="name">노드 이름</param>
             <param name="viz_file">VIZ 파일 경로 및 이름</param>
             <param name="node_path">NODE PATH</param>
+            <param name="kind">노드 유형</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.Int32,VIZCore3D.NET.Manager.VIZXML_MODEL_KIND)">
+            <summary>
+            생성자
+            </summary>
+            <param name="name">노드 이름</param>
+            <param name="viz_file">VIZ 파일 경로 및 이름</param>
+            <param name="node_id">NODE ID</param>
             <param name="kind">노드 유형</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.String,System.Object)">
@@ -49643,6 +49859,15 @@
             <param name="node_path">NODE PATH</param>
             <param name="objectTag">Tag</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.Int32,System.Object)">
+            <summary>
+            생성자
+            </summary>
+            <param name="name">노드 이름</param>
+            <param name="viz_file">VIZ 파일 경로 및 이름</param>
+            <param name="node_id">NODE ID</param>
+            <param name="objectTag">Tag</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.String,VIZCore3D.NET.Manager.VIZXML_MODEL_KIND,System.Object)">
             <summary>
             생성자
@@ -49650,6 +49875,16 @@
             <param name="name">노드 이름</param>
             <param name="viz_file">VIZ 파일 경로 및 이름</param>
             <param name="node_path">NODE PATH</param>
+            <param name="kind">노드 유형</param>
+            <param name="objectTag">Tag</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.#ctor(System.String,System.String,System.Int32,VIZCore3D.NET.Manager.VIZXML_MODEL_KIND,System.Object)">
+            <summary>
+            생성자
+            </summary>
+            <param name="name">노드 이름</param>
+            <param name="viz_file">VIZ 파일 경로 및 이름</param>
+            <param name="node_id">NODE ID</param>
             <param name="kind">노드 유형</param>
             <param name="objectTag">Tag</param>
         </member>
@@ -49701,6 +49936,12 @@
             데이터 검증
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.HasAnyLink">
+            <summary>
+            Link 정보 유무
+            </summary>
+            <returns>Link 정보 유무 : FILE, PATH, ID</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.HasFile">
             <summary>
             VIZ FILE 포함 유무
@@ -49712,6 +49953,12 @@
             VIZ FILE의 NODE PATH 정보 포함 유무
             </summary>
             <returns>VIZ FILE 및 NODE PATH 설정 유무</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.HasNodeId">
+            <summary>
+            VIZ FILE의 NODE ID 정보 포함 유무
+            </summary>
+            <returns>VIZ FILE 및 NODE ID 설정 유무</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZXMLNode.GetVIZFileName">
             <summary>
