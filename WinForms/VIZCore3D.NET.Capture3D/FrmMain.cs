@@ -654,6 +654,9 @@ namespace VIZCore3D.NET.Capture3D
             vizcore3d.View.EnableBoxSelectionFrontObjectOnly = true;
             VIZCore3D.NET.Data.CameraData camera = vizcore3d.View.GetCameraData();
             Size viewSize = vizcore3d.View.Size;
+
+            // Case 1
+            /*
             List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.View.FromScreen(
                 0
                 , 0
@@ -661,6 +664,19 @@ namespace VIZCore3D.NET.Capture3D
                 , viewSize.Height
                 , false
                 , VIZCore3D.NET.Data.LeafNodeKind.PART
+                );
+            */
+
+            // Case 2
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.View.FromScreen(
+                0
+                , 0
+                , viewSize.Width
+                , viewSize.Height
+                , false
+                , VIZCore3D.NET.Data.LeafNodeKind.PART
+                , true
+                , new List<string>() { "INSU" }
                 );
 
             if (nodes.Count == 0) return;
@@ -679,7 +695,7 @@ namespace VIZCore3D.NET.Capture3D
             if (System.IO.Directory.Exists(path_vizw) == false)
                 System.IO.Directory.CreateDirectory(path_vizw);
 
-            bool result_vizw = vizcore3d.Model.ConvertToVIZW(name);
+            //bool result_vizw = vizcore3d.Model.ConvertToVIZW(name);
             //bool result_vizw = vizcore3d.Model.ConvertToVIZW(name, path_vizw, false);
             //bool result_vizw = vizcore3d.Model.ConvertToVIZW(name, "D:\\SH_GitHub\\VIZCore3D.NET\\bin\\Release\\Export",  false);
 
