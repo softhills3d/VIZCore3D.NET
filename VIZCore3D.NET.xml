@@ -2256,7 +2256,17 @@
             Model Center Point
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.CameraData.ModelBoundBox">
+            <summary>
+            Model Center Point
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.CameraData.#ctor(VIZCore3DNETInterop.VIZCore3D,System.String)">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.CameraData.#ctor">
             <summary>
             Construction
             </summary>
