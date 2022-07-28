@@ -5871,6 +5871,36 @@
             삼각형. 침투 표시
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
+            <summary>
+            Tessellation Quality Level Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
+            <summary>
+            Extra Low
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
+            <summary>
+            Low
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
+            <summary>
+            Medium
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
+            <summary>
+            High
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
+            <summary>
+            Extra High
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -9791,6 +9821,31 @@
             </summary>
             <param name="format">문자열 형식</param>
             <returns>지정된 포맷 형식의 날짜 문자열</returns>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.SectionGeometryProperty">
+            <summary>
+            Section Geometry Property
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryProperty.Area">
+            <summary>
+            Area
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryProperty.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryProperty.ErrorIndex">
+            <summary>
+            Error Node Index
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.SectionGeometryProperty.#ctor">
+            <summary>
+            Construction
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.SectionPlane">
             <summary>
@@ -35175,6 +35230,11 @@
             Default : 6.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
+            <summary>
+            Tessellation Quality
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -36301,6 +36361,29 @@
             </summary>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.obj</param>
             <param name="node">내보낼 노드 목록</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
+            <summary>
+            FBX 파일 형식으로 내보내기
+            </summary>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
+            <param name="ascii">True : ASCII, False : Binary</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
+            <summary>
+            FBX 파일 형식으로 저장
+            </summary>
+            <param name="ascii">True : ASCII, False : Binary</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
+            <summary>
+            GLTF 파일 형식으로 내보내기
+            </summary>
+            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
+            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
@@ -40341,6 +40424,22 @@
             <param name="name">노드 이름</param>
             <returns>해당 이름의 노드 목록</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetNodes(System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            Get Node List
+            </summary>
+            <param name="index">Node Index List</param>
+            <param name="includeNodePath">Include Node Path</param>
+            <returns>Node List</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetNodes(System.Int32[],System.Boolean)">
+            <summary>
+            Get Node List
+            </summary>
+            <param name="index">Node Index Array</param>
+            <param name="includeNodePath">Include Node Path</param>
+            <returns>Node List</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.ShowPrimitiveDialog(VIZCore3D.NET.Data.Primitives,VIZCore3D.NET.Data.Node,System.Int32)">
             <summary>
             Show Primitive Dialog
@@ -43192,6 +43291,12 @@
             </summary>
             <param name="position">Position</param>
             <returns>확인 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetGeometryProperty">
+            <summary>
+            Get Section Geometry Property
+            </summary>
+            <returns>Geometry Property</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetComments(System.Int32,System.Int32)">
             <summary>
