@@ -613,11 +613,12 @@ namespace VIZCore3D.NET.ClashTest
                 }
             }
 
-
-            clash.UseRangeValue = ckUseRangeValue.Checked;
-            clash.RangeValue = Convert.ToSingle(txtRangeValue.Text);
-            clash.UsePenetrationTolerance = ckUsePenetrationTolerance.Checked;
-            clash.PenetrationTolerance = Convert.ToSingle(txtPenetrationTolerance.Text);
+            clash.UseClearanceValue = false;    // 여유허용범위
+            clash.ClearanceValue = 3.0f;        // 여유허용범위
+            clash.UseRangeValue = ckUseRangeValue.Checked;          // 근접허용범위
+            clash.RangeValue = Convert.ToSingle(txtRangeValue.Text);// 근접허용범위
+            clash.UsePenetrationTolerance = ckUsePenetrationTolerance.Checked;          // 접촉허용오차
+            clash.PenetrationTolerance = Convert.ToSingle(txtPenetrationTolerance.Text);// 접촉허용오차
 
             clash.VisibleOnly = ckVisibleOnly.Checked;
             clash.BottomLevel = cbBottomLevel.SelectedIndex + 1;
@@ -782,6 +783,16 @@ namespace VIZCore3D.NET.ClashTest
 
             vizcore3d.Review.Note.AddNoteSurface(item.NodeNameA, v1.Clone().AddValue(Data.Axis.Y, 1000.0f), v1);
             vizcore3d.Review.Note.AddNoteSurface(item.NodeNameB, v2.Clone().AddValue(Data.Axis.Y, 1000.0f), v2);
+
+            // Add Result Symbol
+            vizcore3d.Clash.ShowResultSymbol(
+                new List<VIZCore3D.NET.Data.Vertex3D>() { item.HotPoint }
+                , new List<VIZCore3D.NET.Data.ClashResultSymbols>() { VIZCore3D.NET.Data.ClashResultSymbols.Triangle }
+                , 10.0f
+                , true
+                , Color.Yellow
+                , false
+                );
 
             vizcore3d.EndUpdate();
         }
