@@ -635,7 +635,13 @@ namespace VIZCore3D.NET.SectionVolume
                     lvClippedParts.Items.Clear();
                     foreach (VIZCore3D.NET.Data.Node node in nodes)
                     {
-                        ListViewItem lvi = new ListViewItem(new string[] { node.Index.ToString(), node.NodeName, node.GetParentName() });
+                        ListViewItem lvi = new ListViewItem(
+                            new string[] {
+                                node.Index.ToString()
+                                , node.NodeName
+                                , node.GetParentName()
+                            });
+
                         lvClippedParts.Items.Add(lvi);
                     }
                     lvClippedParts.EndUpdate();
@@ -665,7 +671,13 @@ namespace VIZCore3D.NET.SectionVolume
                         if (node.Kind == VIZCore3D.NET.Data.NodeKind.BODY)
                             node = node.GetParent();
 
-                        ListViewItem lvi = new ListViewItem(new string[] { node.Index.ToString(), node.NodeName, node.GetParentName() });
+                        ListViewItem lvi = new ListViewItem(
+                            new string[] {
+                                node.Index.ToString()
+                                , node.NodeName
+                                , node.GetParentName()
+                            });
+
                         lvErrorParts.Items.Add(lvi);
                     }
                     lvErrorParts.EndUpdate();
