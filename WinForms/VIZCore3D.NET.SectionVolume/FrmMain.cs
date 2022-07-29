@@ -624,10 +624,10 @@ namespace VIZCore3D.NET.SectionVolume
                 }
                 else if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
                 {
-                    //for (int i = 0; i < 6; i++)
-                    //{
-                    //    nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i));
-                    //}
+                    for (int i = 0; i < 6; i++)
+                    {
+                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i));
+                    }
                 }
 
                 {
