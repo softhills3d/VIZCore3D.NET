@@ -960,7 +960,7 @@ namespace VIZCore3D.NET.SelectionBox
             foreach (VIZCore3D.NET.Data.SelectionBox item in items)
             {
                 string path = string.Format("{0}\\{1}.viz", dlg.SelectedPath, item.ID);
-                vizcore3d.Model.ExportGrid(path, item.BoundBox, false);
+                vizcore3d.Model.ExportGrid(path, item.BoundBox, true);
             }
 
             System.Diagnostics.Process.Start(dlg.SelectedPath);
