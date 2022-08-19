@@ -739,6 +739,11 @@
             PMI (Product Manufacturing Information) Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.Area">
+            <summary>
+            Area Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Controls.ViewControl.Print">
             <summary>
             Print Manager
@@ -7561,6 +7566,13 @@
             측정 텍스트 변경 : 측정 옵션(스타일) 변경으로 자동변경이 발생할수 있음.
             </summary>
             <param name="title">측정 텍스트</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.MeasureItem.UpdatePosition(VIZCore3D.NET.Data.ReviewPosition,VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            측정 위치 변경
+            </summary>
+            <param name="reviewPosition">Review Postion Data</param>
+            <param name="vertex">New Position</param>
         </member>
         <member name="T:VIZCore3D.NET.Data.MeasureStyle">
             <summary>
@@ -21565,6 +21577,17 @@
             <param name="tempPath">임시 저장 폴더</param>
             <returns>파일 경로</returns>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.AreaManager">
+            <summary>
+            [MANAGER] Area Manager
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AreaManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.AvatarPathManager">
             <summary>
             [MANAGER] Avatar Path Manager
@@ -34944,6 +34967,14 @@
             </summary>
             <param name="kind">유형 - 0(투영면적), 1(내부면적), 2(외부면적 : 투영면적 + 내부면적)</param>
             <returns>보이기/숨기기</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.UpdatePosition(System.Int32,VIZCore3D.NET.Data.ReviewPosition,VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            측정 위치 변경
+            </summary>
+            <param name="id">Measure Item ID</param>
+            <param name="reviewPosition">Review Postion Data</param>
+            <param name="vertex">New Position</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MessageManager">
             <summary>
@@ -54237,6 +54268,11 @@
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ModelTree">
             <summary>
             ModelTree Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.Area">
+            <summary>
+            [MANAGER] Area Manager
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.GenericData">
