@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("VIZCore3D.NET.UDA")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Softhills Co., Ltd.")]
+[assembly: AssemblyCompany("SOFTHILLS Co., Ltd.")]
 [assembly: AssemblyProduct("VIZCore3D.NET.UDA")]
-[assembly: AssemblyCopyright("© 2020 Softhills Co., Ltd. All rights reserved.")]
+[assembly: AssemblyCopyright("© 2020 SOFTHILLS Co., Ltd. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
