@@ -512,7 +512,29 @@ namespace VIZCore3D.NET.CaptureImage
         {
             if (vizcore3d.Model.IsOpen() == false) return;
 
+            VIZCore3D.NET.Data.BackgroundModes mode = vizcore3d.View.BackgroundMode;
+            System.Drawing.Color color1 = vizcore3d.View.BackgroundColor1;
+            System.Drawing.Color color2 = vizcore3d.View.BackgroundColor2;
+
+            {
+                vizcore3d.View.ViewToolbar = false;
+                vizcore3d.View.MarineAxis.Visible = false;
+
+                vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
+                vizcore3d.View.BackgroundColor1 = Color.White;
+                vizcore3d.View.BackgroundColor2 = Color.White;
+            }
+
             System.Drawing.Image img = vizcore3d.View.CaptureImage();
+
+            {
+                vizcore3d.View.ViewToolbar = true;
+                vizcore3d.View.MarineAxis.Visible = true;
+
+                vizcore3d.View.BackgroundMode = mode;
+                vizcore3d.View.BackgroundColor1 = color1;
+                vizcore3d.View.BackgroundColor2 = color2;
+            }
 
             imgThumb.Images.Add(img);
 
