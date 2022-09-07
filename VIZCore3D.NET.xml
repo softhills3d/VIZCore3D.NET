@@ -9853,7 +9853,7 @@
         </member>
         <member name="T:VIZCore3D.NET.Data.SectionGeometryProperty">
             <summary>
-            Section Geometry Property
+            Section Geometry Property Class
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SectionGeometryProperty.Area">
@@ -9871,7 +9871,47 @@
             Error Node Index
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryProperty.PartData">
+            <summary>
+            Part Geometry Property Data
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.SectionGeometryProperty.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.SectionGeometryPartProperty">
+            <summary>
+            Section Geometry Part Property Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryPartProperty.Index">
+            <summary>
+            Node Index
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryPartProperty.OriginalArea">
+            <summary>
+            Original Area
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryPartProperty.ResultArea">
+            <summary>
+            Result Area
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryPartProperty.OriginalVolume">
+            <summary>
+            Original Volume
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SectionGeometryPartProperty.ResultVolume">
+            <summary>
+            Result Volume
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.SectionGeometryPartProperty.#ctor">
             <summary>
             Construction
             </summary>
