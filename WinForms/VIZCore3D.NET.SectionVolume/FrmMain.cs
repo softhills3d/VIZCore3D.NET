@@ -615,44 +615,7 @@ namespace VIZCore3D.NET.SectionVolume
                 VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
                 if (section == null) return;
 
-                // 1. Clipped Parts
-                List<VIZCore3D.NET.Data.Node> nodes = new List<VIZCore3D.NET.Data.Node>();
-
-                if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
-                {
-                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1);
-                }
-                else if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i));
-                    }
-                }
-
-                {
-                    lvClippedParts.BeginUpdate();
-                    lvClippedParts.Items.Clear();
-                    foreach (VIZCore3D.NET.Data.Node node in nodes)
-                    {
-                        ListViewItem lvi = new ListViewItem(
-                            new string[] {
-                                node.Index.ToString()
-                                , node.NodeName
-                                , node.GetParentName()
-                            });
-
-                        lvClippedParts.Items.Add(lvi);
-                    }
-                    lvClippedParts.EndUpdate();
-                }
-
-                if (nodes.Count > 0)
-                    tpClippedParts.Text = string.Format("Clipped Parts ({0} EA)", nodes.Count);
-                else
-                    tpClippedParts.Text = "Clipped Parts";
-
-                // 2. Geometry Property
+                // 1. Geometry Property
                 VIZCore3D.NET.Data.SectionGeometryProperty prop =
                     vizcore3d.Section.GetGeometryProperty();
 
@@ -687,6 +650,73 @@ namespace VIZCore3D.NET.SectionVolume
                     tpErrorParts.Text = string.Format("Error Parts ({0} EA)", prop.ErrorIndex.Count);
                 else
                     tpErrorParts.Text = "Error Parts";
+
+                // 2. Clipped Parts
+                List<VIZCore3D.NET.Data.Node> nodes = new List<VIZCore3D.NET.Data.Node>();
+
+                if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
+                {
+                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1);
+                }
+                else if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i));
+                    }
+                }
+
+                {
+                    lvClippedParts.BeginUpdate();
+                    lvClippedParts.Items.Clear();
+
+                    foreach (VIZCore3D.NET.Data.Node node in nodes)
+                    {
+                        VIZCore3D.NET.Data.SectionGeometryPartProperty partGeometry = null;
+
+                        if (prop.PartData.ContainsKey(node.Index) == true)
+                        {
+                            partGeometry = prop.PartData[node.Index];
+                        }
+                        else if (prop.PartData.ContainsKey(node.Index + 1) == true)
+                        {
+                            partGeometry = prop.PartData[node.Index + 1];
+                        }
+
+                        float orgArea = 0.0f;
+                        float orgVolume = 0.0f;
+                        float resultArea = 0.0f;
+                        float resultVolume = 0.0f;
+
+                        if (partGeometry != null)
+                        {
+                            orgArea = partGeometry.OriginalArea / 1000.0f / 1000.0f;
+                            orgVolume = partGeometry.OriginalVolume / 1000.0f / 1000.0f / 1000.0f;
+
+                            resultArea = partGeometry.ResultArea / 1000.0f / 1000.0f;
+                            resultVolume = partGeometry.ResultVolume / 1000.0f / 1000.0f / 1000.0f;
+                        }
+
+                        ListViewItem lvi = new ListViewItem(
+                            new string[] {
+                                node.Index.ToString()
+                                , node.NodeName
+                                , node.GetParentName()
+                                , partGeometry == null ? "N/A" : orgArea.ToString()
+                                , partGeometry == null ? "N/A" : orgVolume.ToString()
+                                , partGeometry == null ? "N/A" : resultArea.ToString()
+                                , partGeometry == null ? "N/A" : resultVolume.ToString()
+                            });
+
+                        lvClippedParts.Items.Add(lvi);
+                    }
+                    lvClippedParts.EndUpdate();
+                }
+
+                if (nodes.Count > 0)
+                    tpClippedParts.Text = string.Format("Clipped Parts ({0} EA)", nodes.Count);
+                else
+                    tpClippedParts.Text = "Clipped Parts";
             }));
         }
     }
