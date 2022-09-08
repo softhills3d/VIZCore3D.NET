@@ -647,7 +647,7 @@ namespace VIZCore3D.NET.SectionVolume
                 }
 
                 if (prop.ErrorIndex.Count > 0)
-                    tpErrorParts.Text = string.Format("Error Parts ({0} EA)", prop.ErrorIndex.Count);
+                    tpErrorParts.Text = string.Format("Error Parts ({0:#,0} EA)", prop.ErrorIndex.Count);
                 else
                     tpErrorParts.Text = "Error Parts";
 
@@ -714,9 +714,54 @@ namespace VIZCore3D.NET.SectionVolume
                 }
 
                 if (nodes.Count > 0)
-                    tpClippedParts.Text = string.Format("Clipped Parts ({0} EA)", nodes.Count);
+                    tpClippedParts.Text = string.Format("Clipped Parts ({0:#,0} EA)", nodes.Count);
                 else
                     tpClippedParts.Text = "Clipped Parts";
+
+
+                // 3. All Parts
+                lvAllParts.BeginUpdate();
+                lvAllParts.Items.Clear();
+                foreach (VIZCore3D.NET.Data.SectionGeometryPartProperty partGeometry in prop.PartData.Values)
+                {
+                    VIZCore3D.NET.Data.Node node = vizcore3d.Object3D.FromIndex(partGeometry.Index);
+                    if (node.Kind == Data.NodeKind.BODY)
+                        node = node.GetParent();
+
+                    float orgArea = 0.0f;
+                    float orgVolume = 0.0f;
+                    float resultArea = 0.0f;
+                    float resultVolume = 0.0f;
+
+                    if (partGeometry != null)
+                    {
+                        orgArea = partGeometry.OriginalArea / 1000.0f / 1000.0f;
+                        orgVolume = partGeometry.OriginalVolume / 1000.0f / 1000.0f / 1000.0f;
+
+                        resultArea = partGeometry.ResultArea / 1000.0f / 1000.0f;
+                        resultVolume = partGeometry.ResultVolume / 1000.0f / 1000.0f / 1000.0f;
+                    }
+
+                    ListViewItem lvi = new ListViewItem(
+                        new string[] {
+                                node.Index.ToString()
+                                , node.NodeName
+                                , node.GetParentName()
+                                , partGeometry == null ? "N/A" : orgArea.ToString()
+                                , partGeometry == null ? "N/A" : orgVolume.ToString()
+                                , partGeometry == null ? "N/A" : resultArea.ToString()
+                                , partGeometry == null ? "N/A" : resultVolume.ToString()
+                        });
+
+                    lvAllParts.Items.Add(lvi);
+                }
+                lvAllParts.EndUpdate();
+
+                if (prop.PartData.Values.Count > 0)
+                    tpAllParts.Text = string.Format("All Parts ({0:#,0} EA)", prop.PartData.Values.Count);
+                else
+                    tpAllParts.Text = "All Parts";
+
             }));
         }
     }

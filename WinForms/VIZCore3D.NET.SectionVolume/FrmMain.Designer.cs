@@ -50,15 +50,24 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tpErrorParts = new System.Windows.Forms.TabPage();
             this.lvErrorParts = new System.Windows.Forms.ListView();
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.tpAllParts = new System.Windows.Forms.TabPage();
+            this.lvAllParts = new System.Windows.Forms.ListView();
+            this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -73,6 +82,7 @@
             this.tabControl1.SuspendLayout();
             this.tpClippedParts.SuspendLayout();
             this.tpErrorParts.SuspendLayout();
+            this.tpAllParts.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -254,6 +264,7 @@
             // 
             this.tabControl1.Controls.Add(this.tpClippedParts);
             this.tabControl1.Controls.Add(this.tpErrorParts);
+            this.tabControl1.Controls.Add(this.tpAllParts);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -307,48 +318,6 @@
             this.columnHeader3.Text = "Parent";
             this.columnHeader3.Width = 197;
             // 
-            // tpErrorParts
-            // 
-            this.tpErrorParts.Controls.Add(this.lvErrorParts);
-            this.tpErrorParts.Location = new System.Drawing.Point(4, 22);
-            this.tpErrorParts.Name = "tpErrorParts";
-            this.tpErrorParts.Padding = new System.Windows.Forms.Padding(3);
-            this.tpErrorParts.Size = new System.Drawing.Size(779, 219);
-            this.tpErrorParts.TabIndex = 1;
-            this.tpErrorParts.Text = "Error Parts";
-            this.tpErrorParts.UseVisualStyleBackColor = true;
-            // 
-            // lvErrorParts
-            // 
-            this.lvErrorParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader4,
-            this.columnHeader5,
-            this.columnHeader6});
-            this.lvErrorParts.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvErrorParts.FullRowSelect = true;
-            this.lvErrorParts.GridLines = true;
-            this.lvErrorParts.HideSelection = false;
-            this.lvErrorParts.Location = new System.Drawing.Point(3, 3);
-            this.lvErrorParts.Name = "lvErrorParts";
-            this.lvErrorParts.Size = new System.Drawing.Size(773, 213);
-            this.lvErrorParts.TabIndex = 1;
-            this.lvErrorParts.UseCompatibleStateImageBehavior = false;
-            this.lvErrorParts.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Index";
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Name";
-            this.columnHeader5.Width = 210;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "Parent";
-            this.columnHeader6.Width = 197;
-            // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "Area (㎡)";
@@ -372,6 +341,118 @@
             this.columnHeader10.Text = "Result Volume (㎥)";
             this.columnHeader10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader10.Width = 133;
+            // 
+            // tpErrorParts
+            // 
+            this.tpErrorParts.Controls.Add(this.lvErrorParts);
+            this.tpErrorParts.Location = new System.Drawing.Point(4, 22);
+            this.tpErrorParts.Name = "tpErrorParts";
+            this.tpErrorParts.Padding = new System.Windows.Forms.Padding(3);
+            this.tpErrorParts.Size = new System.Drawing.Size(884, 219);
+            this.tpErrorParts.TabIndex = 1;
+            this.tpErrorParts.Text = "Error Parts";
+            this.tpErrorParts.UseVisualStyleBackColor = true;
+            // 
+            // lvErrorParts
+            // 
+            this.lvErrorParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.lvErrorParts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvErrorParts.FullRowSelect = true;
+            this.lvErrorParts.GridLines = true;
+            this.lvErrorParts.HideSelection = false;
+            this.lvErrorParts.Location = new System.Drawing.Point(3, 3);
+            this.lvErrorParts.Name = "lvErrorParts";
+            this.lvErrorParts.Size = new System.Drawing.Size(878, 213);
+            this.lvErrorParts.TabIndex = 1;
+            this.lvErrorParts.UseCompatibleStateImageBehavior = false;
+            this.lvErrorParts.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Index";
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Name";
+            this.columnHeader5.Width = 210;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Parent";
+            this.columnHeader6.Width = 197;
+            // 
+            // tpAllParts
+            // 
+            this.tpAllParts.Controls.Add(this.lvAllParts);
+            this.tpAllParts.Location = new System.Drawing.Point(4, 22);
+            this.tpAllParts.Name = "tpAllParts";
+            this.tpAllParts.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAllParts.Size = new System.Drawing.Size(884, 219);
+            this.tpAllParts.TabIndex = 2;
+            this.tpAllParts.Text = "All Parts";
+            this.tpAllParts.UseVisualStyleBackColor = true;
+            // 
+            // lvAllParts
+            // 
+            this.lvAllParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader11,
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17});
+            this.lvAllParts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvAllParts.FullRowSelect = true;
+            this.lvAllParts.GridLines = true;
+            this.lvAllParts.HideSelection = false;
+            this.lvAllParts.Location = new System.Drawing.Point(3, 3);
+            this.lvAllParts.Name = "lvAllParts";
+            this.lvAllParts.Size = new System.Drawing.Size(878, 213);
+            this.lvAllParts.TabIndex = 1;
+            this.lvAllParts.UseCompatibleStateImageBehavior = false;
+            this.lvAllParts.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader11
+            // 
+            this.columnHeader11.Text = "Index";
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Name";
+            this.columnHeader12.Width = 210;
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "Parent";
+            this.columnHeader13.Width = 197;
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "Area (㎡)";
+            this.columnHeader14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader14.Width = 83;
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "Volume (㎥)";
+            this.columnHeader15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader15.Width = 93;
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "Result Area (㎡)";
+            this.columnHeader16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader16.Width = 113;
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "Result Volume (㎥)";
+            this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeader17.Width = 133;
             // 
             // FrmMain
             // 
@@ -399,6 +480,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tpClippedParts.ResumeLayout(false);
             this.tpErrorParts.ResumeLayout(false);
+            this.tpAllParts.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -435,6 +517,15 @@
         private System.Windows.Forms.ColumnHeader columnHeader8;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.ColumnHeader columnHeader10;
+        private System.Windows.Forms.TabPage tpAllParts;
+        private System.Windows.Forms.ListView lvAllParts;
+        private System.Windows.Forms.ColumnHeader columnHeader11;
+        private System.Windows.Forms.ColumnHeader columnHeader12;
+        private System.Windows.Forms.ColumnHeader columnHeader13;
+        private System.Windows.Forms.ColumnHeader columnHeader14;
+        private System.Windows.Forms.ColumnHeader columnHeader15;
+        private System.Windows.Forms.ColumnHeader columnHeader16;
+        private System.Windows.Forms.ColumnHeader columnHeader17;
     }
 }
 
