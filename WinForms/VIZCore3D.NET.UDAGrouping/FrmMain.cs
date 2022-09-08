@@ -766,14 +766,10 @@ namespace VIZCore3D.NET.UDAGrouping
             List<int> index = vizcore3d.Object3D.UDA.GetNodesIndex(GROUP_KEY, groupName);
             if (index.Count == 0) return;
 
-            vizcore3d.Object3D.OnObject3DSelected -= Object3D_OnObject3DSelected;
-
             vizcore3d.BeginUpdate();
             vizcore3d.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
             vizcore3d.Object3D.Select(index, true);
             vizcore3d.EndUpdate();
-
-            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
         }
 
 
