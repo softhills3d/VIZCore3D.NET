@@ -22421,6 +22421,7 @@
             <summary>
             Edge-Polyline 선택 및 이동할 위치 완료 이벤트
             </summary>
+            <seealso cref="M:VIZCore3D.NET.Manager.GeometryUtilityManager.PickSurfaceAfterSelectEdgePolyline"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
@@ -22905,6 +22906,7 @@
             <summary>
             Edge-Polyline 선택 및 이동될 위치 지정
             </summary>
+            <seealso cref="E:VIZCore3D.NET.Manager.GeometryUtilityManager.OnPickedSurfaceParallelEdgePolyline"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.FirePickedSurfaceParallelEdgePolylineEvent(System.String)">
             <summary>
