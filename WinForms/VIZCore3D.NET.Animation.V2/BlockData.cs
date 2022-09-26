@@ -13,6 +13,7 @@ namespace VIZCore3D.NET.Animation.V2
         public string ERECTION_DATE { get; set; }
 
         public VIZCore3D.NET.Data.Node BlockNode { get; set; }
+        public VIZCore3D.NET.Data.Node GhostNode { get; set; }
 
         public VIZCore3D.NET.Data.Vertex3D Center { get; set; }
 

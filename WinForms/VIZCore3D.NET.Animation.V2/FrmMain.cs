@@ -579,16 +579,32 @@ namespace VIZCore3D.NET.Animation.V2
         // ================================================
         private void btnOpen_Click(object sender, EventArgs e)
         {
+            vizcore3d.Model.Close();
+
             string path = "E:\\MODELS\\SHOWCASE\\ANIMATION.V2\\MODEL.viz";
 
-            vizcore3d.Model.Open(path);
+            bool ghostMode = ckGhostMode.Checked;
+
+            if (ghostMode)
+            {
+                List<VIZCore3D.NET.Data.StreamData> items = new List<VIZCore3D.NET.Data.StreamData>();
+
+                items.Add(new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL"));
+                items.Add(new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "GHOST"));
+
+                vizcore3d.Model.AddStream(items, true);
+            }
+            else
+            {
+                vizcore3d.Model.Open(path);
+            }
 
             OriginalBoundBox = vizcore3d.Model.BoundBox;
 
-            ShowSequence();
+            ShowSequence(ghostMode);
         }
 
-        private void ShowSequence()
+        private void ShowSequence(bool ghostMode)
         {
             BlockItems = new List<BlockData>();
 
@@ -651,13 +667,29 @@ namespace VIZCore3D.NET.Animation.V2
             BlockItems.Add(new BlockData(55, shipCode, "1H31", "2019-08-29"));
             BlockItems.Add(new BlockData(56, shipCode, "N40C", "2019-09-02"));
 
-            Dictionary<string, List<VIZCore3D.NET.Data.Node>> nodes = vizcore3d.Object3D.GetNodeNameMapFromDepth(1, false);
-
-            foreach (BlockData item in BlockItems)
+            if (ghostMode == false)
             {
-                if (nodes.ContainsKey(item.BLOCK) == true)
+                Dictionary<string, List<VIZCore3D.NET.Data.Node>> nodes = vizcore3d.Object3D.GetNodeNameMapFromDepth(1, false);
+
+                foreach (BlockData item in BlockItems)
                 {
-                    item.BlockNode = nodes[item.BLOCK][0];
+                    if (nodes.ContainsKey(item.BLOCK) == true)
+                    {
+                        item.BlockNode = nodes[item.BLOCK][0];
+                    }
+                }
+            }
+            else
+            {
+                Dictionary<string, List<VIZCore3D.NET.Data.Node>> nodes = vizcore3d.Object3D.GetNodeNameMapFromDepth(2, false);
+
+                foreach (BlockData item in BlockItems)
+                {
+                    if (nodes.ContainsKey(item.BLOCK) == true)
+                    {
+                        item.BlockNode = nodes[item.BLOCK][0];
+                        item.GhostNode = nodes[item.BLOCK][1];
+                    }
                 }
             }
 
@@ -673,6 +705,9 @@ namespace VIZCore3D.NET.Animation.V2
 
         private void btnAddAnimation_Click(object sender, EventArgs e)
         {
+            // 모드
+            bool ghostMode = ckGhostMode.Checked;
+
             // 화면 메시지 설정
             vizcore3d.View.Message.Color = Color.Red;
             vizcore3d.View.Message.TextSize = VIZCore3D.NET.Data.FontSize.Size_24_Bold;
@@ -686,6 +721,15 @@ namespace VIZCore3D.NET.Animation.V2
                     , BlockItems[i].BlockNode.Index     /* NODE INDEX */
                     , true                              /* Recursive */
                     );
+
+                if (ghostMode == true)
+                {
+                    vizcore3d.Object3D.Disassembly.AddGroup(
+                        i                                   /* ID : 0 ~ */
+                        , BlockItems[i].GhostNode.Index     /* NODE INDEX */
+                        , true                              /* Recursive */
+                        );
+                }
             }
 
             vizcore3d.BeginUpdate();
@@ -729,6 +773,16 @@ namespace VIZCore3D.NET.Animation.V2
             Time = 0.0f;
 
             // 초기 위치 설정 (분해된 상태)
+            if (ghostMode == true)
+            {
+                foreach (BlockData item in BlockItems)
+                {
+                    if (item.GhostNode == null) continue;
+
+                    vizcore3d.Object3D.Color.SetColorAndAlpha(new List<VIZCore3D.NET.Data.Node>() { item.GhostNode }, Color.White, 2);
+                }
+            }
+
             AddKey(true, false, TimeInterval * 0.5f, "INIT.");
 
             // 순서대로 위치 초기화 시키면서 애니메이션 장면 추가
@@ -745,7 +799,7 @@ namespace VIZCore3D.NET.Animation.V2
 
             // 트랙바 설정
             tbAnimation.Enabled = true;
-            tbAnimation.Maximum = Convert.ToInt32(Time);
+            tbAnimation.Maximum = Convert.ToInt32(Time + 1.0f);
 
             MessageBox.Show("Completed.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

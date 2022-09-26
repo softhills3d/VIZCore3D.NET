@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnPauseAnimation = new System.Windows.Forms.Button();
+            this.btnPlayAnimation = new System.Windows.Forms.Button();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddAnimation = new System.Windows.Forms.Button();
@@ -44,8 +46,7 @@
             this.btnOpen = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tbAnimation = new System.Windows.Forms.TrackBar();
-            this.btnPlayAnimation = new System.Windows.Forms.Button();
-            this.btnPauseAnimation = new System.Windows.Forms.Button();
+            this.ckGhostMode = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -94,6 +95,28 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Animation";
+            // 
+            // btnPauseAnimation
+            // 
+            this.btnPauseAnimation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPauseAnimation.Location = new System.Drawing.Point(115, 76);
+            this.btnPauseAnimation.Name = "btnPauseAnimation";
+            this.btnPauseAnimation.Size = new System.Drawing.Size(75, 23);
+            this.btnPauseAnimation.TabIndex = 4;
+            this.btnPauseAnimation.Text = "Pause";
+            this.btnPauseAnimation.UseVisualStyleBackColor = true;
+            this.btnPauseAnimation.Click += new System.EventHandler(this.btnPauseAnimation_Click);
+            // 
+            // btnPlayAnimation
+            // 
+            this.btnPlayAnimation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPlayAnimation.Location = new System.Drawing.Point(34, 76);
+            this.btnPlayAnimation.Name = "btnPlayAnimation";
+            this.btnPlayAnimation.Size = new System.Drawing.Size(75, 23);
+            this.btnPlayAnimation.TabIndex = 3;
+            this.btnPlayAnimation.Text = "Play";
+            this.btnPlayAnimation.UseVisualStyleBackColor = true;
+            this.btnPlayAnimation.Click += new System.EventHandler(this.btnPlayAnimation_Click);
             // 
             // txtRate
             // 
@@ -179,6 +202,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.ckGhostMode);
             this.groupBox1.Controls.Add(this.btnOpen);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -223,27 +247,15 @@
             this.tbAnimation.TabIndex = 0;
             this.tbAnimation.Scroll += new System.EventHandler(this.tbAnimation_Scroll);
             // 
-            // btnPlayAnimation
+            // ckGhostMode
             // 
-            this.btnPlayAnimation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPlayAnimation.Location = new System.Drawing.Point(34, 76);
-            this.btnPlayAnimation.Name = "btnPlayAnimation";
-            this.btnPlayAnimation.Size = new System.Drawing.Size(75, 23);
-            this.btnPlayAnimation.TabIndex = 3;
-            this.btnPlayAnimation.Text = "Play";
-            this.btnPlayAnimation.UseVisualStyleBackColor = true;
-            this.btnPlayAnimation.Click += new System.EventHandler(this.btnPlayAnimation_Click);
-            // 
-            // btnPauseAnimation
-            // 
-            this.btnPauseAnimation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPauseAnimation.Location = new System.Drawing.Point(115, 76);
-            this.btnPauseAnimation.Name = "btnPauseAnimation";
-            this.btnPauseAnimation.Size = new System.Drawing.Size(75, 23);
-            this.btnPauseAnimation.TabIndex = 4;
-            this.btnPauseAnimation.Text = "Pause";
-            this.btnPauseAnimation.UseVisualStyleBackColor = true;
-            this.btnPauseAnimation.Click += new System.EventHandler(this.btnPauseAnimation_Click);
+            this.ckGhostMode.AutoSize = true;
+            this.ckGhostMode.Location = new System.Drawing.Point(135, 26);
+            this.ckGhostMode.Name = "ckGhostMode";
+            this.ckGhostMode.Size = new System.Drawing.Size(93, 16);
+            this.ckGhostMode.TabIndex = 1;
+            this.ckGhostMode.Text = "Ghost Mode";
+            this.ckGhostMode.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -263,6 +275,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
@@ -291,6 +304,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPlayAnimation;
         private System.Windows.Forms.Button btnPauseAnimation;
+        private System.Windows.Forms.CheckBox ckGhostMode;
     }
 }
 
