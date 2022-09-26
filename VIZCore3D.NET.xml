@@ -43398,6 +43398,94 @@
             Get Section Geometry Property
             </summary>
             <returns>Geometry Property</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+                if (section == null) return;
+            
+                // 1. Geometry Property
+                VIZCore3D.NET.Data.SectionGeometryProperty prop =
+                    vizcore3d.Section.GetGeometryProperty();
+            
+                float area = prop.Area / 1000.0f / 1000.0f;
+                string areaDisplayStr = string.Format("{0} ㎡", area);
+            
+                float volume = prop.Volume / 1000.0f / 1000.0f / 1000.0f;
+                string volumeDisplayStr = string.Format("{0} ㎥", volume);
+            
+                // 2. Error Node Index
+                foreach (int errorNodeIndex in prop.ErrorIndex)
+                {
+                    Console.WriteLine(string.Format("Error Node Index : {0}", errorNodeIndex));
+                }
+            
+                // 3. Clipped Parts
+                List<VIZCore3D.NET.Data.Node> nodes = new List<VIZCore3D.NET.Data.Node>();
+            
+                if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
+                {
+                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1);
+                }
+                else if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
+                {
+                    for (int i = 0; i < 6; i++)
+                    {
+                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i));
+                    }
+                }
+            
+                foreach (VIZCore3D.NET.Data.Node node in nodes)
+                {
+                    VIZCore3D.NET.Data.SectionGeometryPartProperty partGeometry = null;
+            
+                    if (prop.PartData.ContainsKey(node.Index) == true)
+                    {
+                        partGeometry = prop.PartData[node.Index];
+                    }
+                    else if (prop.PartData.ContainsKey(node.Index + 1) == true)
+                    {
+                        partGeometry = prop.PartData[node.Index + 1];
+                    }
+            
+                    float orgArea = 0.0f;
+                    float orgVolume = 0.0f;
+                    float resultArea = 0.0f;
+                    float resultVolume = 0.0f;
+            
+                    if (partGeometry != null)
+                    {
+                        orgArea = partGeometry.OriginalArea / 1000.0f / 1000.0f;
+                        orgVolume = partGeometry.OriginalVolume / 1000.0f / 1000.0f / 1000.0f;
+            
+                        resultArea = partGeometry.ResultArea / 1000.0f / 1000.0f;
+                        resultVolume = partGeometry.ResultVolume / 1000.0f / 1000.0f / 1000.0f;
+                    }
+            
+                    Console.WriteLine(
+                        string.Format(
+                            "{0}, {1}, {2}, {3}, {4}, {5}, {6}"
+                            , node.Index.ToString()
+                            , node.NodeName
+                            , node.GetParentName()
+                            , partGeometry == null ? "N/A" : orgArea.ToString()
+                            , partGeometry == null ? "N/A" : orgVolume.ToString()
+                            , partGeometry == null ? "N/A" : resultArea.ToString()
+                            , partGeometry == null ? "N/A" : resultVolume.ToString()
+                            )
+                        );
+                }
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetComments(System.Int32,System.Int32)">
             <summary>
