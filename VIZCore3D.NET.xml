@@ -15629,6 +15629,11 @@
             BEVEL_CVBA
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBevelData.IsStartBevel">
+            <summary>
+            Is Start BEVEL
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericBevelData.SetData(System.String)">
             <summary>
             Set Data
@@ -15643,6 +15648,16 @@
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericBurningData.Items">
             <summary>
             Burning Data Items
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBurningData.BURNTYPE">
+            <summary>
+            BURN Type
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBurningData.PrePlate">
+            <summary>
+            ASSY NO (PART / CUST_DATA_3) RIGHT[1] = 'Z'
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericBurningData.SHAPE">
@@ -15723,6 +15738,11 @@
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericBurningData.GeometryData">
             <summary>
             Geometry Data
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBurningData.PartData">
+            <summary>
+            Part Data
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericBurningData.SetData(System.String)">
@@ -16297,53 +16317,29 @@
             <param name="name">File Name</param>
             <returns>Result</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.StringDataNotes">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetStringData">
             <summary>
-            Generic String Data Note ID List
+            Get String Data
             </summary>
+            <returns>String Data Collection</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowStringData(System.Boolean)">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetMarkingData">
             <summary>
-            Show String Data By 3D Note
+            Get Marking Data
             </summary>
-            <param name="visible">Show / Hide</param>
+            <returns>Marking Line Data</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.MarkingDataLines">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetBevelSymbolData">
             <summary>
-            Generic Marking Data Line ID List
+            Get Bevel Symbol Data
             </summary>
+            <returns>Symbol Line Data</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowMarkingData(System.Boolean,System.Nullable{System.Drawing.Color},System.Single)">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetBevelTextData">
             <summary>
-            Show Marking Data By ShapeDrawing (Line)
+            Get Bevel Text Data
             </summary>
-            <param name="visible">Show / Hide</param>
-            <param name="color">Line Color</param>
-            <param name="thickness">Thickness</param>
-        </member>
-        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.BevelSymbolDataLines">
-            <summary>
-            Generic Bevel Symbol Data Line ID List
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowBevelSymbolData(System.Boolean,System.Nullable{System.Drawing.Color},System.Single)">
-            <summary>
-            Show Bevel Symbol Data By ShapeDrawing (Line)
-            </summary>
-            <param name="visible">Show / Hide</param>
-            <param name="color">Line Color</param>
-            <param name="thickness">Thickness</param>
-        </member>
-        <member name="P:VIZCore3D.NET.Extension.Generic.GenericDataManager.LeftEndDataNotes">
-            <summary>
-            Left-End Data Note ID List
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.ShowLeftRightEndData(System.Boolean)">
-            <summary>
-            Show Left-End / Right-End Data By 3D Note
-            </summary>
-            <param name="visible">Show / Hide</param>
+            <returns>Bevel Text</returns>
         </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.GetUnhandledKeyword(System.Int32)">
             <summary>
@@ -16856,6 +16852,66 @@
             Set Data
             </summary>
             <param name="raw">Raw Data</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Extension.Generic.GenericString">
+            <summary>
+            Generic String Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericString.Text">
+            <summary>
+            Text
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericString.Position">
+            <summary>
+            Text Position
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericString.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Extension.Generic.GenericContour">
+            <summary>
+            Generic Contour (Vertex) Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericContour.Vertex">
+            <summary>
+            Contour (Vertex)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericContour.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Extension.Generic.GenericBevelText">
+            <summary>
+            Generic Bevel Text Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBevelText.RAW_INDEX">
+            <summary>
+            Data Original Index
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBevelText.BEVEL_TEXT">
+            <summary>
+            BEVEL TEXT
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericBevelText.Position">
+            <summary>
+            Position
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericBevelText.#ctor">
+            <summary>
+            Construction
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Extension.Generic.GenericItem">
             <summary>
@@ -18006,7 +18062,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.NAME">
             <summary>
-            NAME
+            NAME (PART NO TB)
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.POSNO">
@@ -18081,7 +18137,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.CUST_DATA_3">
             <summary>
-            CUST_DATA_3
+            CUST_DATA_3 (ASSY. NO.)
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.CUST_DATA_4">
@@ -18267,6 +18323,11 @@
         <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.TransformationData">
             <summary>
             Transformation Data
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Extension.Generic.GenericPartData.GeneralData">
+            <summary>
+            General Data
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericPartData.SetData(System.String)">
