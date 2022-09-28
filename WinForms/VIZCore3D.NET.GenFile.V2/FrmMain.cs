@@ -217,13 +217,29 @@ namespace VIZCore3D.NET.GenFile.V2
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
             #endregion
 
+            #region 렌더링 효과
+            vizcore3d.View.PhongShading = true;                                 // Phong Shading
+            vizcore3d.View.SilhouetteEdge = true;                               // 윤곽
+            vizcore3d.View.RealtimeShadow = false;                              // 실시간 그림자
+            vizcore3d.View.ShadingEffect = false;                               // 음영
+            vizcore3d.View.EnvironmentLight = false;                            // 환경조명
+            vizcore3d.View.AntiAliasing = false;                                // Anti-Aliasing
+            vizcore3d.View.FloorShadow = false;                                 // 바닥 그림자
+            vizcore3d.View.PlaneReflection = false;                             // 면 반사
+
+            vizcore3d.View.Shininess = 30;                                      // 광원세기 - 0 ~ 100
+            vizcore3d.View.SilhouetteEdgeColor = Color.FromArgb(127, 0, 0, 0);  // 윤곽 색상 및 투명도 - Black, 50%
+            vizcore3d.View.AmbientColor = Color.DarkGray;                       // 음영 색상
+            vizcore3d.View.DiffuseLightColor = Color.FromArgb(255, 255, 232);   // 기본 빛 색상
+            #endregion
+
 
             // ================================================================
             // 설정 - 탐색
             // ================================================================
             #region 설정 - 탐색
             // Z축 고정
-            vizcore3d.Walkthrough.LockZAxis = true;
+            vizcore3d.Walkthrough.LockZAxis = false;
             // 선속도 : m/s
             vizcore3d.Walkthrough.Speed = 2.0f;
             // 각속도
@@ -624,82 +640,172 @@ namespace VIZCore3D.NET.GenFile.V2
             vizcore3d.ShapeDrawing.DepthTest = ckDepthTest.Checked;
         }
 
-        private void btnShowMarking_Click(object sender, EventArgs e)
-        {
-            // Case 1
-            //vizcore3d.GenericData.ShowMarkingData(true);
+        public List<int> MarkingLines { get; set; }
 
-            // Case 2
-            vizcore3d.GenericData.ShowMarkingData(true, Color.Red, 2.0f);
+        private void ckMarking_CheckedChanged(object sender, EventArgs e)
+        {
+            if (MarkingLines == null)
+                MarkingLines = new List<int>();
+
+            if (ckMarking.Checked == true)
+            {
+                List<VIZCore3D.NET.Extension.Generic.GenericContour> items =
+                    vizcore3d.GenericData.GetMarkingData();
+
+                vizcore3d.BeginUpdate();
+
+                foreach (VIZCore3D.NET.Extension.Generic.GenericContour item in items)
+                {
+                    int id = vizcore3d.ShapeDrawing.AddLine(
+                        item.Vertex     /* Vertex */
+                        , 0             /* Group Id */
+                        , Color.Red     /* Color */
+                        , 2.0f          /* Thickness */
+                        , true          /* Visible */
+                        );
+
+                    MarkingLines.Add(id);
+                }
+
+                vizcore3d.EndUpdate();
+            }
+            else
+            {
+                if (MarkingLines == null || MarkingLines.Count == 0) return;
+                vizcore3d.ShapeDrawing.Delete(MarkingLines);
+            }
         }
 
-        private void btnHideMarking_Click(object sender, EventArgs e)
+        public List<int> StringNotes { get; set; }
+
+        private void ckString_CheckedChanged(object sender, EventArgs e)
         {
-            vizcore3d.GenericData.ShowMarkingData(false);
+            if (StringNotes == null)
+                StringNotes = new List<int>();
+
+            if (ckString.Checked == true)
+            {
+                VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
+                style.BackgroundColor = Color.Yellow;
+                style.BackgroudTransparent = true;
+                style.FontColor = Color.Black;
+                style.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE16;
+                style.FontBold = true;
+                style.LineColor = Color.White;
+                style.LineWidth = 2;
+                style.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
+                style.ArrowColor = Color.Red;
+                style.ArrowWidth = 10;
+                style.TextBoxLineColor = Color.Black;
+
+                vizcore3d.Review.Note.SetStyle(style);
+
+                List<VIZCore3D.NET.Extension.Generic.GenericString> items =
+                    vizcore3d.GenericData.GetStringData();
+
+                vizcore3d.BeginUpdate();
+                foreach (VIZCore3D.NET.Extension.Generic.GenericString item in items)
+                {
+                    int id = vizcore3d.Review.Note.AddNote3D(item.Text, item.Position);
+                    StringNotes.Add(id);
+                }
+
+                vizcore3d.Review.AllowMove(StringNotes, false);
+
+                vizcore3d.EndUpdate();
+            }
+            else
+            {
+                if (StringNotes == null || StringNotes.Count == 0) return;
+                vizcore3d.BeginUpdate();
+                vizcore3d.Review.Note.Delete(StringNotes);
+                vizcore3d.EndUpdate();
+            }
         }
 
-        private void btnShowBevelSymbol_Click(object sender, EventArgs e)
-        {
-            // Case 1
-            //vizcore3d.GenericData.ShowBevelSymbolData(true);
+        public List<int> BevelSymbolLines { get; set; }
 
-            // Case 2
-            vizcore3d.GenericData.ShowBevelSymbolData(true, Color.Yellow, 2.0f);
+        private void ckBevelSymbol_CheckedChanged(object sender, EventArgs e)
+        {
+            if (BevelSymbolLines == null)
+                BevelSymbolLines = new List<int>();
+
+            if (ckBevelSymbol.Checked == true)
+            {
+                List<VIZCore3D.NET.Extension.Generic.GenericContour> items =
+                    vizcore3d.GenericData.GetBevelSymbolData();
+
+                vizcore3d.BeginUpdate();
+
+                foreach (VIZCore3D.NET.Extension.Generic.GenericContour item in items)
+                {
+                    int id = vizcore3d.ShapeDrawing.AddLine(
+                        item.Vertex     /* Vertex */
+                        , 0             /* Group Id */
+                        , Color.Yellow  /* Color */
+                        , 2.0f          /* Thickness */
+                        , true          /* Visible */
+                        );
+
+                    BevelSymbolLines.Add(id);
+                }
+
+                vizcore3d.EndUpdate();
+
+                
+            }
+            else
+            {
+                if (BevelSymbolLines == null || BevelSymbolLines.Count == 0) return;
+                vizcore3d.ShapeDrawing.Delete(BevelSymbolLines);
+            }
         }
 
-        private void btnHideBevelSymbol_Click(object sender, EventArgs e)
+        public List<int> BevelTextNotes { get; set; }
+
+        private void ckBevelText_CheckedChanged(object sender, EventArgs e)
         {
-            vizcore3d.GenericData.ShowBevelSymbolData(false);
-        }
+            if (BevelTextNotes == null)
+                BevelTextNotes = new List<int>();
 
-        private void btnShowString_Click(object sender, EventArgs e)
-        {
-            VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
-            style.BackgroundColor = Color.Yellow;
-            style.BackgroudTransparent = true;
-            style.FontColor = Color.Black;
-            style.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE16;
-            style.FontBold = true;
-            style.LineColor = Color.White;
-            style.LineWidth = 2;
-            style.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
-            style.ArrowColor = Color.Red;
-            style.ArrowWidth = 10;
-            style.TextBoxLineColor = Color.Black;
+            if (ckBevelText.Checked == true)
+            {
+                VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
+                style.BackgroundColor = Color.Red;
+                style.BackgroudTransparent = true;
+                style.FontColor = Color.Black;
+                style.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE28;
+                style.FontBold = true;
+                style.LineColor = Color.White;
+                style.LineWidth = 2;
+                style.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
+                style.ArrowColor = Color.Red;
+                style.ArrowWidth = 10;
+                style.TextBoxLineColor = Color.Black;
 
-            vizcore3d.Review.Note.SetStyle(style);
+                vizcore3d.Review.Note.SetStyle(style);
 
-            vizcore3d.GenericData.ShowStringData(true);
-        }
+                List<VIZCore3D.NET.Extension.Generic.GenericBevelText> items =
+                    vizcore3d.GenericData.GetBevelTextData();
 
-        private void btnHideString_Click(object sender, EventArgs e)
-        {
-            vizcore3d.GenericData.ShowStringData(false);
-        }
+                vizcore3d.BeginUpdate();
+                foreach (VIZCore3D.NET.Extension.Generic.GenericBevelText item in items)
+                {
+                    int id = vizcore3d.Review.Note.AddNote3D(item.BEVEL_TEXT, item.Position);
+                    BevelTextNotes.Add(id);
+                }
 
-        private void btnShowLeftRightEnd_Click(object sender, EventArgs e)
-        {
-            VIZCore3D.NET.Data.NoteStyle style = vizcore3d.Review.Note.GetStyle();
-            style.BackgroundColor = Color.Yellow;
-            style.BackgroudTransparent = true;
-            style.FontColor = Color.Blue;
-            style.FontSize = VIZCore3D.NET.Data.FontSizeKind.SIZE16;
-            style.FontBold = true;
-            style.LineColor = Color.White;
-            style.LineWidth = 2;
-            style.LinkArrowTailToText = VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToTextKind.OUTLINE;
-            style.ArrowColor = Color.Red;
-            style.ArrowWidth = 10;
-            style.TextBoxLineColor = Color.Black;
+                vizcore3d.Review.AllowMove(BevelTextNotes, false);
 
-            vizcore3d.Review.Note.SetStyle(style);
-
-            vizcore3d.GenericData.ShowLeftRightEndData(true);
-        }
-
-        private void btnHideLeftRightEnd_Click(object sender, EventArgs e)
-        {
-            vizcore3d.GenericData.ShowLeftRightEndData(false);
+                vizcore3d.EndUpdate();
+            }
+            else
+            {
+                if (BevelTextNotes == null || BevelTextNotes.Count == 0) return;
+                vizcore3d.BeginUpdate();
+                vizcore3d.Review.Note.Delete(BevelTextNotes);
+                vizcore3d.EndUpdate();
+            }
         }
     }
 }

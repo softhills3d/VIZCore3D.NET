@@ -33,13 +33,11 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ckDepthTest = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnHideLeftRightEnd = new System.Windows.Forms.Button();
-            this.btnShowLeftRightEnd = new System.Windows.Forms.Button();
-            this.btnHideString = new System.Windows.Forms.Button();
-            this.btnHideMarking = new System.Windows.Forms.Button();
-            this.btnShowString = new System.Windows.Forms.Button();
-            this.btnShowMarking = new System.Windows.Forms.Button();
+            this.ckBevelSymbol = new System.Windows.Forms.CheckBox();
+            this.ckString = new System.Windows.Forms.CheckBox();
+            this.ckMarking = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnBevelSymbolDataCount = new System.Windows.Forms.Button();
             this.btnLeftRightEndDataCount = new System.Windows.Forms.Button();
             this.btnMarkingDataCount = new System.Windows.Forms.Button();
             this.btnStringDataCount = new System.Windows.Forms.Button();
@@ -47,9 +45,7 @@
             this.btnCloseGen = new System.Windows.Forms.Button();
             this.btnOpenGen = new System.Windows.Forms.Button();
             this.btnOpenVIZ = new System.Windows.Forms.Button();
-            this.btnBevelSymbolDataCount = new System.Windows.Forms.Button();
-            this.btnHideBevelSymbol = new System.Windows.Forms.Button();
-            this.btnShowBevelSymbol = new System.Windows.Forms.Button();
+            this.ckBevelText = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -103,14 +99,10 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btnHideBevelSymbol);
-            this.groupBox3.Controls.Add(this.btnShowBevelSymbol);
-            this.groupBox3.Controls.Add(this.btnHideLeftRightEnd);
-            this.groupBox3.Controls.Add(this.btnShowLeftRightEnd);
-            this.groupBox3.Controls.Add(this.btnHideString);
-            this.groupBox3.Controls.Add(this.btnHideMarking);
-            this.groupBox3.Controls.Add(this.btnShowString);
-            this.groupBox3.Controls.Add(this.btnShowMarking);
+            this.groupBox3.Controls.Add(this.ckBevelText);
+            this.groupBox3.Controls.Add(this.ckBevelSymbol);
+            this.groupBox3.Controls.Add(this.ckString);
+            this.groupBox3.Controls.Add(this.ckMarking);
             this.groupBox3.Location = new System.Drawing.Point(12, 204);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(373, 180);
@@ -118,65 +110,38 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Show Marking && String";
             // 
-            // btnHideLeftRightEnd
+            // ckBevelSymbol
             // 
-            this.btnHideLeftRightEnd.Location = new System.Drawing.Point(232, 61);
-            this.btnHideLeftRightEnd.Name = "btnHideLeftRightEnd";
-            this.btnHideLeftRightEnd.Size = new System.Drawing.Size(96, 23);
-            this.btnHideLeftRightEnd.TabIndex = 5;
-            this.btnHideLeftRightEnd.Text = "Hide End";
-            this.btnHideLeftRightEnd.UseVisualStyleBackColor = true;
-            this.btnHideLeftRightEnd.Click += new System.EventHandler(this.btnHideLeftRightEnd_Click);
+            this.ckBevelSymbol.AutoSize = true;
+            this.ckBevelSymbol.Location = new System.Drawing.Point(124, 36);
+            this.ckBevelSymbol.Name = "ckBevelSymbol";
+            this.ckBevelSymbol.Size = new System.Drawing.Size(102, 16);
+            this.ckBevelSymbol.TabIndex = 11;
+            this.ckBevelSymbol.Text = "Bevel Symbol";
+            this.ckBevelSymbol.UseVisualStyleBackColor = true;
+            this.ckBevelSymbol.CheckedChanged += new System.EventHandler(this.ckBevelSymbol_CheckedChanged);
             // 
-            // btnShowLeftRightEnd
+            // ckString
             // 
-            this.btnShowLeftRightEnd.Location = new System.Drawing.Point(232, 32);
-            this.btnShowLeftRightEnd.Name = "btnShowLeftRightEnd";
-            this.btnShowLeftRightEnd.Size = new System.Drawing.Size(96, 23);
-            this.btnShowLeftRightEnd.TabIndex = 4;
-            this.btnShowLeftRightEnd.Text = "Show End";
-            this.btnShowLeftRightEnd.UseVisualStyleBackColor = true;
-            this.btnShowLeftRightEnd.Click += new System.EventHandler(this.btnShowLeftRightEnd_Click);
+            this.ckString.AutoSize = true;
+            this.ckString.Location = new System.Drawing.Point(28, 65);
+            this.ckString.Name = "ckString";
+            this.ckString.Size = new System.Drawing.Size(56, 16);
+            this.ckString.TabIndex = 9;
+            this.ckString.Text = "String";
+            this.ckString.UseVisualStyleBackColor = true;
+            this.ckString.CheckedChanged += new System.EventHandler(this.ckString_CheckedChanged);
             // 
-            // btnHideString
+            // ckMarking
             // 
-            this.btnHideString.Location = new System.Drawing.Point(130, 61);
-            this.btnHideString.Name = "btnHideString";
-            this.btnHideString.Size = new System.Drawing.Size(96, 23);
-            this.btnHideString.TabIndex = 3;
-            this.btnHideString.Text = "Hide String";
-            this.btnHideString.UseVisualStyleBackColor = true;
-            this.btnHideString.Click += new System.EventHandler(this.btnHideString_Click);
-            // 
-            // btnHideMarking
-            // 
-            this.btnHideMarking.Location = new System.Drawing.Point(28, 61);
-            this.btnHideMarking.Name = "btnHideMarking";
-            this.btnHideMarking.Size = new System.Drawing.Size(96, 23);
-            this.btnHideMarking.TabIndex = 2;
-            this.btnHideMarking.Text = "Hide Marking";
-            this.btnHideMarking.UseVisualStyleBackColor = true;
-            this.btnHideMarking.Click += new System.EventHandler(this.btnHideMarking_Click);
-            // 
-            // btnShowString
-            // 
-            this.btnShowString.Location = new System.Drawing.Point(130, 32);
-            this.btnShowString.Name = "btnShowString";
-            this.btnShowString.Size = new System.Drawing.Size(96, 23);
-            this.btnShowString.TabIndex = 1;
-            this.btnShowString.Text = "Show String";
-            this.btnShowString.UseVisualStyleBackColor = true;
-            this.btnShowString.Click += new System.EventHandler(this.btnShowString_Click);
-            // 
-            // btnShowMarking
-            // 
-            this.btnShowMarking.Location = new System.Drawing.Point(28, 32);
-            this.btnShowMarking.Name = "btnShowMarking";
-            this.btnShowMarking.Size = new System.Drawing.Size(96, 23);
-            this.btnShowMarking.TabIndex = 0;
-            this.btnShowMarking.Text = "Show Marking";
-            this.btnShowMarking.UseVisualStyleBackColor = true;
-            this.btnShowMarking.Click += new System.EventHandler(this.btnShowMarking_Click);
+            this.ckMarking.AutoSize = true;
+            this.ckMarking.Location = new System.Drawing.Point(28, 36);
+            this.ckMarking.Name = "ckMarking";
+            this.ckMarking.Size = new System.Drawing.Size(69, 16);
+            this.ckMarking.TabIndex = 8;
+            this.ckMarking.Text = "Marking";
+            this.ckMarking.UseVisualStyleBackColor = true;
+            this.ckMarking.CheckedChanged += new System.EventHandler(this.ckMarking_CheckedChanged);
             // 
             // groupBox2
             // 
@@ -192,6 +157,16 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Count";
+            // 
+            // btnBevelSymbolDataCount
+            // 
+            this.btnBevelSymbolDataCount.Location = new System.Drawing.Point(28, 61);
+            this.btnBevelSymbolDataCount.Name = "btnBevelSymbolDataCount";
+            this.btnBevelSymbolDataCount.Size = new System.Drawing.Size(96, 23);
+            this.btnBevelSymbolDataCount.TabIndex = 3;
+            this.btnBevelSymbolDataCount.Text = "Bevel Symbol Data";
+            this.btnBevelSymbolDataCount.UseVisualStyleBackColor = true;
+            this.btnBevelSymbolDataCount.Click += new System.EventHandler(this.btnBevelSymbolDataCount_Click);
             // 
             // btnLeftRightEndDataCount
             // 
@@ -267,35 +242,16 @@
             this.btnOpenVIZ.UseVisualStyleBackColor = true;
             this.btnOpenVIZ.Click += new System.EventHandler(this.btnOpenVIZ_Click);
             // 
-            // btnBevelSymbolDataCount
+            // ckBevelText
             // 
-            this.btnBevelSymbolDataCount.Location = new System.Drawing.Point(28, 61);
-            this.btnBevelSymbolDataCount.Name = "btnBevelSymbolDataCount";
-            this.btnBevelSymbolDataCount.Size = new System.Drawing.Size(96, 23);
-            this.btnBevelSymbolDataCount.TabIndex = 3;
-            this.btnBevelSymbolDataCount.Text = "Bevel Symbol Data";
-            this.btnBevelSymbolDataCount.UseVisualStyleBackColor = true;
-            this.btnBevelSymbolDataCount.Click += new System.EventHandler(this.btnBevelSymbolDataCount_Click);
-            // 
-            // btnHideBevelSymbol
-            // 
-            this.btnHideBevelSymbol.Location = new System.Drawing.Point(28, 139);
-            this.btnHideBevelSymbol.Name = "btnHideBevelSymbol";
-            this.btnHideBevelSymbol.Size = new System.Drawing.Size(140, 23);
-            this.btnHideBevelSymbol.TabIndex = 7;
-            this.btnHideBevelSymbol.Text = "Hide Marking";
-            this.btnHideBevelSymbol.UseVisualStyleBackColor = true;
-            this.btnHideBevelSymbol.Click += new System.EventHandler(this.btnHideBevelSymbol_Click);
-            // 
-            // btnShowBevelSymbol
-            // 
-            this.btnShowBevelSymbol.Location = new System.Drawing.Point(28, 110);
-            this.btnShowBevelSymbol.Name = "btnShowBevelSymbol";
-            this.btnShowBevelSymbol.Size = new System.Drawing.Size(140, 23);
-            this.btnShowBevelSymbol.TabIndex = 6;
-            this.btnShowBevelSymbol.Text = "Show Bevel Symbol";
-            this.btnShowBevelSymbol.UseVisualStyleBackColor = true;
-            this.btnShowBevelSymbol.Click += new System.EventHandler(this.btnShowBevelSymbol_Click);
+            this.ckBevelText.AutoSize = true;
+            this.ckBevelText.Location = new System.Drawing.Point(124, 65);
+            this.ckBevelText.Name = "ckBevelText";
+            this.ckBevelText.Size = new System.Drawing.Size(84, 16);
+            this.ckBevelText.TabIndex = 12;
+            this.ckBevelText.Text = "Bevel Text";
+            this.ckBevelText.UseVisualStyleBackColor = true;
+            this.ckBevelText.CheckedChanged += new System.EventHandler(this.ckBevelText_CheckedChanged);
             // 
             // FrmMain
             // 
@@ -313,6 +269,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -329,19 +286,15 @@
         private System.Windows.Forms.Button btnMarkingDataCount;
         private System.Windows.Forms.Button btnStringDataCount;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnHideString;
-        private System.Windows.Forms.Button btnHideMarking;
-        private System.Windows.Forms.Button btnShowString;
-        private System.Windows.Forms.Button btnShowMarking;
         private System.Windows.Forms.Button btnCloseGen;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.CheckBox ckDepthTest;
         private System.Windows.Forms.Button btnLeftRightEndDataCount;
-        private System.Windows.Forms.Button btnHideLeftRightEnd;
-        private System.Windows.Forms.Button btnShowLeftRightEnd;
         private System.Windows.Forms.Button btnBevelSymbolDataCount;
-        private System.Windows.Forms.Button btnHideBevelSymbol;
-        private System.Windows.Forms.Button btnShowBevelSymbol;
+        private System.Windows.Forms.CheckBox ckString;
+        private System.Windows.Forms.CheckBox ckMarking;
+        private System.Windows.Forms.CheckBox ckBevelSymbol;
+        private System.Windows.Forms.CheckBox ckBevelText;
     }
 }
 
