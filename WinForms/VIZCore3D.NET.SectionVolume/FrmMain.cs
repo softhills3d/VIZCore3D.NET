@@ -656,13 +656,13 @@ namespace VIZCore3D.NET.SectionVolume
 
                 if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
                 {
-                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1);
+                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1, VIZCore3D.NET.Data.SectionAreaKind.Clipping);
                 }
                 else if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
                 {
                     for (int i = 0; i < 6; i++)
                     {
-                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i));
+                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i, VIZCore3D.NET.Data.SectionAreaKind.Clipping));
                     }
                 }
 
@@ -710,6 +710,7 @@ namespace VIZCore3D.NET.SectionVolume
 
                         lvClippedParts.Items.Add(lvi);
                     }
+
                     lvClippedParts.EndUpdate();
                 }
 
