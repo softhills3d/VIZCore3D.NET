@@ -5918,6 +5918,26 @@
             Mesh
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.SectionAreaKind">
+            <summary>
+            Section Area Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.SectionAreaKind.Outside">
+            <summary>
+            Outside
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.SectionAreaKind.Clipping">
+            <summary>
+            Clipping
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.SectionAreaKind.Inside">
+            <summary>
+            Inside
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -43687,6 +43707,15 @@
             <param name="id">단면 아이디(ID)</param>
             <param name="subid">단면 세부 아이디(ID)</param>
             <returns>단면이 적용된 모델 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetSectionNode(System.Int32,System.Int32,VIZCore3D.NET.Data.SectionAreaKind)">
+            <summary>
+            단면이 적용된 영역별 모델 목록 반환
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subid">단면 세부 아이디(ID)</param>
+            <param name="kind">영역 유형 : Outside(단면으로 숨겨진 모델), Clipping(단면이 적용된 모델. 단면에 걸친 모델), Inside(단면 내부에 포함된 모델)</param>
+            <returns>모델 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetNormal(System.Int32,System.Int32)">
             <summary>
