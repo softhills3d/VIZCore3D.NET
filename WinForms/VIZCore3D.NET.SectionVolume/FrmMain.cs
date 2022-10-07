@@ -656,13 +656,13 @@ namespace VIZCore3D.NET.SectionVolume
 
                 if (section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION)
                 {
-                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1, VIZCore3D.NET.Data.SectionAreaKind.Clipping);
+                    nodes = vizcore3d.Section.GetSectionNode(section.ID, -1, VIZCore3D.NET.Data.SectionAreaKind.Clipping, true, false);
                 }
                 else if(section.SectionType == VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX)
                 {
                     for (int i = 0; i < 6; i++)
                     {
-                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i, VIZCore3D.NET.Data.SectionAreaKind.Clipping));
+                        nodes.AddRange(vizcore3d.Section.GetSectionNode(section.ID, i, VIZCore3D.NET.Data.SectionAreaKind.Clipping, true, false));
                     }
                 }
 
