@@ -43717,6 +43717,27 @@
             <param name="kind">영역 유형 : Outside(단면으로 숨겨진 모델), Clipping(단면이 적용된 모델. 단면에 걸친 모델), Inside(단면 내부에 포함된 모델)</param>
             <returns>모델 목록</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetSectionNode(System.Int32,System.Int32,VIZCore3D.NET.Data.SectionAreaKind,System.Boolean)">
+            <summary>
+            단면이 적용된 영역별 모델 목록 반환
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subid">단면 세부 아이디(ID)</param>
+            <param name="kind">영역 유형 : Outside(단면으로 숨겨진 모델), Clipping(단면이 적용된 모델. 단면에 걸친 모델), Inside(단면 내부에 포함된 모델)</param>
+            <param name="visibleOnly">보이는 모델만 포함 : True(단면 적용 전에 보이는 모델만 포함), False(전체 모델)</param>
+            <returns>모델 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetSectionNode(System.Int32,System.Int32,VIZCore3D.NET.Data.SectionAreaKind,System.Boolean,System.Boolean)">
+            <summary>
+            단면이 적용된 영역별 모델 목록 반환
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subid">단면 세부 아이디(ID)</param>
+            <param name="kind">영역 유형 : Outside(단면으로 숨겨진 모델), Clipping(단면이 적용된 모델. 단면에 걸친 모델), Inside(단면 내부에 포함된 모델)</param>
+            <param name="visibleOnly">보이는 모델만 포함 : True(단면 적용 전에 보이는 모델만 포함), False(전체 모델)</param>
+            <param name="includeNodePath">결과에 노드 경로(Node Path) 정보 포함 여부 : True(노드 경로 포함 / 속도 저하), False(노드 경로 미포함 / 속도 향상)</param>
+            <returns>모델 목록</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetNormal(System.Int32,System.Int32)">
             <summary>
             단면 노말(Normal) 방향 반환
