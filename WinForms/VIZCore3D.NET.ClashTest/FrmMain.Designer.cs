@@ -36,6 +36,7 @@
             this.btnAddStream = new System.Windows.Forms.Button();
             this.btnOpenStream = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ckConnectedSurfaceNormalVector = new System.Windows.Forms.CheckBox();
             this.ckPenetration = new System.Windows.Forms.CheckBox();
             this.btnRefreshList = new System.Windows.Forms.Button();
             this.ckResultAssembly = new System.Windows.Forms.CheckBox();
@@ -94,11 +95,11 @@
             this.columnHeader18 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.timerStatus = new System.Windows.Forms.Timer(this.components);
             this.columnHeader24 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ckConnectedSurfaceNormalVector = new System.Windows.Forms.CheckBox();
+            this.timerStatus = new System.Windows.Forms.Timer(this.components);
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -200,6 +201,16 @@
             this.groupBox6.TabIndex = 4;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Result Filter";
+            // 
+            // ckConnectedSurfaceNormalVector
+            // 
+            this.ckConnectedSurfaceNormalVector.AutoSize = true;
+            this.ckConnectedSurfaceNormalVector.Location = new System.Drawing.Point(159, 63);
+            this.ckConnectedSurfaceNormalVector.Name = "ckConnectedSurfaceNormalVector";
+            this.ckConnectedSurfaceNormalVector.Size = new System.Drawing.Size(112, 16);
+            this.ckConnectedSurfaceNormalVector.TabIndex = 3;
+            this.ckConnectedSurfaceNormalVector.Text = "인접면 법선벡터";
+            this.ckConnectedSurfaceNormalVector.UseVisualStyleBackColor = true;
             // 
             // ckPenetration
             // 
@@ -492,6 +503,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Controls.Add(this.btnNew);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnPerformTest);
@@ -507,9 +519,9 @@
             // 
             // btnNew
             // 
-            this.btnNew.Location = new System.Drawing.Point(208, 46);
+            this.btnNew.Location = new System.Drawing.Point(187, 46);
             this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(89, 23);
+            this.btnNew.Size = new System.Drawing.Size(68, 23);
             this.btnNew.TabIndex = 6;
             this.btnNew.Text = "New";
             this.btnNew.UseVisualStyleBackColor = true;
@@ -517,9 +529,9 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(208, 17);
+            this.btnClear.Location = new System.Drawing.Point(187, 17);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(89, 23);
+            this.btnClear.Size = new System.Drawing.Size(68, 23);
             this.btnClear.TabIndex = 5;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -529,7 +541,7 @@
             // 
             this.btnPerformTest.Location = new System.Drawing.Point(113, 46);
             this.btnPerformTest.Name = "btnPerformTest";
-            this.btnPerformTest.Size = new System.Drawing.Size(89, 23);
+            this.btnPerformTest.Size = new System.Drawing.Size(68, 23);
             this.btnPerformTest.TabIndex = 3;
             this.btnPerformTest.Text = "Start";
             this.btnPerformTest.UseVisualStyleBackColor = true;
@@ -549,7 +561,7 @@
             // 
             this.btnDelete.Location = new System.Drawing.Point(113, 17);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(89, 23);
+            this.btnDelete.Size = new System.Drawing.Size(68, 23);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -720,11 +732,6 @@
             // 
             this.columnHeader20.Text = "Node Path B";
             // 
-            // timerStatus
-            // 
-            this.timerStatus.Interval = 1000;
-            this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
-            // 
             // columnHeader24
             // 
             this.columnHeader24.Text = "Normal";
@@ -737,15 +744,20 @@
             // 
             this.columnHeader26.Text = "Projection B";
             // 
-            // ckConnectedSurfaceNormalVector
+            // timerStatus
             // 
-            this.ckConnectedSurfaceNormalVector.AutoSize = true;
-            this.ckConnectedSurfaceNormalVector.Location = new System.Drawing.Point(159, 63);
-            this.ckConnectedSurfaceNormalVector.Name = "ckConnectedSurfaceNormalVector";
-            this.ckConnectedSurfaceNormalVector.Size = new System.Drawing.Size(112, 16);
-            this.ckConnectedSurfaceNormalVector.TabIndex = 3;
-            this.ckConnectedSurfaceNormalVector.Text = "인접면 법선벡터";
-            this.ckConnectedSurfaceNormalVector.UseVisualStyleBackColor = true;
+            this.timerStatus.Interval = 1000;
+            this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(261, 17);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(68, 23);
+            this.btnExport.TabIndex = 7;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // FrmMain
             // 
@@ -849,6 +861,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader25;
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.CheckBox ckConnectedSurfaceNormalVector;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
