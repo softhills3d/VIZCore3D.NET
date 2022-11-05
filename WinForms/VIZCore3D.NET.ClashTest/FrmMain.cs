@@ -838,5 +838,41 @@ namespace VIZCore3D.NET.ClashTest
 
             vizcore3d.Model.AddStream(stream);
         }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if (lvResult.Items.Count == 0) return;
+
+            DialogResult dr = MessageBox.Show("저장 하시겠습니까?", "VIZCore3D.NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.No) return;
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "CSV (*.csv)|*.csv";
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(dlg.FileName, false, Encoding.UTF8);
+
+            sw.WriteLine("NO,ID,SUBID,PATH,KIND,INDEX-A,INDEX-B,NAME-A,NAME-B,DISTANCE,HOTPOINT");
+
+            foreach (ListViewItem item in lvResult.Items)
+            {
+                sw.WriteLine(string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}"
+                    , item.SubItems[0].Text
+                    , item.SubItems[1].Text
+                    , item.SubItems[2].Text
+                    , item.SubItems[3].Text
+                    , item.SubItems[4].Text
+                    , item.SubItems[5].Text
+                    , item.SubItems[6].Text
+                    , item.SubItems[7].Text
+                    , item.SubItems[8].Text
+                    , item.SubItems[9].Text
+                    , item.SubItems[10].Text
+                    ));
+            }
+
+            sw.Close();
+        }
     }
 }
