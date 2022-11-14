@@ -3903,6 +3903,11 @@
             불투명한 개체
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.SelectionObject3DTypes.TRANSPARENCY_OBJECT3D">
+            <summary>
+            투명한 개체
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Object3DSelectionOptions">
             <summary>
             개체 선택 유형
@@ -6119,6 +6124,11 @@
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_ADD">
+            <summary>
+            모델 추가
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_APPEND">
             <summary>
             모델 추가
             </summary>
@@ -9056,6 +9066,21 @@
             Get BoundBox
             </summary>
             <returns>BoundBox3D</returns>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.Object3DSolidProperty">
+            <summary>
+            Object3D Geometry Solid Property
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Object3DSolidProperty.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Object3DSolidProperty.Area">
+            <summary>
+            Area
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.Objects3DProperty">
             <summary>
@@ -33813,6 +33838,18 @@
             <param name="node">노드</param>
             <returns>AABB BoundBox</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.UpdateSolidVolumeAndArea">
+            <summary>
+            전체 모델의 Volume 및 Area 정보 갱신
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.GetGeometrySolidProperty(System.Int32)">
+            <summary>
+            Solid 모델의 체적(Volume) 및 면적(Area) 정보 반환
+            </summary>
+            <param name="index">Node Index (Part/Body Only)</param>
+            <returns>Solid Geometry Property</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.GetGeometryPropertyControl">
             <summary>
             Get Geometry Property User Control
@@ -35800,6 +35837,11 @@
             CAD 파일의 노드 이름 앞의 슬래쉬('/') 제거 옵션 : 기본값(False)
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ModelManager.FileSetStatus">
+            <summary>
+            MODEL FILE-SET 상태
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.LicenseManager)">
             <summary>
             Construction
@@ -36164,14 +36206,6 @@
             <seealso cref="M:VIZCore3D.NET.Manager.ModelManager.OpenUri(System.String,System.String)"/>
             <seealso cref="M:VIZCore3D.NET.Manager.ModelManager.OpenStream(System.String,System.Byte[])"/>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@)">
-            <summary>
-            Add Models
-            </summary>
-            <param name="files">Model Files</param>
-            <param name="addedNodes">Added Nodes - Key (FileName) / Value (Node)</param>
-            <returns>True : Sucess / False : Fail</returns>
-        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.Collections.Generic.List{System.String})">
             <summary>
             Add Models
@@ -36204,6 +36238,31 @@
             ]]>
             </code>
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            Add Models
+            </summary>
+            <param name="files">Model Files</param>
+            <param name="updateData">Update Data</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@)">
+            <summary>
+            Add Models
+            </summary>
+            <param name="files">Model Files</param>
+            <param name="addedNodes">Added Nodes - Key (FileName) / Value (Node)</param>
+            <returns>True : Sucess / False : Fail</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@,System.Boolean)">
+            <summary>
+            Add Models
+            </summary>
+            <param name="files">Model Files</param>
+            <param name="addedNodes">Added Nodes</param>
+            <param name="updateData">Update Data</param>
+            <returns>Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.String[])">
             <summary>
@@ -36251,6 +36310,14 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.String[],System.Boolean)">
+            <summary>
+            Add Models
+            </summary>
+            <param name="files">Model Files</param>
+            <param name="updateData">Update Data</param>
+            <returns>Result</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.String[],System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@)">
             <summary>
             Add Models
@@ -36258,6 +36325,22 @@
             <param name="files">Model Files</param>
             <param name="addedNodes">Added Nodes - Key (FileName) / Value (Node)</param>
             <returns>True : Sucess / False : Fail</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.String[],System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@,System.Boolean)">
+            <summary>
+            Add Models
+            </summary>
+            <param name="files">Model Files</param>
+            <param name="addedNodes">Added Nodes</param>
+            <param name="updateData">Update Data</param>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.AddStream(System.Collections.Generic.List{VIZCore3D.NET.Data.StreamData})">
+            <summary>
+            Add Stream
+            </summary>
+            <param name="items">Stream Data Collection</param>
+            <returns>Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.AddStream(System.Collections.Generic.List{VIZCore3D.NET.Data.StreamData},System.Boolean)">
             <summary>
@@ -36437,6 +36520,84 @@
             ]]>
             </code>
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Append(System.Collections.Generic.List{System.String})">
+            <summary>
+            모델 추가
+            </summary>
+            <param name="files">파일 경로</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Append(System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            모델 추가
+            </summary>
+            <param name="files">파일 경로</param>
+            <param name="updateData">데이터 갱신</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Append(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@,System.Boolean)">
+            <summary>
+            모델 추가
+            </summary>
+            <param name="files">파일 경로</param>
+            <param name="appendedNodes">추가된 노드 목록</param>
+            <param name="updateData">데이터 갱신</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Append(System.String[])">
+            <summary>
+            모델 추가
+            </summary>
+            <param name="files">파일 경로</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Append(System.String[],System.Boolean)">
+            <summary>
+            모델 추가
+            </summary>
+            <param name="files">파일 경로</param>
+            <param name="updateData">데이터 갱신</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.Append(System.String[],System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@,System.Boolean)">
+            <summary>
+            모델 추가
+            </summary>
+            <param name="files">파일 경로</param>
+            <param name="appendedNodes">추가된 노드 목록</param>
+            <param name="updateData">데이터 갱신</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.AppendStream(System.Collections.Generic.List{VIZCore3D.NET.Data.StreamData})">
+            <summary>
+            스트림 형식을 추가
+            </summary>
+            <param name="stream">스트림(byte) 데이터</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.AppendStream(System.Collections.Generic.List{VIZCore3D.NET.Data.StreamData},System.Boolean)">
+            <summary>
+            스트림 형식을 추가
+            </summary>
+            <param name="stream">스트림(byte) 데이터</param>
+            <param name="updateData">데이터 갱신</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.AppendStream(System.Collections.Generic.List{VIZCore3D.NET.Data.StreamData},System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@,System.Boolean)">
+            <summary>
+            스트림 형식을 추가
+            </summary>
+            <param name="stream">스트림(byte) 데이터</param>
+            <param name="appendedNodes">추가된 노드 목록</param>
+            <param name="updateData">데이터 갱신</param>
+            <returns>결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.AppendFileDialog">
+            <summary>
+            Show Append File Dialog
+            </summary>
+            <returns>Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.SaveVIZ(System.String)">
             <summary>
@@ -37177,7 +37338,7 @@
             <param name="showFileInExplorer">Show File In Explorer</param>
             <returns>Result</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,System.Boolean,System.Int32,VIZCore3D.NET.Data.LogKind)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertToVIZW(System.String,System.String,System.Boolean,System.Int32,VIZCore3D.NET.Data.LogKind,System.Boolean)">
             <summary>
             VIZWide3D 모델(*.VIZW) 변환
             </summary>
@@ -37186,6 +37347,7 @@
             <param name="viz">Generate VIZ File</param>
             <param name="triangleMeshCount">Triangle Mesh Count - Default : 1,000,000</param>
             <param name="log">Log</param>
+            <param name="remainsaveviz">Remain Save VIZ - Default : false</param>
             <returns>Result</returns>
             <example>
             <code language="cs">
@@ -37206,6 +37368,7 @@
                     , false                                 /* GENERATE VIZ File */
                     , triangleMeshCount                     /* TRIANGLE MESH COUNT - DEFAULT : 1,000,000 */
                     , VIZCore3D.NET.Data.LogKind.DETAIL     /* LOG */
+                    , remainsaveviz                         /* Remain Save VIZ - DEFAULT : false */
                     );
             }
             ]]>
