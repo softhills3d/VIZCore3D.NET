@@ -272,7 +272,7 @@ namespace VIZCore3D.NET.GridThreeD
 
                 vizcore3dMain.UpdateWaitForm("Export Grid...", box.Value);
 
-                bool result_grid = vizcore3dMain.Model.ExportGrid(output, item.BoundBox, true);
+                bool result_grid = vizcore3dMain.Model.ExportGrid(output, item.BoundBox, false);
 
                 if (result_grid == false) continue;
 
