@@ -491,7 +491,7 @@ namespace VIZCore3D.NET.SelectionBox
         {
             VIZCore3D.NET.Data.SelectionBox info = vizcore3d.SelectionBox.GetItem(e.ID);
 
-            vizcore3d.View.Message.Show(Data.MessageId.ID_05, string.Format("Size : {0} / {1}", info.MinPoint.ToString(), info.MaxPoint.ToString()), 5, 65, Data.FontSize.Size_14, Color.Blue);
+            vizcore3d.View.Message.Show(Data.MessageId.ID_05, string.Format("Size : {0} / {1}", info.MinPoint.ToString(), info.MaxPoint.ToString()), 5, 65, Data.FontSize.Size_14, Color.Blue, false);
         }
 
         private void SelectionBox_OnSelectionBoxSelectedEvent(object sender, VIZCore3D.NET.Event.EventManager.SelectionBoxEventArgs e)
