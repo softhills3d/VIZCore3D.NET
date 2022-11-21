@@ -289,7 +289,10 @@ namespace VIZCore3D.NET.GridThreeD
 
         private void btnLoadGrid_Click(object sender, EventArgs e)
         {
-            string[] files = System.IO.Directory.GetFiles(GetGridExportPath(false));
+            string path = GetGridExportPath(false);
+            if (String.IsNullOrEmpty(path) == true) return;
+
+            string[] files = System.IO.Directory.GetFiles(path);
 
             vizcore3dDisassembly.Model.Close();
 
