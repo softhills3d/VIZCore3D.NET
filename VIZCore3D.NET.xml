@@ -33078,6 +33078,21 @@
             </summary>
             <seealso cref="P:VIZCore3D.NET.Manager.FrameManager.Resizable"/>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.XAxisLabelAsPosition">
+            <summary>
+            X축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.YAxisLabelAsPosition">
+            <summary>
+            Y축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.ZAxisLabelAsPosition">
+            <summary>
+            Z축 좌표로 표시
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.FrameManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -44992,6 +45007,21 @@
         <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameResizable">
             <summary>
             커스텀 사이즈 변경 모드
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameXAxisAsPosition">
+            <summary>
+            X축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameYAxisAsPosition">
+            <summary>
+            Y축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameZAxisAsPosition">
+            <summary>
+            Z축 좌표로 표시
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.SettingManager.SectionShowSectionLine">
