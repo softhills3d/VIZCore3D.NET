@@ -497,17 +497,20 @@ namespace VIZCore3D.NET.MiniView
 
             if (items.Count == 0) return;
 
-            if(rbControl.Checked == true)
+            if (rbDefault.Checked == true)
+            {
+            }
+            else if (rbControl.Checked == true)
             {
                 vizcore3d.View.MiniView.SetMiniViewContainer((Control)MiniViewContainer);
             }
-            else if(rbDialog.Checked == true)
+            else if (rbDialog.Checked == true)
             {
                 vizcore3d.View.MiniView.SetMiniViewContainer(MiniViewDlg);
             }
-            else if(rbInfoPanel.Checked == true)
+            else if (rbInfoPanel.Checked == true)
             {
-                if(vizcore3d.InformationPanel.Controls.Count == 0)
+                if (vizcore3d.InformationPanel.Controls.Count == 0)
                 {
                     MiniViewCtrl.Dock = DockStyle.Fill;
                     vizcore3d.InformationPanel.Controls.Add(MiniViewCtrl);
@@ -524,7 +527,9 @@ namespace VIZCore3D.NET.MiniView
         {
             if (rbInfoPanel.Checked == false)
                 vizcore3d.View.MiniView.Hide();
-            else
+            else if (rbDialog.Checked == true)
+                vizcore3d.View.MiniView.Hide();
+            else if(rbInfoPanel.Checked == true)
                 vizcore3d.InformationPanel.Visible = false;
         }
 
@@ -544,7 +549,14 @@ namespace VIZCore3D.NET.MiniView
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
             if (items.Count == 0) return;
 
-            vizcore3d.View.MiniView.TopMost = ckTopMost.Checked;
+            if (rbDefault.Checked == true)
+            {
+                vizcore3d.View.MiniView.TopMost = ckTopMost.Checked;
+            }
+            else if (rbDialog.Checked == true)
+            {
+                MiniViewDlg.TopMost = ckTopMost.Checked;
+            }
         }
 
         private void MiniViewDlg_FormClosing(object sender, FormClosingEventArgs e)
