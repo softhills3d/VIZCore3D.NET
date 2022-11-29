@@ -6103,36 +6103,6 @@
             Inside
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
-            <summary>
-            Tessellation Quality Level Kind
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
-            <summary>
-            Extra Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
-            <summary>
-            Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
-            <summary>
-            Medium
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
-            <summary>
-            High
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
-            <summary>
-            Extra High
-            </summary>
-        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -35814,11 +35784,6 @@
             Default : 6.
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
-            <summary>
-            Tessellation Quality
-            </summary>
-        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -37103,29 +37068,6 @@
             </summary>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.obj</param>
             <param name="node">내보낼 노드 목록</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 내보내기
-            </summary>
-            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 저장
-            </summary>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
-            <summary>
-            GLTF 파일 형식으로 내보내기
-            </summary>
-            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
-            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
