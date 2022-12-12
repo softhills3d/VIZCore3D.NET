@@ -612,12 +612,15 @@ namespace VIZCore3D.NET.SectionVolume
         {
             this.Invoke(new EventHandler(delegate
             {
+                bool visibleOnly = ckVisibleOnly.Checked;
+                bool areaOnly = ckAreaOnly.Checked;
+
                 VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
                 if (section == null) return;
 
                 // 1. Geometry Property
                 VIZCore3D.NET.Data.SectionGeometryProperty prop =
-                    vizcore3d.Section.GetGeometryProperty();
+                    vizcore3d.Section.GetGeometryProperty(visibleOnly, areaOnly);
 
                 float area = prop.Area / 1000.0f / 1000.0f;
                 txtArea.Text = string.Format("{0} ㎡", area);

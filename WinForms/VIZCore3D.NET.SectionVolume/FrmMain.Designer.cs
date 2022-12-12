@@ -68,6 +68,8 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ckVisibleOnly = new System.Windows.Forms.CheckBox();
+            this.ckAreaOnly = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -110,13 +112,15 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.ckAreaOnly);
+            this.groupBox4.Controls.Add(this.ckVisibleOnly);
             this.groupBox4.Controls.Add(this.txtVolume);
             this.groupBox4.Controls.Add(this.txtArea);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Location = new System.Drawing.Point(12, 228);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(206, 133);
+            this.groupBox4.Size = new System.Drawing.Size(206, 191);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Geometry Property";
@@ -454,6 +458,26 @@
             this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader17.Width = 133;
             // 
+            // ckVisibleOnly
+            // 
+            this.ckVisibleOnly.AutoSize = true;
+            this.ckVisibleOnly.Location = new System.Drawing.Point(16, 125);
+            this.ckVisibleOnly.Name = "ckVisibleOnly";
+            this.ckVisibleOnly.Size = new System.Drawing.Size(92, 16);
+            this.ckVisibleOnly.TabIndex = 4;
+            this.ckVisibleOnly.Text = "Visible Only";
+            this.ckVisibleOnly.UseVisualStyleBackColor = true;
+            // 
+            // ckAreaOnly
+            // 
+            this.ckAreaOnly.AutoSize = true;
+            this.ckAreaOnly.Location = new System.Drawing.Point(16, 157);
+            this.ckAreaOnly.Name = "ckAreaOnly";
+            this.ckAreaOnly.Size = new System.Drawing.Size(80, 16);
+            this.ckAreaOnly.TabIndex = 5;
+            this.ckAreaOnly.Text = "Area Only";
+            this.ckAreaOnly.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -526,6 +550,8 @@
         private System.Windows.Forms.ColumnHeader columnHeader15;
         private System.Windows.Forms.ColumnHeader columnHeader16;
         private System.Windows.Forms.ColumnHeader columnHeader17;
+        private System.Windows.Forms.CheckBox ckAreaOnly;
+        private System.Windows.Forms.CheckBox ckVisibleOnly;
     }
 }
 
