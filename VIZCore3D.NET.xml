@@ -5988,6 +5988,21 @@
             CUSTOM 3D MODE
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.AvatarMouseInput">
+            <summary>
+            Avatar Mouse Input Control
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.AvatarMouseInput.L_BUTTON">
+            <summary>
+            Mouse Left Button
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.AvatarMouseInput.R_BUTTON">
+            <summary>
+            Mouse Right Button
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.LogKind">
             <summary>
             Log Kind
@@ -34657,6 +34672,13 @@
             <param name="measure">측정 아이템</param>
             <param name="style">측정 스타일</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.ShowStyleDialog(System.Collections.Generic.List{VIZCore3D.NET.Data.MeasureItem})">
+            <summary>
+            Show Style Dialog
+            </summary>
+            <param name="items">Measure Items</param>
+            <returns>Result</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddBasicPosition">
             <summary>
             [일반측정] 위치 측정
@@ -44139,11 +44161,12 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetGeometryProperty(System.Boolean)">
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.GetGeometryProperty(System.Boolean,System.Boolean)">
             <summary>
             Get Section Geometry Property
             </summary>
             <param name="visibleOnly">Visible Only</param>
+            <param name="areaOnly">Area Only</param>
             <returns>Geometry Property</returns>
             <example>
             <code language="cs">
@@ -44160,7 +44183,7 @@
             
                 // 1. Geometry Property
                 VIZCore3D.NET.Data.SectionGeometryProperty prop =
-                    vizcore3d.Section.GetGeometryProperty(true);
+                    vizcore3d.Section.GetGeometryProperty(true, false);
             
                 float area = prop.Area / 1000.0f / 1000.0f;
                 string areaDisplayStr = string.Format("{0} ㎡", area);
@@ -51262,6 +51285,26 @@
             아바타 카메라 위치(Avatar Camera Position)
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.AvatarMoveInput">
+            <summary>
+            마우스 동작 - 아바타 이동 
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.AvatarRotateInput">
+            <summary>
+            마우스 동작 - 아바타 회전
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.ReverseVerticalControl">
+            <summary>
+            아바타 이동 컨트롤 반전
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.ReverseHorizontalControl">
+            <summary>
+            아바타 회전 컨트롤 반전
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -51284,6 +51327,20 @@
             아바타와 카메라 사이의 거리 설정
             </summary>
             <param name="distance">거리</param>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.ZoomIn"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.ZoomOut"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.ZoomIn">
+            <summary>
+            아바타 1프레임 ZoomIn
+            </summary>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.SetDistanceBetweenAvatarAndCamera(System.Single)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.ZoomOut">
+            <summary>
+            아바타 1프레임 ZoomOut
+            </summary>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.SetDistanceBetweenAvatarAndCamera(System.Single)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.Move(System.Single,System.Single)">
             <summary>
