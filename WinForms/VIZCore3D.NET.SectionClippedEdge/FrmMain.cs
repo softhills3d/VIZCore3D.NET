@@ -601,8 +601,8 @@ namespace VIZCore3D.NET.SectionClippedEdge
                     for (int i = 1; i < Convert.ToInt32(unit); i++)
                     {
                         VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.X);
-                        float[] pos = vizcore3d.Section.GetCenterPosition(section.ID, -1);
-                        vizcore3d.Section.SetCenterPosition(section.ID, -1, boundBox.MinX + (offset * i), pos[1], pos[2]);
+                        VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                        vizcore3d.Section.SetCenter(section.ID, -1, boundBox.MinX + (offset * i), pos.Y, pos.Z);
                     }
                     vizcore3d.EndUpdate();
                 }
