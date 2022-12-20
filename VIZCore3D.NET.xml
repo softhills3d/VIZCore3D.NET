@@ -39347,6 +39347,12 @@
             </summary>
             <param name="defaultValue">초기값 지정</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNoteSurface(System.String)">
+            <summary>
+            표면 노트 추가 (위치는 사용자가 선택)
+            </summary>
+            <param name="text">텍스트</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNoteSurfaceDialog">
             <summary>
             표면 노트 추가
@@ -44011,6 +44017,16 @@
             <param name="y">중심점 Y</param>
             <param name="z">중심점 Z</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.SetCenter(System.Int32,System.Int32,System.Single,System.Single,System.Single)">
+            <summary>
+            단면(상자) Plane 중심점 설정
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subId">단면 Plane 아이디(ID) : 단면(-1), 단면상자(0 ~ 5), 인박스단면(0 ~ 2)</param>
+            <param name="x">중심점 X</param>
+            <param name="y">중심점 Y</param>
+            <param name="z">중심점 Z</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.SetCenter(System.Int32,System.Int32,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
             단면(상자) Plane 중심점 설정
@@ -47604,12 +47620,57 @@
             <returns>노드 목록(인덱스)</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.UDAManager.GetNodes(System.String,System.String)"/>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.UDAManager.GetNodesIndex(System.String,System.String,System.Boolean)">
+            <summary>
+            속성에 해당하는 노드 정보(인덱스) 반환
+            </summary>
+            <param name="key">속성 KEY</param>
+            <param name="val">속성 VALUE</param>
+            <param name="valueFullMatch">속성 VALUE Full Match</param>
+            <returns>노드 목록(인덱스)</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.UDAManager.GetNodes(System.String,System.String)"/>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.UDAManager.GetNodes(System.String,System.String)">
             <summary>
             속성에 해당하는 노드 정보 반환
             </summary>
             <param name="key">속성 KEY</param>
             <param name="val">속성 VALUE</param>
+            <returns>노드 목록</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.UDAManager.GetNodesIndex(System.String,System.String)"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<Data.Node> items = vizcore3d.Object3D.UDA.GetNodes("TYPE", "HPANEL");
+                List<int> parts = new List<int>();
+                foreach (Data.Node item in items)
+                {
+                    if (item.Kind != Data.NodeKind.PART) continue;
+                    parts.Add(item.Index);
+                }
+            
+                vizcore3d.BeginUpdate();
+                vizcore3d.Model.UncheckToUnload = false;
+                vizcore3d.Object3D.Show(Data.Object3DKind.ALL, false);
+                vizcore3d.Object3D.Show(parts, true);
+                vizcore3d.EndUpdate();
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.UDAManager.GetNodes(System.String,System.String,System.Boolean)">
+            <summary>
+            속성에 해당하는 노드 정보 반환
+            </summary>
+            <param name="key">속성 KEY</param>
+            <param name="val">속성 VALUE</param>
+            <param name="valueFullMatch">속성 VALUE FullMatch</param>
             <returns>노드 목록</returns>
             <seealso cref="M:VIZCore3D.NET.Manager.UDAManager.GetNodesIndex(System.String,System.String)"/>
             <example>
