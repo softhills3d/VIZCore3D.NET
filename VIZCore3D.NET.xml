@@ -1993,6 +1993,15 @@
             </summary>
             <param name="minmax">X1,Y1,Z1,X2,Y2,Z2 문자열</param>
         </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.#ctor(VIZCore3D.NET.Data.Vertex3D,System.Single,System.Single,System.Single)">
+            <summary>
+            Construction
+            </summary>
+            <param name="center">Center</param>
+            <param name="xLength">X Axis. Length</param>
+            <param name="yLength">Y Axis. Length</param>
+            <param name="zLength">Z Axis. Length</param>
+        </member>
         <member name="M:VIZCore3D.NET.Data.BoundBox3D.GetVertexMin">
             <summary>
             Get Min. Vertex
@@ -3926,6 +3935,22 @@
         <member name="F:VIZCore3D.NET.Data.Object3DSelectionOptions.FULL_BOUNDARIES">
             <summary>
             경계로 선택 (전체)
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Object3DSelectionOptions.SILHOUETTEEDGE">
+            <summary>
+            윤곽 표시
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Object3DSelectionOptions.HIGHLIGHT_COLOR_AND_SILHOUETTEEDGE">
+            <summary>
+            음영 - 색상으로 강조
+            윤곽 표시
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Object3DSelectionOptions.NOT_HIGHLIGHT">
+            <summary>
+            선택 강조 없음
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.ZoomRatioType">
@@ -6001,6 +6026,26 @@
         <member name="F:VIZCore3D.NET.Data.AvatarMouseInput.R_BUTTON">
             <summary>
             Mouse Right Button
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.AvatarMouseWheelInput">
+            <summary>
+            Avatar Mouse Wheel Control
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.AvatarMouseWheelInput.NONE">
+            <summary>
+            사용하지 않음
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.AvatarMouseWheelInput.WHEEL">
+            <summary>
+            Mouse Wheel
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.AvatarMouseWheelInput.CTRL_WHEEL">
+            <summary>
+            Control Press And Mouse Wheel
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.LogKind">
@@ -23842,6 +23887,12 @@
             선택된 부재의 Mesh 형상을 단순화
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.SimplifyMesh(System.Boolean)">
+            <summary>
+            선택된 부재의 Mesh 형상을 단순화
+            <param name="removeHole">홀 단순화 여부</param>
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.SimplifyMesh(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Boolean)">
             <summary>
             지정된 부재의 Mesh 형상을 단순화
@@ -33097,16 +33148,70 @@
             <summary>
             X축 좌표로 표시
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+            
+                vizcore3d.Frame.XAxisLabelAsPosition = false;   // X-Axis. Frame
+                vizcore3d.Frame.YAxisLabelAsPosition = false;   // Y-Axis. Frame
+                vizcore3d.Frame.ZAxisLabelAsPosition = true;    // Z-Axis. Position
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.Manager.FrameManager.YAxisLabelAsPosition">
             <summary>
             Y축 좌표로 표시
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+            
+                vizcore3d.Frame.XAxisLabelAsPosition = false;   // X-Axis. Frame
+                vizcore3d.Frame.YAxisLabelAsPosition = false;   // Y-Axis. Frame
+                vizcore3d.Frame.ZAxisLabelAsPosition = true;    // Z-Axis. Position
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.Manager.FrameManager.ZAxisLabelAsPosition">
             <summary>
             Z축 좌표로 표시
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+            
+                vizcore3d.Frame.XAxisLabelAsPosition = false;   // X-Axis. Frame
+                vizcore3d.Frame.YAxisLabelAsPosition = false;   // Y-Axis. Frame
+                vizcore3d.Frame.ZAxisLabelAsPosition = true;    // Z-Axis. Position
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.FrameManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
@@ -36291,6 +36396,39 @@
             <param name="files">Model Files</param>
             <param name="addedNodes">Added Nodes - Key (FileName) / Value (Node)</param>
             <returns>True : Sucess / False : Fail</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<string> models = new List<string>();
+                models.Add("C:\\Model\\BLOCK1.viz");
+                models.Add("C:\\Model\\BLOCK2.viz");
+                models.Add("C:\\Model\\BLOCK3.viz");
+            
+                Dictionary<string, VIZCore3D.NET.Data.Node> nodes = 
+                    new Dictionary<string, VIZCore3D.NET.Data.Node>();
+            
+                bool result = vizcore3d.Model.Add(models, out nodes);
+            
+                if (result == false) return;
+            
+                foreach (KeyValuePair<string, VIZCore3D.NET.Data.Node> node in nodes)
+                {
+                    string file = node.Key;
+            
+                    int index = node.Value.Index;
+                    string name = node.Value.NodeName;
+                }
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.Add(System.Collections.Generic.List{System.String},System.Collections.Generic.Dictionary{System.String,VIZCore3D.NET.Data.Node}@,System.Boolean)">
             <summary>
@@ -37039,6 +37177,22 @@
             <param name="input">Input - VIZ Path</param>
             <param name="output">Output - VIZ Path</param>
             <returns>Result</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string input = "C:\\Model\\Input.viz";
+                string output = "C:\\Model\\Output.viz";
+            
+                bool result = vizcore3d.Model.MergeSingleNode(input, output);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportObjDialog">
             <summary>
@@ -37356,6 +37510,38 @@
             <param name="virtualScreenCount">가상 이미지 개수 : 1, 2, 3, ...</param>
             <param name="showFileInExplorer">변환 후, 탐색기로 조회</param>
             <returns>변환 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string input = "C:\\Model\\Input.viz";
+                string output = "C:\\Model\\Output.viz";
+            
+                vizcore3d.Model.ExportSimplifiedModel(
+                    input                                                                   /* INPUT FILE */
+                    , output                                                                /* OUTPUT FILE */
+                    , false                                                                 /* KEEP Structure */
+                    , false                                                                 /* Limit BoundBox */
+                    , 0                                                                     /* BoundBox - Min. X */
+                    , 0                                                                     /* BoundBox - Min. Y */
+                    , 0                                                                     /* BoundBox - Min. Z */
+                    , 0                                                                     /* BoundBox - Max. X */
+                    , 0                                                                     /* BoundBox - Max. Y */
+                    , 0                                                                     /* BoundBox - Max. Z */
+                    , false                                                                 /* Limit Mesh Count */
+                    , 0                                                                     /* Mesh Count */
+                    , VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH       /* Unit */
+                    , 1024                                                                  /* Virtual Screen Size */
+                    , 1                                                                     /* Virtual Screen Count */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZM(System.String,System.String,System.Boolean)">
             <summary>
@@ -38373,6 +38559,43 @@
             <summary>
             Surface Note Dialog Default Value
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                // 기본 데이터 생성
+                VIZCore3D.NET.Data.SurfaceNoteDefaultData item = new VIZCore3D.NET.Data.SurfaceNoteDefaultData();
+                item.UseSymbol = true;
+                item.SymbolText = "1";
+                item.ModelNameLevel = 1;
+            
+                // 기본 데이터 설정
+                vizcore3d.Review.Note.SurfaceNoteDefaultValue = item;
+            
+                // 리뷰 변경 : 표면노트 추가 이벤트
+                vizcore3d.Review.OnReviewChangedEvent += Review_OnReviewChangedEvent;
+            
+                // 표면노트 추가
+                vizcore3d.Review.Note.AddNoteSurfaceDialog();
+            }
+            
+            private void Review_OnReviewChangedEvent(object sender, Event.EventManager.ReviewEventArgs e)
+            {
+                if (e.EventKind != Manager.ReviewManager.ReviewEventKind.ADDED_SURFACE_NOTE) return;
+            
+                VIZCore3D.NET.Data.SurfaceNoteDefaultData item = vizcore3d.Review.Note.SurfaceNoteDefaultValue;
+            
+                item.SymbolText = "2";
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
@@ -40824,6 +41047,24 @@
             </summary>
             <param name="oldValue">Old Value</param>
             <param name="newValue">New Value</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                string oldName = "HULL";
+                string newName = "선체";
+            
+                vizcore3d.Object3D.ReplaceName(oldName, newName);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.RemoveNodeWithoutBody(System.Boolean)">
             <summary>
@@ -40835,6 +41076,30 @@
             <summary>
             형상(Shape)이 없는 Body 노드 제거
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.RemoveObjectsWithDuplicateNames">
+            <summary>
+            중복 이름의 개체 제거 (동일 부모 하위의 이름이 동일한 개체 제거)
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                int oldCount = vizcore3d.Model.GetModelInformation().NodeCount;
+            
+                vizcore3d.Object3D.RemoveObjectsWithDuplicateNames();
+            
+                int newCount = vizcore3d.Model.GetModelInformation().NodeCount;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.CopyNodeNameToClipboard(VIZCore3D.NET.Data.Object3dFilter)">
             <summary>
@@ -41903,6 +42168,26 @@
             <summary>
             Review Deleted Event
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.Review.OnReviewDeletedEvent += Review_OnReviewDeletedEvent;
+            }
+            
+            private void Review_OnReviewDeletedEvent(object sender, Event.EventManager.ReviewDeletedEventArgs e)
+            {
+                int reviewId = e.ReviewID;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ReviewManager.EnableSelection">
             <summary>
@@ -42360,6 +42645,75 @@
             선택된 노트/측정의 Title 문자열 복사
             </summary>
             <returns>True : 클립보드에 복사 / False : 선택된 항목 없음</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.HitTest(System.Int32,System.Int32)">
+            <summary>
+            화면 좌표의 리뷰 유무 반환
+            </summary>
+            <param name="x">화면 좌표 X</param>
+            <param name="y">화면 좌표 Y</param>
+            <returns>리뷰 유무</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.View.OnViewDefaultMouseUpEvent += View_OnViewDefaultMouseUpEvent;
+            
+            }
+            
+            private void View_OnViewDefaultMouseUpEvent(object sender, MouseEventArgs e)
+            {
+                // Case 1)
+                bool existReview1 = vizcore3d.Review.HitTest(e.X, e.Y);
+            
+                // Case 2)
+                int reviewId = -1;
+                bool existReview2 = vizcore3d.Review.HitTest(e.X, e.Y, ref reviewId);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.HitTest(System.Int32,System.Int32,System.Int32@)">
+            <summary>
+            화면 좌표의 리뷰 유무 반환
+            </summary>
+            <param name="x">화면 좌표 X</param>
+            <param name="y">화면 좌표 Y</param>
+            <param name="reviewID">리뷰 ID</param>
+            <returns>리뷰 유무</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.View.OnViewDefaultMouseUpEvent += View_OnViewDefaultMouseUpEvent;
+            
+            }
+            
+            private void View_OnViewDefaultMouseUpEvent(object sender, MouseEventArgs e)
+            {
+                // Case 1)
+                bool existReview1 = vizcore3d.Review.HitTest(e.X, e.Y);
+            
+                // Case 2)
+                int reviewId = -1;
+                bool existReview2 = vizcore3d.Review.HitTest(e.X, e.Y, ref reviewId);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.FindManager">
             <summary>
@@ -43991,6 +44345,13 @@
             단면 정렬
             </summary>
             <param name="type">정렬 유형</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.SetBoxSize(System.Int32,VIZCore3D.NET.Data.Vertex3D)">
+            <summary>
+            단면상자 크기 변경
+            </summary>
+            <param name="id">단면상자 아이디(ID)</param>
+            <param name="center">중심점</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.SetBoxSize(System.Int32,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
@@ -48803,6 +49164,11 @@
             Mini View 관리
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.Watermark">
+            <summary>
+            Watermark 관리
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.MouseBasedObjectMove">
             <summary>
             마우스로 개체 이동 관리
@@ -49013,6 +49379,21 @@
             <summary>
             Enable Hardware Acceleration
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.View.EnableHardwareAcceleration = true;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableDoubleClickFocusAndFit">
             <summary>
@@ -51356,6 +51737,16 @@
             마우스 동작 - 아바타 회전
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.AvatarUpRotateInput">
+            <summary>
+            마우스 휠 동작 - 아바타 위 아래 회전
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.AvatarZoomInput">
+            <summary>
+            마우스 휠 동작 - 아바타 줌
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.ReverseVerticalControl">
             <summary>
             아바타 이동 컨트롤 반전
@@ -51484,6 +51875,54 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.WatermarkManager">
+            <summary>
+            Watermark Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WatermarkManager.Text">
+            <summary>
+            Watermark Text
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WatermarkManager.Color">
+            <summary>
+            Watermark 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WatermarkManager.Rotate">
+            <summary>
+            Watermark 회전 (Degrees)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WatermarkManager.FontSize">
+            <summary>
+            Font Size
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.WatermarkManager.Spacing">
+            <summary>
+            Text Spacing
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.WatermarkManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.WatermarkManager.Clear">
+            <summary>
+            Watermark 초기화
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.WatermarkManager.SetRotate(System.Single,VIZCore3D.NET.Data.AngleFormat)">
+            <summary>
+            Watermark 회전
+            </summary>
+            <param name="angle"></param>
+            <param name="format"></param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.XRayManager">
             <summary>
