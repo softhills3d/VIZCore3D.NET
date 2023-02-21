@@ -41106,6 +41106,28 @@
             선택된 개체의 노드 이름을 클립보드에 복사
             </summary>
             <param name="filter">노드 대상 필터</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                // Case 1)
+                vizcore3d.Object3D.CopyNodeNameToClipboard(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+            
+                // Case 2)
+                List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+                if (nodes.Count == 0) return;
+            
+                Clipboard.SetText(nodes[0].GetParentName());
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.GetEdgeVertex(System.Int32,System.Boolean)">
             <summary>
@@ -41701,6 +41723,29 @@
             <param name="index">노드 인덱스</param>
             <param name="visibleOnly">보이는 모델만</param>
             <returns>중심점</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.MergeAssembly(System.Collections.Generic.List{System.Int32},System.Boolean)">
+            <summary>
+            지정된 어셈블리 하위를 단일 노드로 병합
+            </summary>
+            <param name="index">어셈블리 인덱스</param>
+            <param name="loadEdge">모서리 데이터 포함 여부</param>
+            <returns>처리 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.MergeAssembly(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Boolean)">
+            <summary>
+            지정된 어셈블리 하위를 단일 노드로 병합
+            </summary>
+            <param name="node">어셈블리 노드</param>
+            <param name="loadEdge">모서리 데이터 포함 여부</param>
+            <returns>처리 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.MergeAssembly(System.Boolean)">
+            <summary>
+            선택된 어셈블리 하위를 단일 노드로 병합
+            </summary>
+            <param name="loadEdge">모서리 데이터 포함 여부</param>
+            <returns>처리 결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ReviewManager">
             <summary>
@@ -49188,6 +49233,45 @@
             <summary>
             Pre-Select Option
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                // 기능 활성화
+                vizcore3d.View.PreSelect.Enable = true;
+                
+                // 하이라이트 색상 설정
+                vizcore3d.View.PreSelect.HighlightColor = System.Drawing.Color.Lime;
+                
+                // Label 유형 지정
+                vizcore3d.View.PreSelect.Label = VIZCore3D.NET.Data.PreSelectStyle.LabelKind.HIERACHY_TOP_DOWN;
+                
+                // Label Font 설정
+                vizcore3d.View.PreSelect.LabelFont = new System.Drawing.Font("Arial", 10.0f);
+            
+                // 이벤트 연동
+                vizcore3d.View.OnViewPreSelectLabelEvent += View_OnViewPreSelectLabelEvent;
+            }
+            
+            private void View_OnViewPreSelectLabelEvent(object sender, Event.EventManager.ViewPreSelectLabelEventArgs e)
+            {
+                // 내부 Label 처리 취소
+                // 내부 Label을 사용하려면, 이벤트 연동을 하지 않거나, e.Cancel = false; 지정
+                e.Cancel = true;
+            
+                VIZCore3D.NET.Data.Node node 
+                    = vizcore3d.Object3D.FromIndex(e.NodeIndex);
+            
+                // PreSelect Label 에 표시할 문자열 지정
+                e.Label = string.Format("Custom Tooltip : {0}", node.NodeName);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.Ocean">
             <summary>
@@ -49213,6 +49297,22 @@
             <summary>
             선택가능 개체유형
             </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                if (vizcore3d.View.SelectionObject3DType == VIZCore3D.NET.Data.SelectionObject3DTypes.ALL)
+                    vizcore3d.View.SelectionObject3DType = VIZCore3D.NET.Data.SelectionObject3DTypes.OPAQUE_OBJECT3D;
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.SelectionMode">
             <summary>
