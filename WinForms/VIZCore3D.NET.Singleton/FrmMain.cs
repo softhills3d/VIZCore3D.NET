@@ -621,7 +621,6 @@ namespace VIZCore3D.NET.Singleton
 
                 List<string> current = new List<string>();
                 current.Add("ADD");
-                current.Add("ADD");
 
                 for (int i = 0; i < listDrive.Length; i++)
                 {
