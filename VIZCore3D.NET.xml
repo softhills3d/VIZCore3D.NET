@@ -3227,6 +3227,11 @@
             VIZCore3D MANAGER
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.Products.VIZCore3DdotNET">
+            <summary>
+            VIZCore3D.NET
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ModelProgressModes">
             <summary>
             MODEL Progress Argument Modes
@@ -34097,6 +34102,34 @@
             </code>
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.LicenseManager.LicenseFile(System.String,VIZCore3D.NET.Data.Products)">
+            <summary>
+            Set License File
+            </summary>
+            <param name="path">License File (*.lic)</param>
+            <param name="product">Product</param>
+            <returns>Result</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            private void CreateVIZCore3D()
+            {
+                vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
+            }
+            
+            private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
+            {
+                VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\Temp\\VIZCore3D.NET.lic", VIZCore3D.NET.Data.Products.VIZCore3DdotNET); 
+                if (result != Data.LicenseResults.SUCCESS)
+                {
+                    MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            ]]>
+            </code>
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.LicenseServer(System.String,System.Int32)">
             <summary>
             Set License Server
@@ -55822,7 +55855,7 @@
         <member name="T:VIZCore3D.NET.VIZCore3DControl">
             <summary>
             VIZCore3D.NET Main Control
-            </summary>
+            </summary>  
         </member>
         <member name="F:VIZCore3D.NET.VIZCore3DControl.ModelTreeCtrl">
             <summary>
