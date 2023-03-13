@@ -575,6 +575,7 @@ namespace VIZCore3D.NET.Singleton
             if (msg.Msg == SingletonMessageHelper.WM_OPEN_FILE)
             {
                 SingletonMessageHelper.COPYDATASTRUCT cds = (SingletonMessageHelper.COPYDATASTRUCT)msg.GetLParam(typeof(SingletonMessageHelper.COPYDATASTRUCT));
+
                 ProcessMessage(cds.lpData);
             }
             else
@@ -585,7 +586,62 @@ namespace VIZCore3D.NET.Singleton
         {
             if (String.IsNullOrEmpty(data) == true) return;
 
-            Params = data.Split(new char[] { ':' });
+            //Params = data.Split(new char[] { ':' });
+
+            string szLowerData = data.ToLower();
+            if (szLowerData.StartsWith("open:"))            
+            {
+                string sub = data.Substring(5);
+                string []listDrive = sub.Split(new char[] { ':' });
+
+                List<string> current = new List<string>();
+                current.Add("OPEN");
+
+                for (int i = 0; i < listDrive.Length; i++)
+                {
+                    string szDrive = listDrive[i];
+
+                    if (szDrive.Length != 1)
+                    {
+                        //상대경로
+                        current.Add(szDrive);
+                        continue;
+                    }
+
+                    //드라이브 경로                    
+                    current.Add(string.Format("{0}:{1}", szDrive, listDrive[i+1]));
+                    i++;
+                }
+                Params = current.ToArray();
+            }
+            else if(szLowerData.StartsWith("add:"))
+            {
+                string sub = data.Substring(4);
+                string[] listDrive = sub.Split(new char[] { ':' });
+
+                List<string> current = new List<string>();
+                current.Add("ADD");
+                current.Add("ADD");
+
+                for (int i = 0; i < listDrive.Length; i++)
+                {
+                    string szDrive = listDrive[i];
+
+                    if (szDrive.Length != 1)
+                    {
+                        //상대경로
+                        current.Add(szDrive);
+                        continue;
+                    }
+
+                    //드라이브 경로                    
+                    current.Add(string.Format("{0}:{1}", szDrive, listDrive[i + 1]));
+                    i++;
+                }
+                Params = current.ToArray();
+            }
+
+            if (Params == null) return;
 
             ProcessArgument();
         }
@@ -593,6 +649,7 @@ namespace VIZCore3D.NET.Singleton
         private void ProcessArgument()
         {
             if (Params == null) return;
+            if (Params.Length <= 0) return;
 
             bool addMode = false;
 
