@@ -586,61 +586,7 @@ namespace VIZCore3D.NET.Singleton
         {
             if (String.IsNullOrEmpty(data) == true) return;
 
-            //Params = data.Split(new char[] { ':' });
-
-            string szLowerData = data.ToLower();
-            if (szLowerData.StartsWith("open:"))            
-            {
-                string sub = data.Substring(5);
-                string []listDrive = sub.Split(new char[] { ':' });
-
-                List<string> current = new List<string>();
-                current.Add("OPEN");
-
-                for (int i = 0; i < listDrive.Length; i++)
-                {
-                    string szDrive = listDrive[i];
-
-                    if (szDrive.Length != 1)
-                    {
-                        //상대경로
-                        current.Add(szDrive);
-                        continue;
-                    }
-
-                    //드라이브 경로                    
-                    current.Add(string.Format("{0}:{1}", szDrive, listDrive[i+1]));
-                    i++;
-                }
-                Params = current.ToArray();
-            }
-            else if(szLowerData.StartsWith("add:"))
-            {
-                string sub = data.Substring(4);
-                string[] listDrive = sub.Split(new char[] { ':' });
-
-                List<string> current = new List<string>();
-                current.Add("ADD");
-
-                for (int i = 0; i < listDrive.Length; i++)
-                {
-                    string szDrive = listDrive[i];
-
-                    if (szDrive.Length != 1)
-                    {
-                        //상대경로
-                        current.Add(szDrive);
-                        continue;
-                    }
-
-                    //드라이브 경로                    
-                    current.Add(string.Format("{0}:{1}", szDrive, listDrive[i + 1]));
-                    i++;
-                }
-                Params = current.ToArray();
-            }
-
-            if (Params == null) return;
+            Params = data.Split(new char[] { '?' });
 
             ProcessArgument();
         }
@@ -651,6 +597,12 @@ namespace VIZCore3D.NET.Singleton
             if (Params.Length <= 0) return;
 
             bool addMode = false;
+
+            if(Params[0].ToUpper() == "CLOSE")
+            {
+                vizcore3d.Model.Close();
+                return;
+            }
 
             if (Params[0].ToUpper() == "ADD")
                 addMode = true;

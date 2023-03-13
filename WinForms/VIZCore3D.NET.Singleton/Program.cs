@@ -31,7 +31,7 @@ namespace VIZCore3D.NET.Singleton
                 if (args != null && args.Length > 0)
                 {
                     // 파라미터 조회
-                    string urlSchemeParam = string.Join(":", args);
+                    string urlSchemeParam = string.Join("?", args);
 
                     // 값이 있는 경우 기존 프로세스에 전달
                     if (String.IsNullOrEmpty(urlSchemeParam) == false)
