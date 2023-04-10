@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnGetPathTick = new System.Windows.Forms.Button();
             this.btnClearPos = new System.Windows.Forms.Button();
             this.btnDeletePos = new System.Windows.Forms.Button();
             this.btnAddPos = new System.Windows.Forms.Button();
@@ -66,14 +67,24 @@
             this.txtWalkSpeed = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lbTick = new System.Windows.Forms.Label();
+            this.tbPos = new System.Windows.Forms.TrackBar();
+            this.lbTickTotal = new System.Windows.Forms.Label();
+            this.btnCollistionPoint = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbPos)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -90,6 +101,10 @@
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(1512, 810);
             this.splitContainer1.SplitterDistance = 466;
             this.splitContainer1.TabIndex = 0;
@@ -99,6 +114,8 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnCollistionPoint);
+            this.groupBox5.Controls.Add(this.btnGetPathTick);
             this.groupBox5.Controls.Add(this.btnClearPos);
             this.groupBox5.Controls.Add(this.btnDeletePos);
             this.groupBox5.Controls.Add(this.btnAddPos);
@@ -110,6 +127,16 @@
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Path Position";
+            // 
+            // btnGetPathTick
+            // 
+            this.btnGetPathTick.Location = new System.Drawing.Point(11, 45);
+            this.btnGetPathTick.Name = "btnGetPathTick";
+            this.btnGetPathTick.Size = new System.Drawing.Size(75, 23);
+            this.btnGetPathTick.TabIndex = 7;
+            this.btnGetPathTick.Text = "Tick";
+            this.btnGetPathTick.UseVisualStyleBackColor = true;
+            this.btnGetPathTick.Click += new System.EventHandler(this.btnGetPathTick_Click);
             // 
             // btnClearPos
             // 
@@ -166,9 +193,9 @@
             this.lvPosition.FullRowSelect = true;
             this.lvPosition.GridLines = true;
             this.lvPosition.HideSelection = false;
-            this.lvPosition.Location = new System.Drawing.Point(6, 51);
+            this.lvPosition.Location = new System.Drawing.Point(6, 74);
             this.lvPosition.Name = "lvPosition";
-            this.lvPosition.Size = new System.Drawing.Size(426, 198);
+            this.lvPosition.Size = new System.Drawing.Size(426, 175);
             this.lvPosition.TabIndex = 1;
             this.lvPosition.UseCompatibleStateImageBehavior = false;
             this.lvPosition.View = System.Windows.Forms.View.Details;
@@ -474,6 +501,65 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Walk Speed";
             // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.lbTickTotal);
+            this.splitContainer2.Panel2.Controls.Add(this.lbTick);
+            this.splitContainer2.Panel2.Controls.Add(this.tbPos);
+            this.splitContainer2.Size = new System.Drawing.Size(1042, 810);
+            this.splitContainer2.SplitterDistance = 732;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // lbTick
+            // 
+            this.lbTick.AutoSize = true;
+            this.lbTick.Location = new System.Drawing.Point(14, 19);
+            this.lbTick.Name = "lbTick";
+            this.lbTick.Size = new System.Drawing.Size(29, 12);
+            this.lbTick.TabIndex = 1;
+            this.lbTick.Text = "0000";
+            // 
+            // tbPos
+            // 
+            this.tbPos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPos.LargeChange = 1000;
+            this.tbPos.Location = new System.Drawing.Point(95, 19);
+            this.tbPos.Maximum = 1000;
+            this.tbPos.Name = "tbPos";
+            this.tbPos.Size = new System.Drawing.Size(935, 45);
+            this.tbPos.SmallChange = 100;
+            this.tbPos.TabIndex = 0;
+            this.tbPos.TickFrequency = 100;
+            this.tbPos.Scroll += new System.EventHandler(this.tbPos_Scroll);
+            // 
+            // lbTickTotal
+            // 
+            this.lbTickTotal.AutoSize = true;
+            this.lbTickTotal.Location = new System.Drawing.Point(14, 44);
+            this.lbTickTotal.Name = "lbTickTotal";
+            this.lbTickTotal.Size = new System.Drawing.Size(29, 12);
+            this.lbTickTotal.TabIndex = 2;
+            this.lbTickTotal.Text = "0000";
+            // 
+            // btnCollistionPoint
+            // 
+            this.btnCollistionPoint.Location = new System.Drawing.Point(92, 45);
+            this.btnCollistionPoint.Name = "btnCollistionPoint";
+            this.btnCollistionPoint.Size = new System.Drawing.Size(75, 23);
+            this.btnCollistionPoint.TabIndex = 8;
+            this.btnCollistionPoint.Text = "Collision";
+            this.btnCollistionPoint.UseVisualStyleBackColor = true;
+            this.btnCollistionPoint.Click += new System.EventHandler(this.btnCollistionPoint_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -485,6 +571,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VIZCore3D.NET.AvatarPath";
             this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -496,6 +583,11 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbPos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -539,6 +631,12 @@
         private System.Windows.Forms.Button btnPause;
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.CheckBox ckPlayRepeatMode;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button btnGetPathTick;
+        private System.Windows.Forms.TrackBar tbPos;
+        private System.Windows.Forms.Label lbTick;
+        private System.Windows.Forms.Label lbTickTotal;
+        private System.Windows.Forms.Button btnCollistionPoint;
     }
 }
 

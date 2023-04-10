@@ -19,6 +19,8 @@ namespace VIZCore3D.NET.AvatarPath
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
+        private Dictionary<string, VIZCore3D.NET.Data.Vector3D> CollisionPoint;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace VIZCore3D.NET.AvatarPath
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            splitContainer2.Panel1.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
@@ -719,6 +721,81 @@ namespace VIZCore3D.NET.AvatarPath
                 lvPosition.Items.Add(lvi);
             }
             lvPosition.EndUpdate();
+        }
+
+        private void btnGetPathTick_Click(object sender, EventArgs e)
+        {
+            int pos = vizcore3d.Walkthrough.AvatarPath.GetAnimationTickPostion();
+            int time = vizcore3d.Walkthrough.AvatarPath.GetAnimationTime();
+
+            tbPos.Maximum = time;
+
+            lbTick.Text = string.Format("{0:#,0}", time);
+            lbTickTotal.Text = string.Format("{0:#,0}", time);
+
+            CollisionPoint = new Dictionary<string, Data.Vector3D>();
+        }
+
+        private void tbPos_Scroll(object sender, EventArgs e)
+        {
+            if (vizcore3d.View.Navigation != VIZCore3D.NET.Data.NavigationModes.WALK)
+                vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.WALK;
+
+            if (vizcore3d.Walkthrough.Avatar == false)
+                vizcore3d.Walkthrough.Avatar = true;
+
+            if (vizcore3d.Walkthrough.EnableAvatarAutoZoom == true)
+                vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+
+            int val = tbPos.Value;
+
+            vizcore3d.Walkthrough.AvatarPath.SetAvatarPositionByTick(val);
+
+            lbTick.Text = string.Format("{0:#,0}", val);
+
+            if (vizcore3d.Walkthrough.CreateAvatarCollision() == true)
+            {
+                List<VIZCore3D.NET.Data.Vector3D> result = vizcore3d.Walkthrough.GetAvatarCollision();
+
+                foreach (VIZCore3D.NET.Data.Vector3D item in result)
+                {
+                    if (CollisionPoint.ContainsKey(item.ToString()) == false)
+                        CollisionPoint.Add(item.ToString(), item);
+                }
+            }
+        }
+
+        private void btnCollistionPoint_Click(object sender, EventArgs e)
+        {
+            if (CollisionPoint == null) return;
+
+            vizcore3d.BeginUpdate();
+            vizcore3d.Review.Note.Clear();
+            vizcore3d.Clash.ClearResultSymbol();
+
+            int count = 0;
+            List<VIZCore3D.NET.Data.Vertex3D> points = new List<VIZCore3D.NET.Data.Vertex3D>();
+            List<VIZCore3D.NET.Data.ClashResultSymbols> symbols = new List<VIZCore3D.NET.Data.ClashResultSymbols>();
+
+            foreach (KeyValuePair<string, VIZCore3D.NET.Data.Vector3D> item in CollisionPoint)
+            {
+                VIZCore3D.NET.Data.Vertex3D surface = item.Value.ToVertex3D();
+                VIZCore3D.NET.Data.Vertex3D text = item.Value.ToVertex3D();
+                text.Z += 1000.0f;
+
+                int noteId = vizcore3d.Review.Note.AddNoteSurface(string.Format("Collision : {0}\r\n{1}", count, item.Value), text, surface);
+                count++;
+
+                points.Add(surface);
+                symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Triangle);
+            }
+
+            vizcore3d.Clash.ShowResultSymbol(points, symbols, 10, true, Color.Yellow, false);
+
+            vizcore3d.EndUpdate();
+
+            vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.ROTATE;
+            vizcore3d.View.ResetView();
         }
     }
 }
