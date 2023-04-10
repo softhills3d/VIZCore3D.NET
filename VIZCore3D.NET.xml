@@ -749,6 +749,11 @@
             Print Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.Setting">
+            <summary>
+            Setting Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Controls.ViewControl.GenericData">
             <summary>
             [MANAGER] Generic Data Manager
@@ -4829,6 +4834,11 @@
             [구] 반지름 측정
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.MeasureKind.DISTANCE_COP">
+            <summary>
+            [거리] COP : 실린더 중심과 수직면의 최단 거리
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ModelExportFilter">
             <summary>
             모델 내보내기 방식
@@ -7060,7 +7070,12 @@
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_BOP">
             <summary>
-            Add Distance BOP
+            Add Distance BOP (Bottom Of Pipe)
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_COP">
+            <summary>
+            Add Distance COP (Center Of Pipe)
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONXYZ">
@@ -10462,6 +10477,466 @@
             Z Axis
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.UnckeckToUnload">
+            <summary>
+            파일 자동 언로드
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ReadEdge">
+            <summary>
+            모서리 읽기
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.GenerateEdgeData">
+            <summary>
+            모서리 생성
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.RemoveNodeNameSlashOption">
+            <summary>
+            노드 이름 앞 '/' 제거 여부
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableBody">
+            <summary>
+            Body 형식 노드 조회
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableHardwareAcceleration">
+            <summary>
+            Enable Hardware Acceleration
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ReadCylinderSide">
+            <summary>
+            원통형 품질 개수 (12 ~ 36)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ReadSmallCylinderSide">
+            <summary>
+            작은 원통형 품질 개수 (6 ~ 36)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SaveOnlyVisible">
+            <summary>
+            보이는 모델만 저장
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SaveVIZXMLToVIZOption">
+            <summary>
+            VIZXML 저장 시, 언로드 노드 처리 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SelectionObject3DType">
+            <summary>
+            선택 가능 개체
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.Object3DSelectionOption">
+            <summary>
+            개체 선택 유형
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SelectionColor">
+            <summary>
+            선택 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.PreSelect">
+            <summary>
+            Pre-Select
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableUndoRedo">
+            <summary>
+            Undo / Redo
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableModelDatabaseAuto">
+            <summary>
+            모델 데이터베이스 자동 생성
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableModelDatabaseUDA">
+            <summary>
+            모델 데이터베이스 UDA 포함
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableAnimation">
+            <summary>
+            애니메이션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableAutoFit">
+            <summary>
+            화면 자동 맞춤
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableInertiaRotate">
+            <summary>
+            연속 회전 모드
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ZoomRatio">
+            <summary>
+            확대/축소 비율
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.RotationDegree">
+            <summary>
+            회전 각도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.RotationAxis">
+            <summary>
+            회전 축
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ScreenRotationAngleLarge">
+            <summary>
+            화면 기준 회전 각도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ScreenRotationAngleSmall">
+            <summary>
+            화면 기준 회전 각도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableRotateByKeyboard">
+            <summary>
+            키보드 방향키를 통한 화면 기준 회전 기능 활성화
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ScreenRotationBasedZAxis">
+            <summary>
+            키보드 방향키를 통한 화면 기준 회전 시, Z축 회전 기준
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EnableBoxSelectionFrontObjectOnly">
+            <summary>
+            영역 선택 시, 맨 앞의 (카메라에서 가까운) 개체 만 선택
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FixedZAxis">
+            <summary>
+            Z축 고정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FixedZAxisAngle">
+            <summary>
+            Z축 각도 고정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.Speed">
+            <summary>
+            선속도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AngularSpeed">
+            <summary>
+            가속도 (각속도)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarHeight">
+            <summary>
+            아바타 신장(높이)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarCollisionRadius">
+            <summary>
+            아바타 반지름(충돌 반경)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarBowWalkHeight">
+            <summary>
+            아바타 숙임 높이
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarCollision">
+            <summary>
+            아바타 충돌
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarGravity">
+            <summary>
+            아바타 중력
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarBowWalk">
+            <summary>
+            아바타 숙임
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarModel">
+            <summary>
+            아바타 모델
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarAutoZoom">
+            <summary>
+            아바타 자동 줌
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AvatarCollisionCylinder">
+            <summary>
+            아바타 충돌 상자 보기
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FOV">
+            <summary>
+            시야각
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.LightSourceIntensity">
+            <summary>
+            광원 세기 (광원 강도)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.EdgeThickness">
+            <summary>
+            모서리 굵기
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SilhouetteEdgeColor">
+            <summary>
+            윤곽 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SilhouetteEdgeTransparency">
+            <summary>
+            윤곽 투명도
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.XRayColorType">
+            <summary>
+            X-Ray 선택 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.BackgroundMode">
+            <summary>
+            배경 유형
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.BackgroundColor1">
+            <summary>
+            배경색 1
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.BackgroundColor2">
+            <summary>
+            배경색 2
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.AmbientColor">
+            <summary>
+            음영 색상 : 기본값 [80, 80, 80]
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.DiffuseLightColor">
+            <summary>
+            기본 빛 색상 : 기본값 [255, 255, 232]
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.InputPreset">
+            <summary>
+            마우스 입력 조작 Preset
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ReviewNoteStyle">
+            <summary>
+            리뷰 노트 스타일 및 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.MeasureRepeatMode">
+            <summary>
+            연속 측정 모드
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ReviewMeasureStyle">
+            <summary>
+            리뷰 측정 스타일 및 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ClashTestMultiThread">
+            <summary>
+            다중 간섭 검사
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameXYPlane">
+            <summary>
+            XY Plane
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameYZPlane">
+            <summary>
+            YZ Plane
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameZXPlane">
+            <summary>
+            ZX Plane
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FramePlanView">
+            <summary>
+            Plan View
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameSectionView">
+            <summary>
+            Section View
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameElevationView">
+            <summary>
+            Elevation View
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameNumber">
+            <summary>
+            좌표값 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameBringToFront">
+            <summary>
+            모델 앞에 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameColor">
+            <summary>
+            프레임 라인 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameOddNumber">
+            <summary>
+            홀수번째 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameEvenNumber">
+            <summary>
+            짝수번째 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameAutoFitSectionBox">
+            <summary>
+            단면상자에 자동 맞춤
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameMoveSectionToFrameGridInterval">
+            <summary>
+            단면 좌표간격으로 이동
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameCustomSize">
+            <summary>
+            커스텀 사이즈
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameResizable">
+            <summary>
+            커스텀 사이즈 변경 모드
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameXAxisAsPosition">
+            <summary>
+            X축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameYAxisAsPosition">
+            <summary>
+            Y축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameZAxisAsPosition">
+            <summary>
+            Z축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SectionShowSectionLine">
+            <summary>
+            단면선 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SectionShowSectionPlane">
+            <summary>
+            단면 보기
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SectionShowSectionLineColor">
+            <summary>
+            단일색 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.SectionLineColor">
+            <summary>
+            단면선 색상
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarNote">
+            <summary>
+            툴바 - 노트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarMeasure">
+            <summary>
+            툴바 - 측정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSection">
+            <summary>
+            툴바 - 단면
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarClash">
+            <summary>
+            툴바 - 간섭검사
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarAnimation">
+            <summary>
+            툴바 - 애니메이션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSimulation">
+            <summary>
+            툴바 - 시뮬레이션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarPrimitive">
+            <summary>
+            툴바 - 프리미티브
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.Shortcut">
+            <summary>
+            단축키 정의 목록
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.LogGraphicOption">
+            <summary>
+            그래픽 로그 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.LogDataOption">
+            <summary>
+            데이터 로그 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.LogClashOption">
+            <summary>
+            간섭검사 로그 옵션
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.DebugDataVisible">
+            <summary>
+            디버그 뷰
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ModelTreeDeveloper">
+            <summary>
+            모델 트리 개발자 모드 활성화
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ShaderLightOption">
             <summary>
             Shader Light Option Class
@@ -13339,10 +13814,11 @@
             Construction
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.#ctor(VIZCore3D.NET.Manager.SettingManager)">
+        <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.#ctor(VIZCore3D.NET.VIZCore3DControl,VIZCore3D.NET.Data.SettingItems)">
             <summary>
             Construction
             </summary>
+            <param name="ctrl">VIZCore3D.NET</param>
             <param name="setting">Setting Manager</param>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.SettingsDialog.components">
@@ -13621,6 +14097,11 @@
             글자 크기
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Dialogs.UpdateDrawItemStyleDialog.TextShadow">
+            <summary>
+            글자 그림자
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Dialogs.UpdateDrawItemStyleDialog.LineWidth">
             <summary>
             라인 두께
@@ -13641,12 +14122,13 @@
             Construction
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Dialogs.UpdateDrawItemStyleDialog.#ctor(System.Drawing.Color,VIZCore3D.NET.Data.DrawMarkupFontSize,System.Int32,VIZCore3D.NET.Data.DrawMarkupLineStyle,System.Drawing.Color)">
+        <member name="M:VIZCore3D.NET.Dialogs.UpdateDrawItemStyleDialog.#ctor(System.Drawing.Color,VIZCore3D.NET.Data.DrawMarkupFontSize,System.Boolean,System.Int32,VIZCore3D.NET.Data.DrawMarkupLineStyle,System.Drawing.Color)">
             <summary>
             Construction
             </summary>
             <param name="textColor">글자 색상</param>
             <param name="textSize">글자 크기</param>
+            <param name="textShadow">글자 그림자</param>
             <param name="lineWidth">라인 두께</param>
             <param name="lineStyle">라인 유형</param>
             <param name="lineColor">라인 색상</param>
@@ -22263,9 +22745,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.AvatarPathManager.GetAnimationTime">
             <summary>
-            애니메이션 재생 시간 반환
+            애니메이션 전체 재생 시간 반환
             </summary>
-            <returns>애니메이션 재생 시간</returns>
+            <returns>애니메이션 전체 재생 시간</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AvatarPathManager.SetAvatarPostionByIndex(System.Int32)">
             <summary>
@@ -22807,6 +23289,11 @@
         <member name="P:VIZCore3D.NET.Manager.DrawingMarkupManager.TextSize">
             <summary>
             텍스트 크기. 기본값 : 24
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.DrawingMarkupManager.TextShadow">
+            <summary>
+            텍스트 그림자. 기본값 true
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.DrawingMarkupManager.Enable">
@@ -34092,6 +34579,7 @@
             private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
             {
                 VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\Temp\\VIZCore3D.NET.lic"); 
+                
                 if (result != Data.LicenseResults.SUCCESS)
                 {
                     MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -34101,6 +34589,7 @@
             ]]>
             </code>
             </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.LicenseManager.LicenseFile(System.String,VIZCore3D.NET.Data.Products)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.LicenseFile(System.String,VIZCore3D.NET.Data.Products)">
             <summary>
@@ -34120,6 +34609,7 @@
             private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
             {
                 VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\Temp\\VIZCore3D.NET.lic", VIZCore3D.NET.Data.Products.VIZCore3DdotNET); 
+                
                 if (result != Data.LicenseResults.SUCCESS)
                 {
                     MessageBox.Show(string.Format("LICENSE CODE : {0}", result.ToString()), "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -34129,6 +34619,7 @@
             ]]>
             </code>
             </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.LicenseManager.LicenseFile(System.String)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.LicenseServer(System.String,System.Int32)">
             <summary>
@@ -34157,6 +34648,7 @@
             ]]>
             </code>
             </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.LicenseManager.LicenseServer(System.String,System.Int32,VIZCore3D.NET.Data.Products)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.LicenseServer(System.String,System.Int32,VIZCore3D.NET.Data.Products)">
             <summary>
@@ -34176,11 +34668,13 @@
             
             private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
             {
-                VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.AUTO);
-                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZZARD_MANAGER);
-                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZZARD_STANDARD);
-                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZCORE3D_MANAGER);
-                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, Data.Products.VIZCORE3D_STANDARD);
+                VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, VIZCore3D.NET.Data.Products.AUTO);
+                
+                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, VIZCore3D.NET.Data.Products.VIZCore3DdotNET);
+                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, VIZCore3D.NET.Data.Products.VIZZARD_MANAGER);
+                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, VIZCore3D.NET.Data.Products.VIZZARD_STANDARD);
+                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, VIZCore3D.NET.Data.Products.VIZCORE3D_MANAGER);
+                //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901, VIZCore3D.NET.Data.Products.VIZCORE3D_STANDARD);
                 
                 if (result != Data.LicenseResults.SUCCESS)
                 {
@@ -34191,6 +34685,7 @@
             ]]>
             </code>
             </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.LicenseManager.LicenseServer(System.String,System.Int32)"/>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.DisconnectServer">
             <summary>
@@ -34978,6 +35473,11 @@
             [거리] BOP : 실린더와 수직면의 최단 거리
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddDistanceCOP">
+            <summary>
+            [거리] COP : 실린더 중심과 수직면의 최단 거리
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddDistanceAxialDirectionXYZ">
             <summary>
             [거리] 축 방향 거리
@@ -35738,6 +36238,26 @@
         <member name="F:VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_SET_MESH">
             <summary>
             TRIANGLE SET MESH
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects">
+            <summary>
+            Exclude Hidden Objects
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects.NONE">
+            <summary>
+            NONE
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects.EXPORT_HIDDEN">
+            <summary>
+            EXPORT EXCLUDED HIDDEN OBJECTS AS HIDDEN 
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects.EXPORT_VISIBLE">
+            <summary>
+            EXPORT EXCLUDED HIDDEN OBJECTS AS VISIBLE 
             </summary>
         </member>
         <member name="E:VIZCore3D.NET.Manager.ModelManager.OnModelOpenedEvent">
@@ -37498,6 +38018,17 @@
             <param name="showFileInExplorer">변환 후, 탐색기로 조회</param>
             <returns>변환 결과</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSimplifiedModel(System.String,System.String,System.Boolean,VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit,System.Boolean)">
+            <summary>
+            CAD/VIZ 파일의 단순화(간소화) 모델 내보내기
+            </summary>
+            <param name="input">CAD/VIZ 파일</param>
+            <param name="output">VIZ 파일</param>
+            <param name="keepStructure">Assembly Structure 유지 여부. 권장값 : False</param>
+            <param name="unit">간소화 단위</param>
+            <param name="showFileInExplorer">변환 후, 탐색기로 조회</param>
+            <returns>변환 결과</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSimplifiedModel(System.String,System.String,System.Boolean,System.Boolean,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Int32,VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit,System.Boolean)">
             <summary>
             CAD/VIZ 파일의 단순화(간소화) 모델 내보내기
@@ -37576,6 +38107,71 @@
                     , output                                                                /* OUTPUT FILE */
                     , false                                                                 /* KEEP Structure */
                     , false                                                                 /* Limit BoundBox */
+                    , 0.0f                                                                  /* BoundBox - Min. X */
+                    , 0.0f                                                                  /* BoundBox - Min. Y */
+                    , 0.0f                                                                  /* BoundBox - Min. Z */
+                    , 0.0f                                                                  /* BoundBox - Max. X */
+                    , 0.0f                                                                  /* BoundBox - Max. Y */
+                    , 0.0f                                                                  /* BoundBox - Max. Z */
+                    , false                                                                 /* Limit Mesh Count */
+                    , 0                                                                     /* Mesh Count */
+                    , VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH       /* Unit */
+                    , 1024                                                                  /* Virtual Screen Size */
+                    , 1                                                                     /* Virtual Screen Count */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSimplifiedModel(System.String,System.Boolean,VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit,System.Int32,System.Int32,VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects,System.Boolean)">
+            <summary>
+            현재 모델의 단순화(간소화) 모델 내보내기
+            </summary>
+            <param name="output">VIZ 파일</param>
+            <param name="keepStructure">Assembly Structure 유지 여부. 권장값 : False</param>
+            <param name="unit">간소화 단위</param>
+            <param name="virtualScreenSize">가상 이미지 크기 : 1024, 2048, 4096, ...</param>
+            <param name="virtualScreenCount">가상 이미지 개수 : 1, 2, 3, ...</param>
+            <param name="excludeHiddenObjects">숨겨진 개체는 제외하고 간소화 수행 후, 내보내기 파일에 숨겨진 개체는 포함</param>
+            <param name="showFileInExplorer">변환 후, 탐색기로 조회</param>
+            <returns>변환 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSimplifiedModel(System.String,System.Boolean,System.Boolean,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Int32,VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit,System.Int32,System.Int32,VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects,System.Boolean)">
+            <summary>
+            현재 모델의 단순화(간소화) 모델 내보내기
+            </summary>
+            <param name="output">VIZ 파일</param>
+            <param name="keepStructure">Assembly Structure 유지 여부. 권장값 : False</param>
+            <param name="limitBoundBox">BoundBox 크기 제한 여부</param>
+            <param name="minX">BoundBox Min. X</param>
+            <param name="minY">BoundBox Min. Y</param>
+            <param name="minZ">BoundBox Min. Z</param>
+            <param name="maxX">BoundBox Max. X</param>
+            <param name="maxY">BoundBox Max. Y</param>
+            <param name="maxZ">BoundBox Max. Z</param>
+            <param name="limitMesh">Triangle Mesh 개수 제한 여부</param>
+            <param name="meshCount">Triangle Mesh 제한 개수</param>
+            <param name="unit">간소화 단위</param>
+            <param name="virtualScreenSize">가상 이미지 크기 : 1024, 2048, 4096, ...</param>
+            <param name="virtualScreenCount">가상 이미지 개수 : 1, 2, 3, ...</param>
+            <param name="excludeHiddenObjects">숨겨진 개체는 제외하고 간소화 수행 후, 내보내기 파일에 숨겨진 개체는 포함</param>
+            <param name="showFileInExplorer">변환 후, 탐색기로 조회</param>
+            <returns>변환 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                string output = "C:\\Model\\Output.viz";
+            
+                vizcore3d.Model.ExportSimplifiedModel(
+                    output                                                                  /* OUTPUT FILE */
+                    , false                                                                 /* KEEP Structure */
+                    , false                                                                 /* Limit BoundBox */
                     , 0                                                                     /* BoundBox - Min. X */
                     , 0                                                                     /* BoundBox - Min. Y */
                     , 0                                                                     /* BoundBox - Min. Z */
@@ -37587,6 +38183,8 @@
                     , VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_MESH       /* Unit */
                     , 1024                                                                  /* Virtual Screen Size */
                     , 1                                                                     /* Virtual Screen Count */
+                    , VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects.NONE          /* Exclude Hidden Objects */
+                    , false                                                                 /* Show Explorer */
                     );
             }
             ]]>
@@ -45168,465 +45766,56 @@
             Setting Manager
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.UnckeckToUnload">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
-            파일 자동 언로드
+            Construction
             </summary>
+            <param name="ctrl">VIZCore3D.NET.VIZCore3DControl</param>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ReadEdge">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.Load">
             <summary>
-            모서리 읽기
+            설정 정보 불러오기
             </summary>
+            <returns>불러오기 결과</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.GenerateEdgeData">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.Load(System.String)">
             <summary>
-            모서리 생성
+            지정된 경로의 설정을 조회 후 설정
             </summary>
+            <param name="path">설정 파일</param>
+            <returns>불러오기 결과</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.RemoveNodeNameSlashOption">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.GetSettingItems(System.String)">
             <summary>
-            노드 이름 앞 '/' 제거 여부
+            지정된 경로의 설정을 조회 후 SettingItems 가져오기
             </summary>
+            <param name="path">설정 파일</param>
+            <returns>SettingItems</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableBody">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.LoadDialog">
             <summary>
-            Body 형식 노드 조회
+            선택된 설정을 조회 후 설정
             </summary>
+            <returns>결과</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableHardwareAcceleration">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.Export">
             <summary>
-            Enable Hardware Acceleration
+            설정 정보를 내보내기
             </summary>
+            <returns>내보내기 결과</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ReadCylinderSide">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.Export(System.String)">
             <summary>
-            원통형 품질 개수 (12 ~ 36)
+            설정 정보를 지정한 경로에 내보내기
             </summary>
+            <param name="path">경로</param>
+            <returns>내보내기 결과</returns>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ReadSmallCylinderSide">
+        <member name="M:VIZCore3D.NET.Manager.SettingManager.ExportDialog">
             <summary>
-            작은 원통형 품질 개수 (6 ~ 36)
+            설정 정보를 지정한 파일로 내보내기
             </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SaveOnlyVisible">
-            <summary>
-            보이는 모델만 저장
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SaveVIZXMLToVIZOption">
-            <summary>
-            VIZXML 저장 시, 언로드 노드 처리 옵션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SelectionObject3DType">
-            <summary>
-            선택 가능 개체
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.Object3DSelectionOption">
-            <summary>
-            개체 선택 유형
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SelectionColor">
-            <summary>
-            선택 색상
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.PreSelect">
-            <summary>
-            Pre-Select
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableUndoRedo">
-            <summary>
-            Undo / Redo
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableModelDatabaseAuto">
-            <summary>
-            모델 데이터베이스 자동 생성
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableModelDatabaseUDA">
-            <summary>
-            모델 데이터베이스 UDA 포함
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableAnimation">
-            <summary>
-            애니메이션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableAutoFit">
-            <summary>
-            화면 자동 맞춤
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableInertiaRotate">
-            <summary>
-            연속 회전 모드
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ZoomRatio">
-            <summary>
-            확대/축소 비율
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.RotationDegree">
-            <summary>
-            회전 각도
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.RotationAxis">
-            <summary>
-            회전 축
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ScreenRotationAngleLarge">
-            <summary>
-            화면 기준 회전 각도
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ScreenRotationAngleSmall">
-            <summary>
-            화면 기준 회전 각도
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableRotateByKeyboard">
-            <summary>
-            키보드 방향키를 통한 화면 기준 회전 기능 활성화
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ScreenRotationBasedZAxis">
-            <summary>
-            키보드 방향키를 통한 화면 기준 회전 시, Z축 회전 기준
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EnableBoxSelectionFrontObjectOnly">
-            <summary>
-            영역 선택 시, 맨 앞의 (카메라에서 가까운) 개체 만 선택
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FixedZAxis">
-            <summary>
-            Z축 고정
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FixedZAxisAngle">
-            <summary>
-            Z축 각도 고정
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.Speed">
-            <summary>
-            선속도
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AngularSpeed">
-            <summary>
-            가속도 (각속도)
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarHeight">
-            <summary>
-            아바타 신장(높이)
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarCollisionRadius">
-            <summary>
-            아바타 반지름(충돌 반경)
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarBowWalkHeight">
-            <summary>
-            아바타 숙임 높이
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarCollision">
-            <summary>
-            아바타 충돌
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarGravity">
-            <summary>
-            아바타 중력
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarBowWalk">
-            <summary>
-            아바타 숙임
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarModel">
-            <summary>
-            아바타 모델
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarAutoZoom">
-            <summary>
-            아바타 자동 줌
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AvatarCollisionCylinder">
-            <summary>
-            아바타 충돌 상자 보기
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FOV">
-            <summary>
-            시야각
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.LightSourceIntensity">
-            <summary>
-            광원 세기 (광원 강도)
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.EdgeThickness">
-            <summary>
-            모서리 굵기
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SilhouetteEdgeColor">
-            <summary>
-            윤곽 색상
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SilhouetteEdgeTransparency">
-            <summary>
-            윤곽 투명도
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.XRayColorType">
-            <summary>
-            X-Ray 선택 색상
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.BackgroundMode">
-            <summary>
-            배경 유형
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.BackgroundColor1">
-            <summary>
-            배경색 1
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.BackgroundColor2">
-            <summary>
-            배경색 2
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.AmbientColor">
-            <summary>
-            음영 색상 : 기본값 [80, 80, 80]
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.DiffuseLightColor">
-            <summary>
-            기본 빛 색상 : 기본값 [255, 255, 232]
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.InputPreset">
-            <summary>
-            마우스 입력 조작 Preset
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ReviewNoteStyle">
-            <summary>
-            리뷰 노트 스타일 및 옵션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.MeasureRepeatMode">
-            <summary>
-            연속 측정 모드
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ReviewMeasureStyle">
-            <summary>
-            리뷰 측정 스타일 및 옵션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ClashTestMultiThread">
-            <summary>
-            다중 간섭 검사
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameXYPlane">
-            <summary>
-            XY Plane
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameYZPlane">
-            <summary>
-            YZ Plane
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameZXPlane">
-            <summary>
-            ZX Plane
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FramePlanView">
-            <summary>
-            Plan View
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameSectionView">
-            <summary>
-            Section View
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameElevationView">
-            <summary>
-            Elevation View
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameNumber">
-            <summary>
-            좌표값 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameBringToFront">
-            <summary>
-            모델 앞에 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameColor">
-            <summary>
-            프레임 라인 색상
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameOddNumber">
-            <summary>
-            홀수번째 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameEvenNumber">
-            <summary>
-            짝수번째 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameAutoFitSectionBox">
-            <summary>
-            단면상자에 자동 맞춤
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameMoveSectionToFrameGridInterval">
-            <summary>
-            단면 좌표간격으로 이동
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameCustomSize">
-            <summary>
-            커스텀 사이즈
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameResizable">
-            <summary>
-            커스텀 사이즈 변경 모드
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameXAxisAsPosition">
-            <summary>
-            X축 좌표로 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameYAxisAsPosition">
-            <summary>
-            Y축 좌표로 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.FrameZAxisAsPosition">
-            <summary>
-            Z축 좌표로 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SectionShowSectionLine">
-            <summary>
-            단면선 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SectionShowSectionPlane">
-            <summary>
-            단면 보기
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SectionShowSectionLineColor">
-            <summary>
-            단일색 표시
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.SectionLineColor">
-            <summary>
-            단면선 색상
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarNote">
-            <summary>
-            툴바 - 노트
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarMeasure">
-            <summary>
-            툴바 - 측정
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarSection">
-            <summary>
-            툴바 - 단면
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarClash">
-            <summary>
-            툴바 - 간섭검사
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarAnimation">
-            <summary>
-            툴바 - 애니메이션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarSimulation">
-            <summary>
-            툴바 - 시뮬레이션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ToolbarPrimitive">
-            <summary>
-            툴바 - 프리미티브
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.Shortcut">
-            <summary>
-            단축키 정의 목록
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.LogGraphicOption">
-            <summary>
-            그래픽 로그 옵션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.LogDataOption">
-            <summary>
-            데이터 로그 옵션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.LogClashOption">
-            <summary>
-            간섭검사 로그 옵션
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.DebugDataVisible">
-            <summary>
-            디버그 뷰
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.SettingManager.ModelTreeDeveloper">
-            <summary>
-            모델 트리 개발자 모드 활성화
-            </summary>
+            <returns>결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ShortcutManager">
             <summary>
@@ -52884,6 +53073,16 @@
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.Measure_COP_16">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.Measure_COP_32">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Properties.Resources.Measure_CrossPoint_16">
             <summary>
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
@@ -55065,12 +55264,35 @@
             <param name="valueIfInvalid">Value If Valid</param>
             <returns>Result Value</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Utility.IniValue.ToInt(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            To Integer
+            </summary>
+            <param name="valueIfInvalid">Value If Valid</param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns>Result Value</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Utility.IniValue.TryConvertInt(System.Int32@)">
             <summary>
             Try Convert Integer
             </summary>
             <param name="result">Result</param>
             <returns>Result Value</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.IniValue.ToFloat(System.Single)">
+            <summary>
+            To Integer
+            </summary>
+            <param name="valueIfInvalid">Value If Valid</param>
+            <returns>Result Value</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.IniValue.TryConvertFloat(System.Single@)">
+            <summary>
+            Try Convert Double
+            </summary>
+            <param name="result">Result</param>
+            <returns>Result</returns>
         </member>
         <member name="M:VIZCore3D.NET.Utility.IniValue.ToDouble(System.Double)">
             <summary>
@@ -55902,6 +56124,11 @@
             View Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.Setting">
+            <summary>
+            Setting Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.Panorama">
             <summary>
             [MANAGER] Panorama Manager
@@ -56609,7 +56836,14 @@
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarMeasureDistance6_Click(System.Object,System.EventArgs)">
             <summary>
-            BOP
+            BOP (Bottom Of Pipe)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarMeasureDistance7_Click(System.Object,System.EventArgs)">
+            <summary>
+            COP (Center Of Pipe)
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -57975,7 +58209,7 @@
             <summary>
             Constructor
             </summary>
-            <param name="tb">Underlaying textbox</param>
+            <param name="ts">Underlaying textbox</param>
             <param name="c">Inserting char</param>
         </member>
         <member name="M:FastColoredTextBoxNS.InsertCharCommand.Undo">
@@ -58002,7 +58236,7 @@
             <summary>
             Constructor
             </summary>
-            <param name="tb">Underlaying textbox</param>
+            <param name="ts">Underlaying textbox</param>
             <param name="insertedText">Text for inserting</param>
         </member>
         <member name="M:FastColoredTextBoxNS.InsertTextCommand.Undo">
@@ -58024,7 +58258,7 @@
             <summary>
             Constructor
             </summary>
-            <param name="tb">Underlaying textbox</param>
+            <param name="ts">Underlaying textbox</param>
             <param name="ranges">List of ranges for replace</param>
             <param name="insertedText">Text for inserting</param>
         </member>
@@ -58047,7 +58281,7 @@
             <summary>
             Construstor
             </summary>
-            <param name="tb">Underlaying textbox</param>
+            <param name="ts">Underlaying textbox</param>
         </member>
         <member name="M:FastColoredTextBoxNS.ClearSelectedCommand.Undo">
             <summary>
@@ -58090,9 +58324,8 @@
             <summary>
             Constructor
             </summary>
-            <param name="tb">Underlaying textbox</param>
-            <param name="ranges">List of ranges for replace</param>
-            <param name="insertedText">Text for inserting</param>
+            <param name="ts"></param>
+            <param name="iLines"></param>
         </member>
         <member name="M:FastColoredTextBoxNS.RemoveLinesCommand.Undo">
             <summary>
@@ -59106,12 +59339,14 @@
             Insert text into current selected position
             </summary>
             <param name="text"></param>
+            <param name="jumpToCaret"></param>
         </member>
         <member name="M:FastColoredTextBoxNS.FastColoredTextBox.InsertText(System.String,FastColoredTextBoxNS.Style)">
             <summary>
             Insert text into current selection position (with predefined style)
             </summary>
             <param name="text"></param>
+            <param name="style"></param>
         </member>
         <member name="M:FastColoredTextBoxNS.FastColoredTextBox.InsertText(System.String,FastColoredTextBoxNS.Style,System.Boolean)">
             <summary>
@@ -59456,6 +59691,7 @@
             Finds ranges for given regex pattern
             </summary>
             <param name="regexPattern">Regex pattern</param>
+            <param name="options"></param>
             <returns>Enumeration of ranges</returns>
         </member>
         <member name="M:FastColoredTextBoxNS.FastColoredTextBox.GetLineText(System.Int32)">
@@ -59496,7 +59732,6 @@
             <summary>
             Exapnds all folded blocks
             </summary>
-            <param name="iLine"></param>
         </member>
         <member name="M:FastColoredTextBoxNS.FastColoredTextBox.CollapseFoldingBlock(System.Int32)">
             <summary>
@@ -59752,14 +59987,12 @@
             <summary>
             Footer of page.
             Here you can use special codes: &amp;w (Window title), &amp;D, &amp;d (Date), &amp;t(), &amp;4 (Time), &amp;p (Current page number), &amp;P (Total number of pages),  &amp;&amp; (A single ampersand), &amp;b (Right justify text, Center text. If &amp;b occurs once, then anything after the &amp;b is right justified. If &amp;b occurs twice, then anything between the two &amp;b is centered, and anything after the second &amp;b is right justified).
-            More detailed see <see cref="!:http://msdn.microsoft.com/en-us/library/aa969429(v=vs.85).aspx">here</see>
             </summary>
         </member>
         <member name="P:FastColoredTextBoxNS.PrintDialogSettings.Header">
             <summary>
             Header of page
             Here you can use special codes: &amp;w (Window title), &amp;D, &amp;d (Date), &amp;t(), &amp;4 (Time), &amp;p (Current page number), &amp;P (Total number of pages),  &amp;&amp; (A single ampersand), &amp;b (Right justify text, Center text. If &amp;b occurs once, then anything after the &amp;b is right justified. If &amp;b occurs twice, then anything between the two &amp;b is centered, and anything after the second &amp;b is right justified).
-            More detailed see <see cref="!:http://msdn.microsoft.com/en-us/library/aa969429(v=vs.85).aspx">here</see>
             </summary>
         </member>
         <member name="P:FastColoredTextBoxNS.PrintDialogSettings.IncludeLineNumbers">
@@ -60465,12 +60698,14 @@
             </summary>
             <param name="startFoldingPattern">Pattern for start folding line</param>
             <param name="finishFoldingPattern">Pattern for finish folding line</param>
+            <param name="options"></param>
         </member>
         <member name="M:FastColoredTextBoxNS.Range.SetFoldingMarkers(System.String,System.Text.RegularExpressions.RegexOptions)">
             <summary>
             Sets folding markers
             </summary>
-            <param name="startEndFoldingPattern">Pattern for start and end folding line</param>
+            <param name="foldingPattern">Pattern for start and end folding line</param>
+            <param name="options"></param>
         </member>
         <member name="M:FastColoredTextBoxNS.Range.GetRanges(System.String)">
             <summary>
@@ -60484,6 +60719,7 @@
             Finds ranges for given regex pattern
             </summary>
             <param name="regexPattern">Regex pattern</param>
+            <param name="options"></param>
             <returns>Enumeration of ranges</returns>
         </member>
         <member name="M:FastColoredTextBoxNS.Range.GetRangesByLines(System.String,System.Text.RegularExpressions.RegexOptions)">
@@ -60493,6 +60729,7 @@
             This method requires less memory than GetRanges().
             </summary>
             <param name="regexPattern">Regex pattern</param>
+            <param name="options"></param>
             <returns>Enumeration of ranges</returns>
         </member>
         <member name="M:FastColoredTextBoxNS.Range.GetRangesByLines(System.Text.RegularExpressions.Regex)">
@@ -60511,6 +60748,7 @@
             This method requires less memory than GetRanges().
             </summary>
             <param name="regexPattern">Regex pattern</param>
+            <param name="options"></param>
             <returns>Enumeration of ranges</returns>
         </member>
         <member name="M:FastColoredTextBoxNS.Range.GetRanges(System.Text.RegularExpressions.Regex)">
@@ -60576,6 +60814,7 @@
             Get fragment of text around Start place. Returns maximal matched to given Style.
             </summary>
             <param name="style">Allowed style for fragment</param>
+            <param name="allowLineBreaks"></param>
             <returns>Range of found fragment</returns>
         </member>
         <member name="M:FastColoredTextBoxNS.Range.GetFragment(System.String,System.Text.RegularExpressions.RegexOptions)">
@@ -60583,6 +60822,7 @@
             Get fragment of text around Start place. Returns maximal mathed to pattern fragment.
             </summary>
             <param name="allowedSymbolsPattern">Allowed chars pattern for fragment</param>
+            <param name="options"></param>
             <returns>Range of found fragment</returns>
         </member>
         <member name="P:FastColoredTextBoxNS.Range.ReadOnly">
