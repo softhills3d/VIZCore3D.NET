@@ -19,7 +19,7 @@ namespace VIZCore3D.NET.AvatarPath
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        private Dictionary<string, VIZCore3D.NET.Data.Vector3D> CollisionPoint;
+        private Dictionary<string, VIZCore3D.NET.Data.AvatarCollision> CollisionPoint;
 
         public FrmMain()
         {
@@ -675,9 +675,19 @@ namespace VIZCore3D.NET.AvatarPath
             lvPosition.Items.Clear();
         }
 
+        private VIZCore3D.NET.Data.AvatarPose GetAvatarPos()
+        {
+            int index = cbAvatarPose.SelectedIndex;
+
+            if (index == -1) return VIZCore3D.NET.Data.AvatarPose.NORMAL;
+            else return (VIZCore3D.NET.Data.AvatarPose)(index - 1);
+        }
+
         private void btnPlay_Click(object sender, EventArgs e)
         {
             if (vizcore3d.Walkthrough.AvatarPath.IsPlaying() == true) return;
+
+            vizcore3d.Walkthrough.SetAvatarPose(GetAvatarPos());
 
             vizcore3d.Walkthrough.AvatarPath.PlayAnimation();
         }
@@ -725,15 +735,15 @@ namespace VIZCore3D.NET.AvatarPath
 
         private void btnGetPathTick_Click(object sender, EventArgs e)
         {
-            int pos = vizcore3d.Walkthrough.AvatarPath.GetAnimationTickPostion();
-            int time = vizcore3d.Walkthrough.AvatarPath.GetAnimationTime();
+            int pos = vizcore3d.Walkthrough.AvatarPath.GetAnimationTickPostion(); // 현재위치
+            int time = vizcore3d.Walkthrough.AvatarPath.GetAnimationTime();       // 전체시간
 
             tbPos.Maximum = time;
 
             lbTick.Text = string.Format("{0:#,0}", time);
             lbTickTotal.Text = string.Format("{0:#,0}", time);
 
-            CollisionPoint = new Dictionary<string, Data.Vector3D>();
+            CollisionPoint = new Dictionary<string, VIZCore3D.NET.Data.AvatarCollision>();
         }
 
         private void tbPos_Scroll(object sender, EventArgs e)
@@ -749,53 +759,162 @@ namespace VIZCore3D.NET.AvatarPath
 
             int val = tbPos.Value;
 
-            vizcore3d.Walkthrough.AvatarPath.SetAvatarPositionByTick(val);
+            vizcore3d.Walkthrough.AvatarPath.SetAvatarPositionByTick(val); // 특정 시점으로 위치 이동
 
             lbTick.Text = string.Format("{0:#,0}", val);
 
-            if (vizcore3d.Walkthrough.CreateAvatarCollision() == true)
+            if (vizcore3d.Walkthrough.DetectAvatarCollision() == true) // 아바타 기반 충돌 검사
             {
-                List<VIZCore3D.NET.Data.Vector3D> result = vizcore3d.Walkthrough.GetAvatarCollision();
+                // 아바타 충돌 위치 조회
+                List<VIZCore3D.NET.Data.AvatarCollision> result = vizcore3d.Walkthrough.GetAvatarCollision();
 
-                foreach (VIZCore3D.NET.Data.Vector3D item in result)
+                // 충돌 위치 백업
+                foreach (VIZCore3D.NET.Data.AvatarCollision item in result)
                 {
-                    if (CollisionPoint.ContainsKey(item.ToString()) == false)
-                        CollisionPoint.Add(item.ToString(), item);
+                    if (CollisionPoint.ContainsKey(item.Position.ToString()) == false)
+                        CollisionPoint.Add(item.Position.ToString(), item);
                 }
             }
         }
 
         private void btnCollistionPoint_Click(object sender, EventArgs e)
         {
+            ShowAvatarCollision();
+        }
+
+        private void ShowAvatarCollision()
+        {
             if (CollisionPoint == null) return;
 
+            // Option : Collision Node Highlight
+            bool CollisionNodeHighlight = ckCollisionNodeHighlight.Checked;
+            // Option : Collision Note Visible
+            bool CollisionNoteVisible = ckCollisionNoteVisible.Checked;
+            // Option : Collision Symbol Visible
+            bool CollisionSymbolVisible = ckCollisionSymbolVisible.Checked;
+
             vizcore3d.BeginUpdate();
-            vizcore3d.Review.Note.Clear();
-            vizcore3d.Clash.ClearResultSymbol();
+            vizcore3d.Review.Note.Clear();          // 노트 모두 지우기
+            vizcore3d.Clash.ClearResultSymbol();    // 심벌 모두 지우기
 
             int count = 0;
             List<VIZCore3D.NET.Data.Vertex3D> points = new List<VIZCore3D.NET.Data.Vertex3D>();
             List<VIZCore3D.NET.Data.ClashResultSymbols> symbols = new List<VIZCore3D.NET.Data.ClashResultSymbols>();
+            Dictionary<int, int> nodes = new Dictionary<int, int>();
 
-            foreach (KeyValuePair<string, VIZCore3D.NET.Data.Vector3D> item in CollisionPoint)
+            foreach (KeyValuePair<string, VIZCore3D.NET.Data.AvatarCollision> item in CollisionPoint)
             {
-                VIZCore3D.NET.Data.Vertex3D surface = item.Value.ToVertex3D();
-                VIZCore3D.NET.Data.Vertex3D text = item.Value.ToVertex3D();
+                VIZCore3D.NET.Data.Vertex3D surface = item.Value.Position.Clone();  // 지시선 위치
+                VIZCore3D.NET.Data.Vertex3D text = item.Value.Position.Clone();     // 텍스트 노트 위치
                 text.Z += 1000.0f;
 
-                int noteId = vizcore3d.Review.Note.AddNoteSurface(string.Format("Collision : {0}\r\n{1}", count, item.Value), text, surface);
+                if (CollisionNoteVisible == true)
+                {
+                    int noteId = vizcore3d.Review.Note.AddNoteSurface(
+                        string.Format("Collision : #{0}\r\nNode : {1}\r\nPosition : {2}"
+                        , count
+                        , item.Value.NodeIndex
+                        , item.Value.Position.ToString())
+                        , text
+                        , surface
+                        );
+                }
+
                 count++;
 
                 points.Add(surface);
                 symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Triangle);
+
+                if(nodes.ContainsKey(item.Value.NodeIndex) == false)
+                nodes.Add(item.Value.NodeIndex, item.Value.NodeIndex);
             }
 
-            vizcore3d.Clash.ShowResultSymbol(points, symbols, 10, true, Color.Yellow, false);
+            // Symbol
+            if(CollisionSymbolVisible == true)
+                vizcore3d.Clash.ShowResultSymbol(points, symbols, 10, true, Color.Yellow, false);
+
+            // Node Color Highlight
+            if(CollisionNodeHighlight == true)
+            {
+                vizcore3d.Object3D.Color.RestoreColor();
+                vizcore3d.Object3D.Color.SetColor(nodes.Keys.ToList(), Color.Red);
+            }
 
             vizcore3d.EndUpdate();
 
+            // View
             vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.ROTATE;
             vizcore3d.View.ResetView();
+        }
+
+
+        private int InspectionUnitTick = 100;
+        private int DetectCount = 0;
+        private int DetectCountCurrent = 0;
+
+        private void btnDetectCollision_Click(object sender, EventArgs e)
+        {
+            int pos = vizcore3d.Walkthrough.AvatarPath.GetAnimationTickPostion();   // Current
+            int time = vizcore3d.Walkthrough.AvatarPath.GetAnimationTime();         // All Time
+
+            CollisionPoint = new Dictionary<string, VIZCore3D.NET.Data.AvatarCollision>();
+
+            if (vizcore3d.View.Navigation != VIZCore3D.NET.Data.NavigationModes.WALK)
+                vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.WALK;
+
+            if (vizcore3d.Walkthrough.Avatar == false)
+                vizcore3d.Walkthrough.Avatar = true;
+
+            if (vizcore3d.Walkthrough.EnableAvatarAutoZoom == true)
+                vizcore3d.Walkthrough.EnableAvatarAutoZoom = false;
+
+            // Avatar Pos
+            vizcore3d.Walkthrough.SetAvatarPose(GetAvatarPos());
+
+            DetectCount = time / InspectionUnitTick;
+            DetectCountCurrent = 0;
+
+            timerDetect.Tick += TimerDetect_Tick;
+            timerDetect.Enabled = true;
+        }
+
+        private void TimerDetect_Tick(object sender, EventArgs e)
+        {
+            timerDetect.Enabled = false;
+
+            if (DetectCountCurrent < DetectCount)
+            {
+                vizcore3d.Walkthrough.AvatarPath.SetAvatarPositionByTick(DetectCountCurrent * InspectionUnitTick);
+
+                if (vizcore3d.Walkthrough.DetectAvatarCollision() == true)
+                {
+                    List<VIZCore3D.NET.Data.AvatarCollision> result = vizcore3d.Walkthrough.GetAvatarCollision();
+
+                    foreach (VIZCore3D.NET.Data.AvatarCollision item in result)
+                    {
+                        if (CollisionPoint.ContainsKey(item.Position.ToString()) == false)
+                            CollisionPoint.Add(item.Position.ToString(), item);
+                    }
+                }
+
+                DetectCountCurrent++;
+
+                timerDetect.Enabled = true;
+            }
+            else
+            {
+                DetectCount = 0;
+                DetectCountCurrent = 0;
+
+                vizcore3d.Walkthrough.ClearAvatarCollision(); // 화면에 표시된 충돌 위치 숨기기
+
+                vizcore3d.View.Navigation = VIZCore3D.NET.Data.NavigationModes.ROTATE;
+                vizcore3d.View.ResetView();
+
+                this.Cursor = Cursors.WaitCursor;
+                ShowAvatarCollision();
+                this.Cursor = Cursors.Default;
+            }
         }
     }
 }

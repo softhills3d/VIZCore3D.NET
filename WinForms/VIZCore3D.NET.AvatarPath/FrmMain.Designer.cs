@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnCollistionPoint = new System.Windows.Forms.Button();
             this.btnGetPathTick = new System.Windows.Forms.Button();
             this.btnClearPos = new System.Windows.Forms.Button();
             this.btnDeletePos = new System.Windows.Forms.Button();
@@ -68,10 +70,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.lbTickTotal = new System.Windows.Forms.Label();
             this.lbTick = new System.Windows.Forms.Label();
             this.tbPos = new System.Windows.Forms.TrackBar();
-            this.lbTickTotal = new System.Windows.Forms.Label();
-            this.btnCollistionPoint = new System.Windows.Forms.Button();
+            this.cbAvatarPose = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnDetectCollision = new System.Windows.Forms.Button();
+            this.timerDetect = new System.Windows.Forms.Timer(this.components);
+            this.ckCollisionNoteVisible = new System.Windows.Forms.CheckBox();
+            this.ckCollisionSymbolVisible = new System.Windows.Forms.CheckBox();
+            this.ckCollisionNodeHighlight = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -114,6 +122,7 @@
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnDetectCollision);
             this.groupBox5.Controls.Add(this.btnCollistionPoint);
             this.groupBox5.Controls.Add(this.btnGetPathTick);
             this.groupBox5.Controls.Add(this.btnClearPos);
@@ -121,20 +130,30 @@
             this.groupBox5.Controls.Add(this.btnAddPos);
             this.groupBox5.Controls.Add(this.ckRepeat);
             this.groupBox5.Controls.Add(this.lvPosition);
-            this.groupBox5.Location = new System.Drawing.Point(12, 543);
+            this.groupBox5.Location = new System.Drawing.Point(12, 507);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(438, 255);
+            this.groupBox5.Size = new System.Drawing.Size(438, 291);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Path Position";
+            // 
+            // btnCollistionPoint
+            // 
+            this.btnCollistionPoint.Location = new System.Drawing.Point(197, 45);
+            this.btnCollistionPoint.Name = "btnCollistionPoint";
+            this.btnCollistionPoint.Size = new System.Drawing.Size(117, 23);
+            this.btnCollistionPoint.TabIndex = 8;
+            this.btnCollistionPoint.Text = "Display Collision";
+            this.btnCollistionPoint.UseVisualStyleBackColor = true;
+            this.btnCollistionPoint.Click += new System.EventHandler(this.btnCollistionPoint_Click);
             // 
             // btnGetPathTick
             // 
             this.btnGetPathTick.Location = new System.Drawing.Point(11, 45);
             this.btnGetPathTick.Name = "btnGetPathTick";
-            this.btnGetPathTick.Size = new System.Drawing.Size(75, 23);
+            this.btnGetPathTick.Size = new System.Drawing.Size(86, 23);
             this.btnGetPathTick.TabIndex = 7;
-            this.btnGetPathTick.Text = "Tick";
+            this.btnGetPathTick.Text = "Time(Tick)";
             this.btnGetPathTick.UseVisualStyleBackColor = true;
             this.btnGetPathTick.Click += new System.EventHandler(this.btnGetPathTick_Click);
             // 
@@ -195,7 +214,7 @@
             this.lvPosition.HideSelection = false;
             this.lvPosition.Location = new System.Drawing.Point(6, 74);
             this.lvPosition.Name = "lvPosition";
-            this.lvPosition.Size = new System.Drawing.Size(426, 175);
+            this.lvPosition.Size = new System.Drawing.Size(426, 211);
             this.lvPosition.TabIndex = 1;
             this.lvPosition.UseCompatibleStateImageBehavior = false;
             this.lvPosition.View = System.Windows.Forms.View.Details;
@@ -237,9 +256,9 @@
             this.groupBox4.Controls.Add(this.btnDeletePath);
             this.groupBox4.Controls.Add(this.btnAddPath);
             this.groupBox4.Controls.Add(this.lvPath);
-            this.groupBox4.Location = new System.Drawing.Point(12, 271);
+            this.groupBox4.Location = new System.Drawing.Point(12, 302);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(438, 266);
+            this.groupBox4.Size = new System.Drawing.Size(438, 199);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Avatar Path";
@@ -357,7 +376,7 @@
             this.lvPath.HideSelection = false;
             this.lvPath.Location = new System.Drawing.Point(6, 78);
             this.lvPath.Name = "lvPath";
-            this.lvPath.Size = new System.Drawing.Size(426, 182);
+            this.lvPath.Size = new System.Drawing.Size(426, 115);
             this.lvPath.TabIndex = 0;
             this.lvPath.UseCompatibleStateImageBehavior = false;
             this.lvPath.View = System.Windows.Forms.View.Details;
@@ -378,16 +397,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnSave);
             this.groupBox3.Controls.Add(this.btnOpen);
-            this.groupBox3.Location = new System.Drawing.Point(12, 188);
+            this.groupBox3.Location = new System.Drawing.Point(12, 246);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(438, 77);
+            this.groupBox3.Size = new System.Drawing.Size(438, 50);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "File";
+            this.groupBox3.Text = "Avatar Path (Import / Export)";
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(87, 34);
+            this.btnSave.Location = new System.Drawing.Point(87, 18);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 1;
@@ -397,7 +416,7 @@
             // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(6, 34);
+            this.btnOpen.Location = new System.Drawing.Point(6, 18);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 0;
@@ -409,13 +428,18 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.ckCollisionNodeHighlight);
+            this.groupBox2.Controls.Add(this.ckCollisionSymbolVisible);
+            this.groupBox2.Controls.Add(this.ckCollisionNoteVisible);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.cbAvatarPose);
             this.groupBox2.Controls.Add(this.ckVisible);
             this.groupBox2.Location = new System.Drawing.Point(12, 118);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(438, 64);
+            this.groupBox2.Size = new System.Drawing.Size(438, 122);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Path Line";
+            this.groupBox2.Text = "Options";
             // 
             // ckVisible
             // 
@@ -424,9 +448,9 @@
             this.ckVisible.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckVisible.Location = new System.Drawing.Point(35, 31);
             this.ckVisible.Name = "ckVisible";
-            this.ckVisible.Size = new System.Drawing.Size(62, 16);
+            this.ckVisible.Size = new System.Drawing.Size(119, 16);
             this.ckVisible.TabIndex = 0;
-            this.ckVisible.Text = "Visible";
+            this.ckVisible.Text = "Path Line Visible";
             this.ckVisible.UseVisualStyleBackColor = true;
             this.ckVisible.CheckedChanged += new System.EventHandler(this.ckVisible_CheckedChanged);
             // 
@@ -518,6 +542,15 @@
             this.splitContainer2.SplitterDistance = 732;
             this.splitContainer2.TabIndex = 0;
             // 
+            // lbTickTotal
+            // 
+            this.lbTickTotal.AutoSize = true;
+            this.lbTickTotal.Location = new System.Drawing.Point(14, 44);
+            this.lbTickTotal.Name = "lbTickTotal";
+            this.lbTickTotal.Size = new System.Drawing.Size(29, 12);
+            this.lbTickTotal.TabIndex = 2;
+            this.lbTickTotal.Text = "0000";
+            // 
             // lbTick
             // 
             this.lbTick.AutoSize = true;
@@ -541,24 +574,91 @@
             this.tbPos.TickFrequency = 100;
             this.tbPos.Scroll += new System.EventHandler(this.tbPos_Scroll);
             // 
-            // lbTickTotal
+            // cbAvatarPose
             // 
-            this.lbTickTotal.AutoSize = true;
-            this.lbTickTotal.Location = new System.Drawing.Point(14, 44);
-            this.lbTickTotal.Name = "lbTickTotal";
-            this.lbTickTotal.Size = new System.Drawing.Size(29, 12);
-            this.lbTickTotal.TabIndex = 2;
-            this.lbTickTotal.Text = "0000";
+            this.cbAvatarPose.FormattingEnabled = true;
+            this.cbAvatarPose.Items.AddRange(new object[] {
+            "NORMAL",
+            "IDLE",
+            "WALK",
+            "BOW_DOWN_IDLE",
+            "BOW_DOWN_WALK",
+            "HANDS_UP",
+            "KNEEL_IDLE",
+            "SEEING_IDLE",
+            "SIT1_IDLE",
+            "SIT2_IDLE",
+            "SIT3_IDLE",
+            "CLIMBING_DOWN",
+            "CLIMBING",
+            "HANDS_HALF_UP_IDLE",
+            "HANDS_HALF_UP_READY",
+            "LAY_DOWN_IDLE",
+            "LAY_DOWN_READY",
+            "SEEING90_IDLE",
+            "SEEING90_READY"});
+            this.cbAvatarPose.Location = new System.Drawing.Point(223, 29);
+            this.cbAvatarPose.Name = "cbAvatarPose";
+            this.cbAvatarPose.Size = new System.Drawing.Size(156, 20);
+            this.cbAvatarPose.TabIndex = 9;
+            this.cbAvatarPose.Text = "NORMAL";
             // 
-            // btnCollistionPoint
+            // label3
             // 
-            this.btnCollistionPoint.Location = new System.Drawing.Point(92, 45);
-            this.btnCollistionPoint.Name = "btnCollistionPoint";
-            this.btnCollistionPoint.Size = new System.Drawing.Size(75, 23);
-            this.btnCollistionPoint.TabIndex = 8;
-            this.btnCollistionPoint.Text = "Collision";
-            this.btnCollistionPoint.UseVisualStyleBackColor = true;
-            this.btnCollistionPoint.Click += new System.EventHandler(this.btnCollistionPoint_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(172, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(34, 12);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Pose";
+            // 
+            // btnDetectCollision
+            // 
+            this.btnDetectCollision.Location = new System.Drawing.Point(116, 45);
+            this.btnDetectCollision.Name = "btnDetectCollision";
+            this.btnDetectCollision.Size = new System.Drawing.Size(75, 23);
+            this.btnDetectCollision.TabIndex = 9;
+            this.btnDetectCollision.Text = "Automatic";
+            this.btnDetectCollision.UseVisualStyleBackColor = true;
+            this.btnDetectCollision.Click += new System.EventHandler(this.btnDetectCollision_Click);
+            // 
+            // timerDetect
+            // 
+            this.timerDetect.Interval = 10;
+            // 
+            // ckCollisionNoteVisible
+            // 
+            this.ckCollisionNoteVisible.AutoSize = true;
+            this.ckCollisionNoteVisible.Location = new System.Drawing.Point(35, 64);
+            this.ckCollisionNoteVisible.Name = "ckCollisionNoteVisible";
+            this.ckCollisionNoteVisible.Size = new System.Drawing.Size(145, 16);
+            this.ckCollisionNoteVisible.TabIndex = 10;
+            this.ckCollisionNoteVisible.Text = "Collision Note Visible";
+            this.ckCollisionNoteVisible.UseVisualStyleBackColor = true;
+            // 
+            // ckCollisionSymbolVisible
+            // 
+            this.ckCollisionSymbolVisible.AutoSize = true;
+            this.ckCollisionSymbolVisible.Checked = true;
+            this.ckCollisionSymbolVisible.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckCollisionSymbolVisible.Location = new System.Drawing.Point(197, 64);
+            this.ckCollisionSymbolVisible.Name = "ckCollisionSymbolVisible";
+            this.ckCollisionSymbolVisible.Size = new System.Drawing.Size(162, 16);
+            this.ckCollisionSymbolVisible.TabIndex = 11;
+            this.ckCollisionSymbolVisible.Text = "Collision Symbol Visible";
+            this.ckCollisionSymbolVisible.UseVisualStyleBackColor = true;
+            // 
+            // ckCollisionNodeHighlight
+            // 
+            this.ckCollisionNodeHighlight.AutoSize = true;
+            this.ckCollisionNodeHighlight.Checked = true;
+            this.ckCollisionNodeHighlight.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckCollisionNodeHighlight.Location = new System.Drawing.Point(35, 89);
+            this.ckCollisionNodeHighlight.Name = "ckCollisionNodeHighlight";
+            this.ckCollisionNodeHighlight.Size = new System.Drawing.Size(159, 16);
+            this.ckCollisionNodeHighlight.TabIndex = 12;
+            this.ckCollisionNodeHighlight.Text = "Collision Node Highlight";
+            this.ckCollisionNodeHighlight.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -637,6 +737,13 @@
         private System.Windows.Forms.Label lbTick;
         private System.Windows.Forms.Label lbTickTotal;
         private System.Windows.Forms.Button btnCollistionPoint;
+        private System.Windows.Forms.ComboBox cbAvatarPose;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnDetectCollision;
+        private System.Windows.Forms.Timer timerDetect;
+        private System.Windows.Forms.CheckBox ckCollisionSymbolVisible;
+        private System.Windows.Forms.CheckBox ckCollisionNoteVisible;
+        private System.Windows.Forms.CheckBox ckCollisionNodeHighlight;
     }
 }
 

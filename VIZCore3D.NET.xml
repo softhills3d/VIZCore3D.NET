@@ -1684,6 +1684,21 @@
             <param name="vizcore">VIZCore</param>
             <param name="rawData">Raw Data</param>
         </member>
+        <member name="T:VIZCore3D.NET.Data.AvatarCollision">
+            <summary>
+            Avatar Collision Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.AvatarCollision.NodeIndex">
+            <summary>
+            Node Index
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.AvatarCollision.Position">
+            <summary>
+            Collision Position
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.AvatarEquipItem">
             <summary>
             Avatar Equip Item
@@ -52193,29 +52208,60 @@
             아바타 자세 강제 변경
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.CreateAvatarCollision">
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision">
             <summary>
             아바타와 모델간 충돌 위치 검사 및 표시
             </summary>
             <returns>충돌 여부 반환, 충돌시 true</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision(System.Collections.Generic.List{System.Int32})"/>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.View.Navigation != VIZCore3D.NET.Data.NavigationModes.WALK) return;
+                if (vizcore3d.Walkthrough.Avatar == false) return;
+                
+                if (vizcore3d.Walkthrough.DetectAvatarCollision() == false) return;
+            
+                List<VIZCore3D.NET.Data.AvatarCollision> items =
+                    vizcore3d.Walkthrough.GetAvatarCollision();
+            
+                foreach (VIZCore3D.NET.Data.AvatarCollision item in items)
+                {
+                    int index = item.NodeIndex;
+                    VIZCore3D.NET.Data.Vertex3D v = item.Position;
+                }
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.CreateAvatarCollision(System.Collections.Generic.List{System.Int32})">
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision(System.Collections.Generic.List{System.Int32})">
             <summary>
             아바타와 모델간 충돌 위치 검사 및 표시
             </summary>
             <param name="index">충돌 검사 노드 인덱스</param>
             <returns>충돌 여부 반환, 충돌시 true</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})"/>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.CreateAvatarCollision(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
             <summary>
             아바타와 모델간 충돌 위치 검사 및 표시
             </summary>
             <param name="node">충돌 검사 노드</param>
             <returns>충돌 여부 반환, 충돌시 true</returns>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision"/>
+            <seealso cref="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision(System.Collections.Generic.List{System.Int32})"/>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.ReleaseAvatarCollision">
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.ClearAvatarCollision">
             <summary>
-            아바타와 모델간 충돌 위치 끄기
+            아바타와 모델간 충돌 위치 데이터 제거
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.GetAvatarCollision">
@@ -52231,9 +52277,19 @@
             
             private void Example()
             {
-                vizcore3d.Walkthrough.CreateAvatarCollision();
+                if (vizcore3d.View.Navigation != VIZCore3D.NET.Data.NavigationModes.WALK) return;
+                if (vizcore3d.Walkthrough.Avatar == false) return;
+                
+                if (vizcore3d.Walkthrough.DetectAvatarCollision() == false) return;
             
-                List<Data.Vector3D> result = vizcore3d.Walkthrough.GetAvatarCollision();
+                List<VIZCore3D.NET.Data.AvatarCollision> items =
+                    vizcore3d.Walkthrough.GetAvatarCollision();
+            
+                foreach (VIZCore3D.NET.Data.AvatarCollision item in items)
+                {
+                    int index = item.NodeIndex;
+                    VIZCore3D.NET.Data.Vertex3D v = item.Position;
+                }
             }
             ]]>
             </code> 
