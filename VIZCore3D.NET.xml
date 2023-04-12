@@ -38151,6 +38151,50 @@
             <param name="excludeHiddenObjects">숨겨진 개체는 제외하고 간소화 수행 후, 내보내기 파일에 숨겨진 개체는 포함</param>
             <param name="showFileInExplorer">변환 후, 탐색기로 조회</param>
             <returns>변환 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                List<string> keyword = new List<string>();
+                keyword.Add("(OBST)");
+                keyword.Add("(INSU)");
+            
+                List<VIZCore3D.NET.Data.Node> nodes =
+                    vizcore3d.Object3D.Find.QuickSearch(
+                        keyword /* Keyword */
+                        , false /* Join Codition : True(AND), False(OR) */
+                        , false /* Assembly Only : True(Assembly Only), False(All) */
+                        , false /* Visible Only : True(Visible Only), False(All) */
+                        , false /* Selected Only : True(Selected Only), False(All) */
+                        , false /* Full Keyword Match : True(Full Match), False(Contains) */
+                        , false /* Contain NodePath : True(Contain), False(Except) */
+                        );
+            
+                if (nodes.Count == 0) return;
+            
+                vizcore3d.Object3D.Show(nodes, false);
+            
+                string output = "C:\\Temp\\Output.viz";
+            
+                vizcore3d.Model.ExportSimplifiedModel(
+                    output      /* OUTPUT */
+                    , false     /* Keep Structure */
+                    , VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit.TRIANGLE_SET_MESH
+                    , 1024      /* Virtual Screen Size */
+                    , 1         /* Virtual Screen Count */
+                    , VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects.EXPORT_VISIBLE
+                    , true
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSimplifiedModel(System.String,System.Boolean,System.Boolean,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Int32,VIZCore3D.NET.Manager.ModelManager.SimplifiedUnit,System.Int32,System.Int32,VIZCore3D.NET.Manager.ModelManager.ExcludeHiddenObjects,System.Boolean)">
             <summary>
