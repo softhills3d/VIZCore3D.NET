@@ -739,6 +739,11 @@
             PMI (Product Manufacturing Information) Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.Projection2D">
+            <summary>
+            Projection 2D Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Controls.ViewControl.Area">
             <summary>
             Area Manager
@@ -6203,6 +6208,21 @@
             Inside
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.Dimensions">
+            <summary>
+            Dimensions : 3D, 2D
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Dimensions.D3">
+            <summary>
+            3D
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Dimensions.D2">
+            <summary>
+            2D
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -7421,6 +7441,44 @@
             검색어 일치 여부
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.Line3D">
+            <summary>
+            Line Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.Start3D">
+            <summary>
+            시작점 (3D)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.End3D">
+            <summary>
+            끝점 (3D)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.Start2D">
+            <summary>
+            시작점 (2D)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.End2D">
+            <summary>
+            끝점 (2D)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Line3D.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns>String Positions</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Line3D.ToString(VIZCore3D.NET.Data.Dimensions)">
+            <summary>
+            ToString
+            </summary>
+            <param name="d">Dimensions</param>
+            <returns>String Positions</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Matrix3D">
             <summary>
             Matrix 4x4 Class
@@ -7873,6 +7931,31 @@
             </summary>
             <param name="reviewPosition">Review Postion Data</param>
             <param name="vertex">New Position</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.MeasureProjectedArea">
+            <summary>
+            Measure Projected Area Data
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Projected">
+            <summary>
+            투영 면적
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Inner">
+            <summary>
+            내부 면적
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Outer">
+            <summary>
+            외부 면적
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Image">
+            <summary>
+            이미지 정보
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.MeasureStyle">
             <summary>
@@ -22858,6 +22941,103 @@
             아바타 이동경로 저장 다이얼로그 실행
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.LanguageManager">
+            <summary>
+            Language Manager
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.LanguageManager.LanguageType">
+            <summary>
+            Language Type
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.KOREAN">
+            <summary>
+            한국어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.ENGLISH">
+            <summary>
+            영어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.CHINESE">
+            <summary>
+             중국어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.JAPANESE">
+            <summary>
+            일본어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.doc">
+            <summary>
+            Propery Control DisplayName 다국어 처리
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.LanguageManager.Language">
+            <summary>
+            Language
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.LanguageManager.XMLPath">
+            <summary>
+            XML Path
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
+            <summary>
+            로드여부
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.dicLanguage">
+            <summary>
+            Language dictionary
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.Load(System.String)">
+            <summary>
+            Xml파일 로드
+            </summary>
+            <param name="XmlPath"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.InitLanguageData(System.Xml.XmlNode)">
+            <summary>
+            Init Language Data
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageType(System.String)">
+            <summary>
+            Get Language Type
+            </summary>
+            <param name="strLanguage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String)">
+            <summary>
+            Get Resource
+            </summary>
+            <param name="strKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
+            <summary>
+            Get String
+            </summary>
+            <param name="ResouceCode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
+            <summary>
+            GetString
+            </summary>
+            <param name="ResouceCode"></param>
+            <param name="Language"></param>
+            <returns></returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
             <summary>
             Comment Manager Class
@@ -24141,11 +24321,6 @@
             Construction
             </summary>
             <param name="vizcore">VIZCore3D.NET.Interop</param>
-        </member>
-        <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
-            <summary>
-            Propery Control DisplayName 다국어 처리
-            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MaterialManager">
             <summary>
@@ -31124,6 +31299,23 @@
             Show Print Preview Dialog
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.Projection2DManager">
+            <summary>
+            Projection 2D Manager
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Projection2DManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Projection2DManager.GetProjection2DLines">
+            <summary>
+            현재 화면 방향의 2D 투영 라인 반환
+            </summary>
+            <returns>라인정보 반환</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ScreenAxisRotationManager">
             <summary>
             Screen Axis Rotation Manager
@@ -36166,6 +36358,21 @@
             투영면적 추가
             </summary>
             <param name="plane">평면</param>
+            <returns>측정(리뷰) 아이디(ID)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedArea(System.Int32)">
+            <summary>
+            투영면적 정보 반환
+            </summary>
+            <param name="reviewID">측정(리뷰) 아이디(ID)</param>
+            <returns>투영면적 정보(실패시 null)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedArea(VIZCore3D.NET.Data.Planes)">
+            <summary>
+            투영면적 정보 반환
+            </summary>
+            <param name="plane">평면</param>
+            <returns>투영면적 정보(실패시 null)</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddProjectedAreaByPickSurface">
             <summary>
@@ -38948,6 +39155,35 @@
             Rebuild BoundingBox
             </summary>
             <param name="method">Method</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.RemoveNodes(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            필터 문자열을 포함하는 노드를 제거하고, VIZ 파일을 저장
+            </summary>
+            <param name="input">입력 파일</param>
+            <param name="filter">검색 문자열 (포함)</param>
+            <param name="output">출력 파일</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<string> filter = new List<string>();
+                filter.Add("(OBST)");
+                filter.Add("(INSU)");
+            
+                string input = "C:\\Temp\\INPUT.viz";
+                string output = "C:\\Temp\\OUTPUT.viz";
+            
+                bool result = vizcore3d.Model.RemoveNodes(input, filter, output);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.GetModelStructureDataSet">
             <summary>
@@ -49616,6 +49852,11 @@
             [MANAGER] 모델 비교 뷰 모드 관리
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.Toolbar">
+            <summary>
+            Toolbar 관리
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.PreSelect">
             <summary>
             Pre-Select Option
@@ -51408,6 +51649,28 @@
             <param name="height">높이 (중심점에서 높이)</param>
             <param name="angle">카메라 각도</param>
             <param name="rotateModel">모델 회전 각도</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.ViewToolbarManager">
+            <summary>
+            View Toolbar Manager Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewToolbarManager.Enable">
+            <summary>
+            View Toolbar 활성화/비활성화
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.SetImage(System.String)">
+            <summary>
+            툴바 이미지 변경
+            </summary>
+            <param name="filePath"></param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>
@@ -56369,6 +56632,11 @@
             [MANAGER] PMI (Product Manufacturing Information) Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.Projection">
+            <summary>
+            [MANAGER] Projection Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ModelTree">
             <summary>
             ModelTree Manager
@@ -56377,11 +56645,6 @@
         <member name="P:VIZCore3D.NET.VIZCore3DControl.Area">
             <summary>
             [MANAGER] Area Manager
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.VIZCore3DControl.Language">
-            <summary>
-            [MANAGER] Language Manager
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.GenericData">
