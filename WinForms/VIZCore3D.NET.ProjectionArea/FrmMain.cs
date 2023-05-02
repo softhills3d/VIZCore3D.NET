@@ -19,6 +19,8 @@ namespace VIZCore3D.NET.ProjectionArea
         /// </summary>
         public VIZCore3D.NET.VIZCore3DControl vizcore3d { get; set; }
 
+        public DrawProjectionControl DrawingControl { get; set; }
+
         public FrmMain()
         {
             InitializeComponent();
@@ -29,10 +31,14 @@ namespace VIZCore3D.NET.ProjectionArea
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            tpView.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
+
+            DrawingControl = new DrawProjectionControl();
+            DrawingControl.Dock = DockStyle.Fill;
+            tpDrawing.Controls.Add(DrawingControl);
         }
 
         // ================================================
@@ -492,7 +498,49 @@ namespace VIZCore3D.NET.ProjectionArea
 
         private void ProjectionPlane(VIZCore3D.NET.Data.Planes plane)
         {
-            
+            VIZCore3D.NET.Data.MeasureProjectedArea area = vizcore3d.Review.Measure.GetProjectedArea(plane);
+
+            txtProjectionArea.Text = area.Projected.ToString();
+            txtTotalArea.Text = area.Outer.ToString();
+            txtEmptyArea.Text = area.Inner.ToString();
+
+            pbProjection.Image = area.Image;
+
+
+            VIZCore3D.NET.Data.CameraData camera = vizcore3d.View.GetCameraData();
+
+            switch (plane)
+            {
+                case Data.Planes.YZ:
+                    vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.X_MINUS);
+                    break;
+                case Data.Planes.ZX:
+                    vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Y_MINUS);
+                    break;
+                case Data.Planes.XY:
+                    vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.Z_MINUS);
+                    break;
+                default:
+                    break;
+            }            
+
+            List<VIZCore3D.NET.Data.Line3D> lines = vizcore3d.Projection.GetProjection2DLines();
+
+            vizcore3d.View.SetCameraData(camera, false);
+
+
+            StringBuilder sb3D = new StringBuilder();
+            StringBuilder sb2D = new StringBuilder();
+            foreach (VIZCore3D.NET.Data.Line3D line in lines)
+            {
+                sb3D.AppendLine(line.ToString(VIZCore3D.NET.Data.Dimensions.D3));
+                sb2D.AppendLine(line.ToString(VIZCore3D.NET.Data.Dimensions.D2));
+            }
+
+            txtPoints3D.Text = sb3D.ToString();
+            txtPoints2D.Text = sb2D.ToString();
+
+            DrawingControl.SetData(lines);
         }
     }
 }
