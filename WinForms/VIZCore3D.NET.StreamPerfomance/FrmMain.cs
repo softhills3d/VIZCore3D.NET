@@ -116,7 +116,7 @@ namespace VIZCore3D.NET.StreamPerfomance
             // Init. VIZCore3D.NET
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
-            InitializeVIZCore3DToolbar();
+            //InitializeVIZCore3DToolbar();
         }
         #endregion
 
@@ -554,5 +554,80 @@ namespace VIZCore3D.NET.StreamPerfomance
             }
         }
         #endregion
+
+
+        // ================================================
+        // Function
+        // ================================================
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = vizcore3d.Model.OpenFilter;
+            dlg.Multiselect = true;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            lvFiles.BeginUpdate();
+            lvFiles.Items.Clear();
+
+            foreach (string file in dlg.FileNames)
+            {
+                string name = System.IO.Path.GetFileName(file);
+                ListViewItem lvi = new ListViewItem(new string[] { name });
+                lvi.Tag = file;
+                
+                lvFiles.Items.Add(lvi);
+            }
+
+            lvFiles.EndUpdate();
+
+            txtLog.Text = String.Empty;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            int count = lvFiles.Items.Count;
+
+            {
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+                for (int i = 0; i < count; i++)
+                {
+                    string path = (string)lvFiles.Items[i].Tag;
+                    VIZCore3D.NET.Data.StreamData item = new VIZCore3D.NET.Data.StreamData(path);
+                    stream.Add(item);
+                }
+
+                vizcore3d.Model.Close();
+                vizcore3d.Model.AddStream(stream);
+                sw.Stop();
+                AddLog("TOTAL", sw.ElapsedMilliseconds);
+            }
+
+            for (int i = 0; i < count; i++)
+            {
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+
+                for (int j = 0; j < i; j++) 
+                {
+                    string path = (string)lvFiles.Items[j].Tag;
+                    VIZCore3D.NET.Data.StreamData item = new VIZCore3D.NET.Data.StreamData(path);
+                    stream.Add(item);
+                }
+
+                vizcore3d.Model.Close();
+                vizcore3d.Model.AddStream(stream);
+                sw.Stop();
+                AddLog(string.Format("PARTIAL [{0}]", i + 1), sw.ElapsedMilliseconds);
+            }
+        }
+
+        private void AddLog(string title, long elapsedMilliseconds)
+        {
+            string msg = string.Format("{0} : {1:#,0}\r\n", title, elapsedMilliseconds);
+            txtLog.Text += msg;
+        }
     }
 }
