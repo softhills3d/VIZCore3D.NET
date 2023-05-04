@@ -22858,6 +22858,95 @@
             아바타 이동경로 저장 다이얼로그 실행
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.LanguageManager">
+            <summary>
+            Language Manager
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.LanguageManager.LanguageType">
+            <summary>
+            Language Type
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.KOREAN">
+            <summary>
+            한국어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.ENGLISH">
+            <summary>
+            영어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.CHINESE">
+            <summary>
+             중국어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.JAPANESE">
+            <summary>
+            일본어
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.doc">
+            <summary>
+            Propery Control DisplayName 다국어 처리
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.LanguageManager.Language">
+            <summary>
+            Language
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.LanguageManager.XMLPath">
+            <summary>
+            XML Path
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
+            <summary>
+            로드여부
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.dicLanguage">
+            <summary>
+            Language dictionary
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.Load(System.String)">
+            <summary>
+            Xml파일 로드
+            </summary>
+            <param name="XmlPath"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.InitLanguageData(System.Xml.XmlNode)">
+            <summary>
+            Init Language Data
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageType(System.String)">
+            <summary>
+            Get Language Type
+            </summary>
+            <param name="strLanguage"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String)">
+            <summary>
+            Get Resource
+            </summary>
+            <param name="strKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
+            <summary>
+            Get String
+            </summary>
+            <param name="ResouceCode"></param>
+            <returns></returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
             <summary>
             Comment Manager Class
@@ -24141,11 +24230,6 @@
             Construction
             </summary>
             <param name="vizcore">VIZCore3D.NET.Interop</param>
-        </member>
-        <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
-            <summary>
-            Propery Control DisplayName 다국어 처리
-            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MaterialManager">
             <summary>
@@ -38949,6 +39033,35 @@
             </summary>
             <param name="method">Method</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.RemoveNodes(System.String,System.Collections.Generic.List{System.String},System.String)">
+            <summary>
+            필터 문자열을 포함하는 노드를 제거하고, VIZ 파일을 저장
+            </summary>
+            <param name="input">입력 파일</param>
+            <param name="filter">검색 문자열 (포함)</param>
+            <param name="output">출력 파일</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                List<string> filter = new List<string>();
+                filter.Add("(OBST)");
+                filter.Add("(INSU)");
+            
+                string input = "C:\\Temp\\INPUT.viz";
+                string output = "C:\\Temp\\OUTPUT.viz";
+            
+                bool result = vizcore3d.Model.RemoveNodes(input, filter, output);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.GetModelStructureDataSet">
             <summary>
             모델 구조 정보를 DataSet 형식으로 반환
@@ -49616,6 +49729,11 @@
             [MANAGER] 모델 비교 뷰 모드 관리
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.Toolbar">
+            <summary>
+            Toolbar 관리
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.PreSelect">
             <summary>
             Pre-Select Option
@@ -51408,6 +51526,28 @@
             <param name="height">높이 (중심점에서 높이)</param>
             <param name="angle">카메라 각도</param>
             <param name="rotateModel">모델 회전 각도</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.ViewToolbarManager">
+            <summary>
+            View Toolbar Manager Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewToolbarManager.Enable">
+            <summary>
+            View Toolbar 활성화/비활성화
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.SetImage(System.String)">
+            <summary>
+            툴바 이미지 변경
+            </summary>
+            <param name="filePath"></param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>
@@ -56377,11 +56517,6 @@
         <member name="P:VIZCore3D.NET.VIZCore3DControl.Area">
             <summary>
             [MANAGER] Area Manager
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.VIZCore3DControl.Language">
-            <summary>
-            [MANAGER] Language Manager
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.GenericData">
