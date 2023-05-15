@@ -652,7 +652,7 @@ namespace VIZCore3D.NET.ImageAnalysis
             vizcore3d.View.MarineAxis.Visible = false;
 
             // 뷰 툴바 숨기기
-            vizcore3d.View.ViewToolbar = false;
+            vizcore3d.View.Toolbar.Enable = false;
 
             // 모델 색상 변경
             vizcore3d.Object3D.Color.SetColor(new List<int>() { 0 }, Color.Gray); // 전체 모델
