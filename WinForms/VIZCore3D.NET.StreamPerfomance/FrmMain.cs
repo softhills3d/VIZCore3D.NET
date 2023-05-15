@@ -588,6 +588,8 @@ namespace VIZCore3D.NET.StreamPerfomance
             int count = lvFiles.Items.Count;
 
             {
+                vizcore3d.Model.Close();
+
                 System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
                 List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
@@ -597,27 +599,29 @@ namespace VIZCore3D.NET.StreamPerfomance
                     VIZCore3D.NET.Data.StreamData item = new VIZCore3D.NET.Data.StreamData(path);
                     stream.Add(item);
                 }
-
-                vizcore3d.Model.Close();
+                
                 vizcore3d.Model.AddStream(stream);
                 sw.Stop();
                 AddLog("TOTAL", sw.ElapsedMilliseconds);
+
+                vizcore3d.Model.Close();
             }
 
             for (int i = 0; i < count; i++)
             {
+                vizcore3d.Model.Close();
+
                 System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
                 sw.Start();
                 List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
 
-                for (int j = 0; j < i; j++) 
+                for (int j = 0; j <= i; j++) 
                 {
                     string path = (string)lvFiles.Items[j].Tag;
                     VIZCore3D.NET.Data.StreamData item = new VIZCore3D.NET.Data.StreamData(path);
                     stream.Add(item);
                 }
-
-                vizcore3d.Model.Close();
+                
                 vizcore3d.Model.AddStream(stream);
                 sw.Stop();
                 AddLog(string.Format("PARTIAL [{0}]", i + 1), sw.ElapsedMilliseconds);
