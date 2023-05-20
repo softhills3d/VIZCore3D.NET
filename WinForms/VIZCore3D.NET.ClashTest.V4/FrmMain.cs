@@ -139,6 +139,8 @@ namespace VIZCore3D.NET.ClashTest.V4
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
+            vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
         }
         #endregion
 
@@ -148,6 +150,121 @@ namespace VIZCore3D.NET.ClashTest.V4
         private void btnOpen_Click(object sender, EventArgs e)
         {
             vizcore3d.Model.OpenFileDialog();
+        }
+
+        private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
+        {
+            ClearClashResult();
+
+            if (e.Node.Count == 0) return;
+
+            if (ckClashEnable.Checked == false) return;
+
+            ExecuteClashTest(e.Node);
+        }
+
+        private void ClearClashResult()
+        {
+            vizcore3d.BeginUpdate();
+
+            vizcore3d.Object3D.Color.RestoreColor();
+
+            vizcore3d.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3d.View.XRay.Clear();
+
+            vizcore3d.Clash.ClearResultSymbol();
+
+            vizcore3d.EndUpdate();
+        }
+
+        private VIZCore3D.NET.Data.ClashTest clash;
+
+        private void ExecuteClashTest(List<VIZCore3D.NET.Data.Node> nodes)
+        {
+            vizcore3d.Clash.Clear();
+
+            clash = new VIZCore3D.NET.Data.ClashTest();
+
+            clash.Name = "CLASH TEST #1";
+            clash.TestKind = VIZCore3D.NET.Data.ClashTest.ClashTestKind.SELECTED_MODEL_VS_OTHER;
+
+            clash.UseClearanceValue = false;
+            clash.ClearanceValue = 3.0f;
+            clash.UseRangeValue = false;
+            clash.RangeValue = 2.0f;
+            clash.UsePenetrationTolerance = true;
+            clash.PenetrationTolerance = 1.0f;
+
+            clash.VisibleOnly = false;
+            clash.BottomLevel = 2;
+
+            clash.GroupA = nodes;
+
+            bool result = vizcore3d.Clash.Add(clash);
+
+            if (result == false) return;
+
+            vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
+        }
+
+        private void Clash_OnClashTestFinishedEvent(object sender, Event.EventManager.ClashEventArgs e)
+        {
+            int id = e.ID;
+
+            List<VIZCore3D.NET.Data.ClashTestResultItem> items =
+                vizcore3d.Clash.GetResultItem(clash, VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART);
+
+            if (items == null || items.Count == 0) return;
+
+            List<int> nodeA = new List<int>();
+            List<int> nodeB = new List<int>();
+            List<int> node = new List<int>();
+
+            List<VIZCore3D.NET.Data.Vertex3D> v = new List<VIZCore3D.NET.Data.Vertex3D>();
+            List<VIZCore3D.NET.Data.ClashResultSymbols> symbols = new List<VIZCore3D.NET.Data.ClashResultSymbols>();
+
+            foreach (VIZCore3D.NET.Data.ClashTestResultItem item in items)
+            {
+                nodeA.Add(item.NodeIndexA);
+                nodeB.Add(item.NodeIndexB);
+
+                node.Add(item.NodeIndexA);
+                node.Add(item.NodeIndexB);
+
+                v.Add(item.HotPoint);
+
+                switch (item.ResultKind)
+                {
+                    case VIZCore3D.NET.Data.ClashTestResultItem.ClashResultKind.PROXIMITY:
+                        symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Circle);
+                        break;
+                    case VIZCore3D.NET.Data.ClashTestResultItem.ClashResultKind.CONTACT:
+                        symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Square);
+                        break;
+                    case VIZCore3D.NET.Data.ClashTestResultItem.ClashResultKind.PENETRATION:
+                        symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Triangle);
+                        break;
+                    case VIZCore3D.NET.Data.ClashTestResultItem.ClashResultKind.CLEARANCE:
+                        symbols.Add(VIZCore3D.NET.Data.ClashResultSymbols.Circle);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            vizcore3d.BeginUpdate();
+
+            vizcore3d.Object3D.Color.SetColor(nodeA, Color.Blue);
+            vizcore3d.Object3D.Color.SetColor(nodeB, Color.Red);
+
+            if (vizcore3d.View.XRay.Enable == false)
+                vizcore3d.View.XRay.Enable = true;
+
+            vizcore3d.View.XRay.Select(node, true, false);
+
+            vizcore3d.Clash.ShowResultSymbol(v, symbols);
+
+            vizcore3d.EndUpdate();
         }
     }
 }
