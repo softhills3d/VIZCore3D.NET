@@ -23344,14 +23344,14 @@
             Language Manager
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.LanguageManager.Language">
+        <member name="P:VIZCore3D.NET.Manager.LanguageManager.LanguageCode">
             <summary>
-            Language
+            Language Code
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.LanguageManager.XMLPath">
+        <member name="P:VIZCore3D.NET.Manager.LanguageManager.LanguagePath">
             <summary>
-            XML파일 경로
+            Language XML 파일 경로
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
@@ -23368,57 +23368,57 @@
             <summary>
             Xml파일 로드
             </summary>
-            <param name="XmlPath">XML파일 경로</param>
+            <param name="path">Language XML 파일 경로</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.InitLanguageData(System.Xml.XmlNode)">
             <summary>
             Language Data 초기화
             </summary>
             <param name="node">Language 노드</param>
-            <returns></returns>
+            <returns>초기화 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageType(System.String)">
             <summary>
             언어 타입 가져오기
             </summary>
-            <param name="strLanguage">Language 노드의 type 값</param>
-            <returns></returns>
+            <param name="languageCode">Language Code</param>
+            <returns>현재 설정된 언어 코드</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String)">
             <summary>
             ResourceCode 가져오기
             </summary>
-            <param name="strKey"> ResourceCode </param>
-            <returns></returns>
+            <param name="resouceCode">Resource Code</param>
+            <returns>다국어 문자열 반환</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String,System.String)">
             <summary>
             ResourceCode 가져오기
             </summary>
-            <param name="strKey"></param>
-            <param name="strSourceData"></param>
-            <returns></returns>
+            <param name="resouceCode">다국어 문자열 코드</param>
+            <param name="sourceText">원본 문자열</param>
+            <returns>다국어 문자열</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageList">
             <summary>
             언어 list 가져오기
             </summary>
-            <returns></returns>
+            <returns>언어 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
             <summary>
             ResourceCode 가져오기
             </summary>
-            <param name="ResouceCode"> ResourceCode </param>
-            <returns></returns>
+            <param name="resouceCode">Resource Code</param>
+            <returns>다국어 문자열</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
             <summary>
             번역된 내용 가져오기
             </summary>
-            <param name="ResouceCode"> ResourceCode </param>
-            <param name="Language"> 언어 타입 </param>
-            <returns></returns>
+            <param name="resouceCode">Resource Code</param>
+            <param name="languageCode">언어 타입</param>
+            <returns>다국어 문자열</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
             <summary>
