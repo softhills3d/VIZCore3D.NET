@@ -153,6 +153,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Controls.LicenseServerInformationControl.SetLicenseServerInformationControl">
+            <summary>
+            LicenseServerInformationControl 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Controls.LicenseServerInformationControl.components">
             <summary> 
             필수 디자이너 변수입니다.
@@ -277,6 +282,16 @@
         <member name="M:VIZCore3D.NET.Controls.ModelTreeControl.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Controls.ModelTreeControl.SetModelTreeContextMenu">
+            <summary>
+            ModelTreeContextMenu - 1개의 모델 선택 - 우클릭 ContextMenu 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Controls.ModelTreeControl.SetModelTreeMultiContextMenu">
+            <summary>
+            ModelTreeMultiControl - 1개 이상의 모델 선택 - 우클릭 / 모델트리 판넬 - 우클릭  ContextMenu 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Controls.ModelTreeControl.SetModelTreeControlManager">
@@ -446,6 +461,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Controls.StructureBrowserControl.SetStructureBrowserControl">
+            <summary>
+            StructureBrowserControl 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Controls.StructureBrowserControl.components">
             <summary> 
             필수 디자이너 변수입니다.
@@ -481,6 +501,11 @@
         <member name="M:VIZCore3D.NET.Controls.UDAControl.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.UDAManager)">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Controls.UDAControl.SetUDAControl">
+            <summary>
+            UDAControl 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Controls.UDAControl.GetRowData(System.String)">
@@ -585,6 +610,11 @@
         <member name="M:VIZCore3D.NET.Controls.UserViewControl.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Controls.UserViewControl.SetUserViewControl">
+            <summary>
+            UserViewControl 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Controls.UserViewControl.components">
@@ -737,6 +767,11 @@
         <member name="P:VIZCore3D.NET.Controls.ViewControl.PMI">
             <summary>
             PMI (Product Manufacturing Information) Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.Projection2D">
+            <summary>
+            Projection 2D Manager
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Controls.ViewControl.Area">
@@ -1267,6 +1302,11 @@
             <param name="pageNumberText">Page Number Text</param>
             <param name="orientation">Page Orientation</param>
         </member>
+        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.SetPrintDocumentControl">
+            <summary>
+            PrintDocumentControl 다국어 셋팅
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.SetPreviewToolStrip">
             <summary>
             Sets the preview tool strip.
@@ -1314,6 +1354,11 @@
             <param name="footerLeft">Footer  - Left</param>
             <param name="footerRight">Footer - Right</param>
             <param name="orientation">Page Orientation</param>
+        </member>
+        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentForm.SetPrintDocumentForm">
+            <summary>
+            PrintDocumentForm 다국어 셋팅
+            </summary>
         </member>
         <member name="F:VIZCore3D.NET.PrintControl.PrintDocumentForm.components">
             <summary>
@@ -3658,6 +3703,11 @@
             NODE
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.ExternalLinkKind.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.NodeFilterKind">
             <summary>
             검색 노드 유형
@@ -4924,6 +4974,9 @@
         </member>
         <member name="F:VIZCore3D.NET.Data.ModelExportFileType.U3D">
             U3D
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ModelExportFileType.VIZWide3D_Reviews">
+            VIZWide3D(With Review)
         </member>
         <member name="T:VIZCore3D.NET.Data.ExportStlFileType">
             <summary>
@@ -6203,6 +6256,21 @@
             Inside
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.Dimensions">
+            <summary>
+            Dimensions : 3D, 2D
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Dimensions.D3">
+            <summary>
+            3D
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Dimensions.D2">
+            <summary>
+            2D
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -7421,6 +7489,44 @@
             검색어 일치 여부
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.Line3D">
+            <summary>
+            Line Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.Start3D">
+            <summary>
+            시작점 (3D)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.End3D">
+            <summary>
+            끝점 (3D)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.Start2D">
+            <summary>
+            시작점 (2D)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Line3D.End2D">
+            <summary>
+            끝점 (2D)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Line3D.ToString">
+            <summary>
+            ToString
+            </summary>
+            <returns>String Positions</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.Line3D.ToString(VIZCore3D.NET.Data.Dimensions)">
+            <summary>
+            ToString
+            </summary>
+            <param name="d">Dimensions</param>
+            <returns>String Positions</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Data.Matrix3D">
             <summary>
             Matrix 4x4 Class
@@ -7873,6 +7979,31 @@
             </summary>
             <param name="reviewPosition">Review Postion Data</param>
             <param name="vertex">New Position</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.MeasureProjectedArea">
+            <summary>
+            Measure Projected Area Data
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Projected">
+            <summary>
+            투영 면적
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Inner">
+            <summary>
+            내부 면적
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Outer">
+            <summary>
+            외부 면적
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Image">
+            <summary>
+            이미지 정보
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.MeasureStyle">
             <summary>
@@ -11268,6 +11399,38 @@
             </summary>
             <param name="path">VIZ File Path</param>
         </member>
+        <member name="M:VIZCore3D.NET.Data.StreamData.GetStreams(System.String[])">
+            <summary>
+            Get Stream Data Collection
+            </summary>
+            <param name="fileNames">File List</param>
+            <returns>Stream Data Collection</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = true;
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                List<VIZCore3D.NET.Data.StreamData> stream = VIZCore3D.NET.Data.StreamData.GetStreams(dlg.FileNames);
+            
+                vizcore3d.Model.AddStream(stream);
+            
+                string output = "C:\\Temp\\Stream.viz";
+            
+                vizcore3d.Model.ExportVIZ(output);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="T:VIZCore3D.NET.Data.SurfaceNoteDefaultData">
             <summary>
             Surface Note Dialog Default Data Class
@@ -12499,6 +12662,11 @@
             </summary>
             <param name="info">Model Information</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AboutDialog.SetAboutDialog">
+            <summary>
+            AboutDialo 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Dialogs.AboutDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
             <summary>
             ProcessDialogKey
@@ -12549,6 +12717,11 @@
             </summary>
             <param name="nodeName">Node Name</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AddNodeDialog.SetAddNodeDialog">
+            <summary>
+            AddNodeDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.AddNodeDialog.components">
             <summary>
             Required designer variable.
@@ -12597,6 +12770,11 @@
             </summary>
             <param name="nodeName">Node Name</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AddNodeKindDialog.SetAddNodeKindDialog">
+            <summary>
+            AddNodeKindDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.AddNodeKindDialog.components">
             <summary>
             Required designer variable.
@@ -12632,6 +12810,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.AddNodeMultiDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AddNodeMultiDialog.SetAddNodeMultiDialog">
+            <summary>
+            AddNodeMultiDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.AddNodeMultiDialog.components">
@@ -12686,6 +12869,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AddPrimitiveDialog.SetAddPrimitiveDialog">
+            <summary>
+            AddPrimitiveDialog
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.AddPrimitiveDialog.components">
             <summary>
             Required designer variable.
@@ -12716,6 +12904,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.AlphaDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AlphaDialog.SetAlphaDialog">
+            <summary>
+            AlphaDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.AlphaDialog.components">
@@ -12750,6 +12943,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.AssemblyBrowserDialog.SetAssemblyBrowserDialog">
+            <summary>
+            AssemblyBrowserDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.AssemblyBrowserDialog.components">
             <summary>
             Required designer variable.
@@ -12775,6 +12973,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.ConvertVIZDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ConvertVIZDialog.SetConvertVIZDialog">
+            <summary>
+            ConvertVIZDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.ConvertVIZDialog.components">
@@ -12815,6 +13018,11 @@
             </summary>
             <param name="dgnQuality">DGN Quality : 0(Default). 0 ~ 8</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.DgnDeviationDialog.SetDgnDeviationDialog">
+            <summary>
+            DgnDeviationDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.DgnDeviationDialog.components">
             <summary>
             Required designer variable.
@@ -12840,6 +13048,16 @@
         <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.#ctor(VIZCore3D.NET.Manager.DisassemblyManager,System.Collections.Generic.List{System.String})">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.SetDisassembleAssemblyDialogTap">
+            <summary>
+            DisassembleAssemblyDialogTap 창 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.SetDisassembleAssemblyDialog">
+            <summary>
+            DisassembleAssemblyDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.components">
@@ -12880,6 +13098,11 @@
             </summary>
             <param name="text">Note Text</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EditNoteDialog.SetEditNoteDialog">
+            <summary>
+            EditNoteDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.EditNoteDialog.components">
             <summary>
             Required designer variable.
@@ -12905,6 +13128,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.ExportDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportDialog.SetExportDialog">
+            <summary>
+            ExportDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.ExportDialog.components">
@@ -12934,6 +13162,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportStructureDialog.SetExportStructureDialog">
+            <summary>
+            ExportStructureDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.ExportStructureDialog.components">
             <summary>
             Required designer variable.
@@ -12959,6 +13192,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.SetExportTopViewImageDialog">
+            <summary>
+            ExportTopViewImageDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.ExportTopViewImageDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
@@ -13000,6 +13238,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ExportVIZxDialog.SetExportVIZxDialog">
+            <summary>
+            ExportVIZxDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.ExportVIZxDialog.components">
             <summary>
             Required designer variable.
@@ -13025,6 +13268,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.GeometryDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.GeometryDialog.SetGeometryDialog">
+            <summary>
+            GeometryDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.GeometryDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
@@ -13061,6 +13309,11 @@
             생성자
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.LicenseDialog.SetLicenseDialog">
+            <summary>
+            LicenseDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.LicenseDialog.components">
             <summary>
             Required designer variable.
@@ -13086,6 +13339,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.MatrixDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MatrixDialog.SetMatrixDialog">
+            <summary>
+            MatrixDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.MatrixDialog.components">
@@ -13115,6 +13373,11 @@
             Contruction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MeasureStyleDialog.SetMeasureStyleDialog">
+            <summary>
+            MeasureStyleDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.MeasureStyleDialog.components">
             <summary>
             Required designer variable.
@@ -13142,6 +13405,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MergeRulesDialog.SetMergeRulesDialog">
+            <summary>
+            MergeRulesDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.MergeRulesDialog.components">
             <summary>
             Required designer variable.
@@ -13167,6 +13435,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.MiniViewDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MiniViewDialog.SetMiniViewDialog">
+            <summary>
+            MiniViewDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.MiniViewDialog.components">
@@ -13199,6 +13472,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.MoveObjectDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.MoveObjectDialog.SetMoveObjectDialog">
+            <summary>
+            MoveObjectDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.MoveObjectDialog.components">
@@ -13241,6 +13519,11 @@
             <param name="manager">노트 관리자</param>
             <param name="vizcore">VIZCore</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.NoteStyleDialog.SetNoteStyleDialog">
+            <summary>
+            NoteStyleDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.NoteStyleDialog.components">
             <summary>
             Required designer variable.
@@ -13274,6 +13557,11 @@
             </summary>
             <param name="image">Screen Image</param>
             <param name="model">Model Name</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PrintPreviewDialog.SetPrintPreviewDialog">
+            <summary>
+            PrintPreviewDialog 창 다국어 셋팅
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.PrintPreviewDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
             <summary>
@@ -13323,6 +13611,11 @@
             <param name="parent">Parent</param>
             <param name="caption">Caption</param>
             <param name="description">Description</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ProgressDialog.SetProgressDialog">
+            <summary>
+            ProgressDialog 창 다국어 셋팅
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.ProgressDialog.UpdateCaption(System.String)">
             <summary>
@@ -13463,6 +13756,11 @@
             </summary>
             <param name="name">Node Name</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RenameNodeNameDialog.SetRenameNodeNameDialog">
+            <summary>
+            RenameNodeNameDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.RenameNodeNameDialog.components">
             <summary>
             Required designer variable.
@@ -13513,6 +13811,11 @@
             </summary>
             <param name="view">ViewManager</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RenderingEffectDialog.SetRenderingEffectDialog">
+            <summary>
+            RenderingEffectDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Dialogs.RenderingEffectDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
             <summary>
             ProcessDialogKey
@@ -13559,6 +13862,11 @@
             <param name="view">View Manager</param>
             <param name="object3d">Object3D Manager</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RenderingEffectDialogV2.SetSetRenderingEffectDialogV2">
+            <summary>
+            RenderingEffectDialogV2 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Dialogs.RenderingEffectDialogV2.SettingUpdate">
             <summary>
             초기 설정값 업데이트
@@ -13598,6 +13906,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RevFileAnalyzerDialog.SetRevFileAnalyzerDialog">
+            <summary>
+            RevFileAnalyzerDialog 창 다국어 처리
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Dialogs.RevFileAnalyzerDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
             <summary>
             ProcessDialogKey
@@ -13632,6 +13945,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.ReviewStyleDialog.SetReviewStyleDialog">
+            <summary>
+            ReviewStyleDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.ReviewStyleDialog.components">
             <summary>
             Required designer variable.
@@ -13664,6 +13982,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.RotateObjectDialog.SetRotateObjectDialog">
+            <summary>
+            RotateObjectDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.RotateObjectDialog.components">
             <summary>
             Required designer variable.
@@ -13689,6 +14012,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.SetSearchNodeBuiltinDialog">
+            <summary>
+            SearchNodeBuiltinDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.SearchNodeBuiltinDialog.components">
@@ -13757,6 +14085,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SearchSpaceDialog.SeSearchSpaceDialog">
+            <summary>
+            SearchSpaceDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Dialogs.SearchSpaceDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
             <summary>
             ProcessDialogKey
@@ -13789,6 +14122,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.SectionDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SectionDialog.SetSectionDialog">
+            <summary>
+            SectionDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.SectionDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
@@ -13825,6 +14163,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SectionProjectionDialog.SetSectionProjectionDialog">
+            <summary>
+            SectionProjectionDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.SectionProjectionDialog.components">
             <summary>
             Required designer variable.
@@ -13855,6 +14198,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.SetPasswordDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SetPasswordDialog.SetSetPasswordDialog">
+            <summary>
+            SetPasswordDialog 창 다국어 처리
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.SetPasswordDialog.components">
@@ -13923,6 +14271,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SimplifyModelDialog.SetSimplifyModelDialog">
+            <summary>
+            SimplifyModelDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.SimplifyModelDialog.components">
             <summary>
             Required designer variable.
@@ -13958,6 +14311,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.StructureBrowserDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.StructureBrowserDialog.SetStructureBrowserDialog">
+            <summary>
+            StructureBrowserDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.StructureBrowserDialog.components">
@@ -14007,6 +14365,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SurfaceNoteDialog.SetSurfaceNoteDialog">
+            <summary>
+            SetSurfaceNoteDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.SurfaceNoteDialog.components">
             <summary>
             Required designer variable.
@@ -14039,6 +14402,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.SetTriangleMeshCountDialog">
+            <summary>
+            TriangleMeshCountDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.TriangleMeshCountDialog.components">
             <summary>
             Required designer variable.
@@ -14064,6 +14432,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.UDADialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDADialog.SetUDADialog">
+            <summary>
+            UDADialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.UDADialog.ShowData(System.Int32)">
@@ -14106,6 +14479,11 @@
             UDA Item Dialog Class
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDAItemDialog.SetUDAItemDialog">
+            <summary>
+            UDAItemDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.UDAItemDialog.components">
             <summary>
             Required designer variable.
@@ -14131,6 +14509,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.UDATreeDialog.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UDATreeDialog.SetUDATreeDialog">
+            <summary>
+            UDATreeDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.UDATreeDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
@@ -14208,6 +14591,11 @@
             <param name="lineStyle">라인 유형</param>
             <param name="lineColor">라인 색상</param>
         </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UpdateDrawItemStyleDialog.SetUpdateDrawItemStyleDialog">
+            <summary>
+            UpdateDrawItemStyleDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Dialogs.UpdateDrawItemStyleDialog.components">
             <summary>
             Required designer variable.
@@ -14238,6 +14626,11 @@
         <member name="M:VIZCore3D.NET.Dialogs.UserViewDialog.#ctor(VIZCore3D.NET.Manager.UserViewManager)">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.UserViewDialog.SetUserViewDialog">
+            <summary>
+            UserViewDialog 창 다국어 셋팅
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.UserViewDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
@@ -14288,6 +14681,11 @@
             <param name="parent">Parent</param>
             <param name="caption">Caption</param>
             <param name="description">Description</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.WaitDialog.SetWaitDialog">
+            <summary>
+            WaitDialog 창 다국어 셋팅
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.WaitDialog.UpdateCaption(System.String)">
             <summary>
@@ -16409,7 +16807,12 @@
         </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericAttributeControl.#ctor">
             <summary>
-            Contruction
+            Contruction 
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericAttributeControl.SetGenericAttributeControl">
+            <summary>
+            GenericAttributeControl 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Extension.Generic.GenericAttributeControl.components">
@@ -17311,6 +17714,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDrawingDialog.SetGenericDrawingDialog">
+            <summary>
+            GenericDrawingDialog 창 다국어 셋팅
+            </summary>
+        </member>
         <member name="F:VIZCore3D.NET.Extension.Generic.GenericDrawingDialog.components">
             <summary>
             Required designer variable.
@@ -17374,6 +17782,11 @@
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericFileControl.#ctor">
             <summary>
             Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericFileControl.SetGenericFileControl">
+            <summary>
+            GenericFileControl 다국어 셋팅
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Extension.Generic.GenericFileControl.components">
@@ -22858,39 +23271,77 @@
             아바타 이동경로 저장 다이얼로그 실행
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Manager.LanguageManager">
+        <member name="T:VIZCore3D.NET.Manager.LanguageType">
             <summary>
-            Language Manager
+            언어 타입
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Manager.LanguageManager.LanguageType">
-            <summary>
-            Language Type
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.KOREAN">
+        <member name="F:VIZCore3D.NET.Manager.LanguageType.KOREAN">
             <summary>
             한국어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.ENGLISH">
+        <member name="F:VIZCore3D.NET.Manager.LanguageType.ENGLISH">
             <summary>
             영어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.CHINESE">
+        <member name="F:VIZCore3D.NET.Manager.LanguageType.CHINESE">
             <summary>
              중국어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageType.JAPANESE">
+        <member name="F:VIZCore3D.NET.Manager.LanguageType.JAPANESE">
             <summary>
             일본어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.doc">
+        <member name="T:VIZCore3D.NET.Manager.VIZCategoryAttribute">
+            <summary>
+            Propery Control Category 다국어 처리
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Default"></param>
+            <param name="key"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.GetLocalizedString(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
             Propery Control DisplayName 다국어 처리
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZDisplayNameAttribute.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Default"></param>
+            <param name="displayName"></param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.VIZDescriptionAttribute">
+            <summary>
+            Propery Control Description 다국어 처리
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZDescriptionAttribute.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="Default"></param>
+            <param name="Description"></param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.LanguageManager">
+            <summary>
+            Language Manager
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.LanguageManager.Language">
@@ -22900,7 +23351,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Manager.LanguageManager.XMLPath">
             <summary>
-            XML Path
+            XML파일 경로
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
@@ -22917,34 +23368,56 @@
             <summary>
             Xml파일 로드
             </summary>
-            <param name="XmlPath"></param>
+            <param name="XmlPath">XML파일 경로</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.InitLanguageData(System.Xml.XmlNode)">
             <summary>
-            Init Language Data
+            Language Data 초기화
             </summary>
-            <param name="node"></param>
+            <param name="node">Language 노드</param>
             <returns></returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageType(System.String)">
             <summary>
-            Get Language Type
+            언어 타입 가져오기
             </summary>
-            <param name="strLanguage"></param>
+            <param name="strLanguage">Language 노드의 type 값</param>
             <returns></returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String)">
             <summary>
-            Get Resource
+            ResourceCode 가져오기
+            </summary>
+            <param name="strKey"> ResourceCode </param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String,System.String)">
+            <summary>
+            ResourceCode 가져오기
             </summary>
             <param name="strKey"></param>
+            <param name="strSourceData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageList">
+            <summary>
+            언어 list 가져오기
+            </summary>
             <returns></returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
             <summary>
-            Get String
+            ResourceCode 가져오기
             </summary>
-            <param name="ResouceCode"></param>
+            <param name="ResouceCode"> ResourceCode </param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
+            <summary>
+            번역된 내용 가져오기
+            </summary>
+            <param name="ResouceCode"> ResourceCode </param>
+            <param name="Language"> 언어 타입 </param>
             <returns></returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
@@ -31208,6 +31681,23 @@
             Show Print Preview Dialog
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.Projection2DManager">
+            <summary>
+            Projection 2D Manager
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Projection2DManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore">VIZCore3D.NET.Interop</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Projection2DManager.GetProjection2DLines">
+            <summary>
+            현재 화면 방향의 2D 투영 라인 반환
+            </summary>
+            <returns>라인정보 반환</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ScreenAxisRotationManager">
             <summary>
             Screen Axis Rotation Manager
@@ -36250,6 +36740,21 @@
             투영면적 추가
             </summary>
             <param name="plane">평면</param>
+            <returns>측정(리뷰) 아이디(ID)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedArea(System.Int32)">
+            <summary>
+            투영면적 정보 반환
+            </summary>
+            <param name="reviewID">측정(리뷰) 아이디(ID)</param>
+            <returns>투영면적 정보(실패시 null)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedArea(VIZCore3D.NET.Data.Planes)">
+            <summary>
+            투영면적 정보 반환
+            </summary>
+            <param name="plane">평면</param>
+            <returns>투영면적 정보(실패시 null)</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddProjectedAreaByPickSurface">
             <summary>
@@ -39083,6 +39588,13 @@
             <param name="mode">Mode</param>
             <param name="progress">Progress</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWide3DWithReviewData(System.String)">
+            <summary>
+            VIZWide3D (With Review Data Json File) 파일 형식으로 내보내기
+            </summary>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.vizw</param>
+            <returns>내보내기 결과</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ModelTreeManager">
             <summary>
             ModelTree Manager
@@ -40459,7 +40971,7 @@
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNote3DDialog">
-            <summary>
+            <summary> 
             3D 노트 추가
             </summary>
         </member>
@@ -56509,6 +57021,11 @@
             [MANAGER] PMI (Product Manufacturing Information) Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.Projection">
+            <summary>
+            [MANAGER] Projection Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ModelTree">
             <summary>
             ModelTree Manager
@@ -56933,6 +57450,171 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator1">
+            <summary>
+            toolbarHomeSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator2">
+            <summary>
+            toolbarHomeSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator3">
+            <summary>
+            toolbarHomeSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator4">
+            <summary>
+            toolbarHomeSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator5">
+            <summary>
+            toolbarHomeSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator6">
+            <summary>
+            toolbarHomeSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator1">
+            <summary>
+            toolbarNoteSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator2">
+            <summary>
+            toolbarNoteSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator3">
+            <summary>
+            toolbarNoteSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator4">
+            <summary>
+            toolbarNoteSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator5">
+            <summary>
+            toolbarNoteSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator6">
+            <summary>
+            toolbarNoteSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator7">
+            <summary>
+            toolbarNoteSeparator7 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator8">
+            <summary>
+            toolbarNoteSeparator8 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator1">
+            <summary>
+            toolbarMeasureSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator2">
+            <summary>
+            toolbarMeasureSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator3">
+            <summary>
+            toolbarMeasureSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator4">
+            <summary>
+            toolbarMeasureSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator5">
+            <summary>
+            toolbarMeasureSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator6">
+            <summary>
+            toolbarMeasureSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator7">
+            <summary>
+            toolbarMeasureSeparator7 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator8">
+            <summary>
+            toolbarMeasureSeparator8 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator1">
+            <summary>
+            toolbarSectionSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator2">
+            <summary>
+            toolbarSectionSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator3">
+            <summary>
+            toolbarSectionSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator4">
+            <summary>
+            toolbarSectionSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator5">
+            <summary>
+            toolbarSectionSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator6">
+            <summary>
+            toolbarSectionSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator7">
+            <summary>
+            toolbarSectionSeparator7 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarAnimationSeparator1">
+            <summary>
+            toolbarAnimationSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarAnimationSeparator2">
+            <summary>
+            toolbarAnimationSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarPrimitive">
+            <summary>
+            toolbarPrimitive 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetStatusbarInfo">
+            <summary>
+            statusbarInfo 다국어 셋팅
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.InitializeControl(VIZCore3D.NET.BackgroundImage,System.Drawing.Color,System.Drawing.Image,VIZCore3D.NET.Data.ImageMode)">
             <summary>
