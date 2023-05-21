@@ -101,6 +101,41 @@ namespace VIZCore3D.NET.Projection2D
             txtMaxY.Text = maxY.ToString();
 
             P2D_Viewer.DrawPathGeometry(projection.PathGeometryString);
+
+            /*
+            System.Drawing.Bitmap bitmap = new Bitmap(Convert.ToInt32(maxX), Convert.ToInt32(maxY));
+            string[] Points = projection.Points.Split(new char[] { ',' });
+
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+
+            for (int i = 0; i < Points.Length; i++)
+            {
+                if (i % 4 != 0) continue;
+
+                int x1 = Convert.ToInt32(Points[i + 0]);
+                int y1 = Convert.ToInt32(Points[i + 1]);
+
+                if (i + 3 > Points.Length) continue;
+
+                int x2 = Convert.ToInt32(Points[i + 2]);
+                int y2 = Convert.ToInt32(Points[i + 3]);
+
+                path.AddLine(x1, y1, x2, y2);
+            }
+
+            System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(bitmap);
+
+            System.Drawing.Pen p = new System.Drawing.Pen(System.Drawing.Color.Black, 1);
+            g.FillPath(System.Drawing.Brushes.Lime, path);
+            g.DrawPath(p, path);
+
+            p.Dispose();
+            g.Dispose();
+
+            bitmap.Save("C:\\Temp\\Image.bmp");
+
+            bitmap.Dispose();
+            */
         }
 
         private void tbZoom_Scroll(object sender, EventArgs e)
