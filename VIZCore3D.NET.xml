@@ -10215,6 +10215,70 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Section.ExportVIZ(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            단면상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="path">경로</param>
+            <param name="keepStructure">구조 포함 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\Section.viz" /* Path */
+                    , true                  /* Keep Structure */
+                    , true                  /* Visible Only */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item.ID                     /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="T:VIZCore3D.NET.Data.SectionComment">
             <summary>
             Section Comment Class
@@ -10562,6 +10626,64 @@
             </summary>
             <param name="path">경로</param>
             <param name="keepStructure">구조 포함 여부</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\SelectionBox.viz"    /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item.ID                         /* SelectionBox */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.SelectionBox.ExportVIZ(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            선택상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="path">경로</param>
+            <param name="keepStructure">구조 포함 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
             <returns>결과</returns>
             <example>
             <code language="cs">
@@ -23303,17 +23425,17 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.#ctor(System.String,System.String)">
             <summary>
-            
+            Propery Control Category 다국어 처리
             </summary>
-            <param name="Default"></param>
-            <param name="key"></param>
+            <param name="Default">Category 다국어 문자열</param>
+            <param name="key">Category Resource Code</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.GetLocalizedString(System.String)">
             <summary>
-            
+            Propery Control Category 다국어 처리
             </summary>
-            <param name="value"></param>
-            <returns></returns>
+            <param name="value">Category Resource Code</param>
+            <returns>Category 다국어 문자열 반환</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
@@ -23322,10 +23444,10 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZDisplayNameAttribute.#ctor(System.String,System.String)">
             <summary>
-            
+            Propery Control DisplayName 다국어 처리
             </summary>
-            <param name="Default"></param>
-            <param name="displayName"></param>
+            <param name="Default">DisplayName 다국어 문자열</param>
+            <param name="displayName">DisplayName Resource Code</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDescriptionAttribute">
             <summary>
@@ -23334,10 +23456,10 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZDescriptionAttribute.#ctor(System.String,System.String)">
             <summary>
-            
+            Propery Control Description 다국어 처리
             </summary>
-            <param name="Default"></param>
-            <param name="Description"></param>
+            <param name="Default">Description 다국어 문자열</param>
+            <param name="Description">Description Resource Code</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.LanguageManager">
             <summary>
@@ -23397,7 +23519,7 @@
             </summary>
             <param name="resouceCode">다국어 문자열 코드</param>
             <param name="sourceText">원본 문자열</param>
-            <returns>다국어 문자열</returns>
+            <returns>다국어 문자열 반환</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageList">
             <summary>
@@ -39417,13 +39539,14 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single[],System.Boolean)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single[],System.Boolean,System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
             </summary>
             <param name="path">내보내기 파일</param>
             <param name="boundBox">내보내기 영역</param>
             <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
             <returns>결과</returns>
             <example>
             <code language="cs">
@@ -39449,6 +39572,7 @@
                     "C:\\Temp\\Model.viz"   /* Path */
                     , boundBox              /* BoundBox */
                     , false                 /* Keep Structure */
+                    , true                  /* Visible Only */
                     );
             }
             ]]>
@@ -39493,6 +39617,46 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="minX">내보내기 영역 - Min. X</param>
+            <param name="minY">내보내기 영역 - Min. Y</param>
+            <param name="minZ">내보내기 영역 - Min. Z</param>
+            <param name="maxX">내보내기 영역 - Max. X</param>
+            <param name="maxY">내보내기 영역 - Max. Y</param>
+            <param name="maxZ">내보내기 영역 - Max. Z</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , 0.0f                  /* BoundBox - Min.X */
+                    , 0.0f                  /* BoundBox - Min.Y */
+                    , 0.0f                  /* BoundBox - Min.Z */
+                    , 100.0f                /* BoundBox - Max.X */
+                    , 100.0f                /* BoundBox - Max.Y */
+                    , 100.0f                /* BoundBox - Max.Z */
+                    , false                 /* Keep Structure */
+                    , true                  /* Visible Only */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
@@ -39526,6 +39690,47 @@
                     "C:\\Temp\\Model.viz"   /* Path */
                     , boundBox              /* BoundBox */
                     , false                 /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean,System.Boolean)">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="boundBox">내보내기 영역</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox =
+                    new VIZCore3D.NET.Data.BoundBox3D();
+            
+                boundBox.MinX = 0.0f;
+                boundBox.MinY = 0.0f;
+                boundBox.MinZ = 0.0f;
+            
+                boundBox.MaxX = 100.0f;
+                boundBox.MaxY = 100.0f;
+                boundBox.MaxZ = 100.0f;
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , boundBox              /* BoundBox */
+                    , false                 /* Keep Structure */
+                    , true                  /* Visible Only */
                     );
             }
             ]]>
@@ -44971,6 +45176,68 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(VIZCore3D.NET.Data.SelectionBox,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            선택상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="selectionBox">선택상자</param>
+            <param name="path">경로</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\SelectionBox.viz"    /* Path */
+                    , true                          /* Keep Structure */
+                    , true                          /* Visible Only */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item.ID                         /* SelectionBox */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
+                    , true                          /* Visible Only */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
             <summary>
             선택상자 영역의 모델을 VIZ 파일로 내보내기
@@ -45023,6 +45290,68 @@
                     item.ID                         /* SelectionBox */
                     , "C:\\Temp\\SelectionBox.viz"  /* Path */
                     , true                          /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.ExportVIZ(System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            선택상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="id">선택상자 아이디</param>
+            <param name="path">경로</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\SelectionBox.viz"    /* Path */
+                    , true                          /* Keep Structure */
+                    , ture                          /* Visible Only */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.SelectionBox.Items.Count == 0) return;
+            
+                VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
+            
+                vizcore3d.SelectionBox.ExportVIZ(
+                    item.ID                         /* SelectionBox */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
+                    , true                          /* Visible Only */
                     );
             }
             ]]>
@@ -46390,6 +46719,71 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.ExportVIZ(VIZCore3D.NET.Data.Section,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            단면상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="section">단면상자</param>
+            <param name="path">경로</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\Section.viz" /* Path */
+                    , true                  /* Keep Structure */
+                    , true                  /* Visible Only */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item.ID                     /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.ExportVIZ(System.Int32,System.String,System.Boolean)">
             <summary>
             단면상자 영역의 모델을 VIZ 파일로 내보내기
@@ -46445,6 +46839,71 @@
                     item.ID                     /* Section(Box) */
                     , "C:\\Temp\\Section.viz"   /* Path */
                     , true                      /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.ExportVIZ(System.Int32,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            단면상자 영역의 모델을 VIZ 파일로 내보내기
+            </summary>
+            <param name="id">단면상자 아이디</param>
+            <param name="path">경로</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                item.ExportVIZ(
+                    "C:\\Temp\\Section.viz" /* Path */
+                    , true                  /* Keep Structure */
+                    , true                  /* Visible Only */
+                    );
+            }
+            
+            private void Example2()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item                        /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
+                    );
+            }
+            
+            private void Example3()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Section.Sections.Count == 0) return;
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section item = vizcore3d.Section.SelectedItem;
+            
+                vizcore3d.Section.ExportVIZ(
+                    item.ID                     /* Section(Box) */
+                    , "C:\\Temp\\Section.viz"   /* Path */
+                    , true                      /* Keep Structure */
+                    , true                      /* Visible Only */
                     );
             }
             ]]>
@@ -59795,7 +60254,7 @@
             Syntax Highlighter
             </summary>
         </member>
-        <member name="P:FastColoredTextBoxNS.FastColoredTextBox.DescriptionFile">
+        <member name="P:FastColoredTextBoxNS.FastColoredTextBox.VIZDescriptionFile">
             <summary>
             XML file with description of syntax highlighting.
             This property works only with Language == Language.Custom.
