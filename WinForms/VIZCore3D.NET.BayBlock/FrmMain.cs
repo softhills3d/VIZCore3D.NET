@@ -656,10 +656,10 @@ namespace VIZCore3D.NET.BayBlock
             lvModels.BeginUpdate();
             lvModels.Items.Clear();
 
-            if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
-            {
-                string basePath = "E:\\MODELS\\SHOWCASE\\ERECTION.CLASH";
+            string basePath = "D:\\GitHub\\VIZCore3D.NET.BayBlock";
 
+            if (System.IO.Directory.Exists(basePath) == true)
+            {
                 string[] dirs = System.IO.Directory.GetDirectories(basePath, "*.*", System.IO.SearchOption.TopDirectoryOnly);
 
                 foreach (string dir in dirs)
