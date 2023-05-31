@@ -509,15 +509,16 @@ namespace VIZCore3D.NET.Animation.Block
         // ================================================
         private void btnLoadBlock_Click(object sender, EventArgs e)
         {
-            if(TestMode == false)
+            string path = @"D:\GitHub\VIZCore3D.NET.Animation.Block\BLOCK";
+
+            if (System.IO.Directory.Exists(path) == true)
             {
-                vizcore3d.Model.AddFileDialog();
+                string[] file = System.IO.Directory.GetFiles(path, "*.viz");
+                vizcore3d.Model.Add(file);
             }
             else
             {
-                string path = @"E:\MODELS\H6501_REV_FIXED\FIXED_V3_SIMPLEFIED_V2";
-                string[] file = System.IO.Directory.GetFiles(path, "*.viz");
-                vizcore3d.Model.Add(file);
+                vizcore3d.Model.AddFileDialog();
             }
         }
 
@@ -553,15 +554,16 @@ namespace VIZCore3D.NET.Animation.Block
 
         private void btnLoadCrane_Click(object sender, EventArgs e)
         {
-            if (TestMode == false)
+            string path = @"D:\GitHub\VIZCore3D.NET.Animation.Block\CRANE";
+
+            if (System.IO.Directory.Exists(path) == true)
             {
-                vizcore3d.Model.AddFileDialog();
+                string[] file = System.IO.Directory.GetFiles(path, "*.viz");
+                vizcore3d.Model.Add(file);
             }
             else
             {
-                string path = @"E:\MODELS\MISC\CRANE_ASSEMBLY_5";
-                string[] file = System.IO.Directory.GetFiles(path, "*.viz");
-                vizcore3d.Model.Add(file);
+                vizcore3d.Model.AddFileDialog();
             }
         }
 
@@ -606,7 +608,8 @@ namespace VIZCore3D.NET.Animation.Block
                 customBox.Add(id);
             }
 
-            string image = @"D:\\Concrete-Texture.jpg";
+            string image = @"D:\GitHub\VIZCore3D.NET.Animation.Block\TEXTURE\Concrete-Texture.jpg";
+
             if (MaterialID == -1)
             {
                 if (System.IO.File.Exists(image) == true)
