@@ -495,16 +495,18 @@ namespace VIZCore3D.NET.ClashTest.V3
         // ================================================
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            if (System.Environment.MachineName.ToUpper() != "GJKIM-ADELL")
+            string path = "D:\\GitHub\\VIZCore3D.NET.ClashTest.V3";
+
+            if (System.IO.Directory.Exists(path) == true)
+            {
+                txtPath.Text = path;
+            }
+            else
             {
                 FolderBrowserDialog dlg = new FolderBrowserDialog();
                 if (dlg.ShowDialog() != DialogResult.OK) return;
 
                 txtPath.Text = dlg.SelectedPath;
-            }
-            else
-            {
-                txtPath.Text = "E:\\MODELS\\SHOWCASE\\ERECTION.CLASH";
             }
         }
 
