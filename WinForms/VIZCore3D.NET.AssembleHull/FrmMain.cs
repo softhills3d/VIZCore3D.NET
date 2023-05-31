@@ -558,12 +558,15 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadASP_Click(object sender, EventArgs e)
         {
-            string path = @"E:\MODELS\SHOWCASE\AssembleHull\E42P.vizxml";
+            string path = @"D:\GitHub\VIZCore3D.NET.AssembleHull\ASP.vizxml";
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
 
-            vizcore3d.Model.Open(path);
+            if (System.IO.File.Exists(path) == true)
+                vizcore3d.Model.Open(path);
+            else
+                vizcore3d.Model.OpenFileDialog();
         }
 
         private void btnDeckBase_Click(object sender, EventArgs e)
@@ -628,12 +631,15 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadASPGhost_Click(object sender, EventArgs e)
         {
-            string path = @"E:\MODELS\SHOWCASE\AssembleHull\E42P-COLOR.vizxml";
+            string path = @"D:\GitHub\VIZCore3D.NET.AssembleHull\ASP_GHOST.vizxml";
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
 
-            vizcore3d.Model.Open(path);
+            if (System.IO.File.Exists(path) == true)
+                vizcore3d.Model.Open(path);
+            else
+                vizcore3d.Model.OpenFileDialog();
         }
 
         private void btnDeckBaseGhost_Click(object sender, EventArgs e)
@@ -680,12 +686,15 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadAnimation_Click(object sender, EventArgs e)
         {
-            string path = @"E:\MODELS\SHOWCASE\AssembleHull\ANIMATION_2.viz";
+            string path = @"D:\GitHub\VIZCore3D.NET.AssembleHull\ANIMATION.viz";
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
 
-            vizcore3d.Model.Open(path);
+            if (System.IO.File.Exists(path) == true)
+                vizcore3d.Model.Open(path);
+            else
+                vizcore3d.Model.OpenFileDialog();
         }
         
         
