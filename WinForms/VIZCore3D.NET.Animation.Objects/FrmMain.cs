@@ -715,6 +715,8 @@ namespace VIZCore3D.NET.Animation.Objects
 
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            vizcore3d.Object3D.Transform.RestoreTransformAll();
+
             if (GenerateAnimation() == false) return;            
 
             vizcore3d.Animation.PlayingTime = Time;
@@ -737,6 +739,8 @@ namespace VIZCore3D.NET.Animation.Objects
         private void btnStop_Click(object sender, EventArgs e)
         {
             vizcore3d.Animation.Pause();
+
+            vizcore3d.Object3D.Transform.RestoreTransformAll();
         }
 
         /// <summary>
