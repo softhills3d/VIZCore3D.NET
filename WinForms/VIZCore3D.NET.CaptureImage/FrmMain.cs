@@ -517,7 +517,7 @@ namespace VIZCore3D.NET.CaptureImage
             System.Drawing.Color color2 = vizcore3d.View.BackgroundColor2;
 
             {
-                vizcore3d.View.ViewToolbar = false;
+                vizcore3d.View.Toolbar.Enable = false;
 
                 vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
                 vizcore3d.View.BackgroundColor1 = Color.White;
@@ -527,7 +527,7 @@ namespace VIZCore3D.NET.CaptureImage
             System.Drawing.Image img = vizcore3d.View.CaptureImage();
 
             {
-                vizcore3d.View.ViewToolbar = true;
+                vizcore3d.View.Toolbar.Enable = true;
 
                 vizcore3d.View.BackgroundMode = mode;
                 vizcore3d.View.BackgroundColor1 = color1;
@@ -563,7 +563,7 @@ namespace VIZCore3D.NET.CaptureImage
             System.Drawing.Color color2 = vizcore3d.View.BackgroundColor2;
 
             {
-                vizcore3d.View.ViewToolbar = false;
+                vizcore3d.View.Toolbar.Enable = false;
 
                 vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
                 vizcore3d.View.BackgroundColor1 = Color.White;
@@ -580,7 +580,7 @@ namespace VIZCore3D.NET.CaptureImage
             CaptureAuto(Data.CameraDirection.Z_MINUS);
 
             {
-                vizcore3d.View.ViewToolbar = true;
+                vizcore3d.View.Toolbar.Enable = true;
 
                 vizcore3d.View.BackgroundMode = mode;
                 vizcore3d.View.BackgroundColor1 = color1;
