@@ -595,7 +595,7 @@ namespace VIZCore3D.NET.AnalysisModel
 
         private void Highlight()
         {
-            string name_org = System.IO.Path.GetFileName(txtPathModel1.Text);
+            string name_org = System.IO.Path.GetFileNameWithoutExtension(txtPathModel1.Text);
             string name_aly = System.IO.Path.GetFileName(txtPathModel2.Text);
 
             List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromDepth(1, false);
