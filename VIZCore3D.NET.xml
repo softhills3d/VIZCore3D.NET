@@ -836,6 +836,11 @@
             <param name="imageMode">Background Image</param>
             <param name="color">Background Image</param>
         </member>
+        <member name="M:VIZCore3D.NET.Controls.ViewControl.SetViewControl">
+            <summary>
+            ViewControl 다국어 셋텡
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Controls.ViewControl.tsShowSelectedObject3d_Click(System.Object,System.EventArgs)">
             <summary>
             View ContextMenu
@@ -10654,9 +10659,9 @@
                 VIZCore3D.NET.Data.SelectionBox item = vizcore3d.SelectionBox.Items[0];
             
                 vizcore3d.SelectionBox.ExportVIZ(
-                    item                        /* Section(Box) */
-                    , "C:\\Temp\\Section.viz"   /* Path */
-                    , true                      /* Keep Structure */
+                    item                            /* Section(Box) */
+                    , "C:\\Temp\\SelectionBox.viz"  /* Path */
+                    , true                          /* Keep Structure */
                     );
             }
             
@@ -40051,6 +40056,11 @@
             활성화 시, BackgroundColor 속성이 적용되지 않음
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.NoteManager.UseTextBox">
+            <summary>
+            노트 텍스트에 박스를 그림. 배경에 투명이 설정된 경우에만 적용 가능.
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.NoteManager.PlaneDirection">
             <summary>
             Plane Direction
@@ -40151,12 +40161,8 @@
             심벌 문자열 위치 Offset
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.NoteManager.UseTextBox">
-            <summary>
-            노트 텍스트에 박스를 그림. 배경에 투명이 설정된 경우에만 적용 가능.
-            </summary>
-        </member>
         <member name="P:VIZCore3D.NET.Manager.NoteManager.LinkArrowTailToText">
+            public bool UseTextBox { get; set; }
             <summary>
             지시선 중앙 연결 여부
             </summary>
