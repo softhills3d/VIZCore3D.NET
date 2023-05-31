@@ -608,7 +608,20 @@ namespace VIZCore3D.NET.Animation.Block
 
             string image = @"D:\\Concrete-Texture.jpg";
             if (MaterialID == -1)
-                MaterialID = vizcore3d.Object3D.Material.Add(image);
+            {
+                if (System.IO.File.Exists(image) == true)
+                {
+                    MaterialID = vizcore3d.Object3D.Material.Add(image);
+                }
+                else
+                {
+                    OpenFileDialog dlgTexture = new OpenFileDialog();
+                    if (dlgTexture.ShowDialog() == DialogResult.OK)
+                    {
+                        MaterialID = vizcore3d.Object3D.Material.Add(dlgTexture.FileName);
+                    }
+                }
+            }
 
             foreach (int item in customBox)
             {
