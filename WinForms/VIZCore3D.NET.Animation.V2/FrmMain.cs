@@ -581,7 +581,16 @@ namespace VIZCore3D.NET.Animation.V2
         {
             vizcore3d.Model.Close();
 
-            string path = "E:\\MODELS\\SHOWCASE\\ANIMATION.V2\\MODEL.viz";
+            string path = "D:\\GitHub\\VIZCore3D.NET.Animation.V2\\MODEL.viz";
+
+            if(System.IO.File.Exists(path) == false)
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                path = dlg.FileName;
+            }
 
             bool ghostMode = ckGhostMode.Checked;
 
