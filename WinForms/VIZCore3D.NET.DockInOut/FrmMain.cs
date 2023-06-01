@@ -875,10 +875,10 @@ namespace VIZCore3D.NET.DockInOut
         // ================================================
         private void btnOpenSHIP_Click(object sender, EventArgs e)
         {
-            string name = System.Environment.MachineName.ToUpper();
-            if (name == "GJKIM-ADELL")
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.DockInOut\\SHIP.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
             {
-                string path = "E:\\MODELS\\SHOWCASE\\DDH.V6.viz";
                 vizcore3d.Model.AddStream(new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "SHIP_MODEL"));
             }
             else
