@@ -480,16 +480,18 @@ namespace VIZCore3D.NET.Erection.V1
 
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            if (System.Environment.MachineName.ToUpper() != "GJKIM-ADELL")
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.PEBLOCK", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.Directory.Exists(path) == true)
+            {
+                txtPath.Text = path;
+            }
+            else
             {
                 FolderBrowserDialog dlg = new FolderBrowserDialog();
                 if (dlg.ShowDialog() != DialogResult.OK) return;
 
                 txtPath.Text = dlg.SelectedPath;
-            }
-            else
-            {
-                txtPath.Text = "E:\\MODELS\\SHOWCASE\\ERECTION.CLASH";
             }
         }
 
