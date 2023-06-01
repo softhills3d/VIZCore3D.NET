@@ -465,13 +465,23 @@ namespace VIZCore3D.NET.VisualInspection
         // ================================================
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = vizcore3d.Model.OpenFilter;
-            dlg.Multiselect = true;
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Thumbnail", vizcore3d.GetEntryAssemblyPath());
+            string[] files = null;
 
-            if (dlg.ShowDialog() != DialogResult.OK) return;
+            if (System.IO.Directory.Exists(path) == true)
+            {
+                files = System.IO.Directory.GetFiles(path, "*.viz", System.IO.SearchOption.TopDirectoryOnly);
+            }
+            else
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = true;
 
-            string[] files = dlg.FileNames;
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                files = dlg.FileNames;
+            }
 
             ImageList imgList = new ImageList();
             imgList.ImageSize = new Size(90, 90);
