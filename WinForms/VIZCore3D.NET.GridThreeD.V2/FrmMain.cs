@@ -553,9 +553,11 @@ namespace VIZCore3D.NET.GridThreeD.V2
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
 
+            string basePath = string.Format("{0}\\Models\\VIZCore3D.NET.GridThreeD.V2", vizcore3d.GetEntryAssemblyPath());
+
             List<string> paths = new List<string>();
-            paths.Add("E:\\MODELS\\H6501_COLOR\\GRID_P.viz");
-            paths.Add("E:\\MODELS\\H6501_COLOR\\GRID_S.viz");
+            paths.Add(string.Format("{0}\\{1}", basePath, "GRID_P.viz"));
+            paths.Add(string.Format("{0}\\{1}", basePath, "GRID_S.viz"));
 
             vizcore3d.Model.Add(paths.ToArray());
 
