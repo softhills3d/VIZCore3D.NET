@@ -19,11 +19,6 @@ namespace VIZCore3D.NET.TOB
         /// </summary>
         private VIZCore3D.NET.VIZCore3DControl vizcore3d;
 
-        /// <summary>
-        /// Demo Mode
-        /// </summary>
-        public bool DemoMode { get; set; }
-
         public List<VIZCore3D.NET.Data.Node> BLOCK_NODES { get; set; }
         public List<VIZCore3D.NET.Data.Node> LOADER_NODES { get; set; }
 
@@ -58,9 +53,6 @@ namespace VIZCore3D.NET.TOB
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
-
-            // Demo Mode
-            DemoMode = System.Environment.MachineName.ToUpper() == "GJKIM-ADELL" ? true : false;
         }
 
         // ================================================
@@ -607,11 +599,13 @@ namespace VIZCore3D.NET.TOB
         {
             vizcore3d.Model.Close();
 
-            if (DemoMode == true)
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.TOB\\GOLIATH_CRANE.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if(System.IO.File.Exists(path) == true)
             {
                 vizcore3d.Model.AddStream(
                     new VIZCore3D.NET.Data.StreamData(
-                        System.IO.File.ReadAllBytes("E:\\MODELS\\SHOWCASE\\TOB\\GOLIATH_CRANE.V8.viz")
+                        System.IO.File.ReadAllBytes(path)
                         , "CRANE"
                         )
                     );
@@ -619,37 +613,47 @@ namespace VIZCore3D.NET.TOB
                 vizcore3d.View.ResetView();
             }
             else
+            {
                 vizcore3d.Model.AddFileDialog();
+            }
         }
 
         private void btnLoadBlock1_Click(object sender, EventArgs e)
         {
-            if (DemoMode == true)
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.TOB\\BLOCK2.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
             {
                 vizcore3d.Model.AddStream(
                     new VIZCore3D.NET.Data.StreamData(
-                        System.IO.File.ReadAllBytes("E:\\MODELS\\SHOWCASE\\TOB\\BLOCK3.viz")
+                        System.IO.File.ReadAllBytes(path)
                         , "BLK"
                         )
                     );
             }
             else
+            {
                 vizcore3d.Model.AddFileDialog();
+            }
         }
 
         private void btnLoadBlock2_Click(object sender, EventArgs e)
         {
-            if (DemoMode == true)
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.TOB\\BLOCK1.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
             {
                 vizcore3d.Model.AddStream(
                     new VIZCore3D.NET.Data.StreamData(
-                        System.IO.File.ReadAllBytes("E:\\MODELS\\SHOWCASE\\TOB\\BLOCK2-3.viz")
+                        System.IO.File.ReadAllBytes(path)
                         , "BLK"
                         )
                     );
             }
             else
+            {
                 vizcore3d.Model.AddFileDialog();
+            }
         }
 
         private List<VIZCore3D.NET.Data.Node> GetNode(string name)
