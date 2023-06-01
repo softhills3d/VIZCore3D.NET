@@ -8005,6 +8005,11 @@
             외부 면적
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Center">
+            <summary>
+            투영 중심
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.MeasureProjectedArea.Image">
             <summary>
             이미지 정보
