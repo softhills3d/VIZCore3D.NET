@@ -627,10 +627,10 @@ namespace VIZCore3D.NET.DockOut
         // ================================================
         private void btnOpenModel_Click(object sender, EventArgs e)
         {
-            string name = System.Environment.MachineName.ToUpper();
-            if (name == "GJKIM-ADELL")
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.DockOut\\SHIP.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
             {
-                string path = "E:\\MODELS\\SHOWCASE\\DDH.V4.CLASH.V2.viz";
                 vizcore3d.Model.Open(path);
             }
             else
