@@ -804,10 +804,10 @@ namespace VIZCore3D.NET.DockBuild
         // ================================================
         private void btnOpenModel_Click(object sender, EventArgs e)
         {
-            string name = System.Environment.MachineName.ToUpper();
-            if(name == "GJKIM-ADELL")
-            {
-                string path = "E:\\MODELS\\SHOWCASE\\DDH.V4.viz";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.DockBuild\\SHIP.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if(System.IO.File.Exists(path) == true)
+            {                
                 vizcore3d.Model.Open(path);
             }
             else
