@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnAddBay = new System.Windows.Forms.Button();
-            this.btnOpenModel = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnOpenModel = new System.Windows.Forms.Button();
+            this.btnAddBay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -55,6 +55,17 @@
             this.splitContainer1.SplitterDistance = 436;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Location = new System.Drawing.Point(12, 95);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(409, 100);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Model";
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -68,15 +79,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bay";
             // 
-            // btnAddBay
-            // 
-            this.btnAddBay.Location = new System.Drawing.Point(31, 31);
-            this.btnAddBay.Name = "btnAddBay";
-            this.btnAddBay.Size = new System.Drawing.Size(75, 23);
-            this.btnAddBay.TabIndex = 0;
-            this.btnAddBay.Text = "Add";
-            this.btnAddBay.UseVisualStyleBackColor = true;
-            // 
             // btnOpenModel
             // 
             this.btnOpenModel.Location = new System.Drawing.Point(144, 31);
@@ -86,16 +88,14 @@
             this.btnOpenModel.Text = "Model";
             this.btnOpenModel.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // btnAddBay
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Location = new System.Drawing.Point(12, 95);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(409, 100);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Model";
+            this.btnAddBay.Location = new System.Drawing.Point(31, 31);
+            this.btnAddBay.Name = "btnAddBay";
+            this.btnAddBay.Size = new System.Drawing.Size(75, 23);
+            this.btnAddBay.TabIndex = 0;
+            this.btnAddBay.Text = "Add";
+            this.btnAddBay.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
