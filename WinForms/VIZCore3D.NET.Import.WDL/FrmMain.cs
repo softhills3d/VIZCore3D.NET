@@ -505,17 +505,35 @@ namespace VIZCore3D.NET.Import.WDL
 
         private void btnOpenModel_Click(object sender, EventArgs e)
         {
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Import.WDL\\E42P.viz", vizcore3d.GetEntryAssemblyPath());
+
             if(vizcore3d.Model.IsOpen() == true)
             {
                 vizcore3d.Model.Close();
             }
 
-            vizcore3d.Model.OpenFileDialog();
+            if (System.IO.File.Exists(path) == true)
+            {
+                vizcore3d.Model.Open(path);
+            }
+            else
+            {
+                vizcore3d.Model.OpenFileDialog();
+            }
         }
 
         private void btnOpenWdl_Click(object sender, EventArgs e)
         {
-            wdl = VIZCore3D.NET.Importer.ShxWdl.OpenWdlFileDialog();
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Import.WDL\\E42P_JL.wdl", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
+            {
+                wdl = VIZCore3D.NET.Importer.ShxWdl.Open(path);
+            }
+            else
+            {
+                wdl = VIZCore3D.NET.Importer.ShxWdl.OpenWdlFileDialog();
+            }
 
             if (wdl == null) return;
 
