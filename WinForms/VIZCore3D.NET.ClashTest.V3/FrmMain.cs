@@ -495,7 +495,7 @@ namespace VIZCore3D.NET.ClashTest.V3
         // ================================================
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            string path = string.Format("{0}\\Models\\VIZCore3D.NET.ClashTest.V3", vizcore3d.GetEntryAssemblyPath());
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.PEBLOCK", vizcore3d.GetEntryAssemblyPath());
 
             if (System.IO.Directory.Exists(path) == true)
             {
