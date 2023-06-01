@@ -558,7 +558,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadASP_Click(object sender, EventArgs e)
         {
-            string path = @"D:\GitHub\VIZCore3D.NET.AssembleHull\ASP.vizxml";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.AssembleHull\\ASP.vizxml", vizcore3d.GetEntryAssemblyPath());
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
@@ -631,7 +631,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadASPGhost_Click(object sender, EventArgs e)
         {
-            string path = @"D:\GitHub\VIZCore3D.NET.AssembleHull\ASP_GHOST.vizxml";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.AssembleHull\\ASP_GHOST.vizxml", vizcore3d.GetEntryAssemblyPath());
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
@@ -686,7 +686,7 @@ namespace VIZCore3D.NET.AssembleHull
 
         private void btnLoadAnimation_Click(object sender, EventArgs e)
         {
-            string path = @"D:\GitHub\VIZCore3D.NET.AssembleHull\ANIMATION.viz";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.AssembleHull\\ANIMATION.viz", vizcore3d.GetEntryAssemblyPath());
 
             if (vizcore3d.Model.IsOpen() == true)
                 vizcore3d.Model.Close();
