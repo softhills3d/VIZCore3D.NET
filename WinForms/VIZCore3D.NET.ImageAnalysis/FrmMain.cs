@@ -562,9 +562,10 @@ namespace VIZCore3D.NET.ImageAnalysis
 
             bool result = false;
 
-            if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.ImageAnalysis\\HULL.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
             {
-                string path = "C:\\Temp\\HULL.viz";
                 result = vizcore3d.Model.Open(path);
             }
             else
