@@ -581,9 +581,9 @@ namespace VIZCore3D.NET.Animation.V2
         {
             vizcore3d.Model.Close();
 
-            string path = "D:\\GitHub\\VIZCore3D.NET.Animation.V2\\MODEL.viz";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Animation.V2\\MODEL.viz", vizcore3d.GetEntryAssemblyPath());
 
-            if(System.IO.File.Exists(path) == false)
+            if (System.IO.File.Exists(path) == false)
             {
                 OpenFileDialog dlg = new OpenFileDialog();
                 dlg.Filter = vizcore3d.Model.OpenFilter;
