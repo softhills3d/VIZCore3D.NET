@@ -545,9 +545,11 @@ namespace VIZCore3D.NET.MeasureFrame
         // ================================================
         private void btnOpenModel_Click(object sender, EventArgs e)
         {
-            if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.MeasureFrame\\H1195_V303.viz", vizcore3d.GetEntryAssemblyPath());
+
+            if(System.IO.File.Exists(path) == true)
             {
-                vizcore3d.Model.Open("E:\\MODELS\\H1195\\H1195_V303.viz");
+                vizcore3d.Model.Open(path);
             }
             else
             {
@@ -559,9 +561,11 @@ namespace VIZCore3D.NET.MeasureFrame
         {
             bool result = false;
 
-            if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.MeasureFrame\\H1195.DMP", vizcore3d.GetEntryAssemblyPath());
+
+            if (System.IO.File.Exists(path) == true)
             {
-                result = vizcore3d.Frame.Open("E:\\MODELS\\H1195\\H1195.DMP");
+                result = vizcore3d.Frame.Open(path);
             }
             else
             {
