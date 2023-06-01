@@ -537,5 +537,11 @@ namespace VIZCore3D.NET.LockedHidden
             // 목록 갱신
             RefreshList();
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            // 목록 갱신
+            RefreshList();
+        }
     }
 }
