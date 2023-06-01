@@ -59028,6 +59028,24 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.GetEntryAssemblyFullPath">
+            <summary>
+            실행 프로그램 경로 및 실행 파일 이름 반환
+            </summary>
+            <returns>실행 프로그램 경로 및 실행 파일 이름</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.GetEntryAssemblyName">
+            <summary>
+            실행 프로그램 파일 이름 반환
+            </summary>
+            <returns>실행 프로그램 파일 이름</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.GetEntryAssemblyPath">
+            <summary>
+            실행 프로그램 경로 반환
+            </summary>
+            <returns>실행 프로그램 경로</returns>
+        </member>
         <member name="E:VIZCore3D.NET.VIZCore3DControl.OnInitializedVIZCore3D">
             <summary>
             Initialized VIZCore3D.NET
