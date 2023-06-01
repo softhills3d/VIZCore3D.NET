@@ -458,17 +458,26 @@ namespace VIZCore3D.NET.Thumbnail
 
         private void btnPath_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Thumbnail", vizcore3d.GetEntryAssemblyPath());
+            if (System.IO.Directory.Exists(path) == true)
+            {
+                txtPath.Text = path;
+            }
+            else
+            {
+                FolderBrowserDialog dlg = new FolderBrowserDialog();
 
-            if (String.IsNullOrEmpty(txtPath.Text) == false)
-                dlg.SelectedPath = txtPath.Text;
+                if (String.IsNullOrEmpty(txtPath.Text) == false)
+                    dlg.SelectedPath = txtPath.Text;
 
-            if (dlg.ShowDialog() != DialogResult.OK) return;
+                if (dlg.ShowDialog() != DialogResult.OK) return;
 
-            txtPath.Text = dlg.SelectedPath;
+                txtPath.Text = dlg.SelectedPath;
+                path = dlg.SelectedPath;
+            }            
 
             this.Cursor = Cursors.WaitCursor;
-            ShowFiles(dlg.SelectedPath);
+            ShowFiles(path);
             this.Cursor = Cursors.Default;
         }
 
