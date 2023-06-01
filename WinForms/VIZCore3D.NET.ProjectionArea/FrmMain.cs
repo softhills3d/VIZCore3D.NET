@@ -503,6 +503,7 @@ namespace VIZCore3D.NET.ProjectionArea
             txtProjectionArea.Text = area.Projected.ToString();
             txtTotalArea.Text = area.Outer.ToString();
             txtEmptyArea.Text = area.Inner.ToString();
+            txtCenter.Text = area.Center.ToString();
 
             pbProjection.Image = area.Image;
 
