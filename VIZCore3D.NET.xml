@@ -22081,6 +22081,13 @@
             </summary>
             <returns>ShxWdl</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Importer.ShxWdl.Open(System.String)">
+            <summary>
+            Open File
+            </summary>
+            <param name="path">Weld File Path</param>
+            <returns>ShxWdl</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Importer.ShxWdl.GetRootTree">
             <summary>
             Wdl Root Tree Nodes
