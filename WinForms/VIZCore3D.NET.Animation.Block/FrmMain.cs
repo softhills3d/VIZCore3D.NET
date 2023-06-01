@@ -509,7 +509,7 @@ namespace VIZCore3D.NET.Animation.Block
         // ================================================
         private void btnLoadBlock_Click(object sender, EventArgs e)
         {
-            string path = @"D:\GitHub\VIZCore3D.NET.Animation.Block\BLOCK";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Animation.Block\\BLOCK", vizcore3d.GetEntryAssemblyPath());
 
             if (System.IO.Directory.Exists(path) == true)
             {
@@ -554,7 +554,7 @@ namespace VIZCore3D.NET.Animation.Block
 
         private void btnLoadCrane_Click(object sender, EventArgs e)
         {
-            string path = @"D:\GitHub\VIZCore3D.NET.Animation.Block\CRANE";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.Animation.Block\\CRANE", vizcore3d.GetEntryAssemblyPath());
 
             if (System.IO.Directory.Exists(path) == true)
             {
@@ -608,7 +608,7 @@ namespace VIZCore3D.NET.Animation.Block
                 customBox.Add(id);
             }
 
-            string image = @"D:\GitHub\VIZCore3D.NET.Animation.Block\TEXTURE\Concrete-Texture.jpg";
+            string image = string.Format("{0}\\Models\\VIZCore3D.NET.Animation.Block\\TEXTURE\\Concrete-Texture.jpg", vizcore3d.GetEntryAssemblyPath());
 
             if (MaterialID == -1)
             {
