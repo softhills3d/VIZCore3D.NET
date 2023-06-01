@@ -656,7 +656,7 @@ namespace VIZCore3D.NET.BayBlock
             lvModels.BeginUpdate();
             lvModels.Items.Clear();
 
-            string basePath = string.Format("{0}\\Models\\VIZCore3D.NET.BayBlock", vizcore3d.GetEntryAssemblyPath());
+            string basePath = string.Format("{0}\\Models\\VIZCore3D.NET.PEBLOCK", vizcore3d.GetEntryAssemblyPath());
 
             if (System.IO.Directory.Exists(basePath) == true)
             {
