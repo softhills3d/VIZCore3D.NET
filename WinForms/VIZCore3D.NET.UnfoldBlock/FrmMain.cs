@@ -547,11 +547,8 @@ namespace VIZCore3D.NET.UnfoldBlock
         // ================================================
         private void btnLoadModel_Click(object sender, EventArgs e)
         {
-            // Case 1
-            //string path = "E:\\MODELS\\X.ETC\\PHULL_SIMPLIFIED";
-
-            // Case 2
-            string path = "E:\\MODELS\\SHOWCASE\\SHIP\\GRID";
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.MoveWithMouse", vizcore3d.GetEntryAssemblyPath());
+            //string path = string.Format("{0}\\Models\\VIZCore3D.NET.GridThreeD\\GRID", vizcore3d.GetEntryAssemblyPath());
 
             if (System.IO.Directory.Exists(path) == false) return;
 
@@ -565,8 +562,8 @@ namespace VIZCore3D.NET.UnfoldBlock
 
         private void btnUnfold_Click(object sender, EventArgs e)
         {
-            //Unfold_Case1();
-            Unfold_Case2();
+            Unfold_Case1();
+            //Unfold_Case2();
         }
 
         private void Unfold_Case1()
