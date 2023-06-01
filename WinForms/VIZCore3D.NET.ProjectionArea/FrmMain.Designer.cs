@@ -38,6 +38,7 @@
             this.tpPoint2D = new System.Windows.Forms.TabPage();
             this.txtPoints2D = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             this.tcView = new System.Windows.Forms.TabControl();
             this.tpView = new System.Windows.Forms.TabPage();
             this.tpDrawing = new System.Windows.Forms.TabPage();
+            this.txtCenter = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -99,10 +101,10 @@
             this.tabControl1.Controls.Add(this.tpImage);
             this.tabControl1.Controls.Add(this.tpPoints);
             this.tabControl1.Controls.Add(this.tpPoint2D);
-            this.tabControl1.Location = new System.Drawing.Point(12, 317);
+            this.tabControl1.Location = new System.Drawing.Point(12, 362);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(333, 341);
+            this.tabControl1.Size = new System.Drawing.Size(333, 296);
             this.tabControl1.TabIndex = 4;
             // 
             // tpImage
@@ -111,7 +113,7 @@
             this.tpImage.Location = new System.Drawing.Point(4, 22);
             this.tpImage.Name = "tpImage";
             this.tpImage.Padding = new System.Windows.Forms.Padding(3);
-            this.tpImage.Size = new System.Drawing.Size(325, 315);
+            this.tpImage.Size = new System.Drawing.Size(325, 270);
             this.tpImage.TabIndex = 0;
             this.tpImage.Text = "Image";
             this.tpImage.UseVisualStyleBackColor = true;
@@ -121,7 +123,7 @@
             this.pbProjection.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbProjection.Location = new System.Drawing.Point(3, 3);
             this.pbProjection.Name = "pbProjection";
-            this.pbProjection.Size = new System.Drawing.Size(319, 309);
+            this.pbProjection.Size = new System.Drawing.Size(319, 264);
             this.pbProjection.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbProjection.TabIndex = 0;
             this.pbProjection.TabStop = false;
@@ -132,7 +134,7 @@
             this.tpPoints.Location = new System.Drawing.Point(4, 22);
             this.tpPoints.Name = "tpPoints";
             this.tpPoints.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPoints.Size = new System.Drawing.Size(325, 315);
+            this.tpPoints.Size = new System.Drawing.Size(325, 270);
             this.tpPoints.TabIndex = 1;
             this.tpPoints.Text = "Points (3D)";
             this.tpPoints.UseVisualStyleBackColor = true;
@@ -144,7 +146,7 @@
             this.txtPoints3D.Multiline = true;
             this.txtPoints3D.Name = "txtPoints3D";
             this.txtPoints3D.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPoints3D.Size = new System.Drawing.Size(319, 309);
+            this.txtPoints3D.Size = new System.Drawing.Size(319, 264);
             this.txtPoints3D.TabIndex = 0;
             // 
             // tpPoint2D
@@ -153,7 +155,7 @@
             this.tpPoint2D.Location = new System.Drawing.Point(4, 22);
             this.tpPoint2D.Name = "tpPoint2D";
             this.tpPoint2D.Padding = new System.Windows.Forms.Padding(3);
-            this.tpPoint2D.Size = new System.Drawing.Size(325, 315);
+            this.tpPoint2D.Size = new System.Drawing.Size(325, 270);
             this.tpPoint2D.TabIndex = 2;
             this.tpPoint2D.Text = "Points (2D)";
             this.tpPoint2D.UseVisualStyleBackColor = true;
@@ -165,7 +167,7 @@
             this.txtPoints2D.Multiline = true;
             this.txtPoints2D.Name = "txtPoints2D";
             this.txtPoints2D.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPoints2D.Size = new System.Drawing.Size(319, 309);
+            this.txtPoints2D.Size = new System.Drawing.Size(319, 264);
             this.txtPoints2D.TabIndex = 1;
             // 
             // groupBox3
@@ -173,6 +175,8 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.txtCenter);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
@@ -184,10 +188,19 @@
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(12, 158);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(333, 153);
+            this.groupBox3.Size = new System.Drawing.Size(333, 198);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(32, 158);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "Center";
             // 
             // label6
             // 
@@ -361,6 +374,13 @@
             this.tpDrawing.Text = "2D";
             this.tpDrawing.UseVisualStyleBackColor = true;
             // 
+            // txtCenter
+            // 
+            this.txtCenter.Location = new System.Drawing.Point(101, 155);
+            this.txtCenter.Name = "txtCenter";
+            this.txtCenter.Size = new System.Drawing.Size(145, 21);
+            this.txtCenter.TabIndex = 10;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -420,6 +440,8 @@
         private System.Windows.Forms.TabPage tpDrawing;
         private System.Windows.Forms.TabPage tpPoint2D;
         private System.Windows.Forms.TextBox txtPoints2D;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCenter;
     }
 }
 
