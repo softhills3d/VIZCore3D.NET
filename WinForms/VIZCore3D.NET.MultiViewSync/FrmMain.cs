@@ -326,7 +326,7 @@ namespace VIZCore3D.NET.MultiViewSync
 
             if(viewId != 0)
             {
-                vizcore3d.View.ViewToolbar = false;
+                vizcore3d.View.Toolbar.Enable = false;
             }
             #endregion
 
