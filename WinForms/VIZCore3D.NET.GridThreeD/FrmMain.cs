@@ -125,11 +125,11 @@ namespace VIZCore3D.NET.GridThreeD
         // ================================================
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            string machineName = System.Environment.MachineName.ToUpper();
+            string path = string.Format("{0}\\Models\\VIZCore3D.NET.GridThreeD\\H0000.viz", vizcore3dMain.GetEntryAssemblyPath());
 
-            if (machineName == "GJKIM-ADELL")
+            if (System.IO.File.Exists(path) == true)
             {
-                vizcore3dMain.Model.Open("E:\\MODELS\\SHOWCASE\\SHIP\\H0000.viz");
+                vizcore3dMain.Model.Open(path);
             }
             else
             {
@@ -218,11 +218,10 @@ namespace VIZCore3D.NET.GridThreeD
 
             if (String.IsNullOrEmpty(GridPath) == false) return GridPath;
 
-            if (System.Environment.MachineName.ToUpper() == "GJKIM-ADELL")
-            {
-                path = "E:\\MODELS\\SHOWCASE\\SHIP\\GRID";
-                if (System.IO.Directory.Exists(path) == false) System.IO.Directory.CreateDirectory(path);
+            path = string.Format("{0}\\Models\\VIZCore3D.NET.GridThreeD\\GRID", vizcore3dMain.GetEntryAssemblyPath());
 
+            if (System.IO.Directory.Exists(path) == true)
+            {
                 if (clearGrid == true)
                 {
                     string[] files = System.IO.Directory.GetFiles(path);
