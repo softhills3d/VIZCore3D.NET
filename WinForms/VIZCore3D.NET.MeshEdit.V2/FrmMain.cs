@@ -573,8 +573,8 @@ namespace VIZCore3D.NET.MeshEdit.V2
 
             int bodyIndex = CreateNode(name, groupNode.Index);
             VIZCore3D.NET.Data.Node part = vizcore3d.Object3D.FromIndex(vizcore3d.Object3D.FromIndex(bodyIndex).ParentIndex);
-            VIZCore3D.NET.Data.Vertex3D start = new Data.Vertex3D(txtStart.Text, ",");
-            VIZCore3D.NET.Data.Vertex3D end = new Data.Vertex3D(txtEnd.Text, ",");
+            VIZCore3D.NET.Data.Vertex3D start = new VIZCore3D.NET.Data.Vertex3D(txtStart.Text, ",");
+            VIZCore3D.NET.Data.Vertex3D end = new VIZCore3D.NET.Data.Vertex3D(txtEnd.Text, ",");
 
             CreateCylinder(bodyIndex, start, end);
 
