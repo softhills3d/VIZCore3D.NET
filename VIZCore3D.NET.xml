@@ -23410,27 +23410,32 @@
             아바타 이동경로 저장 다이얼로그 실행
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Manager.LanguageType">
+        <member name="T:VIZCore3D.NET.Manager.LanguageKind">
             <summary>
             언어 타입
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageType.KOREAN">
+        <member name="F:VIZCore3D.NET.Manager.LanguageKind.UNKNOWN">
+            <summary>
+            Unknown
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageKind.KOREAN">
             <summary>
             한국어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageType.ENGLISH">
+        <member name="F:VIZCore3D.NET.Manager.LanguageKind.ENGLISH">
             <summary>
             영어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageType.CHINESE">
+        <member name="F:VIZCore3D.NET.Manager.LanguageKind.CHINESE">
             <summary>
              중국어
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageType.JAPANESE">
+        <member name="F:VIZCore3D.NET.Manager.LanguageKind.JAPANESE">
             <summary>
             일본어
             </summary>
@@ -23446,13 +23451,6 @@
             </summary>
             <param name="Default">Category 다국어 문자열</param>
             <param name="key">Category Resource Code</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.GetLocalizedString(System.String)">
-            <summary>
-            Propery Control Category 다국어 처리
-            </summary>
-            <param name="value">Category Resource Code</param>
-            <returns>Category 다국어 문자열 반환</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
@@ -23498,7 +23496,7 @@
             로드여부
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.dicLanguage">
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageMap">
             <summary>
             Language dictionary
             </summary>
@@ -23516,48 +23514,42 @@
             <param name="node">Language 노드</param>
             <returns>초기화 결과</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageType(System.String)">
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageKind(System.String)">
             <summary>
-            언어 타입 가져오기
+            언어 유형 가져오기
             </summary>
             <param name="languageCode">Language Code</param>
             <returns>현재 설정된 언어 코드</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String)">
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
             <summary>
-            ResourceCode 가져오기
+            ResouceCode에 해당하는 다국어 문자열 반환 (parameter가 1개일 경우)
             </summary>
-            <param name="resouceCode">Resource Code</param>
-            <returns>다국어 문자열 반환</returns>
+            <param name="resouceCode">resouceCode</param>
+            <returns>다국어 처리된 문자열 반환</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetResource(System.String,System.String)">
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
             <summary>
-            ResourceCode 가져오기
+            ResouceCode에 해당하는 다국어 문자열 반환 (parameter가 2개일 경우)
             </summary>
-            <param name="resouceCode">다국어 문자열 코드</param>
-            <param name="sourceText">원본 문자열</param>
-            <returns>다국어 문자열 반환</returns>
+            <param name="resouceCode">resouceCode</param>
+            <param name="sourceText">resouceCode에 해당되는 문자열</param>
+            <returns>다국어 처리된 문자열 반환</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String,System.String)">
+            <summary>
+            지정된 languageCode에 해당하는 다국어 문자열 반환
+            </summary>
+            <param name="resouceCode">resouceCode</param>
+            <param name="sourceText">resouceCode에 해당되는 문자열</param>
+            <param name="languageCode">언어 타입</param>
+            <returns>다국어 처리된 문자열 반환</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageList">
             <summary>
             언어 list 가져오기
             </summary>
             <returns>언어 목록</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
-            <summary>
-            ResourceCode 가져오기
-            </summary>
-            <param name="resouceCode">Resource Code</param>
-            <returns>다국어 문자열</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
-            <summary>
-            번역된 내용 가져오기
-            </summary>
-            <param name="resouceCode">Resource Code</param>
-            <param name="languageCode">언어 타입</param>
-            <returns>다국어 문자열</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
             <summary>
