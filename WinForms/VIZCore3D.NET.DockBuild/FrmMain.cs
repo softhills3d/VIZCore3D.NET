@@ -1669,24 +1669,5 @@ namespace VIZCore3D.NET.DockBuild
 
             return filter;
         }
-
-
-
-        // ================================================
-        // Function - FLOODING
-        // ================================================
-        private void btnFloodingInit_Click(object sender, EventArgs e)
-        {
-            string name = System.Environment.MachineName.ToUpper();
-            if (name == "GJKIM-ADELL")
-            {
-                string path = "E:\\MODELS\\SHOWCASE\\DDH.V4.FLOODING.V2.viz";
-                vizcore3d.Model.Open(path);
-            }
-            else
-            {
-                vizcore3d.Model.OpenFileDialog();
-            }
-        }
     }
 }

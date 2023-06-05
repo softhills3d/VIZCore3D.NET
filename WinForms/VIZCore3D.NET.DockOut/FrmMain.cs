@@ -91,14 +91,9 @@ namespace VIZCore3D.NET.DockOut
 
             WATER_BOX_ID = -1;
 
-            string machineName = System.Environment.MachineName.ToUpper();
-            if (machineName == "GJKIM-ADELL")
-            {
-                //txtDockLength.Text = "160";
-                txtDockDepth.Text = "14";
-
-                txtMaxHeight.Text = "22000";
-            }
+            //txtDockLength.Text = "160";
+            txtDockDepth.Text = "14";
+            txtMaxHeight.Text = "22000";
 
             CollisionManager = new GridSpaceManager();
         }

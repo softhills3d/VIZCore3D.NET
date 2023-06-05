@@ -36,17 +36,6 @@ namespace VIZCore3D.NET.Animation.Block
 
         private Dictionary<int, VIZCore3D.NET.Data.Vertex3D> Transform = null;
 
-        public bool TestMode
-        {
-            get
-            {
-                string name = System.Environment.MachineName.ToUpper();
-
-                if (name == "GJKIM-ADELL" || name == "GJKIM-PC") return true;
-                else return false;
-            }
-        }
-
         public FrmMain()
         {
             InitializeComponent();
