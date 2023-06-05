@@ -978,7 +978,7 @@ namespace VIZCore3D.NET.SelectionBox
             dlg.Filter = vizcore3d.Model.SaveFilterVIZ;
             if (dlg.ShowDialog() != DialogResult.OK) return;
 
-            vizcore3d.SelectionBox.ExportVIZ(id, dlg.FileName, false);
+            vizcore3d.SelectionBox.ExportVIZ(id, dlg.FileName, true);
         }
     }
 }
