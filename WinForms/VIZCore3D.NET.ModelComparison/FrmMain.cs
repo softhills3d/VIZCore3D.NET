@@ -329,6 +329,8 @@ namespace VIZCore3D.NET.ModelComparison
                 }
             }
             lvResult.EndUpdate();
+
+            MessageBox.Show("Completed", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ResetView()
