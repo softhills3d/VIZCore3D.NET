@@ -626,11 +626,30 @@ namespace VIZCore3D.NET.StreamPerfomance
                 sw.Stop();
                 AddLog(string.Format("PARTIAL [{0}]", i + 1), sw.ElapsedMilliseconds);
             }
+
+            vizcore3d.Model.Close();
+
+            for (int i = 0; i < count; i++)
+            {
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
+
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+
+                string path = (string)lvFiles.Items[i].Tag;
+                VIZCore3D.NET.Data.StreamData item = new VIZCore3D.NET.Data.StreamData(path);
+                stream.Add(item);
+
+                vizcore3d.Model.AddStream(stream);
+
+                sw.Stop();
+                AddLog(string.Format("PARTIAL(APPEND) [{0}]", i + 1), sw.ElapsedMilliseconds);
+            }
         }
 
         private void AddLog(string title, long elapsedMilliseconds)
         {
-            string msg = string.Format("{0} : {1:#,0}\r\n", title, elapsedMilliseconds);
+            string msg = string.Format("{0} : {1:#,0} ms.\r\n", title, elapsedMilliseconds);
             txtLog.Text += msg;
         }
     }
