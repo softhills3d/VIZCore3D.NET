@@ -768,5 +768,34 @@ namespace VIZCore3D.NET.SectionVolume
 
             }));
         }
+
+        private void btnUpdateSize_Click(object sender, EventArgs e)
+        {
+            string minX = txtMinX.Text;
+            string minY = txtMinY.Text;
+            string minZ = txtMinZ.Text;
+
+            string maxX = txtMaxX.Text;
+            string maxY = txtMaxY.Text;
+            string maxZ = txtMaxZ.Text;
+
+            if (String.IsNullOrEmpty(minX) == true) return;
+            if (String.IsNullOrEmpty(minY) == true) return;
+            if (String.IsNullOrEmpty(minZ) == true) return;
+
+            if (String.IsNullOrEmpty(maxX) == true) return;
+            if (String.IsNullOrEmpty(maxY) == true) return;
+            if (String.IsNullOrEmpty(maxZ) == true) return;
+
+            VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+
+            if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX) return;
+
+            vizcore3d.Section.SetBoxSize(
+                section.ID
+                , new VIZCore3D.NET.Data.Vertex3D(minX, minY, minZ)
+                , new VIZCore3D.NET.Data.Vertex3D(maxX, maxY, maxZ)
+                );
+        }
     }
 }

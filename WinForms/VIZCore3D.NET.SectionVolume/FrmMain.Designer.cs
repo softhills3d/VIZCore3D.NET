@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.ckAreaOnly = new System.Windows.Forms.CheckBox();
+            this.ckVisibleOnly = new System.Windows.Forms.CheckBox();
             this.txtVolume = new System.Windows.Forms.TextBox();
             this.txtArea = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,8 +70,20 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ckVisibleOnly = new System.Windows.Forms.CheckBox();
-            this.ckAreaOnly = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnUpdateSize = new System.Windows.Forms.Button();
+            this.txtMinX = new System.Windows.Forms.TextBox();
+            this.txtMaxX = new System.Windows.Forms.TextBox();
+            this.txtMinY = new System.Windows.Forms.TextBox();
+            this.txtMaxY = new System.Windows.Forms.TextBox();
+            this.txtMinZ = new System.Windows.Forms.TextBox();
+            this.txtMaxZ = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -85,6 +99,8 @@
             this.tpClippedParts.SuspendLayout();
             this.tpErrorParts.SuspendLayout();
             this.tpAllParts.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -96,6 +112,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -104,7 +121,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1123, 549);
+            this.splitContainer1.Size = new System.Drawing.Size(1123, 643);
             this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -124,6 +141,26 @@
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Geometry Property";
+            // 
+            // ckAreaOnly
+            // 
+            this.ckAreaOnly.AutoSize = true;
+            this.ckAreaOnly.Location = new System.Drawing.Point(16, 157);
+            this.ckAreaOnly.Name = "ckAreaOnly";
+            this.ckAreaOnly.Size = new System.Drawing.Size(80, 16);
+            this.ckAreaOnly.TabIndex = 5;
+            this.ckAreaOnly.Text = "Area Only";
+            this.ckAreaOnly.UseVisualStyleBackColor = true;
+            // 
+            // ckVisibleOnly
+            // 
+            this.ckVisibleOnly.AutoSize = true;
+            this.ckVisibleOnly.Location = new System.Drawing.Point(16, 125);
+            this.ckVisibleOnly.Name = "ckVisibleOnly";
+            this.ckVisibleOnly.Size = new System.Drawing.Size(92, 16);
+            this.ckVisibleOnly.TabIndex = 4;
+            this.ckVisibleOnly.Text = "Visible Only";
+            this.ckVisibleOnly.UseVisualStyleBackColor = true;
             // 
             // txtVolume
             // 
@@ -260,8 +297,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(892, 549);
-            this.splitContainer2.SplitterDistance = 300;
+            this.splitContainer2.Size = new System.Drawing.Size(892, 643);
+            this.splitContainer2.SplitterDistance = 394;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabControl1
@@ -458,31 +495,151 @@
             this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader17.Width = 133;
             // 
-            // ckVisibleOnly
+            // groupBox5
             // 
-            this.ckVisibleOnly.AutoSize = true;
-            this.ckVisibleOnly.Location = new System.Drawing.Point(16, 125);
-            this.ckVisibleOnly.Name = "ckVisibleOnly";
-            this.ckVisibleOnly.Size = new System.Drawing.Size(92, 16);
-            this.ckVisibleOnly.TabIndex = 4;
-            this.ckVisibleOnly.Text = "Visible Only";
-            this.ckVisibleOnly.UseVisualStyleBackColor = true;
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnUpdateSize);
+            this.groupBox5.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox5.Location = new System.Drawing.Point(12, 425);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(206, 159);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Section Box";
             // 
-            // ckAreaOnly
+            // tableLayoutPanel1
             // 
-            this.ckAreaOnly.AutoSize = true;
-            this.ckAreaOnly.Location = new System.Drawing.Point(16, 157);
-            this.ckAreaOnly.Name = "ckAreaOnly";
-            this.ckAreaOnly.Size = new System.Drawing.Size(80, 16);
-            this.ckAreaOnly.TabIndex = 5;
-            this.ckAreaOnly.Text = "Area Only";
-            this.ckAreaOnly.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinX, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxX, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinY, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxY, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinZ, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxZ, 2, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 20);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(191, 105);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "X";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Y";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Z";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(60, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 12);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "MIN.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(126, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 12);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "MAX.";
+            // 
+            // btnUpdateSize
+            // 
+            this.btnUpdateSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateSize.Location = new System.Drawing.Point(122, 131);
+            this.btnUpdateSize.Name = "btnUpdateSize";
+            this.btnUpdateSize.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateSize.TabIndex = 1;
+            this.btnUpdateSize.Text = "Set";
+            this.btnUpdateSize.UseVisualStyleBackColor = true;
+            this.btnUpdateSize.Click += new System.EventHandler(this.btnUpdateSize_Click);
+            // 
+            // txtMinX
+            // 
+            this.txtMinX.Location = new System.Drawing.Point(60, 29);
+            this.txtMinX.Name = "txtMinX";
+            this.txtMinX.Size = new System.Drawing.Size(60, 21);
+            this.txtMinX.TabIndex = 5;
+            // 
+            // txtMaxX
+            // 
+            this.txtMaxX.Location = new System.Drawing.Point(126, 29);
+            this.txtMaxX.Name = "txtMaxX";
+            this.txtMaxX.Size = new System.Drawing.Size(60, 21);
+            this.txtMaxX.TabIndex = 6;
+            // 
+            // txtMinY
+            // 
+            this.txtMinY.Location = new System.Drawing.Point(60, 55);
+            this.txtMinY.Name = "txtMinY";
+            this.txtMinY.Size = new System.Drawing.Size(60, 21);
+            this.txtMinY.TabIndex = 7;
+            // 
+            // txtMaxY
+            // 
+            this.txtMaxY.Location = new System.Drawing.Point(126, 55);
+            this.txtMaxY.Name = "txtMaxY";
+            this.txtMaxY.Size = new System.Drawing.Size(60, 21);
+            this.txtMaxY.TabIndex = 8;
+            // 
+            // txtMinZ
+            // 
+            this.txtMinZ.Location = new System.Drawing.Point(60, 81);
+            this.txtMinZ.Name = "txtMinZ";
+            this.txtMinZ.Size = new System.Drawing.Size(60, 21);
+            this.txtMinZ.TabIndex = 9;
+            // 
+            // txtMaxZ
+            // 
+            this.txtMaxZ.Location = new System.Drawing.Point(126, 81);
+            this.txtMaxZ.Name = "txtMaxZ";
+            this.txtMaxZ.Size = new System.Drawing.Size(60, 21);
+            this.txtMaxZ.TabIndex = 10;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 549);
+            this.ClientSize = new System.Drawing.Size(1123, 643);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
@@ -505,6 +662,9 @@
             this.tpClippedParts.ResumeLayout(false);
             this.tpErrorParts.ResumeLayout(false);
             this.tpAllParts.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -552,6 +712,20 @@
         private System.Windows.Forms.ColumnHeader columnHeader17;
         private System.Windows.Forms.CheckBox ckAreaOnly;
         private System.Windows.Forms.CheckBox ckVisibleOnly;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btnUpdateSize;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtMinX;
+        private System.Windows.Forms.TextBox txtMaxX;
+        private System.Windows.Forms.TextBox txtMinY;
+        private System.Windows.Forms.TextBox txtMaxY;
+        private System.Windows.Forms.TextBox txtMinZ;
+        private System.Windows.Forms.TextBox txtMaxZ;
     }
 }
 
