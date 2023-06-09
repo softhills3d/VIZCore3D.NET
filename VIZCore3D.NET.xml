@@ -8301,6 +8301,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Data.ModelStatus.SelectedTop">
             <summary>
+            
             전체 노드 중 선택된 상위 노드
             </summary>
         </member>
@@ -23491,10 +23492,16 @@
             Language XML 파일 경로
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager._IsLoaded">
             <summary>
             로드여부
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
+            <summary>
+            Is Language Data Loaded
+            </summary>
+            <returns>Result</returns>
         </member>
         <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageMap">
             <summary>
@@ -23521,12 +23528,12 @@
             <param name="languageCode">Language Code</param>
             <returns>현재 설정된 언어 코드</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetLanguageCode(VIZCore3D.NET.Manager.LanguageKind)">
             <summary>
-            ResouceCode에 해당하는 다국어 문자열 반환 (parameter가 1개일 경우)
+            Get Language Code
             </summary>
-            <param name="resouceCode">resouceCode</param>
-            <returns>다국어 처리된 문자열 반환</returns>
+            <param name="kind">Language Kind</param>
+            <returns>Language Code String</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
             <summary>
@@ -57920,171 +57927,6 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator1">
-            <summary>
-            toolbarHomeSeparator1 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator2">
-            <summary>
-            toolbarHomeSeparator2 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator3">
-            <summary>
-            toolbarHomeSeparator3 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator4">
-            <summary>
-            toolbarHomeSeparator4 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator5">
-            <summary>
-            toolbarHomeSeparator5 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator6">
-            <summary>
-            toolbarHomeSeparator6 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator1">
-            <summary>
-            toolbarNoteSeparator1 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator2">
-            <summary>
-            toolbarNoteSeparator2 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator3">
-            <summary>
-            toolbarNoteSeparator3 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator4">
-            <summary>
-            toolbarNoteSeparator4 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator5">
-            <summary>
-            toolbarNoteSeparator5 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator6">
-            <summary>
-            toolbarNoteSeparator6 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator7">
-            <summary>
-            toolbarNoteSeparator7 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator8">
-            <summary>
-            toolbarNoteSeparator8 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator1">
-            <summary>
-            toolbarMeasureSeparator1 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator2">
-            <summary>
-            toolbarMeasureSeparator2 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator3">
-            <summary>
-            toolbarMeasureSeparator3 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator4">
-            <summary>
-            toolbarMeasureSeparator4 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator5">
-            <summary>
-            toolbarMeasureSeparator5 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator6">
-            <summary>
-            toolbarMeasureSeparator6 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator7">
-            <summary>
-            toolbarMeasureSeparator7 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator8">
-            <summary>
-            toolbarMeasureSeparator8 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator1">
-            <summary>
-            toolbarSectionSeparator1 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator2">
-            <summary>
-            toolbarSectionSeparator2 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator3">
-            <summary>
-            toolbarSectionSeparator3 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator4">
-            <summary>
-            toolbarSectionSeparator4 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator5">
-            <summary>
-            toolbarSectionSeparator5 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator6">
-            <summary>
-            toolbarSectionSeparator6 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator7">
-            <summary>
-            toolbarSectionSeparator7 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarAnimationSeparator1">
-            <summary>
-            toolbarAnimationSeparator1 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarAnimationSeparator2">
-            <summary>
-            toolbarAnimationSeparator2 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarPrimitive">
-            <summary>
-            toolbarPrimitive 다국어 셋팅
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetStatusbarInfo">
-            <summary>
-            statusbarInfo 다국어 셋팅
-            </summary>
-        </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.InitializeControl(VIZCore3D.NET.BackgroundImage,System.Drawing.Color,System.Drawing.Image,VIZCore3D.NET.Data.ImageMode)">
             <summary>
             초기화
@@ -59242,6 +59084,189 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetLanguageCode(System.Globalization.CultureInfo)">
+            <summary>
+            Set Language Code
+            </summary>
+            <param name="info">CultureInfo (System.Globalization.CultureInfo.InstalledUICulture)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetLanguageKind(VIZCore3D.NET.Manager.LanguageKind)">
+            <summary>
+            Set Language Kind
+            </summary>
+            <param name="kind">Language Kind</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetLanguageCode(System.String)">
+            <summary>
+            Set Language Code
+            </summary>
+            <param name="languageCode">Language Code (ko-KR, en-US, zh-CHS, ja-UP, ...)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator1">
+            <summary>
+            toolbarHomeSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator2">
+            <summary>
+            toolbarHomeSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator3">
+            <summary>
+            toolbarHomeSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator4">
+            <summary>
+            toolbarHomeSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator5">
+            <summary>
+            toolbarHomeSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator6">
+            <summary>
+            toolbarHomeSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator1">
+            <summary>
+            toolbarNoteSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator2">
+            <summary>
+            toolbarNoteSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator3">
+            <summary>
+            toolbarNoteSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator4">
+            <summary>
+            toolbarNoteSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator5">
+            <summary>
+            toolbarNoteSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator6">
+            <summary>
+            toolbarNoteSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator7">
+            <summary>
+            toolbarNoteSeparator7 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarNoteSeparator8">
+            <summary>
+            toolbarNoteSeparator8 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator1">
+            <summary>
+            toolbarMeasureSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator2">
+            <summary>
+            toolbarMeasureSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator3">
+            <summary>
+            toolbarMeasureSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator4">
+            <summary>
+            toolbarMeasureSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator5">
+            <summary>
+            toolbarMeasureSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator6">
+            <summary>
+            toolbarMeasureSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator7">
+            <summary>
+            toolbarMeasureSeparator7 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarMeasureSeparator8">
+            <summary>
+            toolbarMeasureSeparator8 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator1">
+            <summary>
+            toolbarSectionSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator2">
+            <summary>
+            toolbarSectionSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator3">
+            <summary>
+            toolbarSectionSeparator3 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator4">
+            <summary>
+            toolbarSectionSeparator4 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator5">
+            <summary>
+            toolbarSectionSeparator5 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator6">
+            <summary>
+            toolbarSectionSeparator6 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarSectionSeparator7">
+            <summary>
+            toolbarSectionSeparator7 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarAnimationSeparator1">
+            <summary>
+            toolbarAnimationSeparator1 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarAnimationSeparator2">
+            <summary>
+            toolbarAnimationSeparator2 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarPrimitive">
+            <summary>
+            toolbarPrimitive 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetStatusbarInfo">
+            <summary>
+            statusbarInfo 다국어 셋팅
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.ShowSettingDialog">
             <summary>
