@@ -23492,17 +23492,6 @@
             Language XML 파일 경로
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.LanguageManager._IsLoaded">
-            <summary>
-            로드여부
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
-            <summary>
-            Is Language Data Loaded
-            </summary>
-            <returns>Result</returns>
-        </member>
         <member name="F:VIZCore3D.NET.Manager.LanguageManager.LanguageMap">
             <summary>
             Language dictionary
@@ -23557,6 +23546,107 @@
             언어 list 가져오기
             </summary>
             <returns>언어 목록</returns>
+        </member>
+        <member name="F:VIZCore3D.NET.Manager.LanguageManager._IsLoaded">
+            <summary>
+            로드여부
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.IsLoaded">
+            <summary>
+            Is Language Data Loaded
+            </summary>
+            <returns>Result</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.SetLanguageCode(System.Globalization.CultureInfo)">
+            <summary>
+            Set Language Code
+            </summary>
+            <param name="info">CultureInfo (System.Globalization.CultureInfo.InstalledUICulture)</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InstalledUICulture;
+                vizcore3d.Language.SetLanguageCode(cultureInfo);
+            }
+            
+            private void Example2()
+            {
+                vizcore3d.Language.SetLanguageCode("en-US");
+            }
+            
+            private void Example3()
+            {
+                vizcore3d.Language.SetLanguageKind(VIZCore3D.NET.Manager.LanguageKind.ENGLISH);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.SetLanguageCode(System.String)">
+            <summary>
+            Set Language Code
+            </summary>
+            <param name="languageCode">Language Code (ko-KR, en-US, zh-CHS, ja-UP, ...)</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InstalledUICulture;
+                vizcore3d.Language.SetLanguageCode(cultureInfo);
+            }
+            
+            private void Example2()
+            {
+                vizcore3d.Language.SetLanguageCode("en-US");
+            }
+            
+            private void Example3()
+            {
+                vizcore3d.Language.SetLanguageKind(VIZCore3D.NET.Manager.LanguageKind.ENGLISH);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.SetLanguageKind(VIZCore3D.NET.Manager.LanguageKind)">
+            <summary>
+            Set Language Kind
+            </summary>
+            <param name="kind">Language Kind</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example1()
+            {
+                System.Globalization.CultureInfo cultureInfo = System.Globalization.CultureInfo.InstalledUICulture;
+                vizcore3d.Language.SetLanguageCode(cultureInfo);
+            }
+            
+            private void Example2()
+            {
+                vizcore3d.Language.SetLanguageCode("en-US");
+            }
+            
+            private void Example3()
+            {
+                vizcore3d.Language.SetLanguageKind(VIZCore3D.NET.Manager.LanguageKind.ENGLISH);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
             <summary>
@@ -57527,6 +57617,11 @@
             Print Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.Language">
+            <summary>
+            Language Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ShowModelTree">
             <summary>
             모델 트리 보이기/숨기기
@@ -59084,24 +59179,6 @@
             ]]>
             </code> 
             </example>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetLanguageCode(System.Globalization.CultureInfo)">
-            <summary>
-            Set Language Code
-            </summary>
-            <param name="info">CultureInfo (System.Globalization.CultureInfo.InstalledUICulture)</param>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetLanguageKind(VIZCore3D.NET.Manager.LanguageKind)">
-            <summary>
-            Set Language Kind
-            </summary>
-            <param name="kind">Language Kind</param>
-        </member>
-        <member name="M:VIZCore3D.NET.VIZCore3DControl.SetLanguageCode(System.String)">
-            <summary>
-            Set Language Code
-            </summary>
-            <param name="languageCode">Language Code (ko-KR, en-US, zh-CHS, ja-UP, ...)</param>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.SetToolbarHomeSeparator1">
             <summary>
