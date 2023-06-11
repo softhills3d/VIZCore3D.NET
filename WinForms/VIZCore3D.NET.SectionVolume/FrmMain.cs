@@ -788,6 +788,7 @@ namespace VIZCore3D.NET.SectionVolume
             if (String.IsNullOrEmpty(maxZ) == true) return;
 
             VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            if(section == null ) return;
 
             if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX) return;
 
@@ -795,6 +796,43 @@ namespace VIZCore3D.NET.SectionVolume
                 section.ID
                 , new VIZCore3D.NET.Data.Vertex3D(minX, minY, minZ)
                 , new VIZCore3D.NET.Data.Vertex3D(maxX, maxY, maxZ)
+                );
+        }
+
+        private void btnGetBoxSize_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            if (section == null) return;
+            if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX) return;
+
+            VIZCore3D.NET.Data.BoundBox3D size = section.BoundBox;
+
+            txtMinX.Text = size.MinX.ToString();
+            txtMinY.Text = size.MinY.ToString();
+            txtMinZ.Text = size.MinZ.ToString();
+
+            txtMaxX.Text = size.MaxX.ToString();
+            txtMaxY.Text = size.MaxY.ToString();
+            txtMaxZ.Text = size.MaxZ.ToString();
+        }
+
+        private void btnSectionBoxExport_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            if (section == null) return;
+            if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION_BOX) return;
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = vizcore3d.Model.SaveFilter;
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            section.ExportVIZ(dlg.FileName, ckExportKeepStructure.Checked);
+
+            MessageBox.Show(
+                string.Format("Completed. Result = {0}", System.IO.File.Exists(dlg.FileName))
+                , "VIZCore3D.NET"
+                , MessageBoxButtons.OK
+                , System.IO.File.Exists(dlg.FileName) == true ? MessageBoxIcon.Information : MessageBoxIcon.Error
                 );
         }
     }

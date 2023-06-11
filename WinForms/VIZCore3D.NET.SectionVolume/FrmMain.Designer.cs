@@ -30,6 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnUpdateSize = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtMinX = new System.Windows.Forms.TextBox();
+            this.txtMaxX = new System.Windows.Forms.TextBox();
+            this.txtMinY = new System.Windows.Forms.TextBox();
+            this.txtMaxY = new System.Windows.Forms.TextBox();
+            this.txtMinZ = new System.Windows.Forms.TextBox();
+            this.txtMaxZ = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ckAreaOnly = new System.Windows.Forms.CheckBox();
             this.ckVisibleOnly = new System.Windows.Forms.CheckBox();
@@ -70,24 +84,16 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnUpdateSize = new System.Windows.Forms.Button();
-            this.txtMinX = new System.Windows.Forms.TextBox();
-            this.txtMaxX = new System.Windows.Forms.TextBox();
-            this.txtMinY = new System.Windows.Forms.TextBox();
-            this.txtMaxY = new System.Windows.Forms.TextBox();
-            this.txtMinZ = new System.Windows.Forms.TextBox();
-            this.txtMaxZ = new System.Windows.Forms.TextBox();
+            this.btnGetBoxSize = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.btnSectionBoxExport = new System.Windows.Forms.Button();
+            this.ckExportKeepStructure = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -99,8 +105,7 @@
             this.tpClippedParts.SuspendLayout();
             this.tpErrorParts.SuspendLayout();
             this.tpAllParts.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -112,6 +117,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox6);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
@@ -121,9 +127,150 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1123, 643);
+            this.splitContainer1.Size = new System.Drawing.Size(1123, 667);
             this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.btnGetBoxSize);
+            this.groupBox5.Controls.Add(this.btnUpdateSize);
+            this.groupBox5.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox5.Location = new System.Drawing.Point(12, 371);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(206, 159);
+            this.groupBox5.TabIndex = 3;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Section Box";
+            // 
+            // btnUpdateSize
+            // 
+            this.btnUpdateSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUpdateSize.Location = new System.Drawing.Point(122, 131);
+            this.btnUpdateSize.Name = "btnUpdateSize";
+            this.btnUpdateSize.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateSize.TabIndex = 1;
+            this.btnUpdateSize.Text = "Set";
+            this.btnUpdateSize.UseVisualStyleBackColor = true;
+            this.btnUpdateSize.Click += new System.EventHandler(this.btnUpdateSize_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinX, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxX, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinY, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxY, 2, 2);
+            this.tableLayoutPanel1.Controls.Add(this.txtMinZ, 1, 3);
+            this.tableLayoutPanel1.Controls.Add(this.txtMaxZ, 2, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 20);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(191, 105);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(13, 12);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "X";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 12);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Y";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 78);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(13, 12);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Z";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(60, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 12);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "MIN.";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(126, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 12);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "MAX.";
+            // 
+            // txtMinX
+            // 
+            this.txtMinX.Location = new System.Drawing.Point(60, 29);
+            this.txtMinX.Name = "txtMinX";
+            this.txtMinX.Size = new System.Drawing.Size(60, 21);
+            this.txtMinX.TabIndex = 5;
+            // 
+            // txtMaxX
+            // 
+            this.txtMaxX.Location = new System.Drawing.Point(126, 29);
+            this.txtMaxX.Name = "txtMaxX";
+            this.txtMaxX.Size = new System.Drawing.Size(60, 21);
+            this.txtMaxX.TabIndex = 6;
+            // 
+            // txtMinY
+            // 
+            this.txtMinY.Location = new System.Drawing.Point(60, 55);
+            this.txtMinY.Name = "txtMinY";
+            this.txtMinY.Size = new System.Drawing.Size(60, 21);
+            this.txtMinY.TabIndex = 7;
+            // 
+            // txtMaxY
+            // 
+            this.txtMaxY.Location = new System.Drawing.Point(126, 55);
+            this.txtMaxY.Name = "txtMaxY";
+            this.txtMaxY.Size = new System.Drawing.Size(60, 21);
+            this.txtMaxY.TabIndex = 8;
+            // 
+            // txtMinZ
+            // 
+            this.txtMinZ.Location = new System.Drawing.Point(60, 81);
+            this.txtMinZ.Name = "txtMinZ";
+            this.txtMinZ.Size = new System.Drawing.Size(60, 21);
+            this.txtMinZ.TabIndex = 9;
+            // 
+            // txtMaxZ
+            // 
+            this.txtMaxZ.Location = new System.Drawing.Point(126, 81);
+            this.txtMaxZ.Name = "txtMaxZ";
+            this.txtMaxZ.Size = new System.Drawing.Size(60, 21);
+            this.txtMaxZ.TabIndex = 10;
             // 
             // groupBox4
             // 
@@ -135,9 +282,9 @@
             this.groupBox4.Controls.Add(this.txtArea);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Controls.Add(this.label1);
-            this.groupBox4.Location = new System.Drawing.Point(12, 228);
+            this.groupBox4.Location = new System.Drawing.Point(12, 183);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(206, 191);
+            this.groupBox4.Size = new System.Drawing.Size(206, 182);
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Geometry Property";
@@ -204,16 +351,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btnManual);
             this.groupBox3.Controls.Add(this.ckAuto);
-            this.groupBox3.Location = new System.Drawing.Point(12, 158);
+            this.groupBox3.Location = new System.Drawing.Point(12, 126);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(206, 64);
+            this.groupBox3.Size = new System.Drawing.Size(206, 51);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Options";
             // 
             // btnManual
             // 
-            this.btnManual.Location = new System.Drawing.Point(77, 28);
+            this.btnManual.Location = new System.Drawing.Point(77, 19);
             this.btnManual.Name = "btnManual";
             this.btnManual.Size = new System.Drawing.Size(68, 23);
             this.btnManual.TabIndex = 3;
@@ -224,7 +371,7 @@
             // ckAuto
             // 
             this.ckAuto.AutoSize = true;
-            this.ckAuto.Location = new System.Drawing.Point(16, 32);
+            this.ckAuto.Location = new System.Drawing.Point(16, 23);
             this.ckAuto.Name = "ckAuto";
             this.ckAuto.Size = new System.Drawing.Size(49, 16);
             this.ckAuto.TabIndex = 0;
@@ -237,16 +384,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btnSectionBox);
             this.groupBox2.Controls.Add(this.btnSectionPlane);
-            this.groupBox2.Location = new System.Drawing.Point(12, 85);
+            this.groupBox2.Location = new System.Drawing.Point(12, 67);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(206, 67);
+            this.groupBox2.Size = new System.Drawing.Size(206, 53);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Section";
             // 
             // btnSectionBox
             // 
-            this.btnSectionBox.Location = new System.Drawing.Point(77, 24);
+            this.btnSectionBox.Location = new System.Drawing.Point(77, 19);
             this.btnSectionBox.Name = "btnSectionBox";
             this.btnSectionBox.Size = new System.Drawing.Size(55, 23);
             this.btnSectionBox.TabIndex = 2;
@@ -256,7 +403,7 @@
             // 
             // btnSectionPlane
             // 
-            this.btnSectionPlane.Location = new System.Drawing.Point(16, 24);
+            this.btnSectionPlane.Location = new System.Drawing.Point(16, 19);
             this.btnSectionPlane.Name = "btnSectionPlane";
             this.btnSectionPlane.Size = new System.Drawing.Size(55, 23);
             this.btnSectionPlane.TabIndex = 1;
@@ -271,14 +418,14 @@
             this.groupBox1.Controls.Add(this.btnOpenModel);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(206, 67);
+            this.groupBox1.Size = new System.Drawing.Size(206, 49);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Model";
             // 
             // btnOpenModel
             // 
-            this.btnOpenModel.Location = new System.Drawing.Point(16, 29);
+            this.btnOpenModel.Location = new System.Drawing.Point(16, 19);
             this.btnOpenModel.Name = "btnOpenModel";
             this.btnOpenModel.Size = new System.Drawing.Size(75, 23);
             this.btnOpenModel.TabIndex = 0;
@@ -297,8 +444,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer2.Size = new System.Drawing.Size(892, 643);
-            this.splitContainer2.SplitterDistance = 394;
+            this.splitContainer2.Size = new System.Drawing.Size(892, 667);
+            this.splitContainer2.SplitterDistance = 418;
             this.splitContainer2.TabIndex = 0;
             // 
             // tabControl1
@@ -495,151 +642,55 @@
             this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader17.Width = 133;
             // 
-            // groupBox5
+            // btnGetBoxSize
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnGetBoxSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetBoxSize.Location = new System.Drawing.Point(41, 131);
+            this.btnGetBoxSize.Name = "btnGetBoxSize";
+            this.btnGetBoxSize.Size = new System.Drawing.Size(75, 23);
+            this.btnGetBoxSize.TabIndex = 2;
+            this.btnGetBoxSize.Text = "Get";
+            this.btnGetBoxSize.UseVisualStyleBackColor = true;
+            this.btnGetBoxSize.Click += new System.EventHandler(this.btnGetBoxSize_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.btnUpdateSize);
-            this.groupBox5.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox5.Location = new System.Drawing.Point(12, 425);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(206, 159);
-            this.groupBox5.TabIndex = 3;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Section Box";
+            this.groupBox6.Controls.Add(this.ckExportKeepStructure);
+            this.groupBox6.Controls.Add(this.btnSectionBoxExport);
+            this.groupBox6.Location = new System.Drawing.Point(12, 536);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(206, 53);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Section Box";
             // 
-            // tableLayoutPanel1
+            // btnSectionBoxExport
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tableLayoutPanel1.Controls.Add(this.label3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtMinX, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtMaxX, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtMinY, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtMaxY, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.txtMinZ, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtMaxZ, 2, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 20);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(191, 105);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.btnSectionBoxExport.Location = new System.Drawing.Point(10, 20);
+            this.btnSectionBoxExport.Name = "btnSectionBoxExport";
+            this.btnSectionBoxExport.Size = new System.Drawing.Size(55, 23);
+            this.btnSectionBoxExport.TabIndex = 2;
+            this.btnSectionBoxExport.Text = "Export";
+            this.btnSectionBoxExport.UseVisualStyleBackColor = true;
+            this.btnSectionBoxExport.Click += new System.EventHandler(this.btnSectionBoxExport_Click);
             // 
-            // label3
+            // ckExportKeepStructure
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 12);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "X";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 12);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Y";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 78);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 12);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Z";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(60, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 12);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "MIN.";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(126, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 12);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "MAX.";
-            // 
-            // btnUpdateSize
-            // 
-            this.btnUpdateSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUpdateSize.Location = new System.Drawing.Point(122, 131);
-            this.btnUpdateSize.Name = "btnUpdateSize";
-            this.btnUpdateSize.Size = new System.Drawing.Size(75, 23);
-            this.btnUpdateSize.TabIndex = 1;
-            this.btnUpdateSize.Text = "Set";
-            this.btnUpdateSize.UseVisualStyleBackColor = true;
-            this.btnUpdateSize.Click += new System.EventHandler(this.btnUpdateSize_Click);
-            // 
-            // txtMinX
-            // 
-            this.txtMinX.Location = new System.Drawing.Point(60, 29);
-            this.txtMinX.Name = "txtMinX";
-            this.txtMinX.Size = new System.Drawing.Size(60, 21);
-            this.txtMinX.TabIndex = 5;
-            // 
-            // txtMaxX
-            // 
-            this.txtMaxX.Location = new System.Drawing.Point(126, 29);
-            this.txtMaxX.Name = "txtMaxX";
-            this.txtMaxX.Size = new System.Drawing.Size(60, 21);
-            this.txtMaxX.TabIndex = 6;
-            // 
-            // txtMinY
-            // 
-            this.txtMinY.Location = new System.Drawing.Point(60, 55);
-            this.txtMinY.Name = "txtMinY";
-            this.txtMinY.Size = new System.Drawing.Size(60, 21);
-            this.txtMinY.TabIndex = 7;
-            // 
-            // txtMaxY
-            // 
-            this.txtMaxY.Location = new System.Drawing.Point(126, 55);
-            this.txtMaxY.Name = "txtMaxY";
-            this.txtMaxY.Size = new System.Drawing.Size(60, 21);
-            this.txtMaxY.TabIndex = 8;
-            // 
-            // txtMinZ
-            // 
-            this.txtMinZ.Location = new System.Drawing.Point(60, 81);
-            this.txtMinZ.Name = "txtMinZ";
-            this.txtMinZ.Size = new System.Drawing.Size(60, 21);
-            this.txtMinZ.TabIndex = 9;
-            // 
-            // txtMaxZ
-            // 
-            this.txtMaxZ.Location = new System.Drawing.Point(126, 81);
-            this.txtMaxZ.Name = "txtMaxZ";
-            this.txtMaxZ.Size = new System.Drawing.Size(60, 21);
-            this.txtMaxZ.TabIndex = 10;
+            this.ckExportKeepStructure.AutoSize = true;
+            this.ckExportKeepStructure.Location = new System.Drawing.Point(82, 24);
+            this.ckExportKeepStructure.Name = "ckExportKeepStructure";
+            this.ckExportKeepStructure.Size = new System.Drawing.Size(107, 16);
+            this.ckExportKeepStructure.TabIndex = 3;
+            this.ckExportKeepStructure.Text = "Keep Structure";
+            this.ckExportKeepStructure.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 643);
+            this.ClientSize = new System.Drawing.Size(1123, 667);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
@@ -649,6 +700,9 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -662,9 +716,8 @@
             this.tpClippedParts.ResumeLayout(false);
             this.tpErrorParts.ResumeLayout(false);
             this.tpAllParts.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -726,6 +779,10 @@
         private System.Windows.Forms.TextBox txtMaxY;
         private System.Windows.Forms.TextBox txtMinZ;
         private System.Windows.Forms.TextBox txtMaxZ;
+        private System.Windows.Forms.Button btnGetBoxSize;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Button btnSectionBoxExport;
+        private System.Windows.Forms.CheckBox ckExportKeepStructure;
     }
 }
 
