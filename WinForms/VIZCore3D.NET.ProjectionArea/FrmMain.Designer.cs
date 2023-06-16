@@ -38,6 +38,7 @@
             this.tpPoint2D = new System.Windows.Forms.TabPage();
             this.txtPoints2D = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtCenter = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -57,7 +58,7 @@
             this.tcView = new System.Windows.Forms.TabControl();
             this.tpView = new System.Windows.Forms.TabPage();
             this.tpDrawing = new System.Windows.Forms.TabPage();
-            this.txtCenter = new System.Windows.Forms.TextBox();
+            this.btnProjectionCurrent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +194,13 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Result";
             // 
+            // txtCenter
+            // 
+            this.txtCenter.Location = new System.Drawing.Point(101, 155);
+            this.txtCenter.Name = "txtCenter";
+            this.txtCenter.Size = new System.Drawing.Size(145, 21);
+            this.txtCenter.TabIndex = 10;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -281,6 +289,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnProjectionCurrent);
             this.groupBox2.Controls.Add(this.btnProjectionZX);
             this.groupBox2.Controls.Add(this.btnProjectionYZ);
             this.groupBox2.Controls.Add(this.btnProjectionXY);
@@ -293,9 +302,9 @@
             // 
             // btnProjectionZX
             // 
-            this.btnProjectionZX.Location = new System.Drawing.Point(217, 29);
+            this.btnProjectionZX.Location = new System.Drawing.Point(146, 29);
             this.btnProjectionZX.Name = "btnProjectionZX";
-            this.btnProjectionZX.Size = new System.Drawing.Size(75, 23);
+            this.btnProjectionZX.Size = new System.Drawing.Size(50, 23);
             this.btnProjectionZX.TabIndex = 2;
             this.btnProjectionZX.Text = "ZX";
             this.btnProjectionZX.UseVisualStyleBackColor = true;
@@ -303,9 +312,9 @@
             // 
             // btnProjectionYZ
             // 
-            this.btnProjectionYZ.Location = new System.Drawing.Point(126, 29);
+            this.btnProjectionYZ.Location = new System.Drawing.Point(90, 29);
             this.btnProjectionYZ.Name = "btnProjectionYZ";
-            this.btnProjectionYZ.Size = new System.Drawing.Size(75, 23);
+            this.btnProjectionYZ.Size = new System.Drawing.Size(50, 23);
             this.btnProjectionYZ.TabIndex = 1;
             this.btnProjectionYZ.Text = "YZ";
             this.btnProjectionYZ.UseVisualStyleBackColor = true;
@@ -315,7 +324,7 @@
             // 
             this.btnProjectionXY.Location = new System.Drawing.Point(34, 29);
             this.btnProjectionXY.Name = "btnProjectionXY";
-            this.btnProjectionXY.Size = new System.Drawing.Size(75, 23);
+            this.btnProjectionXY.Size = new System.Drawing.Size(50, 23);
             this.btnProjectionXY.TabIndex = 0;
             this.btnProjectionXY.Text = "XY";
             this.btnProjectionXY.UseVisualStyleBackColor = true;
@@ -374,12 +383,15 @@
             this.tpDrawing.Text = "2D";
             this.tpDrawing.UseVisualStyleBackColor = true;
             // 
-            // txtCenter
+            // btnProjectionCurrent
             // 
-            this.txtCenter.Location = new System.Drawing.Point(101, 155);
-            this.txtCenter.Name = "txtCenter";
-            this.txtCenter.Size = new System.Drawing.Size(145, 21);
-            this.txtCenter.TabIndex = 10;
+            this.btnProjectionCurrent.Location = new System.Drawing.Point(216, 29);
+            this.btnProjectionCurrent.Name = "btnProjectionCurrent";
+            this.btnProjectionCurrent.Size = new System.Drawing.Size(67, 23);
+            this.btnProjectionCurrent.TabIndex = 3;
+            this.btnProjectionCurrent.Text = "Current";
+            this.btnProjectionCurrent.UseVisualStyleBackColor = true;
+            this.btnProjectionCurrent.Click += new System.EventHandler(this.btnProjectionCurrent_Click);
             // 
             // FrmMain
             // 
@@ -442,6 +454,7 @@
         private System.Windows.Forms.TextBox txtPoints2D;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCenter;
+        private System.Windows.Forms.Button btnProjectionCurrent;
     }
 }
 

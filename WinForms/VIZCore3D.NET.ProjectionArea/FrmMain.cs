@@ -496,6 +496,16 @@ namespace VIZCore3D.NET.ProjectionArea
             ProjectionPlane(VIZCore3D.NET.Data.Planes.ZX);
         }
 
+        private void btnProjectionCurrent_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            // Ex) ISO+
+            vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_PLUS);
+
+            ProjectionCurrentCamera();
+        }
+
         private void ProjectionPlane(VIZCore3D.NET.Data.Planes plane)
         {
             VIZCore3D.NET.Data.MeasureProjectedArea area = vizcore3d.Review.Measure.GetProjectedArea(plane);
@@ -529,6 +539,34 @@ namespace VIZCore3D.NET.ProjectionArea
 
             vizcore3d.View.SetCameraData(camera, false);
 
+
+            StringBuilder sb3D = new StringBuilder();
+            StringBuilder sb2D = new StringBuilder();
+            foreach (VIZCore3D.NET.Data.Line3D line in lines)
+            {
+                sb3D.AppendLine(line.ToString(VIZCore3D.NET.Data.Dimensions.D3));
+                sb2D.AppendLine(line.ToString(VIZCore3D.NET.Data.Dimensions.D2));
+            }
+
+            txtPoints3D.Text = sb3D.ToString();
+            txtPoints2D.Text = sb2D.ToString();
+
+            DrawingControl.SetData(lines);
+        }
+
+        private void ProjectionCurrentCamera()
+        {
+            VIZCore3D.NET.Data.MeasureProjectedArea area = vizcore3d.Review.Measure.GetProjectedArea();
+
+            txtProjectionArea.Text = area.Projected.ToString();
+            txtTotalArea.Text = area.Outer.ToString();
+            txtEmptyArea.Text = area.Inner.ToString();
+            txtCenter.Text = area.Center.ToString();
+
+            pbProjection.Image = area.Image;
+
+
+            List<VIZCore3D.NET.Data.Line3D> lines = vizcore3d.Projection.GetProjection2DLines();
 
             StringBuilder sb3D = new StringBuilder();
             StringBuilder sb2D = new StringBuilder();

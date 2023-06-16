@@ -121,6 +121,11 @@
             Construction
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Controls.GeometryPropertyControl.SetDeometryPropLanguage">
+            <summary>
+            PropertyGrid DiaplayName 다국어
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Controls.GeometryPropertyControl.CopyToClipboard">
             <summary>
             Copy To Clipboard
@@ -11479,6 +11484,11 @@
             Size To Axis Z
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Data.SizeToAxis.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.SizeToAxis.#ctor(System.Single,System.Single,System.Single)">
             <summary>
             Construction
@@ -22591,6 +22601,11 @@
             VIZCore3D.NET.Interop Library
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Interop.VIZCoreBase.#ctor(VIZCore3DNETInterop.VIZCore3D)">
             <summary>
             Construction
@@ -23494,6 +23509,12 @@
             </summary>
             <param name="Default">DisplayName 다국어 문자열</param>
             <param name="displayName">DisplayName Resource Code</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZDisplayNameAttribute.SetDisplayNameValue(System.String)">
+            <summary>
+            PropertyGrid DisplayName 다국어 처리
+            </summary>
+            <param name="value">다국어 처리된 문자열</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDescriptionAttribute">
             <summary>
@@ -37010,6 +37031,12 @@
             <param name="path">JSON 파일 경로</param>
             <returns>내보내기 결과</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddProjectedArea">
+            <summary>
+            현재 화면의 투영면적 추가
+            </summary>        
+            <returns>측정(리뷰) 아이디(ID)</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddProjectedArea(VIZCore3D.NET.Data.Planes)">
             <summary>
             투영면적 추가
@@ -37022,6 +37049,12 @@
             투영면적 정보 반환
             </summary>
             <param name="reviewID">측정(리뷰) 아이디(ID)</param>
+            <returns>투영면적 정보(실패시 null)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedArea">
+            <summary>
+            현재 화면의 투영면적 정보 반환
+            </summary>
             <returns>투영면적 정보(실패시 null)</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.GetProjectedArea(VIZCore3D.NET.Data.Planes)">
