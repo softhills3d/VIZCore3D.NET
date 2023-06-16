@@ -9132,6 +9132,11 @@
             텍스트 수평 정렬
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.NoteStyle.UseTextBox">
+            <summary>
+            노트 텍스트에 박스를 그림. 배경에 투명이 설정된 경우에만 적용 가능.
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.NoteStyle.SymbolBackgroundColor">
             <summary>
             심벌 배경색
@@ -9175,11 +9180,6 @@
         <member name="P:VIZCore3D.NET.Data.NoteStyle.SymbolTextOffset">
             <summary>
             심벌 문자열 위치 Offset
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Data.NoteStyle.UseTextBox">
-            <summary>
-            노트 텍스트에 박스를 그림. 배경에 투명이 설정된 경우에만 적용 가능.
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.NoteStyle.LinkArrowTailToText">
@@ -11441,6 +11441,23 @@
             객체의 사본을 생성
             </summary>
             <returns>복사된 객체</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.ShortcutData.KeyCompareTo(VIZCore3D.NET.Data.ShortcutData)">
+            <summary>
+            단축키 설정 비교
+            </summary>
+            <param name="compareData"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.ShortcutData.KeyCompareTo(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            단축키 설정 비교
+            </summary>
+            <param name="_keyCode">key</param>
+            <param name="_shift">shift</param>
+            <param name="_ctrl">ctrl</param>
+            <param name="_alt">alt</param>
+            <returns></returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.SizeToAxis">
             <summary>
@@ -14213,7 +14230,7 @@
             Construction
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Dialogs.SearchSpaceDialog.#ctor(VIZCore3D.NET.Manager.Object3DManager,VIZCore3D.NET.Data.BoundBox3D)">
+        <member name="M:VIZCore3D.NET.Dialogs.SearchSpaceDialog.#ctor(VIZCore3D.NET.VIZCore3DControl,VIZCore3D.NET.Data.BoundBox3D)">
             <summary>
             Construction
             </summary>
@@ -17619,11 +17636,11 @@
             Generic Item Count
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Extension.Generic.GenericDataManager.Clear">
             <summary>
@@ -21209,6 +21226,12 @@
             ATX Model List
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Extension.RobotInterface.ATXManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
         <member name="M:VIZCore3D.NET.Extension.RobotInterface.ATXManager.Open(System.String)">
             <summary>
             Open File
@@ -23023,11 +23046,11 @@
             </summary>
             <returns>애니메이션 키 목록</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.AnimationManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.FromID(System.Int32)">
             <summary>
@@ -23146,11 +23169,11 @@
             [MANAGER] Area Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.AreaManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.AreaManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.AvatarEquipManager">
             <summary>
@@ -23167,11 +23190,11 @@
             등록된 장비 수
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.AvatarEquipManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.AvatarEquipManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AvatarEquipManager.Clear">
             <summary>
@@ -23281,11 +23304,11 @@
             Path Items
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.AvatarPathManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.AvatarPathManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AvatarPathManager.Clear">
             <summary>
@@ -23453,6 +23476,13 @@
             <param name="Default">Category 다국어 문자열</param>
             <param name="key">Category Resource Code</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.GetLocalizedString(System.String)">
+            <summary>
+            다국어 문자열을 지역화
+            </summary>
+            <param name="value">Category Resource Code</param>
+            <returns>다국어 적용된 문자열 반환</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
             Propery Control DisplayName 다국어 처리
@@ -23497,6 +23527,12 @@
             Language dictionary
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.Load(System.String)">
             <summary>
             Xml파일 로드
@@ -23523,6 +23559,13 @@
             </summary>
             <param name="kind">Language Kind</param>
             <returns>Language Code String</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String)">
+            <summary>
+            Property Grid Caterory 다국어 적용
+            </summary>
+            <param name="resourceCode">resourceCode</param>
+            <returns>다국어 적용된 문자열 반환</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetString(System.String,System.String)">
             <summary>
@@ -23653,11 +23696,11 @@
             Comment Manager Class
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.CommentManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.CommentManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.CommentManager.GetComments(System.Int32)">
             <summary>
@@ -23933,12 +23976,11 @@
             핸들 활성화/비활성화
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.Object3DManager)">
+        <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
-            <param name="object3d">Object3D Manager</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.DisassemblyManager.Disassemble">
             <summary>
@@ -24166,11 +24208,11 @@
             그리기 마크업 상태
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.EnterDrawMode">
             <summary>
@@ -24258,11 +24300,11 @@
             </summary>
             <seealso cref="M:VIZCore3D.NET.Manager.GeometryUtilityManager.PickSurfaceAfterSelectEdgePolyline"/>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetNearestObjectsByPicking(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
@@ -24767,6 +24809,12 @@
             Group Item Collection
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.GroupManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.GroupManager.Add(System.String)">
             <summary>
             선택된 개체를 그룹에 추가
@@ -24926,11 +24974,11 @@
             Axis Direction. Default : Z+
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.KeyboardBasedTransformManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.KeyboardBasedTransformManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MaterialManager">
             <summary>
@@ -24954,11 +25002,11 @@
             기본 금속 비율 0.0 ~ 1.0 설정 (기본 : 0.1)
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MaterialManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MaterialManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MaterialManager.Add(System.String)">
             <summary>
@@ -25148,11 +25196,11 @@
             노드 정점 변경 이벤트
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MeshEditManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.MergeShape(System.Int32,System.Int32)">
             <summary>
@@ -29068,11 +29116,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MetadataManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MetadataManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MetadataManager.Exist(System.Int32)">
             <summary>
@@ -29545,11 +29593,11 @@
             폼을 맨위 폼으로 표시 여부
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MiniViewManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MiniViewManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MiniViewManager.SetHandle(System.IntPtr)">
             <summary>
@@ -29771,11 +29819,11 @@
             모델 비교 Tolerence
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelComparisonManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ModelComparisonManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelComparisonManager.LoadFile(System.String)">
             <summary>
@@ -30486,11 +30534,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MouseBasedObjectMoveManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MouseBasedObjectMoveManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MouseBasedObjectMoveManager.Clear">
             <summary>
@@ -30662,11 +30710,11 @@
             Primitive Data Read/Write Option
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.Object3DPrimitiviveManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.Object3DPrimitiviveManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DPrimitiviveManager.SetPrimitiveBox(System.Int32,System.Drawing.Color,VIZCore3D.NET.Data.Matrix3D,System.Collections.Generic.List{System.Single},System.Single)">
             <summary>
@@ -30785,11 +30833,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.OceanManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.OceanManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.PanoramaManager">
             <summary>
@@ -30801,11 +30849,11 @@
             [MANAGER] CustomObject 관리
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.PanoramaManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.PanoramaManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.PanoramaManager.Open(System.String)">
             <summary>
@@ -30824,11 +30872,11 @@
             [MANAGER] Panorama Object Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.PanoramaObjectManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.PanoramaObjectManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.PanoramaObjectManager.Clear">
             <summary>
@@ -30947,11 +30995,11 @@
             PMI Item 전체 반환
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.PMIManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.PMIManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.PMIManager.Show(System.Boolean)">
             <summary>
@@ -31079,11 +31127,6 @@
             분할
             </summary>
         </member>
-        <member name="F:VIZCore3D.NET.Manager.PrimitiveManager.Model">
-            <summary>
-            Model Manager
-            </summary>
-        </member>
         <member name="F:VIZCore3D.NET.Manager.PrimitiveManager.Nodes">
             <summary>
             Node List
@@ -31094,12 +31137,11 @@
             EXPORT 파일 경로
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.PrimitiveManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.ModelManager)">
+        <member name="M:VIZCore3D.NET.Manager.PrimitiveManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
-            <param name="model">Model Manager</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.PrimitiveManager.AddNode(System.String,System.Int32)">
             <summary>
@@ -31897,12 +31939,11 @@
             Page Orientation 
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.PrintManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Controls.ViewControl)">
+        <member name="M:VIZCore3D.NET.Manager.PrintManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
-            <param name="ctrl">VIZCore3D.NET.Controls.ViewControl</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.PrintManager.ShowPrintPreviewDialog">
             <summary>
@@ -31914,11 +31955,11 @@
             Projection 2D Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.Projection2DManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.Projection2DManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Projection2DManager.GetProjection2DLines">
             <summary>
@@ -32013,6 +32054,12 @@
             Z축 회전 기준
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ScreenAxisRotationManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ScreenAxisRotationManager.OnArrowKeyDown(System.Windows.Forms.Keys,System.Boolean,System.Boolean,System.Boolean,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
             <summary>
             키보드 기반 화면 기준 회전
@@ -32041,11 +32088,11 @@
             깊이버퍼 사용/미사용
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShapeDrawingManager.Delete(System.Int32)">
             <summary>
@@ -33218,11 +33265,11 @@
             간섭검사 진척률 이벤트
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ClashManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.FireFinishedEvent(System.Int32)">
             <summary>
@@ -33760,11 +33807,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ColorManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ColorManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ColorManager.GetColor(System.Int32)">
             <summary>
@@ -34321,11 +34368,11 @@
             간섭검사 코어 로그 옵션
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.DebugManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.DebugManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.DebugManager.SetLogOption(VIZCore3D.NET.Manager.DebugManager.LogKind,VIZCore3D.NET.Manager.DebugManager.LogKind)">
             <summary>
@@ -34594,11 +34641,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.FrameManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.FrameManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.FrameManager.Open(System.String)">
             <summary>
@@ -35277,11 +35324,11 @@
             Geometry Property Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryPropertyManager.FromIndex(System.Int32,System.Boolean)">
             <summary>
@@ -35432,11 +35479,11 @@
             인증된 제품
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.LicenseManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.LicenseManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.IsAuthentication">
             <summary>
@@ -35672,11 +35719,11 @@
             개체숨김 Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.LockedHiddenManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.LockedHiddenManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LockedHiddenManager.Add">
             <summary>
@@ -35745,11 +35792,11 @@
             ISO 좌표계 위치 설정, Value: 0.0f ~ 1.0f
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MarineAxisManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MarineAxisManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MeasureManager">
             <summary>
@@ -35853,11 +35900,11 @@
             연속 측정 모드 : 기본값(True)
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MeasureManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.CancelStep">
             <summary>
@@ -37028,11 +37075,11 @@
             메시지 글꼴 크기
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.MessageManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.MessageManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MessageManager.Show(VIZCore3D.NET.Data.MessageId,System.String,System.Int32,System.Int32)">
             <summary>
@@ -37288,9 +37335,9 @@
             Body 노드 사용 유무
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.ModelManager.License">
+        <member name="P:VIZCore3D.NET.Manager.ModelManager.Security">
             <summary>
-            License Manager
+            Model Security 관리
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.SpaceSearch">
@@ -37311,11 +37358,6 @@
         <member name="P:VIZCore3D.NET.Manager.ModelManager.Files">
             <summary>
             조회중인 모델의 파일 목록(경로 + 파일 이름)
-            </summary>
-        </member>
-        <member name="P:VIZCore3D.NET.Manager.ModelManager.Security">
-            <summary>
-            Model Security 관리
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.OpenMergeStructureMode">
@@ -37451,12 +37493,11 @@
             모델 데이터베이스 UDA 정보 포함
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.LicenseManager)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore</param>
-            <param name="license">License</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.NewEmptyModel(System.String)">
             <summary>
@@ -40320,11 +40361,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.NoteManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNote2D(System.String,System.Single,System.Single)">
             <summary>
@@ -41659,6 +41700,12 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.Show(VIZCore3D.NET.Data.Object3DKind,System.Boolean)">
             <summary>
@@ -44038,11 +44085,11 @@
             리뷰 (노트 및 측정) 아이템 목록
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ReviewManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ReviewManager.Open(System.String)">
             <summary>
@@ -44488,13 +44535,11 @@
             Find Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.FindManager.#ctor(VIZCore3DNETInterop.VIZCore3D,VIZCore3D.NET.Manager.Object3DManager,VIZCore3D.NET.Manager.ViewManager)">
+        <member name="M:VIZCore3D.NET.Manager.FindManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
-            <param name="object3d">Object3DManager</param>
-            <param name="view">ViewManager</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.FindManager.QuickSearch(System.Collections.Generic.List{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
@@ -44745,11 +44790,11 @@
             SelectionBox : Group Item Resized
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SelectionBoxManager.Add(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Drawing.Color,System.Drawing.Color,System.String)">
             <summary>
@@ -46012,11 +46057,11 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SectionManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.FromID(System.Int32)">
             <summary>
@@ -47038,11 +47083,11 @@
             열람 암호 설정
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SecurityManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.SecurityManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SecurityManager.Add(System.String)">
             <summary>
@@ -47157,6 +47202,11 @@
         <member name="P:VIZCore3D.NET.Manager.ShortcutManager.ShortcutCodeMap">
             <summary>
             단축키 기능 아이디 사전
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ShortcutManager.ShortcutCodeReadOnlyMap">
+            <summary>
+            읽기 전용 단축키 기능 아이디 사전
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ShortcutManager.#ctor">
@@ -47323,11 +47373,11 @@
             SkyBox 활성화/비활성화
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SkyManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.SkyManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.SearchTarget">
             <summary>
@@ -47384,11 +47434,11 @@
             공간 검색 영역
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.SpaceSearchManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.SpaceSearchManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SpaceSearchManager.AddModel(System.String[])">
             <summary>
@@ -47454,6 +47504,12 @@
             <summary>
             Structure Manager Class
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.StructureManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.StructureManager.RebuildData">
             <summary>
@@ -48246,11 +48302,11 @@
             Draw Text 목록
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.TextDrawingManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.TextDrawingManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.TextDrawingManager.Show(System.Int32,System.Boolean)">
             <summary>
@@ -48606,11 +48662,11 @@
             회전 다이얼로그 : 회전 각도. 기본값 - 90
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.TransformManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveHandleToSelectedObject3D">
             <summary>
@@ -49137,11 +49193,11 @@
             사용자 정의 속성 전체 키 목록
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.UDAManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.UDAManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.UDAManager.ContainsNode(System.String,System.String,System.Collections.Generic.List{System.Int32},System.Boolean)">
             <summary>
@@ -49830,11 +49886,11 @@
             UserView Manager
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.UserViewManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.UserViewManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.UserViewManager.Add(System.String,System.String)">
             <summary>
@@ -49873,6 +49929,18 @@
             <summary>
             사용자 뷰 전체 삭제
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.UserViewManager.ISetCameraData(System.Int32)">
+            <summary>
+            사용자 뷰 카메라 정보 백업
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.UserViewManager.IDeleteCameraData(System.Int32)">
+            <summary>
+            사용자 뷰 카메라 정보 제거
+            </summary>
+            <param name="id"></param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.UserViewManager.GetList(System.Boolean)">
             <summary>
@@ -49955,11 +50023,11 @@
              </code>
              </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.VertexColorManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.VertexColorManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.VertexColorManager.GetColor(System.Int32)">
             <summary>
@@ -51133,11 +51201,11 @@
             영역 선택 시, 맨 앞의 (카메라에서 가까운) 개체 만 선택
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ViewManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ViewManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewManager.BeginUpdate">
             <summary>
@@ -52615,11 +52683,11 @@
             View Toolbar 활성화/비활성화
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ViewToolbarManager.SetImage(System.String)">
             <summary>
@@ -53462,11 +53530,11 @@
             아바타 회전 컨트롤 반전
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.SetPosition">
             <summary>
@@ -53652,11 +53720,11 @@
             Text Spacing
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.WatermarkManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.WatermarkManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WatermarkManager.Clear">
             <summary>
@@ -53808,11 +53876,11 @@
             </code>
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.XRayManager.#ctor(VIZCore3DNETInterop.VIZCore3D)">
+        <member name="M:VIZCore3D.NET.Manager.XRayManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
-            <param name="vizcore">VIZCore3D.NET.Interop</param>
+            <param name="ctrl">VIZCore Control</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.XRayManager.Select(System.Collections.Generic.List{System.Int32},System.Boolean,System.Boolean)">
             <summary>
