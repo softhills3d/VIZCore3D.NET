@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace VIZCore3D.NET.Animation.Objects
 {
@@ -682,8 +683,12 @@ namespace VIZCore3D.NET.Animation.Objects
             vizcore3d.Animation.Add("Animation");
 
             int count = 0;
+            Time = 0.0f;
 
             vizcore3d.BeginUpdate();
+
+            // Init. Key
+            AddKey(true, false, TimeInterval);
 
             for (int i = 0; i < lvStep.Items.Count; i++)
             {
