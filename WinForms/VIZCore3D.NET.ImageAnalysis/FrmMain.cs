@@ -591,6 +591,16 @@ namespace VIZCore3D.NET.ImageAnalysis
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+            bool backgroundMode = ckBackgroundEnable.Checked;
+            string backgroundImageWidth = txtImageWidth.Text;
+            string backgroundImageHeight = txtImageHeight.Text;
+
+            if(backgroundMode == true) 
+            {
+                vizcore3d.View.BeginBackgroundRenderingMode(Convert.ToInt32(backgroundImageWidth), Convert.ToInt32(backgroundImageHeight));
+            }
+            
+
             vizcore3d.View.EnableAnimation = false;
             vizcore3d.View.Projection = VIZCore3D.NET.Data.Projections.Perspective;
             vizcore3d.View.FOV = 74.0f; // 45 ~ 74
@@ -640,6 +650,23 @@ namespace VIZCore3D.NET.ImageAnalysis
                 , angle
                 , Convert.ToSingle(transform)
                 );
+
+            vizcore3d.View.ZoomRatio = 50.0f;
+            vizcore3d.View.ZoomIn();
+
+            if (backgroundMode == true)
+            {
+                System.Drawing.Image image = vizcore3d.View.GetBackgroundRenderingImage();
+
+                string path = string.Format("{0}\\BackgroundRendering.png", Application.StartupPath);
+
+                if(System.IO.File.Exists(path) == true)
+                    System.IO.File.Delete(path);
+
+                image.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+
+                vizcore3d.View.EndBackgroundRenderingMode();
+            }
         }
 
         private void InitEnv()
