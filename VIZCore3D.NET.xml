@@ -9386,7 +9386,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Data.Objects3DProperty.Mass">
             <summary>
-            Mass
+            Mass33
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.Objects3DProperty.MassCenterPoint">
@@ -23491,13 +23491,6 @@
             <param name="Default">Category 다국어 문자열</param>
             <param name="key">Category Resource Code</param>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.GetLocalizedString(System.String)">
-            <summary>
-            다국어 문자열을 지역화
-            </summary>
-            <param name="value">Category Resource Code</param>
-            <returns>다국어 적용된 문자열 반환</returns>
-        </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
             Propery Control DisplayName 다국어 처리
@@ -23527,6 +23520,12 @@
             </summary>
             <param name="Default">Description 다국어 문자열</param>
             <param name="Description">Description Resource Code</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZDescriptionAttribute.SetDescriptionValue(System.String)">
+            <summary>
+            PropertyGrid Description 다국어 처리
+            </summary>
+            <param name="value">다국어 처리된 문자열</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.LanguageManager">
             <summary>
