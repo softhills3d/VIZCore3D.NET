@@ -17,7 +17,7 @@ namespace VIZCore3D.NET.DemoCenter
             {
                 if (ProjectCode == "VIZCore3D.NET.BlockArrangement") return String.Empty;
 
-                return string.Format("https://github.com/softhills3d/VIZCore3D.NET/tree/master/{0}", ProjectCode);
+                return string.Format("https://github.com/softhills3d/VIZCore3D.NET/tree/master/WinForms/{0}", ProjectCode);
             }
         }
 
@@ -37,10 +37,9 @@ namespace VIZCore3D.NET.DemoCenter
 
         public string GetApplicationPath(string basePath)
         {
-            System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);
-            System.IO.DirectoryInfo root = info.Parent.Parent.Parent;
+            System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);            
 
-            string path = string.Format("{0}\\{1}\\bin\\Release\\{1}.exe", root.FullName, ProjectCode);
+            string path = string.Format("{0}\\{1}.exe", info.FullName, ProjectCode);
 
             if (System.IO.File.Exists(path) == true)
                 return path;
@@ -51,9 +50,9 @@ namespace VIZCore3D.NET.DemoCenter
         public string GetProjectPath(string basePath)
         {
             System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);
-            System.IO.DirectoryInfo root = info.Parent.Parent.Parent;
+            System.IO.DirectoryInfo root = info.Parent.Parent;
 
-            string path = string.Format("{0}\\{1}", root.FullName, ProjectCode);
+            string path = string.Format("{0}\\WinForms\\{1}", root.FullName, ProjectCode);
 
             if (System.IO.Directory.Exists(path) == true)
                 return path;
@@ -64,8 +63,8 @@ namespace VIZCore3D.NET.DemoCenter
         public List<string> GetApi(string basePath)
         {
             System.IO.DirectoryInfo info = new System.IO.DirectoryInfo(basePath);
-            System.IO.DirectoryInfo root = info.Parent.Parent.Parent;
-            string path = string.Format("{0}\\{1}", root.FullName, ProjectCode);
+            System.IO.DirectoryInfo root = info.Parent.Parent;
+            string path = string.Format("{0}\\WinForms\\{1}", root.FullName, ProjectCode);
             string keyword = "vizcore3d.";
             if (ProjectCode == "VIZCore3D.NET.ModelComparison")
                 keyword = "vizcore";
