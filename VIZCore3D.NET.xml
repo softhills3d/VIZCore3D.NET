@@ -121,11 +121,6 @@
             Construction
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Controls.GeometryPropertyControl.SetDeometryPropLanguage">
-            <summary>
-            PropertyGrid DiaplayName 다국어
-            </summary>
-        </member>
         <member name="M:VIZCore3D.NET.Controls.GeometryPropertyControl.CopyToClipboard">
             <summary>
             Copy To Clipboard
@@ -8333,7 +8328,7 @@
         <member name="P:VIZCore3D.NET.Data.ModelStatus.LengthBBox">
             <summary>
             Length BoundBox
-            </summary>
+            </summary>  
         </member>
         <member name="P:VIZCore3D.NET.Data.ModelStatus.Center">
             <summary>
@@ -8358,7 +8353,7 @@
         <member name="P:VIZCore3D.NET.Data.ModelStatus.CreateDate">
             <summary>
             Create Date
-            </summary>
+            </summary>  
         </member>
         <member name="P:VIZCore3D.NET.Data.ModelStatus.UpdateDate">
             <summary>
@@ -9292,7 +9287,7 @@
         <member name="P:VIZCore3D.NET.Data.Object3DProperty.Weight">
             <summary>
             Weight
-            </summary>
+            </summary>  
         </member>
         <member name="M:VIZCore3D.NET.Data.Object3DProperty.#ctor">
             <summary>
@@ -23479,18 +23474,6 @@
             일본어
             </summary>
         </member>
-        <member name="T:VIZCore3D.NET.Manager.VIZCategoryAttribute">
-            <summary>
-            Propery Control Category 다국어 처리
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.#ctor(System.String,System.String)">
-            <summary>
-            Propery Control Category 다국어 처리
-            </summary>
-            <param name="Default">Category 다국어 문자열</param>
-            <param name="key">Category Resource Code</param>
-        </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
             Propery Control DisplayName 다국어 처리
@@ -23502,12 +23485,6 @@
             </summary>
             <param name="Default">DisplayName 다국어 문자열</param>
             <param name="displayName">DisplayName Resource Code</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.VIZDisplayNameAttribute.SetDisplayNameValue(System.String)">
-            <summary>
-            PropertyGrid DisplayName 다국어 처리
-            </summary>
-            <param name="value">다국어 처리된 문자열</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDescriptionAttribute">
             <summary>
@@ -23523,7 +23500,7 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.VIZDescriptionAttribute.SetDescriptionValue(System.String)">
             <summary>
-            PropertyGrid Description 다국어 처리
+            ProperyGrid Description 다국어 처리
             </summary>
             <param name="value">다국어 처리된 문자열</param>
         </member>

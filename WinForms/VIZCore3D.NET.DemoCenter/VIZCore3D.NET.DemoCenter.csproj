@@ -292,6 +292,9 @@
     <Content Include="Preview\VIZCore3D.NET.SectionAutoClip.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.SectionVolume.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.SelectionBox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
