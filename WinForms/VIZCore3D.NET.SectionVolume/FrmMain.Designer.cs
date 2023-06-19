@@ -30,7 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.ckExportKeepStructure = new System.Windows.Forms.CheckBox();
+            this.btnSectionBoxExport = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnGetBoxSize = new System.Windows.Forms.Button();
             this.btnUpdateSize = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -84,14 +88,11 @@
             this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnGetBoxSize = new System.Windows.Forms.Button();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnSectionBoxExport = new System.Windows.Forms.Button();
-            this.ckExportKeepStructure = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -105,7 +106,6 @@
             this.tpClippedParts.SuspendLayout();
             this.tpErrorParts.SuspendLayout();
             this.tpAllParts.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -131,6 +131,39 @@
             this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.ckExportKeepStructure);
+            this.groupBox6.Controls.Add(this.btnSectionBoxExport);
+            this.groupBox6.Location = new System.Drawing.Point(12, 536);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(206, 53);
+            this.groupBox6.TabIndex = 3;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Section Box";
+            // 
+            // ckExportKeepStructure
+            // 
+            this.ckExportKeepStructure.AutoSize = true;
+            this.ckExportKeepStructure.Location = new System.Drawing.Point(82, 24);
+            this.ckExportKeepStructure.Name = "ckExportKeepStructure";
+            this.ckExportKeepStructure.Size = new System.Drawing.Size(107, 16);
+            this.ckExportKeepStructure.TabIndex = 3;
+            this.ckExportKeepStructure.Text = "Keep Structure";
+            this.ckExportKeepStructure.UseVisualStyleBackColor = true;
+            // 
+            // btnSectionBoxExport
+            // 
+            this.btnSectionBoxExport.Location = new System.Drawing.Point(10, 20);
+            this.btnSectionBoxExport.Name = "btnSectionBoxExport";
+            this.btnSectionBoxExport.Size = new System.Drawing.Size(55, 23);
+            this.btnSectionBoxExport.TabIndex = 2;
+            this.btnSectionBoxExport.Text = "Export";
+            this.btnSectionBoxExport.UseVisualStyleBackColor = true;
+            this.btnSectionBoxExport.Click += new System.EventHandler(this.btnSectionBoxExport_Click);
+            // 
             // groupBox5
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -144,6 +177,17 @@
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Section Box";
+            // 
+            // btnGetBoxSize
+            // 
+            this.btnGetBoxSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetBoxSize.Location = new System.Drawing.Point(41, 131);
+            this.btnGetBoxSize.Name = "btnGetBoxSize";
+            this.btnGetBoxSize.Size = new System.Drawing.Size(75, 23);
+            this.btnGetBoxSize.TabIndex = 2;
+            this.btnGetBoxSize.Text = "Get";
+            this.btnGetBoxSize.UseVisualStyleBackColor = true;
+            this.btnGetBoxSize.Click += new System.EventHandler(this.btnGetBoxSize_Click);
             // 
             // btnUpdateSize
             // 
@@ -642,50 +686,6 @@
             this.columnHeader17.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.columnHeader17.Width = 133;
             // 
-            // btnGetBoxSize
-            // 
-            this.btnGetBoxSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetBoxSize.Location = new System.Drawing.Point(41, 131);
-            this.btnGetBoxSize.Name = "btnGetBoxSize";
-            this.btnGetBoxSize.Size = new System.Drawing.Size(75, 23);
-            this.btnGetBoxSize.TabIndex = 2;
-            this.btnGetBoxSize.Text = "Get";
-            this.btnGetBoxSize.UseVisualStyleBackColor = true;
-            this.btnGetBoxSize.Click += new System.EventHandler(this.btnGetBoxSize_Click);
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox6.Controls.Add(this.ckExportKeepStructure);
-            this.groupBox6.Controls.Add(this.btnSectionBoxExport);
-            this.groupBox6.Location = new System.Drawing.Point(12, 536);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(206, 53);
-            this.groupBox6.TabIndex = 3;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Section Box";
-            // 
-            // btnSectionBoxExport
-            // 
-            this.btnSectionBoxExport.Location = new System.Drawing.Point(10, 20);
-            this.btnSectionBoxExport.Name = "btnSectionBoxExport";
-            this.btnSectionBoxExport.Size = new System.Drawing.Size(55, 23);
-            this.btnSectionBoxExport.TabIndex = 2;
-            this.btnSectionBoxExport.Text = "Export";
-            this.btnSectionBoxExport.UseVisualStyleBackColor = true;
-            this.btnSectionBoxExport.Click += new System.EventHandler(this.btnSectionBoxExport_Click);
-            // 
-            // ckExportKeepStructure
-            // 
-            this.ckExportKeepStructure.AutoSize = true;
-            this.ckExportKeepStructure.Location = new System.Drawing.Point(82, 24);
-            this.ckExportKeepStructure.Name = "ckExportKeepStructure";
-            this.ckExportKeepStructure.Size = new System.Drawing.Size(107, 16);
-            this.ckExportKeepStructure.TabIndex = 3;
-            this.ckExportKeepStructure.Text = "Keep Structure";
-            this.ckExportKeepStructure.UseVisualStyleBackColor = true;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -700,6 +700,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -716,8 +718,6 @@
             this.tpClippedParts.ResumeLayout(false);
             this.tpErrorParts.ResumeLayout(false);
             this.tpAllParts.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
