@@ -24,7 +24,7 @@ Features
     ]]>
     </Contents>
   </Item>
-  <Item Name="Clash Test" Project="VIZCore3D.NET.ClashTest">
+  <Item Name="Clash Test - Standard" Project="VIZCore3D.NET.ClashTest">
     <Contents>
       <![CDATA[Project : VIZCore3D.NET.ClashTest
       
@@ -291,7 +291,7 @@ Features
     ]]>
     </Contents>
   </Item>
-  <Item Name="Custom Drawing" Project="VIZCore3D.NET.ShapeDrawing">
+  <Item Name="Shape Drawing" Project="VIZCore3D.NET.ShapeDrawing">
     <Contents>
       <![CDATA[Project : VIZCore3D.NET.ShapeDrawing
       
@@ -462,7 +462,7 @@ Features
     </Contents>
   </Item>
   <Item Name="Block Animation" Project="VIZCore3D.NET.Animation.Block">
-    <YouTube></YouTube>
+    <YouTube>https://www.youtube.com/watch?v=oVBSp22N7EI</YouTube>
     <Contents>
       <![CDATA[Project : VIZCore3D.NET.Animation.Block
       
@@ -482,6 +482,475 @@ Features
 - 모두 보이기/숨기기
 - 선택적 보이기/숨기기
 - PMI 뷰 정렬
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Analysis Model" Project="VIZCore3D.NET.AnalysisModel">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.AnalysisModel
+      
+Features
+- 설계모델과 해석 모델(STL) 비교 및 휨 거리 표시
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Transform Objects" Project="VIZCore3D.NET.Animation.Objects">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Animation.Objects
+      
+Features
+- 지정된 개체의 이동/회전 정보를 기반으로 애니메이션 생성 및 재생
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Mount the block" Project="VIZCore3D.NET.Animation.V2">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Animation.V2
+      
+Features
+- 블록 탑재 시퀀스에 맞춰서 자동으로 애니메이션 생성
+- 일정에 맞춰서 스크롤바로 해당 일정으로 이동
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Assemble Hull" Project="VIZCore3D.NET.AssembleHull">
+    <YouTube>https://www.youtube.com/watch?v=dlxNnDitXNY</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.AssembleHull
+      
+Features
+- ASP (Assembly Sequence Planning) 도면 순서를 3D 기반으로 가시화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Bay Block" Project="VIZCore3D.NET.BayBlock">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.BayBlock
+      
+Features
+- 정반 배치를 위한 블록 외곽라인 추출
+- 가상의 Bay 형상 생성
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Bay Block Rotation" Project="VIZCore3D.NET.BayBlockRotation">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.BayBlockRotation
+      
+Features
+- 정반 배치 시스템 지번 가시화
+- 배치된 블록의 회전
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Camera Like CCTV" Project="VIZCore3D.NET.Camera.CCTV">
+    <YouTube>https://www.youtube.com/watch?v=5QQeqhDjoZA</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Camera.CCTV
+      
+Features
+- 가상의 CCTV 위치 관리
+- 카메라 제어를 통한 뷰 방향 설정
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Backup / Restore Camera Data" Project="VIZCore3D.NET.CameraControl">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.CameraControl
+      
+Features
+- 카메라 정보 백업 및 복원
+- 사용자 뷰 및 관측점 관리
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Export Screen Model" Project="VIZCore3D.NET.Capture3D">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Capture3D
+      
+Features
+- 현재 화면상에 보이는 모델만 저장
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Popup SubModel View" Project="VIZCore3D.NET.ChildView">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ChildView
+      
+Features
+- 선택된 모델을 별도의 창으로 조회
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Circle Geometry" Project="VIZCore3D.NET.CircleGeo">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.CircleGeo
+      
+Features
+- 선택된 실린더 형상의 중심점, 지름 및 길이를 조회 및 가시화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Multi Task" Project="VIZCore3D.NET.ClashTest.V2">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ClashTest.V2
+      
+Features
+- 다중 간섭검사 작업 생성
+- 일괄 검사 수행 및 결과 조회
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Erection Block Clash" Project="VIZCore3D.NET.ClashTest.V3">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ClashTest.V3
+      
+Features
+- 탑재블록 기준 간섭검사
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Surrounding Models" Project="VIZCore3D.NET.ClashTest.V4">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ClashTest.V4
+      
+Features
+- 선택된 모델 기준 주변 부재 간섭검사
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Custom Axis Rotation" Project="VIZCore3D.NET.CustomAxisRotation">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.CustomAxisRotation
+      
+Features
+- 지정된 축을 기준으로 모델 회전
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Dock Build" Project="VIZCore3D.NET.DockBuild">
+    <YouTube>https://www.youtube.com/watch?v=_ImRprBaG3c</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.DockBuild
+      
+Features
+- 도크 배치 계획 수립을 위한 반목(SUPPORTER) 배치
+- 간섭 및 시뮬레이션
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Dock In/Out" Project="VIZCore3D.NET.DockInOut">
+    <YouTube>https://www.youtube.com/watch?v=_ImRprBaG3c</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.DockInOut
+      
+Features
+- 도크 IN/OUT 시뮬레이션
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Dock Out" Project="VIZCore3D.NET.DockOut">
+    <YouTube>https://www.youtube.com/watch?v=_ImRprBaG3c</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.DockOut
+      
+Features
+- 도크 OUT 시뮬레이션
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Erection Block Animation" Project="VIZCore3D.NET.Erection.V1">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Erection.V1
+      
+Features
+- 블록 탑재 애니메이션 생성 및 재생
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Generic File V1" Project="VIZCore3D.NET.GenFile">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.GenFile
+      
+Features
+- NESTING (GENERIC FILE) 가시화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Generic File V2" Project="VIZCore3D.NET.GenFile.V2">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.GenFile.V2
+      
+Features
+- NESTING (GENERIC FILE) 가시화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="3D Grid" Project="VIZCore3D.NET.GridThreeD">
+    <YouTube>https://www.youtube.com/watch?v=sGlAfVoUui0</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.GridThreeD
+      
+Features
+- 3D GRID 표시
+- 공간별 모델 내보내기
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Shell Expansion" Project="VIZCore3D.NET.GridThreeD.V2">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.GridThreeD.V2
+      
+Features
+- Shell Expansion
+- Custom Axis Rotation
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Image Based ML" Project="VIZCore3D.NET.ImageAnalysis">
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ImageAnalysis
+      
+Features
+- Image 기반 학습을 위한 3D 모델 내보내기
+- 카메라 위치, 각도, 회전 적용
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Joy Pad" Project="VIZCore3D.NET.Joypad">
+    <YouTube>https://www.youtube.com/watch?v=kQBB_IWBdt4</YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Joypad
+      
+Features
+- Joy Pad 컨트롤러를 활용한 Walkthrough 
+- Avatar (아바타) 컨트롤
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Measure (Frame)" Project="VIZCore3D.NET.MeasureFrame">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MeasureFrame
+      
+Features
+- 측정 결과를 Frame (ShipGrid)를 활용하여 커스텀 형식으로 표시
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Meating Notes" Project="VIZCore3D.NET.MeetingNotes">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MeetingNotes
+      
+Features
+- 디자인 리뷰 시 협의 대상 모델에 대한 위치 지정
+- 저장 위치 관리
+- 회의록 관리
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Mesh Count" Project="VIZCore3D.NET.MeshCount">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MeshCount
+      
+Features
+- 모델의 각 부재(Part) 별 Mesh Count 조회
+- 공간정보 (BoundBox) 조회
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="2 Point Cylinder" Project="VIZCore3D.NET.MeshEdit.V2">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MeshEdit.V2
+      
+Features
+- 시작점~끝점 정보로 실린더 형상 생성
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Append Metadata" Project="VIZCore3D.NET.MetadataDemo">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MetadataDemo
+      
+Features
+- VIZ 파일 내부에 사용자 정의형 메타데이터 (Binary / File) 추가
+- 새로운 VIZ 파일 저장 및 내보내기
+- 외부 사용자와 협업 시, 형상과 연관된 부가 정보 제공
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Comparison (Single View)" Project="VIZCore3D.NET.ModelComparisonSingleMode">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ModelComparisonSingleMode
+      
+Features
+- 2개의 3D 형상 파일을 비교
+- 단일 기반으로 비교 정보 가시화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Move With Mouse" Project="VIZCore3D.NET.MoveWithMouse">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MoveWithMouse
+      
+Features
+- 선택된 모델을 Drag & Drop으로 평면 이동
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Multi View Sync" Project="VIZCore3D.NET.MultiViewSync">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.MultiViewSync
+      
+Features
+- 메인 뷰의 화면 조작사항을 서브 뷰와 동기화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Node Creation" Project="VIZCore3D.NET.NodeCreation">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.NodeCreation
+      
+Features
+- 사용자 정의 노드 및 구조 생성
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Node Visible Changed" Project="VIZCore3D.NET.NodeVisibleChanged">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.NodeVisibleChanged
+      
+Features
+- 모델 트리 및 뷰 상에서 개체 보이기/숨기기 동작 이벤트
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Auto Surface Note" Project="VIZCore3D.NET.Note.V2">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Note.V2
+      
+Features
+- 선택한 지점에 표면노트 자동 생성
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Panorama" Project="VIZCore3D.NET.Panorama">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.Panorama
+      
+Features
+- 360 Panorama 이미지 가시화
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Projection Area" Project="VIZCore3D.NET.ProjectionArea">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.ProjectionArea
+      
+Features
+- 투영 면적, 투영 이미지, 면적 중심점, 외곽라인 추출
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Model Matrix" Project="VIZCore3D.NET.RotateModel">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.RotateModel
+      
+Features
+- 모델 매트릭스 및 스크롤바를 통한 회전 값 설정
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Section Auto Clip" Project="VIZCore3D.NET.SectionAutoClip">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SectionAutoClip
+      
+Features
+- 사용자 선택 모델 기준 단면상자 자동 생성 및 클리핑
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Section Volume" Project="VIZCore3D.NET.SectionVolume">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SectionVolume
+      
+Features
+- 단면 처리된 부재의 Volume, Area 정보 연산
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Some Model Lookup" Project="VIZCore3D.NET.SomeLookup">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SomeLookup
+      
+Features
+- 조회중인 모델의 일부 형상만 조회
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Surface Normal Vector" Project="VIZCore3D.NET.SurfaceNormal">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.SurfaceNormal
+      
+Features
+- 모델 표면점에 대한 법선벡터 연산
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Turn Over Block" Project="VIZCore3D.NET.TOB">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.TOB
+      
+Features
+- Turn Over Block 시뮬레이션
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Unfold Block" Project="VIZCore3D.NET.UnfoldBlock">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.UnfoldBlock
+      
+Features
+- 데크별 모델 펼침
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Visual Inspection" Project="VIZCore3D.NET.VisualInspection">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.VisualInspection
+      
+Features
+- 모델별 위치 분석
+    ]]>
+    </Contents>
+  </Item>
+  <Item Name="Web Interworking" Project="VIZCore3D.NET.WebBrowserInterworking">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.WebBrowserInterworking
+      
+Features
+- 웹브라우저 컨트롤과 상호 작용
     ]]>
     </Contents>
   </Item>

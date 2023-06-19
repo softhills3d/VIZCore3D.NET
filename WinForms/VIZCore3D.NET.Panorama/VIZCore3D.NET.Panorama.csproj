@@ -81,10 +81,22 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Sample\360-Video-Featured-StudioBinder-Compressed.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sample\csm_360_Panorama_1e3d09af31.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Sample\Old_City_Centre.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sample\panorama_Test.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sample\PANO_ Gold mine scale.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sample\PANO_monrovia.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Sample\Sunset_at_pier.jpg">
