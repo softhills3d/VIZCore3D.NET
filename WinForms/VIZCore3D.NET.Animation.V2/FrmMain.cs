@@ -722,6 +722,7 @@ namespace VIZCore3D.NET.Animation.V2
             vizcore3d.View.Message.TextSize = VIZCore3D.NET.Data.FontSize.Size_24_Bold;
 
             // 분해를 위한 블록별 그룹 등록
+            vizcore3d.Object3D.Disassembly.ClearGroup();
             if (BlockItems == null || BlockItems.Count == 0) return;
             for (int i = 0; i < BlockItems.Count; i++)
             {
