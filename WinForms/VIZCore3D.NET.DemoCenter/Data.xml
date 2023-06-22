@@ -954,4 +954,15 @@ Features
     ]]>
     </Contents>
   </Item>
+  <Item Name="Watermark" Project="VIZCore3D.NET.WatermarkText">
+    <YouTube></YouTube>
+    <Contents>
+      <![CDATA[Project : VIZCore3D.NET.WatermarkText
+      
+Features
+- 워터마크 텍스트 가시화
+- 텍스트, 회전값, 색상, 글자크기, 간격 설정
+    ]]>
+    </Contents>
+  </Item>
 </DemoCenter>

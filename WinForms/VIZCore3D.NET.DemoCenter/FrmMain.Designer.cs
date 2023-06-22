@@ -200,14 +200,17 @@
             System.Windows.Forms.TreeNode treeNode92 = new System.Windows.Forms.TreeNode("Shape Drawing");
             System.Windows.Forms.TreeNode treeNode93 = new System.Windows.Forms.TreeNode("Custom Shape Drawing", new System.Windows.Forms.TreeNode[] {
             treeNode92});
-            System.Windows.Forms.TreeNode treeNode94 = new System.Windows.Forms.TreeNode("Block Arrangement");
-            System.Windows.Forms.TreeNode treeNode95 = new System.Windows.Forms.TreeNode("Panorama");
-            System.Windows.Forms.TreeNode treeNode96 = new System.Windows.Forms.TreeNode("Web Interworking");
-            System.Windows.Forms.TreeNode treeNode97 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
-            treeNode94,
-            treeNode95,
-            treeNode96});
-            System.Windows.Forms.TreeNode treeNode98 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode94 = new System.Windows.Forms.TreeNode("Watermark");
+            System.Windows.Forms.TreeNode treeNode95 = new System.Windows.Forms.TreeNode("Security", new System.Windows.Forms.TreeNode[] {
+            treeNode94});
+            System.Windows.Forms.TreeNode treeNode96 = new System.Windows.Forms.TreeNode("Block Arrangement");
+            System.Windows.Forms.TreeNode treeNode97 = new System.Windows.Forms.TreeNode("Panorama");
+            System.Windows.Forms.TreeNode treeNode98 = new System.Windows.Forms.TreeNode("Web Interworking");
+            System.Windows.Forms.TreeNode treeNode99 = new System.Windows.Forms.TreeNode("Etc.", new System.Windows.Forms.TreeNode[] {
+            treeNode96,
+            treeNode97,
+            treeNode98});
+            System.Windows.Forms.TreeNode treeNode100 = new System.Windows.Forms.TreeNode("VIZCore3D.NET", new System.Windows.Forms.TreeNode[] {
             treeNode14,
             treeNode28,
             treeNode38,
@@ -223,7 +226,8 @@
             treeNode86,
             treeNode91,
             treeNode93,
-            treeNode97});
+            treeNode95,
+            treeNode99});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -570,21 +574,26 @@
             treeNode93.Name = "Custom Shape Drawing";
             treeNode93.Tag = "";
             treeNode93.Text = "Custom Shape Drawing";
-            treeNode94.Name = "Block Arrangement";
-            treeNode94.Tag = "VIZCore3D.NET.BlockArrangement";
-            treeNode94.Text = "Block Arrangement";
-            treeNode95.Name = "Panorama";
-            treeNode95.Tag = "VIZCore3D.NET.Panorama";
-            treeNode95.Text = "Panorama";
-            treeNode96.Name = "Web Interworking";
-            treeNode96.Tag = "VIZCore3D.NET.WebBrowserInterworking";
-            treeNode96.Text = "Web Interworking";
-            treeNode97.Name = "Etc.";
-            treeNode97.Text = "Etc.";
-            treeNode98.Name = "VIZCore3D.NET";
-            treeNode98.Text = "VIZCore3D.NET";
+            treeNode94.Name = "Watermark";
+            treeNode94.Tag = "VIZCore3D.NET.WatermarkText";
+            treeNode94.Text = "Watermark";
+            treeNode95.Name = "Security";
+            treeNode95.Text = "Security";
+            treeNode96.Name = "Block Arrangement";
+            treeNode96.Tag = "VIZCore3D.NET.BlockArrangement";
+            treeNode96.Text = "Block Arrangement";
+            treeNode97.Name = "Panorama";
+            treeNode97.Tag = "VIZCore3D.NET.Panorama";
+            treeNode97.Text = "Panorama";
+            treeNode98.Name = "Web Interworking";
+            treeNode98.Tag = "VIZCore3D.NET.WebBrowserInterworking";
+            treeNode98.Text = "Web Interworking";
+            treeNode99.Name = "Etc.";
+            treeNode99.Text = "Etc.";
+            treeNode100.Name = "VIZCore3D.NET";
+            treeNode100.Text = "VIZCore3D.NET";
             this.tvHierarchy.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode98});
+            treeNode100});
             this.tvHierarchy.SelectedImageIndex = 0;
             this.tvHierarchy.Size = new System.Drawing.Size(347, 760);
             this.tvHierarchy.TabIndex = 0;

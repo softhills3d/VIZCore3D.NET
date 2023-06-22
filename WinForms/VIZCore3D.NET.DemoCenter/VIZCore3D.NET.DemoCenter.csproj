@@ -346,6 +346,9 @@
     <Content Include="Preview\VIZCore3D.NET.VisualInspection.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Preview\VIZCore3D.NET.WatermarkText.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Preview\VIZCore3D.NET.WebBrowserInterworking.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
