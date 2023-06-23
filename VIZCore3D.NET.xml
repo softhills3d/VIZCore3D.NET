@@ -4983,6 +4983,9 @@
         <member name="F:VIZCore3D.NET.Data.ModelExportFileType.VIZWide3D_Reviews">
             VIZWide3D(With Review)
         </member>
+        <member name="F:VIZCore3D.NET.Data.ModelExportFileType.VIZWeb3D_Reviews">
+            VIZWeb3D(With Review)
+        </member>
         <member name="T:VIZCore3D.NET.Data.ExportStlFileType">
             <summary>
             STL FILE TYPE
@@ -8328,7 +8331,7 @@
         <member name="P:VIZCore3D.NET.Data.ModelStatus.LengthBBox">
             <summary>
             Length BoundBox
-            </summary>  
+            </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.ModelStatus.Center">
             <summary>
@@ -8353,7 +8356,7 @@
         <member name="P:VIZCore3D.NET.Data.ModelStatus.CreateDate">
             <summary>
             Create Date
-            </summary>  
+            </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.ModelStatus.UpdateDate">
             <summary>
@@ -9287,7 +9290,7 @@
         <member name="P:VIZCore3D.NET.Data.Object3DProperty.Weight">
             <summary>
             Weight
-            </summary>  
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Data.Object3DProperty.#ctor">
             <summary>
@@ -23474,6 +23477,25 @@
             일본어
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.VIZCategoryAttribute">
+            <summary>
+            Propery Control Category 다국어 처리
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Propery Control Category 다국어 처리
+            </summary>
+            <param name="Default">Category 다국어 문자열</param>
+            <param name="key">Category Resource Code</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.VIZCategoryAttribute.GetLocalizedString(System.String)">
+            <summary>
+            다국어 문자열을 지역화
+            </summary>
+            <param name="value">Category Resource Code</param>
+            <returns>다국어 적용된 문자열 반환</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.VIZDisplayNameAttribute">
             <summary>
             Propery Control DisplayName 다국어 처리
@@ -23497,12 +23519,6 @@
             </summary>
             <param name="Default">Description 다국어 문자열</param>
             <param name="Description">Description Resource Code</param>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.VIZDescriptionAttribute.SetDescriptionValue(System.String)">
-            <summary>
-            ProperyGrid Description 다국어 처리
-            </summary>
-            <param name="value">다국어 처리된 문자열</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.LanguageManager">
             <summary>
@@ -39949,11 +39965,39 @@
             <param name="mode">Mode</param>
             <param name="progress">Progress</param>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWide3DWithReviewData(System.String)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWwithReview(System.Boolean,System.String)">
             <summary>
-            VIZWide3D (With Review Data Json File) 파일 형식으로 내보내기
+            VIZW 및 Review Data (Json 형식) 내보내기
             </summary>
+            <param name="singleFormat">VIZW 유형 : True (VIZWeb3D File Format) / False (VIZWide3D File Format)</param>
             <param name="file">내보내기 파일 : C:\\Temp\\MODEL.vizw</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWwithReview(System.Boolean,System.String,System.Boolean)">
+            <summary>
+            VIZW 및 Review Data (Json 형식) 내보내기
+            </summary>
+            <param name="singleFormat">VIZW 유형 : True (VIZWeb3D File Format) / False (VIZWide3D File Format)</param>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.vizw</param>
+            <param name="selectedOnly">선택상태 모델만 내보내기 여부 : True(선택모델) / False(전체)</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWwithReview(System.Boolean,System.String,System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
+            <summary>
+            VIZW 및 Review Data (Json 형식) 내보내기
+            </summary>
+            <param name="singleFormat">VIZW 유형 : True (VIZWeb3D File Format) / False (VIZWide3D File Format)</param>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.vizw</param>
+            <param name="nodes">내보내기 대상 노드</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportVIZWwithReview(System.Boolean,System.String,System.Collections.Generic.List{System.Int32})">
+            <summary>
+            VIZW 및 Review Data (Json 형식) 내보내기
+            </summary>
+            <param name="singleFormat">VIZW 유형 : True (VIZWeb3D File Format) / False (VIZWide3D File Format)</param>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.vizw</param>
+            <param name="index">내보내기 대상 노드</param>
             <returns>내보내기 결과</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ModelTreeManager">
