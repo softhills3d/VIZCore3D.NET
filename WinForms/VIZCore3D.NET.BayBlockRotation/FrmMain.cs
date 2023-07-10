@@ -1642,5 +1642,21 @@ namespace VIZCore3D.NET.BayBlockRotation
             // 개체에 반영
             node[0].Transform(current, true);
         }
+
+        private void DrawVerticalText()
+        {
+            int fontHeight = 5500;
+            float fontSize = 100; // 34 ~ 250
+
+            vizcore3d.TextDrawing.Add(
+                new VIZCore3D.NET.Data.Vertex3D(-5000.0f, -3900.0f, 50.0f)
+                , new VIZCore3D.NET.Data.Vector3D(1, 0, 0) /* X+ 방향으로 텍스트가 표시 */
+                , new VIZCore3D.NET.Data.Vector3D(0, 1, 0) /* 텍스트의 위쪽 방향 : Z+에서 볼때, Y+가 위쪽 임. */
+                , fontHeight
+                , fontSize
+                , Color.Black
+                , "탑\n재\n블\n록"
+                );
+        }
     }
 }
