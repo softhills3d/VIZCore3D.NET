@@ -23250,7 +23250,7 @@
             <summary>
             장비 삭제
             </summary>
-            <param name="id"></param>
+            <param name="id">장비 아이디</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.AvatarPathManager">
             <summary>
@@ -23703,6 +23703,12 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.LanguageManager.GetGraphicLanguageString(VIZCore3D.NET.Manager.LanguageKind)">
+            <summary>
+            Graphic Core Language 가져오기
+            </summary>
+            <param name="kind">언어 유형</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.CommentManager">
             <summary>
@@ -25315,8 +25321,8 @@
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.SimplifyMesh(System.Boolean)">
             <summary>
             선택된 부재의 Mesh 형상을 단순화
-            <param name="removeHole">홀 단순화 여부</param>
             </summary>
+            <param name="removeHole">홀 단순화 여부</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.MeshEditManager.SimplifyMesh(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.Vertex3D},System.Boolean)">
             <summary>
@@ -40083,9 +40089,15 @@
             <param name="kind">ContextMenu Kind</param>
             <returns>ContextMenu</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelTreeManager.Expand(System.Int32)">
+            <summary>
+            Modeltree 펼치기 (Bottom-Up)
+            </summary>
+            <param name="index">대상 노드 인덱스</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelTreeManager.Expand(System.Collections.Generic.List{VIZCore3D.NET.Data.Node})">
             <summary>
-            ModelTree 펼치기
+            ModelTree 펼치기 (Top-Down)
             </summary>
             <param name="items">Node List</param>
         </member>
@@ -44189,6 +44201,38 @@
             리뷰 파일 저장 다이얼로그
             </summary>
             <param name="model">모델 파일</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.SaveAsJson(System.String)">
+            <summary>
+            Json 파일 저장
+            </summary>
+            <param name="path">경로</param>
+            <returns>Json 파일 내보내기 결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                string path = "C:\\Temp\\Review.json";
+            
+                bool result = vizcore3d.Review.SaveAsJson(path);
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.SaveAsJson(System.String,System.String)">
+            <summary>
+            Json 파일 저장
+            </summary>
+            <param name="path">경로</param>
+            <param name="model">모델 이름</param>
+            <returns>Json 파일 내보내기 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ReviewManager.Export(System.String,System.Collections.Generic.List{System.Int32})">
             <summary>
@@ -51053,6 +51097,11 @@
             Animation 활성화/비활성화
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableLeafAssemblySelection">
+            <summary>
+            Leaf Assembly 선택 활성화/비활성화
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ViewManager.EnableAutoFit">
             <summary>
             자동 화면 맞춤 활성화/비활성화
@@ -52746,7 +52795,7 @@
             <summary>
             툴바 이미지 변경
             </summary>
-            <param name="filePath"></param>
+            <param name="path">툴바 이미지 경로</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.VIZXML_MODEL_KIND">
             <summary>
@@ -53653,8 +53702,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.SetAvatarPose(VIZCore3D.NET.Data.AvatarPose)">
             <summary>
-            아바타 자세 강제 변경
+            아바타 자세 변경
             </summary>
+            <param name="pose">아바타 자세</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision">
             <summary>
@@ -53788,8 +53838,8 @@
             <summary>
             Watermark 회전
             </summary>
-            <param name="angle"></param>
-            <param name="format"></param>
+            <param name="angle">회전 각도</param>
+            <param name="format">각도 형식</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.XRayManager">
             <summary>
@@ -56773,8 +56823,8 @@
             To Integer
             </summary>
             <param name="valueIfInvalid">Value If Valid</param>
-            <param name="min"></param>
-            <param name="max"></param>
+            <param name="min">Min. Value</param>
+            <param name="max">Max. Value</param>
             <returns>Result Value</returns>
         </member>
         <member name="M:VIZCore3D.NET.Utility.IniValue.TryConvertInt(System.Int32@)">
