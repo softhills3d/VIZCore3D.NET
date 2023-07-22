@@ -37,6 +37,7 @@
             this.btnHandleSize = new System.Windows.Forms.Button();
             this.btnHandleMove = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckParentObject = new System.Windows.Forms.CheckBox();
             this.ckMargin = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,13 +48,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ckModelBoundBox = new System.Windows.Forms.CheckBox();
             this.ckEnable = new System.Windows.Forms.CheckBox();
-            this.ckParentObject = new System.Windows.Forms.CheckBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnAddNote = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -65,6 +68,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
@@ -168,6 +172,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Auto Clip";
             // 
+            // ckParentObject
+            // 
+            this.ckParentObject.AutoSize = true;
+            this.ckParentObject.Location = new System.Drawing.Point(35, 73);
+            this.ckParentObject.Name = "ckParentObject";
+            this.ckParentObject.Size = new System.Drawing.Size(100, 16);
+            this.ckParentObject.TabIndex = 10;
+            this.ckParentObject.Text = "Parent Object";
+            this.ckParentObject.UseVisualStyleBackColor = true;
+            // 
             // ckMargin
             // 
             this.ckMargin.AutoSize = true;
@@ -262,15 +276,29 @@
             this.ckEnable.Text = "Enable";
             this.ckEnable.UseVisualStyleBackColor = true;
             // 
-            // ckParentObject
+            // groupBox4
             // 
-            this.ckParentObject.AutoSize = true;
-            this.ckParentObject.Location = new System.Drawing.Point(35, 73);
-            this.ckParentObject.Name = "ckParentObject";
-            this.ckParentObject.Size = new System.Drawing.Size(100, 16);
-            this.ckParentObject.TabIndex = 10;
-            this.ckParentObject.Text = "Parent Object";
-            this.ckParentObject.UseVisualStyleBackColor = true;
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.btnAddNote);
+            this.groupBox4.Location = new System.Drawing.Point(12, 448);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(196, 62);
+            this.groupBox4.TabIndex = 12;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Note";
+            // 
+            // btnAddNote
+            // 
+            this.btnAddNote.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddNote.Location = new System.Drawing.Point(19, 20);
+            this.btnAddNote.Name = "btnAddNote";
+            this.btnAddNote.Size = new System.Drawing.Size(63, 23);
+            this.btnAddNote.TabIndex = 0;
+            this.btnAddNote.Text = "Add";
+            this.btnAddNote.UseVisualStyleBackColor = true;
+            this.btnAddNote.Click += new System.EventHandler(this.btnAddNote_Click);
             // 
             // FrmMain
             // 
@@ -289,6 +317,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -314,6 +343,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnClearSection;
         private System.Windows.Forms.CheckBox ckParentObject;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnAddNote;
     }
 }
 

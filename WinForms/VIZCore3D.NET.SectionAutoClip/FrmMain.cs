@@ -455,7 +455,13 @@ namespace VIZCore3D.NET.SectionAutoClip
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            // 모델 선택/비선택 이벤트
+            // 선택 시 단면상자 생성
+            // 비 선택 시 단면상자 제거
             vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
+
+            // 단면상자 조작 이벤트
+            vizcore3d.Section.OnSectionEvent += Section_OnSectionEvent;
         }
         #endregion
 
@@ -468,6 +474,9 @@ namespace VIZCore3D.NET.SectionAutoClip
             if(e.Node.Count == 0)
             {
                 vizcore3d.Section.Clear();
+
+                vizcore3d.Review.Note.Show(true); // 모든 노트 조회
+
                 return;
             }
 
@@ -504,12 +513,17 @@ namespace VIZCore3D.NET.SectionAutoClip
                 sectionBoxSize.MaxZ += marginZ * 0.5f;
             }
 
+
+
             vizcore3d.BeginUpdate();
 
             VIZCore3D.NET.Data.Section section = vizcore3d.Section.AddBox(false);
             vizcore3d.Section.SetBoxSize(section.ID, sectionBoxSize);
 
             vizcore3d.EndUpdate();
+
+            // 단면상자 표시에 따른 노트 보이기/숨기기 조정
+            ShowNotes(sectionBoxSize);
         }
 
         private void btnHandleMove_Click(object sender, EventArgs e)
@@ -530,6 +544,77 @@ namespace VIZCore3D.NET.SectionAutoClip
         private void btnClearSection_Click(object sender, EventArgs e)
         {
             vizcore3d.Section.Clear();
+        }
+
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.LEAF_ASSEMBLY, false);
+
+            vizcore3d.BeginUpdate();
+
+            foreach (VIZCore3D.NET.Data.Node item in items)
+            {
+                VIZCore3D.NET.Data.Vertex3D center = item.GetCenter();  // 모델 중심
+                vizcore3d.Review.Note.AddNoteSurface(item.NodeName, center, center);
+            }
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void ShowNotes(VIZCore3D.NET.Data.BoundBox3D boundBox)
+        {
+            vizcore3d.BeginUpdate();
+
+            List<VIZCore3D.NET.Data.NoteItem> notes = vizcore3d.Review.Note.Items;
+            List<VIZCore3D.NET.Data.NoteItem> items_show = new List<VIZCore3D.NET.Data.NoteItem>();
+            List<VIZCore3D.NET.Data.NoteItem> items_hide = new List<VIZCore3D.NET.Data.NoteItem>();
+
+            foreach (VIZCore3D.NET.Data.NoteItem item in notes)
+            {
+                bool target = false;
+
+                foreach (VIZCore3D.NET.Data.ReviewPosition position in item.Position)
+                {
+                    if (position.TypeText.ToUpper() != "TARGET_POSITION") continue;
+
+                    if (boundBox.Contains(position.Position) == false) // 바운드박스 내부 정점 판단
+                        target = true;
+                }
+
+                if(target == true) items_hide.Add(item); // 숨겨져야 하는 노트
+                else items_show.Add(item);               // 조회되어야 하는 노트
+            }
+
+            if (items_hide.Count > 0) vizcore3d.Review.Note.Show(items_hide, false);
+            if (items_show.Count > 0) vizcore3d.Review.Note.Show(items_show, true);
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void Section_OnSectionEvent(object sender, Event.EventManager.SectionEventArgs e)
+        {
+            if(e.Section == null) return;
+
+            switch (e.EventType)
+            {
+                case Manager.SectionManager.EventTypes.ADD:
+                    break;
+                case Manager.SectionManager.EventTypes.DELETE:
+                    break;
+                case Manager.SectionManager.EventTypes.CLEAR:
+                    break;
+                case Manager.SectionManager.EventTypes.SELECT:
+                    break;
+                case Manager.SectionManager.EventTypes.TRANSFORM: // 단면상자 크기 변경 진행중
+                    break;
+                case Manager.SectionManager.EventTypes.RESIZED: // 단면상자 크기 변경 완료
+                    ShowNotes(e.Section.BoundBox);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
