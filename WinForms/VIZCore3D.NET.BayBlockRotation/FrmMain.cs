@@ -544,7 +544,12 @@ namespace VIZCore3D.NET.BayBlockRotation
 
             // Object Removed Event
             vizcore3d.Object3D.OnObject3DRemoved += Object3D_OnObject3DRemovedEvent;
+
+            // TextDrawing :: Item Clicked
+            vizcore3d.TextDrawing.OnTextDrawingItemClickedEvent += TextDrawing_OnTextDrawingItemClickedEvent;
         }
+
+        
         #endregion
 
         #region Function - VIZCore3D.NET : Custom Option
@@ -1102,6 +1107,10 @@ namespace VIZCore3D.NET.BayBlockRotation
             vizcore3d.View.MouseBasedObjectMove.EnableMode(true);
         }
 
+        private void TextDrawing_OnTextDrawingItemClickedEvent(object sender, Event.EventManager.TextDrawingItemClickedEventArgs e)
+        {
+            //MessageBox.Show(e.Item.Text);
+        }
 
 
         private void btnCreateBay_Click(object sender, EventArgs e)
