@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -458,5 +459,95 @@ namespace VIZCore3D.NET.NoteTransform
             
         }
         #endregion
+
+
+        // ================================================
+        // Function - Example
+        // ================================================
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+
+            if(nodes.Count == 0)
+            {
+                nodes.Add(vizcore3d.Object3D.FromIndex(0));
+            }
+
+            AddList(nodes);
+            AddNote(nodes);
+        }
+
+        private void btnClearNote_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            vizcore3d.Review.Note.Clear();
+            lvNodes.Items.Clear();
+        }
+
+        private void AddList(List<VIZCore3D.NET.Data.Node> items)
+        {
+            lvNodes.BeginUpdate();
+
+            lvNodes.Items.Clear();
+
+            foreach (VIZCore3D.NET.Data.Node item in items)
+            {
+                ListViewItem lvi = new ListViewItem(new string[] { item.Index.ToString(), item.NodeName });
+                lvi.Tag = item;
+
+                lvNodes.Items.Add(lvi);
+            }
+
+            lvNodes.EndUpdate();
+        }
+
+        private void AddNote(List<VIZCore3D.NET.Data.Node> items)
+        {
+            vizcore3d.BeginUpdate();
+
+            foreach (VIZCore3D.NET.Data.Node item in items)
+            {
+                VIZCore3D.NET.Data.Vertex3D surface = item.GetCenter();
+                VIZCore3D.NET.Data.Vertex3D text = surface.Clone(); text.Z += 1000.0f;
+
+                vizcore3d.Review.Note.AddNoteSurface(item.NodeName, text, surface);
+            }
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void btnRotate_Click(object sender, EventArgs e)
+        {
+            string strX = txtAngleX.Text;
+            string strY = txtAngleY.Text;
+            string strZ = txtAngleZ.Text;
+
+            if (String.IsNullOrEmpty(strX) == true) return;
+            if (String.IsNullOrEmpty(strY) == true) return;
+            if (String.IsNullOrEmpty(strZ) == true) return;
+
+            float x = Convert.ToSingle(strX);
+            float y = Convert.ToSingle(strY);
+            float z = Convert.ToSingle(strZ);
+
+            if (lvNodes.Items.Count == 0) return;
+
+            List<int> index = new List<int>();
+            for (int i = 0; i < lvNodes.Items.Count; i++)
+            {
+                ListViewItem lvi = lvNodes.Items[i];
+
+                string strIndex = lvi.SubItems[0].Text;
+
+                index.Add(Convert.ToInt32(strIndex));
+            }
+
+            vizcore3d.Object3D.Transform.Rotate(index.ToArray(), x, y, z);
+
+            VIZCore3D.NET.Data.Matrix3D matrix = vizcore3d.Object3D.Transform.GetTransfromRotateAround(index, x, y, z);
+        }
     }
 }
