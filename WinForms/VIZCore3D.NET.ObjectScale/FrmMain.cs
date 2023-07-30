@@ -477,7 +477,7 @@ namespace VIZCore3D.NET.ObjectScale
             // File Path
             string path = dlg.FileName;
 
-            // File Stream
+            // File Stream : VIZ Only
             VIZCore3D.NET.Data.StreamData s1 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL1");
             VIZCore3D.NET.Data.StreamData s2 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL2");
 
