@@ -519,6 +519,12 @@ namespace VIZCore3D.NET.NoteTransform
             vizcore3d.EndUpdate();
         }
 
+        private void btnGetSelectedNodes_Click(object sender, EventArgs e)
+        {
+            List<VIZCore3D.NET.Data.Node> nodes = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+            AddList(nodes);
+        }
+
         private void btnRotate_Click(object sender, EventArgs e)
         {
             string strX = txtAngleX.Text;
@@ -535,6 +541,7 @@ namespace VIZCore3D.NET.NoteTransform
 
             if (lvNodes.Items.Count == 0) return;
 
+            // Set Selected Object
             List<int> index = new List<int>();
             for (int i = 0; i < lvNodes.Items.Count; i++)
             {
@@ -545,9 +552,34 @@ namespace VIZCore3D.NET.NoteTransform
                 index.Add(Convert.ToInt32(strIndex));
             }
 
+            // Rotate Selected Object
             vizcore3d.Object3D.Transform.Rotate(index.ToArray(), x, y, z);
 
+            // Get Rotation Matrix From Object
             VIZCore3D.NET.Data.Matrix3D matrix = vizcore3d.Object3D.Transform.GetTransfromRotateAround(index, x, y, z);
+
+            List<VIZCore3D.NET.Data.NoteItem> items = vizcore3d.Review.Note.Items;
+
+            vizcore3d.BeginUpdate();
+
+            foreach (VIZCore3D.NET.Data.NoteItem item in items)
+            {
+                List<VIZCore3D.NET.Data.ReviewPosition> review = item.Position;
+
+                foreach (VIZCore3D.NET.Data.ReviewPosition reviewPosition in review)
+                {
+                    // Calculate Rotated Position
+                    VIZCore3D.NET.Data.Vector3D v = reviewPosition.Position.ToVector3D();
+                    VIZCore3D.NET.Data.Vector3D newPosition = matrix * v;
+
+                    // Update Position
+                    item.UpdatePosition(reviewPosition, newPosition.ToVertex3D());
+                }
+            }
+
+            vizcore3d.EndUpdate();
         }
+
+        
     }
 }
