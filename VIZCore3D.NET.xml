@@ -1296,7 +1296,7 @@
             PrintDocumentControl
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.PrintControl.PageOrientation)">
+        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.PrintControl.PageOrientation,System.Drawing.Printing.Margins)">
             <summary>
             Initializes a new instance of the <see cref="T:VIZCore3D.NET.PrintControl.PrintDocumentControl"/> class.
             </summary>
@@ -1306,6 +1306,7 @@
             <param name="dateText">Date Text</param>
             <param name="pageNumberText">Page Number Text</param>
             <param name="orientation">Page Orientation</param>
+            <param name="margins">Page Margins</param>
         </member>
         <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentControl.SetPrintDocumentControl">
             <summary>
@@ -1349,7 +1350,7 @@
             Print Document Form Class
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentForm.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.PrintControl.PageOrientation)">
+        <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentForm.#ctor(VIZCore3D.NET.Controls.ViewControl,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.Data.TextTemplatePrint,VIZCore3D.NET.PrintControl.PageOrientation,System.Drawing.Printing.Margins)">
             <summary>
             Initializes a new instance of the <see cref="T:VIZCore3D.NET.PrintControl.PrintDocumentForm"/> class.
             </summary>
@@ -1359,6 +1360,7 @@
             <param name="footerLeft">Footer  - Left</param>
             <param name="footerRight">Footer - Right</param>
             <param name="orientation">Page Orientation</param>
+            <param name="margins">Page Margins</param>
         </member>
         <member name="M:VIZCore3D.NET.PrintControl.PrintDocumentForm.SetPrintDocumentForm">
             <summary>
@@ -2198,6 +2200,12 @@
             To String Max. Vertex
             </summary>
             <returns>Max. Point Vertex</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.ToStringLength">
+            <summary>
+            To String Length
+            </summary>
+            <returns>Length String</returns>
         </member>
         <member name="M:VIZCore3D.NET.Data.BoundBox3D.Equals(VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
             <summary>
@@ -4111,6 +4119,11 @@
         <member name="F:VIZCore3D.NET.Data.AvatarModels.MAN2">
             <summary>
             남자 2
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.AvatarModels.MAN3">
+            <summary>
+            남자 3
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.AvatarPose">
@@ -14401,6 +14414,11 @@
             </summary>
             <param name="ctrl">VIZCore3D.NET</param>
             <param name="setting">Setting Manager</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.GetShortcutSetting">
+            <summary>
+            단축키 목록 초기화
+            </summary>
         </member>
         <member name="F:VIZCore3D.NET.Dialogs.SettingsDialog.components">
             <summary>
@@ -31958,6 +31976,11 @@
             Page Orientation 
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.PrintManager.Margins">
+            <summary>
+            Margins
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.PrintManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
@@ -44226,14 +44249,6 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ReviewManager.SaveAsJson(System.String,System.String)">
-            <summary>
-            Json 파일 저장
-            </summary>
-            <param name="path">경로</param>
-            <param name="model">모델 이름</param>
-            <returns>Json 파일 내보내기 결과</returns>
-        </member>
         <member name="M:VIZCore3D.NET.Manager.ReviewManager.Export(System.String,System.Collections.Generic.List{System.Int32})">
             <summary>
             리뷰 일부 내보내기
@@ -49062,6 +49077,28 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.GetTransfromRotateAround(System.Collections.Generic.List{System.Int32},System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            지정된 개체를 회전하기위한 계산된 Matrix 값 반환
+            </summary>
+            <param name="node">노드 인덱스</param>
+            <param name="x">X축 회전 각도(Degree)</param>
+            <param name="y">Y축 회전 각도(Degree)</param> 
+            <param name="z">Z축 회전 각도(Degree)</param>
+            <param name="centerOffset">모델 중심 offset 적용 반환 여부 설정</param>
+            <returns>회전 Matrix</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.GetTransfromRotateAround(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Single,System.Single,System.Single,System.Boolean)">
+            <summary>
+            지정된 개체를 회전하기위한 계산된 Matrix 값 반환
+            </summary>
+            <param name="node">노드</param>
+            <param name="x">X축 회전 각도(Degree)</param>
+            <param name="y">Y축 회전 각도(Degree)</param> 
+            <param name="z">Z축 회전 각도(Degree)</param>
+            <param name="centerOffset">모델 중심 offset 적용 반환 여부 설정</param>
+            <returns>회전 Matrix</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.TransformManager.MoveTo(System.Int32[],System.Single,System.Single,System.Single)">
             <summary>
             지정된 개체를 해당 위치로 이동
@@ -49279,6 +49316,228 @@
             <summary>
             Show Matrix Dialog
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.Scale(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},VIZCore3D.NET.Data.Vector3D)">
+            <summary>
+            지정된 개체 크기 설정 (모델 중심에서 적용)
+            </summary>
+            <param name="node">노드 리스트</param>
+            <param name="scale">크기</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = false;
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                if (vizcore3d.Model.IsOpen() == true)
+                    vizcore3d.Model.Close();
+            
+                // File Path
+                string path = dlg.FileName;
+            
+                // File Stream
+                VIZCore3D.NET.Data.StreamData s1 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL1");
+                VIZCore3D.NET.Data.StreamData s2 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL2");
+            
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+                stream.Add(s1);
+                stream.Add(s2);
+            
+                // Add Stream
+                vizcore3d.Model.AddStream(stream);
+            
+                // Model BoundBox
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                // Find Object
+                List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.Find.QuickSearch("MODEL2", true);
+            
+                // Move Object
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.SetTranslate(boundBox.LengthX * 3.0f, 0.0f, 0.0f);
+                node[0].Transform(matrix);
+            
+                // Set Scale : 2x
+                vizcore3d.Object3D.Transform.Scale(node, new VIZCore3D.NET.Data.Vector3D(2.0f, 2.0f, 2.0f));
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.Scale(System.Collections.Generic.List{System.Int32},VIZCore3D.NET.Data.Vector3D)">
+            <summary>
+            지정된 개체 크기 설정 (모델 중심에서 적용)
+            </summary>
+            <param name="node">노드 인덱스 리스트</param>
+            <param name="scale">크기</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = false;
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                if (vizcore3d.Model.IsOpen() == true)
+                    vizcore3d.Model.Close();
+            
+                // File Path
+                string path = dlg.FileName;
+            
+                // File Stream
+                VIZCore3D.NET.Data.StreamData s1 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL1");
+                VIZCore3D.NET.Data.StreamData s2 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL2");
+            
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+                stream.Add(s1);
+                stream.Add(s2);
+            
+                // Add Stream
+                vizcore3d.Model.AddStream(stream);
+            
+                // Model BoundBox
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                // Find Object
+                List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.Find.QuickSearch("MODEL2", true);
+            
+                // Move Object
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.SetTranslate(boundBox.LengthX * 3.0f, 0.0f, 0.0f);
+                node[0].Transform(matrix);
+            
+                // Set Scale : 2x
+                vizcore3d.Object3D.Transform.Scale(node, new VIZCore3D.NET.Data.Vector3D(2.0f, 2.0f, 2.0f));
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.Scale(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Boolean,VIZCore3D.NET.Data.Vector3D)">
+            <summary>
+            지정된 개체 크기 설정
+            </summary>
+            <param name="node">노드 인덱스 리스트</param>
+            <param name="nodeCenter">true : 노드 중심기준, false : 원점 기준</param>
+            <param name="scale">크기</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = false;
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                if (vizcore3d.Model.IsOpen() == true)
+                    vizcore3d.Model.Close();
+            
+                // File Path
+                string path = dlg.FileName;
+            
+                // File Stream
+                VIZCore3D.NET.Data.StreamData s1 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL1");
+                VIZCore3D.NET.Data.StreamData s2 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL2");
+            
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+                stream.Add(s1);
+                stream.Add(s2);
+            
+                // Add Stream
+                vizcore3d.Model.AddStream(stream);
+            
+                // Model BoundBox
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                // Find Object
+                List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.Find.QuickSearch("MODEL2", true);
+            
+                // Move Object
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.SetTranslate(boundBox.LengthX * 3.0f, 0.0f, 0.0f);
+                node[0].Transform(matrix);
+            
+                // Set Scale : 2x
+                vizcore3d.Object3D.Transform.Scale(node, new VIZCore3D.NET.Data.Vector3D(2.0f, 2.0f, 2.0f));
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.TransformManager.Scale(System.Collections.Generic.List{System.Int32},System.Boolean,VIZCore3D.NET.Data.Vector3D)">
+            <summary>
+            지정된 개체 크기 설정
+            </summary>
+            <param name="node">노드 인덱스 리스트</param>
+            <param name="nodeCenter">true : 노드 중심기준, false : 원점 기준</param>
+            <param name="scale">크기</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = false;
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                if (vizcore3d.Model.IsOpen() == true)
+                    vizcore3d.Model.Close();
+            
+                // File Path
+                string path = dlg.FileName;
+            
+                // File Stream
+                VIZCore3D.NET.Data.StreamData s1 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL1");
+                VIZCore3D.NET.Data.StreamData s2 = new VIZCore3D.NET.Data.StreamData(System.IO.File.ReadAllBytes(path), "MODEL2");
+            
+                List<VIZCore3D.NET.Data.StreamData> stream = new List<VIZCore3D.NET.Data.StreamData>();
+                stream.Add(s1);
+                stream.Add(s2);
+            
+                // Add Stream
+                vizcore3d.Model.AddStream(stream);
+            
+                // Model BoundBox
+                VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+            
+                // Find Object
+                List<VIZCore3D.NET.Data.Node> node = vizcore3d.Object3D.Find.QuickSearch("MODEL2", true);
+            
+                // Move Object
+                VIZCore3D.NET.Data.Matrix3D matrix = new VIZCore3D.NET.Data.Matrix3D();
+                matrix.SetTranslate(boundBox.LengthX * 3.0f, 0.0f, 0.0f);
+                node[0].Transform(matrix);
+            
+                // Set Scale : 2x
+                vizcore3d.Object3D.Transform.Scale(node, new VIZCore3D.NET.Data.Vector3D(2.0f, 2.0f, 2.0f));
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Manager.UDAManager">
             <summary>
@@ -53703,8 +53962,26 @@
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.SetAvatarPose(VIZCore3D.NET.Data.AvatarPose)">
             <summary>
             아바타 자세 변경
+            (Man3 Only)
             </summary>
             <param name="pose">아바타 자세</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.Walkthrough.AvatarModel = (int)Data.AvatarModels.MAN3;
+                
+                //Man3 Only
+                //vizcore3d.Walkthrough.SetAvatarPose(Data.AvatarPose.NORMAL); //default
+                vizcore3d.Walkthrough.SetAvatarPose(Data.AvatarPose.WALK);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.DetectAvatarCollision">
             <summary>
