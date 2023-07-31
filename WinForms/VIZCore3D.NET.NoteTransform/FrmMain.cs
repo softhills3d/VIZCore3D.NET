@@ -583,7 +583,5 @@ namespace VIZCore3D.NET.NoteTransform
 
             vizcore3d.EndUpdate();
         }
-
-        
     }
 }
