@@ -564,6 +564,7 @@ namespace VIZCore3D.NET.NoteTransform
 
             foreach (VIZCore3D.NET.Data.NoteItem item in items)
             {
+                /*
                 List<VIZCore3D.NET.Data.ReviewPosition> review = item.Position;
 
                 foreach (VIZCore3D.NET.Data.ReviewPosition reviewPosition in review)
@@ -575,6 +576,9 @@ namespace VIZCore3D.NET.NoteTransform
                     // Update Position
                     item.UpdatePosition(reviewPosition, newPosition.ToVertex3D());
                 }
+                */
+
+                item.UpdatePosition(matrix);
             }
 
             vizcore3d.EndUpdate();
