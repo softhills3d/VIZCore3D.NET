@@ -9092,6 +9092,45 @@
             노트 위치 변경
             </summary>
             <param name="matrix">이동/회전 Matrix</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                float x = 0.0f;
+                float y = -45.0f;
+                float z = 0.0f;
+            
+                // Set Selected Object
+                List<VIZCore3D.NET.Data.Node> nodes =
+                    vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+            
+                // Rotate Selected Object
+                vizcore3d.Object3D.Transform.Rotate(nodes, x, y, z);
+            
+                // Get Rotation Matrix From Object
+                VIZCore3D.NET.Data.Matrix3D matrix =
+                    vizcore3d.Object3D.Transform.GetTransfromRotateAround(nodes, x, y, z);
+            
+                List<VIZCore3D.NET.Data.NoteItem> items = vizcore3d.Review.Note.Items;
+            
+                vizcore3d.BeginUpdate();
+            
+                foreach (VIZCore3D.NET.Data.NoteItem item in items)
+                {
+                    item.UpdatePosition(matrix);
+                }
+            
+                vizcore3d.EndUpdate();
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="T:VIZCore3D.NET.Data.NoteStyle">
             <summary>
