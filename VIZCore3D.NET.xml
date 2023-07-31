@@ -9087,6 +9087,12 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Data.NoteItem.UpdatePosition(VIZCore3D.NET.Data.Matrix3D)">
+            <summary>
+            노트 위치 변경
+            </summary>
+            <param name="matrix">이동/회전 Matrix</param>
+        </member>
         <member name="T:VIZCore3D.NET.Data.NoteStyle">
             <summary>
             Note Style
