@@ -788,7 +788,7 @@ namespace VIZCore3D.NET.SelectionBox
                 id
                 , ckFullyContained.Checked == true 
                     ? VIZCore3D.NET.Data.BoundBoxSearchOption.FullyContained
-                    : Data.BoundBoxSearchOption.IncludingPart
+                    : VIZCore3D.NET.Data.BoundBoxSearchOption.IncludingPart
                 );
 
             dgView.DataSource = object3d;
