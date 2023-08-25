@@ -91,23 +91,72 @@ namespace VIZCore3D.NET.Demo
             // ================================================================
             // TEST
             // ================================================================
-            Dialogs.LicenseDialog dlg = new Dialogs.LicenseDialog();
-            if (dlg.ShowDialog() != DialogResult.OK) return;
-
+            string path = string.Format("{0}\\License.ini", Application.StartupPath);
             VIZCore3D.NET.Data.LicenseResults result;
 
-            if (String.IsNullOrEmpty(dlg.LicenseFile) == false)
+            if (System.IO.File.Exists(path) == false)
             {
-                result = vizcore3d.License.LicenseFile(dlg.LicenseFile);
-            }
-            else if(String.IsNullOrEmpty(dlg.LicenseIp) == false && String.IsNullOrEmpty(dlg.LicensePort) == false)
-            {
-                result = vizcore3d.License.LicenseServer(dlg.LicenseIp, Convert.ToInt32(dlg.LicensePort));
+                Dialogs.LicenseDialog dlg = new Dialogs.LicenseDialog();
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                if (String.IsNullOrEmpty(dlg.LicenseFile) == false)
+                {
+                    result = vizcore3d.License.LicenseFile(dlg.LicenseFile);
+                }
+                else if (String.IsNullOrEmpty(dlg.LicenseIp) == false && String.IsNullOrEmpty(dlg.LicensePort) == false)
+                {
+                    result = vizcore3d.License.LicenseServer(dlg.LicenseIp, Convert.ToInt32(dlg.LicensePort));
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                return;
+                VIZCore3D.NET.Utility.IniFile ini = new Utility.IniFile();
+                ini.Load(path);
+
+                if (ini.ContainsSection("License") == false) return;
+
+                VIZCore3D.NET.Utility.IniSection section = new Utility.IniSection();
+                if (ini.TryGetSection("License", out section) == false) return;
+
+                string licenseFile = section["File"].ToString();
+                string licenseServerIp = section["IP"].ToString();
+                string licenseSErverPort = section["PORT"].ToString();
+
+                if (String.IsNullOrEmpty(licenseFile) == false && System.IO.File.Exists(licenseFile) == true)
+                {
+                    result = vizcore3d.License.LicenseFile(licenseFile);
+                }
+                else if(String.IsNullOrEmpty(licenseServerIp) == false && String.IsNullOrEmpty(licenseSErverPort) == false)
+                {
+                    result = vizcore3d.License.LicenseServer(licenseServerIp, Convert.ToInt32(licenseSErverPort));
+                }
+                else
+                {
+                    Dialogs.LicenseDialog dlg = new Dialogs.LicenseDialog();
+                    if (dlg.ShowDialog() != DialogResult.OK) return;
+
+                    if (String.IsNullOrEmpty(dlg.LicenseFile) == false)
+                    {
+                        result = vizcore3d.License.LicenseFile(dlg.LicenseFile);
+                    }
+                    else if (String.IsNullOrEmpty(dlg.LicenseIp) == false && String.IsNullOrEmpty(dlg.LicensePort) == false)
+                    {
+                        result = vizcore3d.License.LicenseServer(dlg.LicenseIp, Convert.ToInt32(dlg.LicensePort));
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
             }
+
+            
+
+            
 
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseFile("C:\\License\\VIZCore3D.NET.lic");
             //VIZCore3D.NET.Data.LicenseResults result = vizcore3d.License.LicenseServer("127.0.0.1", 8901);
