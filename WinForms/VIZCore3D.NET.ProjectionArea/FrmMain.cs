@@ -501,7 +501,7 @@ namespace VIZCore3D.NET.ProjectionArea
             if (vizcore3d.Model.IsOpen() == false) return;
 
             // Ex) ISO+
-            vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_PLUS);
+            //vizcore3d.View.MoveCamera(VIZCore3D.NET.Data.CameraDirection.ISO_PLUS);
 
             ProjectionCurrentCamera();
         }
