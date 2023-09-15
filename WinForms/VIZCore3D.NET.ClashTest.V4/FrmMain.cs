@@ -154,11 +154,11 @@ namespace VIZCore3D.NET.ClashTest.V4
 
         private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
-            ClearClashResult();
-
             if (e.Node.Count == 0) return;
 
             if (ckClashEnable.Checked == false) return;
+
+            ClearClashResult();
 
             ExecuteClashTest(e.Node);
         }
