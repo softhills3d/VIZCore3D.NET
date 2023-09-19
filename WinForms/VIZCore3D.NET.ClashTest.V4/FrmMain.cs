@@ -151,6 +151,9 @@ namespace VIZCore3D.NET.ClashTest.V4
         private void btnOpen_Click(object sender, EventArgs e)
         {
 			vizcore3d.Model.OpenFileDialog();
+
+			if (vizcore3d.View.XRay.Enable == true)
+				vizcore3d.View.XRay.Enable = false;
 		}
 
         private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
@@ -277,8 +280,10 @@ namespace VIZCore3D.NET.ClashTest.V4
 		{
             if (vizcore3d.Model.OpenFileDialog())
             {
+				if (vizcore3d.View.XRay.Enable == true)
+					vizcore3d.View.XRay.Enable = false;
 
-                VIZCore3D.NET.Manager.PrimitiveObject root = vizcore3d.Primitive.AddNode("Root", 4 /* Yellow Color*/);
+				VIZCore3D.NET.Manager.PrimitiveObject root = vizcore3d.Primitive.AddNode("Root", 4 /* Yellow Color*/);
 
                 VIZCore3D.NET.Manager.PrimitiveObject child1 = root.AddNode("CHILD1", 7 /* Blue Color */);
                 {
@@ -292,7 +297,6 @@ namespace VIZCore3D.NET.ClashTest.V4
 
                     child1.AddPrimitive(box1);
 
-
                     VIZCore3D.NET.Manager.PrimitiveBox box2 = new VIZCore3D.NET.Manager.PrimitiveBox();
 
                     VIZCore3D.NET.Data.BoundBox3D boundBox1 = new VIZCore3D.NET.Data.BoundBox3D(
@@ -304,7 +308,6 @@ namespace VIZCore3D.NET.ClashTest.V4
 
                     child1.AddPrimitive(box2);
                 }
-
 
                 VIZCore3D.NET.Manager.PrimitiveObject child2 = root.AddNode("CHILD2", 11 /* Pink Color */);
                 {
@@ -321,7 +324,6 @@ namespace VIZCore3D.NET.ClashTest.V4
 
                 // Open Model
                 vizcore3d.Primitive.OpenModel("Primitive", true);
-
             }
 		}
 
