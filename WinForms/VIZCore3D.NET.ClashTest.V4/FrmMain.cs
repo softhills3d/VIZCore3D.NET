@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace VIZCore3D.NET.ClashTest.V4
 {
@@ -149,18 +150,18 @@ namespace VIZCore3D.NET.ClashTest.V4
         // ================================================
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            vizcore3d.Model.OpenFileDialog();
-        }
+			vizcore3d.Model.OpenFileDialog();
+		}
 
         private void Object3D_OnObject3DSelected(object sender, Event.EventManager.Object3DSelectedEventArgs e)
         {
-            ClearClashResult();
-
             if (e.Node.Count == 0) return;
 
-            if (ckClashEnable.Checked == false) return;
-
-            ExecuteClashTest(e.Node);
+            if (ckClashEnable.Checked == true)
+            {
+				ClearClashResult();
+				ExecuteClashTest(e.Node);
+			}            
         }
 
         private void ClearClashResult()
@@ -266,5 +267,99 @@ namespace VIZCore3D.NET.ClashTest.V4
 
             vizcore3d.EndUpdate();
         }
-    }
+
+		/// <summary>
+		/// 파일 오픈 후 Primitive 추가
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void btnOpen2_Click(object sender, EventArgs e)
+		{
+            if (vizcore3d.Model.OpenFileDialog())
+            {
+
+                VIZCore3D.NET.Manager.PrimitiveObject root = vizcore3d.Primitive.AddNode("Root", 4 /* Yellow Color*/);
+
+                VIZCore3D.NET.Manager.PrimitiveObject child1 = root.AddNode("CHILD1", 7 /* Blue Color */);
+                {
+                    VIZCore3D.NET.Manager.PrimitiveBox box1 = new VIZCore3D.NET.Manager.PrimitiveBox();
+
+                    box1.Set2Point(
+                        new float[] { 0, 0, 0 }
+                        , new float[] { 100, 100, 100 }
+                        , 500.0f
+                        );
+
+                    child1.AddPrimitive(box1);
+
+
+                    VIZCore3D.NET.Manager.PrimitiveBox box2 = new VIZCore3D.NET.Manager.PrimitiveBox();
+
+                    VIZCore3D.NET.Data.BoundBox3D boundBox1 = new VIZCore3D.NET.Data.BoundBox3D(
+                            new VIZCore3D.NET.Data.Vertex3D(200, 200, 200)
+                            , new VIZCore3D.NET.Data.Vertex3D(800, 800, 800)
+                            );
+
+                    box2.SetMinMaxPoints(boundBox1);
+
+                    child1.AddPrimitive(box2);
+                }
+
+
+                VIZCore3D.NET.Manager.PrimitiveObject child2 = root.AddNode("CHILD2", 11 /* Pink Color */);
+                {
+                    VIZCore3D.NET.Manager.PrimitiveCylinder cylinder1 = new VIZCore3D.NET.Manager.PrimitiveCylinder();
+
+                    cylinder1.Set2Point(
+                        new float[] { 400, 400, 400 }
+                        , new float[] { 600, 600, 600 }
+                        , 500.0f
+                        );
+
+                    child2.AddPrimitive(cylinder1);
+                }
+
+                // Open Model
+                vizcore3d.Primitive.OpenModel("Primitive", true);
+
+            }
+		}
+
+        /// <summary>
+        /// 그룹 간섭검사
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+		private void btnClash_Click(object sender, EventArgs e)
+		{
+			vizcore3d.Clash.Clear();
+
+			Dictionary<string, List<VIZCore3D.NET.Data.Node>> nameMap = vizcore3d.Object3D.GetNodeNameMapFromDepth(1, false);
+
+			clash = new VIZCore3D.NET.Data.ClashTest();
+
+			clash.Name = "CLASH GROUP TEST #1";
+			clash.TestKind = VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_GROUP;
+
+			clash.UseClearanceValue = false;
+			clash.ClearanceValue = 3.0f;
+			clash.UseRangeValue = false;
+			clash.RangeValue = 2.0f;
+			clash.UsePenetrationTolerance = true;
+			clash.PenetrationTolerance = 1.0f;
+
+			clash.VisibleOnly = false;
+			clash.BottomLevel = 2;
+
+            int[] nTemp = { 1 };
+            clash.GroupA = vizcore3d.Object3D.GetNodes(nTemp, false);
+			clash.GroupB = nameMap.ContainsKey("Primitive") == true ? nameMap["Primitive"] : null;
+
+			bool result = vizcore3d.Clash.Add(clash);
+
+			if (result == false) return;
+
+			vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
+		}
+	}
 }
