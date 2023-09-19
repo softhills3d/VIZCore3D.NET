@@ -324,7 +324,9 @@ namespace VIZCore3D.NET.ClashTest.V4
 
                 // Open Model
                 vizcore3d.Primitive.OpenModel("Primitive", true);
-            }
+
+                vizcore3d.View.FitToView();
+			}
 		}
 
         /// <summary>
