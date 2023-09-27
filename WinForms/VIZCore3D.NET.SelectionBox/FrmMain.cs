@@ -966,6 +966,44 @@ namespace VIZCore3D.NET.SelectionBox
             System.Diagnostics.Process.Start(dlg.SelectedPath);
         }
 
+        private void btnExportGridXml_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            List<VIZCore3D.NET.Data.SelectionBox> items = vizcore3d.SelectionBox.Items;
+
+            if (items.Count == 0) return;
+
+            DialogResult dr = MessageBox.Show("Select Export Path...", "VIZCore3D.NET", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dr == DialogResult.No) return;
+
+            FolderBrowserDialog dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            string output_path = dlg.SelectedPath;
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "XML (*.xml)|*.xml";
+            if (saveFile.ShowDialog() != DialogResult.OK) return;
+
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(saveFile.FileName, false, Encoding.UTF8);
+            sw.WriteLine("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+            sw.WriteLine("<Spaces>");
+
+            foreach (VIZCore3D.NET.Data.SelectionBox item in items)
+            {
+                sw.WriteLine(string.Format("\t<Box KeepStructure=\"1\" Path=\"{0}\\OUTPUT_{1}.viz\">", output_path, item.ID));
+                sw.WriteLine(string.Format("\t\t<Minimum X=\"{0}\" Y=\"{1}\" Z=\"{2}\" />", item.BoundBox.MinX, item.BoundBox.MinY, item.BoundBox.MinZ));
+                sw.WriteLine(string.Format("\t\t<Maximum X=\"{0}\" Y=\"{1}\" Z=\"{2}\" />", item.BoundBox.MaxX, item.BoundBox.MaxY, item.BoundBox.MaxZ));
+                sw.WriteLine("\t</Box>");
+            }
+
+            sw.WriteLine("</Spaces>");
+            sw.Close();
+
+            System.Diagnostics.Process.Start(System.IO.Path.GetDirectoryName(saveFile.FileName));
+        }
+
         private void btnExportVIZ_Click(object sender, EventArgs e)
         {
             if (lvList.SelectedItems.Count == 0) return;
@@ -980,5 +1018,7 @@ namespace VIZCore3D.NET.SelectionBox
 
             vizcore3d.SelectionBox.ExportVIZ(id, dlg.FileName, true);
         }
+
+        
     }
 }

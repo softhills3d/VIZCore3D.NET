@@ -69,6 +69,7 @@
             this.btnFaceColor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExportVIZ = new System.Windows.Forms.Button();
             this.tabSelectionBox = new System.Windows.Forms.TabControl();
             this.tpItems = new System.Windows.Forms.TabPage();
             this.lvList = new System.Windows.Forms.ListView();
@@ -102,7 +103,7 @@
             this.dgView = new System.Windows.Forms.DataGridView();
             this.contextMenuSelectionBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cxSelectionBoxDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnExportVIZ = new System.Windows.Forms.Button();
+            this.btnExportGridXml = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -525,6 +526,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "List";
             // 
+            // btnExportVIZ
+            // 
+            this.btnExportVIZ.Location = new System.Drawing.Point(259, 20);
+            this.btnExportVIZ.Name = "btnExportVIZ";
+            this.btnExportVIZ.Size = new System.Drawing.Size(81, 23);
+            this.btnExportVIZ.TabIndex = 7;
+            this.btnExportVIZ.Text = "Export VIZ";
+            this.btnExportVIZ.UseVisualStyleBackColor = true;
+            this.btnExportVIZ.Click += new System.EventHandler(this.btnExportVIZ_Click);
+            // 
             // tabSelectionBox
             // 
             this.tabSelectionBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -598,7 +609,7 @@
             this.tpDrag.Location = new System.Drawing.Point(4, 22);
             this.tpDrag.Name = "tpDrag";
             this.tpDrag.Padding = new System.Windows.Forms.Padding(3);
-            this.tpDrag.Size = new System.Drawing.Size(411, 325);
+            this.tpDrag.Size = new System.Drawing.Size(411, 281);
             this.tpDrag.TabIndex = 1;
             this.tpDrag.Text = "Drag Test";
             this.tpDrag.UseVisualStyleBackColor = true;
@@ -618,7 +629,7 @@
             listViewItem4});
             this.lvDragItem.Location = new System.Drawing.Point(3, 3);
             this.lvDragItem.Name = "lvDragItem";
-            this.lvDragItem.Size = new System.Drawing.Size(405, 319);
+            this.lvDragItem.Size = new System.Drawing.Size(405, 275);
             this.lvDragItem.TabIndex = 0;
             this.lvDragItem.UseCompatibleStateImageBehavior = false;
             this.lvDragItem.View = System.Windows.Forms.View.Details;
@@ -683,6 +694,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.btnExportGridXml);
             this.groupBox1.Controls.Add(this.btnExportGrid);
             this.groupBox1.Controls.Add(this.btnCreate);
             this.groupBox1.Controls.Add(this.txtCountZ);
@@ -701,9 +713,9 @@
             // btnExportGrid
             // 
             this.btnExportGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportGrid.Location = new System.Drawing.Point(351, 27);
+            this.btnExportGrid.Location = new System.Drawing.Point(302, 27);
             this.btnExportGrid.Name = "btnExportGrid";
-            this.btnExportGrid.Size = new System.Drawing.Size(75, 23);
+            this.btnExportGrid.Size = new System.Drawing.Size(45, 23);
             this.btnExportGrid.TabIndex = 7;
             this.btnExportGrid.Text = "Grid";
             this.btnExportGrid.UseVisualStyleBackColor = true;
@@ -711,10 +723,9 @@
             // 
             // btnCreate
             // 
-            this.btnCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreate.Location = new System.Drawing.Point(265, 27);
+            this.btnCreate.Location = new System.Drawing.Point(197, 27);
             this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.Size = new System.Drawing.Size(58, 23);
             this.btnCreate.TabIndex = 6;
             this.btnCreate.Text = "Create";
             this.btnCreate.UseVisualStyleBackColor = true;
@@ -722,7 +733,7 @@
             // 
             // txtCountZ
             // 
-            this.txtCountZ.Location = new System.Drawing.Point(213, 29);
+            this.txtCountZ.Location = new System.Drawing.Point(162, 29);
             this.txtCountZ.Name = "txtCountZ";
             this.txtCountZ.Size = new System.Drawing.Size(30, 21);
             this.txtCountZ.TabIndex = 5;
@@ -731,7 +742,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(194, 32);
+            this.label3.Location = new System.Drawing.Point(143, 32);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(13, 12);
             this.label3.TabIndex = 4;
@@ -739,7 +750,7 @@
             // 
             // txtCountY
             // 
-            this.txtCountY.Location = new System.Drawing.Point(125, 29);
+            this.txtCountY.Location = new System.Drawing.Point(104, 29);
             this.txtCountY.Name = "txtCountY";
             this.txtCountY.Size = new System.Drawing.Size(30, 21);
             this.txtCountY.TabIndex = 3;
@@ -748,7 +759,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 32);
+            this.label2.Location = new System.Drawing.Point(85, 32);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(13, 12);
             this.label2.TabIndex = 2;
@@ -858,15 +869,16 @@
             this.cxSelectionBoxDelete.Text = "(커스텀) 삭제";
             this.cxSelectionBoxDelete.Click += new System.EventHandler(this.cxSelectionBoxDelete_Click);
             // 
-            // btnExportVIZ
+            // btnExportGridXml
             // 
-            this.btnExportVIZ.Location = new System.Drawing.Point(259, 20);
-            this.btnExportVIZ.Name = "btnExportVIZ";
-            this.btnExportVIZ.Size = new System.Drawing.Size(81, 23);
-            this.btnExportVIZ.TabIndex = 7;
-            this.btnExportVIZ.Text = "Export VIZ";
-            this.btnExportVIZ.UseVisualStyleBackColor = true;
-            this.btnExportVIZ.Click += new System.EventHandler(this.btnExportVIZ_Click);
+            this.btnExportGridXml.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportGridXml.Location = new System.Drawing.Point(353, 27);
+            this.btnExportGridXml.Name = "btnExportGridXml";
+            this.btnExportGridXml.Size = new System.Drawing.Size(69, 23);
+            this.btnExportGridXml.TabIndex = 8;
+            this.btnExportGridXml.Text = "Grid XML";
+            this.btnExportGridXml.UseVisualStyleBackColor = true;
+            this.btnExportGridXml.Click += new System.EventHandler(this.btnExportGridXml_Click);
             // 
             // FrmMain
             // 
@@ -977,6 +989,7 @@
         private System.Windows.Forms.ColumnHeader chDragItem;
         private System.Windows.Forms.Button btnExportGrid;
         private System.Windows.Forms.Button btnExportVIZ;
+        private System.Windows.Forms.Button btnExportGridXml;
     }
 }
 
