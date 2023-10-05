@@ -38,11 +38,16 @@
             this.menuBlock = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuRotateBlock = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnExportImage = new System.Windows.Forms.Button();
+            this.txtImageWidth = new System.Windows.Forms.TextBox();
+            this.txtImageHeight = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.contextMenu.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -54,6 +59,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1198, 689);
             this.splitContainer1.SplitterDistance = 399;
@@ -119,6 +125,47 @@
             this.menuRotateBlock.Text = "Rotate Block";
             this.menuRotateBlock.Click += new System.EventHandler(this.menuRotateBlock_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtImageHeight);
+            this.groupBox2.Controls.Add(this.txtImageWidth);
+            this.groupBox2.Controls.Add(this.btnExportImage);
+            this.groupBox2.Location = new System.Drawing.Point(12, 76);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(377, 58);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Export Image";
+            // 
+            // btnExportImage
+            // 
+            this.btnExportImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportImage.Location = new System.Drawing.Point(267, 20);
+            this.btnExportImage.Name = "btnExportImage";
+            this.btnExportImage.Size = new System.Drawing.Size(94, 23);
+            this.btnExportImage.TabIndex = 0;
+            this.btnExportImage.Text = "Export Image";
+            this.btnExportImage.UseVisualStyleBackColor = true;
+            this.btnExportImage.Click += new System.EventHandler(this.btnExportImage_Click);
+            // 
+            // txtImageWidth
+            // 
+            this.txtImageWidth.Location = new System.Drawing.Point(26, 22);
+            this.txtImageWidth.Name = "txtImageWidth";
+            this.txtImageWidth.Size = new System.Drawing.Size(75, 21);
+            this.txtImageWidth.TabIndex = 1;
+            this.txtImageWidth.Text = "1024";
+            // 
+            // txtImageHeight
+            // 
+            this.txtImageHeight.Location = new System.Drawing.Point(117, 22);
+            this.txtImageHeight.Name = "txtImageHeight";
+            this.txtImageHeight.Size = new System.Drawing.Size(75, 21);
+            this.txtImageHeight.TabIndex = 2;
+            this.txtImageHeight.Text = "1024";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -134,6 +181,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.contextMenu.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -148,6 +197,10 @@
         private System.Windows.Forms.ToolStripMenuItem menuBlock;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem menuRotateBlock;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnExportImage;
+        private System.Windows.Forms.TextBox txtImageHeight;
+        private System.Windows.Forms.TextBox txtImageWidth;
     }
 }
 

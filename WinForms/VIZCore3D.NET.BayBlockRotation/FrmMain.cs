@@ -1667,5 +1667,62 @@ namespace VIZCore3D.NET.BayBlockRotation
                 , "탑\n재\n블\n록"
                 );
         }
+
+        private void btnExportImage_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            // 기존 설정 백업
+            System.Drawing.Color backgroundColor1 = vizcore3d.View.BackgroundColor1;
+            System.Drawing.Color backgroundColor2 = vizcore3d.View.BackgroundColor2;
+            VIZCore3D.NET.Data.BackgroundModes mode = vizcore3d.View.BackgroundMode;
+
+            bool enablAnimation = vizcore3d.View.EnableAnimation;
+
+            // 가상 이미지 크기
+            string widthStr = txtImageWidth.Text;
+            string heightStr = txtImageHeight.Text;
+
+            int width = Convert.ToInt32(widthStr);
+            int height = Convert.ToInt32(heightStr);
+
+            // 가상 렌더링 모드 시작
+            vizcore3d.View.BeginBackgroundRenderingMode(width, height);
+
+            // 가상 렌더링 모드 설정
+            vizcore3d.BeginUpdate();
+
+            vizcore3d.View.BackgroundColor1 = Color.White;
+            vizcore3d.View.BackgroundColor2 = Color.White;
+            vizcore3d.View.BackgroundMode = VIZCore3D.NET.Data.BackgroundModes.COLOR_ONE;
+
+            vizcore3d.View.EnableAnimation = false;
+
+            vizcore3d.View.FitToView();
+
+            vizcore3d.EndUpdate();
+
+            // 렌더링된 이미지 조회
+            Image image = vizcore3d.View.GetBackgroundRenderingImage();
+
+            // 가상 렌더링 모드 종료
+            vizcore3d.View.EndBackgroundRenderingMode();
+
+            // 백업된 설정 복원
+            vizcore3d.BeginUpdate();
+            vizcore3d.View.BackgroundColor1 = backgroundColor1;
+            vizcore3d.View.BackgroundColor2 = backgroundColor2;
+            vizcore3d.View.BackgroundMode = mode;
+
+            vizcore3d.View.EnableAnimation = enablAnimation;
+            vizcore3d.EndUpdate();
+
+            // 이미지 저장
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "Image (*.jpg)|*.jpg";
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            image.Save(dlg.FileName);
+        }
     }
 }
