@@ -702,9 +702,18 @@ namespace VIZCore3D.NET.Animation.Objects
                 {
                     vizcore3d.Object3D.Transform.Move(ani.Nodes, ani.TX, ani.TY, ani.TZ, false);
                 }
-                else
+                else if(ani.TransformKind == ENUM_TRANSFORM_KIND.ROTATION)
                 {
                     vizcore3d.Object3D.Transform.Rotate(ani.Nodes, ani.RX, ani.RY, ani.RZ, false, false);
+                }
+                else
+                {
+                    VIZCore3D.NET.Data.Matrix3D matrix = new Data.Matrix3D();
+                    matrix.Identity();
+                    matrix.SetRotate(ani.RX, ani.RY, ani.RZ, Data.AngleFormat.DEGREE);
+                    matrix.SetTranslate(ani.TX, ani.TY, ani.TZ);
+
+                    vizcore3d.Object3D.Transform.Transform(ani.Nodes, matrix, false);
                 }
 
                 AddKey(true, false, TimeInterval);
