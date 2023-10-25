@@ -734,6 +734,8 @@ namespace VIZCore3D.NET.Animation.V2
 
                 if (ghostMode == true)
                 {
+                    if (BlockItems[i].GhostNode == null) continue;
+
                     vizcore3d.Object3D.Disassembly.AddGroup(
                         i                                   /* ID : 0 ~ */
                         , BlockItems[i].GhostNode.Index     /* NODE INDEX */

@@ -43,10 +43,10 @@
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckGhostMode = new System.Windows.Forms.CheckBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tbAnimation = new System.Windows.Forms.TrackBar();
-            this.ckGhostMode = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -211,9 +211,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Model";
             // 
+            // ckGhostMode
+            // 
+            this.ckGhostMode.AutoSize = true;
+            this.ckGhostMode.Location = new System.Drawing.Point(16, 26);
+            this.ckGhostMode.Name = "ckGhostMode";
+            this.ckGhostMode.Size = new System.Drawing.Size(93, 16);
+            this.ckGhostMode.TabIndex = 1;
+            this.ckGhostMode.Text = "Ghost Mode";
+            this.ckGhostMode.UseVisualStyleBackColor = true;
+            // 
             // btnOpen
             // 
-            this.btnOpen.Location = new System.Drawing.Point(34, 22);
+            this.btnOpen.Location = new System.Drawing.Point(115, 22);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(75, 23);
             this.btnOpen.TabIndex = 0;
@@ -246,16 +256,6 @@
             this.tbAnimation.Size = new System.Drawing.Size(729, 45);
             this.tbAnimation.TabIndex = 0;
             this.tbAnimation.Scroll += new System.EventHandler(this.tbAnimation_Scroll);
-            // 
-            // ckGhostMode
-            // 
-            this.ckGhostMode.AutoSize = true;
-            this.ckGhostMode.Location = new System.Drawing.Point(135, 26);
-            this.ckGhostMode.Name = "ckGhostMode";
-            this.ckGhostMode.Size = new System.Drawing.Size(93, 16);
-            this.ckGhostMode.TabIndex = 1;
-            this.ckGhostMode.Text = "Ghost Mode";
-            this.ckGhostMode.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
