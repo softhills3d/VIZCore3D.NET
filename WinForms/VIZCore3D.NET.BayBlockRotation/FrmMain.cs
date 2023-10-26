@@ -971,6 +971,7 @@ namespace VIZCore3D.NET.BayBlockRotation
             note.UpdatePosition(position[0], position[0].Position + e.Distance);
 
             // BLOCK 이동 거리 누적
+            System.Diagnostics.Trace.WriteLine(string.Format("이동거리 : {0} / {1}", BlockMovingDistance.ToString(), e.Distance));
             BlockMovingDistance = BlockMovingDistance + e.Distance;
         }
 

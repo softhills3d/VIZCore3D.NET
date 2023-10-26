@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtImageHeight = new System.Windows.Forms.TextBox();
+            this.txtImageWidth = new System.Windows.Forms.TextBox();
+            this.btnExportImage = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnLoadBlock = new System.Windows.Forms.Button();
             this.btnCreateBay = new System.Windows.Forms.Button();
@@ -38,16 +42,12 @@
             this.menuBlock = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.menuRotateBlock = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnExportImage = new System.Windows.Forms.Button();
-            this.txtImageWidth = new System.Windows.Forms.TextBox();
-            this.txtImageHeight = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.contextMenu.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,6 +64,47 @@
             this.splitContainer1.Size = new System.Drawing.Size(1198, 689);
             this.splitContainer1.SplitterDistance = 399;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.txtImageHeight);
+            this.groupBox2.Controls.Add(this.txtImageWidth);
+            this.groupBox2.Controls.Add(this.btnExportImage);
+            this.groupBox2.Location = new System.Drawing.Point(12, 76);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(377, 58);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Export Image";
+            // 
+            // txtImageHeight
+            // 
+            this.txtImageHeight.Location = new System.Drawing.Point(117, 22);
+            this.txtImageHeight.Name = "txtImageHeight";
+            this.txtImageHeight.Size = new System.Drawing.Size(75, 21);
+            this.txtImageHeight.TabIndex = 2;
+            this.txtImageHeight.Text = "1024";
+            // 
+            // txtImageWidth
+            // 
+            this.txtImageWidth.Location = new System.Drawing.Point(26, 22);
+            this.txtImageWidth.Name = "txtImageWidth";
+            this.txtImageWidth.Size = new System.Drawing.Size(75, 21);
+            this.txtImageWidth.TabIndex = 1;
+            this.txtImageWidth.Text = "1024";
+            // 
+            // btnExportImage
+            // 
+            this.btnExportImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportImage.Location = new System.Drawing.Point(267, 20);
+            this.btnExportImage.Name = "btnExportImage";
+            this.btnExportImage.Size = new System.Drawing.Size(94, 23);
+            this.btnExportImage.TabIndex = 0;
+            this.btnExportImage.Text = "Export Image";
+            this.btnExportImage.UseVisualStyleBackColor = true;
+            this.btnExportImage.Click += new System.EventHandler(this.btnExportImage_Click);
             // 
             // groupBox1
             // 
@@ -125,47 +166,6 @@
             this.menuRotateBlock.Text = "Rotate Block";
             this.menuRotateBlock.Click += new System.EventHandler(this.menuRotateBlock_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.txtImageHeight);
-            this.groupBox2.Controls.Add(this.txtImageWidth);
-            this.groupBox2.Controls.Add(this.btnExportImage);
-            this.groupBox2.Location = new System.Drawing.Point(12, 76);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(377, 58);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Export Image";
-            // 
-            // btnExportImage
-            // 
-            this.btnExportImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportImage.Location = new System.Drawing.Point(267, 20);
-            this.btnExportImage.Name = "btnExportImage";
-            this.btnExportImage.Size = new System.Drawing.Size(94, 23);
-            this.btnExportImage.TabIndex = 0;
-            this.btnExportImage.Text = "Export Image";
-            this.btnExportImage.UseVisualStyleBackColor = true;
-            this.btnExportImage.Click += new System.EventHandler(this.btnExportImage_Click);
-            // 
-            // txtImageWidth
-            // 
-            this.txtImageWidth.Location = new System.Drawing.Point(26, 22);
-            this.txtImageWidth.Name = "txtImageWidth";
-            this.txtImageWidth.Size = new System.Drawing.Size(75, 21);
-            this.txtImageWidth.TabIndex = 1;
-            this.txtImageWidth.Text = "1024";
-            // 
-            // txtImageHeight
-            // 
-            this.txtImageHeight.Location = new System.Drawing.Point(117, 22);
-            this.txtImageHeight.Name = "txtImageHeight";
-            this.txtImageHeight.Size = new System.Drawing.Size(75, 21);
-            this.txtImageHeight.TabIndex = 2;
-            this.txtImageHeight.Text = "1024";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -179,10 +179,10 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.contextMenu.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

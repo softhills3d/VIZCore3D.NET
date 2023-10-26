@@ -794,6 +794,11 @@
             Language Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.Shortcuts">
+            <summary>
+            Language Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Controls.ViewControl.GenericData">
             <summary>
             [MANAGER] Generic Data Manager
@@ -4932,6 +4937,16 @@
             [거리] COP : 실린더 중심과 수직면의 최단 거리
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.MeasureKind.CIRCLE_3POINT_RADIUS">
+            <summary>
+            [원] 세 정점의 원 반지름
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.MeasureKind.CIRCLE_CYLINDER_RADIUS">
+            <summary>
+            [원] 실린더 원 반지름
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ModelExportFilter">
             <summary>
             모델 내보내기 방식
@@ -7190,6 +7205,11 @@
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_COP">
             <summary>
             Add Distance COP (Center Of Pipe)
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_GEO_ISPLANE_EDGE_HEIGHT">
+            <summary>
+            Add Edge Height GeoISPlane
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MEASURE_ADD_DISTANCE_AXIALDIRECTIONXYZ">
@@ -11464,6 +11484,16 @@
             KeyCode 설정 값
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.ShortcutData.IsWalkThroughWork">
+            <summary>
+            WalkThrough 작동 여부
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ShortcutData.IsWalkThroughKey">
+            <summary>
+            WalkThrough 이동 키
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Data.ShortcutData.ToString">
             <summary>
             단축키 문자열
@@ -15418,6 +15448,11 @@
             Osnap Picking Item Event Args
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs.NodeIndex">
+            <summary>
+            Picking NodeIndex
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs.Kind">
             <summary>
             Osnap Kind
@@ -15449,10 +15484,11 @@
             점
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs.#ctor(System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])">
+        <member name="M:VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs.#ctor(System.Int32,System.Int32,System.Int32,System.Single[],System.Single[],System.Single[])">
             <summary>
             Construction
             </summary>
+            <param name="nodeIdx"></param>
             <param name="type"></param>
             <param name="subType"></param>
             <param name="vPos1"></param>
@@ -24307,11 +24343,29 @@
             그리기 마크업 모드 종료
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.ExitDrawMode(System.Boolean)">
+            <summary>
+            그리기 마크업 모드 종료
+            </summary>
+            <param name="thumbnailImage">Append Thumbnail Image (Default : 320 x 240)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.ExitDrawMode(System.Int32,System.Int32)">
+            <summary>
+            그리기 마크업 모드 종료
+            </summary>
+            <param name="imageWidth">Thumbnail Image Width</param>
+            <param name="imageHeight">Thumbnail Image Height</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.Add(VIZCore3D.NET.Data.DrawMakrupKind)">
             <summary>
             그리기 항목 추가
             </summary>
             <param name="kind">그리기 유형</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.StopDrawing">
+            <summary>
+            그리기 중지
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.DrawingMarkupManager.Delete">
             <summary>
@@ -24366,6 +24420,9 @@
             
             private void GeometryUtility_OnOsnapPickingItem(object sender, VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs e)
             {
+                // 선택한 부재의 인덱스
+                int nodeIndex = e.NodeIndex;
+                
                 VIZCore3D.NET.Data.OsnapKind kind = e.Kind;
                 VIZCore3D.NET.Data.Vertex3D point = e.Point;
                 VIZCore3D.NET.Data.Vertex3D start = e.Start;
@@ -31473,6 +31530,12 @@
             <param name="colorIndex">Color Index (rev2bst.config.rev)</param>
             <returns>Result</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.PrimitiveObject.AddPrimitive(VIZCore3D.NET.Manager.PrimitivePyramid)">
+            <summary>
+            Add Primitive (PYRAMID)
+            </summary>
+            <param name="pyramid">PrimitivePyramid</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.PrimitiveObject.AddPrimitive(VIZCore3D.NET.Manager.PrimitiveBox)">
             <summary>
             Add Primitive (BOX)
@@ -31494,6 +31557,49 @@
         <member name="M:VIZCore3D.NET.Manager.PrimitiveObject.Export(System.IO.StreamWriter)">
             <summary>
             Export RVT
+            </summary>
+            <param name="sw">Stream</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.PrimitivePyramid">
+            <summary>
+            Pyramid Primitive (TYPE : 1)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitivePyramid.Kind">
+            <summary>
+            Primitive Type
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitivePyramid.Matrix">
+            <summary>
+            Matrix
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitivePyramid.BoundBox">
+            <summary>
+            Minimum Point
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitivePyramid.Parameter">
+            <summary>
+            Pyramid Parameter
+            0 : X-Top
+            1 : Y-Top
+            2 : X-Bottom
+            3 : Y-Bottom
+            4 : X-Offset
+            5 : Y-Offset
+            6 : Height
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.PrimitivePyramid.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.PrimitivePyramid.ExportPrimitive(System.IO.StreamWriter)">
+            <summary>
+            Export REV
             </summary>
             <param name="sw">Stream</param>
         </member>
@@ -35637,6 +35743,12 @@
             </example>
             <seealso cref="M:VIZCore3D.NET.Manager.LicenseManager.LicenseFile(System.String)"/>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.LicenseManager.ReconnectServer">
+            <summary>
+            기존 연결 정보로 라이선스 서버 재연결
+            </summary>
+            <returns>라이선스 인증 결과</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.LicenseManager.LicenseServer(System.String,System.Int32)">
             <summary>
             Set License Server
@@ -36643,6 +36755,16 @@
             [구] 반지름 측정
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.Add3PointCircleRadius">
+            <summary>
+            원을 이루는 세 정점의 반지름 측정
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddCylinderCircleRadius">
+            <summary>
+            실린더 반지름 측정
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddCustom3PointAngle(VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D)">
             <summary>
             [사용자 정의] 3점 각도 측정 추가
@@ -37157,6 +37279,12 @@
             <param name="id">Measure Item ID</param>
             <param name="reviewPosition">Review Postion Data</param>
             <param name="vertex">New Position</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.MeasureManager.AddGeoISPlaneEdgeHeight">
+            <summary>
+            단면 기준라인 거리 측정
+            단면을 이용한 기준라인-단면형상 수직거리 측정 기능
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.MessageManager">
             <summary>
@@ -43650,6 +43778,80 @@
             <param name="loadEdge">모서리 데이터 포함 여부</param>
             <returns>처리 결과</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.SplitObjects(System.Collections.Generic.List{VIZCore3D.NET.Data.Node},System.Int32,System.Boolean)">
+             <summary>
+             모델 자르기
+             </summary>
+             <param name="nodes">내보내기 대상 노드</param>
+             <param name="sectionId">내보내기 영역</param>
+             <param name="selectedOnly">선택된 모델만 내보내기</param>
+             <returns>결과</returns>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            
+                if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION) return;
+            
+                List<VIZCore3D.NET.Data.SectionPlane> items = section.Planes;
+            
+                if (items == null) return;
+             
+                 vizcore3d.Object3D.SplitObjects(
+                     nodes                   /* Selection Node List*/
+                     , sectionId             /* Section ID */
+                     , true                  /* SelectedFlagOnly */
+                     );
+             }
+             ]]>
+             </code> 
+             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.SplitObjects(System.Int32,System.Boolean)">
+             <summary>
+             모델 자르기
+             </summary>
+             <param name="sectionId">내보내기 영역</param>
+             <param name="selectedOnly">선택된 모델만 내보내기</param>
+             <returns>결과</returns>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            
+                if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION) return;
+            
+                List<VIZCore3D.NET.Data.SectionPlane> items = section.Planes;
+            
+                if (items == null) return;
+             
+                 vizcore3d.Object3D.SplitObjects(
+                     sectionId               /* Section ID */
+                     , true                  /* SelectedFlagOnly */
+                     );
+             }
+             ]]>
+             </code> 
+             </example>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ReviewManager">
             <summary>
             UserView Manager
@@ -44229,6 +44431,27 @@
             리뷰 파일 열기
             </summary>
             <param name="file">리뷰 파일</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Filter = "Review (*.cvr)|*.cvr";
+                dlg.Multiselect = false;
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                vizcore3d.Review.Open(dlg.FileName);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ReviewManager.OpenFileDialog(System.Boolean)">
             <summary>
@@ -44256,6 +44479,26 @@
             </summary>
             <param name="file">리뷰 파일</param>
             <param name="model">모델 파일</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                SaveFileDialog dlg = new SaveFileDialog();
+                dlg.Filter = "Review (*.cvr)|*.cvr";
+            
+                if (dlg.ShowDialog() != DialogResult.OK) return;
+            
+                vizcore3d.Review.Save(dlg.FileName);
+            }
+            ]]>
+            </code> 
+            </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ReviewManager.SaveAs(System.String,System.String)">
             <summary>
@@ -46045,6 +46288,21 @@
             현재 선택된 Section 반환
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.SectionManager.EnableSectionPlaneRotationXY">
+            <summary>
+            단면(Plane) XY 회전 활성화/비활성화
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SectionManager.EnableSectionPlaneRotationYZ">
+            <summary>
+            단면(Plane) YZ 회전 활성화/비활성화
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.SectionManager.EnableSectionPlaneRotationZX">
+            <summary>
+            단면(Plane) ZX 회전 활성화/비활성화
+            </summary>
+        </member>
         <member name="E:VIZCore3D.NET.Manager.SectionManager.OnSectionEvent">
             <summary>
             단면 업데이트 이벤트
@@ -47219,6 +47477,20 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.EnableSectionPlaneRotation(System.Boolean)">
+            <summary>
+            단면 (Plane) 회전 활성화/비활성화
+            </summary>
+            <param name="enable">활성화/비활성화</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.EnableSectionPlaneRotation(System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            단면 (Plane) 회전 활성화/비활성화
+            </summary>
+            <param name="xy">XY 활성화/비활성화</param>
+            <param name="yz">YZ 활성화/비활성화</param>
+            <param name="zx">ZX 활성화/비활성화</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetSectionControl">
             <summary>
             Get Section Control
@@ -47366,7 +47638,7 @@
             읽기 전용 단축키 기능 아이디 사전
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ShortcutManager.#ctor">
+        <member name="M:VIZCore3D.NET.Manager.ShortcutManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
             </summary>
@@ -47508,6 +47780,23 @@
             </summary>
             <param name="item">단축키 객체</param>
             <returns>삭제 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShortcutManager.GetWalkthroughShortcutList">
+            <summary>
+            Walkthrough 단축키 리스트 가져오기
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShortcutManager.GetWaklthroughShortcut">
+            <summary>
+            Walkthrough 단축키 리스트 keyCode 배열로 가져오기
+            </summary>
+            <returns>Walkthrough 단축키 리스트 keyCode 배열</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShortcutManager.SetWaklthroughShortcut">
+            <summary>
+            Walkthrough 단축키 설정하기
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.SimulationManager">
             <summary>
@@ -54959,6 +55248,11 @@
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.Measure_Cross_Section_Distance_16">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Properties.Resources.Measure_CrossPoint_16">
             <summary>
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
@@ -58730,6 +59024,13 @@
         <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarMeasureDistance7_Click(System.Object,System.EventArgs)">
             <summary>
             COP (Center Of Pipe)
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarMeasureDistance8_Click(System.Object,System.EventArgs)">
+            <summary>
+            기준선 단면형상 거리(단면 기준라인 거리 측정)
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
