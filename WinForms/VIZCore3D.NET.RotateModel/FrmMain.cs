@@ -499,6 +499,7 @@ namespace VIZCore3D.NET.RotateModel
             }
 
             vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.TOP);
+            vizcore3d.View.EnableAnimation = false;
             vizcore3d.View.FitToView();
         }
 
@@ -548,10 +549,16 @@ namespace VIZCore3D.NET.RotateModel
                 txtZ.Text = tbZ.Value.ToString();
             }));
 
+
             //vizcore3d.Object3D.Transform.Rotate(new List<int>() { 0 }, x, y, z, false);
-            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.X_PLUS, x);
-            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Y_PLUS, y);
-            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, z);
+            //vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.X_PLUS, x);
+            //vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Y_PLUS, y);
+            //vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, z);
+
+            vizcore3d.View.RotateCamera(Data.ShipbuildingCameraDirection.TOP);
+            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.X_PLUS, XOffset);
+            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Y_PLUS, YOffset);
+            vizcore3d.View.RotateCamera(VIZCore3D.NET.Data.AxisDirection.Z_PLUS, ZOffset);
 
             vizcore3d.EndUpdate();
         }

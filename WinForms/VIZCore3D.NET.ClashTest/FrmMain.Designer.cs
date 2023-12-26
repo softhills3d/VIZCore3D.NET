@@ -64,6 +64,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cbTestKind = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExport = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnPerformTest = new System.Windows.Forms.Button();
@@ -99,7 +100,9 @@
             this.columnHeader25 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader26 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.timerStatus = new System.Windows.Forms.Timer(this.components);
-            this.btnExport = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtEndPos = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -195,7 +198,7 @@
             this.groupBox6.Controls.Add(this.ckPenetration);
             this.groupBox6.Controls.Add(this.btnRefreshList);
             this.groupBox6.Controls.Add(this.ckResultAssembly);
-            this.groupBox6.Location = new System.Drawing.Point(12, 503);
+            this.groupBox6.Location = new System.Drawing.Point(12, 534);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(367, 99);
             this.groupBox6.TabIndex = 4;
@@ -246,6 +249,9 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.txtEndPos);
+            this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.btnAddPath);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label6);
@@ -257,14 +263,14 @@
             this.groupBox5.Controls.Add(this.label3);
             this.groupBox5.Location = new System.Drawing.Point(12, 397);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(367, 100);
+            this.groupBox5.Size = new System.Drawing.Size(367, 131);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Path";
             // 
             // btnAddPath
             // 
-            this.btnAddPath.Location = new System.Drawing.Point(254, 70);
+            this.btnAddPath.Location = new System.Drawing.Point(254, 100);
             this.btnAddPath.Name = "btnAddPath";
             this.btnAddPath.Size = new System.Drawing.Size(93, 23);
             this.btnAddPath.TabIndex = 10;
@@ -275,7 +281,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(199, 75);
+            this.label7.Location = new System.Drawing.Point(199, 105);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(27, 12);
             this.label7.TabIndex = 9;
@@ -292,11 +298,11 @@
             // 
             // txtInterval
             // 
-            this.txtInterval.Location = new System.Drawing.Point(93, 72);
+            this.txtInterval.Location = new System.Drawing.Point(93, 102);
             this.txtInterval.Name = "txtInterval";
             this.txtInterval.Size = new System.Drawing.Size(100, 21);
             this.txtInterval.TabIndex = 7;
-            this.txtInterval.Text = "2000";
+            this.txtInterval.Text = "200";
             // 
             // txtStartPos
             // 
@@ -304,12 +310,12 @@
             this.txtStartPos.Name = "txtStartPos";
             this.txtStartPos.Size = new System.Drawing.Size(100, 21);
             this.txtStartPos.TabIndex = 6;
-            this.txtStartPos.Text = "10000";
+            this.txtStartPos.Text = "1000";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 75);
+            this.label5.Location = new System.Drawing.Point(18, 105);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 12);
             this.label5.TabIndex = 3;
@@ -434,7 +440,7 @@
             this.txtPenetrationTolerance.Name = "txtPenetrationTolerance";
             this.txtPenetrationTolerance.Size = new System.Drawing.Size(100, 21);
             this.txtPenetrationTolerance.TabIndex = 6;
-            this.txtPenetrationTolerance.Text = "1";
+            this.txtPenetrationTolerance.Text = "0";
             // 
             // txtRangeValue
             // 
@@ -459,6 +465,8 @@
             // ckUseRangeValue
             // 
             this.ckUseRangeValue.AutoSize = true;
+            this.ckUseRangeValue.Checked = true;
+            this.ckUseRangeValue.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckUseRangeValue.Location = new System.Drawing.Point(18, 66);
             this.ckUseRangeValue.Name = "ckUseRangeValue";
             this.ckUseRangeValue.Size = new System.Drawing.Size(96, 16);
@@ -516,6 +524,16 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Clash";
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(261, 17);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(68, 23);
+            this.btnExport.TabIndex = 7;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnNew
             // 
@@ -749,15 +767,31 @@
             this.timerStatus.Interval = 1000;
             this.timerStatus.Tick += new System.EventHandler(this.timerStatus_Tick);
             // 
-            // btnExport
+            // label8
             // 
-            this.btnExport.Location = new System.Drawing.Point(261, 17);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(68, 23);
-            this.btnExport.TabIndex = 7;
-            this.btnExport.Text = "Export";
-            this.btnExport.UseVisualStyleBackColor = true;
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(199, 78);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(27, 12);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "mm";
+            // 
+            // txtEndPos
+            // 
+            this.txtEndPos.Location = new System.Drawing.Point(93, 75);
+            this.txtEndPos.Name = "txtEndPos";
+            this.txtEndPos.Size = new System.Drawing.Size(100, 21);
+            this.txtEndPos.TabIndex = 12;
+            this.txtEndPos.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 78);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(57, 12);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "종료 위치";
             // 
             // FrmMain
             // 
@@ -862,6 +896,9 @@
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.CheckBox ckConnectedSurfaceNormalVector;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtEndPos;
+        private System.Windows.Forms.Label label9;
     }
 }
 

@@ -2625,6 +2625,11 @@
             이동 경로
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Data.ClashTest.Axis">
+            <summary>
+            이동 축
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Data.ClashTest.ResultItems">
             <summary>
             결과 항목 목록
@@ -2691,6 +2696,15 @@
             </summary>
             <param name="axis">기준 축</param>
             <param name="startPosition">이동 그룹의 시작 위치</param>
+            <param name="interval">이동 간격</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.ClashTest.AddTranslation(VIZCore3D.NET.Data.Axis,System.Single,System.Single,System.Single)">
+            <summary>
+            이동 간격을 추가
+            </summary>
+            <param name="axis">기준 축</param>
+            <param name="startPosition">이동 그룹의 시작 위치</param>
+            <param name="endPosition">이동 그룹의 끝 위치</param>
             <param name="interval">이동 간격</param>
         </member>
         <member name="M:VIZCore3D.NET.Data.ClashTest.GetTranslationVertex">
@@ -16093,6 +16107,12 @@
             </summary>
             <param name="node">Node List</param>
             <param name="visible">Visible</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Object3DLockedHiddenChangedEventHandler">
+            <summary>
+            Object3D LockedHidden Changed Event Handler Class
+            </summary>
+            <param name="sender">Sender</param>
         </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.ProgressFormEventHandler">
             <summary>
@@ -31554,6 +31574,12 @@
             </summary>
             <param name="circularTorus">PrimitiveCircularTorus</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.PrimitiveObject.AddPrimitive(VIZCore3D.NET.Manager.PrimitiveCone)">
+            <summary>
+            Add Primitive (CONE)
+            </summary>
+            <param name="cone">PrimitiveCone</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.PrimitiveObject.Export(System.IO.StreamWriter)">
             <summary>
             Export RVT
@@ -31577,7 +31603,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Manager.PrimitivePyramid.BoundBox">
             <summary>
-            Minimum Point
+            Minimum/Maximum Point
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.PrimitivePyramid.Parameter">
@@ -31620,7 +31646,7 @@
         </member>
         <member name="P:VIZCore3D.NET.Manager.PrimitiveBox.BoundBox">
             <summary>
-            Minimum Point
+            Minimum/Maximum Point
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.PrimitiveBox.Length">
@@ -31721,6 +31747,51 @@
             <param name="angle">Radian</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.PrimitiveCircularTorus.ExportPrimitive(System.IO.StreamWriter)">
+            <summary>
+            Export REV
+            </summary>
+            <param name="sw">Stream</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.PrimitiveCone">
+            <summary>
+            Cone Primitive (TYPE : 7)
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitiveCone.Kind">
+            <summary>
+            Primitive Type
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitiveCone.Matrix">
+            <summary>
+            Matrix
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitiveCone.BoundBox">
+            <summary>
+            Minimum/Maximum Point
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.PrimitiveCone.Parameter">
+            <summary>
+            Cone Parameter
+            0 : Bottom Radius
+            1 : Top Radius
+            2 : Height
+            3 : X Offset
+            4 : Y Offset
+            5 : Bottom X Shear
+            6 : Bottom Y Shear
+            7 : Top X Shear
+            8 : Top Y Shear
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.PrimitiveCone.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.PrimitiveCone.ExportPrimitive(System.IO.StreamWriter)">
             <summary>
             Export REV
             </summary>
@@ -33798,6 +33869,12 @@
             간섭검사 목록 반환
             </summary>
             <returns>간섭검사 목록</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.GetProgressItemFromCore(VIZCore3D.NET.Data.ClashTest)">
+            <summary>
+            간섭검사 중, 결과 반환
+            </summary>
+            <param name="item">간섭검사 항목</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.GetResultItemFromCore(VIZCore3D.NET.Data.ClashTest)">
             <summary>
@@ -35916,6 +35993,11 @@
         <member name="T:VIZCore3D.NET.Manager.LockedHiddenManager">
             <summary>
             개체숨김 Manager
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.LockedHiddenManager.OnObject3DLockedHiddenChangedEvent">
+            <summary>
+            개체 숨김 상태 변경 이벤트
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.LockedHiddenManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
@@ -40628,6 +40710,12 @@
             </summary>
             <param name="ctrl">VIZCore Control</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNote2D(System.String)">
+            <summary>
+            2D 노트 추가
+            </summary>
+            <param name="text">텍스트</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNote2D(System.String,System.Single,System.Single)">
             <summary>
             2D 노트 추가
@@ -40779,6 +40867,12 @@
             <param name="style">노트 스타일</param>
             <param name="tag">항목에 연결할 데이터가 포함된 개체</param>
             <returns>생성된 노트 아이디(ID)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNote3D(System.String)">
+            <summary>
+            3D 노트 추가
+            </summary>
+            <param name="text">텍스트</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNote3D(System.String,System.Single,System.Single,System.Single)">
             <summary>
@@ -41605,6 +41699,22 @@
             <summary>
             표면 노트 추가
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNoteSurface(System.String,System.Boolean,System.String)">
+            <summary>
+            표면 노트 추가
+            </summary>
+            <param name="noteText">노트 텍스트</param>
+            <param name="useSymbol">심볼 사용 여부</param>
+            <param name="symbolText">심볼 텍스트</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.NoteManager.AddNoteSurfacePickModel(System.Boolean,System.String,System.Int32)">
+            <summary>
+            표면 노트 추가 - 모델 선택
+            </summary>
+            <param name="useSymbol">심볼 사용 여부</param>
+            <param name="symbolText">심볼 텍스트</param>
+            <param name="modelNameLevel">모델이름 레벨</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.NoteManager.CopySelectedItemTitle">
             <summary>
@@ -46520,6 +46630,35 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.Add(System.Boolean,System.Boolean,VIZCore3D.NET.Data.Axis)">
+            <summary>
+            Add Section
+            </summary>
+            <param name="partSection">PartSection</param>
+            <param name="visibleOthers">Visible Others</param>
+            <param name="direction">Direction</param>
+            <returns>Section</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                bool partSection = false;
+            
+                VIZCore3D.NET.Data.Section section =
+                    vizcore3d.Section.Add(
+                        partSection
+                        , false
+                        , Data.Axis.X
+                        );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.AddBox(System.Boolean,System.Single)">
             <summary>
             Add SectionBox
@@ -46641,6 +46780,14 @@
             </summary>
             <param name="section">Section</param>
             <param name="visible">Visible/Hidden</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.Show(VIZCore3D.NET.Data.Section,System.Boolean,System.Boolean)">
+            <summary>
+            show
+            </summary>
+            <param name="section">section</param>
+            <param name="visibleOthers">visibleOthers</param>
+            <param name="visible">visible</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.SetClipping(VIZCore3D.NET.Data.Section,VIZCore3D.NET.Manager.SectionManager.ClippingTypes)">
             <summary>
@@ -51786,6 +51933,27 @@
                 vizcore3d.View.BackgroundColor1 = System.Drawing.Color.Gray;
                 vizcore3d.View.BackgroundColor2 = System.Drawing.Color.White;
                 vizcore3d.View.BackgroundMode = Data.BackgroundModes.COLOR_TWO_CENTER;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ViewManager.LightDirection">
+            <summary>
+            빛 방향 설정
+            
+            화면상의 방향
+            +X = 좌, -X = 우, +Y = 상, -Y = 하, +Z = 앞, -Z = 뒤
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.View.LightDirection = new Data.Vector3D(1, 0, 1);
             }
             ]]>
             </code> 
