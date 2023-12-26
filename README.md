@@ -7,7 +7,7 @@
 대용량 3D 데이터 시각화 엔진인 VIZCore3D.NET 제품(컨트롤)에 대한 기본 사용 예제 및 활용 코드를 공유하기 위한 목적입니다.
 
 상세 API에 대한 설명 및 예제는 SHDC (https://www.softhills.net/SHDC) 를 참고 하시기 바랍니다.
-+ **Download:** [Download VIZCore3D.NET (Preparing...)](https://softhills.net/download.html)
++ **Download:** [Download VIZCore3D.NET](https://softhills.net/download.html)
 ***
 
 ## 디렉토리 설명
@@ -156,5 +156,5 @@
 
 + **Website:** [www.softhills.net](https://www.softhills.net)
 + **Product Home:** [VIZCore3D.NET](https://www.softhills.net/vizzard.html)
-+ **Download:** [Download VIZCore3D.NET (Preparing...)](https://softhills.net/download.html)
++ **Download:** [Download VIZCore3D.NET](https://softhills.net/download.html)
 + **Documentation:** [VIZCore3D.NET Documentation](https://www.softhills.net/SHDC)
