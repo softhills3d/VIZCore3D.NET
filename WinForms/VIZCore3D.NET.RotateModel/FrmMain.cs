@@ -22,7 +22,6 @@ namespace VIZCore3D.NET.RotateModel
         public FrmMain()
         {
             InitializeComponent();
-
             // Initialize VIZCore3D.NET
             VIZCore3D.NET.ModuleInitializer.Run();
 
