@@ -242,6 +242,8 @@ namespace VIZCore3D.NET.AvatarPath
             vizcore3d.Walkthrough.EnableAvatarAutoZoom = true;
             // 충돌상자보기
             vizcore3d.Walkthrough.ShowAvatarCollisionCylinder = false;
+            // 아바타 Pose를 위해 기본 Avatar 변경
+            vizcore3d.Walkthrough.AvatarModel = 3;
             #endregion
 
 
