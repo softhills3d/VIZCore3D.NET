@@ -3339,6 +3339,20 @@
             VIZCore3D.NET
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.Products.THREED_VISUALIZATION_MODEL_CM_DS">
+            <summary>
+            3D 가시화 모델 공법 디지털 시스템
+            3D Visualization Model Construction Method Digital System
+            三维可视化模型工艺数字化系统
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.Products.THREED_VISUALIZATION_MODEL_CM_DS_PLUGIN">
+            <summary>
+            3D 가시화 모델 공법 디지털 시스템 + PlugIn
+            3D Visualization Model Construction Method Digital System + PlugIn
+            三维可视化模型工艺数字化系统 + PlugIn
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ModelProgressModes">
             <summary>
             MODEL Progress Argument Modes
@@ -8938,6 +8952,14 @@
             <param name="options">조회 옵션</param>
             <returns>자식 노드 목록</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Data.Node.GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption,System.Boolean)">
+            <summary>
+            현재 노드의 하위 노드 혹은 하위 전체 노드 반환
+            </summary>
+            <param name="options">조회 옵션</param>
+            <param name="includeBody">바디(Body)노드 포함 유무</param>
+            <returns>자식 노드 목록</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Data.Node.GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption,System.Collections.Generic.List{System.String},System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
             현재 노드의 하위 노드중에서 검색 결과 반환
@@ -14503,6 +14525,20 @@
             </summary>
             <param name="ctrl">VIZCore3D.NET</param>
             <param name="setting">Setting Manager</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.btnShortcutImport_Click(System.Object,System.EventArgs)">
+            <summary>
+            HotKey 가져오기
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.btnShortcutExport_Click(System.Object,System.EventArgs)">
+            <summary>
+            HotKey 내보내기
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.SettingsDialog.GetShortcutSetting">
             <summary>
@@ -24938,6 +24974,24 @@
              </code> 
              </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetPointDistanceByPreselectEdge(VIZCore3D.NET.Data.Node,VIZCore3D.NET.Data.Vector3D,System.Single)">
+            <summary>
+            Node PreselectEdge의 위치에서 이동된 거리 포인트 반환
+            </summary>
+            <param name="node">Node</param>
+            <param name="point">위치</param>
+            <param name="distance">이동 거리</param>
+            <returns>이동된 위치 (NULL 인경우 실패) </returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetPointDistanceByPreselectEdge(System.Int32,VIZCore3D.NET.Data.Vector3D,System.Single)">
+            <summary>
+            Node PreselectEdge의 위치에서 이동된 거리 포인트 반환
+            </summary>
+            <param name="nodeIndex">Node Index</param>
+            <param name="point">위치</param>
+            <param name="distance">이동 거리</param>
+            <returns>이동된 위치 (NULL 인경우 실패) </returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.PickSurfaceAfterSelectEdgePolyline">
             <summary>
             Edge-Polyline 선택 및 이동될 위치 지정
@@ -24957,6 +25011,33 @@
             <param name="start">시작점</param>
             <param name="end">끝점</param>
             <returns>정점 리스트</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetCurvedOffsetTwoPoint(System.Int32,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single)">
+            <summary>
+            부재 표면의 시작점과 끝점을 기준으로 양옆으로 오프셋 만큼 두 끝점 반환
+            </summary>
+            <param name="index">Node Index</param>
+            <param name="start">시작점</param>
+            <param name="end">끝점</param>
+            <param name="offset">간격</param>
+            <returns>간격 만큼 양옆으로 벌어진 끝점</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetSufaceCurvedLineCopy(System.Int32,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,VIZCore3D.NET.Data.Vertex3D,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            부재 표면에 곡면 라인 복사
+            </summary>
+            <param name="index">Node Index</param>
+            <param name="start">시작점</param>
+            <param name="end">끝점</param>
+            <param name="lsDir"></param>
+            <param name="copyDir">복사 방향</param>
+            <param name="interval">복사 간격</param>
+            <param name="ls">시작점과 가까운 엣지 간격</param>
+            <param name="le">끝점과 가까운 엣지 간격</param>
+            <param name="lenLimit">복사 길이 제한</param>
+            <param name="copyCurveForwardDir">false시 왼쪽 복사</param>
+            <param name="copyCurveBackwardDir">복사 길이 제한</param>
+            <returns>곡면 라인 복사된 정점리스트</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
@@ -45123,6 +45204,11 @@
             <param name="fullMatch">검색어 일치 여부. True : 검색어 전체 일치(Equal), False : 검색어 부분 일치(Contains)</param>
             <returns>검색 결과 노드 목록</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.FindManager.UpperKeywords(System.Collections.Generic.List{System.String})">
+            <summary>
+            keyword 리스트 대문자 변환
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.FindManager.ShowQuickSearchDialog">
             <summary>
             빠른 검색 다이얼로그 조회
@@ -46635,7 +46721,7 @@
             Add Section
             </summary>
             <param name="partSection">PartSection</param>
-            <param name="visibleOthers">Visible Others</param>
+            <param name="visibleOthers">Others Section Visible/Hidden</param>
             <param name="direction">Direction</param>
             <returns>Section</returns>
             <example>
@@ -46783,11 +46869,12 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.Show(VIZCore3D.NET.Data.Section,System.Boolean,System.Boolean)">
             <summary>
-            show
+            Show
             </summary>
-            <param name="section">section</param>
-            <param name="visibleOthers">visibleOthers</param>
-            <param name="visible">visible</param>
+            <param name="section">Section</param>
+            <param name="visibleOthers">Others Section Visible/Hidden</param>
+            <param name="visible">Visible/Hidden</param>
+            <returns>적용 결과</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.SetClipping(VIZCore3D.NET.Data.Section,VIZCore3D.NET.Manager.SectionManager.ClippingTypes)">
             <summary>
@@ -47132,6 +47219,15 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.SetMultiSectionListAxisRatePosition(System.Int32,System.Int16,System.Int32,System.Single)">
+            <summary>
+            단면 위치 비율 설정
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subId">단면 서브 아이디(ID)</param>
+            <param name="axisIndex">축 인덱스 : X축(0), Y축(1), Z축(2), Normal(3)</param>
+            <param name="position">위치</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetComments(System.Int32,System.Int32)">
             <summary>
@@ -54393,6 +54489,34 @@
             아바타 회전 컨트롤 반전
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.WalkthroughManager.AvatarEyeTrackingCamera">
+            <summary>
+            아바타 위치 카메라 적용 (기본값 = true)
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                vizcore3d.BeginUpdate();
+            
+                vizcore3d.Walkthrough.Avatar = true;
+                
+                // 아바타 위치 카메라 적용
+                vizcore3d.Walkthrough.AvatarEyeTrackingCamera = true;
+                
+                // 아바타 상태에서 카메라 자유롭게 이동 가능
+                //vizcore3d.Walkthrough.AvatarEyeTrackingCamera = false;
+            
+                vizcore3d.EndUpdate();
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.WalkthroughManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
             <summary>
             Construction
@@ -58183,6 +58307,21 @@
             라이선스 파일 정보 등록
             </summary>
             <param name="path">라이선스 파일</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.LicenseHelper.LicenseFileCheck(System.String)">
+            <summary>
+            License File Check
+            </summary>
+            <param name="path">License File (*.lic)</param>        
+            <returns>true/false</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Utility.LicenseHelper.LicenseServerCheck(System.String,System.Int32)">
+            <summary>
+            License Server Check
+            </summary>
+            <param name="ip">License Server Ip Address</param>
+            <param name="port">License Server Port</param>        
+            <returns>true/false</returns>
         </member>
         <member name="T:VIZCore3D.NET.Utility.NamespaceDoc">
             <summary>
