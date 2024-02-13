@@ -689,6 +689,7 @@ namespace VIZCore3D.NET.AvatarPath
         {
             if (vizcore3d.Walkthrough.AvatarPath.IsPlaying() == true) return;
 
+            vizcore3d.Walkthrough.AvatarViewCamera = ckAvatarViewCamera.Checked;    // Avatar View Camera
             vizcore3d.Walkthrough.SetAvatarPose(GetAvatarPos());
 
             vizcore3d.Walkthrough.AvatarPath.PlayAnimation();
@@ -787,6 +788,7 @@ namespace VIZCore3D.NET.AvatarPath
         private void ShowAvatarCollision()
         {
             if (CollisionPoint == null) return;
+            if (CollisionPoint.Count == 0) return;
 
             // Option : Collision Node Highlight
             bool CollisionNodeHighlight = ckCollisionNodeHighlight.Checked;
@@ -858,6 +860,8 @@ namespace VIZCore3D.NET.AvatarPath
         {
             int pos = vizcore3d.Walkthrough.AvatarPath.GetAnimationTickPostion();   // Current
             int time = vizcore3d.Walkthrough.AvatarPath.GetAnimationTime();         // All Time
+
+            vizcore3d.Walkthrough.AvatarViewCamera = ckAvatarViewCamera.Checked;    // Avatar View Camera
 
             CollisionPoint = new Dictionary<string, VIZCore3D.NET.Data.AvatarCollision>();
 
