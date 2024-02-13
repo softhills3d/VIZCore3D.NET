@@ -922,5 +922,15 @@ namespace VIZCore3D.NET.AvatarPath
                 this.Cursor = Cursors.Default;
             }
         }
+
+        private void ckAvatarViewCamera_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.Walkthrough.AvatarEyeTrackingCamera = ckAvatarViewCamera.Checked;    // Avatar View Camera
+        }
+
+        private void btnSetAvatarPose_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Walkthrough.SetAvatarPose(GetAvatarPos());
+        }
     }
 }

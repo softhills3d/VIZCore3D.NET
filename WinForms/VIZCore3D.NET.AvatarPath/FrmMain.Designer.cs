@@ -62,6 +62,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckAvatarViewCamera = new System.Windows.Forms.CheckBox();
             this.ckCollisionNodeHighlight = new System.Windows.Forms.CheckBox();
             this.ckCollisionSymbolVisible = new System.Windows.Forms.CheckBox();
             this.ckCollisionNoteVisible = new System.Windows.Forms.CheckBox();
@@ -80,7 +81,7 @@
             this.lbTick = new System.Windows.Forms.Label();
             this.tbPos = new System.Windows.Forms.TrackBar();
             this.timerDetect = new System.Windows.Forms.Timer(this.components);
-            this.ckAvatarViewCamera = new System.Windows.Forms.CheckBox();
+            this.btnSetAvatarPose = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -439,6 +440,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnSetAvatarPose);
             this.groupBox2.Controls.Add(this.ckAvatarViewCamera);
             this.groupBox2.Controls.Add(this.ckCollisionNodeHighlight);
             this.groupBox2.Controls.Add(this.ckCollisionSymbolVisible);
@@ -452,6 +454,19 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
+            // 
+            // ckAvatarViewCamera
+            // 
+            this.ckAvatarViewCamera.AutoSize = true;
+            this.ckAvatarViewCamera.Checked = true;
+            this.ckAvatarViewCamera.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckAvatarViewCamera.Location = new System.Drawing.Point(197, 86);
+            this.ckAvatarViewCamera.Name = "ckAvatarViewCamera";
+            this.ckAvatarViewCamera.Size = new System.Drawing.Size(140, 16);
+            this.ckAvatarViewCamera.TabIndex = 13;
+            this.ckAvatarViewCamera.Text = "Avatar View Camera";
+            this.ckAvatarViewCamera.UseVisualStyleBackColor = true;
+            this.ckAvatarViewCamera.CheckedChanged += new System.EventHandler(this.ckAvatarViewCamera_CheckedChanged);
             // 
             // ckCollisionNodeHighlight
             // 
@@ -658,21 +673,15 @@
             this.tbPos.TickFrequency = 100;
             this.tbPos.Scroll += new System.EventHandler(this.tbPos_Scroll);
             // 
-            // timerDetect
+            // btnSetAvatarPose
             // 
-            this.timerDetect.Interval = 10;
-            // 
-            // ckAvatarViewCamera
-            // 
-            this.ckAvatarViewCamera.AutoSize = true;
-            this.ckAvatarViewCamera.Checked = true;
-            this.ckAvatarViewCamera.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckAvatarViewCamera.Location = new System.Drawing.Point(197, 86);
-            this.ckAvatarViewCamera.Name = "ckAvatarViewCamera";
-            this.ckAvatarViewCamera.Size = new System.Drawing.Size(140, 16);
-            this.ckAvatarViewCamera.TabIndex = 13;
-            this.ckAvatarViewCamera.Text = "Avatar View Camera";
-            this.ckAvatarViewCamera.UseVisualStyleBackColor = true;
+            this.btnSetAvatarPose.Location = new System.Drawing.Point(386, 29);
+            this.btnSetAvatarPose.Name = "btnSetAvatarPose";
+            this.btnSetAvatarPose.Size = new System.Drawing.Size(44, 23);
+            this.btnSetAvatarPose.TabIndex = 14;
+            this.btnSetAvatarPose.Text = "Set";
+            this.btnSetAvatarPose.UseVisualStyleBackColor = true;
+            this.btnSetAvatarPose.Click += new System.EventHandler(this.btnSetAvatarPose_Click);
             // 
             // FrmMain
             // 
@@ -759,6 +768,7 @@
         private System.Windows.Forms.CheckBox ckCollisionNoteVisible;
         private System.Windows.Forms.CheckBox ckCollisionNodeHighlight;
         private System.Windows.Forms.CheckBox ckAvatarViewCamera;
+        private System.Windows.Forms.Button btnSetAvatarPose;
     }
 }
 
