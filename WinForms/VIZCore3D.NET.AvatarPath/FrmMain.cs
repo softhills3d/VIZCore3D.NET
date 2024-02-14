@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Windows.Forms;
 
@@ -931,6 +932,42 @@ namespace VIZCore3D.NET.AvatarPath
         private void btnSetAvatarPose_Click(object sender, EventArgs e)
         {
             vizcore3d.Walkthrough.SetAvatarPose(GetAvatarPos());
+        }
+
+        private void btnAddCamera_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            VIZCore3D.NET.Data.CameraData camera = vizcore3d.View.GetCameraData();
+
+            ListViewItem lvi = new ListViewItem(new string[] { camera.Zoom.ToString(), string.Join(", ", camera.Matrix) });
+            lvi.Tag = camera;
+            lvUserView.Items.Add(lvi);
+        }
+
+        private void btnDeleteCamera_Click(object sender, EventArgs e)
+        {
+            if (lvUserView.SelectedItems.Count == 0) return;
+
+            int index = lvUserView.SelectedItems[0].Index;
+
+            lvUserView.Items.RemoveAt(index);
+        }
+
+        private void btnClearCamera_Click(object sender, EventArgs e)
+        {
+            lvUserView.Items.Clear();
+        }
+
+        private void lvUserView_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvUserView.SelectedItems.Count == 0) return;
+
+            if(lvUserView.SelectedItems[0].Tag == null) return;
+
+            VIZCore3D.NET.Data.CameraData camera = (VIZCore3D.NET.Data.CameraData)lvUserView.SelectedItems[0].Tag;
+
+            vizcore3d.View.SetCameraData(camera, ckUserViewAnimation.Checked);
         }
     }
 }

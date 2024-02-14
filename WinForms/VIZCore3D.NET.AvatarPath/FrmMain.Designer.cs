@@ -31,19 +31,27 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnDetectCollision = new System.Windows.Forms.Button();
-            this.btnCollistionPoint = new System.Windows.Forms.Button();
-            this.btnGetPathTick = new System.Windows.Forms.Button();
-            this.btnClearPos = new System.Windows.Forms.Button();
-            this.btnDeletePos = new System.Windows.Forms.Button();
-            this.btnAddPos = new System.Windows.Forms.Button();
-            this.ckRepeat = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.lvPosition = new System.Windows.Forms.ListView();
             this.chIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chZ = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnCollistionPoint = new System.Windows.Forms.Button();
+            this.btnDetectCollision = new System.Windows.Forms.Button();
+            this.ckRepeat = new System.Windows.Forms.CheckBox();
+            this.btnAddPos = new System.Windows.Forms.Button();
+            this.btnGetPathTick = new System.Windows.Forms.Button();
+            this.btnDeletePos = new System.Windows.Forms.Button();
+            this.btnClearPos = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lvUserView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnClearCamera = new System.Windows.Forms.Button();
+            this.btnDeleteCamera = new System.Windows.Forms.Button();
+            this.btnAddCamera = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.ckPlayRepeatMode = new System.Windows.Forms.CheckBox();
             this.btnRewind = new System.Windows.Forms.Button();
@@ -62,6 +70,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSetAvatarPose = new System.Windows.Forms.Button();
             this.ckAvatarViewCamera = new System.Windows.Forms.CheckBox();
             this.ckCollisionNodeHighlight = new System.Windows.Forms.CheckBox();
             this.ckCollisionSymbolVisible = new System.Windows.Forms.CheckBox();
@@ -81,12 +90,14 @@
             this.lbTick = new System.Windows.Forms.Label();
             this.tbPos = new System.Windows.Forms.TrackBar();
             this.timerDetect = new System.Windows.Forms.Timer(this.components);
-            this.btnSetAvatarPose = new System.Windows.Forms.Button();
+            this.ckUserViewAnimation = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,7 +117,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
+            this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -119,97 +130,36 @@
             this.splitContainer1.SplitterDistance = 466;
             this.splitContainer1.TabIndex = 0;
             // 
-            // groupBox5
+            // tabControl1
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox5.Controls.Add(this.btnDetectCollision);
-            this.groupBox5.Controls.Add(this.btnCollistionPoint);
-            this.groupBox5.Controls.Add(this.btnGetPathTick);
-            this.groupBox5.Controls.Add(this.btnClearPos);
-            this.groupBox5.Controls.Add(this.btnDeletePos);
-            this.groupBox5.Controls.Add(this.btnAddPos);
-            this.groupBox5.Controls.Add(this.ckRepeat);
-            this.groupBox5.Controls.Add(this.lvPosition);
-            this.groupBox5.Location = new System.Drawing.Point(12, 507);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(438, 291);
-            this.groupBox5.TabIndex = 4;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Path Position";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(13, 507);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(437, 293);
+            this.tabControl1.TabIndex = 0;
             // 
-            // btnDetectCollision
+            // tabPage1
             // 
-            this.btnDetectCollision.Location = new System.Drawing.Point(116, 45);
-            this.btnDetectCollision.Name = "btnDetectCollision";
-            this.btnDetectCollision.Size = new System.Drawing.Size(75, 23);
-            this.btnDetectCollision.TabIndex = 9;
-            this.btnDetectCollision.Text = "Automatic";
-            this.btnDetectCollision.UseVisualStyleBackColor = true;
-            this.btnDetectCollision.Click += new System.EventHandler(this.btnDetectCollision_Click);
-            // 
-            // btnCollistionPoint
-            // 
-            this.btnCollistionPoint.Location = new System.Drawing.Point(197, 45);
-            this.btnCollistionPoint.Name = "btnCollistionPoint";
-            this.btnCollistionPoint.Size = new System.Drawing.Size(117, 23);
-            this.btnCollistionPoint.TabIndex = 8;
-            this.btnCollistionPoint.Text = "Display Collision";
-            this.btnCollistionPoint.UseVisualStyleBackColor = true;
-            this.btnCollistionPoint.Click += new System.EventHandler(this.btnCollistionPoint_Click);
-            // 
-            // btnGetPathTick
-            // 
-            this.btnGetPathTick.Location = new System.Drawing.Point(11, 45);
-            this.btnGetPathTick.Name = "btnGetPathTick";
-            this.btnGetPathTick.Size = new System.Drawing.Size(86, 23);
-            this.btnGetPathTick.TabIndex = 7;
-            this.btnGetPathTick.Text = "Time(Tick)";
-            this.btnGetPathTick.UseVisualStyleBackColor = true;
-            this.btnGetPathTick.Click += new System.EventHandler(this.btnGetPathTick_Click);
-            // 
-            // btnClearPos
-            // 
-            this.btnClearPos.Location = new System.Drawing.Point(278, 19);
-            this.btnClearPos.Name = "btnClearPos";
-            this.btnClearPos.Size = new System.Drawing.Size(75, 23);
-            this.btnClearPos.TabIndex = 6;
-            this.btnClearPos.Text = "Clear";
-            this.btnClearPos.UseVisualStyleBackColor = true;
-            this.btnClearPos.Click += new System.EventHandler(this.btnClearPos_Click);
-            // 
-            // btnDeletePos
-            // 
-            this.btnDeletePos.Location = new System.Drawing.Point(197, 19);
-            this.btnDeletePos.Name = "btnDeletePos";
-            this.btnDeletePos.Size = new System.Drawing.Size(75, 23);
-            this.btnDeletePos.TabIndex = 5;
-            this.btnDeletePos.Text = "Delete";
-            this.btnDeletePos.UseVisualStyleBackColor = true;
-            this.btnDeletePos.Click += new System.EventHandler(this.btnDeletePos_Click);
-            // 
-            // btnAddPos
-            // 
-            this.btnAddPos.Location = new System.Drawing.Point(116, 19);
-            this.btnAddPos.Name = "btnAddPos";
-            this.btnAddPos.Size = new System.Drawing.Size(75, 23);
-            this.btnAddPos.TabIndex = 4;
-            this.btnAddPos.Text = "Add";
-            this.btnAddPos.UseVisualStyleBackColor = true;
-            this.btnAddPos.Click += new System.EventHandler(this.btnAddPos_Click);
-            // 
-            // ckRepeat
-            // 
-            this.ckRepeat.AutoSize = true;
-            this.ckRepeat.Checked = true;
-            this.ckRepeat.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckRepeat.Location = new System.Drawing.Point(11, 23);
-            this.ckRepeat.Name = "ckRepeat";
-            this.ckRepeat.Size = new System.Drawing.Size(99, 16);
-            this.ckRepeat.TabIndex = 2;
-            this.ckRepeat.Text = "Repeat Mode";
-            this.ckRepeat.UseVisualStyleBackColor = true;
+            this.tabPage1.Controls.Add(this.lvPosition);
+            this.tabPage1.Controls.Add(this.btnCollistionPoint);
+            this.tabPage1.Controls.Add(this.btnDetectCollision);
+            this.tabPage1.Controls.Add(this.ckRepeat);
+            this.tabPage1.Controls.Add(this.btnAddPos);
+            this.tabPage1.Controls.Add(this.btnGetPathTick);
+            this.tabPage1.Controls.Add(this.btnDeletePos);
+            this.tabPage1.Controls.Add(this.btnClearPos);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(429, 267);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Path Position";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // lvPosition
             // 
@@ -224,9 +174,9 @@
             this.lvPosition.FullRowSelect = true;
             this.lvPosition.GridLines = true;
             this.lvPosition.HideSelection = false;
-            this.lvPosition.Location = new System.Drawing.Point(6, 74);
+            this.lvPosition.Location = new System.Drawing.Point(17, 76);
             this.lvPosition.Name = "lvPosition";
-            this.lvPosition.Size = new System.Drawing.Size(426, 211);
+            this.lvPosition.Size = new System.Drawing.Size(401, 173);
             this.lvPosition.TabIndex = 1;
             this.lvPosition.UseCompatibleStateImageBehavior = false;
             this.lvPosition.View = System.Windows.Forms.View.Details;
@@ -252,6 +202,151 @@
             this.chZ.Text = "Z";
             this.chZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.chZ.Width = 100;
+            // 
+            // btnCollistionPoint
+            // 
+            this.btnCollistionPoint.Location = new System.Drawing.Point(203, 47);
+            this.btnCollistionPoint.Name = "btnCollistionPoint";
+            this.btnCollistionPoint.Size = new System.Drawing.Size(156, 23);
+            this.btnCollistionPoint.TabIndex = 8;
+            this.btnCollistionPoint.Text = "Display Collision";
+            this.btnCollistionPoint.UseVisualStyleBackColor = true;
+            this.btnCollistionPoint.Click += new System.EventHandler(this.btnCollistionPoint_Click);
+            // 
+            // btnDetectCollision
+            // 
+            this.btnDetectCollision.Location = new System.Drawing.Point(122, 47);
+            this.btnDetectCollision.Name = "btnDetectCollision";
+            this.btnDetectCollision.Size = new System.Drawing.Size(75, 23);
+            this.btnDetectCollision.TabIndex = 9;
+            this.btnDetectCollision.Text = "Automatic";
+            this.btnDetectCollision.UseVisualStyleBackColor = true;
+            this.btnDetectCollision.Click += new System.EventHandler(this.btnDetectCollision_Click);
+            // 
+            // ckRepeat
+            // 
+            this.ckRepeat.AutoSize = true;
+            this.ckRepeat.Checked = true;
+            this.ckRepeat.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckRepeat.Location = new System.Drawing.Point(17, 16);
+            this.ckRepeat.Name = "ckRepeat";
+            this.ckRepeat.Size = new System.Drawing.Size(99, 16);
+            this.ckRepeat.TabIndex = 2;
+            this.ckRepeat.Text = "Repeat Mode";
+            this.ckRepeat.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPos
+            // 
+            this.btnAddPos.Location = new System.Drawing.Point(122, 12);
+            this.btnAddPos.Name = "btnAddPos";
+            this.btnAddPos.Size = new System.Drawing.Size(75, 23);
+            this.btnAddPos.TabIndex = 4;
+            this.btnAddPos.Text = "Add";
+            this.btnAddPos.UseVisualStyleBackColor = true;
+            this.btnAddPos.Click += new System.EventHandler(this.btnAddPos_Click);
+            // 
+            // btnGetPathTick
+            // 
+            this.btnGetPathTick.Location = new System.Drawing.Point(17, 47);
+            this.btnGetPathTick.Name = "btnGetPathTick";
+            this.btnGetPathTick.Size = new System.Drawing.Size(86, 23);
+            this.btnGetPathTick.TabIndex = 7;
+            this.btnGetPathTick.Text = "Time(Tick)";
+            this.btnGetPathTick.UseVisualStyleBackColor = true;
+            this.btnGetPathTick.Click += new System.EventHandler(this.btnGetPathTick_Click);
+            // 
+            // btnDeletePos
+            // 
+            this.btnDeletePos.Location = new System.Drawing.Point(203, 12);
+            this.btnDeletePos.Name = "btnDeletePos";
+            this.btnDeletePos.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletePos.TabIndex = 5;
+            this.btnDeletePos.Text = "Delete";
+            this.btnDeletePos.UseVisualStyleBackColor = true;
+            this.btnDeletePos.Click += new System.EventHandler(this.btnDeletePos_Click);
+            // 
+            // btnClearPos
+            // 
+            this.btnClearPos.Location = new System.Drawing.Point(284, 12);
+            this.btnClearPos.Name = "btnClearPos";
+            this.btnClearPos.Size = new System.Drawing.Size(75, 23);
+            this.btnClearPos.TabIndex = 6;
+            this.btnClearPos.Text = "Clear";
+            this.btnClearPos.UseVisualStyleBackColor = true;
+            this.btnClearPos.Click += new System.EventHandler(this.btnClearPos_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.ckUserViewAnimation);
+            this.tabPage2.Controls.Add(this.lvUserView);
+            this.tabPage2.Controls.Add(this.btnClearCamera);
+            this.tabPage2.Controls.Add(this.btnDeleteCamera);
+            this.tabPage2.Controls.Add(this.btnAddCamera);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(429, 267);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "UserView";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lvUserView
+            // 
+            this.lvUserView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lvUserView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvUserView.FullRowSelect = true;
+            this.lvUserView.GridLines = true;
+            this.lvUserView.HideSelection = false;
+            this.lvUserView.Location = new System.Drawing.Point(15, 41);
+            this.lvUserView.Name = "lvUserView";
+            this.lvUserView.Size = new System.Drawing.Size(396, 206);
+            this.lvUserView.TabIndex = 3;
+            this.lvUserView.UseCompatibleStateImageBehavior = false;
+            this.lvUserView.View = System.Windows.Forms.View.Details;
+            this.lvUserView.DoubleClick += new System.EventHandler(this.lvUserView_DoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Zoom";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Camera";
+            this.columnHeader2.Width = 291;
+            // 
+            // btnClearCamera
+            // 
+            this.btnClearCamera.Location = new System.Drawing.Point(192, 12);
+            this.btnClearCamera.Name = "btnClearCamera";
+            this.btnClearCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnClearCamera.TabIndex = 2;
+            this.btnClearCamera.Text = "Clear";
+            this.btnClearCamera.UseVisualStyleBackColor = true;
+            this.btnClearCamera.Click += new System.EventHandler(this.btnClearCamera_Click);
+            // 
+            // btnDeleteCamera
+            // 
+            this.btnDeleteCamera.Location = new System.Drawing.Point(100, 12);
+            this.btnDeleteCamera.Name = "btnDeleteCamera";
+            this.btnDeleteCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteCamera.TabIndex = 1;
+            this.btnDeleteCamera.Text = "Delete";
+            this.btnDeleteCamera.UseVisualStyleBackColor = true;
+            this.btnDeleteCamera.Click += new System.EventHandler(this.btnDeleteCamera_Click);
+            // 
+            // btnAddCamera
+            // 
+            this.btnAddCamera.Location = new System.Drawing.Point(15, 12);
+            this.btnAddCamera.Name = "btnAddCamera";
+            this.btnAddCamera.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCamera.TabIndex = 0;
+            this.btnAddCamera.Text = "Add";
+            this.btnAddCamera.UseVisualStyleBackColor = true;
+            this.btnAddCamera.Click += new System.EventHandler(this.btnAddCamera_Click);
             // 
             // groupBox4
             // 
@@ -455,6 +550,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Options";
             // 
+            // btnSetAvatarPose
+            // 
+            this.btnSetAvatarPose.Location = new System.Drawing.Point(386, 29);
+            this.btnSetAvatarPose.Name = "btnSetAvatarPose";
+            this.btnSetAvatarPose.Size = new System.Drawing.Size(44, 23);
+            this.btnSetAvatarPose.TabIndex = 14;
+            this.btnSetAvatarPose.Text = "Set";
+            this.btnSetAvatarPose.UseVisualStyleBackColor = true;
+            this.btnSetAvatarPose.Click += new System.EventHandler(this.btnSetAvatarPose_Click);
+            // 
             // ckAvatarViewCamera
             // 
             this.ckAvatarViewCamera.AutoSize = true;
@@ -462,9 +567,9 @@
             this.ckAvatarViewCamera.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckAvatarViewCamera.Location = new System.Drawing.Point(197, 86);
             this.ckAvatarViewCamera.Name = "ckAvatarViewCamera";
-            this.ckAvatarViewCamera.Size = new System.Drawing.Size(140, 16);
+            this.ckAvatarViewCamera.Size = new System.Drawing.Size(187, 16);
             this.ckAvatarViewCamera.TabIndex = 13;
-            this.ckAvatarViewCamera.Text = "Avatar View Camera";
+            this.ckAvatarViewCamera.Text = "Avatar Eye Tracking Camera";
             this.ckAvatarViewCamera.UseVisualStyleBackColor = true;
             this.ckAvatarViewCamera.CheckedChanged += new System.EventHandler(this.ckAvatarViewCamera_CheckedChanged);
             // 
@@ -673,15 +778,17 @@
             this.tbPos.TickFrequency = 100;
             this.tbPos.Scroll += new System.EventHandler(this.tbPos_Scroll);
             // 
-            // btnSetAvatarPose
+            // ckUserViewAnimation
             // 
-            this.btnSetAvatarPose.Location = new System.Drawing.Point(386, 29);
-            this.btnSetAvatarPose.Name = "btnSetAvatarPose";
-            this.btnSetAvatarPose.Size = new System.Drawing.Size(44, 23);
-            this.btnSetAvatarPose.TabIndex = 14;
-            this.btnSetAvatarPose.Text = "Set";
-            this.btnSetAvatarPose.UseVisualStyleBackColor = true;
-            this.btnSetAvatarPose.Click += new System.EventHandler(this.btnSetAvatarPose_Click);
+            this.ckUserViewAnimation.AutoSize = true;
+            this.ckUserViewAnimation.Checked = true;
+            this.ckUserViewAnimation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckUserViewAnimation.Location = new System.Drawing.Point(288, 16);
+            this.ckUserViewAnimation.Name = "ckUserViewAnimation";
+            this.ckUserViewAnimation.Size = new System.Drawing.Size(80, 16);
+            this.ckUserViewAnimation.TabIndex = 4;
+            this.ckUserViewAnimation.Text = "Animation";
+            this.ckUserViewAnimation.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -697,8 +804,11 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -736,7 +846,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDeletePath;
         private System.Windows.Forms.Button btnAddPath;
-        private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.ColumnHeader chID;
         private System.Windows.Forms.ListView lvPosition;
         private System.Windows.Forms.ColumnHeader chIndex;
@@ -769,6 +878,16 @@
         private System.Windows.Forms.CheckBox ckCollisionNodeHighlight;
         private System.Windows.Forms.CheckBox ckAvatarViewCamera;
         private System.Windows.Forms.Button btnSetAvatarPose;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ListView lvUserView;
+        private System.Windows.Forms.Button btnClearCamera;
+        private System.Windows.Forms.Button btnDeleteCamera;
+        private System.Windows.Forms.Button btnAddCamera;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.CheckBox ckUserViewAnimation;
     }
 }
 
