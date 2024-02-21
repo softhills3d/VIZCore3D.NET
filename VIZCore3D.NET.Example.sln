@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.960
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Demo", "WinForms\VIZCore3D.NET.Demo\VIZCore3D.NET.Demo.csproj", "{44B16D23-940D-4905-94E0-7CFDE1EB5B9A}"
 EndProject
@@ -197,6 +197,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.BayBlock", "WinForms\VIZCore3D.NET.BayBlock\VIZCore3D.NET.BayBlock.csproj", "{5ECF4780-0339-4EE4-A810-E644D1BD57A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ClashTest.V4", "WinForms\VIZCore3D.NET.ClashTest.V4\VIZCore3D.NET.ClashTest.V4.csproj", "{525201D8-4BC9-4C4D-8BBC-D63FC239FA03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.AnimationClashTest", "WinForms\VIZCore3D.NET.AnimationClashTest\VIZCore3D.NET.AnimationClashTest.csproj", "{0DFAA163-33F3-4E67-88C0-D076337A3BE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -576,6 +578,10 @@ Global
 		{525201D8-4BC9-4C4D-8BBC-D63FC239FA03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{525201D8-4BC9-4C4D-8BBC-D63FC239FA03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{525201D8-4BC9-4C4D-8BBC-D63FC239FA03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DFAA163-33F3-4E67-88C0-D076337A3BE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DFAA163-33F3-4E67-88C0-D076337A3BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DFAA163-33F3-4E67-88C0-D076337A3BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DFAA163-33F3-4E67-88C0-D076337A3BE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -674,6 +680,7 @@ Global
 		{FF17CED5-8CBA-4C24-AC0A-91059F635EB5} = {117E7FB9-D998-4697-8FF7-911AA339D267}
 		{5ECF4780-0339-4EE4-A810-E644D1BD57A5} = {117E7FB9-D998-4697-8FF7-911AA339D267}
 		{525201D8-4BC9-4C4D-8BBC-D63FC239FA03} = {117E7FB9-D998-4697-8FF7-911AA339D267}
+		{0DFAA163-33F3-4E67-88C0-D076337A3BE5} = {117E7FB9-D998-4697-8FF7-911AA339D267}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6D95616-665A-4FDB-8A44-A336D39BD719}

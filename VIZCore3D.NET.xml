@@ -6335,6 +6335,36 @@
             2D
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
+            <summary>
+            Tessellation Quality Level Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
+            <summary>
+            Extra Low
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
+            <summary>
+            Low
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
+            <summary>
+            Medium
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
+            <summary>
+            High
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
+            <summary>
+            Extra High
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -15298,6 +15328,11 @@
             Clash Progress Event Args
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.ClashProgressEventArgs.ID">
+            <summary>
+            간섭검사 아이디
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Event.EventManager.ClashProgressEventArgs.Count">
             <summary>
             간섭부재 개수
@@ -15308,10 +15343,11 @@
             간섭검사 진척률
             </summary>
         </member>
-        <member name="M:VIZCore3D.NET.Event.EventManager.ClashProgressEventArgs.#ctor(System.Int32,System.Int32)">
+        <member name="M:VIZCore3D.NET.Event.EventManager.ClashProgressEventArgs.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
             Construction
             </summary>
+             /// <param name="id">간섭검사 아이디</param>
             <param name="count">간섭부재 개수</param>
             <param name="progress">간섭검사 진척률</param>
         </member>
@@ -33918,6 +33954,124 @@
             </code>
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.PerformInterferenceCheck(System.Int32,System.Boolean)">
+            <summary>
+            간섭검사 수행
+            </summary>
+            <param name="id">간섭검사 테스트 아이디(ID)</param>
+            <param name="progressForm">progressForm 보이기/숨기기</param>
+            
+            <returns>간섭검사 수행 시작 결과 : True(검사 수행 시작 성공), False(검사 수행 시작 실패)</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            private VIZCore3D.NET.Data.ClashTest clash;
+            
+            private void Example()
+            {
+                clash = new VIZCore3D.NET.Data.ClashTest();
+            
+                clash.Name = "CLASH TEST #1";
+                clash.TestKind = VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_GROUP;
+            
+                clash.UseRangeValue = false;
+                clash.RangeValue = 2.0f;
+                clash.UsePenetrationTolerance = true;
+                clash.PenetrationTolerance = 1.0f;
+            
+                clash.VisibleOnly = false;
+                clash.BottomLevel = 2;
+            
+                List<VIZCore3D.NET.Data.Node> groupA =
+                    vizcore3d.Object3D.Find.QuickSearch(
+                        new List<string>() { "EQUIPMENT" }
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
+            
+                clash.GroupA = groupA;
+            
+                List<VIZCore3D.NET.Data.Node> groupB =
+                    vizcore3d.Object3D.Find.QuickSearch(
+                        new List<string>() { "HULL" }
+                        , false
+                        , true
+                        , false
+                        , false
+                        , true
+                        , false
+                        );
+            
+                clash.GroupB = groupB;
+            
+                if (clash.ID == -1)
+                {
+                    bool result = vizcore3d.Clash.Add(clash);
+            
+                    MessageBox.Show(
+                        string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID)
+                        , "VIZCore3D.NET.ClashTest"
+                        , MessageBoxButtons.OK
+                        , result == true ? MessageBoxIcon.Information : MessageBoxIcon.Error
+                        );
+                }
+                else
+                {
+                    vizcore3d.Clash.Update(clash);
+                }
+            
+                vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
+                //progressForm 보이기/숨기기
+                bool progressForm = false; 
+            
+                // 간섭검사 수행
+                bool result = vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
+            }
+            
+            private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
+            {
+                MessageBox.Show(
+                    string.Format("Clash Test Completed. : {0} / {1}"
+                    , e.ID
+                    , clash.ElapsedTimeString)
+                    , "VIZCore3D.NET.ClashTest"
+                    , MessageBoxButtons.OK, MessageBoxIcon.Information
+                    );
+            
+                bool resultDataKind = true; // True : Assembly, False : Part
+            
+                List<VIZCore3D.NET.Data.ClashTestResultItem> items = null;
+            
+                if (clash.TestKind != VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
+                {
+                    items = vizcore3d.Clash.GetResultItem(
+                        clash
+                        , resultDataKind == true
+                        ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
+                        : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
+                        );
+                }
+                else
+                {
+                    //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART);
+                    items = vizcore3d.Clash.GetResultAllSubItem(
+                        clash
+                        , resultDataKind == true
+                        ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
+                        : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
+                        );
+                }
+            }
+            ]]>
+            </code>
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.PerformInterferenceCheck">
             <summary>
             모든 간섭검사 (재)수행
@@ -33952,6 +34106,12 @@
             <returns>간섭검사 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.GetProgressItemFromCore(VIZCore3D.NET.Data.ClashTest)">
+            <summary>
+            간섭검사 중, 결과 반환
+            </summary>
+            <param name="item">간섭검사 항목</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.GetProgressResultItem(VIZCore3D.NET.Data.ClashTest,VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions)">
             <summary>
             간섭검사 중, 결과 반환
             </summary>
@@ -37800,6 +37960,11 @@
             Default : 6.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
+            <summary>
+            Tessellation Quality
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -39144,6 +39309,29 @@
             <param name="node">내보낼 노드 목록</param>
             <returns>내보내기 결과</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
+            <summary>
+            FBX 파일 형식으로 내보내기
+            </summary>
+            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
+            <param name="ascii">True : ASCII, False : Binary</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
+            <summary>
+            FBX 파일 형식으로 저장
+            </summary>
+            <param name="ascii">True : ASCII, False : Binary</param>
+            <returns>내보내기 결과</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
+            <summary>
+            GLTF 파일 형식으로 내보내기
+            </summary>
+            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
+            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
+            <returns>내보내기 결과</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
             <summary>
             STL (ASCII, BINARY) 파일 형식으로 내보내기
@@ -40116,6 +40304,46 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGridReverse(System.String,System.Single[][],System.Boolean,System.Boolean)">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="boundBox">내보내기 영역</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <param name="visibleOnly">보이는 모델만 내보내기</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                float[] boundBox = new float[]
+                {
+                    0.0f
+                    , 0.0f
+                    , 0.0f
+                    , 100.0f
+                    , 100.0f
+                    , 100.0f
+                };
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , boundBox              /* BoundBox */
+                    , false                 /* Keep Structure */
+                    , true                  /* Visible Only */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
@@ -40195,6 +40423,45 @@
             </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
+            <summary>
+            3D Grid(Bounding Box) 내보내기
+            </summary>
+            <param name="path">내보내기 파일</param>
+            <param name="boundBox">내보내기 영역</param>
+            <param name="keepStructure">구조 유지 여부</param>
+            <returns>결과</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                VIZCore3D.NET.Data.BoundBox3D boundBox =
+                    new VIZCore3D.NET.Data.BoundBox3D();
+            
+                boundBox.MinX = 0.0f;
+                boundBox.MinY = 0.0f;
+                boundBox.MinZ = 0.0f;
+            
+                boundBox.MaxX = 100.0f;
+                boundBox.MaxY = 100.0f;
+                boundBox.MaxZ = 100.0f;
+            
+                vizcore3d.Model.ExportGrid(
+                    "C:\\Temp\\Model.viz"   /* Path */
+                    , boundBox              /* BoundBox */
+                    , false                 /* Keep Structure */
+                    );
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGridReverse(System.String,System.Collections.Generic.List{VIZCore3D.NET.Data.BoundBox3D},System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
             </summary>
@@ -44008,6 +44275,42 @@
              </example>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Object3DManager.SplitObjects(System.Int32,System.Boolean)">
+             <summary>
+             모델 자르기
+             </summary>
+             <param name="sectionId">내보내기 영역</param>
+             <param name="selectedOnly">선택된 모델만 내보내기</param>
+             <returns>결과</returns>
+             <example>
+             <code language="cs">
+             <![CDATA[
+             // VIZCore3D.NET Control
+             private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+             
+             private void Example()
+             {
+                if (vizcore3d.Model.IsOpen() == false) return;
+            
+                if (vizcore3d.Section.SelectedItem == null) return;
+            
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
+            
+                if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION) return;
+            
+                List<VIZCore3D.NET.Data.SectionPlane> items = section.Planes;
+            
+                if (items == null) return;
+             
+                 vizcore3d.Object3D.SplitObjects(
+                     sectionId               /* Section ID */
+                     , true                  /* SelectedFlagOnly */
+                     );
+             }
+             ]]>
+             </code> 
+             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Object3DManager.SplitObjects(System.String,System.Int32)">
              <summary>
              모델 자르기
              </summary>
@@ -58281,6 +58584,16 @@
         <member name="F:VIZCore3D.NET.Utility.LicenseHelper.LicenseData.FILE">
             <summary>
             LICENSE FILE
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Utility.LicenseHelper.Product">
+            <summary>
+            인증된 제품
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Utility.LicenseHelper.ExpiredDate">
+            <summary>
+            라이선스 만료일(파일)
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Utility.LicenseHelper.GetLicenseDataKind">
