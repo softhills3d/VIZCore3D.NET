@@ -667,7 +667,7 @@ namespace VIZCore3D.NET.ClashTest
                 }
             }
 
-            clash.UseClearanceValue = false;    // 여유허용범위
+            clash.UseClearanceValue = true;    // 여유허용범위
             clash.ClearanceValue = 3.0f;        // 여유허용범위
             clash.UseRangeValue = ckUseRangeValue.Checked;          // 근접허용범위
             clash.RangeValue = Convert.ToSingle(txtRangeValue.Text);// 근접허용범위

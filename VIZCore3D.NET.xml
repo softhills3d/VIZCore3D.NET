@@ -2315,6 +2315,13 @@
             </summary>
             <returns>List</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Data.BoundBox3D.Subtract(VIZCore3D.NET.Data.BoundBox3D)">
+            <summary>
+            바운드 박스를 뺀 나머지 영역을 나누어 배열로 반환하는 메서드
+            </summary>
+            <param name="boundbox">BoundBox3D</param>
+            <returns>Is Equals</returns>
+        </member>
         <member name="T:VIZCore3D.NET.Data.BoundBoxParameter">
             <summary>
             BoundBox Parameter Class
@@ -6333,36 +6340,6 @@
         <member name="F:VIZCore3D.NET.Data.Dimensions.D2">
             <summary>
             2D
-            </summary>
-        </member>
-        <member name="T:VIZCore3D.NET.Data.TessellationQualityKind">
-            <summary>
-            Tessellation Quality Level Kind
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraLow">
-            <summary>
-            Extra Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Low">
-            <summary>
-            Low
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.Medium">
-            <summary>
-            Medium
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.High">
-            <summary>
-            High
-            </summary>
-        </member>
-        <member name="F:VIZCore3D.NET.Data.TessellationQualityKind.ExtraHigh">
-            <summary>
-            Extra High
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
@@ -37960,11 +37937,6 @@
             Default : 6.
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Manager.ModelManager.TessellationQuality">
-            <summary>
-            Tessellation Quality
-            </summary>
-        </member>
         <member name="P:VIZCore3D.NET.Manager.ModelManager.MeshCount">
             <summary>
             로딩된 형상의 Mesh Count 반환.
@@ -39309,29 +39281,6 @@
             <param name="node">내보낼 노드 목록</param>
             <returns>내보내기 결과</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBX(System.String,System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 내보내기
-            </summary>
-            <param name="file">내보내기 파일 : C:\\Temp\\MODEL.fbx</param>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportFBXDialog(System.Boolean)">
-            <summary>
-            FBX 파일 형식으로 저장
-            </summary>
-            <param name="ascii">True : ASCII, False : Binary</param>
-            <returns>내보내기 결과</returns>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ConvertFbxToGltf(System.String,System.String)">
-            <summary>
-            GLTF 파일 형식으로 내보내기
-            </summary>
-            <param name="fbx">입력 FBX 경로 : C:\\Temp\\MODEL.fbx</param>
-            <param name="gltf">내보내기 파일 : C:\\Temp\\MODEL.gltf</param>
-            <returns>내보내기 결과</returns>
-        </member>
         <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportSTL(System.String,VIZCore3D.NET.Data.ExportStlFileType)">
             <summary>
             STL (ASCII, BINARY) 파일 형식으로 내보내기
@@ -40304,7 +40253,7 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGridReverse(System.String,System.Single[][],System.Boolean,System.Boolean)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGrid(System.String,System.Single[][],System.Boolean,System.Boolean)">
             <summary>
             3D Grid(Bounding Box) 내보내기
             </summary>
@@ -40461,12 +40410,12 @@
             </code> 
             </example>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGridReverse(System.String,System.Collections.Generic.List{VIZCore3D.NET.Data.BoundBox3D},System.Boolean)">
+        <member name="M:VIZCore3D.NET.Manager.ModelManager.ExportGridReverse(System.String,VIZCore3D.NET.Data.BoundBox3D,System.Boolean)">
             <summary>
-            3D Grid(Bounding Box) 내보내기
+            3D Grid(Bounding Box) 제외 영역 내보내기
             </summary>
             <param name="path">내보내기 파일</param>
-            <param name="boundBox">내보내기 영역</param>
+            <param name="boundBox">내보내기 제외 영역</param>
             <param name="keepStructure">구조 유지 여부</param>
             <returns>결과</returns>
             <example>
@@ -40489,10 +40438,10 @@
                 boundBox.MaxX = 100.0f;
                 boundBox.MaxY = 100.0f;
                 boundBox.MaxZ = 100.0f;
-            
-                vizcore3d.Model.ExportGrid(
+              
+                vizcore3d.Model.ExportGridReverse(
                     "C:\\Temp\\Model.viz"   /* Path */
-                    , boundBox              /* BoundBox */
+                    , boundBoxes              /* BoundBox[] */
                     , false                 /* Keep Structure */
                     );
             }
@@ -44833,6 +44782,16 @@
             </code> 
             </example>
         </member>
+        <member name="E:VIZCore3D.NET.Manager.ReviewManager.OnReviewDeleteEvent">
+            <summary>
+            리뷰 삭제 이벤트
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.ReviewManager.OnReviewHideEvent">
+            <summary>
+            리뷰 숨기기 이벤트
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ReviewManager.EnableSelection">
             <summary>
             리뷰 항목 선택 활성화 / 비활성화
@@ -45423,6 +45382,17 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.FireOnReviewDeleteEvent">
+            <summary>
+            리뷰 삭제 이벤트
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.FireOnReviewHideEvent">
+            
+            <summary>
+            리뷰 숨기기 이벤트
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.FindManager">
             <summary>
