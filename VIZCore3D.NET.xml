@@ -2317,10 +2317,10 @@
         </member>
         <member name="M:VIZCore3D.NET.Data.BoundBox3D.Subtract(VIZCore3D.NET.Data.BoundBox3D)">
             <summary>
-            바운드 박스를 뺀 나머지 영역을 나누어 배열로 반환하는 메서드
+            바운드박스를 뺀 나머지 영역을 나누어 바운드박스 배열로 반환
             </summary>
-            <param name="boundbox">BoundBox3D</param>
-            <returns>Is Equals</returns>
+            <param name="box">BoundBox3D</param>
+            <returns>BoundBox Array</returns>
         </member>
         <member name="T:VIZCore3D.NET.Data.BoundBoxParameter">
             <summary>
@@ -23284,6 +23284,30 @@
             </summary>
             <returns>정지된 Animation 시간</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyAnimationUseCameraKeyMode(System.Boolean)">
+            <summary>
+            Set AniKey Animation Use Camera Key Mode
+            </summary>
+            <param name="bUseCameraKey">true : 설정 / false : 해제</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyAnimationRepeatMode(System.Boolean)">
+            <summary>
+            애니메이션 반복 모드 설정
+            </summary>
+            <param name="nRepeat"> true : 설정 / false : 해제</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetShowAnimationMoveLine(System.Boolean)">
+            <summary>
+            애니메이션 이동경로 표시 여부 설정
+            </summary>
+            <param name="bShow">이동경로 표시 활성화 (1 == true : 0 == false)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetCurrentAniKeyAnimation(System.Single)">
+            <summary>
+            현재 애니메이션 커서 위치 설정
+            </summary>
+            <param name="fTime">시간</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.KeyItem(System.Int32)">
             <summary>
             Get AnimationKey (By ID)
@@ -23315,6 +23339,21 @@
             <param name="type">Key Type</param>
             <returns>추가된 Animation Key</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.CreateMakerAniKey(System.Single,System.String)">
+            <summary>
+            Marker 추가
+            </summary>
+            <param name="fTime">Time</param>
+            <param name="strTitle">Title</param>
+            <returns>마커 ID</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyTitle(System.Int32,System.String)">
+            <summary>
+            애니메이션 마커 타이틀 수정
+            </summary>
+            <param name="nID">Key ID</param>
+            <param name="strTitle">Title</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.CopyKey(System.Single,VIZCore3D.NET.Data.AnimationKey)">
             <summary>
             Animation Key 복사
@@ -23323,12 +23362,12 @@
             <param name="key">복사할 Key</param>
             <returns>복사된 Animation Key</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.AnimationManager.MoveKey(System.Single,VIZCore3D.NET.Data.AnimationKey)">
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.MoveKey(VIZCore3D.NET.Data.AnimationKey,System.Single)">
             <summary>
-            Animation Key 이동
+             Animation Key 이동
             </summary>
+            <param name="key">이동할 키</param>
             <param name="time">시간</param>
-            <param name="key">이동할 Key</param>
             <returns>Animation Key</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.DeleteKey(System.Int32)">
@@ -34093,6 +34132,8 @@
             간섭검사 중, 결과 반환
             </summary>
             <param name="item">간섭검사 항목</param>
+            <param name="option">간섭검사 결과 그룹화 옵션</param>
+            <returns>간섭검사 목록</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.GetResultItemFromCore(VIZCore3D.NET.Data.ClashTest)">
             <summary>
@@ -35124,6 +35165,138 @@
                 vizcore3d.Frame.XAxisLabelAsPosition = false;   // X-Axis. Frame
                 vizcore3d.Frame.YAxisLabelAsPosition = false;   // Y-Axis. Frame
                 vizcore3d.Frame.ZAxisLabelAsPosition = true;    // Z-Axis. Position
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.XAxisFramePositionPrefix">
+            <summary>
+            X축 좌표 Position Prefix 설정
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+                
+                vizcore3d.Frame.XAxisLabelAsPosition = true;            // X-Axis. Position 
+                vizcore3d.Frame.XAxisFramePositionPrefix = "AB";        // X-Axis Position Prefix
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.YAxisFramePositionPrefix">
+            <summary>
+            Y축 좌표 Position Prefix 설정
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+            
+                vizcore3d.Frame.YAxisLabelAsPosition = true;            // Y-Axis. Position
+                vizcore3d.Frame.YAxisFramePositionPrefix = "AB";        // Y-Axis Position Prefix
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.ZAxisFramePositionPrefix">
+            <summary>
+            Z축 좌표 Position Prefix 설정
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+                
+                vizcore3d.Frame.ZAxisLabelAsPosition = true;            // Z-Axis. Position       
+                vizcore3d.Frame.ZAxisFramePositionPrefix = "AB";        // Z-Axis Position Prefix
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.XAxisFrameIDPrefix">
+            <summary>
+            X축 좌표 ID Prefix 설정
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+                
+                vizcore3d.Frame.XAxisLabelAsPosition = false;       // X-Axis. Frame
+                vizcore3d.Frame.XAxisFrameIDPrefix = "AB";          // X-Axis ID Prefix
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.YAxisFrameIDPrefix">
+            <summary>
+            Y축 좌표 ID Prefix 설정
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+            
+                vizcore3d.Frame.YAxisLabelAsPosition = false;       // Y-Axis. Frame
+                vizcore3d.Frame.YAxisFrameIDPrefix = "AB";          // Y-Axis ID Prefix    
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.FrameManager.ZAxisFrameIDPrefix">
+            <summary>
+            Z축 좌표 ID Prefix 설정
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+                if (vizcore3d.Model.IsOpen() == false) return;
+                if (vizcore3d.Frame.HasFrame == false) return;
+                
+                vizcore3d.Frame.ZAxisLabelAsPosition = false;       // Z-Axis. Frame
+                vizcore3d.Frame.ZAxisFrameIDPrefix = "AB";          // Z-Axis ID Prefix
             }
             ]]>
             </code> 
@@ -40441,7 +40614,7 @@
               
                 vizcore3d.Model.ExportGridReverse(
                     "C:\\Temp\\Model.viz"   /* Path */
-                    , boundBoxes              /* BoundBox[] */
+                    , boundBoxes              /* BoundBox */
                     , false                 /* Keep Structure */
                     );
             }
