@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VIZCore3D.NET.Data;
 
 namespace VIZCore3D.NET.NoteTransform
 {
@@ -553,7 +554,7 @@ namespace VIZCore3D.NET.NoteTransform
             }
 
             // Rotate Selected Object
-            vizcore3d.Object3D.Transform.Rotate(index.ToArray(), x, y, z);
+            vizcore3d.Object3D.Transform.Rotate(index.ToArray(), x, y, z, false);
 
             // Get Rotation Matrix From Object
             VIZCore3D.NET.Data.Matrix3D matrix = vizcore3d.Object3D.Transform.GetTransfromRotateAround(index, x, y, z);
@@ -578,6 +579,52 @@ namespace VIZCore3D.NET.NoteTransform
                 }
                 */
 
+                item.UpdatePosition(matrix);
+            }
+
+            vizcore3d.EndUpdate();
+        }
+
+        private void btnTranslate_Click(object sender, EventArgs e)
+        {
+            string strX = txtDistanceX.Text;
+            string strY = txtDistanceY.Text;
+            string strZ = txtDistanceZ.Text;
+
+            if (String.IsNullOrEmpty(strX) == true) return;
+            if (String.IsNullOrEmpty(strY) == true) return;
+            if (String.IsNullOrEmpty(strZ) == true) return;
+
+            float x = Convert.ToSingle(strX);
+            float y = Convert.ToSingle(strY);
+            float z = Convert.ToSingle(strZ);
+
+            if (lvNodes.Items.Count == 0) return;
+
+            // Set Selected Object
+            List<int> index = new List<int>();
+            for (int i = 0; i < lvNodes.Items.Count; i++)
+            {
+                ListViewItem lvi = lvNodes.Items[i];
+
+                string strIndex = lvi.SubItems[0].Text;
+
+                index.Add(Convert.ToInt32(strIndex));
+            }
+
+            vizcore3d.Object3D.Transform.Move(index.ToArray(), x, y, z, false);
+
+            VIZCore3D.NET.Data.Matrix3D matrix = new Data.Matrix3D();
+            matrix.Identity();
+            matrix.SetRotate(0, 0, 0, Data.AngleFormat.DEGREE);
+            matrix.SetTranslate(x, y, z);
+
+            List<VIZCore3D.NET.Data.NoteItem> items = vizcore3d.Review.Note.Items;
+
+            vizcore3d.BeginUpdate();
+
+            foreach (VIZCore3D.NET.Data.NoteItem item in items)
+            {       
                 item.UpdatePosition(matrix);
             }
 
