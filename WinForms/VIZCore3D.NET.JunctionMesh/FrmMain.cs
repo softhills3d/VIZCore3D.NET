@@ -582,8 +582,6 @@ namespace VIZCore3D.NET.JuctionMesh
                     csvItem.NameA = values[0].ToString();
                     csvItem.NameB = values[1].ToString();
                     csvItem.IndexA = nameMap.ContainsKey(csvItem.NameA) == true ? nameMap[csvItem.NameA][0] : 0;
-
-                    List<VIZCore3D.NET.Data.Node> nodeB = vizcore3d.Object3D.Find.QuickSearch(csvItem.NameB, true);
                     csvItem.IndexB = nameMap.ContainsKey(csvItem.NameB) == true ? nameMap[csvItem.NameB][0] : 0;
 
                     CsvItems.Add(csvItem);
