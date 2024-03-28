@@ -684,6 +684,11 @@
             View Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.Drawing2D">
+            <summary>
+            Drawing2D
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Controls.ViewControl.Panorama">
             <summary>
             [MANAGER] Panorama Manager
@@ -819,9 +824,14 @@
             Custom Background Image
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Controls.ViewControl.MouseControl">
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.ModelView">
             <summary>
-            Mouse Control
+            Model 3D View
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Controls.ViewControl.DrawingView">
+            <summary>
+            Drawing View
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Controls.ViewControl.#ctor(VIZCore3D.NET.VIZCore3DControl,VIZCore3D.NET.BackgroundImage)">
@@ -2966,6 +2976,16 @@
         <member name="P:VIZCore3D.NET.Data.ClashTestResultItem.Path">
             <summary>
             이동 간섭 검사 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ClashTestResultItem.NodeAVolume">
+            <summary>
+            간섭 부재 A 노드 부피
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ClashTestResultItem.NodeBVolume">
+            <summary>
+            간섭 부재 B 노드 부피
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Data.ClashTestResultItem.#ctor">
@@ -6340,6 +6360,26 @@
         <member name="F:VIZCore3D.NET.Data.Dimensions.D2">
             <summary>
             2D
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.ViewKind">
+            <summary>
+            화면 설정 : 3D / 2D
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ViewKind.Model3D">
+            <summary>
+            3D 모델 화면
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ViewKind.Drawing2D">
+            <summary>
+            2D 화면
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ViewKind.Both">
+            <summary>
+            3D 모델 화면과 2D 화면 모두
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
@@ -23370,6 +23410,13 @@
             <param name="time">시간</param>
             <returns>Animation Key</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.MoveKey(System.Int32,System.Single)">
+            <summary>
+            Animation Key 이동
+            </summary>
+            <param name="id">키 ID</param>
+            <param name="time">시간</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.DeleteKey(System.Int32)">
             <summary>
             Animation Key 삭제
@@ -23383,6 +23430,67 @@
             <param name="time">재생시간</param>
             <param name="tempPath">임시 저장 폴더</param>
             <returns>파일 경로</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.ExportAVI(System.String)">
+            <summary>
+            애니메이션 파일 저장
+            </summary>
+            <param name="strFilePath">파일 경로</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.ImportAVI(System.String)">
+            <summary>
+            애니메이션 파일 열기
+            </summary>
+            <param name="strFilePath">파일 경로</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyAnimationShowEffectMoveAxis(System.Int32)">
+            <summary>
+            애니메이션 보이기 효과 축 설정
+            </summary>
+            <param name="nAxis">nAxis : x축(0) / y축(1) / z축(2)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationShowEffectMoveAxis">
+            <summary>
+            애니메이션 보이기 효과 축 반환
+            </summary>
+            <returns> x축(0) / y축(1) / z축(2) </returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyAnimationShowEffectTimeLength(System.Single)">
+            <summary>
+            애니메이션 보이기효과 시간 설정
+            </summary>
+            <param name="fSecondLength">fSecondLength : 시간</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationShowEffectTimeLength">
+            <summary>
+            애니메이션 보이기효과 시간 반환
+            </summary>
+            <returns>시간</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyAnimationShowEffectMoveLength(System.Single)">
+            <summary>
+            애니메이션 보이기 효과 이동거리 설정
+            </summary>
+            <returns>fMoveLength : 이동거리</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationShowEffectMoveLength">
+            <summary>
+            애니메이션 보이기 효과 이동거리 반환
+            </summary>
+            <returns>이동거리</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationNumber">
+            <summary>
+            애니메이션 개수
+            </summary>
+            <returns>애니메이션 개수</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationID(System.Int32)">
+            <summary>
+            애니메이션 아이디 반환
+            </summary>
+            <param name="index">애니메이션 Index</param>
+            <returns>애니메이션 ID</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.AreaManager">
             <summary>
@@ -23652,6 +23760,68 @@
         <member name="M:VIZCore3D.NET.Manager.AvatarPathManager.SaveFileDialog">
             <summary>
             아바타 이동경로 저장 다이얼로그 실행
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.Drawing2DManager">
+            <summary>
+             Drawing 2D Manager Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Object2D">
+            <summary>
+            Object2D Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Handle">
+            <summary>
+            View Handle
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Handler">
+            <summary>
+            View Handler
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.MouseControl">
+            <summary>
+            Mouse Control
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Render">
+            <summary>
+            2D View 갱신
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.Drawing2DObjectManager">
+            <summary>
+             Drawing 2D Object Manager Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DObjectManager.ModelScale">
+            <summary>
+            도면에 생성할 모델 크기 비율 (기본 : 1 / 200 )
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.AddModel">
+            <summary>
+            3D에서 현재 화면 방향의 모델 추가
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.AddSectionModel">
+            <summary>
+            3D에서 활성화 단면의 모델 추가
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.LanguageKind">
@@ -25090,6 +25260,11 @@
             <param name="copyCurveForwardDir">false시 왼쪽 복사</param>
             <param name="copyCurveBackwardDir">복사 길이 제한</param>
             <returns>곡면 라인 복사된 정점리스트</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetJunctionMesh(System.Int32,System.Int32)">
+            <summary>
+            블록과 블록 검사 대상
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
@@ -34299,6 +34474,19 @@
             </code> 
             </example>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.ExportClashTestTask(System.String)">
+            <summary>
+            간섭검사 저장
+            </summary>
+            <param name="path">저장 경로</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ClashManager.ImportClashTestTask(System.String,System.Boolean)">
+            <summary>
+            간섭검사 저장파일 열기
+            </summary>
+            <param name="path">저장 경로</param>
+            <param name="type">타입</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.ColorManager">
             <summary>
             Color Manager
@@ -40431,7 +40619,7 @@
             3D Grid(Bounding Box) 내보내기
             </summary>
             <param name="path">내보내기 파일</param>
-            <param name="boundBox">내보내기 영역</param>
+            <param name="boundBoxes">내보내기 영역</param>
             <param name="keepStructure">구조 유지 여부</param>
             <param name="visibleOnly">보이는 모델만 내보내기</param>
             <returns>결과</returns>
@@ -40445,16 +40633,14 @@
             {
                 if (vizcore3d.Model.IsOpen() == false) return;
             
-                float[] boundBox = new float[]
-                {
-                    0.0f
-                    , 0.0f
-                    , 0.0f
-                    , 100.0f
-                    , 100.0f
-                    , 100.0f
-                };
+                List<int> index = new List<int>();
+                index.Add(0);
+                Data.BoundBox3D rootBox = VIZCtrl.Object3D.GetBoundBox(index, false);
+                BoundBox3D[] boundBoxes = rootBox.Subtract(boundBox);
             
+                //boundBoxes 리스트를 float[][]로 변환
+                float[][] boundBoxArray = boundBoxes.Select(box =>new float[] { box.MinX, box.MinY, box.MinZ,box.MaxX, box.MaxY, box.MaxZ }).ToArray();
+                
                 vizcore3d.Model.ExportGrid(
                     "C:\\Temp\\Model.viz"   /* Path */
                     , boundBox              /* BoundBox */
@@ -44424,8 +44610,8 @@
                 if (items == null) return;
              
                  vizcore3d.Object3D.SplitObjects(
-                     sectionId               /* Section ID */
-                     , true                  /* SelectedFlagOnly */
+                     section.ID                /* Section ID */
+                     , false                   /* selectedOnly*/
                      );
              }
              ]]>
@@ -44436,8 +44622,8 @@
              <summary>
              모델 자르기
              </summary>
-             <param name="sectionId">내보내기 영역</param>
-             <param name="selectedOnly">선택된 모델만 내보내기</param>
+             <param name="path">저장 파일 경로</param>
+             <param name="sectionId">섹션 ID</param>
              <returns>결과</returns>
              <example>
              <code language="cs">
@@ -44453,15 +44639,11 @@
             
                 VIZCore3D.NET.Data.Section section = vizcore3d.Section.SelectedItem;
             
-                if (section.SectionType != VIZCore3D.NET.Manager.SectionManager.SectionTypes.SECTION) return;
-            
-                List<VIZCore3D.NET.Data.SectionPlane> items = section.Planes;
-            
-                if (items == null) return;
+                string path = "C:\\Model\\Outside.viz";
              
                  vizcore3d.Object3D.SplitObjects(
-                     sectionId               /* Section ID */
-                     , true                  /* SelectedFlagOnly */
+                     path                    /* Save Path*/
+                     , sectionId             /* Section ID */
                      );
              }
              ]]>
@@ -47674,6 +47856,14 @@
             <param name="subId">단면 서브 아이디(ID)</param>
             <param name="axisIndex">축 인덱스 : X축(0), Y축(1), Z축(2), Normal(3)</param>
             <param name="position">위치</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SectionManager.UpdateSectionName(System.Int32,System.Int32,System.String)">
+            <summary>
+            단면 이름 설정
+            </summary>
+            <param name="id">단면 아이디(ID)</param>
+            <param name="subID">단면 서브 아이디(ID)</param>
+            <param name="strSectionName">단면 Title</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.SectionManager.GetComments(System.Int32,System.Int32)">
             <summary>
@@ -59057,6 +59247,11 @@
             View Manager
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.Drawing2D">
+            <summary>
+            Drawing2D Manager
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.Setting">
             <summary>
             Setting Manager
@@ -59370,6 +59565,11 @@
             ]]>
             </code> 
             </example>
+        </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.ViewMode">
+            <summary>
+            화면 설정 (3D / 2D)
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.#ctor">
             <summary>

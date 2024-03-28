@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using VIZCore3D.NET.Data;
 
 namespace VIZCore3D.NET.JuctionMesh
 {
@@ -483,8 +482,7 @@ namespace VIZCore3D.NET.JuctionMesh
 
             if (CsvItems.Count == 0) { return; }
 
-
-            vizcore3d.ShowProgressForm();
+            vizcore3d.ShowWaitForm();
 
             foreach (CSVItem item in CsvItems)
             {
@@ -495,7 +493,7 @@ namespace VIZCore3D.NET.JuctionMesh
                 List<VIZCore3D.NET.Data.Vertex3D> vertex3Ds = vizcore3d.GeometryUtility.GetJunctionMesh(item.IndexA, item.IndexB);
                 if(vertex3Ds == null)
                 {
-                    item.Vertex3Ds = new List<Vertex3D>();
+                    item.Vertex3Ds = new List<VIZCore3D.NET.Data.Vertex3D>();
                 } else
                 {
                     item.Vertex3Ds = vertex3Ds;
@@ -520,40 +518,18 @@ namespace VIZCore3D.NET.JuctionMesh
                             , csvItem.NameB
                             , csvItem.IndexA > 0 ? csvItem.IndexA.ToString() : ""
                             , csvItem.IndexB > 0 ? csvItem.IndexB.ToString() : ""
-                            , csvItem.Count.ToString()
+                            , string.Format("{0:N0}", csvItem.Count)
                             , csvItem.Elapsed.ToString()
                     }
                 ); ;
                 listView.Items.Add(listViewItem);
-
-                int percent = i + 1 / CsvItems.Count;
-                vizcore3d.UpdateProgressFormValue(percent);
             }
+
+            vizcore3d.CloseWaitForm();
 
             listView.EndUpdate();
 
             vizcore3d.CloseProgressForm();
-            //if (vizcore3d.View.XRay.Enable == false)
-            //    vizcore3d.View.XRay.Enable = true;
-
-            //vizcore3d.View.XRay.SelectionObject3DType = VIZCore3D.NET.Data.SelectionObject3DTypes.OPAQUE_OBJECT3D;
-            //vizcore3d.View.XRay.ColorType = VIZCore3D.NET.Data.XRayColorTypes.OBJECT_COLOR;
-
-            //List<int> indexs = new List<int> { 9903, 11531 };
-            //vizcore3d.View.XRay.Select(
-            //    indexs   /* Node */
-            //    , true  /* Selection */
-            //            , true  /* Set Rotation Pivot */
-            //            );
-
-            //vizcore3d.ShapeDrawing.AddVertex(
-            //vertex
-            //  , 0
-            //  , Color.Blue
-            //  , 10
-            //  , 10
-            //  , true
-            //  );
         }
 
         private string SelectCsvFile()
@@ -584,10 +560,12 @@ namespace VIZCore3D.NET.JuctionMesh
 
         private void LoadCsvDataToListView(string filePath)
         {
-            if (string.IsNullOrEmpty(filePath)) return;
+            if (String.IsNullOrEmpty(filePath) == true) return;
 
             listView.BeginUpdate();
             listView.Items.Clear();
+
+            Dictionary<string, List<int>> nameMap = vizcore3d.Object3D.GetNodeNameMap();
 
             CsvItems = new List<CSVItem>();
 
@@ -600,13 +578,10 @@ namespace VIZCore3D.NET.JuctionMesh
                     string[] values = line.Split(',');
                     csvItem.NameA = values[0].ToString();
                     csvItem.NameB = values[1].ToString();
-                    List<VIZCore3D.NET.Data.Node> nodeA = vizcore3d.Object3D.Find.QuickSearch(csvItem.NameA, true);
-                    int indexA = nodeA.Count > 0 ? nodeA[0].Index : 0;
-                    csvItem.IndexA = indexA;
+                    csvItem.IndexA = nameMap.ContainsKey(csvItem.NameA) == true ? nameMap[csvItem.NameA][0] : 0;
 
                     List<VIZCore3D.NET.Data.Node> nodeB = vizcore3d.Object3D.Find.QuickSearch(csvItem.NameB, true);
-                    int indexB = nodeB.Count > 0 ? nodeB[0].Index : 0;
-                    csvItem.IndexB = indexB;
+                    csvItem.IndexB = nameMap.ContainsKey(csvItem.NameB) == true ? nameMap[csvItem.NameB][0] : 0;
 
                     CsvItems.Add(csvItem);
                 }

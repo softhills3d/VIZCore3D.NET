@@ -55,6 +55,7 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -62,8 +63,9 @@
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1MinSize = 300;
-            this.splitContainer1.Size = new System.Drawing.Size(1264, 681);
+            this.splitContainer1.Size = new System.Drawing.Size(1445, 851);
             this.splitContainer1.SplitterDistance = 600;
+            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox2
@@ -74,9 +76,11 @@
             this.groupBox2.Controls.Add(this.listView);
             this.groupBox2.Controls.Add(this.btnCsvOpen);
             this.groupBox2.Controls.Add(this.btnGetJunctionMesh);
-            this.groupBox2.Location = new System.Drawing.Point(12, 97);
+            this.groupBox2.Location = new System.Drawing.Point(14, 121);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(576, 572);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(572, 715);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Junction Mesh";
@@ -96,9 +100,10 @@
             this.listView.FullRowSelect = true;
             this.listView.GridLines = true;
             this.listView.HideSelection = false;
-            this.listView.Location = new System.Drawing.Point(6, 49);
+            this.listView.Location = new System.Drawing.Point(7, 61);
+            this.listView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(564, 517);
+            this.listView.Size = new System.Drawing.Size(558, 645);
             this.listView.TabIndex = 4;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
@@ -139,9 +144,10 @@
             // 
             // btnCsvOpen
             // 
-            this.btnCsvOpen.Location = new System.Drawing.Point(6, 20);
+            this.btnCsvOpen.Location = new System.Drawing.Point(7, 25);
+            this.btnCsvOpen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCsvOpen.Name = "btnCsvOpen";
-            this.btnCsvOpen.Size = new System.Drawing.Size(121, 23);
+            this.btnCsvOpen.Size = new System.Drawing.Size(138, 29);
             this.btnCsvOpen.TabIndex = 3;
             this.btnCsvOpen.Text = "Open CSV";
             this.btnCsvOpen.UseVisualStyleBackColor = true;
@@ -149,10 +155,10 @@
             // 
             // btnGetJunctionMesh
             // 
-            this.btnGetJunctionMesh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetJunctionMesh.Location = new System.Drawing.Point(449, 20);
+            this.btnGetJunctionMesh.Location = new System.Drawing.Point(151, 26);
+            this.btnGetJunctionMesh.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnGetJunctionMesh.Name = "btnGetJunctionMesh";
-            this.btnGetJunctionMesh.Size = new System.Drawing.Size(121, 23);
+            this.btnGetJunctionMesh.Size = new System.Drawing.Size(138, 29);
             this.btnGetJunctionMesh.TabIndex = 0;
             this.btnGetJunctionMesh.Text = "Junction Mesh";
             this.btnGetJunctionMesh.UseVisualStyleBackColor = true;
@@ -164,19 +170,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.btnModelClose);
             this.groupBox1.Controls.Add(this.btnModelOpen);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(14, 15);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(576, 56);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(572, 70);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Model";
             // 
             // btnModelClose
             // 
-            this.btnModelClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnModelClose.Location = new System.Drawing.Point(449, 20);
+            this.btnModelClose.Location = new System.Drawing.Point(151, 26);
+            this.btnModelClose.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnModelClose.Name = "btnModelClose";
-            this.btnModelClose.Size = new System.Drawing.Size(121, 23);
+            this.btnModelClose.Size = new System.Drawing.Size(138, 29);
             this.btnModelClose.TabIndex = 2;
             this.btnModelClose.Text = "Close Model";
             this.btnModelClose.UseVisualStyleBackColor = true;
@@ -184,9 +192,10 @@
             // 
             // btnModelOpen
             // 
-            this.btnModelOpen.Location = new System.Drawing.Point(6, 20);
+            this.btnModelOpen.Location = new System.Drawing.Point(7, 25);
+            this.btnModelOpen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnModelOpen.Name = "btnModelOpen";
-            this.btnModelOpen.Size = new System.Drawing.Size(121, 23);
+            this.btnModelOpen.Size = new System.Drawing.Size(138, 29);
             this.btnModelOpen.TabIndex = 1;
             this.btnModelOpen.Text = "Open Model";
             this.btnModelOpen.UseVisualStyleBackColor = true;
@@ -194,14 +203,15 @@
             // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.ClientSize = new System.Drawing.Size(1445, 851);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VIZCore3D.NET.GetJunctionMesh";
+            this.Text = "VIZCore3D.NET.JunctionMesh";
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
