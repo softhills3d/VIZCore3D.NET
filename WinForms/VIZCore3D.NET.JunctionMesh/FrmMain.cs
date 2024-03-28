@@ -480,27 +480,33 @@ namespace VIZCore3D.NET.JuctionMesh
         {
             if (vizcore3d.Model.IsOpen() == false) { return; }
 
-            if (CsvItems.Count == 0) { return; }
+            if (listView.Items.Count == 0) return;
 
             vizcore3d.ShowWaitForm();
 
-            foreach (CSVItem item in CsvItems)
+            foreach (ListViewItem lvi in listView.Items)
             {
+                if (lvi.Tag == null) continue;
+                CSVItem item = (CSVItem)lvi.Tag;
+
                 if (item.IndexA == 0 || item.IndexB == 0) continue;
+
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
                 List<VIZCore3D.NET.Data.Vertex3D> vertex3Ds = vizcore3d.GeometryUtility.GetJunctionMesh(item.IndexA, item.IndexB);
                 if(vertex3Ds == null)
                 {
-                    item.Vertex3Ds = new List<VIZCore3D.NET.Data.Vertex3D>();
+                    item.VertexItems = new List<VIZCore3D.NET.Data.Vertex3D>();
                 } else
                 {
-                    item.Vertex3Ds = vertex3Ds;
+                    item.VertexItems = vertex3Ds;
                 }
-                item.Count = item.Vertex3Ds.Count;
+
+                item.Count = item.VertexItems.Count;
 
                 stopwatch.Stop();
+
                 float elapsedSeconds = (float)Math.Round(stopwatch.Elapsed.TotalSeconds, 2);
                 item.Elapsed = elapsedSeconds;
             }
@@ -511,50 +517,47 @@ namespace VIZCore3D.NET.JuctionMesh
             for (int i = 0; i < CsvItems.Count; i++)
             {
                 CSVItem csvItem = CsvItems[i];
-                ListViewItem listViewItem = new ListViewItem(
+                ListViewItem lvi = new ListViewItem(
                 new string[]
                 {
                     csvItem.NameA
                             , csvItem.NameB
-                            , csvItem.IndexA > 0 ? csvItem.IndexA.ToString() : ""
-                            , csvItem.IndexB > 0 ? csvItem.IndexB.ToString() : ""
+                            , csvItem.IndexA > 0 ? csvItem.IndexA.ToString() : String.Empty
+                            , csvItem.IndexB > 0 ? csvItem.IndexB.ToString() : String.Empty
                             , string.Format("{0:N0}", csvItem.Count)
                             , csvItem.Elapsed.ToString()
                     }
-                ); ;
-                listView.Items.Add(listViewItem);
+                );
+
+                lvi.Tag = csvItem;
+                listView.Items.Add(lvi);
             }
 
             vizcore3d.CloseWaitForm();
 
             listView.EndUpdate();
-
-            vizcore3d.CloseProgressForm();
         }
 
         private string SelectCsvFile()
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                // 설정에서 이전 경로 불러오기
-                string initialDir = Properties.Settings.Default.LastDirectory;
-                openFileDialog.InitialDirectory = string.IsNullOrEmpty(initialDir) ? "c:\\" : initialDir;
+            OpenFileDialog dlg = new OpenFileDialog();
 
-                openFileDialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 1;
-                openFileDialog.RestoreDirectory = true;
+            dlg.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            dlg.FilterIndex = 1;
+            dlg.RestoreDirectory = true;
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    // 파일 경로에서 디렉토리 부분만 추출하여 설정에 저장하고, 설정 저장
-                    Properties.Settings.Default.LastDirectory = Path.GetDirectoryName(openFileDialog.FileName);
-                    Properties.Settings.Default.Save();
+            // 설정에서 이전 경로 불러오기
+            string lastDir = Properties.Settings.Default.LastDirectory;
 
-                    // 파일 경로 반환
-                    return openFileDialog.FileName;
-                }
-            }
-            return string.Empty; // 사용자가 취소하거나 선택하지 않은 경우
+            dlg.InitialDirectory = String.IsNullOrEmpty(lastDir) ? "C:\\" : lastDir;
+
+            if (dlg.ShowDialog() != DialogResult.OK) return String.Empty;
+
+            // 파일 경로에서 디렉토리 부분만 추출하여 설정에 저장하고, 설정 저장
+            Properties.Settings.Default.LastDirectory = Path.GetDirectoryName(dlg.FileName);
+            Properties.Settings.Default.Save();
+
+            return dlg.FileName;
         }
 
 
@@ -589,45 +592,34 @@ namespace VIZCore3D.NET.JuctionMesh
 
             foreach (CSVItem csvItem in CsvItems)
             {
-                ListViewItem listViewItem = new ListViewItem(
+                ListViewItem lvi = new ListViewItem(
                 new string[]
                 {
                     csvItem.NameA
-                            , csvItem.NameB
-                            , csvItem.IndexA > 0 ? csvItem.IndexA.ToString() : ""
-                            , csvItem.IndexB > 0 ? csvItem.IndexB.ToString() : ""
-                            , ""
-                            , ""
+                    , csvItem.NameB
+                    , csvItem.IndexA > 0 ? csvItem.IndexA.ToString() : String.Empty
+                    , csvItem.IndexB > 0 ? csvItem.IndexB.ToString() : String.Empty
+                    , String.Empty
+                    , String.Empty
                     }
                 );
-                listView.Items.Add(listViewItem);
+
+                lvi.Tag = csvItem;
+                listView.Items.Add(lvi);
             }
 
             listView.EndUpdate();
         }
 
-        private class CSVItem
-        {
-            public string NameA { get; set; }
-            public string NameB { get; set; }
-            public int IndexA { get; set; }
-            public int IndexB { get; set; }
-            public List<VIZCore3D.NET.Data.Vertex3D> Vertex3Ds { get; set; }
-            public int Count { get; set; }
-            public float Elapsed { get; set; }
-
-            public CSVItem() { 
-
-            }
-        }
+        
 
         private void listView_DoubleClick(object sender, EventArgs e)
         {
             if (listView.SelectedItems.Count == 0) return;
+            if (listView.SelectedItems[0].Tag == null) return;
 
-            int index = listView.SelectedItems[0].Index;
-
-            CSVItem csvItem = CsvItems[index];
+            CSVItem csvItem = (CSVItem)listView.SelectedItems[0].Tag;
+            if(csvItem.Count == 0) return;
 
             vizcore3d.BeginUpdate();
 
@@ -643,10 +635,12 @@ namespace VIZCore3D.NET.JuctionMesh
             // Select
             vizcore3d.View.XRay.Select(new List<int>() { csvItem.IndexA, csvItem.IndexB }, true);
 
+            vizcore3d.View.FlyToObject3d(new List<int>() { csvItem.IndexA, csvItem.IndexB });
+
             vizcore3d.ShapeDrawing.Clear();
 
             vizcore3d.ShapeDrawing.AddVertex(
-            csvItem.Vertex3Ds
+            csvItem.VertexItems
               , 0
               , Color.Red
               , 5
@@ -655,6 +649,23 @@ namespace VIZCore3D.NET.JuctionMesh
               );
 
             vizcore3d.EndUpdate();
+        }
+    }
+
+    public class CSVItem
+    {
+        public string NameA { get; set; }
+        public string NameB { get; set; }
+        public int IndexA { get; set; }
+        public int IndexB { get; set; }
+        public List<VIZCore3D.NET.Data.Vertex3D> VertexItems { get; set; }
+        public int Count { get; set; }
+        public float Elapsed { get; set; }
+
+        public CSVItem()
+        {
+            IndexA = 0; IndexB = 0; Count = 0; Elapsed = 0.0f;
+            VertexItems = new List<VIZCore3D.NET.Data.Vertex3D>();
         }
     }
 }
