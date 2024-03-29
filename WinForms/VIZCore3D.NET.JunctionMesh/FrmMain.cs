@@ -507,8 +507,7 @@ namespace VIZCore3D.NET.JuctionMesh
 
                 stopwatch.Stop();
 
-                float elapsedSeconds = (float)Math.Round(stopwatch.Elapsed.TotalSeconds, 2);
-                item.Elapsed = elapsedSeconds;
+                item.Elapsed = Math.Round(stopwatch.Elapsed.TotalSeconds, 2).ToString("F");
             }
 
             listView.BeginUpdate();
@@ -638,13 +637,15 @@ namespace VIZCore3D.NET.JuctionMesh
             vizcore3d.ShapeDrawing.Clear();
 
             vizcore3d.ShapeDrawing.AddVertex(
-            csvItem.VertexItems
-              , 0
-              , Color.Red
-              , 5
-              , 5
-              , true
-              );
+                csvItem.VertexItems
+                , 0
+                , Color.Red
+                , 5
+                , 5
+                , true
+            );
+
+            vizcore3d.TextDrawing.Select(1);
 
             vizcore3d.EndUpdate();
         }
@@ -658,11 +659,11 @@ namespace VIZCore3D.NET.JuctionMesh
         public int IndexB { get; set; }
         public List<VIZCore3D.NET.Data.Vertex3D> VertexItems { get; set; }
         public int Count { get; set; }
-        public float Elapsed { get; set; }
+        public string Elapsed { get; set; }
 
         public CSVItem()
         {
-            IndexA = 0; IndexB = 0; Count = 0; Elapsed = 0.0f;
+            IndexA = 0; IndexB = 0; Count = 0; Elapsed = String.Empty;
             VertexItems = new List<VIZCore3D.NET.Data.Vertex3D>();
         }
     }
