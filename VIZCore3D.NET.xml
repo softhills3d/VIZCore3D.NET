@@ -3380,6 +3380,11 @@
             三维可视化模型工艺数字化系统 + PlugIn
             </summary>
         </member>
+        <member name="F:VIZCore3D.NET.Data.Products.VIZCOREXD_NET">
+            <summary>
+            VIZCoreXD.NET
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ModelProgressModes">
             <summary>
             MODEL Progress Argument Modes
@@ -11308,6 +11313,26 @@
         <member name="P:VIZCore3D.NET.Data.SettingItems.FrameZAxisAsPosition">
             <summary>
             Z축 좌표로 표시
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameXSetPrefix">
+            <summary>
+            X축 접두사 설정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameYSetPrefix">
+            <summary>
+            Y축 접두사 설정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameZSetPrefix">
+            <summary>
+            Z축 접두사 설정
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.FrameSetUserPrefix">
+            <summary>
+            사용자 접두사 설정
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.SectionShowSectionLine">
@@ -25261,10 +25286,13 @@
             <param name="copyCurveBackwardDir">복사 길이 제한</param>
             <returns>곡면 라인 복사된 정점리스트</returns>
         </member>
-        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetJunctionMesh(System.Int32,System.Int32)">
+        <member name="M:VIZCore3D.NET.Manager.GeometryUtilityManager.GetJunctionMesh(System.Int32,System.Int32,System.Boolean)">
             <summary>
-            블록과 블록 검사 대상
+            지정된 노드와 노드의 접합(Junction) 부분의 Mesh 정보 반환
             </summary>
+            <param name="indexA">노드 A 인덱스</param>
+            <param name="indexB">노드 B 인덱스</param>
+            <param name="visible">기본 가시화 여부</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>

@@ -139,7 +139,7 @@ namespace VIZCore3D.NET.JuctionMesh
             // ================================================================
             #region 설정 - 기본
             // 모델 자동 언로드 (파일 노드 언체크 시, 언로드)
-            vizcore3d.Model.UncheckToUnload = true;
+            vizcore3d.Model.UncheckToUnload = false;
 
             // 모델 열기 시, Edge 정보 로드 활성화
             vizcore3d.Model.LoadEdgeData = true;
@@ -457,7 +457,12 @@ namespace VIZCore3D.NET.JuctionMesh
         /// </summary>
         private void InitializeVIZCore3DEvent()
         {
+            ckHideModel.CheckedChanged += CkHideModel_CheckedChanged;
+        }
 
+        private void CkHideModel_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.Object3D.Show(new List<int>() { 0 }, !ckHideModel.Checked);
         }
 
         private void btnModelOpen_Click(object sender, EventArgs e)
@@ -494,11 +499,12 @@ namespace VIZCore3D.NET.JuctionMesh
                 Stopwatch stopwatch = new Stopwatch();
                 stopwatch.Start();
 
-                List<VIZCore3D.NET.Data.Vertex3D> vertex3Ds = vizcore3d.GeometryUtility.GetJunctionMesh(item.IndexA, item.IndexB);
+                List<VIZCore3D.NET.Data.Vertex3D> vertex3Ds = vizcore3d.GeometryUtility.GetJunctionMesh(item.IndexA, item.IndexB, ckInternal.Checked);
                 if(vertex3Ds == null)
                 {
                     item.VertexItems = new List<VIZCore3D.NET.Data.Vertex3D>();
-                } else
+                } 
+                else
                 {
                     item.VertexItems = vertex3Ds;
                 }
@@ -640,12 +646,10 @@ namespace VIZCore3D.NET.JuctionMesh
                 csvItem.VertexItems
                 , 0
                 , Color.Red
-                , 5
-                , 5
+                , 3
+                , 3
                 , true
             );
-
-            vizcore3d.TextDrawing.Select(1);
 
             vizcore3d.EndUpdate();
         }
