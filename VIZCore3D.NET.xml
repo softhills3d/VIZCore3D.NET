@@ -23472,7 +23472,7 @@
             <summary>
             애니메이션 보이기 효과 축 설정
             </summary>
-            <param name="nAxis">nAxis : x축(0) / y축(1) / z축(2)</param>
+            <param name="nAxis">x축(0) / y축(1) / z축(2)</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationShowEffectMoveAxis">
             <summary>
@@ -23484,7 +23484,7 @@
             <summary>
             애니메이션 보이기효과 시간 설정
             </summary>
-            <param name="fSecondLength">fSecondLength : 시간</param>
+            <param name="fSecondLength">시간</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationShowEffectTimeLength">
             <summary>
@@ -23494,9 +23494,9 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.SetAniKeyAnimationShowEffectMoveLength(System.Single)">
             <summary>
-            애니메이션 보이기 효과 이동거리 설정
+             애니메이션 보이기 효과 이동거리 설정
             </summary>
-            <returns>fMoveLength : 이동거리</returns>
+            <param name="fMoveLength">이동거리</param>
         </member>
         <member name="M:VIZCore3D.NET.Manager.AnimationManager.GetAniKeyAnimationShowEffectMoveLength">
             <summary>
@@ -25293,6 +25293,7 @@
             <param name="indexA">노드 A 인덱스</param>
             <param name="indexB">노드 B 인덱스</param>
             <param name="visible">기본 가시화 여부</param>
+            <returns>곡면 라인 복사된 정점리스트</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.GroupManager">
             <summary>
@@ -34507,6 +34508,7 @@
             간섭검사 저장
             </summary>
             <param name="path">저장 경로</param>
+            <returns>저장 성공 여부</returns>
         </member>
         <member name="M:VIZCore3D.NET.Manager.ClashManager.ImportClashTestTask(System.String,System.Boolean)">
             <summary>
@@ -34514,6 +34516,7 @@
             </summary>
             <param name="path">저장 경로</param>
             <param name="type">타입</param>
+            <returns>열기 성공 여부</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ColorManager">
             <summary>
@@ -45175,6 +45178,11 @@
             리뷰 숨기기 이벤트
             </summary>
         </member>
+        <member name="E:VIZCore3D.NET.Manager.ReviewManager.OnReviewStyleEvent">
+            <summary>
+            리뷰 스타일 변경 이벤트
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Manager.ReviewManager.EnableSelection">
             <summary>
             리뷰 항목 선택 활성화 / 비활성화
@@ -45775,6 +45783,12 @@
             
             <summary>
             리뷰 숨기기 이벤트
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ReviewManager.FireOnReviewStyleEvent">
+            
+            <summary>
+            리뷰 스타일 변경 이벤트
             </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.FindManager">

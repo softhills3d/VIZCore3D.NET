@@ -46,6 +46,7 @@
             this.btnDeletePos = new System.Windows.Forms.Button();
             this.btnClearPos = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ckUserViewAnimation = new System.Windows.Forms.CheckBox();
             this.lvUserView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -90,7 +91,6 @@
             this.lbTick = new System.Windows.Forms.Label();
             this.tbPos = new System.Windows.Forms.TrackBar();
             this.timerDetect = new System.Windows.Forms.Timer(this.components);
-            this.ckUserViewAnimation = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -126,7 +126,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1512, 810);
+            this.splitContainer1.Size = new System.Drawing.Size(1394, 810);
             this.splitContainer1.SplitterDistance = 466;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -289,6 +289,18 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "UserView";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // ckUserViewAnimation
+            // 
+            this.ckUserViewAnimation.AutoSize = true;
+            this.ckUserViewAnimation.Checked = true;
+            this.ckUserViewAnimation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckUserViewAnimation.Location = new System.Drawing.Point(288, 16);
+            this.ckUserViewAnimation.Name = "ckUserViewAnimation";
+            this.ckUserViewAnimation.Size = new System.Drawing.Size(80, 16);
+            this.ckUserViewAnimation.TabIndex = 4;
+            this.ckUserViewAnimation.Text = "Animation";
+            this.ckUserViewAnimation.UseVisualStyleBackColor = true;
             // 
             // lvUserView
             // 
@@ -742,7 +754,7 @@
             this.splitContainer2.Panel2.Controls.Add(this.lbTickTotal);
             this.splitContainer2.Panel2.Controls.Add(this.lbTick);
             this.splitContainer2.Panel2.Controls.Add(this.tbPos);
-            this.splitContainer2.Size = new System.Drawing.Size(1042, 810);
+            this.splitContainer2.Size = new System.Drawing.Size(924, 810);
             this.splitContainer2.SplitterDistance = 732;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -772,29 +784,17 @@
             this.tbPos.Location = new System.Drawing.Point(95, 19);
             this.tbPos.Maximum = 1000;
             this.tbPos.Name = "tbPos";
-            this.tbPos.Size = new System.Drawing.Size(935, 45);
+            this.tbPos.Size = new System.Drawing.Size(817, 45);
             this.tbPos.SmallChange = 100;
             this.tbPos.TabIndex = 0;
             this.tbPos.TickFrequency = 100;
             this.tbPos.Scroll += new System.EventHandler(this.tbPos_Scroll);
             // 
-            // ckUserViewAnimation
-            // 
-            this.ckUserViewAnimation.AutoSize = true;
-            this.ckUserViewAnimation.Checked = true;
-            this.ckUserViewAnimation.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckUserViewAnimation.Location = new System.Drawing.Point(288, 16);
-            this.ckUserViewAnimation.Name = "ckUserViewAnimation";
-            this.ckUserViewAnimation.Size = new System.Drawing.Size(80, 16);
-            this.ckUserViewAnimation.TabIndex = 4;
-            this.ckUserViewAnimation.Text = "Animation";
-            this.ckUserViewAnimation.UseVisualStyleBackColor = true;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1512, 810);
+            this.ClientSize = new System.Drawing.Size(1394, 810);
             this.Controls.Add(this.splitContainer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
