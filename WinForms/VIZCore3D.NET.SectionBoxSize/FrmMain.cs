@@ -179,7 +179,9 @@ namespace VIZCore3D.NET.SectionBoxSize
         private string GetFrameLabel(VIZCore3D.NET.Data.Axis axis, int position)
         { 
             VIZCore3D.NET.Data.FrameItem fi = vizcore3d.Frame.GetSnap(axis, Convert.ToSingle(position));
-            return fi.LabelStr;
+            string str = fi.LabelStr;
+            if (str == "0") return String.Empty;
+            else return str;
         }
 
         private void tbMinX_Scroll(object sender, EventArgs e)
@@ -203,7 +205,7 @@ namespace VIZCore3D.NET.SectionBoxSize
         private void tbMinY_Scroll(object sender, EventArgs e)
         {
             cbMinY.SelectedIndexChanged -= new System.EventHandler(cbMinY_SelectedIndexChanged);
-            cbMinY.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Y, tbMinX.Value);
+            cbMinY.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Y, tbMinY.Value);
             cbMinY.SelectedIndexChanged += new System.EventHandler(cbMinY_SelectedIndexChanged);
 
             UpdateSectionBoxSize();
@@ -212,7 +214,7 @@ namespace VIZCore3D.NET.SectionBoxSize
         private void tbMaxY_Scroll(object sender, EventArgs e)
         {
             cbMaxY.SelectedIndexChanged -= new System.EventHandler(cbMaxY_SelectedIndexChanged);
-            cbMaxY.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Y, tbMaxX.Value);
+            cbMaxY.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Y, tbMaxY.Value);
             cbMaxY.SelectedIndexChanged += new System.EventHandler(cbMaxY_SelectedIndexChanged);
 
             UpdateSectionBoxSize();
@@ -221,7 +223,7 @@ namespace VIZCore3D.NET.SectionBoxSize
         private void tbMinZ_Scroll(object sender, EventArgs e)
         {
             cbMinZ.SelectedIndexChanged -= new System.EventHandler(cbMinZ_SelectedIndexChanged);
-            cbMinZ.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Z, tbMinX.Value);
+            cbMinZ.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Z, tbMinZ.Value);
             cbMinZ.SelectedIndexChanged += new System.EventHandler(cbMinZ_SelectedIndexChanged);
 
             UpdateSectionBoxSize();
@@ -230,7 +232,7 @@ namespace VIZCore3D.NET.SectionBoxSize
         private void tbMaxZ_Scroll(object sender, EventArgs e)
         {
             cbMaxZ.SelectedIndexChanged -= new System.EventHandler(cbMaxZ_SelectedIndexChanged);
-            cbMaxZ.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Z, tbMaxX.Value);
+            cbMaxZ.Text = GetFrameLabel(VIZCore3D.NET.Data.Axis.Z, tbMaxZ.Value);
             cbMaxZ.SelectedIndexChanged += new System.EventHandler(cbMaxZ_SelectedIndexChanged);
 
             UpdateSectionBoxSize();
