@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace VIZCore3D.NET.ShapeDrawing
@@ -36,6 +32,9 @@ namespace VIZCore3D.NET.ShapeDrawing
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
 
             btnColor.BackColor = Color.Red;
+            btnGradationColor.BackColor = Color.White;
+
+            btnGradationColor.Enabled = false;
         }
 
         // ================================================
@@ -502,6 +501,11 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , true
                     );
 
+                if (ckGradation.Checked == true)
+                {
+                    SetGradationColor(shapeId);
+                }
+
                 ids.Add(shapeId);
             }
             else if (rbDashLine.Checked == true)
@@ -516,18 +520,31 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , true
                     , Convert.ToSingle(txtDashLength.Text)
                     );
+
+                if (ckGradation.Checked == true)
+                {
+                    foreach (int id in ids)
+                    {
+                       SetGradationColor(id);
+                    }
+                }
             }
             else if (rbCube.Checked == true)
             {
                 shapeType = "Cube";
 
                 shapeId = vizcore3d.ShapeDrawing.AddCube(
-                    GetVertexList() 
+                    GetVertexList()
                     , groupId
                     , btnColor.BackColor
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
+
+                if (ckGradation.Checked == true)
+                {
+                    SetGradationColor(shapeId);
+                }
 
                 ids.Add(shapeId);
             }
@@ -542,6 +559,11 @@ namespace VIZCore3D.NET.ShapeDrawing
                     , Convert.ToSingle(txtRadius.Text)
                     , true
                     );
+
+                if (ckGradation.Checked == true)
+                {
+                     SetGradationColor(shapeId);
+                }
 
                 ids.Add(shapeId);
             }
@@ -565,6 +587,26 @@ namespace VIZCore3D.NET.ShapeDrawing
 
             AddList(ids, groupId, shapeType);
         }
+
+        private void SetGradationColor(int shapeId)
+        {
+            List<Data.VertexColorData> vertexColor = vizcore3d.ShapeDrawing.VertexColor.GetColor(shapeId);
+
+            for (int i = 0; i < vertexColor.Count; i++)
+            {
+
+                int r = (int)((btnColor.BackColor.R * (1.0 - (double)i / vertexColor.Count)) + (btnGradationColor.BackColor.R * ((double)i / vertexColor.Count)));
+                int g = (int)((btnColor.BackColor.G * (1.0 - (double)i / vertexColor.Count)) + (btnGradationColor.BackColor.G * ((double)i / vertexColor.Count)));
+                int b = (int)((btnColor.BackColor.B * (1.0 - (double)i / vertexColor.Count)) + (btnGradationColor.BackColor.B * ((double)i / vertexColor.Count)));
+
+                vertexColor[i].color = System.Drawing.Color.FromArgb(r, g, b);
+            }
+
+            vizcore3d.ShapeDrawing.VertexColor.SetColor(shapeId, vertexColor);
+            vizcore3d.ShapeDrawing.VertexColor.Enable = true;
+            vizcore3d.EndUpdate();
+        }
+
 
         private void DrawByEdgeVertex(List<Data.Node> node)
         {
@@ -944,6 +986,17 @@ namespace VIZCore3D.NET.ShapeDrawing
             btnColor.BackColor = dlg.Color;
         }
 
+        private void btnGradationColor_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.AllowFullOpen = true;
+            dlg.ShowHelp = true;
+
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            btnGradationColor.BackColor = dlg.Color;
+        }
+
         private void ckUseDepthTest_CheckedChanged(object sender, EventArgs e)
         {
             vizcore3d.ShapeDrawing.DepthTest = ckUseDepthTest.Checked;
@@ -1097,6 +1150,44 @@ namespace VIZCore3D.NET.ShapeDrawing
                 lvList.Items.RemoveAt(index[i]);
             }
             lvList.EndUpdate();
+        }
+
+        private void ckGradation_ChekedChanged(object sender, EventArgs e)
+        {
+            if (ckGradation.Checked == true) 
+            { 
+                btnGradationColor.Enabled = true;
+
+                if (lvList.Items.Count > 0)
+                {
+                    MessageBox.Show("그라데이션 모드로 전환되어 초기화 됩니다.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    vizcore3d.ShapeDrawing.Clear();
+
+                    lvList.BeginUpdate();
+                    lvList.Items.Clear();
+                    lvList.EndUpdate();
+                }
+
+            }
+
+            if (ckGradation.Checked == false) 
+            {  
+                btnGradationColor.Enabled = false;
+
+                if (lvList.Items.Count > 0)
+                {
+                    MessageBox.Show("기본 모드로 전환되어 초기화 됩니다.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    vizcore3d.ShapeDrawing.Clear();
+
+                    lvList.BeginUpdate();
+                    lvList.Items.Clear();
+                    lvList.EndUpdate();
+                }
+                    
+            }
+
         }
     }
 }

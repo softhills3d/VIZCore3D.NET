@@ -6633,6 +6633,66 @@
             MAX
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.DWG_Version">
+            <summary>
+            Drawing 2D : DWG Version
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.DWG_Version.DWG_R15_2000">
+            <summary>
+            DWG_R15_2000
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.DWG_Version.DWG_R18_2004">
+            <summary>
+            DWG_R18_2004
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.DWG_Version.DWG_R21_2007">
+            <summary>
+            DWG_R21_2007
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.DWG_Version.DWG_R24_2010">
+            <summary>
+            DWG_R24_2010
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.DWG_Version.DWG_R27_2013">
+            <summary>
+            DWG_R27_2013
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.DWG_Version.DWG_R32_2018">
+            <summary>
+            DWG_R32_2018
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.BLOCKVIEW_KIND">
+            <summary>
+            Drawing 2D : Block View Kind
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.BLOCKVIEW_KIND.BV_NONE">
+            <summary>
+            알수없음
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.BLOCKVIEW_KIND.BV_BLOCK">
+            <summary>
+            Block 블록
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.BLOCKVIEW_KIND.BV_SIMULATION">
+            <summary>
+            탑재 Simulation 
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.BLOCKVIEW_KIND.BV_BOARD">
+            <summary>
+            상황판
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.ToolbarItems">
             <summary>
             Toolbar Items
@@ -7206,6 +7266,11 @@
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MODEL_INFORMATION">
             <summary>
             Model Information
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_MODEL_SECURITY">
+            <summary>
+            Model Security
             </summary>
         </member>
         <member name="F:VIZCore3D.NET.Data.ToolbarItems.MAIN_FRAME_OPEN">
@@ -11073,6 +11138,21 @@
             Section Plane Edge Collection Class
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Data.Security">
+            <summary>
+            Security Data Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Security.SecurityPassword">
+            <summary>
+            열람 암호
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.Security.SecurityExpireDate">
+            <summary>
+            열람 만료일
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Data.SelectionBox">
             <summary>
             Selection Box Class
@@ -11719,9 +11799,19 @@
             툴바 - 홈
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarHomeDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarHomePosition">
             <summary>
-            툴바 - 홈 : DockStyle
+            툴바 - 홈 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarHomePrePosition">
+            <summary>
+            툴바 - 홈 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarHomeLocation">
+            <summary>
+            툴바 - 홈 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarNote">
@@ -11729,9 +11819,19 @@
             툴바 - 노트
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarNoteDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarNotePosition">
             <summary>
-            툴바 - 노트 : DockStyle
+            툴바 - 노트 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarNotePrePosition">
+            <summary>
+            툴바 - 노트 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarNoteLocation">
+            <summary>
+            툴바 - 노트 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarMeasure">
@@ -11739,9 +11839,19 @@
             툴바 - 측정
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarMeasureDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarMeasurePosition">
             <summary>
-            툴바 - 측정 : DockStyle
+             툴바 - 측정 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarMeasurePrePosition">
+            <summary>
+             툴바 - 측정 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarMeasureLocation">
+            <summary>
+            툴바 - 측정 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSection">
@@ -11749,9 +11859,19 @@
             툴바 - 단면
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSectionDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSectionPosition">
             <summary>
-            툴바 - 단면 : DockStyle
+            툴바 - 단면 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSectionPrePosition">
+            <summary>
+            툴바 - 단면 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSectionLocation">
+            <summary>
+            툴바 - 단면 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarClash">
@@ -11759,9 +11879,19 @@
             툴바 - 간섭검사
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarClashDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarClashPosition">
             <summary>
-            툴바 - 간섭검사 : DockStyle
+            툴바 - 간섭검사 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarClashPrePosition">
+            <summary>
+            툴바 - 간섭검사 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarClashLocation">
+            <summary>
+            툴바 - 간섭검사 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarAnimation">
@@ -11769,9 +11899,19 @@
             툴바 - 애니메이션
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarAnimationDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarAnimationPosition">
             <summary>
-            툴바 - 애니메이션 : DockStyle
+            툴바 - 애니메이션 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarAnimationPrePosition">
+            <summary>
+            툴바 - 애니메이션 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarAnimationLocation">
+            <summary>
+            툴바 - 애니메이션 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSimulation">
@@ -11779,9 +11919,19 @@
             툴바 - 시뮬레이션
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSimulationDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSimulationPosition">
             <summary>
-            툴바 - 시뮬레이션 : DockStyle
+            툴바 - 시뮬레이션 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSimulationPrePosition">
+            <summary>
+            툴바 - 시뮬레이션 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarSimulationLocation">
+            <summary>
+            툴바 - 시뮬레이션 : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarPrimitive">
@@ -11789,9 +11939,39 @@
             툴바 - 프리미티브
             </summary>
         </member>
-        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarPrimitiveDockStyle">
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarPrimitivePosition">
             <summary>
-            툴바 - 프리미티브 : DockStyle
+            툴바 - 프리미티브 : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarPrimitivePrePosition">
+            <summary>
+            툴바 - 프리미티브 : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarPrimitiveLocation">
+            <summary>
+            툴바 - 프리미티브 : 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarDrawing2D">
+            <summary>
+            툴바 - Drawing2D
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarDrawing2DPosition">
+            <summary>
+            툴바 - Drawing2D : Panel(Top, Left, Right) 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarDrawing2DPrePosition">
+            <summary>
+            툴바 - Drawing2D : Panel(Top, Left, Right) 이전 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.SettingItems.ToolbarDrawing2DLocation">
+            <summary>
+            툴바 - Drawing2D : 위치
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Data.SettingItems.Shortcut">
@@ -11823,6 +12003,62 @@
             <summary>
             모델 트리 개발자 모드 활성화
             </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Data.ToolbarItem">
+            <summary>
+            Toolbar Items Class
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ToolbarItem.Name">
+            <summary>
+            툴바 이름
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ToolbarItem.Toolbar">
+            <summary>
+            툴바
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ToolbarItem.Location">
+            <summary>
+            툴바 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ToolbarItem.Type">
+            <summary>
+            툴바 Panel 위치
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ToolbarItem.Visible">
+            <summary>
+            툴바 가시성 여부
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Data.ToolbarItem.PreviousType">
+            <summary>
+            툴바 이전 Panel 위치
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.ToolbarItem.#ctor(System.String,System.Windows.Forms.ToolStrip,System.Drawing.Point,System.String,System.Boolean)">
+            <summary>
+            Construction
+            </summary>
+            <param name="name">툴바 이름</param>
+            <param name="toolbar">툴바</param>
+            <param name="location">툴바 위치</param>
+            <param name="type">툴바 Panel 위치</param>
+            <param name="visible">툴바 가시성 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Data.ToolbarItem.#ctor(System.String,System.Windows.Forms.ToolStrip,System.Drawing.Point,System.String,System.String,System.Boolean)">
+            <summary>
+            Construction
+            </summary>
+            <param name="name">툴바 이름</param>
+            <param name="toolbar">툴바</param>
+            <param name="location">툴바 위치</param>
+            <param name="type">툴바 Panel 위치</param>
+            <param name="previousType">툴바 이전 Panel 위치</param>
+            <param name="visible">툴바 가시성 여부</param>
         </member>
         <member name="T:VIZCore3D.NET.Data.ShaderLightOption">
             <summary>
@@ -13693,6 +13929,38 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Dialogs.BracketTextDialog">
+            <summary>
+            Bracket Text Dialog
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.BracketTextDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.BracketTextDialog.BracketText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.BracketTextDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.BracketTextDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.BracketTextDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Dialogs.ConvertVIZDialog">
             <summary>
             Convert To VIZ Dialog Class
@@ -13800,6 +14068,381 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:VIZCore3D.NET.Dialogs.DisassembleAssemblyDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog">
+            <summary>
+            Drawing2D Print Preview Dialog
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="vizcore"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.SetLanguage">
+            <summary>
+            PrintPreviewDialog 창 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.ShowPreview">
+            <summary>
+            Show Preview
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            ProcessDialogKey
+            </summary>
+            <param name="keyData">Key Data</param>
+            <returns>Result</returns>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.Drawing2DPrintPreviewDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog">
+            <summary>
+            Entity Translate By Axis Dialog
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog.AxisNum">
+            <summary>
+            축
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog.Distance">
+            <summary>
+            거리
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EntityTranslateByAxisDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog">
+            <summary>
+            Entity Translate By Distance Dialog
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.TransType">
+            <summary>
+            이동 타입
+            0 == edge, 1 == 축
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.Axis">
+            <summary>
+            축 설정 반환
+            0 = X축, 1 = Y축, 2 = Z축
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.Distance">
+            <summary>
+            거리
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.EntityTranslateByDistanceDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog">
+            <summary>
+            Create Point Offset Dialog
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.DirectionMeasure">
+            <summary>
+            DirectionMeasure
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.xDirection">
+            <summary>
+            X축 방향
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.yDirection">
+            <summary>
+            Y축 방향
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.zDirection">
+            <summary>
+            Z축 방향
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.Offset">
+            <summary>
+            Offset
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.btnOK_Click(System.Object,System.EventArgs)">
+            <summary>
+            생성
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.btnCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+            취소
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.btnDirectionMeasure_Click(System.Object,System.EventArgs)">
+            <summary>
+            방향측정
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.CreatePointOffsetDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.PointBaseSettingDialog">
+            <summary>
+            Point Base Setting Dialog
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.xPos">
+            <summary>
+            X 좌표
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.yPos">
+            <summary>
+            Y 좌표
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.zPos">
+            <summary>
+            Z 좌표
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.btnOK_Click(System.Object,System.EventArgs)">
+            <summary>
+            생성
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.btnCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+            취소
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PointBaseSettingDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.PositionSelectDialog">
+            <summary>
+            Position Select Dialog
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.PositionSelectDialog.xPos">
+            <summary>
+            X 좌표
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.PositionSelectDialog.yPos">
+            <summary>
+            Y 좌표
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.PositionSelectDialog.zPos">
+            <summary>
+            Z 좌표
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Dialogs.PositionSelectDialog.OKEventHandler">
+            <summary>
+            OK Event Handler
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.btnOK_Click(System.Object,System.EventArgs)">
+            <summary>
+            생성
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.btnCancel_Click(System.Object,System.EventArgs)">
+            <summary>
+            취소
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.btnGetPosition_Click(System.Object,System.EventArgs)">
+            <summary>
+            위치 선택
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.SetPostion(System.Single,System.Single,System.Single)">
+            <summary>
+            위치 설정
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="z"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.GeometryUtility_OnOsnapPickingItem(System.Object,VIZCore3D.NET.Event.EventManager.OsnapPickingItemEventArgs)">
+            <summary>
+            선택한 Osnap 측정 Item 정보
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.PositionSelectDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.PositionSelectDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:VIZCore3D.NET.Dialogs.TextDialog">
+            <summary>
+            Text Dialog
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.TextDialog.vizcore3d">
+            <summary>
+            VIZCore3DControl
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.TextDialog.NoteText">
+            <summary>
+            Note Text
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TextDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.TextDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TextDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.TextDialog.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -14997,6 +15640,58 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Dialogs.SetSecurityDialog">
+            <summary>
+            Security Dialog
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.SetSecurityDialog.TargetFileName">
+            <summary>
+            보안 설정 대상 파일
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.SetSecurityDialog.IsCheckPassword">
+            <summary>
+            암호 설정 여부
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.SetSecurityDialog.IsCheckExpire">
+            <summary>
+            만료일 설정 여부
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.SetSecurityDialog.Password">
+            <summary>
+            암호
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Dialogs.SetSecurityDialog.ExpireDate">
+            <summary>
+            만료일
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SetSecurityDialog.#ctor">
+            <summary>
+            Construction
+            </summary>
+        </member>
+        <member name="F:VIZCore3D.NET.Dialogs.SetSecurityDialog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SetSecurityDialog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Dialogs.SetSecurityDialog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:VIZCore3D.NET.Dialogs.SettingsDialog">
             <summary>
             설정 다이얼로그
@@ -15922,6 +16617,29 @@
             </summary>
             <param name="id">ID</param>
         </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedObjectBy2DViewEventHandler">
+            <summary>
+            Drawing 2D : 드로잉 선택처리 이벤트 핸들러
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedObjectBy2DViewEventArgs">
+            <summary>
+            Drawing 2D : 드로잉 선택처리 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedObjectBy2DViewEventArgs.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedObjectBy2DViewEventArgs.#ctor(System.Int32)">
+            <summary>
+            Construction
+            </summary>
+            <param name="id">ID</param>
+        </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DChangeTextEventHandler">
              <summary>
             Drawing 2D : Text 변경 이벤트 핸들러
@@ -15967,6 +16685,221 @@
             Construction
              </summary>
              <param name="szText">Text</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DChangeBracketTextBy2DViewEventHandler">
+            <summary>
+            Drawing 2D : 괄호 텍스트 숫자 변경 이벤트 핸들러
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DChangeBracketTextBy2DViewEventArgs">
+            <summary>
+            Drawing 2D : 괄호 텍스트 숫자 변경 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DChangeBracketTextBy2DViewEventArgs.Length">
+            <summary>
+            Length
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DChangeBracketTextBy2DViewEventArgs.Use">
+            <summary>
+            사용 여부
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DChangeBracketTextBy2DViewEventArgs.#ctor(System.Single,System.Boolean)">
+             <summary>
+            Construction
+             </summary>
+             <param name="szText">Text</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedHeightRoundBy2DViewEventHandler">
+            <summary>
+            Drawing 2D : HEIGHT ROUND (LEVEL) 선택완료 이벤트 핸들러
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedHeightRoundBy2DViewEventArgs">
+            <summary>
+            Drawing 2D : HEIGHT ROUND (LEVEL) 선택완료 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedHeightRoundBy2DViewEventArgs.X">
+            <summary>
+            Length
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedHeightRoundBy2DViewEventArgs.Y">
+            <summary>
+            사용 여부
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DSelectedHeightRoundBy2DViewEventArgs.#ctor(System.Single,System.Single,System.Single)">
+             <summary>
+            Construction
+             </summary>
+             <param name="szText">Text</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DSetEditValueModeStartBy2DViewEventHandler">
+            <summary>
+            Drawing 2D : 2D Gap 입력 모드 시작 이벤트 핸들러
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasurePickDataEventHandler">
+            <summary>
+            Drawing 2D : 계측점 선택반환
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasurePickDataEventArgs">
+            <summary>
+            Drawing 2D : 계측점 선택반환 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasurePickDataEventArgs.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasurePickDataEventArgs.#ctor(System.Int32)">
+            <summary>
+            Construction
+            </summary>
+            <param name="id">ID</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventHandler">
+            <summary>
+            Drawing 2D : 계측점 축기반 이동거리 설정
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventArgs">
+            <summary>
+            Drawing 2D : 계측점 축기반 이동거리 설정 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventArgs.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventArgs.Distance">
+            <summary>
+            Distance
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventArgs.Axis">
+            <summary>
+            Axis
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventArgs.#ctor(System.Int32,System.Single,System.Int32)">
+            <summary>
+            Construction
+            </summary>
+            <param name="reviewID">review ID</param>
+            <param name="fDistance">Distance</param>
+            <param name="nAxis">Axis</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventHandler">
+            <summary>
+            Drawing 2D : 계측점 Edge기반 이동거리 설정
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs">
+            <summary>
+            Drawing 2D : 계측점 Edge기반 이동거리 설정 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs.Distance">
+            <summary>
+            Distance
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs.UseAxis">
+            <summary>
+            Use Axis
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs.Axis">
+            <summary>
+            Axis
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs.#ctor(System.Int32,System.Single,System.Boolean,System.Int32)">
+            <summary>
+            Construction
+            </summary>
+            <param name="reviewID">review ID</param>
+            <param name="fDistance">Distance</param>
+            <param name="bUseAxisLen">Use Axis</param>
+            <param name="axisIdx">Axis</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventHandler">
+            <summary>
+            Drawing 2D : 계측점 생성 Offset 설정
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs">
+            <summary>
+            Drawing 2D : 계측점 생성 Offset 설정 이벤트 아규먼트
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.Cancel">
+            <summary>
+            Cancel
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.CustomDirection">
+            <summary>
+            Use Custom Direction
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.DirectionX">
+            <summary>
+            Direction X
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.DirectionY">
+            <summary>
+             Direction Y
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.DirectionZ">
+            <summary>
+            Direction Z
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.Offset">
+            <summary>
+            Offset
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Event.EventManager.Drawing2DLevelMeasureCreateAnOffsetEventArgs.#ctor(System.Boolean,System.Boolean,System.Single,System.Single,System.Single,System.Single)">
+            <summary>
+            Construction
+            </summary>
+            <param name="bCancel">Cancel</param>
+            <param name="bGetCustomDirection">Use Custom Direction</param>
+            <param name="fDirectionX">Direction X</param>
+            <param name="fDirectionY">Direction Y</param>
+            <param name="fDirectionZ">Direction Z</param>
+            <param name="fOffset">Offset</param>
         </member>
         <member name="T:VIZCore3D.NET.Event.EventManager.GridSelectedEventHandler">
             <summary>
@@ -24277,6 +25210,149 @@
             아바타 이동경로 저장 다이얼로그 실행
             </summary>
         </member>
+        <member name="T:VIZCore3D.NET.Manager.Drawing2DGapManager">
+            <summary>
+            Drawing 2D Gap Manager Class
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewCreateWithPointGap(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            2D 뷰 - 갭 입력 모드 (세부 설정)
+            </summary>
+            <param name="bBaseBlock">기준블록 사용 여부</param>
+            <param name="bUse2PanelPos">사용 여부</param>
+            <param name="bUsePanelStiffnerPos">사용 여부</param>
+            <param name="bUseOnPanelPos">사용 여부</param>
+            <param name="bUseNotchOffsetPos">사용 여부</param>
+            <param name="bBracketPos">사용 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewCreateWithPointGapType(System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            2D 뷰 - 갭 입력 모드
+            </summary>
+            <param name="bBaseBlock">기준블록 사용 여부</param>
+            <param name="gapType"> 0 == 외판-외판, 1 == 외판-내부제, 2 == 내부제(단차만), 3 == 심 100mm 이격, 4 == 외판 100mm 이격</param>
+            <param name="gapInputType"> 0 = 오차입력, 1 = 단차입력</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewCreateWithPointGapTypeByZJoint(System.Boolean,System.Int32,System.Int32,System.Boolean,System.Int32,System.Single)">
+            <summary>
+            2D 뷰 - 갭 입력 모드 (Z Joint)
+            </summary>
+            <param name="bBaseBlock">기준블록 사용 여부</param>
+            <param name="gapType"> 0 = 외판, 1 = 내부제, 2 = 심 100mm 이격(단차입력만 가능)</param>
+            <param name="gapInputType">0 = 오차입력, 1 = 단차입력</param>
+            <param name="useZJoint">0 = Z Joint 사용하지 않음, 1 = 사용함</param>
+            <param name="stdReviewID">Z Joint 사용시 기준모델 기준 포인트 ID</param>
+            <param name="stdValue"> Z Joint 사용시 기준모델 기준값</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewUseCreatePointGapModelType(System.Int32)">
+            <summary>
+            2D 뷰 - 갭 입력 가능 여부 확인 및 타입 반환
+            </summary>
+            <param name="nID"> 0 : 갭 입력 불가, 1 : 기준 블록, 2 : 탑재 블록</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewCreateGapMeasureData">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 입력된 데이터 갭 생성
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewCreateGapMeasureOffsetData">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 입력된 데이터 Offset 생성
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapByFocusBackword">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 갭 입력 뒤로
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapByFocusForward">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 갭 입력 앞으로
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapByFinish">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 갭 입력 완료
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapByDeleteEditValue">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 갭 값 제거
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapByEditValue(System.Single)">
+            <summary>
+             2D 뷰 - 갭 입력 모드 : 갭 적용
+            </summary>
+            <param name="fGapValue">Gap</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewPointGapByEditValue">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 입력 값 반환
+            </summary>
+            <returns>float형식 (공백인 경우 입력된 값이 아님)</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewPointGapByAxis">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 축 반환
+            </summary>
+            <returns>0 = X축, 1 = Y축, 2 = Z축</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewPointGapOffsetByEditValue">
+            <summary>
+             2D 뷰 - 갭 입력 모드 : Offset 반환
+            </summary>
+            <returns>0 = X축, 1 = Y축, 2 = Z축</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapOffsetByEditValue(System.Single,System.Single,System.Single)">
+            <summary>
+             2D 뷰 - 갭 입력 모드 : Offset 설정
+            </summary>
+            <param name="x"> Offset X</param>
+            <param name="y"> Offset Y</param>
+            <param name="z"> Offset Z</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Set2DViewPointGapOffsetByDeleteEditValue">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : Offset 입력 값 제거
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewPointGapCurrentPos">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 좌표 반환
+            </summary>
+            <returns>Point 정보</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewPointGapDataCurrentMax">
+            <summary>
+             2D 뷰 - 갭 입력 모드 : 입력 수 반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Get2DViewPointGapDataCurrentNum">
+            <summary>
+            2D 뷰 - 갭 입력 모드 : 현재 입력 번호 반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Create2DViewMeasureGapDataByReview(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            2D 뷰 - 설계점 및 측정점 갭 데이터 추가
+            </summary>
+            <param name="reviewIds">리뷰 ID</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DGapManager.Create2DViewMeasureGapDataByReviewFromSelectSection(System.Collections.Generic.List{System.Int32})">
+            <summary>
+            2D 뷰 - 설계점 및 측정점 갭 데이터 추가
+            2D 개체 생성하지않음
+            </summary>
+            <param name="reviewIds">리뷰 ID</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.Drawing2DManager">
             <summary>
              Drawing 2D Manager Class
@@ -24295,6 +25371,21 @@
         <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.View">
             <summary>
             View Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Gap">
+            <summary>
+            Gap Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Template">
+            <summary>
+            Template Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Print">
+            <summary>
+            Print Manager
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.Drawing2DManager.Handle">
@@ -24318,10 +25409,48 @@
             </summary>
             <param name="ctrl">VIZCore Control</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.CanvasKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            2D View Key Up Event
+            </summary>
+            <param name="e"></param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Render">
             <summary>
             2D View 갱신
             </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Is2DViewObjectEditAuthorityUser(System.Int32,System.Int32)">
+            <summary>
+            2D 뷰 - 사용자 편집 권한가능 여부 반환
+            </summary>
+            <param name="objID">개체 ID</param>
+            <param name="authorityType">확인 타입  0 = 일반 사용자만 ID검사, 1 = 편집 계정과 일반 사용자 ID 검사, 2 = 읽기 모드 여부만 검사</param>
+            <returns>사용자 편집 가능 여부</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Set2DViewAuthorityUserType(System.Int32)">
+            <summary>
+            2D 뷰 - 사용자 편집 권한 타입 설정
+            </summary>
+            <param name="userType">0 = Admin, 1 = Admin (저장시 UserID 덮어버리기), 2 = UserID 편집 및 수정 가능, 일반 사용자 연관 편집 가능, 3 = UserID만 편집 및 수정 가능, 일반 사용자 수정 불가 (등록 정보가 없는 경우 모두 수정가능), 4 = 읽기 모드</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Get2DViewAuthorityUserType">
+            <summary>
+            2D 뷰 - 사용자 편집 권한 타입 반환
+            </summary>
+            <returns>사용자 편집 권한 타입</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Set2DViewControlUserID(System.String)">
+            <summary>
+            2D 뷰 - 사용자 편집 ID 설정
+            </summary>
+            <param name="objID">USER ID</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DManager.Get2DViewControlUserID">
+            <summary>
+            2D 뷰 - 사용자 편집 ID 반환 
+            </summary>
+            <returns>USER ID</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.Drawing2DMeasureManager">
             <summary>
@@ -24341,44 +25470,335 @@
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasurePoint">
             <summary>
-            2D 뷰 - 좌표 측정모드
+            2D 측정 - 좌표 측정모드
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLength">
             <summary>
-            2D 뷰 - 거리 측정모드
+            2D 측정 - 거리 측정모드
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthByRefEdge">
             <summary>
-            2D 뷰 - 기준선 거리 측정 모드
+            2D 측정 - 기준선 거리 측정 모드
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthByXAxis">
             <summary>
-            2D 뷰 - X축 거리 측정모드
+            2D 측정 - X축 거리 측정모드
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthByYAxis">
             <summary>
-            2D 뷰 - Y축 거리 측정모드
+            2D 측정 - Y축 거리 측정모드
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthByCurve">
             <summary>
-            2D 뷰 - 실장 거리 측정 모드
+            2D 측정 - 실장 거리 측정 모드
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureCrossPoint">
             <summary>
-            2D 뷰 - 교차점 측정
+            2D 측정 - 교차점 측정
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Add2DMeasureFrom3DMeasure(System.Int32[])">
             <summary>
-            2D 뷰 - 3D 뷰에서 2D 뷰로 측정 추가
+            2D 측정 - 3D 뷰 측정 2D 뷰에 측정 추가
             </summary>
             <param name="ids">측정 IDs</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthWithBracket">
+            <summary>
+            2D 측정 - 개체 생성 (길이측정 (괄호포함) )
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewUseMeasureWithBracket(System.Int32,System.Boolean)">
+            <summary>
+             2D 측정 - 측정 괄호 사용여부 설정
+            </summary>
+            <param name="objID">ID</param>
+            <param name="bEnable">사용 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Get2DViewUseMeasureWithBracket(System.Int32)">
+            <summary>
+            2D 측정 - 측정 괄호 사용여부 반환
+            </summary>
+            <param name="objID">1 == 사용, 0 == 사용하지않음</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetUse2DViewModel3DIntersectionLine(System.Boolean)">
+            <summary>
+            2D 측정 - 2D 뷰 화면 개체 (3D모델) 생성 시 모델에 부재간 교선 추가 여부 설정
+            </summary>
+            <param name="bUse">사용 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Add2DViewResultMeasurePointBy3DModel">
+            <summary>
+            2D 측정 - 탑재 결과오차 생성
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithLevelMeasurePoint">
+            <summary>
+            2D 측정 - 좌표 측정모드 (설계점 생성)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithLevelMeasurePointByPosition(System.Single,System.Single,System.Single)">
+            <summary>
+            2D 측정 - 좌표 측정모드 (설계점 생성)
+            </summary>
+            <param name="xPos">x좌표</param>
+            <param name="yPos">y좌표</param>
+            <param name="zPos">z좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthByXAxisWithBracket">
+            <summary>
+             2D 측정 - X축 거리 측정모드  (입력 괄호 포함)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureLengthByYAxisWithBracket">
+            <summary>
+            2D 측정 - Y축 거리 측정모드  (입력 괄호 포함)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureDirectionalLength(System.Single,System.Boolean,System.Boolean)">
+            <summary>
+            2D 측정 - 방향 거리입력 측정모드 (입력 괄호 포함)
+            </summary>
+            <param name="fLength">표시할 길이</param>
+            <param name="bracketLength1">길이의 상단 괄호 표시여부</param>
+            <param name="bracketLength2">길이의 하단 괄호 표시여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewSelectWithMeasurePointBasePosition">
+            <summary>
+            2D 측정 - 기준점 위치 설정 (선택 방식)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewSelectObjMeasurePointByBasePosition(System.Single,System.Single,System.Single)">
+            <summary>
+            2D 측정 - 기준점 위치 설정
+            </summary>
+            <param name="x">x위치</param>
+            <param name="y">y위치</param>
+            <param name="z">z위치</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Get2DViewSelectObjMeasurePointByBasePosition">
+            <summary>
+            2D 측정 - 기준점 위치 반환
+            </summary>
+            <returns>xyz  위치</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Release2DViewSelectModelWithMeasurePointBasePosition">
+            <summary>
+            2D 측정 - 선택 모델 기준점 위치 설정 해제
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewSelectWithMeasureLevelPointBasePosition">
+            <summary>
+            2D 측정 - LEVEL 기준점 위치 설정 (선택 방식)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithSelectMeasureLevelPointBasePosition">
+            <summary>
+            2D 측정 - LEVEL 기준점 위치에서의 Offset 텍스트 생성
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Get2DView3DObjectWithMeasureLevelPointBasePosition(System.Int32)">
+            <summary>
+            2D 측정 - 2D 개체 (3D 모델) 의 Level BasePosition 값 반환
+            </summary>
+            <param name="objID">ID</param>
+            <returns>Level Base Position</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewCreateWithMeasureModelEdgeExpand">
+            <summary>
+            2D 측정 - 2D 모델 라인 수정기능 추가
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetMeasureObjectMirrorBy2DView(System.Int32,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            2D 측정 - 2D 개체중 연결된 측정 3D 좌표 반전
+            </summary>
+            <param name="objectID">-1 인경우 모든 2D개체</param>
+            <param name="bMirrorX">X축 반전</param>
+            <param name="bMirrorY">Y축 반전</param>
+            <param name="bMirrorZ">Z축 반전</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Set2DViewShowCPPointAsSimple(System.Boolean)">
+            <summary>
+            2D 측정 - 측정 오차만 보기 기능 활성화 설정
+            </summary>
+            <param name="bEnable">사용 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.Get2DViewShowCPPointAsSimple">
+            <summary>
+            2D 측정 - 측정 오차만 보기 기능 활성화 설정 반환
+            </summary>
+            <returns>true = 사용, false = 미사용</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoAutoCreateLevelMeasurePoints(System.Boolean)">
+            <summary>
+            3D 측정 - 자동생성 계측점
+            </summary>
+            <param name="bBevelRootgap">Bevel Root Gap 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoAutoCreateLevelMeasurePointsFromOutfit(System.Int32,System.Single,System.Single,System.Single)">
+            <summary>
+            3D 측정 - 의장 자동생성 계측점
+            </summary>
+            <param name="nAxis">축 ( 0 = X+, 1 = X-, 2 = Y+, 3 = Y-, 4 = Z+, 5 = Z-, 6 = All )</param>
+            <param name="fPipeMinDiameter">파이프 최소 직경</param>
+            <param name="fBoundRange">검색 범위</param>
+            <param name="fPipeDegreeRange">파이프 각</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointByPoints">
+            <summary>
+            3D 측정 - 계측점 (모든 점)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointBySurface">
+            <summary>
+            3D 측정 - 계측점 (곡면 위 점)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointByLineCross">
+            <summary>
+            3D 측정 - 계측점 (선과 선 교차점)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointByLine2SurfaceCross">
+            <summary>
+            3D 측정 - 계측점 (선과 곡면 교차점)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointBy3SurfaceCross">
+            <summary>
+            3D 측정 - 계측점 (3평면의 교점)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointByCircleCenter">
+            <summary>
+            3D 측정 - 계측점 (원 중심)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddUserLevelMeasurePoint(System.Single,System.Single,System.Single)">
+            <summary>
+            3D 측정 - 계측점 (좌표 생성)
+            </summary>
+            <param name="x">X 좌표</param>
+            <param name="y">Y 좌표</param>
+            <param name="z">Z 좌표</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointByOffsetPos">
+            <summary>
+            3D 측정 - 계측점 (선택 지점 Offset 위치 생성)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoLevelMeasurePointPickData">
+            <summary>
+            3D 측정 - 계측점 선택 반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoMoveLevelMeasureDesignPointByRefEdge">
+            <summary>
+            3D 측정 - 계측점 이동(Edge 방향 기반)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoMoveLevelMeasureDesignPointByCircleEdge">
+            <summary>
+             3D 측정 - 계측점 이동(Circle Edge 방향 기반)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.AddGeoMoveLevelMeasureDesignPointByRefAxis">
+            <summary>
+            3D 측정 - 계측점 이동(축 방향 기반)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetLevelMeasurePointOption(System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            3D 측정 - 계측점 설정
+            </summary>
+            <param name="pointKind">0 = 설계점, 1 = 측정점</param>
+            <param name="bPoint3DMeasure">3D 계측 포인트</param>
+            <param name="bPointVerticalMeasure">수직도 계측 포인트</param>
+            <param name="bPointStepMeasure">단차 계측표</param>
+            <param name="bPointDesignMeasure">의장 계측표</param>
+            <param name="bPointLevel">LEVEL</param>
+            <param name="bWeldShrinkage">용접수축지 여부</param>
+            <param name="bRootGap">Root Gap 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.UpdateLevelMeasurePointOption(System.Int32,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            3D 측정 - 계측점 설정 업데이트
+            </summary>
+            <param name="reviewID">review 업데이트</param>
+            <param name="bPoint3DMeasure">3D 계측 포인트</param>
+            <param name="bPointVerticalMeasure">수직도 계측 포인트</param>
+            <param name="bPointStepMeasure">단차 계측표</param>
+            <param name="bPointDesignMeasure">의장 계측표</param>
+            <param name="bPointLevel">LEVEL</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetLevelMeasureVerticalPointOption(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            3D 측정 - 계측점 설정
+            </summary>
+            <param name="bLeft">-X축</param>
+            <param name="bRight">+X축</param>
+            <param name="bBack">-Y축</param>
+            <param name="bFront">+Y축</param>
+            <param name="bBottom">-Z축</param>
+            <param name="bTop">+Z축</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.ShowAllLevelMeasurePoint">
+            <summary>
+            3D 측정 - 계측점 모두 보이기
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.HideAllLevelMeasurePoint">
+            <summary>
+            3D 측정 - 계측점 모두 숨기기
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.HideSelLevelMeasurePoint">
+            <summary>
+            3D 측정 - 계측점 선택 숨기기
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.DeleteAllLevelMeasurePoint">
+            <summary>
+            3D 측정 - 계측점 모두 삭제
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.DeleteSelLevelMeasurePoint">
+            <summary>
+            3D 측정 - 계측점 선택 삭제
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.DeleteLevelMeasurePoint(System.Int32,System.Int32)">
+            <summary>
+            3D 측정 - 해당 설계점 삭제
+            </summary>
+            <param name="nID">review id</param>
+            <param name="dataOnly">0 == 설계점 제거 (리뷰 제거), 1 == 측정점 제거 (데이터만 제거)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetSelectLevelMeasurePoint(System.Int32,System.Boolean)">
+            <summary>
+            3D 측정 - 계측점 선택
+            </summary>
+            <param name="nID">review id</param>
+            <param name="bSelect">선택 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetShowLevelMeasurePoint(System.Int32,System.Boolean)">
+            <summary>
+            3D 측정 - 해당 계측점 선택 설정
+            </summary>
+            <param name="nID">review id</param>
+            <param name="bSelect">선택 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DMeasureManager.SetUnselectAllLevelMeasurePoint">
+            <summary>
+            3D 측정 - 계측점 모두 선택 해제
+            </summary>
         </member>
         <member name="T:VIZCore3D.NET.Manager.Drawing2DObjectManager">
             <summary>
@@ -24390,6 +25810,11 @@
             Drawing2D : 드로잉 생성 이벤트
             </summary>
         </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DSelectedObjectBy2DViewEvent">
+            <summary> 
+             Drawing2D : 드로잉 선택처리 이벤트
+            </summary>
+        </member>
         <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DChangeTextEvent">
             <summary>
             Drawing2D : Text 변경 이벤트
@@ -24398,6 +25823,41 @@
         <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DChangeTableTextEvent">
             <summary>
             Drawing2D : Table Text 변경 이벤트
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DChangeBracketTextBy2DViewEvent">
+            <summary>
+            Drawing2D : 괄호 텍스트 숫자 변경 이벤트 
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DSelectedHeightRoundBy2DViewEvent">
+            <summary>
+            Drawing2D : HEIGHT ROUND (LEVEL) 선택완료 이벤트
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DSetEditValueModeStartBy2DViewEvent">
+            <summary>
+            Drawing2D : 2D Gap 입력 모드 시작 이벤트
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DLevelMeasurePickDataEvent">
+            <summary>
+            Drawing2D :계측점 선택반환
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DMoveLevelMeasureDesignPointByRefAxis">
+            <summary>
+            Drawing2D : 계측점 축기반 이동거리 설정
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DMoveLevelMeasureDesignPointByRefEdgeEvent">
+            <summary>
+            Drawing2D : 계측점 Edge기반 이동거리 설정
+            </summary>
+        </member>
+        <member name="E:VIZCore3D.NET.Manager.Drawing2DObjectManager.OnDrawing2DLevelMeasureCreateAnOffsetEvent">
+            <summary>
+            Drawing2D : 계측점 생성시 Offset 설정
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.Drawing2DObjectManager.ModelScale">
@@ -24417,6 +25877,12 @@
             </summary>
             <param name="e">Event Args</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireDrawing2DSelectedObjectBy2DView(VIZCore3DNETInterop.Drawing2DSelectedObjectBy2DViewEventArgs)">
+            <summary>
+            Drawing2D : 드로잉 선택처리 이벤트
+            </summary>
+            <param name="e">Event Args</param>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireDrawing2DChangeText(VIZCore3DNETInterop.Drawing2DChangeTextEventArgs)">
             <summary>
             Drawing2D : Text 변경 이벤트
@@ -24429,14 +25895,41 @@
             </summary>
             <param name="e">Event Args</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireDrawing2DChangeBracketTextBy2DView(VIZCore3DNETInterop.Drawing2DChangeBracketTextBy2DViewEventArgs)">
+            <summary>
+             Drawing2D : 괄호 텍스트 숫자 변경 이벤트
+            </summary>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireDrawing2DSelectedHeightRoundBy2DView(VIZCore3DNETInterop.Drawing2DSelectedHeightRoundBy2DViewEventArgs)">
+            <summary>
+             Drawing2D : HEIGHT ROUND (LEVEL) 선택완료 이벤트
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireDrawing2DSetEditValueModeStartBy2DView">
+            <summary>
+             Drawing2D : 텍스트 입력 모드 (GapMode) 시작 이벤트
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireDrawing2DLevelMeasurePickData(VIZCore3DNETInterop.Drawing2DLevelMeasurePickDataEventArgs)">
+            <summary>
+            Drawing2D : 계측점 선택반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireMoveLevelMeasureDesignPointByRefAxis(VIZCore3DNETInterop.Drawing2DMoveLevelMeasureDesignPointByRefAxisEventArgs)">
+            <summary>
+            Drawing2D : 계측점 축기반 이동거리 설정
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.FireMoveLevelMeasureDesignPointByRefEdge(VIZCore3DNETInterop.Drawing2DMoveLevelMeasureDesignPointByRefEdgeEventArgs)">
+            <summary>
+            Drawing2D : 계측점 Edge기반 이동거리 설정
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.AddModel">
             <summary>
             3D에서 현재 화면 방향의 모델 추가
-            </summary>
-        </member>
-        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.AddSectionModel">
-            <summary>
-            3D에서 활성화 단면의 모델 추가
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithDetailView">
@@ -24538,6 +26031,11 @@
             <param name="column">열</param>
             <param name="updateCellAutoSize">자동 크기 정렬 여부</param>
             <param name="szText">Text</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateWithBracketText">
+            <summary>
+            2D 뷰 - 화면 개체(텍스트 노트) 생성
+            </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.GetObjectAllinfoBy2DView">
             <summary>
@@ -24663,11 +26161,21 @@
             </summary>
             <returns>2D 뷰 개체 ID</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewMoveWithMeasureModelSamePosition">
+            <summary>
+            2D 뷰 - 선체 내부재 표현 뷰 + 의장 모델 보이기
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.LoadSymbolBy2DView(System.String)">
              <summary>
             2D 뷰 - 심볼 불러오기
              </summary>
              <param name="szSymbolFileName">심볼 파일</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.LoadSymbolBy2DView">
+             <summary>
+            2D 뷰 - 심볼 불러오기
+             </summary>
         </member>
         <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateWithSymbol(System.Int32,System.String)">
             <summary>
@@ -24863,6 +26371,290 @@
             </summary>
             <param name="bUse">true = 자동 그룹 사용</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithModel(System.Boolean)">
+            <summary>
+            2D 뷰 화면 개체 생성
+            현재 3D 화면에서 모델 가져오기
+            </summary>
+            <param name="bViewISO">사용 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithSection">
+            <summary>
+            2D 뷰 화면 개체 생성
+            현재 활성화 단면에서 모델 가져오기
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateWithVerticalTable(System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            2D 뷰 화면 개체(수직도 표) 생성
+            </summary>
+            <param name="nTrueMeasureCellNum">실척칸수</param>
+            <param name="row">행 (수직도 표 생성 기준 데이터)</param>
+            <param name="column">열 (수직도 표 생성 기준 데이터)</param>
+            <param name="useRegex">정규값 표현여부 ( 0 - 사용하지 않음, 1 - 사용함)</param>
+            <param name="nRegex">정규값</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateWithStepMeasureTable(System.Int32,System.Int32)">
+            <summary>
+            2D 뷰 화면 개체(단차 계측표) 생성
+            </summary>
+            <param name="abacusNum">주판 입력 값</param>
+            <param name="insideNum">내부재 입력 값</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateWithToleranceTable(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            2D 뷰 화면 개체(Tolerance 표) 생성
+            </summary>
+            <param name="levelNum">level Num</param>
+            <param name="dimensionNum">dimension Num</param>
+            <param name="verticalityNum">verticality Num</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithSubpicture(System.String)">
+            <summary>
+            2D 뷰 - 개체(Subpictrue) 생성
+            </summary>
+            <param name="szFileName">dxf, dwg 파일</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithHeightRound">
+            <summary>
+            2D 뷰 화면 개체 생성
+            Height Round
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithHeightRoundMeasurePoint">
+            <summary>
+            2D 뷰 화면 개체 생성
+            Height Round (설계점 LP)
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Add2DViewSeamSymbolBy3DModel">
+            <summary>
+            2D 뷰 - Seam Model Symbol 생성
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithCP0">
+            <summary>
+            2D 뷰 - CP0
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithCP1">
+            <summary>
+            2D 뷰 - CP1
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectWithCP2">
+            <summary>
+            2D 뷰 - CP2
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewCreateObjectItemRoundScale(System.Single)">
+            <summary>
+            2D 뷰 - 개체 설정 (Round 크기)
+            </summary>
+            <param name="fRoundDrawScale">크기</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewRulerByCreate3DWithISPlane(System.Boolean)">
+            <summary>
+            2D 뷰 - 2D 오브젝트(단면) 생성시 조선좌표계(Ruler) 자동 생성 설정
+            </summary>
+            <param name="bAddRuler">true : 자동 Ruler 생성</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewRulerByCreate3DWithISPlane">
+            <summary>
+            2D 뷰 - 2D 오브젝트(단면) 생성시 조선좌표계(Ruler) 자동 생성 반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.ShowObjectBy2DView(System.Int32,System.Boolean)">
+            <summary>
+            2D 뷰 - 개체 보이기/숨기기
+            </summary>
+            <param name="nID">ID</param>
+            <param name="show">true : 보이기, false: 숨기기</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.GetSelectedObjectScaleBy2DView">
+            <summary>
+            2D 뷰 - 3D 선택개체 스케일 반환
+            서로 다른 스케일인 경우 0으로 반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Export2DWGBy2DView(System.String,VIZCore3D.NET.Data.DWG_Version)">
+            <summary>
+            2D 뷰 - DWG 저장
+            </summary>
+            <param name="fileName">저장할 파일경로</param>
+            <param name="version">dwg 버전설정</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewSelect3DObjectWithIResultSection(System.Boolean)">
+            <summary>
+            2D 뷰 - 선택된 3D 개체 결과 단면 반영/취소 설정
+            </summary>
+            <param name="bSet">사용 여부</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewSelect3DObjectWithIResultSection">
+            <summary>
+            2D 뷰 - 선택된 3D 개체 결과 단면 반영/취소 설정 반환
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewSelect3DObjectEctelecSimulIndex(System.Int32)">
+            <summary>
+            2D 뷰 - 선택된 3D 개체 기준, 탑재 블럭 설정
+            </summary>
+            <param name="ectelecSimulIndex">0:없음, 1:기준, 2:탑재</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewSelect3DObjectEctelecSimulIndex">
+            <summary>
+            2D 뷰 - 선택된 3D 개체 기준, 탑재 블럭 설정 반환
+            </summary>
+            <returns>0:없음, 1:기준, 2:탑재, -1:도면선택없음</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewTextUnderLine(System.Int32,System.Boolean)">
+            <summary>
+            2D 뷰 - 텍스트 개체 밑줄 추가 설정
+            </summary>
+            <param name="nID">2D 개체 ID</param>
+            <param name="bEnable">ture : 밑줄 설정, false : 밑줄 해제</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewTextUnderLine(System.Int32)">
+            <summary>
+            2D 뷰 - 텍스트 개체 밑줄 추가 설정 반환
+            </summary>
+            <param name="nID">2D 개체 ID</param>
+            <returns></returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewTFAngleBy3DObject(System.Int32,System.Single,System.Single)">
+            <summary>
+            2D 뷰 - 2D 개체 (3D 모델) 의 T/F 각 설정
+            </summary>
+            <param name="objID">2D개체(3D 모델) ID</param>
+            <param name="fAngleT">T각 (dgree)</param>
+            <param name="fAngleF">F각 (dgree)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewTFAngleBy3DObject(System.Int32,System.Single@,System.Single@)">
+            <summary>
+            2D 뷰 - 2D 개체(3D 모델) 의 T/F 각 반환
+            </summary>
+            <param name="objID">2D개체(3D 모델) ID</param>
+            <param name="fAngleT">T각 (dgree)</param>
+            <param name="fAngleF">F각 (dgree)</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.SetObjectBlockNumber(System.Int32,System.String)">
+            <summary>
+            2D 뷰 - 3D화면의 노드에 Block 정보 설정
+            </summary>
+            <param name="nodeIndex">3D 노드 인덱스</param>
+            <param name="szBlockNumber">Block 번호 설정</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewDrawBlockNumBy3DISObj(System.Boolean)">
+            <summary>
+            2D 뷰 - 2D 모델 생성시 Block 번호 생성 여부 설정
+            </summary>
+            <param name="bUse">true == 사용, false == 사용하지않음</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewDrawBlockNumBy3DISObj">
+            <summary>
+            2D 뷰 - 2D 모델 생성시 Block 번호 생성 여부 설정 반환
+            </summary>
+            <returns> true == 사용, false == 사용하지않음 </returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.AddExport2DWGByISPlaneBlockInfo(System.Int32,System.String)">
+            <summary>
+            선택된 단면 도면 출력
+            Block 정보 추가
+            </summary>
+            <param name="nodeIdx">node index (Root)</param>
+            <param name="blockName">표시 블록 넘버</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.ClearExport2DWGByISPlaneBlockInfo">
+            <summary>
+            선택된 단면 도면 출력
+            Block 정보 제거
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Export2DWGByISPlane(System.String,System.Int32,VIZCore3D.NET.Data.DWG_Version)">
+            <summary>
+            선택된 단면 도면 출력
+            </summary>
+            <param name="fileName">저장할 파일경로</param>
+            <param name="anodeSide">Anode 0:양쪽, 1:선수, 2:선미</param>
+            <param name="version">dwg 버전설정</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Add2DViewCopyPasteObjectBySelected">
+            <summary>
+            2D 뷰 - 선택 개체 복사 붙여넣기
+            </summary>
+            <returns>복사된 수</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Get2DViewObjectItemRoundScale(System.Int32)">
+            <summary>
+            2D View - 2D 개체 Round 크기 반환
+            </summary>
+            <param name="objID">개체 ID</param>
+            <returns>Round 크기</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewObjectItemRoundScale(System.Int32,System.Single)">
+            <summary>
+            2D View - 2D 개체 Round 크기 설정
+            </summary>
+            <param name="objID">개체 ID</param>
+            <param name="fRoundDrawScale">Round 크기</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DObjectManager.Set2DViewObjectItemLineThickness(System.Int32,System.Single)">
+            <summary>
+            2D View - 2D 개체 Line Thickness 설정
+            </summary>
+            <param name="objID">개체 ID</param>
+            <param name="fThickness">Line 두께</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.Drawing2DPrintManager">
+            <summary>
+            Drawing 2D Print Manager
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DPrintManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DPrintManager.Set2DViewRenderLineMultiply(System.Boolean,System.Single)">
+            <summary>
+            2D 뷰 - 2D View 뷰 Line 전체 크게 그리기
+            프린트시 DPI 크기에 따른 처리
+            </summary>
+            <param name="bUseRenderMultiply">사용 여부</param>
+            <param name="fMultiply">line Multiply</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DPrintManager.SetUseOffsetObjectColorBy2DView(System.Boolean)">
+            <summary>
+            2D View - 오차표시 2D 개체 색상 활성화 설정
+            </summary>
+            <param name="bUseColor">사용 여부</param>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.Drawing2DTemplateManager">
+            <summary>
+            Drawing 2D Template Manager
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DTemplateManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DTemplateManager.Set2DViewDefaultTemplate(System.Int32)">
+            <summary>
+            2D 뷰 - 템플릿 변경
+            -1 : 빈 템플릿, 0 : SPA3L-AC11 (DSME) 선박 정도계측도, 1 : SPA3P-AC11 (DSME) 사주사상, 2 : PIPE-END-MEAS-R5 (DSME) 의장
+            </summary>
+            <param name="nTemplet">템플릿 번호</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.Drawing2DTemplateManager.Set2DViewTemplateMark(System.String,System.String)">
+            <summary>
+             2D 뷰 - 템플릿 이미지 등록
+            </summary>
+            <param name="standardImageFile">일반 이미지</param>
+            <param name="reverseImageFile">배경반전 이미지</param>
+        </member>
         <member name="T:VIZCore3D.NET.Manager.Drawing2DViewManager">
             <summary>
              Drawing 2D View Manager Class
@@ -24929,7 +26721,6 @@
             <summary>
             2D View Page 이미지 반환
             </summary>
-            <param name="tempPath">경로</param>
             <param name="width">캔버스 Width</param>
             <param name="height">캔버스 Height</param>
             <param name="quality">이미지 퀄리티 0 ~ 100</param>
@@ -33825,6 +35616,11 @@
         <member name="T:VIZCore3D.NET.Manager.ShapeDrawingManager">
             <summary>
             [MANAGER] Shape Drawing Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ShapeDrawingManager.VertexColor">
+            <summary>
+            VertexColor 관리
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Manager.ShapeDrawingManager.DepthTest">
@@ -49629,6 +51425,17 @@
             <param name="password">암호</param>
             <param name="expire">열람 만료일</param>
         </member>
+        <member name="M:VIZCore3D.NET.Manager.SecurityManager.Add(System.Boolean,System.String,System.Boolean,System.DateTime)">
+            <summary>
+            현재 모델에 열람 암호 및 만료일을 지정
+            </summary>
+            <param name="usePassword">암호 여부</param>
+            <param name="password">암호</param>
+            <param name="useexpire">암호 만료일 여부</param>
+            <param name="expire">암호 만료일</param>
+            <exception cref="T:System.NullReferenceException"></exception>
+            <exception cref="T:System.Exception"></exception>
+        </member>
         <member name="M:VIZCore3D.NET.Manager.SecurityManager.HasAuthority(System.String)">
             <summary>
             지정된 파일에 권한 정보 설정 여부
@@ -49641,6 +51448,24 @@
             모델을 조회하기 위한 암호 설정
             </summary>
             <param name="password">열람 암호</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SecurityManager.GetAuthorityFileCount">
+            <summary>
+            권한정보가 포함된 파일 개수
+            </summary>
+            <returns>파일 개수</returns>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SecurityManager.SetSecurityDialog">
+            <summary>
+            모델 보안 설정
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.SecurityManager.CheckAuthorityPassWordExpireDate(System.String)">
+            <summary>
+            모델 보안 설정 비교 및 확인
+            </summary>
+            <param name="filePath">파일 목록</param>
+            <returns>보안 설정 일치 여부</returns>
         </member>
         <member name="T:VIZCore3D.NET.Manager.SettingManager">
             <summary>
@@ -49697,6 +51522,215 @@
             설정 정보를 지정한 파일로 내보내기
             </summary>
             <returns>결과</returns>
+        </member>
+        <member name="T:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager">
+            <summary>
+            ShapeDrawing VertexColor Manager
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.Enable">
+            <summary>
+            Enable VertexColor Mode.
+            </summary>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+            }
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.#ctor(VIZCore3D.NET.VIZCore3DControl)">
+            <summary>
+            Construction
+            </summary>
+            <param name="ctrl">VIZCore Control</param>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.GetColor(System.Int32)">
+            <summary>
+            Vertex Color Mode 색상 반환
+            </summary>
+            <param name="id">SHAPE ID</param>
+            <returns>Color List</returns>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+               List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex =
+                new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+                
+                //Shape 생성 위치
+                {
+                     VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                       new VIZCore3D.NET.Data.Vertex3DItemCollection();
+                
+                      item.Add(new VIZCore3D.NET.Data.Vertex3D(0, 0, 0));
+                      item.Add(new VIZCore3D.NET.Data.Vertex3D(0, 0, 1000));
+                
+                      vertex.Add(item);
+                }
+                
+            
+                //Shape 추가
+                int id = vizcore3d.ShapeDrawing.AddLine(
+                            vertex
+                           , 1
+                           , System.Drawing.Color.Red
+                           , 5.0f
+                           , true);
+                           
+                VIZCore3D.NET.Utility.ColorBrewerPalettesHelper palettes 
+                    = new VIZCore3D.NET.Utility.ColorBrewerPalettesHelper();
+                palettes.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuPu);
+            
+                List<Data.VertexColorData> vertexColor = vizcore3d.ShapeDrawing.VertexColor.GetColor(id);
+                
+                //Set ColorData
+                for (int i = 0; i < vertexColor.Count; i++)
+                {
+                    vertexColor[i].color = palettes.GetPaletteColor(i);
+                }
+            
+                vizcore3d.ShapeDrawing.VertexColor.SetColor(id, vertexColor);
+                vizcore3d.ShapeDrawing.VertexColor.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.VertexColorData})"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{VIZCore3D.NET.Data.VertexColorData})">
+            <summary>
+            Vertex Color Mode 색상 설정
+            </summary>
+            <param name="id">SHAPE ID</param>
+            <param name="vertexColorData">Color List</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+               List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex =
+                new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+                
+                //Shape 생성 위치
+                {
+                     VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                       new VIZCore3D.NET.Data.Vertex3DItemCollection();
+                
+                      item.Add(new VIZCore3D.NET.Data.Vertex3D(0, 0, 0));
+                      item.Add(new VIZCore3D.NET.Data.Vertex3D(0, 0, 1000));
+                
+                      vertex.Add(item);
+                }
+                
+            
+                //Shape 추가
+                int id = vizcore3d.ShapeDrawing.AddLine(
+                            vertex
+                           , 1
+                           , System.Drawing.Color.Red
+                           , 5.0f
+                           , true);
+                           
+                VIZCore3D.NET.Utility.ColorBrewerPalettesHelper palettes 
+                    = new VIZCore3D.NET.Utility.ColorBrewerPalettesHelper();
+                palettes.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuPu);
+            
+                List<Data.VertexColorData> vertexColor = vizcore3d.ShapeDrawing.VertexColor.GetColor(id);
+                
+                //Set ColorData
+                for (int i = 0; i < vertexColor.Count; i++)
+                {
+                    vertexColor[i].color = palettes.GetPaletteColor(i);
+                }
+            
+                vizcore3d.ShapeDrawing.VertexColor.SetColor(id, vertexColor);
+                vizcore3d.ShapeDrawing.VertexColor.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
+            <seealso cref="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.GetColor(System.Int32)"/>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.SetColor(System.Int32,System.Collections.Generic.List{System.Drawing.Color})">
+            <summary>
+            Vertex Color Mode 색상 설정
+            </summary>
+            <param name="id">SHAPE ID</param>
+            <param name="colors">Color List</param>
+            <example>
+            <code language="cs">
+            <![CDATA[
+            // VIZCore3D.NET Control
+            private VIZCore3D.NET.VIZCore3DControl vizcore3d;
+            
+            private void Example()
+            {
+               List<VIZCore3D.NET.Data.Vertex3DItemCollection> vertex =
+                new List<VIZCore3D.NET.Data.Vertex3DItemCollection>();
+                
+                //Shape 생성 위치
+                {
+                     VIZCore3D.NET.Data.Vertex3DItemCollection item =
+                       new VIZCore3D.NET.Data.Vertex3DItemCollection();
+                
+                      item.Add(new VIZCore3D.NET.Data.Vertex3D(0, 0, 0));
+                      item.Add(new VIZCore3D.NET.Data.Vertex3D(0, 0, 1000));
+                
+                      vertex.Add(item);
+                }
+                
+            
+                //Shape 추가
+                int id = vizcore3d.ShapeDrawing.AddLine(
+                            vertex
+                           , 1
+                           , System.Drawing.Color.Red
+                           , 5.0f
+                           , true);
+                           
+                VIZCore3D.NET.Utility.ColorBrewerPalettesHelper palettes 
+                    = new VIZCore3D.NET.Utility.ColorBrewerPalettesHelper();
+                palettes.SetPalette(VIZCore3D.NET.Utility.ColorBrewerPalettesHelper.Kind.Sequential_BuPu);
+            
+                int vertexCount = vizcore3d.ShapeDrawing.VertexColor.GetColor(id).Count;
+                List<System.Drawing.Color> vertexColor = new List<System.Drawing.Color>();
+                
+                //Set ColorData
+                for (int i = 0; i < vertexCount; i++)
+                {
+                    vertexColor[i].color = palettes.GetPaletteColor(i);
+                }
+            
+                vizcore3d.ShapeDrawing.VertexColor.SetColor(id, vertexColor);
+                vizcore3d.ShapeDrawing.VertexColor.Enable = true;
+            }
+            ]]>
+            </code> 
+            </example>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.Clear">
+            <summary>
+            Vertex Color Mode 색상초기화
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.Manager.ShapeDrawingVertexColorManager.Clear(System.Int32)">
+            <summary>
+            Vertex Color Mode 색상초기화
+            </summary>
+            <param name="id">SHAPE ID</param>
         </member>
         <member name="T:VIZCore3D.NET.Manager.ShortcutManager">
             <summary>
@@ -57376,6 +59410,11 @@
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.Lock">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Properties.Resources.Measure_2FaceAngle_16">
             <summary>
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
@@ -57981,6 +60020,11 @@
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
             </summary>
         </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.Section_Align_Frame_16">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.Properties.Resources.Section_Box_16x16">
             <summary>
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
@@ -58257,6 +60301,11 @@
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.Properties.Resources.ZoomOut_32x32">
+            <summary>
+              System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.Properties.Resources.보안설정_32px">
             <summary>
               System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
             </summary>
@@ -59697,6 +61746,14 @@
             <param name="preserveWhitespace">Preserve Whitespace</param>
             <returns>String Value</returns>
         </member>
+        <member name="M:VIZCore3D.NET.Utility.IniValue.GetString(System.Boolean,System.Boolean,System.String)">
+            <summary>
+            Get String
+            </summary>
+            <param name="allowOuterQuotes">Allow Outer Quotes</param>
+            <param name="preserveWhitespace">Preserve Whitespace</param>
+            <returns>String Value</returns>
+        </member>
         <member name="M:VIZCore3D.NET.Utility.IniValue.ToString">
             <summary>
             To String
@@ -60702,6 +62759,11 @@
             </code> 
             </example>
         </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.ToolStripContainer">
+            <summary>
+            ToolStripContainer
+            </summary>
+        </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ToolbarMain">
             <summary>
             Toolbar - Main
@@ -60765,6 +62827,7 @@
             ]]>
             </code> 
             </example>
+            
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ToolbarNote">
             <summary>
@@ -60799,6 +62862,11 @@
         <member name="P:VIZCore3D.NET.VIZCore3DControl.ToolbarPrimitive">
             <summary>
             Toolbar - Primitive
+            </summary>
+        </member>
+        <member name="P:VIZCore3D.NET.VIZCore3DControl.ToolbarDrawing2D">
+            <summary>
+            Toolbar - Drawing 2D
             </summary>
         </member>
         <member name="P:VIZCore3D.NET.VIZCore3DControl.Statusbar">
@@ -61157,6 +63225,11 @@
             Update
             </summary>
         </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.RefreshSecuritySetup">
+            <summary>
+            보안 설정 사용 가능 여부
+            </summary>
+        </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.ShowPrintDialog">
             <summary>
             Show Print Dialog
@@ -61400,6 +63473,303 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DViewMode2DView_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 2D View
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DViewMode3DView_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : 3D View
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DViewMode2D3DView_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : 2D/3D View
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCanvasAddCanvas_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : 캔버스 추가
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCanvasDeleteCanvas_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : 캔버스 삭제
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreate2DViewCameraView2DProjection_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : 카메라 기준 View
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreate2DViewSection2DProjection_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : 모델 단면 View
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreate2DViewISO2DProjection_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : ISO View
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreate2DViewDetailView2DProjection_Click(System.Object,System.EventArgs)">
+            <summary>
+             Drawing2D : Detail View
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDelete_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 모델을 포함한 선택된 Object 삭제
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDeleteAll_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 모델을 포함한 모든 Object 삭제
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingPoint_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Point
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingLine_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Line
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingArc_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Arc
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingPolyline_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Polyline
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingSpline_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Spline
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingCircle_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Circle
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingRectangle_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Rectangle
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingCloudBox_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : CloudBox
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingPolylineCloud_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : PolylineCloud
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingText_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Text
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawingSurfaceNote_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : SurfaceNote
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DDrawing2DViewBracketText_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : BracketText
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawinf2DMeasureDrawingAxis_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 축 (Axis)
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawinf2DMeasureDrawingLevel_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 레벨 (LEVEL)
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPointPoint3DMeasure_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 설계점 생성 - 3D 계측
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPointPointVerticalMeasure_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 설계점 생성 - 수직도
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPointPointDesignMeasure_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 설계점 생성 - 의장 계측
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPointPointLevelMeasure_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 설계점 생성 - 레벨 계측
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DViewinputCreatePoint_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 포인트 입력 생성 (2D)
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DByPoints_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 자유 타입
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DBySurface_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 곡선 위 점
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DByLineCross_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 두 직선 교차점
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DByLine2SurfaceCross_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 직선과 곡면의 교차점
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DBy3SurfaceCross_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 3평면의 교점
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DByCircleCenter_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 파이프 중심
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DByOffsetPos_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 방향 옵셋점
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.p_CreateLevelMeasure(System.Object,System.EventArgs)">
+            <summary>
+            생성 (좌표) 이벤트
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.p_GetPositionSelect(System.Object,System.EventArgs)">
+            <summary>
+            생성 위치선택 이벤트
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DCreateLevelPoint3DByInput_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 직접 입력
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DTranslatePointByAxis_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 축방향 이동
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DTranslatePointByEdge_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : Edge 방향 이동
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.toolbarDrawing2DTranslatePointByCircleEdge_Click(System.Object,System.EventArgs)">
+            <summary>
+            Drawing2D : 원통 축방향 이동
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event Args</param>
         </member>
         <member name="F:VIZCore3D.NET.VIZCore3DControl.components">
             <summary> 
@@ -62370,6 +64740,11 @@
         <member name="M:VIZCore3D.NET.VIZCore3DControl.SetStatusbarInfo">
             <summary>
             statusbarInfo 다국어 셋팅
+            </summary>
+        </member>
+        <member name="M:VIZCore3D.NET.VIZCore3DControl.LeftAlign">
+            <summary>
+            툴바 왼쪽 정렬
             </summary>
         </member>
         <member name="M:VIZCore3D.NET.VIZCore3DControl.ShowSettingDialog">

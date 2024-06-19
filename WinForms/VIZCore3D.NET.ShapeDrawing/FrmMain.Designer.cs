@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.ckGradation = new System.Windows.Forms.CheckBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.rbOsnap = new System.Windows.Forms.RadioButton();
             this.rbEdgeVertex = new System.Windows.Forms.RadioButton();
@@ -54,9 +56,12 @@
             this.txtGroupId = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnGradationColor = new System.Windows.Forms.Button();
             this.btnColor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtDashLength = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.ckUseDepthTest = new System.Windows.Forms.CheckBox();
             this.txtSize = new System.Windows.Forms.TextBox();
             this.txtRadius = new System.Windows.Forms.TextBox();
@@ -65,17 +70,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbDashLine = new System.Windows.Forms.RadioButton();
             this.ckEnable = new System.Windows.Forms.CheckBox();
             this.rbVertex = new System.Windows.Forms.RadioButton();
             this.rbCylinder = new System.Windows.Forms.RadioButton();
             this.rbCube = new System.Windows.Forms.RadioButton();
             this.rbLine = new System.Windows.Forms.RadioButton();
-            this.rbDashLine = new System.Windows.Forms.RadioButton();
-            this.txtDashLength = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -93,26 +98,49 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox7);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox6);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox5);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(1236, 778);
             this.splitContainer1.SplitterDistance = 435;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.ckGradation);
+            this.groupBox7.Location = new System.Drawing.Point(12, 12);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(410, 54);
+            this.groupBox7.TabIndex = 6;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "Mode";
+            // 
+            // ckGradation
+            // 
+            this.ckGradation.AutoSize = true;
+            this.ckGradation.Location = new System.Drawing.Point(34, 23);
+            this.ckGradation.Name = "ckGradation";
+            this.ckGradation.Size = new System.Drawing.Size(78, 16);
+            this.ckGradation.TabIndex = 7;
+            this.ckGradation.Text = "Gradation";
+            this.ckGradation.UseVisualStyleBackColor = true;
+            this.ckGradation.CheckedChanged += new System.EventHandler(this.ckGradation_ChekedChanged);
+            // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label7);
             this.groupBox6.Controls.Add(this.rbOsnap);
             this.groupBox6.Controls.Add(this.rbEdgeVertex);
             this.groupBox6.Controls.Add(this.rbBoundBox);
-            this.groupBox6.Location = new System.Drawing.Point(12, 12);
+            this.groupBox6.Location = new System.Drawing.Point(10, 135);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(410, 62);
+            this.groupBox6.Size = new System.Drawing.Size(410, 85);
             this.groupBox6.TabIndex = 5;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Source";
@@ -131,7 +159,7 @@
             // rbEdgeVertex
             // 
             this.rbEdgeVertex.AutoSize = true;
-            this.rbEdgeVertex.Location = new System.Drawing.Point(122, 32);
+            this.rbEdgeVertex.Location = new System.Drawing.Point(128, 32);
             this.rbEdgeVertex.Name = "rbEdgeVertex";
             this.rbEdgeVertex.Size = new System.Drawing.Size(92, 16);
             this.rbEdgeVertex.TabIndex = 1;
@@ -143,7 +171,7 @@
             // 
             this.rbBoundBox.AutoSize = true;
             this.rbBoundBox.Checked = true;
-            this.rbBoundBox.Location = new System.Drawing.Point(21, 32);
+            this.rbBoundBox.Location = new System.Drawing.Point(34, 32);
             this.rbBoundBox.Name = "rbBoundBox";
             this.rbBoundBox.Size = new System.Drawing.Size(81, 16);
             this.rbBoundBox.TabIndex = 0;
@@ -166,9 +194,9 @@
             this.groupBox5.Controls.Add(this.btnClear);
             this.groupBox5.Controls.Add(this.btnHideAll);
             this.groupBox5.Controls.Add(this.btnShowAll);
-            this.groupBox5.Location = new System.Drawing.Point(12, 380);
+            this.groupBox5.Location = new System.Drawing.Point(12, 455);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(410, 386);
+            this.groupBox5.Size = new System.Drawing.Size(410, 311);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "List";
@@ -249,7 +277,7 @@
             this.lvList.HideSelection = false;
             this.lvList.Location = new System.Drawing.Point(6, 118);
             this.lvList.Name = "lvList";
-            this.lvList.Size = new System.Drawing.Size(398, 262);
+            this.lvList.Size = new System.Drawing.Size(398, 187);
             this.lvList.TabIndex = 3;
             this.lvList.UseCompatibleStateImageBehavior = false;
             this.lvList.View = System.Windows.Forms.View.Details;
@@ -309,9 +337,9 @@
             this.groupBox4.Controls.Add(this.ckNodeIndex);
             this.groupBox4.Controls.Add(this.txtGroupId);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Location = new System.Drawing.Point(12, 316);
+            this.groupBox4.Location = new System.Drawing.Point(12, 394);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(410, 58);
+            this.groupBox4.Size = new System.Drawing.Size(410, 55);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "TAG";
@@ -347,14 +375,25 @@
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnGradationColor);
             this.groupBox3.Controls.Add(this.btnColor);
             this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Location = new System.Drawing.Point(12, 247);
+            this.groupBox3.Location = new System.Drawing.Point(12, 72);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(410, 63);
+            this.groupBox3.Size = new System.Drawing.Size(410, 57);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Style";
+            // 
+            // btnGradationColor
+            // 
+            this.btnGradationColor.Location = new System.Drawing.Point(248, 22);
+            this.btnGradationColor.Name = "btnGradationColor";
+            this.btnGradationColor.Size = new System.Drawing.Size(100, 23);
+            this.btnGradationColor.TabIndex = 6;
+            this.btnGradationColor.Text = "Color";
+            this.btnGradationColor.UseVisualStyleBackColor = true;
+            this.btnGradationColor.Click += new System.EventHandler(this.btnGradationColor_Click);
             // 
             // btnColor
             // 
@@ -388,12 +427,29 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 140);
+            this.groupBox2.Location = new System.Drawing.Point(12, 287);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(410, 101);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Option";
+            // 
+            // txtDashLength
+            // 
+            this.txtDashLength.Location = new System.Drawing.Point(331, 65);
+            this.txtDashLength.Name = "txtDashLength";
+            this.txtDashLength.Size = new System.Drawing.Size(56, 21);
+            this.txtDashLength.TabIndex = 8;
+            this.txtDashLength.Text = "300";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(246, 68);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Dash Length";
             // 
             // ckUseDepthTest
             // 
@@ -469,12 +525,22 @@
             this.groupBox1.Controls.Add(this.rbCylinder);
             this.groupBox1.Controls.Add(this.rbCube);
             this.groupBox1.Controls.Add(this.rbLine);
-            this.groupBox1.Location = new System.Drawing.Point(12, 80);
+            this.groupBox1.Location = new System.Drawing.Point(12, 226);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(410, 54);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Shape";
+            // 
+            // rbDashLine
+            // 
+            this.rbDashLine.AutoSize = true;
+            this.rbDashLine.Location = new System.Drawing.Point(155, 23);
+            this.rbDashLine.Name = "rbDashLine";
+            this.rbDashLine.Size = new System.Drawing.Size(52, 16);
+            this.rbDashLine.TabIndex = 5;
+            this.rbDashLine.Text = "Dash";
+            this.rbDashLine.UseVisualStyleBackColor = true;
             // 
             // ckEnable
             // 
@@ -526,35 +592,19 @@
             this.rbLine.Name = "rbLine";
             this.rbLine.Size = new System.Drawing.Size(47, 16);
             this.rbLine.TabIndex = 0;
+            this.rbLine.TabStop = true;
             this.rbLine.Text = "Line";
             this.rbLine.UseVisualStyleBackColor = true;
             // 
-            // rbDashLine
+            // label7
             // 
-            this.rbDashLine.AutoSize = true;
-            this.rbDashLine.Location = new System.Drawing.Point(155, 23);
-            this.rbDashLine.Name = "rbDashLine";
-            this.rbDashLine.Size = new System.Drawing.Size(52, 16);
-            this.rbDashLine.TabIndex = 5;
-            this.rbDashLine.Text = "Dash";
-            this.rbDashLine.UseVisualStyleBackColor = true;
-            // 
-            // txtDashLength
-            // 
-            this.txtDashLength.Location = new System.Drawing.Point(331, 65);
-            this.txtDashLength.Name = "txtDashLength";
-            this.txtDashLength.Size = new System.Drawing.Size(56, 21);
-            this.txtDashLength.TabIndex = 8;
-            this.txtDashLength.Text = "300";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(246, 68);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 12);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Dash Length";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("굴림", 8F);
+            this.label7.Location = new System.Drawing.Point(34, 60);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(244, 11);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "※ Gradation 모드는 BoundBox만 가능합니다.";
             // 
             // FrmMain
             // 
@@ -569,6 +619,8 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -630,6 +682,10 @@
         private System.Windows.Forms.RadioButton rbDashLine;
         private System.Windows.Forms.TextBox txtDashLength;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnGradationColor;
+        private System.Windows.Forms.CheckBox ckGradation;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label7;
     }
 }
 
