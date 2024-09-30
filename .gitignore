@@ -6,3 +6,4 @@ Thumbs.db
 *.user
 packages/
 VIZCore3D.NET.dll
+/VIZCore3D.NET.xml
