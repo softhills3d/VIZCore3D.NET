@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace VIZCore3D.NET.Import.WDL
 {
@@ -285,7 +286,7 @@ namespace VIZCore3D.NET.Import.WDL
             // 글자 굵게
             vizcore3d.Review.Note.FontBold = true;
             // 지시선(라인) 색상
-            vizcore3d.Review.Note.LineColor = Color.White;
+            vizcore3d.Review.Note.LineColor = Color.Black;
             // 지시선(라인) 두께
             vizcore3d.Review.Note.LineWidth = 2;
             // 지시선 중앙 연결
@@ -726,8 +727,10 @@ namespace VIZCore3D.NET.Import.WDL
 
         private void btnMakeModel_Click(object sender, EventArgs e)
         {
-            int colorIndex = 8;
+            int colorIndex = 7;
             vizcore3d.Primitive.Clear();
+
+            if (wdl == null) return;
 
             // Automation
             //vizcore3d.Primitive.OpenWeldLine(
@@ -833,10 +836,32 @@ namespace VIZCore3D.NET.Import.WDL
 
             if (items.Count == 0) return;
 
+
+            string msg = string.Format("Owner: {0}\r\nContact: {1}\r\nThickness: {2}\r\nSign: {3}\r\nStage: {4}\r\nPR: {5}\r\nPos.: {6}\r\nLength: {7}\r\nAct.: {8}",
+                                    jl.Part                         /* 소유 부재 */
+                                    , jl.ContactPart                /* 접촉 부재 */
+                                    , Convert.ToInt32(Convert.ToSingle(jl.ContactPartWeight)).ToString() /* 각장/두께 */
+                                    , jl.Sign                       /* 개선 */
+                                    , jl.Stage                      /* STAGE */
+                                    , jl.PR                         /* PR */
+                                    , jl.WeldingPosture.ToString() /* 용접자세 */
+                                    , Convert.ToInt32(jl.WeldLineLength).ToString() /* 길이(mm) */
+                                    , jl.ActCode                    /* ACT */
+                                    );
+
+            vizcore3d.Review.Note.Clear();
+
+            VIZCore3D.NET.Data.BoundBox3D partBox = items[0].GetBoundBox();
+            VIZCore3D.NET.Data.Vertex3D notePt = partBox.GetCenter();
+            notePt.Z += partBox.LengthX * 2.0f;
+
+            vizcore3d.Review.Note.AddNoteSurface(msg, notePt, partBox.GetCenter());
+
+
             vizcore3d.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
             vizcore3d.Object3D.Select(items, true, true);
 
-            vizcore3d.View.FlyToObject3d(1.0f);
+            vizcore3d.View.FlyToObject3d(0.1f);
         }
 
         private List<List<Data.Node>> STAGE1;
