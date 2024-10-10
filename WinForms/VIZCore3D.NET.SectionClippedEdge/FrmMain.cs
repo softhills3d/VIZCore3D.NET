@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VIZCore3D.NET.Data;
 
 namespace VIZCore3D.NET.SectionClippedEdge
 {
@@ -639,6 +640,48 @@ namespace VIZCore3D.NET.SectionClippedEdge
                 ckMulti.Enabled = false;
             else
                 ckMulti.Enabled = true;
+        }
+
+        private void btnAddPosition_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            if (vizcore3d.Section.Sections.Count != 0)
+            {
+                vizcore3d.Section.Clear();
+            }
+
+            vizcore3d.BeginUpdate();
+
+            float position = Convert.ToSingle(txtPosition.Text);
+
+            if (rbX.Checked)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.X);
+                VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                vizcore3d.Section.SetCenter(section.ID, -1, position, pos.Y, pos.Z);
+            }
+            else if (rbY.Checked)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.Y);
+                VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                vizcore3d.Section.SetCenter(section.ID, -1, pos.X, position, pos.Z);
+            }
+            else if (rbZ.Checked)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.Z);
+                VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                vizcore3d.Section.SetCenter(section.ID, -1, pos.X, pos.Y, position);
+            }
+
+            vizcore3d.EndUpdate();
+
+            DrawLine();
+        }
+
+        private void btnClear2_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Section.Clear();
         }
     }
 }
