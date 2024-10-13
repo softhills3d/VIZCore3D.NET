@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -680,6 +681,71 @@ namespace VIZCore3D.NET.SectionClippedEdge
         }
 
         private void btnClear2_Click(object sender, EventArgs e)
+        {
+            vizcore3d.Section.Clear();
+        }        
+
+        private void btnSizeChange_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+
+            if (vizcore3d.Section.Sections.Count != 0)
+            {
+                vizcore3d.Section.Clear();
+            }
+
+            float position = Convert.ToSingle(txtPosition2.Text);
+            float xSize = Convert.ToSingle(txtXSize.Text);
+            float ySize = Convert.ToSingle(txtYSize.Text);
+            float zSize = Convert.ToSingle(txtZSize.Text);
+
+            string name = System.IO.Path.GetFileNameWithoutExtension(vizcore3d.Model.Files[0]).ToUpper();
+            string path = string.Format(@"C:\Temp\{0}_ExportGrid.viz", name);            
+            
+            VIZCore3D.NET.Data.BoundBox3D boundBox = vizcore3d.Model.BoundBox;
+
+            VIZCore3D.NET.Data.BoundBox3D newBoundBox = new Data.BoundBox3D(
+                boundBox.CenterX - xSize,
+                boundBox.CenterY - ySize,
+                boundBox.CenterZ - zSize,
+                boundBox.CenterX + xSize,
+                boundBox.CenterY + ySize,
+                boundBox.CenterZ + zSize
+            );            
+
+            vizcore3d.Model.ExportGrid(path, newBoundBox, false);
+
+            if (System.IO.File.Exists(path) == false) return;
+                
+            vizcore3d.Model.Open(path);
+
+            vizcore3d.BeginUpdate();
+
+            if (rbX2.Checked)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.X);
+                VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                vizcore3d.Section.SetCenter(section.ID, -1, position, pos.Y, pos.Z);
+            }
+            else if (rbY2.Checked)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.Y);
+                VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                vizcore3d.Section.SetCenter(section.ID, -1, pos.X, position, pos.Z);
+            }
+            else if (rbZ2.Checked)
+            {
+                VIZCore3D.NET.Data.Section section = vizcore3d.Section.Add(false, Data.Axis.Z);
+                VIZCore3D.NET.Data.Vertex3D pos = vizcore3d.Section.GetCenter(section.ID, -1);
+                vizcore3d.Section.SetCenter(section.ID, -1, pos.X, pos.Y, position);
+            }
+
+            vizcore3d.EndUpdate();
+
+            DrawLine();
+        }
+
+        private void btnClear3_Click(object sender, EventArgs e)
         {
             vizcore3d.Section.Clear();
         }
