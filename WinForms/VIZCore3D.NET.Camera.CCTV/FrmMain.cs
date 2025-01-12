@@ -564,16 +564,30 @@ namespace VIZCore3D.NET.Camera.CCTV
             string y = lvList.SelectedItems[0].SubItems[2].Text;
             string z = lvList.SelectedItems[0].SubItems[3].Text;
 
-            MoveCamera(new Data.Vertex3D(x, y, z), 0.0f);
+            string dx = txtDirX.Text;
+            string dy = txtDirY.Text;
+            string dz = txtDirZ.Text;
+
+            if (String.IsNullOrEmpty(dx) == false && String.IsNullOrEmpty(dy) == false && String.IsNullOrEmpty(dz) == false)
+            {
+                MoveCamera(new Data.Vertex3D(x, y, z), new VIZCore3D.NET.Data.Vector3D(dx, dy, dz), 0.0f);
+            }
+            else
+            {
+                MoveCamera(new Data.Vertex3D(x, y, z), null, 0.0f);
+            }
         }
 
-        private void MoveCamera(VIZCore3D.NET.Data.Vertex3D pt, float distance)
+        private void MoveCamera(VIZCore3D.NET.Data.Vertex3D pt, VIZCore3D.NET.Data.Vector3D dir, float distance)
         {
             vizcore3d.View.Projection = Data.Projections.Perspective;
             vizcore3d.View.FOV = Convert.ToSingle(tbFOV.Value);
             vizcore3d.View.SetPivotPosition(pt.X, pt.Y, pt.Z);
 
-            vizcore3d.View.MoveCamera(pt, distance, false);
+            if(dir == null)
+                vizcore3d.View.MoveCamera(pt, distance, false);
+            else
+                vizcore3d.View.SetPerspectiveCamera(pt.ToVector3D(), dir, new VIZCore3D.NET.Data.Vector3D(0, 0, 1));
         }
 
         private void EnableLoop(CameraDirection dir)

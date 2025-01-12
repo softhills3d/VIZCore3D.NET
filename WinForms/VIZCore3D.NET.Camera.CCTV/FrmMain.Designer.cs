@@ -50,6 +50,10 @@
             this.lbFOV = new System.Windows.Forms.Label();
             this.tbFOV = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtDirX = new System.Windows.Forms.TextBox();
+            this.txtDirY = new System.Windows.Forms.TextBox();
+            this.txtDirZ = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -57,6 +61,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbFOV)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -68,6 +73,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox4);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox3);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
@@ -81,9 +87,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lvList);
-            this.groupBox3.Location = new System.Drawing.Point(12, 293);
+            this.groupBox3.Location = new System.Drawing.Point(12, 357);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(294, 502);
+            this.groupBox3.Size = new System.Drawing.Size(294, 460);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "CCTV";
@@ -103,7 +109,7 @@
             this.lvList.HideSelection = false;
             this.lvList.Location = new System.Drawing.Point(6, 20);
             this.lvList.Name = "lvList";
-            this.lvList.Size = new System.Drawing.Size(274, 464);
+            this.lvList.Size = new System.Drawing.Size(274, 422);
             this.lvList.TabIndex = 0;
             this.lvList.UseCompatibleStateImageBehavior = false;
             this.lvList.View = System.Windows.Forms.View.Details;
@@ -293,6 +299,41 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "FOV";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox4.Controls.Add(this.txtDirZ);
+            this.groupBox4.Controls.Add(this.txtDirY);
+            this.groupBox4.Controls.Add(this.txtDirX);
+            this.groupBox4.Location = new System.Drawing.Point(12, 294);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(294, 57);
+            this.groupBox4.TabIndex = 3;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Direction";
+            // 
+            // txtDirX
+            // 
+            this.txtDirX.Location = new System.Drawing.Point(6, 22);
+            this.txtDirX.Name = "txtDirX";
+            this.txtDirX.Size = new System.Drawing.Size(70, 21);
+            this.txtDirX.TabIndex = 0;
+            // 
+            // txtDirY
+            // 
+            this.txtDirY.Location = new System.Drawing.Point(109, 22);
+            this.txtDirY.Name = "txtDirY";
+            this.txtDirY.Size = new System.Drawing.Size(70, 21);
+            this.txtDirY.TabIndex = 1;
+            // 
+            // txtDirZ
+            // 
+            this.txtDirZ.Location = new System.Drawing.Point(210, 22);
+            this.txtDirZ.Name = "txtDirZ";
+            this.txtDirZ.Size = new System.Drawing.Size(70, 21);
+            this.txtDirZ.TabIndex = 2;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -311,6 +352,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbFOV)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -338,6 +381,10 @@
         private System.Windows.Forms.CheckBox ckEnvironmentLight;
         private System.Windows.Forms.CheckBox ckShadingEffect;
         private System.Windows.Forms.CheckBox ckRealtimeShadow;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox txtDirZ;
+        private System.Windows.Forms.TextBox txtDirY;
+        private System.Windows.Forms.TextBox txtDirX;
     }
 }
 
