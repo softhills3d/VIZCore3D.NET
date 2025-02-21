@@ -640,5 +640,55 @@ namespace VIZCore3D.NET.Camera.CCTV
         {
             DisableLoop();
         }
+
+        private void ckBlur_CheckedChanged(object sender, EventArgs e)
+        {
+            //영역 블러 효과
+            vizcore3d.View.FilterAreaBlur = ckBlur.Checked;
+
+            // 영역 설정
+            vizcore3d.View.SetFilterAreaBlurArea(
+                Convert.ToSingle(txtBlurXMin.Text)
+                , Convert.ToSingle(txtBlurYMin.Text)
+                , Convert.ToSingle(txtBlurXMax.Text)
+                , Convert.ToSingle(txtBlurYMax.Text)
+                );
+
+            // 영역 블러 효과 색상
+            vizcore3d.View.FilterAreaBlurBackgroundColor = Color.FromArgb(
+                Convert.ToInt32(txtBlurColorA.Text)
+                , Convert.ToInt32(txtBlurColorR.Text)
+                , Convert.ToInt32(txtBlurColorG.Text)
+                , Convert.ToInt32(txtBlurColorB.Text)
+                );
+        }
+
+        private void btnSetBlurArea_Click(object sender, EventArgs e)
+        {
+            // 영역 설정
+            vizcore3d.View.SetFilterAreaBlurArea(
+                Convert.ToSingle(txtBlurXMin.Text)
+                , Convert.ToSingle(txtBlurYMin.Text)
+                , Convert.ToSingle(txtBlurXMax.Text)
+                , Convert.ToSingle(txtBlurYMax.Text)
+                );
+        }
+
+        private void btnSetBlurColor_Click(object sender, EventArgs e)
+        {
+            // 영역 블러 효과 색상
+            vizcore3d.View.FilterAreaBlurBackgroundColor = Color.FromArgb(
+                Convert.ToInt32(txtBlurColorA.Text)
+                , Convert.ToInt32(txtBlurColorR.Text)
+                , Convert.ToInt32(txtBlurColorG.Text)
+                , Convert.ToInt32(txtBlurColorB.Text)
+                );
+        }
+
+        private void btnReverseBlur_Click(object sender, EventArgs e)
+        {
+            // 영역 반전
+            vizcore3d.View.ReverseFilterAreaBlur();
+        }
     }
 }
