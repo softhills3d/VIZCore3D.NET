@@ -540,18 +540,20 @@ namespace VIZCore3D.NET.Disassembly
                             0                                                       /* Root Node Index */
                             , VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY     /* Sub Node */
                             );
-
-                
             }
-            else if(index == 1) // Part (Leaf Node)
+            else if (index > 0 && index < 5)
+            {
+                items = vizcore3d.Object3D.FromDepth(++index, false);
+            }
+            else if (index == 5) // Part (Leaf Node)
             {
                 items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PART);
             }
-            else if(index == 2) // Leaf Assembly
+            else if (index == 6) // Leaf Assembly
             {
                 items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.LEAF_ASSEMBLY);
             }
-            else if(index == 3) // Parent of Leaf Assembly
+            else if (index == 7) // Parent of Leaf Assembly
             {
                 items = vizcore3d.Object3D.FromFilter(Data.Object3dFilter.PARENT_LEAF_ASSEMBLY);
             }

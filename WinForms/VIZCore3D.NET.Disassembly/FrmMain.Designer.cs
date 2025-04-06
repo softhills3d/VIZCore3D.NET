@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.rbSelected = new System.Windows.Forms.RadioButton();
+            this.rbGroup = new System.Windows.Forms.RadioButton();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.btnDisassembleBySphere = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -54,8 +56,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtDistance = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.rbGroup = new System.Windows.Forms.RadioButton();
-            this.rbSelected = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -99,6 +99,28 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Disassembly V2";
             // 
+            // rbSelected
+            // 
+            this.rbSelected.AutoSize = true;
+            this.rbSelected.Location = new System.Drawing.Point(252, 47);
+            this.rbSelected.Name = "rbSelected";
+            this.rbSelected.Size = new System.Drawing.Size(72, 16);
+            this.rbSelected.TabIndex = 9;
+            this.rbSelected.Text = "Selected";
+            this.rbSelected.UseVisualStyleBackColor = true;
+            // 
+            // rbGroup
+            // 
+            this.rbGroup.AutoSize = true;
+            this.rbGroup.Checked = true;
+            this.rbGroup.Location = new System.Drawing.Point(252, 24);
+            this.rbGroup.Name = "rbGroup";
+            this.rbGroup.Size = new System.Drawing.Size(57, 16);
+            this.rbGroup.TabIndex = 8;
+            this.rbGroup.TabStop = true;
+            this.rbGroup.Text = "Group";
+            this.rbGroup.UseVisualStyleBackColor = true;
+            // 
             // txtRate
             // 
             this.txtRate.Location = new System.Drawing.Point(41, 35);
@@ -136,6 +158,10 @@
             this.cbGroupLevel.FormattingEnabled = true;
             this.cbGroupLevel.Items.AddRange(new object[] {
             "LEVEL 1",
+            "LEVEL 2",
+            "LEVEL 3",
+            "LEVEL 4",
+            "LEVEL 5",
             "BOTTOM 1 (PART)",
             "BOTTOM 2 (Leaf Assembly)",
             "BOTTOM 3 (Parent of Leaf Assembly)"});
@@ -354,28 +380,6 @@
             this.label1.Size = new System.Drawing.Size(54, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Distance";
-            // 
-            // rbGroup
-            // 
-            this.rbGroup.AutoSize = true;
-            this.rbGroup.Checked = true;
-            this.rbGroup.Location = new System.Drawing.Point(252, 24);
-            this.rbGroup.Name = "rbGroup";
-            this.rbGroup.Size = new System.Drawing.Size(57, 16);
-            this.rbGroup.TabIndex = 8;
-            this.rbGroup.TabStop = true;
-            this.rbGroup.Text = "Group";
-            this.rbGroup.UseVisualStyleBackColor = true;
-            // 
-            // rbSelected
-            // 
-            this.rbSelected.AutoSize = true;
-            this.rbSelected.Location = new System.Drawing.Point(252, 47);
-            this.rbSelected.Name = "rbSelected";
-            this.rbSelected.Size = new System.Drawing.Size(72, 16);
-            this.rbSelected.TabIndex = 9;
-            this.rbSelected.Text = "Selected";
-            this.rbSelected.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
