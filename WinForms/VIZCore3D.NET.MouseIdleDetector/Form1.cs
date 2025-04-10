@@ -162,6 +162,10 @@ namespace VIZCore3D.NET.MouseIdleDetector
                     return;
                 }
             }
+            else
+            {
+                vizcore3d.Model.OpenFileDialog();
+            }
         }
     }
 }
