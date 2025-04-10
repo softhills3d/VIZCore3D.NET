@@ -468,6 +468,8 @@ namespace VIZCore3D.NET.JuctionMesh
         private void btnModelOpen_Click(object sender, EventArgs e)
         {
             vizcore3d.Model.OpenFileDialog();
+
+            CsvItems = new List<CSVItem>();
         }
 
         private void btnModelClose_Click(object sender, EventArgs e)
@@ -652,6 +654,41 @@ namespace VIZCore3D.NET.JuctionMesh
             );
 
             vizcore3d.EndUpdate();
+        }
+
+        private void btnInputNode_Click(object sender, EventArgs e)
+        {
+            FrmInput dlg = new FrmInput();
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+
+            int a = dlg.IndexA;
+            int b = dlg.IndexB;
+
+            VIZCore3D.NET.Data.Node aNode = vizcore3d.Object3D.FromIndex(a);
+            VIZCore3D.NET.Data.Node bNode = vizcore3d.Object3D.FromIndex(b);
+
+            CSVItem csvItem = new CSVItem();
+            csvItem.NameA = aNode.NodeName;
+            csvItem.NameB = bNode.NodeName;
+            csvItem.IndexA = a;
+            csvItem.IndexB = b;
+
+            CsvItems.Add(csvItem);
+
+            ListViewItem lvi = new ListViewItem(
+                new string[]
+                {
+                    csvItem.NameA
+                    , csvItem.NameB
+                    , csvItem.IndexA > 0 ? csvItem.IndexA.ToString() : String.Empty
+                    , csvItem.IndexB > 0 ? csvItem.IndexB.ToString() : String.Empty
+                    , String.Empty
+                    , String.Empty
+                    }
+                );
+
+            lvi.Tag = csvItem;
+            listView.Items.Add(lvi);
         }
     }
 

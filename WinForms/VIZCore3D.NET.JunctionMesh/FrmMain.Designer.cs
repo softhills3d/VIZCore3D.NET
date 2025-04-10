@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ckHideModel = new System.Windows.Forms.CheckBox();
+            this.ckInternal = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -43,15 +46,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnModelClose = new System.Windows.Forms.Button();
             this.btnModelOpen = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.ckInternal = new System.Windows.Forms.CheckBox();
-            this.ckHideModel = new System.Windows.Forms.CheckBox();
+            this.btnInputNode = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -71,11 +72,47 @@
             this.splitContainer1.SplitterDistance = 600;
             this.splitContainer1.TabIndex = 0;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.ckHideModel);
+            this.groupBox3.Controls.Add(this.ckInternal);
+            this.groupBox3.Location = new System.Drawing.Point(18, 74);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(569, 79);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Options";
+            // 
+            // ckHideModel
+            // 
+            this.ckHideModel.AutoSize = true;
+            this.ckHideModel.Location = new System.Drawing.Point(107, 35);
+            this.ckHideModel.Name = "ckHideModel";
+            this.ckHideModel.Size = new System.Drawing.Size(88, 16);
+            this.ckHideModel.TabIndex = 1;
+            this.ckHideModel.Text = "Hide Model";
+            this.ckHideModel.UseVisualStyleBackColor = true;
+            // 
+            // ckInternal
+            // 
+            this.ckInternal.AutoSize = true;
+            this.ckInternal.Checked = true;
+            this.ckInternal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckInternal.Location = new System.Drawing.Point(21, 35);
+            this.ckInternal.Name = "ckInternal";
+            this.ckInternal.Size = new System.Drawing.Size(65, 16);
+            this.ckInternal.TabIndex = 0;
+            this.ckInternal.Text = "Internal";
+            this.ckInternal.UseVisualStyleBackColor = true;
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnInputNode);
             this.groupBox2.Controls.Add(this.listView);
             this.groupBox2.Controls.Add(this.btnCsvOpen);
             this.groupBox2.Controls.Add(this.btnGetJunctionMesh);
@@ -144,7 +181,7 @@
             // 
             // btnCsvOpen
             // 
-            this.btnCsvOpen.Location = new System.Drawing.Point(6, 20);
+            this.btnCsvOpen.Location = new System.Drawing.Point(144, 20);
             this.btnCsvOpen.Name = "btnCsvOpen";
             this.btnCsvOpen.Size = new System.Drawing.Size(121, 23);
             this.btnCsvOpen.TabIndex = 3;
@@ -154,7 +191,7 @@
             // 
             // btnGetJunctionMesh
             // 
-            this.btnGetJunctionMesh.Location = new System.Drawing.Point(132, 21);
+            this.btnGetJunctionMesh.Location = new System.Drawing.Point(271, 20);
             this.btnGetJunctionMesh.Name = "btnGetJunctionMesh";
             this.btnGetJunctionMesh.Size = new System.Drawing.Size(121, 23);
             this.btnGetJunctionMesh.TabIndex = 0;
@@ -195,40 +232,15 @@
             this.btnModelOpen.UseVisualStyleBackColor = true;
             this.btnModelOpen.Click += new System.EventHandler(this.btnModelOpen_Click);
             // 
-            // groupBox3
+            // btnInputNode
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.ckHideModel);
-            this.groupBox3.Controls.Add(this.ckInternal);
-            this.groupBox3.Location = new System.Drawing.Point(18, 74);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(569, 79);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Options";
-            // 
-            // ckInternal
-            // 
-            this.ckInternal.AutoSize = true;
-            this.ckInternal.Checked = true;
-            this.ckInternal.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckInternal.Location = new System.Drawing.Point(21, 35);
-            this.ckInternal.Name = "ckInternal";
-            this.ckInternal.Size = new System.Drawing.Size(65, 16);
-            this.ckInternal.TabIndex = 0;
-            this.ckInternal.Text = "Internal";
-            this.ckInternal.UseVisualStyleBackColor = true;
-            // 
-            // ckHideModel
-            // 
-            this.ckHideModel.AutoSize = true;
-            this.ckHideModel.Location = new System.Drawing.Point(107, 35);
-            this.ckHideModel.Name = "ckHideModel";
-            this.ckHideModel.Size = new System.Drawing.Size(88, 16);
-            this.ckHideModel.TabIndex = 1;
-            this.ckHideModel.Text = "Hide Model";
-            this.ckHideModel.UseVisualStyleBackColor = true;
+            this.btnInputNode.Location = new System.Drawing.Point(17, 20);
+            this.btnInputNode.Name = "btnInputNode";
+            this.btnInputNode.Size = new System.Drawing.Size(121, 23);
+            this.btnInputNode.TabIndex = 5;
+            this.btnInputNode.Text = "Input Node";
+            this.btnInputNode.UseVisualStyleBackColor = true;
+            this.btnInputNode.Click += new System.EventHandler(this.btnInputNode_Click);
             // 
             // FrmMain
             // 
@@ -243,10 +255,10 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -270,6 +282,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox ckHideModel;
         private System.Windows.Forms.CheckBox ckInternal;
+        private System.Windows.Forms.Button btnInputNode;
     }
 }
 
