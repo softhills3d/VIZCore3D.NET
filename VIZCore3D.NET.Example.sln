@@ -222,6 +222,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.MouseIdleDete
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.ShortutsAreaSelectionBox", "WinForms\VIZCore3D.NET.ShortutsAreaSelectionBox\VIZCore3D.NET.ShortutsAreaSelectionBox.csproj", "{2FCB75A6-AB5F-4AB0-804D-C420B03593D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIZCore3D.NET.Osnap2DPoint", "WinForms\VIZCore3D.NET.Osnap2DPoint\VIZCore3D.NET.Osnap2DPoint.csproj", "{715DDA40-746B-42FE-A94F-8B9C328159CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -648,6 +650,10 @@ Global
 		{2FCB75A6-AB5F-4AB0-804D-C420B03593D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FCB75A6-AB5F-4AB0-804D-C420B03593D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FCB75A6-AB5F-4AB0-804D-C420B03593D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{715DDA40-746B-42FE-A94F-8B9C328159CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{715DDA40-746B-42FE-A94F-8B9C328159CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{715DDA40-746B-42FE-A94F-8B9C328159CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{715DDA40-746B-42FE-A94F-8B9C328159CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -758,6 +764,7 @@ Global
 		{4702D4BE-D7FD-4371-9484-14A288259DE5} = {117E7FB9-D998-4697-8FF7-911AA339D267}
 		{18DFD762-8F10-4037-8B73-B41B7884594B} = {117E7FB9-D998-4697-8FF7-911AA339D267}
 		{2FCB75A6-AB5F-4AB0-804D-C420B03593D1} = {117E7FB9-D998-4697-8FF7-911AA339D267}
+		{715DDA40-746B-42FE-A94F-8B9C328159CF} = {117E7FB9-D998-4697-8FF7-911AA339D267}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F6D95616-665A-4FDB-8A44-A336D39BD719}
