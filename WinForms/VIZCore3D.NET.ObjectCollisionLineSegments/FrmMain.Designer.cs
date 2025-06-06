@@ -52,6 +52,7 @@
             this.txtSource = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.ckDepthTest = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -82,9 +83,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lvItems);
-            this.groupBox3.Location = new System.Drawing.Point(12, 299);
+            this.groupBox3.Location = new System.Drawing.Point(12, 322);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(321, 285);
+            this.groupBox3.Size = new System.Drawing.Size(321, 262);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Point";
@@ -105,7 +106,7 @@
             this.lvItems.HideSelection = false;
             this.lvItems.Location = new System.Drawing.Point(6, 20);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(309, 259);
+            this.lvItems.Size = new System.Drawing.Size(309, 236);
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -138,13 +139,14 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.ckDepthTest);
             this.groupBox2.Controls.Add(this.btnColor);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtThickness);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 192);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(321, 101);
+            this.groupBox2.Size = new System.Drawing.Size(321, 124);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Highlight";
@@ -310,6 +312,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Source";
             // 
+            // ckDepthTest
+            // 
+            this.ckDepthTest.AutoSize = true;
+            this.ckDepthTest.Location = new System.Drawing.Point(110, 96);
+            this.ckDepthTest.Name = "ckDepthTest";
+            this.ckDepthTest.Size = new System.Drawing.Size(81, 16);
+            this.ckDepthTest.TabIndex = 7;
+            this.ckDepthTest.Text = "DepthTest";
+            this.ckDepthTest.UseVisualStyleBackColor = true;
+            this.ckDepthTest.CheckedChanged += new System.EventHandler(this.ckDepthTest_CheckedChanged);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -357,6 +370,7 @@
         private System.Windows.Forms.Button btnExecute;
         private System.Windows.Forms.CheckBox ckTop1;
         private System.Windows.Forms.CheckBox ckTop2;
+        private System.Windows.Forms.CheckBox ckDepthTest;
     }
 }
 

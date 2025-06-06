@@ -184,5 +184,10 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
             btnColor.BackColor = dlg.Color;
         }
+
+        private void ckDepthTest_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.ShapeDrawing.DepthTest = ckDepthTest.Checked;
+        }
     }
 }
