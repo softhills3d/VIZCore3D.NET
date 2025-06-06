@@ -162,6 +162,8 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             if(TargetNodes != null) TargetNodes.Clear();
             lvItems.Items.Clear();
             vizcore3d.ShapeDrawing.Clear();
+            txtSource.Text = String.Empty;
+            txtTarget.Text = String.Empty;
         }
 
         private void btnColor_Click(object sender, EventArgs e)
