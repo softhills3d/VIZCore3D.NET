@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -119,33 +120,11 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
                 item.BaseCollection.Add(lineSegments[i + 1].ToVertex3D());
                 items.Add(item);
 
-                ListViewItem lvi1 = new ListViewItem(
-                    new string[] 
-                        {
-                            index.ToString()
-                            , groupId.ToString()
-                            , lineSegments[i + 0].X.ToString()
-                            , lineSegments[i + 0].Y.ToString()
-                            , lineSegments[i + 0].Z.ToString()
-                        }
-                    );
-
-                lvItems.Items.Add(lvi1);
+                AddPoints(index, groupId, lineSegments[i + 0]);
 
                 index++;
 
-                ListViewItem lvi2 = new ListViewItem(
-                    new string[]
-                        {
-                            index.ToString()
-                            , groupId.ToString()
-                            , lineSegments[i + 1].X.ToString()
-                            , lineSegments[i + 1].Y.ToString()
-                            , lineSegments[i + 1].Z.ToString()
-                        }
-                    );
-
-                lvItems.Items.Add(lvi2);
+                AddPoints(index, groupId, lineSegments[i + 1]);
 
                 index++;
                 groupId++;
@@ -161,6 +140,22 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
                 , Convert.ToSingle(txtThickness.Text)
                 , true
             );
+        }
+
+        private void AddPoints(int no, int group, VIZCore3D.NET.Data.Vector3D v)
+        {
+            ListViewItem lvi = new ListViewItem(
+                    new string[]
+                    {
+                            no.ToString()
+                            , group.ToString()
+                            , v.X.ToString()
+                            , v.Y.ToString()
+                            , v.Z.ToString()
+                        }
+                    );
+
+            lvItems.Items.Add(lvi);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
