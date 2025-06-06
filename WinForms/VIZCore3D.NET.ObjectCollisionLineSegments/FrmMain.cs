@@ -46,7 +46,11 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             if (vizcore3d.Model.IsOpen() == false) return;
 
             SourceNodes
-                = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+                = vizcore3d.Object3D.FromFilter(
+                    ckTop1.Checked == true 
+                    ? VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP 
+                    : VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART
+                    );
 
             if (SourceNodes.Count == 0) return;
 
@@ -58,7 +62,11 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             if (vizcore3d.Model.IsOpen() == false) return;
 
             TargetNodes
-                = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART);
+                = vizcore3d.Object3D.FromFilter(
+                    ckTop2.Checked == true
+                    ? VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
+                    : VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART
+                    );
 
             if (TargetNodes.Count == 0) return;
 
@@ -85,7 +93,10 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             else
             {
                 lineSegments
-                    = vizcore3d.GeometryUtility.GetObjectCollisionLine(SourceNodes[0].Index, TargetNodes[0].Index);
+                    = vizcore3d.GeometryUtility.GetObjectCollisionLine(
+                        SourceNodes[0].Index
+                        , TargetNodes[0].Index
+                        );
             }
 
             List<VIZCore3D.NET.Data.Vertex3DItemCollection> items = new List<Data.Vertex3DItemCollection>();
