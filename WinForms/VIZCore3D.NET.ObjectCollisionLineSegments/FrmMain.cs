@@ -39,6 +39,13 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
                 MessageBox.Show("License Error : " + results.ToString());
                 return;
             }
+
+            vizcore3d.Model.OnModelClosedEvent += Model_OnModelClosedEvent;
+        }
+
+        private void Model_OnModelClosedEvent(object sender, EventArgs e)
+        {
+            ClearItems();
         }
 
         private void btnGetSource_Click(object sender, EventArgs e)
@@ -158,8 +165,13 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            if(SourceNodes != null) SourceNodes.Clear();
-            if(TargetNodes != null) TargetNodes.Clear();
+            ClearItems();
+        }
+
+        private void ClearItems()
+        {
+            if (SourceNodes != null) SourceNodes.Clear();
+            if (TargetNodes != null) TargetNodes.Clear();
             lvItems.Items.Clear();
             vizcore3d.ShapeDrawing.Clear();
             txtSource.Text = String.Empty;
