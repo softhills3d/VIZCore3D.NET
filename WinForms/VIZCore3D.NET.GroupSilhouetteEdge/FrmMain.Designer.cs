@@ -45,6 +45,7 @@
             this.cbDot = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnColor = new System.Windows.Forms.Button();
+            this.ckGeneralDotted = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -76,7 +77,7 @@
             this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.btnVisible);
             this.groupBox3.Controls.Add(this.btnClear);
-            this.groupBox3.Location = new System.Drawing.Point(12, 250);
+            this.groupBox3.Location = new System.Drawing.Point(12, 282);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(246, 156);
             this.groupBox3.TabIndex = 9;
@@ -96,18 +97,14 @@
             // 
             this.cbGroupId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGroupId.FormattingEnabled = true;
-            this.cbGroupId.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cbGroupId.Location = new System.Drawing.Point(81, 72);
+            this.cbGroupId.Location = new System.Drawing.Point(81, 71);
             this.cbGroupId.Name = "cbGroupId";
             this.cbGroupId.Size = new System.Drawing.Size(64, 20);
             this.cbGroupId.TabIndex = 7;
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(151, 70);
+            this.btnDelete.Location = new System.Drawing.Point(151, 69);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(69, 23);
             this.btnDelete.TabIndex = 6;
@@ -137,13 +134,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ckGeneralDotted);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.cbWidth);
             this.groupBox1.Controls.Add(this.btnAllColor);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(246, 111);
+            this.groupBox1.Size = new System.Drawing.Size(246, 143);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
@@ -151,7 +149,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(104, 37);
+            this.label1.Location = new System.Drawing.Point(21, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(43, 12);
             this.label1.TabIndex = 7;
@@ -159,7 +157,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(23, 72);
+            this.button1.Location = new System.Drawing.Point(23, 105);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(197, 23);
             this.button1.TabIndex = 4;
@@ -169,14 +167,15 @@
             // 
             // cbWidth
             // 
+            this.cbWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbWidth.FormattingEnabled = true;
             this.cbWidth.Items.AddRange(new object[] {
             "1",
             "2",
             "3"});
-            this.cbWidth.Location = new System.Drawing.Point(151, 34);
+            this.cbWidth.Location = new System.Drawing.Point(70, 68);
             this.cbWidth.Name = "cbWidth";
-            this.cbWidth.Size = new System.Drawing.Size(69, 20);
+            this.cbWidth.Size = new System.Drawing.Size(140, 20);
             this.cbWidth.TabIndex = 4;
             this.cbWidth.SelectedIndexChanged += new System.EventHandler(this.cbWidth_SelectedIndexChanged);
             // 
@@ -197,7 +196,7 @@
             this.groupBox2.Controls.Add(this.cbDot);
             this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Controls.Add(this.btnColor);
-            this.groupBox2.Location = new System.Drawing.Point(12, 129);
+            this.groupBox2.Location = new System.Drawing.Point(12, 161);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(246, 115);
             this.groupBox2.TabIndex = 7;
@@ -233,6 +232,16 @@
             this.btnColor.Text = "Color";
             this.btnColor.UseVisualStyleBackColor = true;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            // 
+            // ckGeneralDotted
+            // 
+            this.ckGeneralDotted.AutoSize = true;
+            this.ckGeneralDotted.Location = new System.Drawing.Point(151, 36);
+            this.ckGeneralDotted.Name = "ckGeneralDotted";
+            this.ckGeneralDotted.Size = new System.Drawing.Size(59, 16);
+            this.ckGeneralDotted.TabIndex = 4;
+            this.ckGeneralDotted.Text = "Dotted";
+            this.ckGeneralDotted.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -275,6 +284,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox ckGeneralDotted;
     }
 }
 
