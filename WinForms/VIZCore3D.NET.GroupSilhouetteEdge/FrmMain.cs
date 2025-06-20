@@ -116,6 +116,12 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
             InitializeVIZCore3D();
             InitializeVIZCore3DEvent();
             //InitializeVIZCore3DToolbar();
+
+            // ================================================================
+            // UI Setting
+            // ================================================================
+            cbWidth.SelectedIndex = vizcore3d.View.GroupSilhouetteEdge.SilhouetteEdgeWidth - 1;
+            cbGroupId.Enabled = false;
         }
         #endregion
 
@@ -582,7 +588,7 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
                 groupID.Add(groupId);
                 SetSelectedIndexCheckBox();
 
-                if (cbDot.Checked)
+                if (ckGeneralDotted.Checked)
                 {
                     // Silhouette Edge 개별 라인 점선 표시 여부
                     vizcore3d.View.GroupSilhouetteEdge.SetSilhouetteEdgeDotted(groupId, true);
@@ -646,7 +652,6 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
 
         private void SetSelectedIndexCheckBox()
         {
-
             // Clear existing items
             cbGroupId.Items.Clear();
 
@@ -654,6 +659,7 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
             for (int i = 0; i < groupID.Count; i++)
             {
                 cbGroupId.Items.Add(groupID[i].ToString());
+                cbGroupId.Enabled = true;
             }
 
         }
@@ -684,6 +690,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         {
             vizcore3d.View.GroupSilhouetteEdge.Clear();
             groupID.Clear();
+            cbGroupId.Items.Clear();
+            cbGroupId.Enabled = false;
         }
 
 
@@ -693,6 +701,10 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
             vizcore3d.View.GroupSilhouetteEdge.Delete(id);
             groupID.Remove(id);
             SetSelectedIndexCheckBox();
+            if (cbGroupId.Items.Count == 0)
+            {
+                cbGroupId.Enabled = false;
+            }
         }
     }
 }
