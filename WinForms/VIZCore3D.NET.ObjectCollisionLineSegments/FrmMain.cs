@@ -84,7 +84,7 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
             if (TargetNodes.Count == 0) return;
 
-            if (SourceNodes.Count == 1)
+            if (TargetNodes.Count == 1)
                 txtTarget.Text = TargetNodes[0].NodeName;
             else
                 txtTarget.Text = string.Format("{0} and {1} other items", TargetNodes[0].NodeName, TargetNodes.Count - 1);
