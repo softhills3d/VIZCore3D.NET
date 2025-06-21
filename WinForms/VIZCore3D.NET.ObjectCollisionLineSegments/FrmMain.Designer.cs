@@ -37,13 +37,12 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckDepthTest = new System.Windows.Forms.CheckBox();
             this.btnColor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtThickness = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ckTop1 = new System.Windows.Forms.CheckBox();
-            this.ckTop2 = new System.Windows.Forms.CheckBox();
             this.btnExecute = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnGetTarget = new System.Windows.Forms.Button();
@@ -52,7 +51,9 @@
             this.txtSource = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ckDepthTest = new System.Windows.Forms.CheckBox();
+            this.rbAll = new System.Windows.Forms.RadioButton();
+            this.rbInternal = new System.Windows.Forms.RadioButton();
+            this.rbExternal = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -83,9 +84,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.lvItems);
-            this.groupBox3.Location = new System.Drawing.Point(12, 322);
+            this.groupBox3.Location = new System.Drawing.Point(12, 298);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(321, 262);
+            this.groupBox3.Size = new System.Drawing.Size(321, 286);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Point";
@@ -106,7 +107,7 @@
             this.lvItems.HideSelection = false;
             this.lvItems.Location = new System.Drawing.Point(6, 20);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(309, 236);
+            this.lvItems.Size = new System.Drawing.Size(309, 260);
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -117,22 +118,22 @@
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Group";
+            this.columnHeader2.Text = "Source";
             this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "X";
+            this.columnHeader3.Text = "Target";
             this.columnHeader3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Y";
+            this.columnHeader4.Text = "Start";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "Z";
+            this.columnHeader5.Text = "End";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox2
@@ -144,12 +145,23 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.txtThickness);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(12, 192);
+            this.groupBox2.Location = new System.Drawing.Point(12, 168);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(321, 124);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Highlight";
+            // 
+            // ckDepthTest
+            // 
+            this.ckDepthTest.AutoSize = true;
+            this.ckDepthTest.Location = new System.Drawing.Point(110, 96);
+            this.ckDepthTest.Name = "ckDepthTest";
+            this.ckDepthTest.Size = new System.Drawing.Size(81, 16);
+            this.ckDepthTest.TabIndex = 7;
+            this.ckDepthTest.Text = "DepthTest";
+            this.ckDepthTest.UseVisualStyleBackColor = true;
+            this.ckDepthTest.CheckedChanged += new System.EventHandler(this.ckDepthTest_CheckedChanged);
             // 
             // btnColor
             // 
@@ -191,8 +203,9 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.ckTop1);
-            this.groupBox1.Controls.Add(this.ckTop2);
+            this.groupBox1.Controls.Add(this.rbExternal);
+            this.groupBox1.Controls.Add(this.rbInternal);
+            this.groupBox1.Controls.Add(this.rbAll);
             this.groupBox1.Controls.Add(this.btnExecute);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.btnGetTarget);
@@ -203,38 +216,14 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(321, 174);
+            this.groupBox1.Size = new System.Drawing.Size(321, 150);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Objects";
             // 
-            // ckTop1
-            // 
-            this.ckTop1.AutoSize = true;
-            this.ckTop1.Checked = true;
-            this.ckTop1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckTop1.Location = new System.Drawing.Point(84, 66);
-            this.ckTop1.Name = "ckTop1";
-            this.ckTop1.Size = new System.Drawing.Size(99, 16);
-            this.ckTop1.TabIndex = 9;
-            this.ckTop1.Text = "Selected Top";
-            this.ckTop1.UseVisualStyleBackColor = true;
-            // 
-            // ckTop2
-            // 
-            this.ckTop2.AutoSize = true;
-            this.ckTop2.Checked = true;
-            this.ckTop2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckTop2.Location = new System.Drawing.Point(84, 116);
-            this.ckTop2.Name = "ckTop2";
-            this.ckTop2.Size = new System.Drawing.Size(99, 16);
-            this.ckTop2.TabIndex = 8;
-            this.ckTop2.Text = "Selected Top";
-            this.ckTop2.UseVisualStyleBackColor = true;
-            // 
             // btnExecute
             // 
-            this.btnExecute.Location = new System.Drawing.Point(84, 136);
+            this.btnExecute.Location = new System.Drawing.Point(84, 118);
             this.btnExecute.Name = "btnExecute";
             this.btnExecute.Size = new System.Drawing.Size(75, 23);
             this.btnExecute.TabIndex = 7;
@@ -244,7 +233,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(165, 136);
+            this.btnClear.Location = new System.Drawing.Point(165, 118);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(61, 23);
             this.btnClear.TabIndex = 6;
@@ -312,16 +301,37 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Source";
             // 
-            // ckDepthTest
+            // rbAll
             // 
-            this.ckDepthTest.AutoSize = true;
-            this.ckDepthTest.Location = new System.Drawing.Point(110, 96);
-            this.ckDepthTest.Name = "ckDepthTest";
-            this.ckDepthTest.Size = new System.Drawing.Size(81, 16);
-            this.ckDepthTest.TabIndex = 7;
-            this.ckDepthTest.Text = "DepthTest";
-            this.ckDepthTest.UseVisualStyleBackColor = true;
-            this.ckDepthTest.CheckedChanged += new System.EventHandler(this.ckDepthTest_CheckedChanged);
+            this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
+            this.rbAll.Location = new System.Drawing.Point(84, 63);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(37, 16);
+            this.rbAll.TabIndex = 8;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All";
+            this.rbAll.UseVisualStyleBackColor = true;
+            // 
+            // rbInternal
+            // 
+            this.rbInternal.AutoSize = true;
+            this.rbInternal.Location = new System.Drawing.Point(127, 63);
+            this.rbInternal.Name = "rbInternal";
+            this.rbInternal.Size = new System.Drawing.Size(64, 16);
+            this.rbInternal.TabIndex = 9;
+            this.rbInternal.Text = "Internal";
+            this.rbInternal.UseVisualStyleBackColor = true;
+            // 
+            // rbExternal
+            // 
+            this.rbExternal.AutoSize = true;
+            this.rbExternal.Location = new System.Drawing.Point(197, 63);
+            this.rbExternal.Name = "rbExternal";
+            this.rbExternal.Size = new System.Drawing.Size(69, 16);
+            this.rbExternal.TabIndex = 10;
+            this.rbExternal.Text = "External";
+            this.rbExternal.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -368,9 +378,10 @@
         private System.Windows.Forms.TextBox txtThickness;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnExecute;
-        private System.Windows.Forms.CheckBox ckTop1;
-        private System.Windows.Forms.CheckBox ckTop2;
         private System.Windows.Forms.CheckBox ckDepthTest;
+        private System.Windows.Forms.RadioButton rbInternal;
+        private System.Windows.Forms.RadioButton rbAll;
+        private System.Windows.Forms.RadioButton rbExternal;
     }
 }
 

@@ -55,14 +55,22 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
             SourceNodes
                 = vizcore3d.Object3D.FromFilter(
-                    ckTop1.Checked == true 
-                    ? VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP 
-                    : VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART
+                    VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART
                     );
 
             if (SourceNodes.Count == 0) return;
 
-            txtSource.Text = SourceNodes[0].NodeName;
+            if (SourceNodes.Count == 1)
+                txtSource.Text = SourceNodes[0].NodeName;
+            else
+                txtSource.Text = string.Format("{0} and {1} other items", SourceNodes[0].NodeName, SourceNodes.Count - 1);
+        }
+
+        private VIZCore3D.NET.Manager.GeometryUtilityManager.ObjectCollisionType GetCollisionType()
+        {
+            if (rbAll.Checked == true) return Manager.GeometryUtilityManager.ObjectCollisionType.ALL;
+            else if (rbInternal.Checked == true) return Manager.GeometryUtilityManager.ObjectCollisionType.INTERNAL;
+            else return Manager.GeometryUtilityManager.ObjectCollisionType.EXTERNAL;
         }
 
         private void btnGetTarget_Click(object sender, EventArgs e)
@@ -71,14 +79,15 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
             TargetNodes
                 = vizcore3d.Object3D.FromFilter(
-                    ckTop2.Checked == true
-                    ? VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP
-                    : VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART
+                    VIZCore3D.NET.Data.Object3dFilter.SELECTED_PART
                     );
 
             if (TargetNodes.Count == 0) return;
 
-            txtTarget.Text = TargetNodes[0].NodeName;
+            if (SourceNodes.Count == 1)
+                txtTarget.Text = TargetNodes[0].NodeName;
+            else
+                txtTarget.Text = string.Format("{0} and {1} other items", TargetNodes[0].NodeName, TargetNodes.Count - 1);
         }
 
         private void btnExecute_Click(object sender, EventArgs e)
@@ -91,19 +100,19 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             lvItems.Items.Clear();
             vizcore3d.ShapeDrawing.Clear();
 
-            List<VIZCore3D.NET.Data.Vector3D> lineSegments = null;
+            List<VIZCore3D.NET.Data.IntersectionLine> lineSegments = null;
 
             if (TargetNodes == null || TargetNodes.Count == 0)
             {
                 lineSegments 
-                    = vizcore3d.GeometryUtility.GetObjectCollisionLine(SourceNodes);
+                    = vizcore3d.GeometryUtility.GetObjectCollisionLine(SourceNodes, GetCollisionType());
             }
             else
             {
                 lineSegments
                     = vizcore3d.GeometryUtility.GetObjectCollisionLine(
-                        SourceNodes[0].Index
-                        , TargetNodes[0].Index
+                        SourceNodes
+                        , TargetNodes
                         );
             }
 
@@ -112,22 +121,16 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             lvItems.BeginUpdate();
 
             int index = 1;
-            int groupId = 1;
-            for (int i = 0; i < lineSegments.Count - 1; i += 2)
+            for (int i = 0; i < lineSegments.Count; i++)
             {
                 Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
-                item.BaseCollection.Add(lineSegments[i + 0].ToVertex3D());
-                item.BaseCollection.Add(lineSegments[i + 1].ToVertex3D());
+                item.BaseCollection.Add(lineSegments[i].Start.ToVertex3D());
+                item.BaseCollection.Add(lineSegments[i].End.ToVertex3D());
                 items.Add(item);
 
-                AddPoints(index, groupId, lineSegments[i + 0]);
+                AddPoints(index, lineSegments[i]);
 
                 index++;
-
-                AddPoints(index, groupId, lineSegments[i + 1]);
-
-                index++;
-                groupId++;
             }
 
             lvItems.EndUpdate();
@@ -142,16 +145,16 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             );
         }
 
-        private void AddPoints(int no, int group, VIZCore3D.NET.Data.Vector3D v)
+        private void AddPoints(int no, VIZCore3D.NET.Data.IntersectionLine s)
         {
             ListViewItem lvi = new ListViewItem(
                     new string[]
                     {
                             no.ToString()
-                            , group.ToString()
-                            , v.X.ToString()
-                            , v.Y.ToString()
-                            , v.Z.ToString()
+                            , s.SourceID.ToString()
+                            , s.TargetID.ToString()
+                            , s.Start.ToString()
+                            , s.End.ToString()
                         }
                     );
 
