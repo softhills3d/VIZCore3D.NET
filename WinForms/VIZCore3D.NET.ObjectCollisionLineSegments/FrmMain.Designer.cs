@@ -43,6 +43,9 @@
             this.txtThickness = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbExternal = new System.Windows.Forms.RadioButton();
+            this.rbInternal = new System.Windows.Forms.RadioButton();
+            this.rbAll = new System.Windows.Forms.RadioButton();
             this.btnExecute = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnGetTarget = new System.Windows.Forms.Button();
@@ -51,9 +54,7 @@
             this.txtSource = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.rbAll = new System.Windows.Forms.RadioButton();
-            this.rbInternal = new System.Windows.Forms.RadioButton();
-            this.rbExternal = new System.Windows.Forms.RadioButton();
+            this.btnClearLine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -111,6 +112,7 @@
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
+            this.lvItems.DoubleClick += new System.EventHandler(this.lvItems_DoubleClick);
             // 
             // columnHeader1
             // 
@@ -140,6 +142,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnClearLine);
             this.groupBox2.Controls.Add(this.ckDepthTest);
             this.groupBox2.Controls.Add(this.btnColor);
             this.groupBox2.Controls.Add(this.label4);
@@ -221,6 +224,38 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Objects";
             // 
+            // rbExternal
+            // 
+            this.rbExternal.AutoSize = true;
+            this.rbExternal.Location = new System.Drawing.Point(197, 63);
+            this.rbExternal.Name = "rbExternal";
+            this.rbExternal.Size = new System.Drawing.Size(69, 16);
+            this.rbExternal.TabIndex = 10;
+            this.rbExternal.Text = "External";
+            this.rbExternal.UseVisualStyleBackColor = true;
+            // 
+            // rbInternal
+            // 
+            this.rbInternal.AutoSize = true;
+            this.rbInternal.Location = new System.Drawing.Point(127, 63);
+            this.rbInternal.Name = "rbInternal";
+            this.rbInternal.Size = new System.Drawing.Size(64, 16);
+            this.rbInternal.TabIndex = 9;
+            this.rbInternal.Text = "Internal";
+            this.rbInternal.UseVisualStyleBackColor = true;
+            // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
+            this.rbAll.Location = new System.Drawing.Point(84, 63);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(37, 16);
+            this.rbAll.TabIndex = 8;
+            this.rbAll.TabStop = true;
+            this.rbAll.Text = "All";
+            this.rbAll.UseVisualStyleBackColor = true;
+            // 
             // btnExecute
             // 
             this.btnExecute.Location = new System.Drawing.Point(84, 118);
@@ -301,37 +336,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Source";
             // 
-            // rbAll
+            // btnClearLine
             // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Checked = true;
-            this.rbAll.Location = new System.Drawing.Point(84, 63);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(37, 16);
-            this.rbAll.TabIndex = 8;
-            this.rbAll.TabStop = true;
-            this.rbAll.Text = "All";
-            this.rbAll.UseVisualStyleBackColor = true;
-            // 
-            // rbInternal
-            // 
-            this.rbInternal.AutoSize = true;
-            this.rbInternal.Location = new System.Drawing.Point(127, 63);
-            this.rbInternal.Name = "rbInternal";
-            this.rbInternal.Size = new System.Drawing.Size(64, 16);
-            this.rbInternal.TabIndex = 9;
-            this.rbInternal.Text = "Internal";
-            this.rbInternal.UseVisualStyleBackColor = true;
-            // 
-            // rbExternal
-            // 
-            this.rbExternal.AutoSize = true;
-            this.rbExternal.Location = new System.Drawing.Point(197, 63);
-            this.rbExternal.Name = "rbExternal";
-            this.rbExternal.Size = new System.Drawing.Size(69, 16);
-            this.rbExternal.TabIndex = 10;
-            this.rbExternal.Text = "External";
-            this.rbExternal.UseVisualStyleBackColor = true;
+            this.btnClearLine.Location = new System.Drawing.Point(205, 89);
+            this.btnClearLine.Name = "btnClearLine";
+            this.btnClearLine.Size = new System.Drawing.Size(61, 23);
+            this.btnClearLine.TabIndex = 8;
+            this.btnClearLine.Text = "Clear";
+            this.btnClearLine.UseVisualStyleBackColor = true;
+            this.btnClearLine.Click += new System.EventHandler(this.btnClearLine_Click);
             // 
             // FrmMain
             // 
@@ -382,6 +395,7 @@
         private System.Windows.Forms.RadioButton rbInternal;
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbExternal;
+        private System.Windows.Forms.Button btnClearLine;
     }
 }
 

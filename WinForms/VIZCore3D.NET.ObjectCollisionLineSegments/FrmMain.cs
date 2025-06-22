@@ -15,6 +15,7 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
         private VIZCore3D.NET.VIZCore3DControl vizcore3d { get; set; }
         private List<VIZCore3D.NET.Data.Node> SourceNodes { get; set; }
         private List<VIZCore3D.NET.Data.Node> TargetNodes { get; set; }
+        private StringBuilder Log { get; set; }
 
         public FrmMain()
         {
@@ -28,6 +29,7 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             this.splitContainer1.Panel2.Controls.Add(vizcore3d);
 
             btnColor.BackColor = Color.Red;
+            Log = new StringBuilder();
         }
 
         private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
@@ -120,7 +122,10 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
             lvItems.BeginUpdate();
 
+            //Log.AppendLine("No\tSource\tTarget\tStart\tEnd");
+
             int index = 1;
+
             for (int i = 0; i < lineSegments.Count; i++)
             {
                 Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
@@ -134,6 +139,8 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             }
 
             lvItems.EndUpdate();
+
+            //Clipboard.SetText(Log.ToString());
 
             // Draw
             int shapeId = vizcore3d.ShapeDrawing.AddLine(
@@ -158,7 +165,10 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
                         }
                     );
 
+            lvi.Tag = s;
             lvItems.Items.Add(lvi);
+
+            Log.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}", no, s.SourceID, s.TargetID, s.Start.ToString(), s.End.ToString()));
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -174,6 +184,7 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             vizcore3d.ShapeDrawing.Clear();
             txtSource.Text = String.Empty;
             txtTarget.Text = String.Empty;
+            Log.Clear();
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -191,6 +202,36 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
         private void ckDepthTest_CheckedChanged(object sender, EventArgs e)
         {
             vizcore3d.ShapeDrawing.DepthTest = ckDepthTest.Checked;
+        }
+
+        private void lvItems_DoubleClick(object sender, EventArgs e)
+        {
+            if (lvItems.SelectedItems.Count == 0) return;
+
+            ListViewItem lvi = lvItems.SelectedItems[0];
+            if (lvi.Tag == null) return;
+
+            VIZCore3D.NET.Data.IntersectionLine lineSegments = lvi.Tag as VIZCore3D.NET.Data.IntersectionLine;
+
+            List<VIZCore3D.NET.Data.Vertex3DItemCollection> items = new List<Data.Vertex3DItemCollection>();
+            Data.Vertex3DItemCollection item = new Data.Vertex3DItemCollection();
+            item.BaseCollection.Add(lineSegments.Start.ToVertex3D());
+            item.BaseCollection.Add(lineSegments.End.ToVertex3D());
+            items.Add(item);
+
+            // Draw
+            int shapeId = vizcore3d.ShapeDrawing.AddLine(
+                items
+                , 0
+                , Color.Blue
+                , Convert.ToSingle(txtThickness.Text)
+                , true
+            );
+        }
+
+        private void btnClearLine_Click(object sender, EventArgs e)
+        {
+            vizcore3d.ShapeDrawing.Clear();
         }
     }
 }
