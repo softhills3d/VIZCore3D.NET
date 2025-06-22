@@ -37,6 +37,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnClearLine = new System.Windows.Forms.Button();
             this.ckDepthTest = new System.Windows.Forms.CheckBox();
             this.btnColor = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,7 +55,7 @@
             this.txtSource = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnClearLine = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -84,6 +85,7 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btnExport);
             this.groupBox3.Controls.Add(this.lvItems);
             this.groupBox3.Location = new System.Drawing.Point(12, 298);
             this.groupBox3.Name = "groupBox3";
@@ -106,9 +108,9 @@
             this.lvItems.FullRowSelect = true;
             this.lvItems.GridLines = true;
             this.lvItems.HideSelection = false;
-            this.lvItems.Location = new System.Drawing.Point(6, 20);
+            this.lvItems.Location = new System.Drawing.Point(6, 48);
             this.lvItems.Name = "lvItems";
-            this.lvItems.Size = new System.Drawing.Size(309, 260);
+            this.lvItems.Size = new System.Drawing.Size(309, 232);
             this.lvItems.TabIndex = 0;
             this.lvItems.UseCompatibleStateImageBehavior = false;
             this.lvItems.View = System.Windows.Forms.View.Details;
@@ -154,6 +156,16 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Highlight";
+            // 
+            // btnClearLine
+            // 
+            this.btnClearLine.Location = new System.Drawing.Point(205, 89);
+            this.btnClearLine.Name = "btnClearLine";
+            this.btnClearLine.Size = new System.Drawing.Size(61, 23);
+            this.btnClearLine.TabIndex = 8;
+            this.btnClearLine.Text = "Clear";
+            this.btnClearLine.UseVisualStyleBackColor = true;
+            this.btnClearLine.Click += new System.EventHandler(this.btnClearLine_Click);
             // 
             // ckDepthTest
             // 
@@ -336,15 +348,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Source";
             // 
-            // btnClearLine
+            // btnExport
             // 
-            this.btnClearLine.Location = new System.Drawing.Point(205, 89);
-            this.btnClearLine.Name = "btnClearLine";
-            this.btnClearLine.Size = new System.Drawing.Size(61, 23);
-            this.btnClearLine.TabIndex = 8;
-            this.btnClearLine.Text = "Clear";
-            this.btnClearLine.UseVisualStyleBackColor = true;
-            this.btnClearLine.Click += new System.EventHandler(this.btnClearLine_Click);
+            this.btnExport.Location = new System.Drawing.Point(7, 20);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(61, 23);
+            this.btnExport.TabIndex = 9;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // FrmMain
             // 
@@ -396,6 +408,7 @@
         private System.Windows.Forms.RadioButton rbAll;
         private System.Windows.Forms.RadioButton rbExternal;
         private System.Windows.Forms.Button btnClearLine;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 

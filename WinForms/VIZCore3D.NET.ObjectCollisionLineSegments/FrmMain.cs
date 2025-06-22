@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Schema;
 
 namespace VIZCore3D.NET.ObjectCollisionLineSegments
 {
@@ -15,7 +16,6 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
         private VIZCore3D.NET.VIZCore3DControl vizcore3d { get; set; }
         private List<VIZCore3D.NET.Data.Node> SourceNodes { get; set; }
         private List<VIZCore3D.NET.Data.Node> TargetNodes { get; set; }
-        private StringBuilder Log { get; set; }
 
         public FrmMain()
         {
@@ -29,7 +29,6 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             this.splitContainer1.Panel2.Controls.Add(vizcore3d);
 
             btnColor.BackColor = Color.Red;
-            Log = new StringBuilder();
         }
 
         private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
@@ -121,9 +120,7 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             List<VIZCore3D.NET.Data.Vertex3DItemCollection> items = new List<Data.Vertex3DItemCollection>();
 
             lvItems.BeginUpdate();
-
-            //Log.AppendLine("No\tSource\tTarget\tStart\tEnd");
-
+            
             int index = 1;
 
             for (int i = 0; i < lineSegments.Count; i++)
@@ -139,8 +136,6 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             }
 
             lvItems.EndUpdate();
-
-            //Clipboard.SetText(Log.ToString());
 
             // Draw
             int shapeId = vizcore3d.ShapeDrawing.AddLine(
@@ -167,8 +162,6 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
 
             lvi.Tag = s;
             lvItems.Items.Add(lvi);
-
-            Log.AppendLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}", no, s.SourceID, s.TargetID, s.Start.ToString(), s.End.ToString()));
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -184,7 +177,6 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
             vizcore3d.ShapeDrawing.Clear();
             txtSource.Text = String.Empty;
             txtTarget.Text = String.Empty;
-            Log.Clear();
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -232,6 +224,29 @@ namespace VIZCore3D.NET.ObjectCollisionLineSegments
         private void btnClearLine_Click(object sender, EventArgs e)
         {
             vizcore3d.ShapeDrawing.Clear();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            if(lvItems.Items.Count == 0) return;
+
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "CSV (*.csv)|*.csv";
+            if(dlg.ShowDialog() != DialogResult.OK) return;
+
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(dlg.FileName, false, Encoding.UTF8);
+
+            sw.WriteLine("No\tSource\tTarget\tStart\tEnd");
+
+            for (int i = 0; i < lvItems.Items.Count; i++)
+            {
+                ListViewItem lvi = lvItems.Items[i];
+                if (lvi.Tag == null) continue;
+                VIZCore3D.NET.Data.IntersectionLine lineSegments = lvi.Tag as VIZCore3D.NET.Data.IntersectionLine;
+                sw.WriteLine(string.Format("{0}\t{1}\t{2}\t{3}\t{4}", i + 1, lineSegments.SourceID, lineSegments.TargetID, lineSegments.Start.ToString(), lineSegments.End.ToString()));
+            }
+
+            sw.Close();
         }
     }
 }
