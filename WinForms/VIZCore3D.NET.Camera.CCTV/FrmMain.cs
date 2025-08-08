@@ -460,7 +460,6 @@ namespace VIZCore3D.NET.Camera.CCTV
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarPrimitive.Visible = false;
             #endregion
 

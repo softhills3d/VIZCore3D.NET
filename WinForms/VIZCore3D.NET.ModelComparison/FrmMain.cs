@@ -119,7 +119,6 @@ namespace VIZCore3D.NET.ModelComparison
             vizcore1.ToolbarSection.Visible = false;
             vizcore1.ToolbarClash.Visible = false;
             vizcore1.ToolbarAnimation.Visible = false;
-            vizcore1.ToolbarSimulation.Visible = false;
 
             // 옵션 설정
             vizcore1.View.PreSelect.Enable = false;
@@ -202,7 +201,6 @@ namespace VIZCore3D.NET.ModelComparison
             vizcore2.ToolbarSection.Visible = false;
             vizcore2.ToolbarClash.Visible = false;
             vizcore2.ToolbarAnimation.Visible = false;
-            vizcore2.ToolbarSimulation.Visible = false;
 
             // 옵션 설정
             vizcore2.View.PreSelect.Enable = false;

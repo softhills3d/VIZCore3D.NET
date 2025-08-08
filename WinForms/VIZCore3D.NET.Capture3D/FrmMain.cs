@@ -198,7 +198,6 @@ namespace VIZCore3D.NET.Capture3D
             vizcore3d_MiniView.ToolbarSection.Visible = false;
             vizcore3d_MiniView.ToolbarClash.Visible = false;
             vizcore3d_MiniView.ToolbarAnimation.Visible = false;
-            vizcore3d_MiniView.ToolbarSimulation.Visible = false;
             vizcore3d_MiniView.ToolbarPrimitive.Visible = false;
             #endregion
 
@@ -526,7 +525,6 @@ namespace VIZCore3D.NET.Capture3D
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarPrimitive.Visible = false;
             #endregion
 

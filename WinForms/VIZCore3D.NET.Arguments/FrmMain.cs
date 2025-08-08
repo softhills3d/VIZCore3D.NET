@@ -216,7 +216,7 @@ namespace VIZCore3D.NET.Arguments
             vizcore3d.View.RotationAxis = VIZCore3D.NET.Data.Axis.X;
 
             vizcore3d.View.MarineAxis.Visible = false;
-            vizcore3d.View.ViewToolbar = false;
+            vizcore3d.View.Toolbar.Enable = false;
             #endregion
 
 
@@ -439,7 +439,6 @@ namespace VIZCore3D.NET.Arguments
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarPrimitive.Visible = false;
             #endregion
 
