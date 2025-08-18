@@ -437,7 +437,6 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarPrimitive.Visible = false;
             #endregion
 
@@ -681,6 +680,27 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
             }
         }
 
+        /// <summary>
+        /// 블록별 외곽라인 개별 두께 설정
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cbGroupWidth_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(cbGroupId.SelectedItem);
+            vizcore3d.View.GroupSilhouetteEdge.SetSilhouetteEdgeWidth(
+                id, Convert.ToInt32(cbGroupWidth.SelectedItem.ToString()));
+        }
+
+        /// <summary>
+        /// 블록별 외곽라인 가시화 옵션
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ckHiddenLine_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.View.GroupSilhouetteEdge.HiddenLine = ckHiddenLine.Checked;
+        }
         /// <summary>
         /// 모든 그룹 제거
         /// </summary>

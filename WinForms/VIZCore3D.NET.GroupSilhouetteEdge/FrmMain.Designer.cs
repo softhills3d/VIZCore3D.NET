@@ -37,6 +37,7 @@
             this.btnVisible = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckGeneralDotted = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.cbWidth = new System.Windows.Forms.ComboBox();
@@ -45,7 +46,9 @@
             this.cbDot = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnColor = new System.Windows.Forms.Button();
-            this.ckGeneralDotted = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbGroupWidth = new System.Windows.Forms.ComboBox();
+            this.ckHiddenLine = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -72,14 +75,17 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.ckHiddenLine);
+            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.btnClear);
+            this.groupBox3.Controls.Add(this.cbGroupWidth);
             this.groupBox3.Controls.Add(this.cbGroupId);
             this.groupBox3.Controls.Add(this.btnDelete);
             this.groupBox3.Controls.Add(this.btnVisible);
-            this.groupBox3.Controls.Add(this.btnClear);
             this.groupBox3.Location = new System.Drawing.Point(12, 282);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(246, 156);
+            this.groupBox3.Size = new System.Drawing.Size(246, 184);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Basic";
@@ -116,7 +122,7 @@
             // 
             this.btnVisible.Location = new System.Drawing.Point(23, 31);
             this.btnVisible.Name = "btnVisible";
-            this.btnVisible.Size = new System.Drawing.Size(197, 23);
+            this.btnVisible.Size = new System.Drawing.Size(91, 23);
             this.btnVisible.TabIndex = 2;
             this.btnVisible.Text = "Visible";
             this.btnVisible.UseVisualStyleBackColor = true;
@@ -124,7 +130,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(23, 112);
+            this.btnClear.Location = new System.Drawing.Point(23, 142);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(197, 23);
             this.btnClear.TabIndex = 5;
@@ -145,6 +151,16 @@
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "General";
+            // 
+            // ckGeneralDotted
+            // 
+            this.ckGeneralDotted.AutoSize = true;
+            this.ckGeneralDotted.Location = new System.Drawing.Point(151, 36);
+            this.ckGeneralDotted.Name = "ckGeneralDotted";
+            this.ckGeneralDotted.Size = new System.Drawing.Size(59, 16);
+            this.ckGeneralDotted.TabIndex = 4;
+            this.ckGeneralDotted.Text = "Dotted";
+            this.ckGeneralDotted.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -233,15 +249,39 @@
             this.btnColor.UseVisualStyleBackColor = true;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
-            // ckGeneralDotted
+            // label3
             // 
-            this.ckGeneralDotted.AutoSize = true;
-            this.ckGeneralDotted.Location = new System.Drawing.Point(151, 36);
-            this.ckGeneralDotted.Name = "ckGeneralDotted";
-            this.ckGeneralDotted.Size = new System.Drawing.Size(59, 16);
-            this.ckGeneralDotted.TabIndex = 4;
-            this.ckGeneralDotted.Text = "Dotted";
-            this.ckGeneralDotted.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Width: ";
+            // 
+            // cbGroupWidth
+            // 
+            this.cbGroupWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGroupWidth.FormattingEnabled = true;
+            this.cbGroupWidth.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cbGroupWidth.Location = new System.Drawing.Point(81, 107);
+            this.cbGroupWidth.Name = "cbGroupWidth";
+            this.cbGroupWidth.Size = new System.Drawing.Size(140, 20);
+            this.cbGroupWidth.TabIndex = 8;
+            this.cbGroupWidth.SelectedValueChanged += new System.EventHandler(this.cbGroupWidth_SelectedValueChanged);
+            // 
+            // ckHiddenLine
+            // 
+            this.ckHiddenLine.AutoSize = true;
+            this.ckHiddenLine.Location = new System.Drawing.Point(129, 35);
+            this.ckHiddenLine.Name = "ckHiddenLine";
+            this.ckHiddenLine.Size = new System.Drawing.Size(91, 16);
+            this.ckHiddenLine.TabIndex = 10;
+            this.ckHiddenLine.Text = "Hidden Line";
+            this.ckHiddenLine.UseVisualStyleBackColor = true;
+            this.ckHiddenLine.CheckedChanged += new System.EventHandler(this.ckHiddenLine_CheckedChanged);
             // 
             // FrmMain
             // 
@@ -285,6 +325,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox ckGeneralDotted;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbGroupWidth;
+        private System.Windows.Forms.CheckBox ckHiddenLine;
     }
 }
 
