@@ -106,7 +106,7 @@ namespace VIZCore3D.NET.LoadingSpace
                 move += Paths[i];
 
                 vizcore3d.BeginUpdate();
-                //vizcore3d.Object3D.Transform.Transform(nodes, matrix, false);
+                //vizcore3d.Object3D.Transform.Transform(nodes, matrix, false); // 확인 필요
                 vizcore3d.Object3D.Transform.Move(nodes, move, true);
                 vizcore3d.EndUpdate();
             }
