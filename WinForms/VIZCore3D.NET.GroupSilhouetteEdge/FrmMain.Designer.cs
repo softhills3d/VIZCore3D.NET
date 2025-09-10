@@ -31,11 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ckHiddenLine = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.cbGroupWidth = new System.Windows.Forms.ComboBox();
             this.cbGroupId = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnVisible = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.ckGeneralDotted = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,9 +49,8 @@
             this.cbDot = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnColor = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbGroupWidth = new System.Windows.Forms.ComboBox();
-            this.ckHiddenLine = new System.Windows.Forms.CheckBox();
+            this.cbHiddenLineType = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -75,6 +77,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label4);
+            this.groupBox3.Controls.Add(this.cbHiddenLineType);
             this.groupBox3.Controls.Add(this.ckHiddenLine);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
@@ -85,10 +89,30 @@
             this.groupBox3.Controls.Add(this.btnVisible);
             this.groupBox3.Location = new System.Drawing.Point(12, 282);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(246, 184);
+            this.groupBox3.Size = new System.Drawing.Size(246, 242);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Basic";
+            // 
+            // ckHiddenLine
+            // 
+            this.ckHiddenLine.AutoSize = true;
+            this.ckHiddenLine.Location = new System.Drawing.Point(23, 180);
+            this.ckHiddenLine.Name = "ckHiddenLine";
+            this.ckHiddenLine.Size = new System.Drawing.Size(91, 16);
+            this.ckHiddenLine.TabIndex = 10;
+            this.ckHiddenLine.Text = "Hidden Line";
+            this.ckHiddenLine.UseVisualStyleBackColor = true;
+            this.ckHiddenLine.CheckedChanged += new System.EventHandler(this.ckHiddenLine_CheckedChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 12);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Width: ";
             // 
             // label2
             // 
@@ -98,6 +122,30 @@
             this.label2.Size = new System.Drawing.Size(58, 12);
             this.label2.TabIndex = 8;
             this.label2.Text = "Group ID:";
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(23, 142);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(197, 23);
+            this.btnClear.TabIndex = 5;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // cbGroupWidth
+            // 
+            this.cbGroupWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGroupWidth.FormattingEnabled = true;
+            this.cbGroupWidth.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3"});
+            this.cbGroupWidth.Location = new System.Drawing.Point(81, 107);
+            this.cbGroupWidth.Name = "cbGroupWidth";
+            this.cbGroupWidth.Size = new System.Drawing.Size(140, 20);
+            this.cbGroupWidth.TabIndex = 8;
+            this.cbGroupWidth.SelectedValueChanged += new System.EventHandler(this.cbGroupWidth_SelectedValueChanged);
             // 
             // cbGroupId
             // 
@@ -122,21 +170,11 @@
             // 
             this.btnVisible.Location = new System.Drawing.Point(23, 31);
             this.btnVisible.Name = "btnVisible";
-            this.btnVisible.Size = new System.Drawing.Size(91, 23);
+            this.btnVisible.Size = new System.Drawing.Size(197, 23);
             this.btnVisible.TabIndex = 2;
             this.btnVisible.Text = "Visible";
             this.btnVisible.UseVisualStyleBackColor = true;
             this.btnVisible.Click += new System.EventHandler(this.btnVisible_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(23, 142);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(197, 23);
-            this.btnClear.TabIndex = 5;
-            this.btnClear.Text = "Clear";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // groupBox1
             // 
@@ -249,39 +287,27 @@
             this.btnColor.UseVisualStyleBackColor = true;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
-            // label3
+            // cbHiddenLineType
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 110);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 12);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Width: ";
+            this.cbHiddenLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHiddenLineType.FormattingEnabled = true;
+            this.cbHiddenLineType.Items.AddRange(new object[] {
+            "Line",
+            "Dotted"});
+            this.cbHiddenLineType.Location = new System.Drawing.Point(132, 208);
+            this.cbHiddenLineType.Name = "cbHiddenLineType";
+            this.cbHiddenLineType.Size = new System.Drawing.Size(88, 20);
+            this.cbHiddenLineType.TabIndex = 11;
+            this.cbHiddenLineType.SelectedIndexChanged += new System.EventHandler(this.cbHiddenLineType_SelectedIndexChanged);
             // 
-            // cbGroupWidth
+            // label4
             // 
-            this.cbGroupWidth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGroupWidth.FormattingEnabled = true;
-            this.cbGroupWidth.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3"});
-            this.cbGroupWidth.Location = new System.Drawing.Point(81, 107);
-            this.cbGroupWidth.Name = "cbGroupWidth";
-            this.cbGroupWidth.Size = new System.Drawing.Size(140, 20);
-            this.cbGroupWidth.TabIndex = 8;
-            this.cbGroupWidth.SelectedValueChanged += new System.EventHandler(this.cbGroupWidth_SelectedValueChanged);
-            // 
-            // ckHiddenLine
-            // 
-            this.ckHiddenLine.AutoSize = true;
-            this.ckHiddenLine.Location = new System.Drawing.Point(129, 35);
-            this.ckHiddenLine.Name = "ckHiddenLine";
-            this.ckHiddenLine.Size = new System.Drawing.Size(91, 16);
-            this.ckHiddenLine.TabIndex = 10;
-            this.ckHiddenLine.Text = "Hidden Line";
-            this.ckHiddenLine.UseVisualStyleBackColor = true;
-            this.ckHiddenLine.CheckedChanged += new System.EventHandler(this.ckHiddenLine_CheckedChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 211);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Hidden Line Type";
             // 
             // FrmMain
             // 
@@ -328,6 +354,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbGroupWidth;
         private System.Windows.Forms.CheckBox ckHiddenLine;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cbHiddenLineType;
     }
 }
 

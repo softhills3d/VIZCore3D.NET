@@ -122,6 +122,7 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
             // ================================================================
             cbWidth.SelectedIndex = vizcore3d.View.GroupSilhouetteEdge.SilhouetteEdgeWidth - 1;
             cbGroupId.Enabled = false;
+            cbHiddenLineType.SelectedIndex = 0;
         }
         #endregion
 
@@ -550,8 +551,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         /// <summary>
         /// Silhouette Edge 색상 설정 (전체 - 그룹별 색상 지정하지 않은 경우)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void btnAllColor_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -569,8 +570,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         /// <summary>
         /// Silhouette Edge 두께 설정 (1 ~ 3)
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void cbWidth_SelectedIndexChanged(object sender, EventArgs e)
         {
             vizcore3d.View.GroupSilhouetteEdge.SilhouetteEdgeWidth = Convert.ToInt32(cbWidth.SelectedItem.ToString());
@@ -600,8 +601,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         /// <summary>
         /// Silhouette Edge 색상 선택
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void btnColor_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -617,8 +618,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         /// <summary>
         /// Silhouette Edge 단위 그룹 설정
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             List<Node> nodes = vizcore3d.Object3D.FromFilter(Object3dFilter.SELECTED_TOP);
@@ -647,8 +648,10 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         }
         #endregion
 
-
-
+        #region Basic
+        /// <summary>
+        /// 선택된 그룹 아이디 설정
+        /// </summary>
         private void SetSelectedIndexCheckBox()
         {
             // Clear existing items
@@ -666,8 +669,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         /// <summary>
         /// Silhouette Edge 가시화 설정
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void btnVisible_Click(object sender, EventArgs e)
         {
             if (vizcore3d.View.GroupSilhouetteEdge.Visible)
@@ -683,8 +686,8 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         /// <summary>
         /// 블록별 외곽라인 개별 두께 설정
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void cbGroupWidth_SelectedValueChanged(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(cbGroupId.SelectedItem);
@@ -693,19 +696,10 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         }
 
         /// <summary>
-        /// 블록별 외곽라인 가시화 옵션
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ckHiddenLine_CheckedChanged(object sender, EventArgs e)
-        {
-            vizcore3d.View.GroupSilhouetteEdge.HiddenLine = ckHiddenLine.Checked;
-        }
-        /// <summary>
         /// 모든 그룹 제거
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             vizcore3d.View.GroupSilhouetteEdge.Clear();
@@ -715,6 +709,11 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
         }
 
 
+        /// <summary>
+        /// 선택된 그룹 제거
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(cbGroupId.SelectedItem);
@@ -726,5 +725,38 @@ namespace VIZCore3D.NET.GroupSilhouetteEdge
                 cbGroupId.Enabled = false;
             }
         }
+
+        /// <summary>
+        /// Silhouette Edge HiddenLine 가시화 설정
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
+        private void ckHiddenLine_CheckedChanged(object sender, EventArgs e)
+        {
+            vizcore3d.View.GroupSilhouetteEdge.HiddenLine = ckHiddenLine.Checked;
+        }
+
+        /// <summary>
+        /// Silhouette Edge HiddenLine 가시화 옵션
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event Args</param>
+        private void cbHiddenLineType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(cbGroupId.SelectedItem);
+
+            if (cbHiddenLineType.SelectedIndex == 0) // 실선
+            {
+                vizcore3d.View.GroupSilhouetteEdge.UseBlendDottedEdge(id, false);
+            }
+            else // 점선
+            {
+                vizcore3d.View.GroupSilhouetteEdge.UseBlendDottedEdge(id, true);
+            }
+
+        }
+        #endregion
+
+
     }
 }
