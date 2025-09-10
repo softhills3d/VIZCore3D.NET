@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbHiddenLineType = new System.Windows.Forms.ComboBox();
             this.ckHiddenLine = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.cbDot = new System.Windows.Forms.CheckBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnColor = new System.Windows.Forms.Button();
-            this.cbHiddenLineType = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -93,6 +93,28 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Basic";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 211);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(105, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Hidden Line Type";
+            // 
+            // cbHiddenLineType
+            // 
+            this.cbHiddenLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHiddenLineType.FormattingEnabled = true;
+            this.cbHiddenLineType.Items.AddRange(new object[] {
+            "Line",
+            "Dotted"});
+            this.cbHiddenLineType.Location = new System.Drawing.Point(132, 208);
+            this.cbHiddenLineType.Name = "cbHiddenLineType";
+            this.cbHiddenLineType.Size = new System.Drawing.Size(88, 20);
+            this.cbHiddenLineType.TabIndex = 11;
+            this.cbHiddenLineType.SelectedIndexChanged += new System.EventHandler(this.cbHiddenLineType_SelectedIndexChanged);
             // 
             // ckHiddenLine
             // 
@@ -287,28 +309,6 @@
             this.btnColor.UseVisualStyleBackColor = true;
             this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
-            // cbHiddenLineType
-            // 
-            this.cbHiddenLineType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbHiddenLineType.FormattingEnabled = true;
-            this.cbHiddenLineType.Items.AddRange(new object[] {
-            "Line",
-            "Dotted"});
-            this.cbHiddenLineType.Location = new System.Drawing.Point(132, 208);
-            this.cbHiddenLineType.Name = "cbHiddenLineType";
-            this.cbHiddenLineType.Size = new System.Drawing.Size(88, 20);
-            this.cbHiddenLineType.TabIndex = 11;
-            this.cbHiddenLineType.SelectedIndexChanged += new System.EventHandler(this.cbHiddenLineType_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 211);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 12);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Hidden Line Type";
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -318,7 +318,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VIZCore3D.NET.MeasureFrame";
+            this.Text = "VIZCore3D.NET.GroupSilhouetteEdge";
             this.splitContainer1.Panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
