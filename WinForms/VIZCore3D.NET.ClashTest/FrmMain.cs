@@ -456,9 +456,12 @@ namespace VIZCore3D.NET.ClashTest
         {
             vizcore3d.Object3D.OnObject3DSelected += Object3D_OnObject3DSelected;
 
+            // 간섭검사 진척률 이벤트
             vizcore3d.Clash.OnClashProgressEvent += Clash_OnClashProgressEvent;
+            // 간섭검사 완료 이벤트
             vizcore3d.Clash.OnClashTestFinishedEvent += Clash_OnClashTestFinishedEvent;
 
+            // 1초 마다 타이머 시작
             timerStatus.Enabled = true;
         }
 
@@ -525,15 +528,22 @@ namespace VIZCore3D.NET.ClashTest
             //=========================================================================================
         }
 
+        /// <summary>
+        /// 간섭 검사 완료 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Clash_OnClashTestFinishedEvent(object sender, VIZCore3D.NET.Event.EventManager.ClashEventArgs e)
         {
             MessageBox.Show(string.Format("Clash Test Completed. : {0} / {1}", e.ID, clash.ElapsedTimeString), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            // 간섭 검사 완료 시, 결과 목록 표시
             this.Invoke(new EventHandler(delegate
             {
                 ShowResultList();
             }));
 
+            // 이동간섭 검사인 경우, 이동 경로 표시
             if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count > 0)
             {
                 ShowMovingPath(clash);
@@ -542,6 +552,10 @@ namespace VIZCore3D.NET.ClashTest
             this.Activate();
         }
 
+        /// <summary>
+        /// 이동 경로대로 개체 이동
+        /// </summary>
+        /// <param name="clash"></param>
         private void ShowMovingPath(Data.ClashTest clash)
         {
             if (clash == null)
@@ -552,7 +566,9 @@ namespace VIZCore3D.NET.ClashTest
 
             float Tx = 0, Ty = 0, Tz = 0;
             List<Data.Node> nodes = new List<Data.Node>();
+
             nodes = clash.GroupB;
+
             for (int i = 0; i < clash.Path.Count; i++)
             {
                 if (axis == VIZCore3D.NET.Data.Axis.X)
@@ -568,6 +584,7 @@ namespace VIZCore3D.NET.ClashTest
                     Tz = clash.Path[i].Z;
                 }
 
+                // GroupB 이동
                 vizcore3d.Object3D.Transform.Move(nodes, Tx, Ty, Tz, true);
 
                 System.Threading.Thread.Sleep(500);
@@ -586,6 +603,7 @@ namespace VIZCore3D.NET.ClashTest
 
             List<VIZCore3D.NET.Data.ClashTestResultItem> items = null;
 
+            // 간섭 검사 결과 목록 반환
             if (clash.TestKind != VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP)
             {
                 items = vizcore3d.Clash.GetResultItem(
@@ -597,7 +615,6 @@ namespace VIZCore3D.NET.ClashTest
             }
             else
             {
-                //items = vizcore3d.Clash.GetResultItem(clash, 0, ckResultAssembly.Checked == true ? Manager.ClashManager.ResultGroupingOptions.ASSEMBLY : Manager.ClashManager.ResultGroupingOptions.PART);
                 items = vizcore3d.Clash.GetResultAllSubItem(
                     clash
                     , ckResultAssembly.Checked == true
@@ -609,6 +626,7 @@ namespace VIZCore3D.NET.ClashTest
             // 인접면 법선벡터 구하기
             bool checkConnectedSurfaceNormalVector = ckConnectedSurfaceNormalVector.Checked;
 
+            // 간섭 결과 아이템 리스트 뷰에 추가
             for (int i = 0; i < items.Count; i++)
             {
                 VIZCore3D.NET.Data.ClashTestResultItem item = items[i];
@@ -663,6 +681,7 @@ namespace VIZCore3D.NET.ClashTest
                             , projection2
                         }
                     );
+
                 lvi.Tag = item;
 
                 if (PenetrationOnly == true && item.ResultKind == Data.ClashTestResultItem.ClashResultKind.PENETRATION)
@@ -754,10 +773,16 @@ namespace VIZCore3D.NET.ClashTest
             lvResult.EndUpdate();
         }
 
+        /// <summary>
+        /// 간섭 검사 추가
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAdd_Click(object sender, EventArgs e)
         {
             if (clash == null) return;
 
+            // 간섭 검사 설정
             clash.Name = "CLASH TEST #1";
             clash.TestKind = (VIZCore3D.NET.Data.ClashTest.ClashTestKind)cbTestKind.SelectedIndex;
 
@@ -784,8 +809,8 @@ namespace VIZCore3D.NET.ClashTest
             clash.UsePenetrationTolerance = ckUsePenetrationTolerance.Checked;          // 접촉허용오차
             clash.PenetrationTolerance = Convert.ToSingle(txtPenetrationTolerance.Text);// 접촉허용오차
 
-            clash.VisibleOnly = ckVisibleOnly.Checked;
-            clash.BottomLevel = cbBottomLevel.SelectedIndex + 1;
+            clash.VisibleOnly = ckVisibleOnly.Checked;  // 보이는 모델만
+            clash.BottomLevel = cbBottomLevel.SelectedIndex + 1; // 간섭 제외 끝 레벨
 
             if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count == 0)
             {
@@ -793,18 +818,25 @@ namespace VIZCore3D.NET.ClashTest
                 return;
             }
 
+            // 간섭 검사 추가
             if (clash.ID == -1)
             {
                 bool result = vizcore3d.Clash.Add(clash);
 
                 MessageBox.Show(string.Format("ClashTest : {0} / {1}", result == true ? "OK" : "NG", clash.ID), "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, result == true ? MessageBoxIcon.Information : MessageBoxIcon.Error);
             }
+            // 간섭 검사 수정
             else
             {
                 vizcore3d.Clash.Update(clash);
             }
         }
 
+        /// <summary>
+        /// 간섭 검사 삭제
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (clash.ID == -1)
@@ -815,6 +847,7 @@ namespace VIZCore3D.NET.ClashTest
 
             int count1 = vizcore3d.Clash.ClashTestCount;
 
+            // 간섭 검사 삭제
             vizcore3d.Clash.Delete(clash);
 
             int count2 = vizcore3d.Clash.ClashTestCount;
@@ -822,6 +855,7 @@ namespace VIZCore3D.NET.ClashTest
 
             clash = new Data.ClashTest();
 
+            // 뷰 상태 초기화
             vizcore3d.BeginUpdate();
 
             if (vizcore3d.View.XRay.Enable == true)
@@ -834,6 +868,11 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.EndUpdate();
         }
 
+        /// <summary>
+        /// 간섭 검사 결과 삭제
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteResult_Click(object sender, EventArgs e)
         {
             if (clash.ID == -1)
@@ -841,8 +880,11 @@ namespace VIZCore3D.NET.ClashTest
                 MessageBox.Show("추가되지 않은 항목입니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            // 간섭 검사 결과 삭제
             vizcore3d.Clash.DeleteResultItem(clash);
 
+            // 뷰 상태 초기화
             vizcore3d.BeginUpdate();
 
             if (vizcore3d.View.XRay.Enable == true)
@@ -855,6 +897,11 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.EndUpdate();
         }
 
+        /// <summary>
+        /// 간섭 검사 수행
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnPerformTest_Click(object sender, EventArgs e)
         {
             if (clash.ID == -1)
@@ -863,17 +910,26 @@ namespace VIZCore3D.NET.ClashTest
                 return;
             }
 
+            // 간섭 검사 수행 
             bool result = vizcore3d.Clash.PerformInterferenceCheck(clash.ID);
         }
 
+        /// <summary>
+        /// 그룹 A 추가
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddGroupA_Click(object sender, EventArgs e)
         {
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+
             if (items.Count == 0)
             {
                 MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // 선택된 모델을 그룹 A에 설정
             clash.GroupA = items;
 
             MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -881,14 +937,22 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
         }
 
+        /// <summary>
+        /// 그룹 B 추가
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddGroupB_Click(object sender, EventArgs e)
         {
             List<VIZCore3D.NET.Data.Node> items = vizcore3d.Object3D.FromFilter(VIZCore3D.NET.Data.Object3dFilter.SELECTED_TOP);
+
             if (items.Count == 0)
             {
                 MessageBox.Show("선택된 항목이 없습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
+            // 선택된 모델을 그룹 B에 설정
             clash.GroupB = items;
 
             MessageBox.Show("선택된 모델을 그룹에 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -896,32 +960,53 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.Object3D.Select(Data.Object3dSelectionModes.DESELECT_ALL);
         }
 
+        /// <summary>
+        /// 이동 간섭 경로 추가
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddPath_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(txtStartPos.Text) == true) return;
             if (String.IsNullOrEmpty(txtEndPos.Text) == true) return;
             if (String.IsNullOrEmpty(txtInterval.Text) == true) return;
 
-            //clash.AddTranslation((VIZCore3D.NET.Data.Axis)cbAxis.SelectedIndex, Convert.ToSingle(txtStartPos.Text), Convert.ToSingle(txtInterval.Text));
+            // 이동 경로 추가
             clash.AddTranslation((VIZCore3D.NET.Data.Axis)cbAxis.SelectedIndex, Convert.ToSingle(txtStartPos.Text), Convert.ToSingle(txtEndPos.Text), Convert.ToSingle(txtInterval.Text));
             MessageBox.Show("이동 경로(Path)를 설정 하였습니다.", "VIZCore3D.NET.ClashTest", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
+        /// <summary>
+        /// 간섭 검사 항목 초기화    
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnNew_Click(object sender, EventArgs e)
         {
             clash = new Data.ClashTest();
         }
 
+        /// <summary>
+        /// 간섭 검사 결과 목록 갱신
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefreshList_Click(object sender, EventArgs e)
         {
             ShowResultList();
         }
 
+        /// <summary>
+        /// 간섭 검사 항목 초기화
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             int count1 = vizcore3d.Clash.ClashTestCount;
 
+            // 간섭 검사 항목 초기화
             vizcore3d.Clash.Clear();
 
             int count2 = vizcore3d.Clash.ClashTestCount;
@@ -929,6 +1014,7 @@ namespace VIZCore3D.NET.ClashTest
 
             clash = new Data.ClashTest();
 
+            // 뷰 상태 초기화
             vizcore3d.BeginUpdate();
 
             if (vizcore3d.View.XRay.Enable == true)
@@ -999,15 +1085,27 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.EndUpdate();
         }
 
+        /// <summary>
+        /// 간섭 검사 실행여부 확인 타이머 이벤트
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timerStatus_Tick(object sender, EventArgs e)
         {
+            // 간섭 검사 진행중이 아닌 경우, return
             if (vizcore3d.Clash.IsBusy == false) return;
 
+            // 간섭 검사가 진행중인 경우, 상태 출력
             System.Diagnostics.Trace.WriteLine(
                 vizcore3d.Clash.IsBusy == true ? "CLASH : BUSY" : "CLASH : NONE"
                 );
         }
 
+        /// <summary>
+        /// 모델 스트림 열기
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOpenStream_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -1020,6 +1118,11 @@ namespace VIZCore3D.NET.ClashTest
                 );
         }
 
+        /// <summary>
+        /// 모델 스트림 추가
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddStream_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
@@ -1041,6 +1144,11 @@ namespace VIZCore3D.NET.ClashTest
             vizcore3d.Model.AddStream(stream);
         }
 
+        /// <summary>
+        /// 간섭 검사 결과 내보내기
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnExport_Click(object sender, EventArgs e)
         {
             if (lvResult.Items.Count == 0) return;
