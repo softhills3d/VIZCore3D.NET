@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace VIZCore3D.NET.ClashTest
@@ -478,54 +474,54 @@ namespace VIZCore3D.NET.ClashTest
             //=========================================================================================
             //이동검사 중 간섭검사 결과로 간섭검사 종료 하기
 
-            if (e.Progress >= 100)
+            //   if (e.Progress >= 100)
+            //   {
+            //       List<VIZCore3D.NET.Data.ClashTestResultItem> items = vizcore3d.Clash.GetProgressResultItem(
+            //clash
+            //, ckResultAssembly.Checked == true
+            //? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
+            //: VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
+            //);
+
+            //       //간섭검사 결과 조건으로 종료
+            //       if (items.Count > 0)
+            //       {
+            //           foreach (VIZCore3D.NET.Data.ClashTestResultItem item in items)
+            //           {
+            //               //근접, 접촉, 침투, 여유 조건 
+            //               if (item.ResultKind == Data.ClashTestResultItem.ClashResultKind.PENETRATION || item.ResultKind == Data.ClashTestResultItem.ClashResultKind.CONTACT)
+            //               {
+            //                   //종료
+            //                   vizcore3d.Clash.Clear();
+
+            //                   this.Invoke(new EventHandler(delegate
+            //                   {
+            //                       //결과 목록
+            //                       ShowResultList(items);
+            //                   }));
+            //                   this.Activate();
+
+            //                   break;
+            //               }
+            //           }
+            //       }
+
+            /*                    
+            //간섭결과 목록 갯수로 종료
+            if (items.Count > 0)
             {
-                List<VIZCore3D.NET.Data.ClashTestResultItem> items = vizcore3d.Clash.GetProgressResultItem(
-         clash
-         , ckResultAssembly.Checked == true
-         ? VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.ASSEMBLY
-         : VIZCore3D.NET.Manager.ClashManager.ResultGroupingOptions.PART
-         );
+                //종료
+                vizcore3d.Clash.Clear();
 
-                //간섭검사 결과 조건으로 종료
-                if (items.Count > 0)
+                this.Invoke(new EventHandler(delegate
                 {
-                    foreach (VIZCore3D.NET.Data.ClashTestResultItem item in items)
-                    {
-                        //근접, 접촉, 침투, 여유 조건 
-                        if (item.ResultKind == Data.ClashTestResultItem.ClashResultKind.PENETRATION || item.ResultKind == Data.ClashTestResultItem.ClashResultKind.CONTACT)
-                        {
-                            //종료
-                            vizcore3d.Clash.Clear();
-
-                            this.Invoke(new EventHandler(delegate
-                            {
-                                //결과 목록
-                                ShowResultList(items);
-                            }));
-                            this.Activate();
-
-                            break;
-                        }
-                    }
-                }
-
-                /*                    
-                //간섭결과 목록 갯수로 종료
-                if (items.Count > 0)
-                {
-                    //종료
-                    vizcore3d.Clash.Clear();
-
-                    this.Invoke(new EventHandler(delegate
-                    {
-                        //결과 목록
-                        ShowResultList();
-                    }));
-                    this.Activate();
-                }
-                */
+                    //결과 목록
+                    ShowResultList();
+                }));
+                this.Activate();
             }
+            */
+            //}
             //=========================================================================================
         }
 
@@ -538,7 +534,46 @@ namespace VIZCore3D.NET.ClashTest
                 ShowResultList();
             }));
 
+            if (clash.TestKind == VIZCore3D.NET.Data.ClashTest.ClashTestKind.GROUP_VS_MOVING_GROUP && clash.Path.Count > 0)
+            {
+                ShowMovingPath(clash);
+            }
+
             this.Activate();
+        }
+
+        private void ShowMovingPath(Data.ClashTest clash)
+        {
+            if (clash == null)
+                return;
+
+            VIZCore3D.NET.Data.Axis axis = new VIZCore3D.NET.Data.Axis();
+            axis = clash.Axis;
+
+            float Tx = 0, Ty = 0, Tz = 0;
+            List<Data.Node> nodes = new List<Data.Node>();
+            nodes = clash.GroupB;
+            for (int i = 0; i < clash.Path.Count; i++)
+            {
+                if (axis == VIZCore3D.NET.Data.Axis.X)
+                {
+                    Tx = clash.Path[i].X;
+                }
+                else if (axis == VIZCore3D.NET.Data.Axis.Y)
+                {
+                    Ty = clash.Path[i].Y;
+                }
+                else if (axis == VIZCore3D.NET.Data.Axis.Z)
+                {
+                    Tz = clash.Path[i].Z;
+                }
+
+                vizcore3d.Object3D.Transform.Move(nodes, Tx, Ty, Tz, true);
+
+                System.Threading.Thread.Sleep(500);
+            }
+
+            vizcore3d.Object3D.Transform.RestoreTransformAll();
         }
 
         private void ShowResultList()
@@ -648,7 +683,7 @@ namespace VIZCore3D.NET.ClashTest
 
             lvResult.BeginUpdate();
             lvResult.Items.Clear();
-            
+
             // 인접면 법선벡터 구하기
             bool checkConnectedSurfaceNormalVector = ckConnectedSurfaceNormalVector.Checked;
 
@@ -786,6 +821,17 @@ namespace VIZCore3D.NET.ClashTest
             MessageBox.Show(string.Format("Clash Test Count : {0} -> {1}", count1, count2));
 
             clash = new Data.ClashTest();
+
+            vizcore3d.BeginUpdate();
+
+            if (vizcore3d.View.XRay.Enable == true)
+                vizcore3d.View.XRay.Enable = false;
+
+            vizcore3d.Object3D.Color.RestoreColorAll();
+            vizcore3d.Review.Note.Clear();
+            vizcore3d.Clash.ClearResultSymbol();
+
+            vizcore3d.EndUpdate();
         }
 
         private void btnDeleteResult_Click(object sender, EventArgs e)
@@ -796,6 +842,17 @@ namespace VIZCore3D.NET.ClashTest
                 return;
             }
             vizcore3d.Clash.DeleteResultItem(clash);
+
+            vizcore3d.BeginUpdate();
+
+            if (vizcore3d.View.XRay.Enable == true)
+                vizcore3d.View.XRay.Enable = false;
+
+            vizcore3d.Object3D.Color.RestoreColorAll();
+            vizcore3d.Review.Note.Clear();
+            vizcore3d.Clash.ClearResultSymbol();
+
+            vizcore3d.EndUpdate();
         }
 
         private void btnPerformTest_Click(object sender, EventArgs e)
@@ -871,6 +928,17 @@ namespace VIZCore3D.NET.ClashTest
             MessageBox.Show(string.Format("Clash Test Count : {0} -> {1}", count1, count2));
 
             clash = new Data.ClashTest();
+
+            vizcore3d.BeginUpdate();
+
+            if (vizcore3d.View.XRay.Enable == true)
+                vizcore3d.View.XRay.Enable = false;
+
+            vizcore3d.Object3D.Color.RestoreColorAll();
+            vizcore3d.Review.Note.Clear();
+            vizcore3d.Clash.ClearResultSymbol();
+
+            vizcore3d.EndUpdate();
         }
 
         private void lvResult_DoubleClick(object sender, EventArgs e)
@@ -898,6 +966,7 @@ namespace VIZCore3D.NET.ClashTest
 
             // Fly
             vizcore3d.View.FlyToObject3d(new List<int>() { item.NodeIndexA, item.NodeIndexB }, 2);
+
             // Add Vertex :: HOT POINT
             //vizcore3d.ShapeDrawing.Clear();
             //vizcore3d.ShapeDrawing.AddVertex(new List<Data.Vertex3D>() { item.HotPoint }, 0, Color.Red, 10.0f, 10.0f, true);
@@ -906,8 +975,8 @@ namespace VIZCore3D.NET.ClashTest
             //vizcore3d.View.SetPivotPosition(item.HotPoint);
 
             // Add Note :: Result Item
-            VIZCore3D.NET.Data.Vertex3D v1 = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { item.NodeIndexA });
-            VIZCore3D.NET.Data.Vertex3D v2 = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { item.NodeIndexB });
+            //VIZCore3D.NET.Data.Vertex3D v1 = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { item.NodeIndexA });
+            //VIZCore3D.NET.Data.Vertex3D v2 = vizcore3d.Object3D.GetSurfaceVertexClosestToModelCenter(new List<int>() { item.NodeIndexB });
 
             vizcore3d.Review.Note.Clear();
 
@@ -917,15 +986,15 @@ namespace VIZCore3D.NET.ClashTest
             //vizcore3d.Review.Note.AddNoteSurface(item.NodeNameA, v1.Clone().AddValue(Data.Axis.Y, 1000.0f), v1);
             //vizcore3d.Review.Note.AddNoteSurface(item.NodeNameB, v2.Clone().AddValue(Data.Axis.Y, 1000.0f), v2);
 
-            //// Add Result Symbol
-            //vizcore3d.Clash.ShowResultSymbol(
-            //    new List<VIZCore3D.NET.Data.Vertex3D>() { item.HotPoint }
-            //    , new List<VIZCore3D.NET.Data.ClashResultSymbols>() { VIZCore3D.NET.Data.ClashResultSymbols.Triangle }
-            //    , 10.0f
-            //    , true
-            //    , Color.Yellow
-            //    , false
-            //    );
+            // Add Result Symbol
+            vizcore3d.Clash.ShowResultSymbol(
+                new List<VIZCore3D.NET.Data.Vertex3D>() { item.HotPoint }
+                , new List<VIZCore3D.NET.Data.ClashResultSymbols>() { VIZCore3D.NET.Data.ClashResultSymbols.Triangle }
+                , 10.0f
+                , true
+                , Color.Yellow
+                , false
+                );
 
             vizcore3d.EndUpdate();
         }
