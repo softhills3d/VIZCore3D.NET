@@ -31,17 +31,17 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnView = new System.Windows.Forms.Button();
+            this.ckXray = new System.Windows.Forms.CheckBox();
+            this.ckFly = new System.Windows.Forms.CheckBox();
             this.lvNode = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ckFly = new System.Windows.Forms.CheckBox();
-            this.ckXray = new System.Windows.Forms.CheckBox();
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -77,15 +77,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Mesh Count";
             // 
-            // btnView
+            // ckXray
             // 
-            this.btnView.Location = new System.Drawing.Point(20, 29);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(75, 23);
-            this.btnView.TabIndex = 0;
-            this.btnView.Text = "Refresh";
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            this.ckXray.AutoSize = true;
+            this.ckXray.Location = new System.Drawing.Point(260, 33);
+            this.ckXray.Name = "ckXray";
+            this.ckXray.Size = new System.Drawing.Size(50, 16);
+            this.ckXray.TabIndex = 3;
+            this.ckXray.Text = "Xray";
+            this.ckXray.UseVisualStyleBackColor = true;
+            this.ckXray.CheckedChanged += new System.EventHandler(this.ckXray_CheckedChanged);
+            // 
+            // ckFly
+            // 
+            this.ckFly.AutoSize = true;
+            this.ckFly.Location = new System.Drawing.Point(134, 33);
+            this.ckFly.Name = "ckFly";
+            this.ckFly.Size = new System.Drawing.Size(95, 16);
+            this.ckFly.TabIndex = 2;
+            this.ckFly.Text = "Fly to Object";
+            this.ckFly.UseVisualStyleBackColor = true;
             // 
             // lvNode
             // 
@@ -132,38 +143,27 @@
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "VOLUMN";
+            this.columnHeader5.Text = "VOLUME";
             this.columnHeader5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "BOUNDBOX";
             // 
             // columnHeader7
             // 
             this.columnHeader7.Text = "MESH / SPACE";
             this.columnHeader7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // ckFly
+            // columnHeader6
             // 
-            this.ckFly.AutoSize = true;
-            this.ckFly.Location = new System.Drawing.Point(134, 33);
-            this.ckFly.Name = "ckFly";
-            this.ckFly.Size = new System.Drawing.Size(95, 16);
-            this.ckFly.TabIndex = 2;
-            this.ckFly.Text = "Fly to Object";
-            this.ckFly.UseVisualStyleBackColor = true;
+            this.columnHeader6.Text = "BOUNDBOX";
             // 
-            // ckXray
+            // btnView
             // 
-            this.ckXray.AutoSize = true;
-            this.ckXray.Location = new System.Drawing.Point(260, 33);
-            this.ckXray.Name = "ckXray";
-            this.ckXray.Size = new System.Drawing.Size(50, 16);
-            this.ckXray.TabIndex = 3;
-            this.ckXray.Text = "Xray";
-            this.ckXray.UseVisualStyleBackColor = true;
-            this.ckXray.CheckedChanged += new System.EventHandler(this.ckXray_CheckedChanged);
+            this.btnView.Location = new System.Drawing.Point(20, 29);
+            this.btnView.Name = "btnView";
+            this.btnView.Size = new System.Drawing.Size(75, 23);
+            this.btnView.TabIndex = 0;
+            this.btnView.Text = "Refresh";
+            this.btnView.UseVisualStyleBackColor = true;
+            this.btnView.Click += new System.EventHandler(this.btnView_Click);
             // 
             // FrmMain
             // 
