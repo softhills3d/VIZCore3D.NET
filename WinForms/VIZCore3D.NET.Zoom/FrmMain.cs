@@ -443,7 +443,6 @@ namespace VIZCore3D.NET.Zoom
             vizcore3d.ToolbarSection.Visible = true;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = false;
-            vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarPrimitive.Visible = true;
             #endregion
 

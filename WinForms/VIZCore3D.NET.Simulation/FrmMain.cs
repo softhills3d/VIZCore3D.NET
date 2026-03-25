@@ -439,7 +439,6 @@ namespace VIZCore3D.NET.Simulation
             vizcore3d.ToolbarSection.Visible = false;
             vizcore3d.ToolbarClash.Visible = false;
             vizcore3d.ToolbarAnimation.Visible = true;
-            vizcore3d.ToolbarSimulation.Visible = false;
             vizcore3d.ToolbarPrimitive.Visible = false;
             #endregion
 
