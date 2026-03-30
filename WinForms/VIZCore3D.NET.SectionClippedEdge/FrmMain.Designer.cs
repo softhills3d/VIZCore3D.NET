@@ -114,7 +114,7 @@
             this.groupBox5.Size = new System.Drawing.Size(668, 92);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Section size change";
+            this.groupBox5.Text = "Section Size Adjustment";
             // 
             // label6
             // 
@@ -123,7 +123,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 12);
             this.label6.TabIndex = 14;
-            this.label6.Text = "Z Size Add: ";
+            this.label6.Text = "Z Size Offset:";
             // 
             // txtZSize
             // 
@@ -140,7 +140,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 12);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Y Size: Add ";
+            this.label5.Text = "Y Size Offset:";
             // 
             // txtYSize
             // 
@@ -157,7 +157,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 12);
             this.label4.TabIndex = 10;
-            this.label4.Text = "X Size Add: ";
+            this.label4.Text = "X Size Offset:";
             // 
             // txtXSize
             // 
@@ -184,7 +184,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 12);
             this.label3.TabIndex = 7;
-            this.label3.Text = "Position: ";
+            this.label3.Text = "Position:";
             // 
             // txtPosition2
             // 
@@ -232,7 +232,7 @@
             this.btnSizeChange.Name = "btnSizeChange";
             this.btnSizeChange.Size = new System.Drawing.Size(75, 23);
             this.btnSizeChange.TabIndex = 0;
-            this.btnSizeChange.Text = "Add Section";
+            this.btnSizeChange.Text = "Apply";
             this.btnSizeChange.UseVisualStyleBackColor = true;
             this.btnSizeChange.Click += new System.EventHandler(this.btnSizeChange_Click);
             // 
@@ -252,7 +252,7 @@
             this.groupBox4.Size = new System.Drawing.Size(668, 58);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Section Position Add";
+            this.groupBox4.Text = "Add Section by Position";
             // 
             // rbZ
             // 
@@ -271,7 +271,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 12);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Position: ";
+            this.label2.Text = "Position:";
             // 
             // txtPosition
             // 
@@ -333,7 +333,7 @@
             this.groupBox2.Size = new System.Drawing.Size(668, 463);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "3D MODEL";
+            this.groupBox2.Text = "3D Model";
             // 
             // groupBox1
             // 
@@ -361,7 +361,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 12);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Offset: ";
+            this.label1.Text = "Offset:";
             // 
             // txtOffset
             // 
@@ -398,7 +398,7 @@
             this.rbSectionBox.Name = "rbSectionBox";
             this.rbSectionBox.Size = new System.Drawing.Size(87, 16);
             this.rbSectionBox.TabIndex = 3;
-            this.rbSectionBox.Text = "SectionBox";
+            this.rbSectionBox.Text = "Section Box";
             this.rbSectionBox.UseVisualStyleBackColor = true;
             this.rbSectionBox.CheckedChanged += new System.EventHandler(this.rbSectionBox_CheckedChanged);
             // 
@@ -456,7 +456,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VIZCore3D.NET.Section";
+            this.Text = "VIZCore3D.NET.SectionClippedEdge";
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
