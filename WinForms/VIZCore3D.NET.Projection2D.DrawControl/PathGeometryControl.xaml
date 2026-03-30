@@ -26,33 +26,47 @@
                 <CheckBox Name="ckShowDimensions" Content="Dim" VerticalAlignment="Center" Margin="4,0" IsChecked="True" Click="ckShowDimensions_Click"/>
                 <CheckBox Name="ckFillShape" Content="Fill" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckFillShape_Click"/>
                 <Separator Margin="4,2"/>
+                <CheckBox Name="ckShowCorners" Content="Corners" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckShowCorners_Click" ToolTip="Show 3D coordinates at bounding box corners"/>
+                <CheckBox Name="ckShowKeyPoints" Content="Key Pts" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckShowKeyPoints_Click" ToolTip="Show 3D coordinates at key geometry points"/>
+                <Separator Margin="4,2"/>
                 <Button Name="btnExportImage" Content="Export PNG" Height="22" Margin="2,0" Padding="6,0" Click="btnExportImage_Click" ToolTip="Export as PNG"/>
             </StackPanel>
         </Border>
 
         <!-- Drawing Area -->
         <Border Grid.Row="1" Background="White" BorderBrush="#AAAAAA" BorderThickness="1" Margin="2" ClipToBounds="True">
-            <Canvas Name="ViewportCanvas" Background="White"
-                    MouseWheel="ViewportCanvas_MouseWheel"
-                    MouseLeftButtonDown="ViewportCanvas_MouseLeftButtonDown"
-                    MouseLeftButtonUp="ViewportCanvas_MouseLeftButtonUp"
-                    MouseMove="ViewportCanvas_MouseMove"
-                    MouseRightButtonDown="ViewportCanvas_MouseRightButtonDown"
-                    SizeChanged="ViewportCanvas_SizeChanged">
-                <Canvas.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
-                        <TranslateTransform x:Name="translateTransform" X="0" Y="0"/>
-                    </TransformGroup>
-                </Canvas.RenderTransform>
+            <Grid>
+                <Canvas Name="ViewportCanvas" Background="White"
+                        MouseWheel="ViewportCanvas_MouseWheel"
+                        MouseLeftButtonDown="ViewportCanvas_MouseLeftButtonDown"
+                        MouseLeftButtonUp="ViewportCanvas_MouseLeftButtonUp"
+                        MouseMove="ViewportCanvas_MouseMove"
+                        MouseLeave="ViewportCanvas_MouseLeave"
+                        MouseRightButtonDown="ViewportCanvas_MouseRightButtonDown"
+                        SizeChanged="ViewportCanvas_SizeChanged">
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+                            <TranslateTransform x:Name="translateTransform" X="0" Y="0"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
 
-                <!-- Grid layer -->
-                <Canvas Name="GridCanvas"/>
-                <!-- Geometry layer -->
-                <Canvas Name="MyCanvas"/>
-                <!-- Overlay layer (bbox, dimensions) -->
-                <Canvas Name="OverlayCanvas"/>
-            </Canvas>
+                    <!-- Grid layer -->
+                    <Canvas Name="GridCanvas"/>
+                    <!-- Geometry layer -->
+                    <Canvas Name="MyCanvas"/>
+                    <!-- Overlay layer (bbox, dimensions) -->
+                    <Canvas Name="OverlayCanvas"/>
+                </Canvas>
+
+                <!-- Floating hover label (outside canvas transform) -->
+                <Border Name="hoverLabel" Visibility="Collapsed"
+                        Background="#F0FFFFFE" BorderBrush="#FF2060A0" BorderThickness="1"
+                        CornerRadius="3" Padding="6,3" IsHitTestVisible="False"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock Name="hoverText" FontFamily="Consolas" FontSize="11" Foreground="#FF2060A0"/>
+                </Border>
+            </Grid>
         </Border>
 
         <!-- Status Bar -->

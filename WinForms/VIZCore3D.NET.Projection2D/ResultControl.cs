@@ -101,12 +101,13 @@ namespace VIZCore3D.NET.Projection2D
             txtMaxX.Text = maxX.ToString();
             txtMaxY.Text = maxY.ToString();
 
-            // Pass real 3D dimensions from vertex bounding box
+            // Pass real 3D bounding box for dimensions and corner labels
             VIZCore3D.NET.Data.BoundBox3D bbox3D = projection.BoundBoxVertex;
-            double realWidth = bbox3D.LengthX;
-            double realHeight = bbox3D.LengthY;
 
-            P2D_Viewer.DrawPathGeometry(projection.PathGeometryString, realWidth, realHeight);
+            P2D_Viewer.DrawPathGeometry(projection.PathGeometryString,
+                bbox3D.LengthX, bbox3D.LengthY,
+                bbox3D.MinX, bbox3D.MinY, bbox3D.MinZ,
+                bbox3D.MaxX, bbox3D.MaxY, bbox3D.MaxZ);
 
             // Auto switch to Preview tab
             tabControl1.SelectedTab = tabPage5;

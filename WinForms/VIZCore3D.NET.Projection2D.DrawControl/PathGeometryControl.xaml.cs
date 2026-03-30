@@ -37,11 +37,18 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
         private double real3DHeight = 0;
         private bool hasReal3DDimensions = false;
 
+        // Real 3D bounding box coordinates - for corner labels
+        private double bbox3DMinX, bbox3DMinY, bbox3DMinZ;
+        private double bbox3DMaxX, bbox3DMaxY, bbox3DMaxZ;
+        private bool hasBBox3D = false;
+
         // Options
         private bool showGrid = true;
         private bool showBoundBox = false;
         private bool showDimensions = true;
         private bool fillShape = false;
+        private bool showCorners = false;
+        private bool showKeyPoints = false;
 
         // Colors
         private static readonly SolidColorBrush StrokeColor = new SolidColorBrush(Color.FromRgb(30, 80, 160));
@@ -59,13 +66,33 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
         }
 
         /// <summary>
-        /// Draw WPF PathGeometry string with real 3D dimensions
+        /// Draw WPF PathGeometry string with real 3D bounding box
+        /// </summary>
+        public void DrawPathGeometry(string PATHDATA,
+            double realWidth, double realHeight,
+            double minX3D, double minY3D, double minZ3D,
+            double maxX3D, double maxY3D, double maxZ3D)
+        {
+            real3DWidth = realWidth;
+            real3DHeight = realHeight;
+            hasReal3DDimensions = (realWidth > 0 && realHeight > 0);
+
+            bbox3DMinX = minX3D; bbox3DMinY = minY3D; bbox3DMinZ = minZ3D;
+            bbox3DMaxX = maxX3D; bbox3DMaxY = maxY3D; bbox3DMaxZ = maxZ3D;
+            hasBBox3D = true;
+
+            DrawPathGeometry(PATHDATA);
+        }
+
+        /// <summary>
+        /// Draw WPF PathGeometry string with real 3D dimensions (no corner labels)
         /// </summary>
         public void DrawPathGeometry(string PATHDATA, double realWidth, double realHeight)
         {
             real3DWidth = realWidth;
             real3DHeight = realHeight;
             hasReal3DDimensions = (realWidth > 0 && realHeight > 0);
+            hasBBox3D = false;
             DrawPathGeometry(PATHDATA);
         }
 
@@ -110,6 +137,7 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
 
             MyCanvas.Children.Add(geometryPath);
 
+            BuildFlattenedPoints();
             ZoomToFit();
         }
 
@@ -182,6 +210,7 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
 
             MyCanvas.Children.Add(geometryPath);
 
+            BuildFlattenedPoints();
             ZoomToFit();
         }
 
@@ -401,6 +430,41 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
                 DrawDimensionLine(geoMaxX + 15 / scale, geoMinY, geoMaxX + 15 / scale, geoMaxY,
                     FormatDimension(dimH), fontSize, scale, true);
             }
+
+            // Key point labels on geometry lines
+            if (hasBBox3D && showKeyPoints)
+            {
+                double scale = scaleTransform.ScaleX;
+                DrawKeyPointLabels(scale);
+            }
+
+            // 3D coordinate labels at bounding box corners
+            if (hasBBox3D && showCorners)
+            {
+                double scale = scaleTransform.ScaleX;
+                double fontSize = Math.Max(7, 9.5 / scale);
+                double pad = 5 / scale;
+
+                // Top-Left corner: (MinX, MinY) in 2D → 3D min
+                DrawCornerLabel(geoMinX, geoMinY, fontSize, scale, pad,
+                    bbox3DMinX, bbox3DMaxY, bbox3DMaxZ,
+                    HAlign.Right, VAlign.Bottom);
+
+                // Top-Right corner
+                DrawCornerLabel(geoMaxX, geoMinY, fontSize, scale, pad,
+                    bbox3DMaxX, bbox3DMaxY, bbox3DMaxZ,
+                    HAlign.Left, VAlign.Bottom);
+
+                // Bottom-Left corner
+                DrawCornerLabel(geoMinX, geoMaxY, fontSize, scale, pad,
+                    bbox3DMinX, bbox3DMinY, bbox3DMinZ,
+                    HAlign.Right, VAlign.Top);
+
+                // Bottom-Right corner
+                DrawCornerLabel(geoMaxX, geoMaxY, fontSize, scale, pad,
+                    bbox3DMaxX, bbox3DMinY, bbox3DMinZ,
+                    HAlign.Left, VAlign.Top);
+            }
         }
 
         private void DrawDimensionLine(double x1, double y1, double x2, double y2,
@@ -498,6 +562,217 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
                 return string.Format("{0:N4} mm", value);
         }
 
+        private enum HAlign { Left, Right }
+        private enum VAlign { Top, Bottom }
+
+        private static readonly SolidColorBrush CornerLabelBg = new SolidColorBrush(Color.FromArgb(200, 255, 255, 255));
+        private static readonly SolidColorBrush CornerLabelFg = new SolidColorBrush(Color.FromRgb(180, 40, 40));
+        private static readonly SolidColorBrush CornerDotBrush = new SolidColorBrush(Color.FromRgb(220, 60, 60));
+
+        private static readonly SolidColorBrush KeyPointLabelBg = new SolidColorBrush(Color.FromArgb(210, 255, 255, 240));
+        private static readonly SolidColorBrush KeyPointLabelFg = new SolidColorBrush(Color.FromRgb(40, 100, 40));
+        private static readonly SolidColorBrush KeyPointDotBrush = new SolidColorBrush(Color.FromRgb(40, 140, 40));
+
+        private void DrawCornerLabel(double geoX, double geoY,
+            double fontSize, double scale, double pad,
+            double x3D, double y3D, double z3D,
+            HAlign hAlign, VAlign vAlign)
+        {
+            DrawPointLabel(geoX, geoY, fontSize, scale, pad,
+                x3D, y3D, z3D, hAlign, vAlign,
+                CornerDotBrush, CornerLabelBg, CornerLabelFg);
+        }
+
+        private void DrawPointLabel(double geoX, double geoY,
+            double fontSize, double scale, double pad,
+            double x3D, double y3D, double z3D,
+            HAlign hAlign, VAlign vAlign,
+            SolidColorBrush dotBrush, SolidColorBrush bgBrush, SolidColorBrush fgBrush)
+        {
+            // Dot
+            double dotR = 3 / scale;
+            Ellipse dot = new Ellipse();
+            dot.Width = dotR * 2;
+            dot.Height = dotR * 2;
+            dot.Fill = dotBrush;
+            Canvas.SetLeft(dot, geoX - dotR);
+            Canvas.SetTop(dot, geoY - dotR);
+            OverlayCanvas.Children.Add(dot);
+
+            // Coordinate text
+            string text = string.Format("({0:F1}, {1:F1}, {2:F1})", x3D, y3D, z3D);
+
+            // Background border
+            Border border = new Border();
+            border.Background = bgBrush;
+            border.BorderBrush = fgBrush;
+            border.BorderThickness = new Thickness(0.5 / scale);
+            border.CornerRadius = new CornerRadius(2 / scale);
+            border.Padding = new Thickness(3 / scale, 1 / scale, 3 / scale, 1 / scale);
+
+            TextBlock tb = new TextBlock();
+            tb.Text = text;
+            tb.FontSize = fontSize;
+            tb.FontFamily = new FontFamily("Consolas");
+            tb.Foreground = fgBrush;
+            border.Child = tb;
+
+            double offsetX = (hAlign == HAlign.Left) ? pad : -(pad + 180 / scale);
+            double offsetY = (vAlign == VAlign.Top) ? pad : -(pad + 16 / scale);
+
+            Canvas.SetLeft(border, geoX + offsetX);
+            Canvas.SetTop(border, geoY + offsetY);
+            OverlayCanvas.Children.Add(border);
+        }
+
+        /// <summary>
+        /// Map 2D projected coordinate to approximate 3D coordinate
+        /// </summary>
+        private void Map2DTo3D(double px, double py, out double x3D, out double y3D, out double z3D)
+        {
+            double geoW = geoMaxX - geoMinX;
+            double geoH = geoMaxY - geoMinY;
+
+            double ratioX = geoW > 0 ? (px - geoMinX) / geoW : 0;
+            double ratioY = geoH > 0 ? (py - geoMinY) / geoH : 0;
+
+            // X maps left-to-right: MinX → MaxX
+            x3D = bbox3DMinX + ratioX * (bbox3DMaxX - bbox3DMinX);
+            // Y maps top-to-bottom in 2D, but MaxY→MinY in 3D (Y-up)
+            y3D = bbox3DMaxY - ratioY * (bbox3DMaxY - bbox3DMinY);
+            // Z: same as Y direction (top = MaxZ, bottom = MinZ)
+            z3D = bbox3DMaxZ - ratioY * (bbox3DMaxZ - bbox3DMinZ);
+        }
+
+        /// <summary>
+        /// Extract vertices from PathGeometry and find key points
+        /// </summary>
+        private void DrawKeyPointLabels(double scale)
+        {
+            if (!hasBBox3D) return;
+            if (string.IsNullOrEmpty(currentPathData)) return;
+
+            double fontSize = Math.Max(7, 8.5 / scale);
+            double pad = 4 / scale;
+
+            // Flatten PathGeometry to get all points
+            Geometry geo = Geometry.Parse(currentPathData);
+            PathGeometry flatGeo = geo.GetFlattenedPathGeometry(1.0, ToleranceType.Absolute);
+
+            List<Point> allPoints = new List<Point>();
+            foreach (PathFigure figure in flatGeo.Figures)
+            {
+                allPoints.Add(figure.StartPoint);
+                foreach (PathSegment seg in figure.Segments)
+                {
+                    if (seg is PolyLineSegment)
+                    {
+                        PolyLineSegment pls = (PolyLineSegment)seg;
+                        foreach (Point p in pls.Points)
+                            allPoints.Add(p);
+                    }
+                    else if (seg is LineSegment)
+                    {
+                        allPoints.Add(((LineSegment)seg).Point);
+                    }
+                }
+            }
+
+            if (allPoints.Count < 3) return;
+
+            // Find key points: extremes + significant direction changes
+            List<int> keyIndices = new List<int>();
+
+            // 1) Extreme points (min/max X, min/max Y)
+            int idxMinX = 0, idxMaxX = 0, idxMinY = 0, idxMaxY = 0;
+            for (int i = 1; i < allPoints.Count; i++)
+            {
+                if (allPoints[i].X < allPoints[idxMinX].X) idxMinX = i;
+                if (allPoints[i].X > allPoints[idxMaxX].X) idxMaxX = i;
+                if (allPoints[i].Y < allPoints[idxMinY].Y) idxMinY = i;
+                if (allPoints[i].Y > allPoints[idxMaxY].Y) idxMaxY = i;
+            }
+            keyIndices.Add(idxMinX);
+            keyIndices.Add(idxMaxX);
+            keyIndices.Add(idxMinY);
+            keyIndices.Add(idxMaxY);
+
+            // 2) Significant angle changes (corners)
+            double angleThreshold = 30.0; // degrees
+            for (int i = 1; i < allPoints.Count - 1; i++)
+            {
+                Point prev = allPoints[i - 1];
+                Point curr = allPoints[i];
+                Point next = allPoints[i + 1];
+
+                double dx1 = curr.X - prev.X;
+                double dy1 = curr.Y - prev.Y;
+                double dx2 = next.X - curr.X;
+                double dy2 = next.Y - curr.Y;
+
+                double len1 = Math.Sqrt(dx1 * dx1 + dy1 * dy1);
+                double len2 = Math.Sqrt(dx2 * dx2 + dy2 * dy2);
+                if (len1 < 0.001 || len2 < 0.001) continue;
+
+                double dot = (dx1 * dx2 + dy1 * dy2) / (len1 * len2);
+                dot = Math.Max(-1.0, Math.Min(1.0, dot));
+                double angle = Math.Acos(dot) * 180.0 / Math.PI;
+
+                if (angle >= angleThreshold)
+                    keyIndices.Add(i);
+            }
+
+            // Deduplicate and filter points too close to each other
+            List<Point> keyPoints = new List<Point>();
+            HashSet<int> usedIndices = new HashSet<int>();
+            double minDist = Math.Max(geoMaxX - geoMinX, geoMaxY - geoMinY) * 0.05;
+
+            foreach (int idx in keyIndices)
+            {
+                if (usedIndices.Contains(idx)) continue;
+                Point candidate = allPoints[idx];
+
+                bool tooClose = false;
+                foreach (Point existing in keyPoints)
+                {
+                    double dx = candidate.X - existing.X;
+                    double dy = candidate.Y - existing.Y;
+                    if (Math.Sqrt(dx * dx + dy * dy) < minDist)
+                    {
+                        tooClose = true;
+                        break;
+                    }
+                }
+
+                if (!tooClose)
+                {
+                    keyPoints.Add(candidate);
+                    usedIndices.Add(idx);
+                }
+            }
+
+            // Limit max labels to avoid clutter
+            if (keyPoints.Count > 20) keyPoints = keyPoints.GetRange(0, 20);
+
+            // Draw labels
+            double centerX = (geoMinX + geoMaxX) / 2.0;
+            double centerY = (geoMinY + geoMaxY) / 2.0;
+
+            foreach (Point pt in keyPoints)
+            {
+                double x3D, y3D, z3D;
+                Map2DTo3D(pt.X, pt.Y, out x3D, out y3D, out z3D);
+
+                // Smart alignment: push label away from center
+                HAlign ha = (pt.X >= centerX) ? HAlign.Left : HAlign.Right;
+                VAlign va = (pt.Y >= centerY) ? VAlign.Top : VAlign.Bottom;
+
+                DrawPointLabel(pt.X, pt.Y, fontSize, scale, pad,
+                    x3D, y3D, z3D, ha, va,
+                    KeyPointDotBrush, KeyPointLabelBg, KeyPointLabelFg);
+            }
+        }
+
         #endregion
 
         #region Mouse Interaction
@@ -563,6 +838,140 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
                 DrawGrid();
                 if (hasGeometry) DrawOverlays();
                 UpdateStatusBar();
+            }
+
+            // Hover label on geometry line
+            UpdateHoverLabel(worldX, worldY, e);
+        }
+
+        private void ViewportCanvas_MouseLeave(object sender, MouseEventArgs e)
+        {
+            hoverLabel.Visibility = Visibility.Collapsed;
+        }
+
+        // Cached line segments for hover hit-testing (pairs: start→end)
+        private List<Point[]> flattenedSegments = null;
+
+        private void BuildFlattenedPoints()
+        {
+            flattenedSegments = new List<Point[]>();
+            if (geometryPath == null || geometryPath.Data == null) return;
+
+            PathGeometry flatGeo = geometryPath.Data.GetFlattenedPathGeometry(0.5, ToleranceType.Absolute);
+
+            foreach (PathFigure figure in flatGeo.Figures)
+            {
+                Point prev = figure.StartPoint;
+
+                foreach (PathSegment seg in figure.Segments)
+                {
+                    List<Point> segPoints = new List<Point>();
+
+                    if (seg is PolyLineSegment)
+                    {
+                        foreach (Point p in ((PolyLineSegment)seg).Points)
+                            segPoints.Add(p);
+                    }
+                    else if (seg is LineSegment)
+                    {
+                        segPoints.Add(((LineSegment)seg).Point);
+                    }
+
+                    foreach (Point pt in segPoints)
+                    {
+                        flattenedSegments.Add(new Point[] { prev, pt });
+                        prev = pt;
+                    }
+                }
+
+                // Close figure: last point → start point
+                if (figure.IsClosed)
+                {
+                    flattenedSegments.Add(new Point[] { prev, figure.StartPoint });
+                }
+            }
+        }
+
+        private double DistanceToSegment(Point p, Point a, Point b, out Point snap)
+        {
+            double dx = b.X - a.X;
+            double dy = b.Y - a.Y;
+            double lenSq = dx * dx + dy * dy;
+
+            if (lenSq < 0.0001)
+            {
+                snap = a;
+                return Math.Sqrt((p.X - a.X) * (p.X - a.X) + (p.Y - a.Y) * (p.Y - a.Y));
+            }
+
+            double t = ((p.X - a.X) * dx + (p.Y - a.Y) * dy) / lenSq;
+            t = Math.Max(0, Math.Min(1, t));
+
+            snap = new Point(a.X + t * dx, a.Y + t * dy);
+            return Math.Sqrt((p.X - snap.X) * (p.X - snap.X) + (p.Y - snap.Y) * (p.Y - snap.Y));
+        }
+
+        private double DistanceToGeometry(double worldX, double worldY, out Point nearestPt)
+        {
+            nearestPt = new Point(worldX, worldY);
+            if (flattenedSegments == null || flattenedSegments.Count == 0) return double.MaxValue;
+
+            Point p = new Point(worldX, worldY);
+            double minDist = double.MaxValue;
+
+            foreach (Point[] seg in flattenedSegments)
+            {
+                Point snap;
+                double d = DistanceToSegment(p, seg[0], seg[1], out snap);
+                if (d < minDist)
+                {
+                    minDist = d;
+                    nearestPt = snap;
+                }
+            }
+            return minDist;
+        }
+
+        private void UpdateHoverLabel(double worldX, double worldY, MouseEventArgs e)
+        {
+            if (!hasGeometry || flattenedSegments == null)
+            {
+                hoverLabel.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            // Check distance to geometry in screen pixels
+            double hitRadiusWorld = 10.0 / scaleTransform.ScaleX;
+            Point nearestPt;
+            double dist = DistanceToGeometry(worldX, worldY, out nearestPt);
+
+            if (dist <= hitRadiusWorld)
+            {
+                // Use the snapped point on the line for accurate coordinates
+                double snapX = nearestPt.X;
+                double snapY = nearestPt.Y;
+
+                if (hasBBox3D)
+                {
+                    double x3D, y3D, z3D;
+                    Map2DTo3D(snapX, snapY, out x3D, out y3D, out z3D);
+
+                    hoverText.Text = string.Format(
+                        "2D: ({0:F1}, {1:F1})\n3D: ({2:F1}, {3:F1}, {4:F1})",
+                        snapX, snapY, x3D, y3D, z3D);
+                }
+                else
+                {
+                    hoverText.Text = string.Format("2D: ({0:F1}, {1:F1})", snapX, snapY);
+                }
+
+                Point screenPos = e.GetPosition((Grid)ViewportCanvas.Parent);
+                hoverLabel.Margin = new Thickness(screenPos.X + 16, screenPos.Y - 10, 0, 0);
+                hoverLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                hoverLabel.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -668,6 +1077,18 @@ namespace VIZCore3D.NET.Projection2D.DrawControl
                 DrawPathGeometry(currentPathData);
             else if (currentPointData != null)
                 DrawPoints(currentPointData);
+        }
+
+        private void ckShowCorners_Click(object sender, RoutedEventArgs e)
+        {
+            showCorners = ckShowCorners.IsChecked == true;
+            if (hasGeometry) DrawOverlays();
+        }
+
+        private void ckShowKeyPoints_Click(object sender, RoutedEventArgs e)
+        {
+            showKeyPoints = ckShowKeyPoints.IsChecked == true;
+            if (hasGeometry) DrawOverlays();
         }
 
         private void btnExportImage_Click(object sender, RoutedEventArgs e)
