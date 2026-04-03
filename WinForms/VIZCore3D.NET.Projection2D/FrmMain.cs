@@ -32,14 +32,14 @@ namespace VIZCore3D.NET.Projection2D
             // Construction
             vizcore3d = new VIZCore3D.NET.VIZCore3DControl();
             vizcore3d.Dock = DockStyle.Fill;
-            splitContainer1.Panel2.Controls.Add(vizcore3d);
+            splitContainer2.Panel2.Controls.Add(vizcore3d);
 
             // Event
             vizcore3d.OnInitializedVIZCore3D += VIZCore3D_OnInitializedVIZCore3D;
 
             result = new ResultControl();
             result.Dock = DockStyle.Fill;
-            splitContainer2.Panel2.Controls.Add(result);
+            splitContainer1.Panel2.Controls.Add(result);
         }
 
         // ================================================

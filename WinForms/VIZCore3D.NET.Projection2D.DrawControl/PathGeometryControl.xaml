@@ -1,11 +1,86 @@
-﻿<UserControl x:Class="VIZCore3D.NET.Projection2D.DrawControl.PathGeometryControl"
+<UserControl x:Class="VIZCore3D.NET.Projection2D.DrawControl.PathGeometryControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:VIZCore3D.NET.Projection2D.DrawControl"
-             mc:Ignorable="d" 
-             d:DesignHeight="5000" d:DesignWidth="5000">
-    <Canvas Name="MyCanvas">
-    </Canvas>
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600"
+             Background="#F0F0F0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Toolbar -->
+        <Border Grid.Row="0" Background="#E8E8E8" BorderBrush="#CCCCCC" BorderThickness="0,0,0,1" Padding="4">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnZoomFit" Content="Fit" Width="40" Height="22" Margin="2,0" Click="btnZoomFit_Click" ToolTip="Fit to View"/>
+                <Button Name="btnZoomIn" Content="+" Width="26" Height="22" Margin="2,0" Click="btnZoomIn_Click" ToolTip="Zoom In"/>
+                <Button Name="btnZoomOut" Content="-" Width="26" Height="22" Margin="2,0" Click="btnZoomOut_Click" ToolTip="Zoom Out"/>
+                <Separator Margin="4,2"/>
+                <CheckBox Name="ckShowGrid" Content="Grid" VerticalAlignment="Center" Margin="4,0" IsChecked="True" Click="ckShowGrid_Click"/>
+                <CheckBox Name="ckShowBoundBox" Content="BBox" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckShowBoundBox_Click"/>
+                <CheckBox Name="ckShowDimensions" Content="Dim" VerticalAlignment="Center" Margin="4,0" IsChecked="True" Click="ckShowDimensions_Click"/>
+                <CheckBox Name="ckFillShape" Content="Fill" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckFillShape_Click"/>
+                <Separator Margin="4,2"/>
+                <CheckBox Name="ckShowCorners" Content="Corners" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckShowCorners_Click" ToolTip="Show 3D coordinates at bounding box corners"/>
+                <CheckBox Name="ckShowKeyPoints" Content="Key Pts" VerticalAlignment="Center" Margin="4,0" IsChecked="False" Click="ckShowKeyPoints_Click" ToolTip="Show 3D coordinates at key geometry points"/>
+                <Separator Margin="4,2"/>
+                <Button Name="btnExportImage" Content="Export PNG" Height="22" Margin="2,0" Padding="6,0" Click="btnExportImage_Click" ToolTip="Export as PNG"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Drawing Area -->
+        <Border Grid.Row="1" Background="White" BorderBrush="#AAAAAA" BorderThickness="1" Margin="2" ClipToBounds="True">
+            <Grid>
+                <Canvas Name="ViewportCanvas" Background="White"
+                        MouseWheel="ViewportCanvas_MouseWheel"
+                        MouseLeftButtonDown="ViewportCanvas_MouseLeftButtonDown"
+                        MouseLeftButtonUp="ViewportCanvas_MouseLeftButtonUp"
+                        MouseMove="ViewportCanvas_MouseMove"
+                        MouseLeave="ViewportCanvas_MouseLeave"
+                        MouseRightButtonDown="ViewportCanvas_MouseRightButtonDown"
+                        SizeChanged="ViewportCanvas_SizeChanged">
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1"/>
+                            <TranslateTransform x:Name="translateTransform" X="0" Y="0"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+
+                    <!-- Grid layer -->
+                    <Canvas Name="GridCanvas"/>
+                    <!-- Geometry layer -->
+                    <Canvas Name="MyCanvas"/>
+                    <!-- Overlay layer (bbox, dimensions) -->
+                    <Canvas Name="OverlayCanvas"/>
+                </Canvas>
+
+                <!-- Floating hover label (outside canvas transform) -->
+                <Border Name="hoverLabel" Visibility="Collapsed"
+                        Background="#F0FFFFFE" BorderBrush="#FF2060A0" BorderThickness="1"
+                        CornerRadius="3" Padding="6,3" IsHitTestVisible="False"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock Name="hoverText" FontFamily="Consolas" FontSize="11" Foreground="#FF2060A0"/>
+                </Border>
+            </Grid>
+        </Border>
+
+        <!-- Status Bar -->
+        <Border Grid.Row="2" Background="#E8E8E8" BorderBrush="#CCCCCC" BorderThickness="0,1,0,0" Padding="6,3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Name="txtCoordinate" Grid.Column="0" Text="X: 0 mm  Y: 0 mm" FontFamily="Consolas" FontSize="11" Foreground="#444444"/>
+                <TextBlock Name="txtBoundsInfo" Grid.Column="1" Text="" FontFamily="Consolas" FontSize="11" Foreground="#666666" HorizontalAlignment="Center"/>
+                <TextBlock Name="txtZoomLevel" Grid.Column="2" Text="100%" FontFamily="Consolas" FontSize="11" Foreground="#444444"/>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>
