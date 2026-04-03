@@ -103,6 +103,7 @@
 | VIZCore3D.NET.ClashTest.V3 | 간섭검사 V3 | 블록 기반 간섭검사 및 결과 시각화 |
 | VIZCore3D.NET.ClashTest.V4 | 간섭검사 V4 | XML 기반 간섭검사 결과 관리 |
 | VIZCore3D.NET.AnimationClashTest | 애니메이션 간섭검사 | 애니메이션 재생 중 간섭검사 수행 |
+| VIZCore3D.NET.AnimationClashTest2 | 애니메이션 간섭검사 | 애니메이션을 한 프레임씩 재생하면서 간섭검사 수행 |
 | VIZCore3D.NET.ObjectCollisionLineSegments | 충돌 라인 세그먼트 | 선택된 객체들 간 충돌 라인 세그먼트 계산 및 표시 |
 
 ### 모델 비교 / 분석
