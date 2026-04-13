@@ -29,32 +29,37 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnMovePlusTextUp = new System.Windows.Forms.Button();
-            this.btnMoveMinusTextUp = new System.Windows.Forms.Button();
-            this.btnMoveMinusTextDir = new System.Windows.Forms.Button();
-            this.btnMovePlusTextDir = new System.Windows.Forms.Button();
-            this.btnMovePlusNormal = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRotateClockWise = new System.Windows.Forms.Button();
+            this.btnRotateCounterClockWise = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnMoveMinusNormal = new System.Windows.Forms.Button();
+            this.btnMovePlusNormal = new System.Windows.Forms.Button();
+            this.btnMoveMinusTextDir = new System.Windows.Forms.Button();
+            this.btnMovePlusTextUp = new System.Windows.Forms.Button();
+            this.btnMovePlusTextDir = new System.Windows.Forms.Button();
+            this.btnMoveMinusTextUp = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnAddTextObjectNote = new System.Windows.Forms.Button();
-            this.btnRotateClockWise = new System.Windows.Forms.Button();
-            this.btnRotateCounterClockWise = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnRotatePlusWithTextDir = new System.Windows.Forms.Button();
+            this.btnRotateMinusWithTextDir = new System.Windows.Forms.Button();
+            this.btnRotatePlusWithTextUp = new System.Windows.Forms.Button();
+            this.btnRotateMinusWithTextUp = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -68,51 +73,70 @@
             this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.textBox1);
             this.splitContainer1.Panel1.Controls.Add(this.btnAddTextObjectNote);
-            this.splitContainer1.Size = new System.Drawing.Size(1078, 671);
+            this.splitContainer1.Size = new System.Drawing.Size(1078, 798);
             this.splitContainer1.SplitterDistance = 368;
             this.splitContainer1.SplitterWidth = 10;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.TabIndex = 0;
             // 
-            // btnMovePlusTextUp
+            // groupBox2
             // 
-            this.btnMovePlusTextUp.Location = new System.Drawing.Point(8, 210);
-            this.btnMovePlusTextUp.Name = "btnMovePlusTextUp";
-            this.btnMovePlusTextUp.Size = new System.Drawing.Size(328, 29);
-            this.btnMovePlusTextUp.TabIndex = 11;
-            this.btnMovePlusTextUp.Text = "TextUp 방향으로 이동";
-            this.btnMovePlusTextUp.UseVisualStyleBackColor = true;
-            this.btnMovePlusTextUp.Click += new System.EventHandler(this.btnMovePlusTextUp_Click);
+            this.groupBox2.Controls.Add(this.btnRotateMinusWithTextUp);
+            this.groupBox2.Controls.Add(this.btnRotatePlusWithTextUp);
+            this.groupBox2.Controls.Add(this.btnRotateMinusWithTextDir);
+            this.groupBox2.Controls.Add(this.btnRotatePlusWithTextDir);
+            this.groupBox2.Controls.Add(this.btnRotateClockWise);
+            this.groupBox2.Controls.Add(this.btnRotateCounterClockWise);
+            this.groupBox2.Location = new System.Drawing.Point(12, 569);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(344, 217);
+            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "회전";
             // 
-            // btnMoveMinusTextUp
+            // btnRotateClockWise
             // 
-            this.btnMoveMinusTextUp.Location = new System.Drawing.Point(8, 177);
-            this.btnMoveMinusTextUp.Name = "btnMoveMinusTextUp";
-            this.btnMoveMinusTextUp.Size = new System.Drawing.Size(328, 29);
-            this.btnMoveMinusTextUp.TabIndex = 10;
-            this.btnMoveMinusTextUp.Text = "TextUp 의 반대 방향으로 이동";
-            this.btnMoveMinusTextUp.UseVisualStyleBackColor = true;
-            this.btnMoveMinusTextUp.Click += new System.EventHandler(this.btnMoveMinusTextUp_Click);
+            this.btnRotateClockWise.Location = new System.Drawing.Point(7, 20);
+            this.btnRotateClockWise.Name = "btnRotateClockWise";
+            this.btnRotateClockWise.Size = new System.Drawing.Size(327, 23);
+            this.btnRotateClockWise.TabIndex = 12;
+            this.btnRotateClockWise.Text = "Normal 을 축으로 + 회전";
+            this.btnRotateClockWise.UseVisualStyleBackColor = true;
+            this.btnRotateClockWise.Click += new System.EventHandler(this.btnRotatePlusWithNormal_Click);
             // 
-            // btnMoveMinusTextDir
+            // btnRotateCounterClockWise
             // 
-            this.btnMoveMinusTextDir.Location = new System.Drawing.Point(7, 98);
-            this.btnMoveMinusTextDir.Name = "btnMoveMinusTextDir";
-            this.btnMoveMinusTextDir.Size = new System.Drawing.Size(328, 29);
-            this.btnMoveMinusTextDir.TabIndex = 9;
-            this.btnMoveMinusTextDir.Text = "TextDir 의 반대 방향으로 이동";
-            this.btnMoveMinusTextDir.UseVisualStyleBackColor = true;
-            this.btnMoveMinusTextDir.Click += new System.EventHandler(this.btnMoveMinusTextDir_Click);
+            this.btnRotateCounterClockWise.Location = new System.Drawing.Point(6, 49);
+            this.btnRotateCounterClockWise.Name = "btnRotateCounterClockWise";
+            this.btnRotateCounterClockWise.Size = new System.Drawing.Size(327, 23);
+            this.btnRotateCounterClockWise.TabIndex = 13;
+            this.btnRotateCounterClockWise.Text = "Normal 을 축으로 - 회전";
+            this.btnRotateCounterClockWise.UseVisualStyleBackColor = true;
+            this.btnRotateCounterClockWise.Click += new System.EventHandler(this.btnRotateMinusWithNormal_Click);
             // 
-            // btnMovePlusTextDir
+            // groupBox1
             // 
-            this.btnMovePlusTextDir.Location = new System.Drawing.Point(7, 133);
-            this.btnMovePlusTextDir.Name = "btnMovePlusTextDir";
-            this.btnMovePlusTextDir.Size = new System.Drawing.Size(328, 29);
-            this.btnMovePlusTextDir.TabIndex = 8;
-            this.btnMovePlusTextDir.Text = "TextDir 방향으로 이동";
-            this.btnMovePlusTextDir.UseVisualStyleBackColor = true;
-            this.btnMovePlusTextDir.Click += new System.EventHandler(this.btnMovePlusTextDir_Click);
+            this.groupBox1.Controls.Add(this.btnMoveMinusNormal);
+            this.groupBox1.Controls.Add(this.btnMovePlusNormal);
+            this.groupBox1.Controls.Add(this.btnMoveMinusTextDir);
+            this.groupBox1.Controls.Add(this.btnMovePlusTextUp);
+            this.groupBox1.Controls.Add(this.btnMovePlusTextDir);
+            this.groupBox1.Controls.Add(this.btnMoveMinusTextUp);
+            this.groupBox1.Location = new System.Drawing.Point(12, 305);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(344, 249);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "이동";
+            // 
+            // btnMoveMinusNormal
+            // 
+            this.btnMoveMinusNormal.Location = new System.Drawing.Point(6, 20);
+            this.btnMoveMinusNormal.Name = "btnMoveMinusNormal";
+            this.btnMoveMinusNormal.Size = new System.Drawing.Size(328, 29);
+            this.btnMoveMinusNormal.TabIndex = 6;
+            this.btnMoveMinusNormal.Text = "Normal 의 반대 방향으로 이동";
+            this.btnMoveMinusNormal.UseVisualStyleBackColor = true;
+            this.btnMoveMinusNormal.Click += new System.EventHandler(this.btnMoveMinusNormal_Click);
             // 
             // btnMovePlusNormal
             // 
@@ -124,15 +148,45 @@
             this.btnMovePlusNormal.UseVisualStyleBackColor = true;
             this.btnMovePlusNormal.Click += new System.EventHandler(this.btnMovePlusNormal_Click);
             // 
-            // btnMoveMinusNormal
+            // btnMoveMinusTextDir
             // 
-            this.btnMoveMinusNormal.Location = new System.Drawing.Point(6, 20);
-            this.btnMoveMinusNormal.Name = "btnMoveMinusNormal";
-            this.btnMoveMinusNormal.Size = new System.Drawing.Size(328, 29);
-            this.btnMoveMinusNormal.TabIndex = 6;
-            this.btnMoveMinusNormal.Text = "Normal 의 반대 방향으로 이동";
-            this.btnMoveMinusNormal.UseVisualStyleBackColor = true;
-            this.btnMoveMinusNormal.Click += new System.EventHandler(this.btnMoveMinusNormal_Click);
+            this.btnMoveMinusTextDir.Location = new System.Drawing.Point(7, 98);
+            this.btnMoveMinusTextDir.Name = "btnMoveMinusTextDir";
+            this.btnMoveMinusTextDir.Size = new System.Drawing.Size(328, 29);
+            this.btnMoveMinusTextDir.TabIndex = 9;
+            this.btnMoveMinusTextDir.Text = "TextDir 의 반대 방향으로 이동";
+            this.btnMoveMinusTextDir.UseVisualStyleBackColor = true;
+            this.btnMoveMinusTextDir.Click += new System.EventHandler(this.btnMoveMinusTextDir_Click);
+            // 
+            // btnMovePlusTextUp
+            // 
+            this.btnMovePlusTextUp.Location = new System.Drawing.Point(8, 210);
+            this.btnMovePlusTextUp.Name = "btnMovePlusTextUp";
+            this.btnMovePlusTextUp.Size = new System.Drawing.Size(328, 29);
+            this.btnMovePlusTextUp.TabIndex = 11;
+            this.btnMovePlusTextUp.Text = "TextUp 방향으로 이동";
+            this.btnMovePlusTextUp.UseVisualStyleBackColor = true;
+            this.btnMovePlusTextUp.Click += new System.EventHandler(this.btnMovePlusTextUp_Click);
+            // 
+            // btnMovePlusTextDir
+            // 
+            this.btnMovePlusTextDir.Location = new System.Drawing.Point(7, 133);
+            this.btnMovePlusTextDir.Name = "btnMovePlusTextDir";
+            this.btnMovePlusTextDir.Size = new System.Drawing.Size(328, 29);
+            this.btnMovePlusTextDir.TabIndex = 8;
+            this.btnMovePlusTextDir.Text = "TextDir 방향으로 이동";
+            this.btnMovePlusTextDir.UseVisualStyleBackColor = true;
+            this.btnMovePlusTextDir.Click += new System.EventHandler(this.btnMovePlusTextDir_Click);
+            // 
+            // btnMoveMinusTextUp
+            // 
+            this.btnMoveMinusTextUp.Location = new System.Drawing.Point(8, 177);
+            this.btnMoveMinusTextUp.Name = "btnMoveMinusTextUp";
+            this.btnMoveMinusTextUp.Size = new System.Drawing.Size(328, 29);
+            this.btnMoveMinusTextUp.TabIndex = 10;
+            this.btnMoveMinusTextUp.Text = "TextUp 의 반대 방향으로 이동";
+            this.btnMoveMinusTextUp.UseVisualStyleBackColor = true;
+            this.btnMoveMinusTextUp.Click += new System.EventHandler(this.btnMoveMinusTextUp_Click);
             // 
             // label4
             // 
@@ -188,57 +242,51 @@
             this.btnAddTextObjectNote.UseVisualStyleBackColor = true;
             this.btnAddTextObjectNote.Click += new System.EventHandler(this.btnAddTextObjectNote_Click);
             // 
-            // btnRotateClockWise
+            // btnRotatePlusWithTextDir
             // 
-            this.btnRotateClockWise.Location = new System.Drawing.Point(7, 20);
-            this.btnRotateClockWise.Name = "btnRotateClockWise";
-            this.btnRotateClockWise.Size = new System.Drawing.Size(327, 23);
-            this.btnRotateClockWise.TabIndex = 12;
-            this.btnRotateClockWise.Text = "시계 방향으로 회전";
-            this.btnRotateClockWise.UseVisualStyleBackColor = true;
-            this.btnRotateClockWise.Click += new System.EventHandler(this.btnRotateClockWise_Click);
+            this.btnRotatePlusWithTextDir.Location = new System.Drawing.Point(7, 88);
+            this.btnRotatePlusWithTextDir.Name = "btnRotatePlusWithTextDir";
+            this.btnRotatePlusWithTextDir.Size = new System.Drawing.Size(327, 23);
+            this.btnRotatePlusWithTextDir.TabIndex = 14;
+            this.btnRotatePlusWithTextDir.Text = "TextDir 을 축으로 + 회전";
+            this.btnRotatePlusWithTextDir.UseVisualStyleBackColor = true;
+            this.btnRotatePlusWithTextDir.Click += new System.EventHandler(this.btnRotatePlusWithTextDir_Click);
             // 
-            // btnRotateCounterClockWise
+            // btnRotateMinusWithTextDir
             // 
-            this.btnRotateCounterClockWise.Location = new System.Drawing.Point(6, 49);
-            this.btnRotateCounterClockWise.Name = "btnRotateCounterClockWise";
-            this.btnRotateCounterClockWise.Size = new System.Drawing.Size(327, 23);
-            this.btnRotateCounterClockWise.TabIndex = 13;
-            this.btnRotateCounterClockWise.Text = "반시계 방향으로 회전";
-            this.btnRotateCounterClockWise.UseVisualStyleBackColor = true;
-            this.btnRotateCounterClockWise.Click += new System.EventHandler(this.btnRotateCounterClockWise_Click);
+            this.btnRotateMinusWithTextDir.Location = new System.Drawing.Point(6, 117);
+            this.btnRotateMinusWithTextDir.Name = "btnRotateMinusWithTextDir";
+            this.btnRotateMinusWithTextDir.Size = new System.Drawing.Size(327, 23);
+            this.btnRotateMinusWithTextDir.TabIndex = 15;
+            this.btnRotateMinusWithTextDir.Text = "TextDir 을 축으로 - 회전";
+            this.btnRotateMinusWithTextDir.UseVisualStyleBackColor = true;
+            this.btnRotateMinusWithTextDir.Click += new System.EventHandler(this.btnRotateMinusWithTextDir_Click);
             // 
-            // groupBox1
+            // btnRotatePlusWithTextUp
             // 
-            this.groupBox1.Controls.Add(this.btnMoveMinusNormal);
-            this.groupBox1.Controls.Add(this.btnMovePlusNormal);
-            this.groupBox1.Controls.Add(this.btnMoveMinusTextDir);
-            this.groupBox1.Controls.Add(this.btnMovePlusTextUp);
-            this.groupBox1.Controls.Add(this.btnMovePlusTextDir);
-            this.groupBox1.Controls.Add(this.btnMoveMinusTextUp);
-            this.groupBox1.Location = new System.Drawing.Point(12, 305);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(344, 249);
-            this.groupBox1.TabIndex = 14;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "이동";
+            this.btnRotatePlusWithTextUp.Location = new System.Drawing.Point(7, 157);
+            this.btnRotatePlusWithTextUp.Name = "btnRotatePlusWithTextUp";
+            this.btnRotatePlusWithTextUp.Size = new System.Drawing.Size(327, 23);
+            this.btnRotatePlusWithTextUp.TabIndex = 16;
+            this.btnRotatePlusWithTextUp.Text = "TextUp 을 축으로 + 회전";
+            this.btnRotatePlusWithTextUp.UseVisualStyleBackColor = true;
+            this.btnRotatePlusWithTextUp.Click += new System.EventHandler(this.btnRotatePlusWithTextUp_Click);
             // 
-            // groupBox2
+            // btnRotateMinusWithTextUp
             // 
-            this.groupBox2.Controls.Add(this.btnRotateClockWise);
-            this.groupBox2.Controls.Add(this.btnRotateCounterClockWise);
-            this.groupBox2.Location = new System.Drawing.Point(12, 569);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(344, 84);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "회전";
+            this.btnRotateMinusWithTextUp.Location = new System.Drawing.Point(8, 186);
+            this.btnRotateMinusWithTextUp.Name = "btnRotateMinusWithTextUp";
+            this.btnRotateMinusWithTextUp.Size = new System.Drawing.Size(327, 23);
+            this.btnRotateMinusWithTextUp.TabIndex = 17;
+            this.btnRotateMinusWithTextUp.Text = "TextUp 을 축으로 - 회전";
+            this.btnRotateMinusWithTextUp.UseVisualStyleBackColor = true;
+            this.btnRotateMinusWithTextUp.Click += new System.EventHandler(this.btnRotateMinusWithTextUp_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1078, 671);
+            this.ClientSize = new System.Drawing.Size(1078, 798);
             this.Controls.Add(this.splitContainer1);
             this.Name = "FrmMain";
             this.Text = "FrmMain";
@@ -246,8 +294,8 @@
             this.splitContainer1.Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -271,6 +319,10 @@
         private System.Windows.Forms.Button btnRotateCounterClockWise;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnRotateMinusWithTextDir;
+        private System.Windows.Forms.Button btnRotatePlusWithTextDir;
+        private System.Windows.Forms.Button btnRotateMinusWithTextUp;
+        private System.Windows.Forms.Button btnRotatePlusWithTextUp;
     }
 }
 

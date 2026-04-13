@@ -12,6 +12,9 @@ using static VIZCore3D.NET.Data.NoteItem;
 
 namespace VIZCore3D.NET.TextObject2
 {
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!! VIZCore3D.NET V.2.8.26.410 이상에서 정상 동작 합니다 !!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     public class TextObjectNoteInfo
     {
         public VIZCore3D.NET.VIZCore3DControl Vizcore3d;
@@ -25,8 +28,8 @@ namespace VIZCore3D.NET.TextObject2
         public Vertex3D TextDir;
         public Vertex3D TextUp;
         public float CharHeight;    // 한 글자의 높이(mm)
-
-        public float Ratio;         // 텍스처의 추정 가로, 세로 비율
+        public float TextWidth;     // 텍스트의 Width
+        public float TextHeight;    // 텍스트의 Height
 
         /// <summary>
         /// NoteItem 으로부터 TextObject 노트 정보 추출하여 객체 생성
@@ -39,6 +42,8 @@ namespace VIZCore3D.NET.TextObject2
             Vertex3D textDir = null;
             Vertex3D textUp = null;
             float charHeight = 0.0f;
+            float textWidth = 0.0f;
+            float textHeight = 0.0f;
 
             if (noteItem == null) return null;
             if (noteItem.Kind != NoteItem.NoteKind.TEXT_OBJECT) return null;
@@ -70,6 +75,10 @@ namespace VIZCore3D.NET.TextObject2
                     charHeight = item.Value<float>("surface_height");
 
                     //
+                    textWidth = item.Value<float>("text_width");
+                    textHeight = item.Value<float>("text_height");
+
+                    //
                     float rotate = 0.0f;
                     JObject transform = item.Value<JObject>("transform");
                     if (transform != null)
@@ -80,17 +89,31 @@ namespace VIZCore3D.NET.TextObject2
                     JObject surfaceNormal = item.Value<JObject>("surface_normal");
                     normal = new Vertex3D(surfaceNormal.Value<float>("x"), surfaceNormal.Value<float>("y"), surfaceNormal.Value<float>("z"));
 
-                    // 회전이 적용 안된 값
-                    JObject surfaceUp = item.Value<JObject>("surface_up");
-                    textUp = new Vertex3D(surfaceUp.Value<float>("x"), surfaceUp.Value<float>("y"), surfaceUp.Value<float>("z"));
+                    JObject surfaceDirection = item.Value<JObject>("surface_direction");
+                    textDir = new Vertex3D(surfaceDirection.Value<float>("x"), surfaceDirection.Value<float>("y"), surfaceDirection.Value<float>("z"));
 
-                    textDir = textUp.Cross(normal);
-                    textDir.Normalize();
-
+                    // 주의! "surface_up" 사용금지!
+                    // 대신 "surface_normal" 과 "surface_direction" 을 외적해서 textUp 을 계산해서 사용할것!
                     textUp = normal.Cross(textDir);
                     textUp.Normalize();
 
-                    // 회전값 적용
+                    pos = new Vertex3D(noteItem.Positions[3], noteItem.Positions[4], noteItem.Positions[5]);
+
+                    // 회전 전 방향벡터로 pos 에 회전값 적용
+                    {
+                        Vertex3D center = pos + (textDir * (textWidth / 2.0f)) + (textUp * (textHeight / 2.0f));
+                        
+                        // pos 를 원점 기준으로 이동
+                        Vertex3D posOnOrigin = pos - center;
+                        
+                        // 원점에서의 회전 적용
+                        posOnOrigin = RotateWithRodriguesRotationFormula(normal, posOnOrigin, rotate);
+
+                        // 기존 기준점으로 이동
+                        pos = posOnOrigin + center;
+                    }
+
+                    // textDir, textUp 에도 회전값 적용
                     textDir = RotateWithRodriguesRotationFormula(normal, textDir, rotate);
                     textUp = RotateWithRodriguesRotationFormula(normal, textUp, rotate);
 
@@ -103,8 +126,6 @@ namespace VIZCore3D.NET.TextObject2
                 return null;
             }
 
-            pos = new Vertex3D(noteItem.Positions[3], noteItem.Positions[4], noteItem.Positions[5]);
-
             return new TextObjectNoteInfo()
             {
                 Vizcore3d = vizcore3d,
@@ -116,8 +137,8 @@ namespace VIZCore3D.NET.TextObject2
                 TextDir = textDir,
                 TextUp = textUp,
                 CharHeight = charHeight,
-
-                Ratio = MeasureTextWidthHeightRatio(noteItem.Title),
+                TextWidth = textWidth,
+                TextHeight = textHeight,
             };
         }
 
@@ -176,20 +197,16 @@ namespace VIZCore3D.NET.TextObject2
             RedrawTextObjectNote();
         }
 
-        public void Rotate(float angle)
+        /// <summary>
+        /// Normal 을 축으로 회전
+        /// </summary>
+        /// <param name="angle"></param>
+        public void RotateWithNormal(float angle)
         {
             if (NoteId < 0) return;
 
-            // 텍스트 영역의 크기 계산 (굴림체 폰트 기준 실측 비율)
-            // 추후에 TextObject 노트의 Texture Width, Height 값을 가져오게되면 더 정밀하게 계산 가능
-            float textWidth = CharHeight * Ratio;
-            float textHeight = CharHeight;
-
             // 회전 전 텍스트 중심점 계산 (좌하단 Pos 기준)
-            Vertex3D center = Pos + (TextDir * (textWidth / 2.0f)) + (TextUp * (textHeight / 2.0f));
-
-            // 반전
-            angle *= -1.0f;
+            Vertex3D center = Pos + (TextDir * (TextWidth / 2.0f)) + (TextUp * (TextHeight / 2.0f));
 
             // 방향 벡터 회전
             TextDir = RotateWithRodriguesRotationFormula(Normal, TextDir, angle);
@@ -199,7 +216,55 @@ namespace VIZCore3D.NET.TextObject2
             TextUp.Normalize();
 
             // 회전된 방향 벡터로 중심점에서 좌하단 위치 역산
-            Pos = center - (TextDir * (textWidth / 2.0f)) - (TextUp * (textHeight / 2.0f));
+            Pos = center - (TextDir * (TextWidth / 2.0f)) - (TextUp * (TextHeight / 2.0f));
+
+            RedrawTextObjectNote();
+        }
+
+        /// <summary>
+        /// TextDir 을 축으로 회전
+        /// </summary>
+        /// <param name="angle"></param>
+        public void RotateWithTextDir(float angle)
+        {
+            if (NoteId < 0) return;
+
+            // 회전 전 텍스트 중심점 계산 (좌하단 Pos 기준)
+            Vertex3D center = Pos + (TextDir * (TextWidth / 2.0f)) + (TextUp * (TextHeight / 2.0f));
+
+            // 방향 벡터 회전
+            Normal = RotateWithRodriguesRotationFormula(TextDir, Normal, angle);
+            Normal.Normalize();
+
+            TextUp = RotateWithRodriguesRotationFormula(TextDir, TextUp, angle);
+            TextUp.Normalize();
+
+            // 회전된 방향 벡터로 중심점에서 좌하단 위치 역산
+            Pos = center - (TextDir * (TextWidth / 2.0f)) - (TextUp * (TextHeight / 2.0f));
+
+            RedrawTextObjectNote();
+        }
+
+        /// <summary>
+        /// TextUp 을 축으로 회전
+        /// </summary>
+        /// <param name="angle"></param>
+        public void RotateWithTextUp(float angle)
+        {
+            if (NoteId < 0) return;
+
+            // 회전 전 텍스트 중심점 계산 (좌하단 Pos 기준)
+            Vertex3D center = Pos + (TextDir * (TextWidth / 2.0f)) + (TextUp * (TextHeight / 2.0f));
+
+            // 방향 벡터 회전
+            Normal = RotateWithRodriguesRotationFormula(TextUp, Normal, angle);
+            Normal.Normalize();
+
+            TextDir = RotateWithRodriguesRotationFormula(TextUp, TextDir, angle);
+            TextDir.Normalize();
+
+            // 회전된 방향 벡터로 중심점에서 좌하단 위치 역산
+            Pos = center - (TextDir * (TextWidth / 2.0f)) - (TextUp * (TextHeight / 2.0f));
 
             RedrawTextObjectNote();
         }
@@ -249,7 +314,7 @@ namespace VIZCore3D.NET.TextObject2
         /// <summary>
         /// 축-각 회전 공식 (Rodrigues' rotation formula)
         /// </summary>
-        /// <param name="n">임의의 축</param>
+        /// <param name="n">회전 축</param>
         /// <param name="u">회전시킬 벡터</param>
         /// <param name="angle">회전각(오일러 각)</param>
         /// <returns>회전된 벡터</returns>
