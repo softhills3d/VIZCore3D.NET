@@ -197,15 +197,16 @@ namespace VIZCore3D.NET.TextObject2
             RedrawTextObjectNote();
         }
 
-        public void Rotate(float angle)
+        /// <summary>
+        /// Normal 을 축으로 회전
+        /// </summary>
+        /// <param name="angle"></param>
+        public void RotateWithNormal(float angle)
         {
             if (NoteId < 0) return;
 
             // 회전 전 텍스트 중심점 계산 (좌하단 Pos 기준)
             Vertex3D center = Pos + (TextDir * (TextWidth / 2.0f)) + (TextUp * (TextHeight / 2.0f));
-
-            // 반전
-            angle *= -1.0f;
 
             // 방향 벡터 회전
             TextDir = RotateWithRodriguesRotationFormula(Normal, TextDir, angle);
@@ -213,6 +214,54 @@ namespace VIZCore3D.NET.TextObject2
 
             TextUp = RotateWithRodriguesRotationFormula(Normal, TextUp, angle);
             TextUp.Normalize();
+
+            // 회전된 방향 벡터로 중심점에서 좌하단 위치 역산
+            Pos = center - (TextDir * (TextWidth / 2.0f)) - (TextUp * (TextHeight / 2.0f));
+
+            RedrawTextObjectNote();
+        }
+
+        /// <summary>
+        /// TextDir 을 축으로 회전
+        /// </summary>
+        /// <param name="angle"></param>
+        public void RotateWithTextDir(float angle)
+        {
+            if (NoteId < 0) return;
+
+            // 회전 전 텍스트 중심점 계산 (좌하단 Pos 기준)
+            Vertex3D center = Pos + (TextDir * (TextWidth / 2.0f)) + (TextUp * (TextHeight / 2.0f));
+
+            // 방향 벡터 회전
+            Normal = RotateWithRodriguesRotationFormula(TextDir, Normal, angle);
+            Normal.Normalize();
+
+            TextUp = RotateWithRodriguesRotationFormula(TextDir, TextUp, angle);
+            TextUp.Normalize();
+
+            // 회전된 방향 벡터로 중심점에서 좌하단 위치 역산
+            Pos = center - (TextDir * (TextWidth / 2.0f)) - (TextUp * (TextHeight / 2.0f));
+
+            RedrawTextObjectNote();
+        }
+
+        /// <summary>
+        /// TextUp 을 축으로 회전
+        /// </summary>
+        /// <param name="angle"></param>
+        public void RotateWithTextUp(float angle)
+        {
+            if (NoteId < 0) return;
+
+            // 회전 전 텍스트 중심점 계산 (좌하단 Pos 기준)
+            Vertex3D center = Pos + (TextDir * (TextWidth / 2.0f)) + (TextUp * (TextHeight / 2.0f));
+
+            // 방향 벡터 회전
+            Normal = RotateWithRodriguesRotationFormula(TextUp, Normal, angle);
+            Normal.Normalize();
+
+            TextDir = RotateWithRodriguesRotationFormula(TextUp, TextDir, angle);
+            TextDir.Normalize();
 
             // 회전된 방향 벡터로 중심점에서 좌하단 위치 역산
             Pos = center - (TextDir * (TextWidth / 2.0f)) - (TextUp * (TextHeight / 2.0f));

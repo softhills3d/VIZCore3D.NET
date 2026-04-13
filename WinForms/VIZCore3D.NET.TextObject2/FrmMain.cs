@@ -610,22 +610,69 @@ namespace VIZCore3D.NET.TextObject2
 
         #region 회전 버튼
         /// <summary>
-        /// 시계 방향으로 회전
+        /// Normal 을 축으로 + 회전
         /// </summary>
-        private void btnRotateClockWise_Click(object sender, EventArgs e)
+        private void btnRotatePlusWithNormal_Click(object sender, EventArgs e)
         {
             if (vizcore3d.Model.IsOpen() == false) return;
             if (SelectedTextObjectNoteInfo == null) return;
 
-            SelectedTextObjectNoteInfo.Rotate(90.0f);
+            SelectedTextObjectNoteInfo.RotateWithNormal(90.0f);
         }
 
-        private void btnRotateCounterClockWise_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Normal 을 축으로 - 회전
+        /// </summary>
+        private void btnRotateMinusWithNormal_Click(object sender, EventArgs e)
         {
             if (vizcore3d.Model.IsOpen() == false) return;
             if (SelectedTextObjectNoteInfo == null) return;
 
-            SelectedTextObjectNoteInfo.Rotate(-90.0f);
+            SelectedTextObjectNoteInfo.RotateWithNormal(-90.0f);
+        }
+
+        /// <summary>
+        /// TextDir 을 축으로 + 회전
+        /// </summary>
+        private void btnRotatePlusWithTextDir_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (SelectedTextObjectNoteInfo == null) return;
+
+            SelectedTextObjectNoteInfo.RotateWithTextDir(90.0f);
+        }
+
+        /// <summary>
+        /// TextDir 을 축으로 - 회전
+        /// </summary>
+        private void btnRotateMinusWithTextDir_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (SelectedTextObjectNoteInfo == null) return;
+
+            SelectedTextObjectNoteInfo.RotateWithTextDir(-90.0f);
+        }
+
+        /// <summary>
+        /// TextUp 을 축으로 + 회전
+        /// </summary>
+        private void btnRotatePlusWithTextUp_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (SelectedTextObjectNoteInfo == null) return;
+
+            SelectedTextObjectNoteInfo.RotateWithTextUp(90.0f);
+        }
+
+        /// <summary>
+        /// TextUp 을 축으로 - 회전
+        /// </summary>
+        private void btnRotateMinusWithTextUp_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false) return;
+            if (SelectedTextObjectNoteInfo == null) return;
+
+            SelectedTextObjectNoteInfo.RotateWithTextUp(-90.0f);
         }
         #endregion
     }
