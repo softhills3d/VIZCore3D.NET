@@ -649,8 +649,13 @@ namespace VIZCore3D.NET.AnimationClashTest2
                 return;
             }
 
+#if True
+            // SetCurrentAniKeyAnimation() 메서드를 사용해서 Play(), Pause() 호출을 대체할 수 있습니다. 실행 속도가 약 20% 더 빠릅니다.
+            vizcore3d.Animation.SetCurrentAniKeyAnimation(PlaybackTime);
+#else
             vizcore3d.Animation.Play(false, PlaybackTime);
             vizcore3d.Animation.Pause();
+#endif
 
             PlaybackTime = Math.Min(AnimationDuration, PlaybackTime + OneFrameDuration);
 
