@@ -27,6 +27,7 @@
 | --- | --- | --- |
 | VIZCore3D.NET.Structure | VIZ 파일 Structure 조회 | 파일의 Structure 및 노드별 Property 조회 |
 | VIZCore3D.NET.GeometryProperty | Geometry 속성 조회 예제 | 최소점, 최대점, 중심점, 개체크기, 부피, 중량 등 정보 조회 |
+| VIZCore3D.NET.HoleItems | 홀(Hole) 정보 조회 | 노드의 홀(원형, 슬롯 등) 정보 조회 및 홀 위치 마커 시각화 |
 | VIZCore3D.NET.UDA | UDA(User-Define Attribute) 조회 | 모델 파일에 포함된 사용자 정의 속성 정보 표시 |
 | VIZCore3D.NET.UDAGrouping | UDA 기반 그룹화 | 사용자 정의 속성을 기반으로 모델 노드를 그룹화 |
 | VIZCore3D.NET.MetadataDemo | 메타데이터 조회 데모 | 3D 모델의 메타데이터 조회 및 관리 |
@@ -103,7 +104,8 @@
 | VIZCore3D.NET.ClashTest.V3 | 간섭검사 V3 | 블록 기반 간섭검사 및 결과 시각화 |
 | VIZCore3D.NET.ClashTest.V4 | 간섭검사 V4 | XML 기반 간섭검사 결과 관리 |
 | VIZCore3D.NET.AnimationClashTest | 애니메이션 간섭검사 | 애니메이션 재생 중 간섭검사 수행 |
-| VIZCore3D.NET.AnimationClashTest2 | 애니메이션 간섭검사 | 애니메이션을 한 프레임씩 재생하면서 간섭검사 수행 |
+| VIZCore3D.NET.AnimationClashTest2 | 애니메이션 간섭검사 V2 | 애니메이션을 한 프레임씩 재생하면서 간섭검사 수행 |
+| VIZCore3D.NET.AnimationClashTest3 | 애니메이션 간섭검사 V3 | 변경된 노드만 애니메이션 키로 캡처하여 프레임 단위 간섭검사 성능 개선 |
 | VIZCore3D.NET.ObjectCollisionLineSegments | 충돌 라인 세그먼트 | 선택된 객체들 간 충돌 라인 세그먼트 계산 및 표시 |
 
 ### 모델 비교 / 분석
