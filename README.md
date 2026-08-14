@@ -93,6 +93,7 @@
 | VIZCore3D.NET.SectionAutoClip | 자동 단면 생성 | 선택된 객체의 경계 상자 기반 자동 단면 상자 생성 |
 | VIZCore3D.NET.SectionBoxAlign | 단면 상자 정렬 | 단면 상자 위치를 프레임 좌표에 정렬 |
 | VIZCore3D.NET.SectionBoxSize | 단면 상자 크기 조정 | 단면 상자의 좌표값을 프레임 그리드 항목으로 조정 |
+| VIZCore3D.NET.SectionCoordinate | 단면 좌표 | 단면의 좌표값 확인. VIZCore3D.NET 2.8.26.813 부터 지원. |
 | VIZCore3D.NET.SectionClippedEdge | 단면 절단면 엣지 | 단면 절단면 모서리 정보를 2D 그래픽으로 렌더링 |
 | VIZCore3D.NET.SectionVolume | 단면 부피 계산 | 단면 상자로 절단된 모델의 부피 계산 및 결과 표시 |
 
