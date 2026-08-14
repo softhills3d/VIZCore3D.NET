@@ -78,8 +78,6 @@ namespace VIZCore3D.NET.SectionCoordinate
 
         private void Section_ShowMovingPlaneCoordinate(object sender, VIZCore3D.NET.Event.EventManager.SectionEventArgs e)
         {
-            Console.WriteLine($"jjamlog, eventType: {e.EventType}");
-
             if (e.EventType != Manager.SectionManager.EventTypes.TRANSFORM
                 && e.EventType != Manager.SectionManager.EventTypes.RESIZED) return;
 
