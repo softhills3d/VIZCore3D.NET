@@ -222,6 +222,13 @@
 | Gallery | 스크린샷 | 주요 기능 화면 |
 ***
 
+## 예제 프로젝트 (WPF)
+
+| 구분 | 설명 | 비고 |
+| --- | --- | --- |
+| VIZCore3D.NET.WPF | WPF 연동 | WindowsFormsHost를 이용하여 WPF 윈도우에 VIZCore3D 컨트롤 호스팅 |
+***
+
 ## 제품 비교
 
 | Features  | Standard | Manager | Comments |
