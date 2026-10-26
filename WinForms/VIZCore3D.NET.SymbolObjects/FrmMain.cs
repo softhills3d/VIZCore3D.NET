@@ -28,6 +28,9 @@ namespace VIZCore3D.NET.SymbolObjects
         private void VIZCore3D_OnInitializedVIZCore3D(object sender, EventArgs e)
         {
             vizcore3d.License.LicenseServer("127.0.0.1", 8901);
+
+            // 현재는 SILHOUETTEEDGE 또는 HIGHLIGHT_COLOR_AND_SILHOUETTEEDGE 로 지정해야 심볼을 붙인 후에도 정상적으로 보입니다.
+            vizcore3d.View.SelectionMode = VIZCore3D.NET.Data.Object3DSelectionOptions.HIGHLIGHT_COLOR_AND_SILHOUETTEEDGE;
         }
 
         private void btnOpenDir_Click(object sender, EventArgs e)
