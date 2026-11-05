@@ -174,6 +174,7 @@
 | --- | --- | --- |
 | VIZCore3D.NET.Projection2D | 3D 모델 외곽형상 추출 | 외곽라인 정보 및 PathGeometry를 활용한 가시화 |
 | VIZCore3D.NET.Projection2D.DrawControl | 2D 투영 드로우 컨트롤 | 2D 경로 기하학 기반 도형을 그리는 WPF 컨트롤 |
+| VIZCore3D.NET.EdgeView | 모서리 기반 2D 도면 | 모델 모서리를 투영하여 2D 도면 생성(은선/실루엣/홀 중심선/치수), 포인트 편집, DXF/PNG 저장. VIZCore3D.NET 2.8.26.1105 부터 지원. |
 | VIZCore3D.NET.ProjectionArea | 투영 영역 계산 | XY/YZ/ZX 평면 및 현재 카메라 뷰 투영 영역 계산 |
 | VIZCore3D.NET.ProjectionGrid | 투영 그리드 | 투영 기반 그리드 패널과 3D 뷰 연동 좌표계 관리 |
 
