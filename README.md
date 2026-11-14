@@ -197,6 +197,7 @@
 | VIZCore3D.NET.EncryptDecrypt | 암호화/복호화 | VIZ 파일의 암호화/복호화 및 비밀번호 보호 파일 열기 |
 | VIZCore3D.NET.GenFile | GEN 파일 처리 | 마킹, 텍스트, 문자열 등의 생성 파일(GEN) 데이터 처리 |
 | VIZCore3D.NET.GenFile.V2 | GEN 파일 처리 V2 | 베벨 심볼, 마킹, 문자열 및 깊이 테스트 기능 포함 |
+| VIZCore3D.NET.GenFileWithV2 | GEN 파일 처리 (GenericDataV2) | vizcore3d.GenericDataV2 API 로 Generic(.gen/.mnt) 파일을 불러와 윤곽선·마킹·텍스트·압출 솔리드를 표시 유형(레이어)별로 가시화. 내장 GenericViewerDialog 연동. VIZCore3D.NET 2.8.26.1116 부터 지원. |
 
 ### 프레임 / 그리드 / 좌표
 | 구분 | 설명 | 비고 |
