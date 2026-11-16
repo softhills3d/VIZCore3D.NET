@@ -30,12 +30,26 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnStepOpenSpace = new System.Windows.Forms.Button();
+            this.btnStepAddTarget = new System.Windows.Forms.Button();
+            this.btnStepSelectSpace = new System.Windows.Forms.Button();
+            this.btnStepSearch = new System.Windows.Forms.Button();
+            this.btnStepHideSpace = new System.Windows.Forms.Button();
+            this.btnStepTransparency = new System.Windows.Forms.Button();
+            this.btnStepSilhouette = new System.Windows.Forms.Button();
             this.panelLeft.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelLeft
             // 
+            this.panelLeft.Controls.Add(this.btnStepSilhouette);
+            this.panelLeft.Controls.Add(this.btnStepTransparency);
+            this.panelLeft.Controls.Add(this.btnStepHideSpace);
+            this.panelLeft.Controls.Add(this.btnStepSearch);
+            this.panelLeft.Controls.Add(this.btnStepSelectSpace);
+            this.panelLeft.Controls.Add(this.btnStepAddTarget);
+            this.panelLeft.Controls.Add(this.btnStepOpenSpace);
             this.panelLeft.Controls.Add(this.label6);
             this.panelLeft.Controls.Add(this.label5);
             this.panelLeft.Controls.Add(this.label4);
@@ -112,62 +126,139 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 54);
+            this.label1.Location = new System.Drawing.Point(12, 50);
             this.label1.MaximumSize = new System.Drawing.Size(278, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(273, 24);
             this.label1.TabIndex = 3;
-            this.label1.Text = "1. 상단에 Open 버튼을 클릭하여 공간 모델, 검색 대상 모델을 엽니다.";
+            this.label1.Text = "1. 아래 버튼으로 공간 모델과 검색 대상 모델을 차례로 엽니다.";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 115);
+            this.label2.Location = new System.Drawing.Point(12, 132);
             this.label2.MaximumSize = new System.Drawing.Size(278, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(267, 24);
             this.label2.TabIndex = 4;
-            this.label2.Text = "2. 모델 트리를 열고, 공간 모델의 루트 노드를 클릭합니다.";
+            this.label2.Text = "2. 모델 트리를 열고, 공간 모델의 루트 노드를 선택합니다.";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 177);
+            this.label3.Location = new System.Drawing.Point(12, 214);
             this.label3.MaximumSize = new System.Drawing.Size(278, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(255, 12);
             this.label3.TabIndex = 4;
-            this.label3.Text = "3. 우측 패널에 \"공간 검색\" 버튼을 클릭합니다.";
+            this.label3.Text = "3. 공간 검색을 실행합니다. (우측 패널의 \"공간 검색\" 버튼과 같습니다.)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 226);
+            this.label4.Location = new System.Drawing.Point(12, 296);
             this.label4.MaximumSize = new System.Drawing.Size(278, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(207, 12);
             this.label4.TabIndex = 4;
-            this.label4.Text = "4. 모델 트리에서 공간 모델을 끕니다.";
+            this.label4.Text = "4. 공간 모델을 끕니다. (모델 트리에서 공간 모델 체크 해제와 같습니다.)";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 272);
+            this.label5.Location = new System.Drawing.Point(12, 378);
             this.label5.MaximumSize = new System.Drawing.Size(278, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(271, 36);
             this.label5.TabIndex = 4;
-            this.label5.Text = "5. 모델 트리에서 검색 대상 모델을 클릭 후, 상단 툴바에서 \"선택 개체 투명도\" 를 약 90% 로 바꿉니다.";
+            this.label5.Text = "5. 검색 대상 모델의 투명도를 약 90% 로 바꿉니다. (검색 결과 Part 는 불투명하게 유지합니다.)";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 340);
+            this.label6.Location = new System.Drawing.Point(12, 460);
             this.label6.MaximumSize = new System.Drawing.Size(278, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(276, 36);
             this.label6.TabIndex = 4;
-            this.label6.Text = "6. 결과를 확인합니다. (상단 툴바에서 렌더링 효과 개별 설정 --> 윤곽을 켜면 좀더 가시성이 좋아집니다.)";
+            this.label6.Text = "6. 결과를 확인합니다. (윤곽을 켜면 좀 더 가시성이 좋아집니다.)";
+            // 
+            // btnStepOpenSpace
+            // 
+            this.btnStepOpenSpace.Enabled = false;
+            this.btnStepOpenSpace.Location = new System.Drawing.Point(12, 90);
+            this.btnStepOpenSpace.Name = "btnStepOpenSpace";
+            this.btnStepOpenSpace.Size = new System.Drawing.Size(135, 28);
+            this.btnStepOpenSpace.TabIndex = 10;
+            this.btnStepOpenSpace.Text = "공간 모델 열기";
+            this.btnStepOpenSpace.UseVisualStyleBackColor = true;
+            this.btnStepOpenSpace.Click += new System.EventHandler(this.btnStepOpenSpace_Click);
+            // 
+            // btnStepAddTarget
+            // 
+            this.btnStepAddTarget.Enabled = false;
+            this.btnStepAddTarget.Location = new System.Drawing.Point(155, 90);
+            this.btnStepAddTarget.Name = "btnStepAddTarget";
+            this.btnStepAddTarget.Size = new System.Drawing.Size(135, 28);
+            this.btnStepAddTarget.TabIndex = 11;
+            this.btnStepAddTarget.Text = "검색 대상 모델 추가";
+            this.btnStepAddTarget.UseVisualStyleBackColor = true;
+            this.btnStepAddTarget.Click += new System.EventHandler(this.btnStepAddTarget_Click);
+            // 
+            // btnStepSelectSpace
+            // 
+            this.btnStepSelectSpace.Enabled = false;
+            this.btnStepSelectSpace.Location = new System.Drawing.Point(12, 172);
+            this.btnStepSelectSpace.Name = "btnStepSelectSpace";
+            this.btnStepSelectSpace.Size = new System.Drawing.Size(278, 28);
+            this.btnStepSelectSpace.TabIndex = 12;
+            this.btnStepSelectSpace.Text = "공간 모델 루트 노드 선택";
+            this.btnStepSelectSpace.UseVisualStyleBackColor = true;
+            this.btnStepSelectSpace.Click += new System.EventHandler(this.btnStepSelectSpace_Click);
+            // 
+            // btnStepSearch
+            // 
+            this.btnStepSearch.Enabled = false;
+            this.btnStepSearch.Location = new System.Drawing.Point(12, 254);
+            this.btnStepSearch.Name = "btnStepSearch";
+            this.btnStepSearch.Size = new System.Drawing.Size(278, 28);
+            this.btnStepSearch.TabIndex = 13;
+            this.btnStepSearch.Text = "공간 검색";
+            this.btnStepSearch.UseVisualStyleBackColor = true;
+            this.btnStepSearch.Click += new System.EventHandler(this.btnStepSearch_Click);
+            // 
+            // btnStepHideSpace
+            // 
+            this.btnStepHideSpace.Enabled = false;
+            this.btnStepHideSpace.Location = new System.Drawing.Point(12, 336);
+            this.btnStepHideSpace.Name = "btnStepHideSpace";
+            this.btnStepHideSpace.Size = new System.Drawing.Size(278, 28);
+            this.btnStepHideSpace.TabIndex = 14;
+            this.btnStepHideSpace.Text = "공간 모델 끄기";
+            this.btnStepHideSpace.UseVisualStyleBackColor = true;
+            this.btnStepHideSpace.Click += new System.EventHandler(this.btnStepHideSpace_Click);
+            // 
+            // btnStepTransparency
+            // 
+            this.btnStepTransparency.Enabled = false;
+            this.btnStepTransparency.Location = new System.Drawing.Point(12, 418);
+            this.btnStepTransparency.Name = "btnStepTransparency";
+            this.btnStepTransparency.Size = new System.Drawing.Size(278, 28);
+            this.btnStepTransparency.TabIndex = 15;
+            this.btnStepTransparency.Text = "검색 대상 모델 투명도 90%";
+            this.btnStepTransparency.UseVisualStyleBackColor = true;
+            this.btnStepTransparency.Click += new System.EventHandler(this.btnStepTransparency_Click);
+            // 
+            // btnStepSilhouette
+            // 
+            this.btnStepSilhouette.Enabled = false;
+            this.btnStepSilhouette.Location = new System.Drawing.Point(12, 500);
+            this.btnStepSilhouette.Name = "btnStepSilhouette";
+            this.btnStepSilhouette.Size = new System.Drawing.Size(278, 28);
+            this.btnStepSilhouette.TabIndex = 16;
+            this.btnStepSilhouette.Text = "윤곽 켜기";
+            this.btnStepSilhouette.UseVisualStyleBackColor = true;
+            this.btnStepSilhouette.Click += new System.EventHandler(this.btnStepSilhouette_Click);
             // 
             // Form1
             // 
@@ -204,5 +295,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnStepOpenSpace;
+        private System.Windows.Forms.Button btnStepAddTarget;
+        private System.Windows.Forms.Button btnStepSelectSpace;
+        private System.Windows.Forms.Button btnStepSearch;
+        private System.Windows.Forms.Button btnStepHideSpace;
+        private System.Windows.Forms.Button btnStepTransparency;
+        private System.Windows.Forms.Button btnStepSilhouette;
     }
 }

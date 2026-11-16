@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 
@@ -63,6 +64,7 @@ namespace VIZCore3D.NET.EnclosureSearch
             InitializeVIZCore3DEvent();
 
             btnOpen.Enabled = true;
+            EnableStepButtons();
             lblStatus.Text = "Ready";
 
             OnEnclosureSearchReady();
@@ -189,5 +191,188 @@ namespace VIZCore3D.NET.EnclosureSearch
         {
             vizcore3d.View.FitToView();
         }
+
+        // ================================================================
+        // 사용 방법 단계 버튼 (좌측 패널의 1 ~ 6 단계)
+        // ================================================================
+        #region 사용 방법 단계
+        private void EnableStepButtons()
+        {
+            btnStepOpenSpace.Enabled = true;
+            btnStepAddTarget.Enabled = true;
+            btnStepSelectSpace.Enabled = true;
+            btnStepSearch.Enabled = true;
+            btnStepHideSpace.Enabled = true;
+            btnStepTransparency.Enabled = true;
+            btnStepSilhouette.Enabled = true;
+        }
+
+        /// <summary>
+        /// 1-1. 공간 모델 열기 (기존 모델은 닫힘)
+        /// </summary>
+        private void btnStepOpenSpace_Click(object sender, EventArgs e)
+        {
+            string[] files = SelectFiles(false);
+            if (files == null) return;
+
+            OpenSpaceModel(files[0]);
+        }
+
+        /// <summary>
+        /// 1-2. 검색 대상 모델 추가
+        /// </summary>
+        private void btnStepAddTarget_Click(object sender, EventArgs e)
+        {
+            if (vizcore3d.Model.IsOpen() == false)
+            {
+                MessageBox.Show(this, "먼저 공간 모델을 여세요.", "1. 모델 열기", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            string[] files = SelectFiles(true);
+            if (files == null) return;
+
+            AddTargetModel(files);
+        }
+
+        private string[] SelectFiles(bool multiselect)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Filter = vizcore3d.Model.OpenFilter;
+                dlg.Multiselect = multiselect;
+                if (dlg.ShowDialog(this) != DialogResult.OK) return null;
+                return dlg.FileNames;
+            }
+        }
+
+        private void OpenSpaceModel(string file)
+        {
+            Cursor = Cursors.WaitCursor;
+            bool opened;
+            try { opened = OpenModels(new[] { file }); }
+            finally { Cursor = Cursors.Default; }
+
+            btnClose.Enabled = opened;
+            btnFit.Enabled = opened;
+            btnStepHideSpace.Text = "공간 모델 끄기";
+            lblStatus.Text = opened ? string.Format("공간 모델 : {0}", Path.GetFileName(file)) : "Open failed";
+        }
+
+        private void AddTargetModel(string[] files)
+        {
+            Cursor = Cursors.WaitCursor;
+            bool added;
+            vizcore3d.Model.OnModelProgressChangedEvent += Model_OnModelProgressChangedEvent;
+            try { added = vizcore3d.Model.Add(files); }
+            finally
+            {
+                vizcore3d.Model.OnModelProgressChangedEvent -= Model_OnModelProgressChangedEvent;
+                Cursor = Cursors.Default;
+            }
+
+            lblStatus.Text = added ? string.Format("검색 대상 모델 : {0} file(s)", files.Length) : "Add failed";
+        }
+
+        /// <summary>
+        /// 2. 모델 트리를 열고, 공간 모델의 루트 노드를 선택
+        /// </summary>
+        private void btnStepSelectSpace_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.Node space = GetSpaceModelNode();
+            if (space == null) return;
+
+            vizcore3d.ModelTreeVisible = true;
+            vizcore3d.Object3D.Select(VIZCore3D.NET.Data.Object3dSelectionModes.DESELECT_ALL);
+            vizcore3d.Object3D.Select(new List<VIZCore3D.NET.Data.Node> { space }, true, false);
+        }
+
+        /// <summary>
+        /// 3. 공간 검색 (우측 패널의 [공간 검색] 버튼과 동일)
+        /// </summary>
+        private void btnStepSearch_Click(object sender, EventArgs e)
+        {
+            btnSearch.PerformClick();
+        }
+
+        /// <summary>
+        /// 4. 공간 모델 끄기 / 켜기
+        /// </summary>
+        private void btnStepHideSpace_Click(object sender, EventArgs e)
+        {
+            VIZCore3D.NET.Data.Node space = GetSpaceModelNode();
+            if (space == null) return;
+
+            bool visible = !space.Visible;
+            vizcore3d.Object3D.Show(new List<int> { space.Index }, visible);
+
+            btnStepHideSpace.Text = visible ? "공간 모델 끄기" : "공간 모델 켜기";
+        }
+
+        /// <summary>
+        /// 5. 검색 대상 모델의 투명도를 90% 로 변경 (검색 결과 Part 는 불투명하게 유지)
+        /// </summary>
+        private void btnStepTransparency_Click(object sender, EventArgs e)
+        {
+            List<int> targets = GetTargetModelIndex();
+            if (targets.Count == 0)
+            {
+                MessageBox.Show(this, "먼저 검색 대상 모델을 추가하세요.", "5. 투명도", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 검색 대상 모델의 Part 중, 검색 결과(내부 / 걸침)를 제외한 Part
+            var results = new HashSet<int>(opaqueParts);
+            var parts = new List<int>();
+            foreach (int part in vizcore3d.Object3D.GetPartIndices(targets))
+            {
+                if (results.Contains(part) == false) parts.Add(part);
+            }
+            if (parts.Count == 0) return;
+
+            vizcore3d.Object3D.Color.SetTransparency(parts, 90);
+        }
+
+        /// <summary>
+        /// 6. 윤곽 켜기 / 끄기 (렌더링 효과)
+        /// </summary>
+        private void btnStepSilhouette_Click(object sender, EventArgs e)
+        {
+            vizcore3d.View.SilhouetteEdge = !vizcore3d.View.SilhouetteEdge;
+
+            btnStepSilhouette.Text = vizcore3d.View.SilhouetteEdge ? "윤곽 끄기" : "윤곽 켜기";
+        }
+
+        /// <summary>
+        /// 열린 파일 노드 목록 : 첫 번째 = 공간 모델, 나머지 = 검색 대상 모델
+        /// </summary>
+        private List<VIZCore3D.NET.Data.Node> GetFileNodes()
+        {
+            if (vizcore3d.Model.IsOpen() == false) return new List<VIZCore3D.NET.Data.Node>();
+
+            return vizcore3d.Object3D.FromIndex(0).GetChildObject3d(VIZCore3D.NET.Data.Object3DChildOption.CHILD_ONLY);
+        }
+
+        private VIZCore3D.NET.Data.Node GetSpaceModelNode()
+        {
+            List<VIZCore3D.NET.Data.Node> files = GetFileNodes();
+            if (files.Count == 0)
+            {
+                MessageBox.Show(this, "1번 단계에서 모델을 먼저 여세요.", "VIZCore3D.NET", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return null;
+            }
+
+            // 노드 상태(보이기 등)를 최신 값으로 조회
+            return vizcore3d.Object3D.FromIndex(files[0].Index);
+        }
+
+        private List<int> GetTargetModelIndex()
+        {
+            var index = new List<int>();
+            List<VIZCore3D.NET.Data.Node> files = GetFileNodes();
+            for (int i = 1; i < files.Count; i++) index.Add(files[i].Index);
+            return index;
+        }
+        #endregion
     }
 }
