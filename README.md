@@ -57,6 +57,7 @@
 | --- | --- | --- |
 | VIZCore3D.NET.Search | 모델 검색 | 모델 계층 구조에서 키워드 기반 3단계 계층적 검색 |
 | VIZCore3D.NET.SpaceSearch | 모델 기반 공간 검색 | 특정 영역의 모델을 파일/노드 단위로 검색 및 조회 |
+| VIZCore3D.NET.EnclosureSearch | 공간 기준 개체 검색 | vizcore3d.EnclosureSearch (EnclosureSearchManager) 로 선택한 노드(구획 등)가 둘러싼 공간을 기준으로 Part 의 내부/걸침/외부(접촉)/판정 불가를 검색하고 색상으로 표시. VIZCore3D.NET 2.8.26.1116 부터 지원. |
 | VIZCore3D.NET.SelectionBox | 선택상자 관리 | 영역(구획) 구분, Label, Size, 영역 내 모델 검색 |
 | VIZCore3D.NET.SelectionBox.V2 | 선택상자 관리 V2 | 마우스 드래그로 선택 영역을 정의하여 객체 선택 |
 | VIZCore3D.NET.ShortutsAreaSelectionBox | 단축키 영역 선택 | 단축키 커스터마이즈 및 영역 선택 박스 이벤트 처리 |
