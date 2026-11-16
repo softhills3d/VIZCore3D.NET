@@ -13,8 +13,7 @@ namespace VIZCore3D.NET.EnclosureSearch
         //  - 없으면 라이선스 서버 인증
         // ================================================================
         private const string LicenseFileName = "VIZCore3D.NET.lic";
-        //private const string LicenseServerIP = "127.0.0.1";
-        private const string LicenseServerIP = "192.168.100.252";
+        private const string LicenseServerIP = "127.0.0.1";
         private const int LicenseServerPort = 8901;
 
         /// <summary>
