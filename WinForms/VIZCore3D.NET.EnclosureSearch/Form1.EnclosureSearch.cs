@@ -18,7 +18,7 @@ namespace VIZCore3D.NET.EnclosureSearch
         private ProgressBar progressBar;
         private Label lblProgress;
         private int lastProgressTick;
-        private NumericUpDown numPrecision, numTol;
+        private NumericUpDown numPrecision, numTol, numGap;
         private CheckBox chkTouching, chkColor, chkGroup;
         private ListView lvResult;
         private TextBox txtLog;
@@ -27,7 +27,7 @@ namespace VIZCore3D.NET.EnclosureSearch
         {
             panelSide = new Panel { Dock = DockStyle.Right, Width = 400, Padding = new Padding(8), Enabled = false };
 
-            var grid = new TableLayoutPanel { Dock = DockStyle.Top, ColumnCount = 2, RowCount = 2, Height = 60 };
+            var grid = new TableLayoutPanel { Dock = DockStyle.Top, ColumnCount = 2, RowCount = 3, Height = 90 };
             grid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55));
             grid.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 45));
             numPrecision = new NumericUpDown { Minimum = 0, Maximum = 1000000, DecimalPlaces = 1, Value = 0, Dock = DockStyle.Fill };
@@ -36,6 +36,9 @@ namespace VIZCore3D.NET.EnclosureSearch
             grid.Controls.Add(numPrecision, 1, 0);
             grid.Controls.Add(new Label { Text = "접촉 허용 거리 (모델 단위)", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft }, 0, 1);
             grid.Controls.Add(numTol, 1, 1);
+            numGap = new NumericUpDown { Minimum = 0, Maximum = 1000000, DecimalPlaces = 1, Value = 0, Dock = DockStyle.Fill };
+            grid.Controls.Add(new Label { Text = "개구부 메움 크기 (0 = 사용 안 함)", Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleLeft }, 0, 2);
+            grid.Controls.Add(numGap, 1, 2);
 
             chkTouching = new CheckBox { Text = "외부에서 경계에 닿은 Part 도 표시", Dock = DockStyle.Top, Height = 22 };
             chkColor = new CheckBox { Text = "결과 색상 표시 (내부=파랑, 걸침=노랑, 이외=흰색)", Dock = DockStyle.Top, Height = 22, Checked = true };
@@ -108,6 +111,7 @@ namespace VIZCore3D.NET.EnclosureSearch
             VIZCore3D.NET.Data.EnclosureSearchOption option = new VIZCore3D.NET.Data.EnclosureSearchOption();
             option.Precision = (float)numPrecision.Value;   // 판정 정밀도 (0 = 자동)
             option.Tolerance = (float)numTol.Value;         // 접촉 허용 거리
+            option.GapSize = (float)numGap.Value;           // 문 등 열린 부분의 폭 이상으로 지정하면 열린 부분을 막고 공간을 찾음 (0 = 사용 안 함)
             option.IncludeOutside = chkTouching.Checked;    // 외부 개체 포함 여부
 
             // 3. 검색 : 공간(노드)마다 하나의 결과
@@ -203,7 +207,7 @@ namespace VIZCore3D.NET.EnclosureSearch
         private void SetSearching(bool searching)
         {
             // 검색 중에는 [중지] 만 누를 수 있게 한다 (화면 갱신 중 다른 버튼이 눌리는 것을 막음)
-            btnSearch.Enabled = btnResetView.Enabled = numPrecision.Enabled = numTol.Enabled = !searching;
+            btnSearch.Enabled = btnResetView.Enabled = numPrecision.Enabled = numTol.Enabled = numGap.Enabled = !searching;
             chkTouching.Enabled = chkColor.Enabled = chkGroup.Enabled = lvResult.Enabled = !searching;
             panelLeft.Enabled = !searching;
             panelView.Enabled = !searching;
@@ -276,11 +280,12 @@ namespace VIZCore3D.NET.EnclosureSearch
                 inside.AddRange(result.GetNodeIndex(VIZCore3D.NET.Data.EnclosureRelation.Inside));
                 crossing.AddRange(result.GetNodeIndex(VIZCore3D.NET.Data.EnclosureRelation.Crossing));
 
-                sb.AppendFormat("[{0}] 내부 {1} / 걸침 {2} / 판정 불가 {3}{4}\r\n", space,
+                sb.AppendFormat("[{0}] 내부 {1} / 걸침 {2} / 판정 불가 {3}{4}{5}\r\n", space,
                     result.GetCount(VIZCore3D.NET.Data.EnclosureRelation.Inside),
                     result.GetCount(VIZCore3D.NET.Data.EnclosureRelation.Crossing),
                     result.GetCount(VIZCore3D.NET.Data.EnclosureRelation.Undetermined),
-                    chkTouching.Checked ? string.Format(" / 외부 접촉 {0}", touching) : "");
+                    chkTouching.Checked ? string.Format(" / 외부 접촉 {0}", touching) : "",
+                    result.GapClosed ? " (개구부 메움 적용)" : "");
             }
             lvResult.EndUpdate();
             txtLog.Text = sb.ToString();
@@ -317,7 +322,7 @@ namespace VIZCore3D.NET.EnclosureSearch
         {
             switch (status)
             {
-                case VIZCore3D.NET.Data.EnclosureSearchStatus.NoEnclosedSpace: return "둘러싸인 공간을 찾지 못했습니다. 형상이 닫혀 있는지 확인하거나 판정 정밀도를 바꿔 보세요.";
+                case VIZCore3D.NET.Data.EnclosureSearchStatus.NoEnclosedSpace: return "둘러싸인 공간을 찾지 못했습니다. 형상이 닫혀 있는지 확인하거나 판정 정밀도를 바꿔 보세요. 문 등 열린 부분이 있으면 개구부 메움 크기를 열린 부분의 폭 이상으로 지정하세요.";
                 case VIZCore3D.NET.Data.EnclosureSearchStatus.InvalidShape: return "형상을 확인할 수 없습니다.";
                 case VIZCore3D.NET.Data.EnclosureSearchStatus.Canceled: return "중지됨 : 검사하지 않았습니다.";
                 default: return status.ToString();
